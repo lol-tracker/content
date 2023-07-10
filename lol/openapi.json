@@ -1,0 +1,5 @@
+
+components  info                     openapi paths
+----------  ----                     ------- -----
+@{schemas=} @{title=; version=1.0.0} 3.0.0   @{/AsyncDelete=; /AsyncResult=; /AsyncStatus=; /Cancel=; /Exit=; /Help=; /…
+
