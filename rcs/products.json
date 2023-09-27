@@ -192,7 +192,7 @@
               ]
             }
           ],
-          "supported_versions": "408000+",
+          "supported_versions": "409000+",
           "tags": [],
           "theme_manifest": "https://bacon.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest.json",
           "version": "409037"
@@ -304,7 +304,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/BC1C6E82D4DE6162.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/5DBC1920F5B1DA9E.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
@@ -337,7 +337,7 @@
           "shards_data": [],
           "supported_versions": "",
           "tags": [],
-          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.18/EUW/manifest.json",
+          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.19/EUW/manifest.json",
           "version": ""
         },
         "league_of_legends.pbe": {
@@ -1061,7 +1061,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/BDAB98F8D697E16A.manifest",
+          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/53226B1E2E8BD313.manifest",
           "patching_metadata": {},
           "path_name": "VALORANT",
           "platform": "win",
