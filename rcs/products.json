@@ -304,7 +304,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/5DBC1920F5B1DA9E.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/2BD01B8959FB1ECD.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
@@ -1102,8 +1102,7 @@
           "app_store_update_info": null,
           "available_platforms": [
             "ios",
-            "android",
-            "galaxy"
+            "android"
           ],
           "bundles_url": "",
           "client_product_type": "riot_game",
