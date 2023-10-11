@@ -4519,6 +4519,18 @@
         },
         "type": "object"
       },
+      "LolCatalogGameDataSkinBorder": {
+        "properties": {
+          "image": {
+            "type": "string"
+          },
+          "itemId": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "LolCatalogGameDataStatstone": {
         "properties": {
           "category": {
@@ -6037,9 +6049,6 @@
             "format": "int32",
             "type": "integer"
           },
-          "entitledFeatureType": {
-            "type": "string"
-          },
           "nameVisibilityType": {
             "type": "string"
           },
@@ -6126,9 +6135,6 @@
           "counter": {
             "format": "int64",
             "type": "integer"
-          },
-          "entitledFeatureState": {
-            "$ref": "#/components/schemas/LolChampSelectEntitledFeatureState"
           },
           "gameId": {
             "format": "int64",
@@ -6229,9 +6235,6 @@
           "currentChampionVotePercentInteger": {
             "format": "int32",
             "type": "integer"
-          },
-          "entitledFeatureType": {
-            "type": "string"
           },
           "isActingNow": {
             "type": "boolean"
@@ -6813,22 +6816,6 @@
         "properties": {
           "rented": {
             "type": "boolean"
-          }
-        },
-        "type": "object"
-      },
-      "LolChampSelectEntitledFeatureState": {
-        "properties": {
-          "additionalRerolls": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "unlockedSkinIds": {
-            "items": {
-              "format": "int32",
-              "type": "integer"
-            },
-            "type": "array"
           }
         },
         "type": "object"
@@ -7426,6 +7413,9 @@
       },
       "LolChampSelectLoginSession": {
         "properties": {
+          "puuid": {
+            "type": "string"
+          },
           "summonerId": {
             "format": "int64",
             "type": "integer"
@@ -7525,9 +7515,6 @@
           "isChampionUnlocked": {
             "type": "boolean"
           },
-          "isUnlockedFromEntitledFeature": {
-            "type": "boolean"
-          },
           "name": {
             "type": "string"
           },
@@ -7625,9 +7612,6 @@
           "isChampionUnlocked": {
             "type": "boolean"
           },
-          "isUnlockedFromEntitledFeature": {
-            "type": "boolean"
-          },
           "name": {
             "type": "string"
           },
@@ -7705,6 +7689,9 @@
           },
           "name": {
             "type": "string"
+          },
+          "productType": {
+            "$ref": "#/components/schemas/LolChampionsQuestSkinProductType"
           },
           "splashPath": {
             "type": "string"
@@ -8624,6 +8611,13 @@
           }
         },
         "type": "object"
+      },
+      "LolChampionsQuestSkinProductType": {
+        "enum": [
+          "kQuestSkin",
+          "kTieredSkin"
+        ],
+        "type": "string"
       },
       "LolChampionsSummoner": {
         "properties": {
@@ -15455,9 +15449,8 @@
           "grade": {
             "type": "string"
           },
-          "playerId": {
-            "format": "int64",
-            "type": "integer"
+          "puuid": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -15472,9 +15465,8 @@
             "format": "int64",
             "type": "integer"
           },
-          "playerId": {
-            "format": "int64",
-            "type": "integer"
+          "puuid": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -15518,10 +15510,6 @@
             },
             "type": "array"
           },
-          "playerId": {
-            "format": "int64",
-            "type": "integer"
-          },
           "pointsBeforeGame": {
             "format": "int64",
             "type": "integer"
@@ -15545,6 +15533,9 @@
           "pointsUntilNextLevelBeforeGame": {
             "format": "int64",
             "type": "integer"
+          },
+          "puuid": {
+            "type": "string"
           },
           "score": {
             "format": "int64",
@@ -20313,8 +20304,8 @@
       "LolEventShopTokenUpsellLockedType": {
         "enum": [
           "UNASSIGNED",
-          "LOCKED",
-          "UNLOCKED"
+          "UNLOCKED",
+          "LOCKED"
         ],
         "type": "string"
       },
@@ -25758,6 +25749,17 @@
           "QueueEntryNotEntitledRestriction",
           "TFTNewPlayerRestriction",
           "UnknownRestriction",
+          "QPPlayerScarcePositionCoverageRestriction",
+          "QPPartyPositionCoverageRestriction",
+          "QPPlayerPositionCoverageRestriction",
+          "QPPartyChampionCoverageRestriction",
+          "QPPlayerChampionCoverageRestriction",
+          "QPInvalidNumberOfPlayerSlotsRestriction",
+          "QPInvalidPositionSelectionRestriction",
+          "QPInvalidChampionSelectionRestriction",
+          "QPNonUniquePrimarySlotRestriction",
+          "QPScarcePositionsNotAvailableRestriction",
+          "TooManyIncompleteSubteamsRestriction",
           "BanInfoNotAvailable",
           "MinorInfoNotAvailable",
           "SummonerInfoNotAvailable",
@@ -26944,6 +26946,9 @@
           "firstPositionPreference": {
             "type": "string"
           },
+          "intraSubteamPosition": {
+            "type": "integer"
+          },
           "isBot": {
             "type": "boolean"
           },
@@ -26970,6 +26975,9 @@
           },
           "showGhostedBanner": {
             "type": "boolean"
+          },
+          "subteamIndex": {
+            "type": "integer"
           },
           "summonerIconId": {
             "format": "int32",
@@ -27449,10 +27457,6 @@
       },
       "LolLobbyPartyMemberMetadataDto": {
         "properties": {
-          "championSelection": {
-            "format": "int32",
-            "type": "integer"
-          },
           "playerSlots": {
             "items": {
               "$ref": "#/components/schemas/LolLobbyQuickPlayPresetSlotDto"
@@ -27469,9 +27473,8 @@
             "additionalProperties": true,
             "type": "object"
           },
-          "skinSelection": {
-            "format": "int32",
-            "type": "integer"
+          "subteamData": {
+            "$ref": "#/components/schemas/LolLobbySubteamDataDto"
           }
         },
         "type": "object"
@@ -28261,6 +28264,17 @@
         },
         "type": "object"
       },
+      "LolLobbySubteamDataDto": {
+        "properties": {
+          "intraSubteamPosition": {
+            "type": "integer"
+          },
+          "subteamIndex": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "LolLobbySummoner": {
         "properties": {
           "accountId": {
@@ -28437,9 +28451,6 @@
             "format": "int32",
             "type": "integer"
           },
-          "entitledFeatureType": {
-            "type": "string"
-          },
           "nameVisibilityType": {
             "type": "string"
           },
@@ -28607,9 +28618,6 @@
             "format": "int32",
             "type": "integer"
           },
-          "entitledFeatureType": {
-            "type": "string"
-          },
           "nameVisibilityType": {
             "type": "string"
           },
@@ -28696,9 +28704,6 @@
           "counter": {
             "format": "int64",
             "type": "integer"
-          },
-          "entitledFeatureState": {
-            "$ref": "#/components/schemas/LolLobbyTeamBuilderEntitledFeatureState"
           },
           "gameId": {
             "format": "int64",
@@ -28935,9 +28940,6 @@
             "format": "int64",
             "type": "integer"
           },
-          "entitledFeatureState": {
-            "$ref": "#/components/schemas/LolLobbyTeamBuilderEntitledFeatureStateV1"
-          },
           "inventoryDraft": {
             "$ref": "#/components/schemas/LolLobbyTeamBuilderTbdInventory"
           },
@@ -28999,34 +29001,6 @@
           "timer": {
             "format": "int64",
             "type": "integer"
-          }
-        },
-        "type": "object"
-      },
-      "LolLobbyTeamBuilderEntitledFeatureState": {
-        "properties": {
-          "additionalRerolls": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "unlockedSkinIds": {
-            "items": {
-              "format": "int32",
-              "type": "integer"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "LolLobbyTeamBuilderEntitledFeatureStateV1": {
-        "properties": {
-          "additionalRerolls": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "unlockedSkinsState": {
-            "$ref": "#/components/schemas/LolLobbyTeamBuilderUnlockedSkinsStateV1"
           }
         },
         "type": "object"
@@ -29993,18 +29967,6 @@
           },
           "state": {
             "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "LolLobbyTeamBuilderUnlockedSkinsStateV1": {
-        "properties": {
-          "unlockedSkinIds": {
-            "items": {
-              "format": "int32",
-              "type": "integer"
-            },
-            "type": "array"
           }
         },
         "type": "object"
@@ -38915,6 +38877,29 @@
         },
         "type": "object"
       },
+      "LolPlayerNameTransitionPlayerNameTransitionModalSettingCategoryResource": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/LolPlayerNameTransitionPlayerNameTransitionModalSettings"
+          },
+          "schemaVersion": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "LolPlayerNameTransitionPlayerNameTransitionModalSettings": {
+        "properties": {
+          "mHasSeenRiotIdPostTransitionDialog": {
+            "type": "boolean"
+          },
+          "mHasSeenRiotIdPreTransitionDialog": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "LolPlayerNameTransitionPlayerNameTransitionModalState": {
         "enum": [
           "DISABLED",
@@ -44003,9 +43988,8 @@
             "format": "int64",
             "type": "integer"
           },
-          "playerId": {
-            "format": "int64",
-            "type": "integer"
+          "puuid": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -56205,7 +56189,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "HttpAsyncResult",
+        "operationId": "Http2AsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56245,7 +56229,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "HttpAsyncDelete",
+        "operationId": "Http2AsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -56283,7 +56267,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -64051,41 +64035,6 @@
         ]
       }
     },
-    "/lol-clash/v1/scouting-bypuuid/champions": {
-      "get": {
-        "operationId": "GetLolClashV1ScoutingBypuuidChampions",
-        "parameters": [
-          {
-            "in": "query",
-            "items": {
-              "type": "string"
-            },
-            "name": "puuids",
-            "required": true,
-            "type": "array"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/LolClashScoutingChampions"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-clash"
-        ]
-      }
-    },
     "/lol-clash/v1/scouting/champions": {
       "get": {
         "operationId": "GetLolClashV1ScoutingChampions",
@@ -64093,10 +64042,9 @@
           {
             "in": "query",
             "items": {
-              "format": "int64",
-              "type": "integer"
+              "type": "string"
             },
-            "name": "summonerIds",
+            "name": "puuids",
             "required": true,
             "type": "array"
           }
@@ -64897,44 +64845,6 @@
             "application/json": {
               "schema": {
                 "items": {
-                  "format": "int64",
-                  "type": "integer"
-                },
-                "type": "array"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/RankedScoutingDTO"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/scouting-puuid": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesScoutingPuuid",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "items": {
                   "type": "string"
                 },
                 "type": "array"
@@ -64963,9 +64873,9 @@
         ]
       }
     },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery-bypuuid": {
+    "/lol-collections/v1/inventories/{puuid}/champion-mastery": {
       "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMasteryBypuuid",
+        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMastery",
         "parameters": [
           {
             "in": "path",
@@ -64995,9 +64905,9 @@
         ]
       }
     },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery-bypuuid/top": {
+    "/lol-collections/v1/inventories/{puuid}/champion-mastery/top": {
       "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMasteryBypuuidTop",
+        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMasteryTop",
         "parameters": [
           {
             "in": "path",
@@ -65055,82 +64965,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LolCollectionsCollectionsSummonerBackdrop"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{summonerId}/champion-mastery": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesBySummonerIdChampionMastery",
-        "parameters": [
-          {
-            "format": "int64",
-            "in": "path",
-            "name": "summonerId",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/LolCollectionsCollectionsChampionMastery"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{summonerId}/champion-mastery/top": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesBySummonerIdChampionMasteryTop",
-        "parameters": [
-          {
-            "format": "int64",
-            "in": "path",
-            "name": "summonerId",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "sortRule",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LolCollectionsCollectionsTopChampionMasteries"
                 }
               }
             },
@@ -70134,6 +69968,28 @@
         ]
       }
     },
+    "/lol-kr-shutdown-law/v1/is-enabled": {
+      "get": {
+        "operationId": "GetLolKrShutdownLawV1IsEnabled",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-kr-shutdown-law"
+        ]
+      }
+    },
     "/lol-kr-shutdown-law/v1/notification": {
       "get": {
         "operationId": "GetLolKrShutdownLawV1Notification",
@@ -73258,6 +73114,30 @@
         ]
       }
     },
+    "/lol-lobby/v2/lobby/subteamData": {
+      "put": {
+        "operationId": "PutLolLobbyV2LobbySubteamData",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LolLobbySubteamDataDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-lobby"
+        ]
+      }
+    },
     "/lol-lobby/v2/lobby/team/{team}": {
       "post": {
         "operationId": "PostLolLobbyV2LobbyTeamByTeam",
@@ -73624,30 +73504,6 @@
               }
             },
             "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-lobby"
-        ]
-      }
-    },
-    "/lol-lobby/v2/tft/gamesPlayedWon": {
-      "put": {
-        "operationId": "PutLolLobbyV2TftGamesPlayedWon",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "boolean"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No content"
           }
         },
         "tags": [
@@ -78366,8 +78222,16 @@
         "operationId": "PostLolPlayerNameTransitionV1Dismiss",
         "parameters": [],
         "responses": {
-          "204": {
-            "description": "No content"
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
           }
         },
         "tags": [
@@ -78403,8 +78267,16 @@
         "operationId": "PostLolPlayerNameTransitionV1OpenFaq",
         "parameters": [],
         "responses": {
-          "204": {
-            "description": "No content"
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
           }
         },
         "tags": [
@@ -78418,8 +78290,16 @@
         "operationId": "PostLolPlayerNameTransitionV1OpenNameChange",
         "parameters": [],
         "responses": {
-          "204": {
-            "description": "No content"
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
           }
         },
         "tags": [
@@ -81638,6 +81518,28 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LolSeasonsAllSeasonsProduct"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-seasons"
+        ]
+      }
+    },
+    "/lol-seasons/v1/season/recent-final-split": {
+      "get": {
+        "operationId": "GetLolSeasonsV1SeasonRecentFinalSplit",
+        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -88316,7 +88218,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -88354,7 +88256,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {

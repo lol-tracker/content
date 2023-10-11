@@ -168,7 +168,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://bacon.secure.dyn.riotcdn.net/channels/public/releases/F09EEF4E3CC71BA3.manifest",
+          "patch_url": "https://bacon.secure.dyn.riotcdn.net/channels/public/releases/C68044A443F5C99E.manifest",
           "patching_metadata": {},
           "path_name": "LoR/live",
           "platform": "win",
@@ -195,7 +195,7 @@
           "supported_versions": "409000+",
           "tags": [],
           "theme_manifest": "https://bacon.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest.json",
-          "version": "409037"
+          "version": "410007"
         }
       }
     },
@@ -304,7 +304,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/2BD01B8959FB1ECD.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/9EDD67A9C00C740E.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
@@ -337,7 +337,7 @@
           "shards_data": [],
           "supported_versions": "",
           "tags": [],
-          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.19/EUW/manifest.json",
+          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.20/EUW/manifest.json",
           "version": ""
         },
         "league_of_legends.pbe": {
@@ -1061,7 +1061,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/53226B1E2E8BD313.manifest",
+          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/C2F7C2960B0531AB.manifest",
           "patching_metadata": {},
           "path_name": "VALORANT",
           "platform": "win",

@@ -1783,6 +1783,25 @@
         },
         "type": "object"
       },
+      "ChatDisconnectTelemetry": {
+        "properties": {
+          "chatServiceURI": {
+            "type": "string"
+          },
+          "isDisconnectExpected": {
+            "type": "boolean"
+          },
+          "socketClosedReason": {
+            "type": "string"
+          },
+          "totalTimeConnectedMs": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "ChatEntitlementsTokenResource": {
         "properties": {
           "accessToken": {
@@ -3018,6 +3037,14 @@
         },
         "type": "object"
       },
+      "ChatSessionSuspendConfig": {
+        "properties": {
+          "resumeLatestPresences": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "ChatSocialData": {
         "properties": {
           "hovercard_background_url": {
@@ -3066,6 +3093,7 @@
           "BAD_MIGRATE_STANZA",
           "BAD_MIGRATE_AUTH_MECHANISMS_STANZA",
           "MIGRATE_AUTH_FAILURE",
+          "SUSPEND",
           "UNKNOWN"
         ],
         "type": "string"
@@ -4853,13 +4881,53 @@
         ],
         "type": "string"
       },
+      "FriendsLookupV1GameNameTaglinePASResponse": {
+        "properties": {
+          "game_name": {
+            "type": "string"
+          },
+          "shadow_gnt": {
+            "type": "boolean"
+          },
+          "tag_line": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "FriendsLookupV1GamerNameAndTagline": {
         "properties": {
           "gameName": {
             "type": "string"
           },
+          "shadowGnt": {
+            "type": "boolean"
+          },
           "tagLine": {
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "FriendsLookupV1NamesetsForPuuidPASResponse": {
+        "properties": {
+          "alias": {
+            "$ref": "#/components/schemas/FriendsLookupV1GameNameTaglinePASResponse"
+          },
+          "error": {
+            "type": "string"
+          },
+          "playstation": {
+            "$ref": "#/components/schemas/FriendsLookupV1PlaystationNameset"
+          },
+          "puuid": {
+            "type": "string"
+          },
+          "switch": {
+            "$ref": "#/components/schemas/FriendsLookupV1SwitchNameset"
+          },
+          "xbox": {
+            "$ref": "#/components/schemas/FriendsLookupV1XboxNameset"
           }
         },
         "type": "object"
@@ -4931,12 +4999,17 @@
       "FriendsLookupV1PuuidAndProvider": {
         "properties": {
           "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "provider": {
             "type": "string"
           },
           "providerId": {
             "type": "string"
           },
           "puuid": {
+            "nullable": true,
             "type": "string"
           }
         },
@@ -4973,20 +5046,6 @@
       "FriendsLookupV1SwitchNameset": {
         "properties": {
           "name": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "FriendsLookupV1ToggleMockApiRequest": {
-        "properties": {
-          "enable": {
-            "type": "boolean"
-          },
-          "environment": {
-            "type": "string"
-          },
-          "platform": {
             "type": "string"
           }
         },
@@ -7520,36 +7579,6 @@
         },
         "type": "object"
       },
-      "LifecycleData": {
-        "properties": {
-          "data": {
-            "additionalProperties": true,
-            "type": "object"
-          },
-          "lifecycleEventType": {
-            "$ref": "#/components/schemas/LifecycleEventType",
-            "default": 0
-          }
-        },
-        "type": "object"
-      },
-      "LifecycleEventType": {
-        "description": "Lifecycle event type for all events",
-        "enum": [
-          "OnCreate",
-          "OnStart",
-          "OnRestart",
-          "OnResume",
-          "OnPause",
-          "OnStop",
-          "OnDestroy",
-          "OnActivityResult",
-          "OnNewIntent",
-          "DidFinishLaunchingWithOptions",
-          "OpenURL"
-        ],
-        "type": "string"
-      },
       "LogSeverityLevels": {
         "enum": [
           "Okay",
@@ -8502,6 +8531,169 @@
         },
         "type": "object"
       },
+      "NintendoAccountPluginConfigResponse": {
+        "properties": {
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/NintendoAccountV1AuthMethodConfig"
+            },
+            "type": "array"
+          },
+          "service_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "NintendoAccountV1AuthMethodConfig": {
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "NintendoAccountV1DisplayMode": {
+        "enum": [
+          "page",
+          "touch"
+        ],
+        "type": "string"
+      },
+      "NintendoAccountV1WebAuthenticationMethod": {
+        "enum": [
+          "none",
+          "apple",
+          "google",
+          "facebook",
+          "nintendo",
+          "playstation",
+          "xbox"
+        ],
+        "type": "string"
+      },
+      "NintendoAccountV1WebAuthenticationUrlRequest": {
+        "properties": {
+          "authentication_callback_uri": {
+            "type": "string"
+          },
+          "display": {
+            "$ref": "#/components/schemas/NintendoAccountV1DisplayMode",
+            "default": "page"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "method": {
+            "$ref": "#/components/schemas/NintendoAccountV1WebAuthenticationMethod",
+            "default": "none"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "redirect_uri": {
+            "type": "string"
+          },
+          "remember": {
+            "type": "boolean"
+          },
+          "riot_theme": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "NintendoAccountV2AuthorizationError": {
+        "enum": [
+          "UserCanceledAuthorization",
+          "UserCanceledLogIn",
+          "EmptyResponse",
+          "Unknown",
+          "MissingResult",
+          "MissingCode",
+          "ASWebAuthenticationSessionPresentationContextInvalid",
+          "ASWebAuthenticationSessionPresentationContextNotProvided",
+          "InvalidRedirectPath",
+          "InvalidRedirectSchema",
+          "RedirectMissingQueryParameters",
+          "UnknownASWebAuthenticationSessionError",
+          "UnknownSFAuthenticationSessionError",
+          "UnknownJavaError"
+        ],
+        "type": "string"
+      },
+      "NintendoAccountV2AuthorizationParameters": {
+        "properties": {
+          "locale": {
+            "nullable": true,
+            "type": "string"
+          },
+          "scopes": {
+            "type": "string"
+          },
+          "showUserSelector": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "NintendoAccountV2AuthorizationResponse": {
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/NintendoAccountV2AuthorizationError",
+            "nullable": true
+          },
+          "token": {
+            "$ref": "#/components/schemas/NintendoAccountV2AuthorizationToken",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/NintendoAccountV2AuthorizationResponseType",
+            "default": "None"
+          }
+        },
+        "type": "object"
+      },
+      "NintendoAccountV2AuthorizationResponseType": {
+        "enum": [
+          "None",
+          "Cancelled",
+          "Error",
+          "Code",
+          "Token"
+        ],
+        "type": "string"
+      },
+      "NintendoAccountV2AuthorizationToken": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "OnlinePlatform": {
         "enum": [
           "absent",
@@ -9245,6 +9437,40 @@
         "properties": {
           "userInfo": {
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PermissionsPermissionDetails": {
+        "properties": {
+          "denyReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "hasPermission": {
+            "type": "boolean"
+          },
+          "permissionId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PermissionsPermissionsRequestParameters": {
+        "properties": {
+          "permissionId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PermissionsPermissionsResponse": {
+        "properties": {
+          "permissions": {
+            "items": {
+              "$ref": "#/components/schemas/PermissionsPermissionDetails"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -10217,6 +10443,82 @@
         },
         "type": "object"
       },
+      "PlatformUiNintendoAccountV2AuthorizationError": {
+        "enum": [
+          "UserCanceledAuthorization",
+          "UserCanceledLogIn",
+          "EmptyResponse",
+          "Unknown",
+          "MissingResult",
+          "MissingCode",
+          "ASWebAuthenticationSessionPresentationContextInvalid",
+          "ASWebAuthenticationSessionPresentationContextNotProvided",
+          "InvalidRedirectPath",
+          "InvalidRedirectSchema",
+          "RedirectMissingQueryParameters",
+          "UnknownASWebAuthenticationSessionError",
+          "UnknownSFAuthenticationSessionError",
+          "UnknownJavaError"
+        ],
+        "type": "string"
+      },
+      "PlatformUiNintendoAccountV2AuthorizationParameters": {
+        "properties": {
+          "locale": {
+            "nullable": true,
+            "type": "string"
+          },
+          "scopes": {
+            "type": "string"
+          },
+          "showUserSelector": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "PlatformUiNintendoAccountV2AuthorizationResponse": {
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/PlatformUiNintendoAccountV2AuthorizationError",
+            "nullable": true
+          },
+          "token": {
+            "$ref": "#/components/schemas/PlatformUiNintendoAccountV2AuthorizationToken",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PlatformUiNintendoAccountV2AuthorizationResponseType",
+            "default": "None"
+          }
+        },
+        "type": "object"
+      },
+      "PlatformUiNintendoAccountV2AuthorizationResponseType": {
+        "enum": [
+          "None",
+          "Cancelled",
+          "Error",
+          "Code",
+          "Token"
+        ],
+        "type": "string"
+      },
+      "PlatformUiNintendoAccountV2AuthorizationToken": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "PlatformUiOnlinePlatform": {
         "enum": [
           "absent",
@@ -10353,6 +10655,8 @@
           "NotSignedUp",
           "Logout",
           "LatestSystemSoftwareExist",
+          "ClientIdEmpty",
+          "EmptyResponse",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -10424,7 +10728,7 @@
           "Cancelled",
           "Error",
           "Code",
-          "Token"
+          "NativeCode"
         ],
         "type": "string"
       },
@@ -10610,6 +10914,33 @@
           "REGION_EXISTS",
           "BAD_ENTITY_PARAMETER",
           "NO_ERROR"
+        ],
+        "type": "string"
+      },
+      "PlatformUiRSOMobileUIRiotIdPromptV1InitiateRequest": {
+        "properties": {
+          "promptReason": {
+            "$ref": "#/components/schemas/PlatformUiRSOMobileUIRiotIdPromptV1RiotIDPromptReason",
+            "default": "set_new_id"
+          }
+        },
+        "type": "object"
+      },
+      "PlatformUiRSOMobileUIRiotIdPromptV1RiotIDPrompt": {
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "PlatformUiRSOMobileUIRiotIdPromptV1RiotIDPromptReason": {
+        "enum": [
+          "set_new_id",
+          "forced_name_change"
         ],
         "type": "string"
       },
@@ -10880,6 +11211,8 @@
           "SignedOut",
           "UserNotFound",
           "NoDefaultUser",
+          "EmptyResponse",
+          "FailedToGetRsoAuthenticatorUrl",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -11412,13 +11745,53 @@
         },
         "type": "object"
       },
+      "PlayerAccountLookupV1GameNameTaglinePASResponse": {
+        "properties": {
+          "game_name": {
+            "type": "string"
+          },
+          "shadow_gnt": {
+            "type": "boolean"
+          },
+          "tag_line": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "PlayerAccountLookupV1GamerNameAndTagline": {
         "properties": {
           "gameName": {
             "type": "string"
           },
+          "shadowGnt": {
+            "type": "boolean"
+          },
           "tagLine": {
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PlayerAccountLookupV1NamesetsForPuuidPASResponse": {
+        "properties": {
+          "alias": {
+            "$ref": "#/components/schemas/PlayerAccountLookupV1GameNameTaglinePASResponse"
+          },
+          "error": {
+            "type": "string"
+          },
+          "playstation": {
+            "$ref": "#/components/schemas/PlayerAccountLookupV1PlaystationNameset"
+          },
+          "puuid": {
+            "type": "string"
+          },
+          "switch": {
+            "$ref": "#/components/schemas/PlayerAccountLookupV1SwitchNameset"
+          },
+          "xbox": {
+            "$ref": "#/components/schemas/PlayerAccountLookupV1XboxNameset"
           }
         },
         "type": "object"
@@ -11490,12 +11863,17 @@
       "PlayerAccountLookupV1PuuidAndProvider": {
         "properties": {
           "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "provider": {
             "type": "string"
           },
           "providerId": {
             "type": "string"
           },
           "puuid": {
+            "nullable": true,
             "type": "string"
           }
         },
@@ -11532,20 +11910,6 @@
       "PlayerAccountLookupV1SwitchNameset": {
         "properties": {
           "name": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "PlayerAccountLookupV1ToggleMockApiRequest": {
-        "properties": {
-          "enable": {
-            "type": "boolean"
-          },
-          "environment": {
-            "type": "string"
-          },
-          "platform": {
             "type": "string"
           }
         },
@@ -13822,6 +14186,82 @@
         },
         "type": "object"
       },
+      "PlayerSessionLifecycleNintendoAccountV2AuthorizationError": {
+        "enum": [
+          "UserCanceledAuthorization",
+          "UserCanceledLogIn",
+          "EmptyResponse",
+          "Unknown",
+          "MissingResult",
+          "MissingCode",
+          "ASWebAuthenticationSessionPresentationContextInvalid",
+          "ASWebAuthenticationSessionPresentationContextNotProvided",
+          "InvalidRedirectPath",
+          "InvalidRedirectSchema",
+          "RedirectMissingQueryParameters",
+          "UnknownASWebAuthenticationSessionError",
+          "UnknownSFAuthenticationSessionError",
+          "UnknownJavaError"
+        ],
+        "type": "string"
+      },
+      "PlayerSessionLifecycleNintendoAccountV2AuthorizationParameters": {
+        "properties": {
+          "locale": {
+            "nullable": true,
+            "type": "string"
+          },
+          "scopes": {
+            "type": "string"
+          },
+          "showUserSelector": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "PlayerSessionLifecycleNintendoAccountV2AuthorizationResponse": {
+        "properties": {
+          "code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/PlayerSessionLifecycleNintendoAccountV2AuthorizationError",
+            "nullable": true
+          },
+          "token": {
+            "$ref": "#/components/schemas/PlayerSessionLifecycleNintendoAccountV2AuthorizationToken",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PlayerSessionLifecycleNintendoAccountV2AuthorizationResponseType",
+            "default": "None"
+          }
+        },
+        "type": "object"
+      },
+      "PlayerSessionLifecycleNintendoAccountV2AuthorizationResponseType": {
+        "enum": [
+          "None",
+          "Cancelled",
+          "Error",
+          "Code",
+          "Token"
+        ],
+        "type": "string"
+      },
+      "PlayerSessionLifecycleNintendoAccountV2AuthorizationToken": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "idToken": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "PlayerSessionLifecycleNintendoInput": {
         "properties": {
           "authorization_code": {
@@ -14075,6 +14515,8 @@
           "NotSignedUp",
           "Logout",
           "LatestSystemSoftwareExist",
+          "ClientIdEmpty",
+          "EmptyResponse",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -14146,7 +14588,7 @@
           "Cancelled",
           "Error",
           "Code",
-          "Token"
+          "NativeCode"
         ],
         "type": "string"
       },
@@ -14468,6 +14910,8 @@
           "SignedOut",
           "UserNotFound",
           "NoDefaultUser",
+          "EmptyResponse",
+          "FailedToGetRsoAuthenticatorUrl",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -14808,6 +15252,8 @@
           "NotSignedUp",
           "Logout",
           "LatestSystemSoftwareExist",
+          "ClientIdEmpty",
+          "EmptyResponse",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -14879,7 +15325,7 @@
           "Cancelled",
           "Error",
           "Code",
-          "Token"
+          "NativeCode"
         ],
         "type": "string"
       },
@@ -19861,6 +20307,114 @@
         ],
         "type": "string"
       },
+      "RsoMobileUiAliasValidationReason": {
+        "enum": [
+          "no_error",
+          "name_change_forbidden",
+          "name_not_available",
+          "rate_limited"
+        ],
+        "type": "string"
+      },
+      "RsoMobileUiAliasesV1Alias": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "created_datetime": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "game_name": {
+            "type": "string"
+          },
+          "summoner": {
+            "type": "boolean"
+          },
+          "tag_line": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiAliasesV1AliasInput": {
+        "properties": {
+          "gameName": {
+            "type": "string"
+          },
+          "tagLine": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiAliasesV1EligibilityResponse": {
+        "properties": {
+          "errorCode": {
+            "$ref": "#/components/schemas/RsoMobileUiAliasValidationReason",
+            "default": "no_error"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "isChangeRequired": {
+            "type": "boolean"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "isTagLineCustomizable": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiAliasesV1GenerateTaglineInput": {
+        "properties": {
+          "game_name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiAliasesV1GenerateTaglineResponse": {
+        "properties": {
+          "errorCode": {
+            "$ref": "#/components/schemas/RsoMobileUiAliasValidationReason",
+            "default": "no_error"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "tag_line": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiAliasesV1StatusResponse": {
+        "properties": {
+          "alias": {
+            "$ref": "#/components/schemas/RsoMobileUiAliasesV1Alias",
+            "nullable": true
+          },
+          "errorCode": {
+            "$ref": "#/components/schemas/RsoMobileUiAliasValidationReason",
+            "default": "no_error"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "RsoMobileUiAuthMethodConfig": {
         "properties": {
           "clientId": {
@@ -20420,6 +20974,67 @@
           "NO_ERROR"
         ],
         "type": "string"
+      },
+      "RsoMobileUiRiotIDPromptV1GenerateTaglineRequest": {
+        "properties": {
+          "gameName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiRiotIDPromptV1GenerateTaglineResponse": {
+        "properties": {
+          "errorMessage": {
+            "type": "string"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "tagLine": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiRiotIDPromptV1InitiateRequest": {
+        "properties": {
+          "promptReason": {
+            "$ref": "#/components/schemas/RsoMobileUiRiotIDPromptV1RiotIDPromptReason",
+            "default": "set_new_id"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiRiotIDPromptV1RiotIDPrompt": {
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "RsoMobileUiRiotIDPromptV1RiotIDPromptReason": {
+        "enum": [
+          "set_new_id",
+          "forced_name_change"
+        ],
+        "type": "string"
+      },
+      "RsoMobileUiRiotIDPromptV1UpdateRequest": {
+        "properties": {
+          "gameName": {
+            "type": "string"
+          },
+          "tagLine": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
       },
       "RsoMobileUiRsoAuthAccessToken": {
         "properties": {
@@ -21388,12 +22003,252 @@
         },
         "type": "object"
       },
+      "SocialLookupV1GameNameTaglinePASResponse": {
+        "properties": {
+          "game_name": {
+            "type": "string"
+          },
+          "shadow_gnt": {
+            "type": "boolean"
+          },
+          "tag_line": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1GamerNameAndTagline": {
+        "properties": {
+          "gameName": {
+            "type": "string"
+          },
+          "shadowGnt": {
+            "type": "boolean"
+          },
+          "tagLine": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1NamesetsForPuuidPASResponse": {
+        "properties": {
+          "alias": {
+            "$ref": "#/components/schemas/SocialLookupV1GameNameTaglinePASResponse"
+          },
+          "error": {
+            "type": "string"
+          },
+          "playstation": {
+            "$ref": "#/components/schemas/SocialLookupV1PlaystationNameset"
+          },
+          "puuid": {
+            "type": "string"
+          },
+          "switch": {
+            "$ref": "#/components/schemas/SocialLookupV1SwitchNameset"
+          },
+          "xbox": {
+            "$ref": "#/components/schemas/SocialLookupV1XboxNameset"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1NamesetsForPuuidRequest": {
+        "properties": {
+          "puuid": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1NamesetsForPuuidResponse": {
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "gnt": {
+            "$ref": "#/components/schemas/SocialLookupV1GamerNameAndTagline"
+          },
+          "playstationNameset": {
+            "$ref": "#/components/schemas/SocialLookupV1PlaystationNameset"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "puuid": {
+            "type": "string"
+          },
+          "switchNameset": {
+            "$ref": "#/components/schemas/SocialLookupV1SwitchNameset"
+          },
+          "xboxNameset": {
+            "$ref": "#/components/schemas/SocialLookupV1XboxNameset"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1NamesetsForPuuidsRequest": {
+        "properties": {
+          "puuids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1NamesetsForPuuidsResponse": {
+        "properties": {
+          "namesets": {
+            "items": {
+              "$ref": "#/components/schemas/SocialLookupV1NamesetsForPuuidResponse"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1PlaystationNameset": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1PuuidAndProvider": {
+        "properties": {
+          "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "puuid": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1PuuidsForConsoleIdsRequest": {
+        "properties": {
+          "consoleIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "environment": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1PuuidsForConsoleIdsResponse": {
+        "properties": {
+          "response": {
+            "items": {
+              "$ref": "#/components/schemas/SocialLookupV1PuuidAndProvider"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1SwitchNameset": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialLookupV1XboxNameset": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialOnlinePlatform": {
+        "enum": [
+          "absent",
+          "unknown",
+          "riot",
+          "tencent",
+          "garena",
+          "playstation",
+          "switch",
+          "xbox"
+        ],
+        "type": "string"
+      },
+      "SocialPlatformUser": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/SocialOnlinePlatform",
+            "default": "unknown"
+          }
+        },
+        "type": "object"
+      },
       "SocialProductContext": {
         "properties": {
           "patchline": {
             "type": "string"
           },
           "product": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialRsoAuthenticatorPluginConfigResponse": {
+        "properties": {
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/SocialRsoAuthenticatorV1AuthMethodConfig"
+            },
+            "type": "array"
+          },
+          "service_url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SocialRsoAuthenticatorV1AuthMethodConfig": {
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
             "type": "string"
           }
         },
@@ -23645,6 +24500,8 @@
           "SignedOut",
           "UserNotFound",
           "NoDefaultUser",
+          "EmptyResponse",
+          "FailedToGetRsoAuthenticatorUrl",
           "Unknown",
           "MissingResult",
           "MissingCode",
@@ -24352,6 +25209,22 @@
         ]
       }
     },
+    "/chat/v1/resume": {
+      "post": {
+        "operationId": "PostChatV1Resume",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Resume operations, connect to the chat service, and perform other operations specified on suspend",
+        "tags": [
+          "Plugins",
+          "Plugin chat"
+        ]
+      }
+    },
     "/chat/v1/session": {
       "get": {
         "description": "Chat notifies updated events on these endpoints, typically in this order:\n\n* `/chat/v1/session`    ->  { state: \"connecting\", pid: \"\", name: \"\", loaded: false }    //chat is now connecting (empty pid, name)\n* `/chat/v1/session`    ->  { state: \"connected\", pid: \"sum3530124@pvp.net\", name: \"Scarlet Witch\", loaded: false }    //chat is now connected initial data for showing the friends list in the UX is not loaded\n* `/chat/v#/presences`      //for all your friend presences (no way around this currently)\n* `/chat/v#/presences`      //for yourself\n* `/chat/v#/groups`         //batch of every group in your friends list\n* `/chat/v#/friends`        //batch\n* `/chat/v#/blocked`        //batch\n* `/chat/v#/conversations`  //recent conversations\n* `/chat/v#/messages`\n* `/chat/v#/participants`\n* `/chat/v1/session`     -> { state: \"connected\", pid: \"sum3530124@pvp.net\", name: \"Scarlet Witch\", loaded: true }    //chat is now connected and has loaded the initial data to show in the UX\n",
@@ -24570,6 +25443,34 @@
           }
         },
         "summary": "Get game/product social data for building the friend list UI",
+        "tags": [
+          "Plugins",
+          "Plugin chat"
+        ]
+      }
+    },
+    "/chat/v1/suspend": {
+      "post": {
+        "operationId": "PostChatV1Suspend",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatSessionSuspendConfig"
+              }
+            }
+          },
+          "description": "",
+          "required": true,
+          "x-param-name": "config"
+        },
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Suspend operations, disconnect from the chat service, and disallow reconnects",
         "tags": [
           "Plugins",
           "Plugin chat"
@@ -30486,6 +31387,69 @@
         ]
       }
     },
+    "/nintendo-account/v2/authorization": {
+      "delete": {
+        "operationId": "DeleteNintendoAccountV2Authorization",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Deletes the current Nintendo authorization session",
+        "tags": [
+          "Plugins",
+          "Plugin nintendo-account"
+        ]
+      },
+      "get": {
+        "operationId": "GetNintendoAccountV2Authorization",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NintendoAccountV2AuthorizationResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Gets current Nintendo authorization status",
+        "tags": [
+          "Plugins",
+          "Plugin nintendo-account"
+        ]
+      },
+      "post": {
+        "operationId": "PostNintendoAccountV2Authorization",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NintendoAccountV2AuthorizationParameters"
+              }
+            }
+          },
+          "description": "",
+          "required": true,
+          "x-param-name": "AuthorizationParameters"
+        },
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Gets authorization from the Nintendo Account of the player logged in the Nintendo or start authentication with native browser",
+        "tags": [
+          "Plugins",
+          "Plugin nintendo-account"
+        ]
+      }
+    },
     "/patch/v1/configuration": {
       "get": {
         "operationId": "GetPatchV1Configuration",
@@ -31061,6 +32025,63 @@
         "tags": [
           "Plugins",
           "Plugin payments"
+        ]
+      }
+    },
+    "/permissions/v1/request": {
+      "get": {
+        "operationId": "GetPermissionsV1Request",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionsPermissionsResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "[WIP] Gets values for all requested permissions.",
+        "tags": [
+          "Plugins",
+          "Plugin permissions",
+          "Subscribable"
+        ]
+      },
+      "post": {
+        "operationId": "PostPermissionsV1Request",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionsPermissionsRequestParameters"
+              }
+            }
+          },
+          "description": "",
+          "required": true,
+          "x-param-name": "PermissionsRequestParameters"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PermissionsPermissionsResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "[WIP] Request current permission status of a given permission permissionId.",
+        "tags": [
+          "Plugins",
+          "Plugin permissions"
         ]
       }
     },
@@ -31796,7 +32817,7 @@
     },
     "/player-account/lookup/v1/namesets-for-puuid": {
       "post": {
-        "description": "\n**Description**\nRetrieves the namesets for the PUUID provided.\nA Nameset contains the user's name on the given platform.\nExample: SwitchNameset.name would be the Switch username associated with the user's PUUID on Switch\n\n** Body Argument **\n\n\"NamesetsForPuuidRequest\"\n    \"puuid\" - PUUID (String)\n\nResponse Body:\nNamesetsForPuuidResponse:\n    \"puuid\" - PUUID (String)\n    \"switchNameset\" - A SwitchNameset\n    \"playstationNameset\" - A PlaystationNameset\n    \"xboxNameset\" - An XboxNameset\n    \"alias\" - A RiotAlias\n    \"error\" - A String containing any errors\n\nSwitchNameset:\n    \"name\" - A String with the Switch name associated to the requested PUUID\n\nPlaystationNameset:\n    \"name\" - A String with the Playstation name associated to the requested PUUID\n\nXboxNameset:\n    \"name\" - A String with the Xbox name associated to the requested PUUID\n\nRiotAlias:\n    \"gameName\" - The users Game Name (String)\n    \"tagLine\" - The users Tag Line (String)\n\n",
+        "description": "\n**Description**\nRetrieves the namesets for the PUUID provided.\nA Nameset contains the player's name on the given platform.\nExample: SwitchNameset.name would be the Switch username associated with the player's PUUID\n\n** Body Argument **\n\n\"NamesetsForPuuidRequest\"\n* \"puuid\" - PUUID (String)\n\nResponse Body:\nNamesetsForPuuidResponse:\n* \"puuid\" - PUUID (String)\n* \"providerId\" - player's provider id\n* \"switchNameset\" - A SwitchNameset\n* \"playstationNameset\" - A PlaystationNameset\n* \"xboxNameset\" - An XboxNameset\n* \"gnt\" - A Riot ID\n* \"error\" - A String containing any errors\n\nSwitchNameset:\n    \"name\" - A String with the Switch name associated to the requested PUUID\n\nPlaystationNameset:\n    \"name\" - A String with the Playstation name associated to the requested PUUID\n\nXboxNameset:\n    \"name\" - A String with the Xbox name associated to the requested PUUID\n\nRiot ID:\n    \"gameName\" - The player's Game Name (String)\n    \"tagLine\" - The player's Tag Line (String)\n\n",
         "operationId": "PostPlayerAccountLookupV1NamesetsForPuuid",
         "parameters": [],
         "requestBody": {
@@ -31832,7 +32853,7 @@
     },
     "/player-account/lookup/v1/namesets-for-puuids": {
       "post": {
-        "description": "\n**Description**\nRetrieves the namesets for each PUUID provided.\nA Nameset contains the user's name on the given platform.\nExample: SwitchNameset.name would be the Switch username associated with the user's PUUID on Switch\n\n** Request Arguments **\n\nRequest Body Object:\nNamesetsForPuuidsRequest Object:\n    \"puuids\" - A list of PUUIDs to retrieve namesets for\n\nNamesetsForPuuidsResponse Body:\n    \"namesets\" - A list of NamesetsResponseElements\n\nNamesetsResponseElement:\n    \"puuid\" - PUUID (String)\n    \"switchNameset\" - A SwitchNameset\n    \"playstationNameset\" - A PlaystationNameset\n    \"xboxNameset\" - An XboxNameset\n    \"alias\" - A RiotAlias\n    \"error\" - A String containing any errors\n\nSwitchNameset:\n    \"name\" - A String with the Switch name associated to the requested PUUID\n\nPlaystationNameset:\n    \"name\" - A String with the Playstation name associated to the requested PUUID\n\nXboxNameset:\n    \"name\" - A String with the Xbox name associated to the requested PUUID\n\nRiotAlias:\n    \"gameName\" - The users Game Name (String)\n    \"tagLine\" - The users Tag Line (String)\n\n",
+        "description": "\n**Description**\nRetrieves the namesets for each PUUID provided.\nA Nameset contains the player's name on the given platform.\nExample: SwitchNameset.name would be the Switch username associated with the player's PUUID\n\n** Request Arguments **\n\nRequest Body Object:\nNamesetsForPuuidsRequest Object:\n    \"puuids\" - A list of PUUIDs to retrieve namesets for\n\nNamesetsForPuuidsResponse Body:\n    \"namesets\" - A list of NamesetsResponseElements\n\nNamesetsResponseElement:\n* \"puuid\" - PUUID (String)\n* \"providerId\" - player's provider id\n* \"switchNameset\" - A SwitchNameset\n* \"playstationNameset\" - A PlaystationNameset\n* \"xboxNameset\" - An XboxNameset\n* \"gnt\" - A Riot ID\n* \"error\" - A String containing any errors\n\nSwitchNameset:\n    \"name\" - A String with the Switch name associated to the requested PUUID\n\nPlaystationNameset:\n    \"name\" - A String with the Playstation name associated to the requested PUUID\n\nXboxNameset:\n    \"name\" - A String with the Xbox name associated to the requested PUUID\n\nRiot ID:\n    \"gameName\" - The player's Game Name (String)\n    \"tagLine\" - The player's Tag Line (String)\n\n",
         "operationId": "PostPlayerAccountLookupV1NamesetsForPuuids",
         "parameters": [],
         "requestBody": {
@@ -31868,7 +32889,7 @@
     },
     "/player-account/lookup/v1/puuids-for-consoleids": {
       "post": {
-        "description": "\n**Description**\nRetrieves the PUUIDs for each Console ID provided.\n\n** Request Arguments **\n\nRequest Body Object:\nConsoleIdsToPuuidsRequest Object:\n    \"consoleIds\" - A list of console IDs to retrieve PUUIDs for\n    \"environment\" - A String name for the platform environment (e.g. \"sp-int\")\n\nConsoleIdsToPuuidsResponse Body:\n    \"response\" - A list of ConsoleIdToPuuidResponseElements\n\nPuuidAndProvider:\n    \"puuid\" - The PUUID associated with the Console ID\n    \"providerId\" - A String ID for the provider (e.g. as \"123abc123\")\n    \"error\" - A String containing any errors (e.g. \"No matching account found.\")\n\n",
+        "description": "\n**Description**\nRetrieves the PUUIDs for each Console ID provided.\n\n** Request Arguments **\n\nRequest Body Object:\nConsoleIdsToPuuidsRequest Object:\n    \"consoleIds\" - A list of console IDs to retrieve PUUIDs for\n    \"environment\" - A String name for the platform environment (e.g. \"sp-int\")\n\nConsoleIdsToPuuidsResponse Body:\n    \"response\" - A list of ConsoleIdToPuuidResponseElements\n\nPuuidAndProvider:\n    \"puuid\" - The PUUID associated with the Console ID\n    \"provider\" - A String for the account provider (platform, e.g. \"xbox\")\n    \"providerId\" - A String ID for the provider (e.g. as \"123abc123\")\n    \"error\" - A String containing any errors (e.g. \"No matching account found.\")\n\n",
         "operationId": "PostPlayerAccountLookupV1PuuidsForConsoleids",
         "parameters": [],
         "requestBody": {
@@ -31899,36 +32920,6 @@
         "tags": [
           "Plugins",
           "Plugin player-account"
-        ]
-      }
-    },
-    "/player-account/lookup/v1/toggle-mock-api": {
-      "post": {
-        "description": "\n**Description**\n-- To be filled out when Mock implementation is done.\nSDKFEAT-1393: [Mock] Get Console Blocked User List\n",
-        "operationId": "PostPlayerAccountLookupV1ToggleMockApi",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlayerAccountLookupV1ToggleMockApiRequest"
-              }
-            }
-          },
-          "description": "",
-          "required": true,
-          "x-param-name": "request"
-        },
-        "responses": {
-          "204": {
-            "description": "No content"
-          }
-        },
-        "summary": "Set whether the plugin should use a mock friends API or not and if so, how the mock API should behave",
-        "tags": [
-          "Plugins",
-          "Plugin player-account",
-          "Internal"
         ]
       }
     },
@@ -37080,57 +38071,6 @@
         ]
       }
     },
-    "/riotclient/lifecycle": {
-      "get": {
-        "description": "Endpoint will be deleted after July 2023 [SDKEXP-2014]",
-        "operationId": "GetRiotclientLifecycle",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LifecycleData"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "summary": "Get the current lifecycle events.",
-        "tags": [
-          "riotclient",
-          "Deprecated"
-        ]
-      },
-      "put": {
-        "description": "Endpoint will be deleted after July 2023 [SDKEXP-2014]",
-        "operationId": "PutRiotclientLifecycle",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LifecycleData"
-              }
-            }
-          },
-          "description": "AppMobile lifecycle resource",
-          "required": true,
-          "x-param-name": "data"
-        },
-        "responses": {
-          "204": {
-            "description": "No content"
-          }
-        },
-        "summary": "Update the current app lifecycle events.",
-        "tags": [
-          "riotclient",
-          "Deprecated"
-        ]
-      }
-    },
     "/riotclient/machine-id": {
       "get": {
         "operationId": "GetRiotclientMachineId",
@@ -40644,6 +41584,65 @@
           }
         },
         "summary": "Check if a player is eligible for region election with UI",
+        "tags": [
+          "Plugins",
+          "Plugin rso-mobile-ui",
+          "Subscribable"
+        ]
+      }
+    },
+    "/rso-mobile-ui/v1/riot-id-prompt/initiate": {
+      "post": {
+        "description": "Launches a UI to prompt user to set a RiotID for their account",
+        "operationId": "PostRsoMobileUiV1RiotIdPromptInitiate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RsoMobileUiRiotIDPromptV1InitiateRequest"
+              }
+            }
+          },
+          "description": "",
+          "required": true,
+          "x-param-name": "request"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RsoMobileUiRiotIDPromptV1RiotIDPrompt"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin rso-mobile-ui"
+        ]
+      }
+    },
+    "/rso-mobile-ui/v1/riot-id-prompt/status": {
+      "get": {
+        "description": "Get the current Riot ID Prompt UI status.",
+        "operationId": "GetRsoMobileUiV1RiotIdPromptStatus",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RsoMobileUiRiotIDPromptV1RiotIDPrompt"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
         "tags": [
           "Plugins",
           "Plugin rso-mobile-ui",
