@@ -192,7 +192,7 @@
               ]
             }
           ],
-          "supported_versions": "409000+",
+          "supported_versions": "410000+",
           "tags": [],
           "theme_manifest": "https://bacon.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest.json",
           "version": "410007"
@@ -304,7 +304,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/9EDD67A9C00C740E.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/345E5FAA3EC6488B.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
