@@ -16548,6 +16548,9 @@
             "format": "int32",
             "type": "integer"
           },
+          "isInteractable": {
+            "type": "boolean"
+          },
           "isLocalPlayer": {
             "type": "boolean"
           },
@@ -20304,8 +20307,8 @@
       "LolEventShopTokenUpsellLockedType": {
         "enum": [
           "UNASSIGNED",
-          "UNLOCKED",
-          "LOCKED"
+          "LOCKED",
+          "UNLOCKED"
         ],
         "type": "string"
       },
@@ -56189,7 +56192,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -88256,7 +88259,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
