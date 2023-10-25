@@ -104,6 +104,12 @@
         "enabled": {
           "type": "boolean"
         },
+        "enabledProductId": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "heartbeatInterval": {
           "format": "double",
           "type": "number"
@@ -3312,6 +3318,9 @@
           "default": "league_of_legends",
           "type": "string"
         },
+        "disableChatRestrictionMutedSystemMessage": {
+          "type": "boolean"
+        },
         "enableKeystonePresence": {
           "type": "boolean"
         },
@@ -3375,6 +3384,663 @@
         },
         "resource": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxAccountState": {
+      "enum": [
+        "offline",
+        "mobile",
+        "away",
+        "chat",
+        "dnd"
+      ],
+      "type": "string"
+    },
+    "ChatboxChatFriend": {
+      "properties": {
+        "activePlatform": {
+          "type": "string"
+        },
+        "displayGroup": {
+          "type": "string"
+        },
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "last_online_ts": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatFriends": {
+      "properties": {
+        "friends": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatFriend"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatParticipant": {
+      "properties": {
+        "activePlatform": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "muted": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatParticipants": {
+      "properties": {
+        "participants": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatParticipant"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatPlayer": {
+      "properties": {
+        "activePlatform": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "displayGroup": {
+          "type": "string"
+        },
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "muted": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "presence": {
+          "$ref": "#/definitions/ChatboxMultiGamePresence"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatPlayerParticipants": {
+      "properties": {
+        "participants": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatPlayer"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatSession": {
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxChannel": {
+      "properties": {
+        "bIsActive": {
+          "type": "boolean"
+        },
+        "bIsAllChannel": {
+          "type": "boolean"
+        },
+        "bIsDefaultChannel": {
+          "type": "boolean"
+        },
+        "bIsSystemChannel": {
+          "type": "boolean"
+        },
+        "bIsWhisperChannel": {
+          "type": "boolean"
+        },
+        "channelName": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxChannelResource": {
+      "properties": {
+        "bAssignToAll": {
+          "type": "boolean"
+        },
+        "bAssignToDefault": {
+          "type": "boolean"
+        },
+        "bIsActive": {
+          "type": "boolean"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "channelName": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "jwksEndpointURL": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxChannels": {
+      "properties": {
+        "channels": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatboxChannel"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxFriend": {
+      "properties": {
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxFriends": {
+      "properties": {
+        "friends": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatboxFriend"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxMessage": {
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "gameName": {
+          "type": "string"
+        },
+        "gameTag": {
+          "type": "string"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "region": {
+          "type": "string"
+        },
+        "timeStamp": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/ChatboxMessageType",
+          "default": "chat"
+        },
+        "uicEvent": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxMessageList": {
+      "properties": {
+        "messages": {
+          "items": {
+            "$ref": "#/definitions/ChatboxChatboxMessage"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxChatboxMessagePost": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxConvoCid": {
+      "properties": {
+        "cid": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxConvoJoinFederated": {
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "targetRegion": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ChatboxMessageType",
+          "default": "chat"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxJWTIssueResource": {
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": true,
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxMessage": {
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "cts": {
+          "default": "0",
+          "type": "string"
+        },
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "region": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "ts": {
+          "default": "0",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ChatboxMessageType",
+          "default": "chat"
+        },
+        "uicEvent": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxMessageType": {
+      "enum": [
+        "chat",
+        "groupchat",
+        "dm",
+        "system"
+      ],
+      "type": "string"
+    },
+    "ChatboxMultiGamePresence": {
+      "properties": {
+        "actor": {
+          "type": "string"
+        },
+        "basic": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "game_name": {
+          "type": "string"
+        },
+        "game_tag": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parties": {
+          "items": {
+            "$ref": "#/definitions/ChatboxPresencesChatParty"
+          },
+          "type": "array"
+        },
+        "patchline": {
+          "type": "string"
+        },
+        "pid": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "private": {
+          "type": "string"
+        },
+        "privateJwt": {
+          "type": "string"
+        },
+        "product": {
+          "default": "keystone",
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/ChatboxAccountState",
+          "default": "offline"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "time": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxPresencesChatParty": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "max_party_size": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/definitions/ChatboxPresencesChatPartyMember"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/ChatboxPresencesPartyStatus",
+          "default": "closed"
+        },
+        "time": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxPresencesChatPartyMember": {
+      "properties": {
+        "pid": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/definitions/ChatboxPresencesPartyMemberRole",
+          "default": "mem"
+        },
+        "time": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxPresencesPartyMemberRole": {
+      "enum": [
+        "mem",
+        "ldr"
+      ],
+      "type": "string"
+    },
+    "ChatboxPresencesPartyStatus": {
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "type": "string"
+    },
+    "ChatboxUIState": {
+      "properties": {
+        "changedSinceHidden": {
+          "type": "boolean"
+        },
+        "hidden": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxUIStateConversation": {
+      "properties": {
+        "cid": {
+          "type": "string"
+        },
+        "direct_messages": {
+          "type": "boolean"
+        },
+        "global_readership": {
+          "type": "boolean"
+        },
+        "message_history": {
+          "type": "boolean"
+        },
+        "mid": {
+          "type": "string"
+        },
+        "muted": {
+          "type": "boolean"
+        },
+        "mutedRestriction": {
+          "type": "boolean"
+        },
+        "type": {
+          "$ref": "#/definitions/ChatboxMessageType",
+          "default": "chat"
+        },
+        "uiState": {
+          "$ref": "#/definitions/ChatboxUIState"
+        },
+        "unread_count": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ChatboxUIStateConversationList": {
+      "properties": {
+        "conversations": {
+          "items": {
+            "$ref": "#/definitions/ChatboxUIStateConversation"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -4737,296 +5403,6 @@
         "failure"
       ],
       "type": "string"
-    },
-    "FriendsChatBlockPid": {
-      "properties": {
-        "pid": {
-          "type": "string"
-        },
-        "puuid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsChatBlockedList": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/FriendsChatBlockedPlayer"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsChatBlockedPlayer": {
-      "properties": {
-        "game_name": {
-          "type": "string"
-        },
-        "game_tag": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "pid": {
-          "type": "string"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "region": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsFriendsV2MockApiState": {
-      "enum": [
-        "none",
-        "mock_enabled"
-      ],
-      "type": "string"
-    },
-    "FriendsLookupV1GameNameTaglinePASResponse": {
-      "properties": {
-        "game_name": {
-          "type": "string"
-        },
-        "shadow_gnt": {
-          "type": "boolean"
-        },
-        "tag_line": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1GamerNameAndTagline": {
-      "properties": {
-        "gameName": {
-          "type": "string"
-        },
-        "shadowGnt": {
-          "type": "boolean"
-        },
-        "tagLine": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1NamesetsForPuuidPASResponse": {
-      "properties": {
-        "alias": {
-          "$ref": "#/definitions/FriendsLookupV1GameNameTaglinePASResponse"
-        },
-        "error": {
-          "type": "string"
-        },
-        "playstation": {
-          "$ref": "#/definitions/FriendsLookupV1PlaystationNameset"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "switch": {
-          "$ref": "#/definitions/FriendsLookupV1SwitchNameset"
-        },
-        "xbox": {
-          "$ref": "#/definitions/FriendsLookupV1XboxNameset"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1NamesetsForPuuidRequest": {
-      "properties": {
-        "puuid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1NamesetsForPuuidResponse": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "gnt": {
-          "$ref": "#/definitions/FriendsLookupV1GamerNameAndTagline"
-        },
-        "playstationNameset": {
-          "$ref": "#/definitions/FriendsLookupV1PlaystationNameset"
-        },
-        "providerId": {
-          "type": "string"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "switchNameset": {
-          "$ref": "#/definitions/FriendsLookupV1SwitchNameset"
-        },
-        "xboxNameset": {
-          "$ref": "#/definitions/FriendsLookupV1XboxNameset"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1NamesetsForPuuidsRequest": {
-      "properties": {
-        "puuids": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1NamesetsForPuuidsResponse": {
-      "properties": {
-        "namesets": {
-          "items": {
-            "$ref": "#/definitions/FriendsLookupV1NamesetsForPuuidResponse"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1PlaystationNameset": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1PuuidAndProvider": {
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "providerId": {
-          "type": "string"
-        },
-        "puuid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1PuuidsForConsoleIdsRequest": {
-      "properties": {
-        "consoleIds": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "environment": {
-          "type": "string"
-        },
-        "platform": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1PuuidsForConsoleIdsResponse": {
-      "properties": {
-        "response": {
-          "items": {
-            "$ref": "#/definitions/FriendsLookupV1PuuidAndProvider"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1SwitchNameset": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsLookupV1XboxNameset": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsOnlinePlatform": {
-      "enum": [
-        "absent",
-        "unknown",
-        "riot",
-        "tencent",
-        "garena",
-        "playstation",
-        "switch",
-        "xbox"
-      ],
-      "type": "string"
-    },
-    "FriendsPlatformUser": {
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "platform": {
-          "$ref": "#/definitions/FriendsOnlinePlatform",
-          "default": "unknown"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsRsoAuthenticatorPluginConfigResponse": {
-      "properties": {
-        "methods": {
-          "items": {
-            "$ref": "#/definitions/FriendsRsoAuthenticatorV1AuthMethodConfig"
-          },
-          "type": "array"
-        },
-        "service_url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "FriendsRsoAuthenticatorV1AuthMethodConfig": {
-      "properties": {
-        "clientId": {
-          "type": "string"
-        },
-        "method": {
-          "type": "string"
-        },
-        "mode": {
-          "type": "string"
-        },
-        "scopes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "status": {
-          "type": "string"
-        }
-      },
-      "type": "object"
     },
     "GaRestrictionAuthorization": {
       "properties": {
@@ -9299,6 +9675,25 @@
       },
       "type": "object"
     },
+    "PermissionsPlatformSocialVoicePermission": {
+      "enum": [
+        "Allowed",
+        "NotAllowed"
+      ],
+      "type": "string"
+    },
+    "PermissionsPlatformSocialVoicePermissionDetails": {
+      "properties": {
+        "permission": {
+          "$ref": "#/definitions/PermissionsPlatformSocialVoicePermission",
+          "default": "Allowed"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "PlatformLoginAuthenticationMethod": {
       "enum": [
         "Riot",
@@ -9527,6 +9922,229 @@
       ],
       "type": "string"
     },
+    "PlatformSocialLookupV1GameNameTaglinePASResponse": {
+      "properties": {
+        "game_name": {
+          "type": "string"
+        },
+        "shadow_gnt": {
+          "type": "boolean"
+        },
+        "tag_line": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1GamerNameAndTagline": {
+      "properties": {
+        "gameName": {
+          "type": "string"
+        },
+        "shadowGnt": {
+          "type": "boolean"
+        },
+        "tagLine": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1NamesetsForPuuidPASResponse": {
+      "properties": {
+        "alias": {
+          "$ref": "#/definitions/PlatformSocialLookupV1GameNameTaglinePASResponse"
+        },
+        "error": {
+          "type": "string"
+        },
+        "playstation": {
+          "$ref": "#/definitions/PlatformSocialLookupV1PlaystationNameset"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "switch": {
+          "$ref": "#/definitions/PlatformSocialLookupV1SwitchNameset"
+        },
+        "xbox": {
+          "$ref": "#/definitions/PlatformSocialLookupV1XboxNameset"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1NamesetsForPuuidRequest": {
+      "properties": {
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1NamesetsForPuuidResponse": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "gnt": {
+          "$ref": "#/definitions/PlatformSocialLookupV1GamerNameAndTagline"
+        },
+        "playstationNameset": {
+          "$ref": "#/definitions/PlatformSocialLookupV1PlaystationNameset"
+        },
+        "providerId": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "switchNameset": {
+          "$ref": "#/definitions/PlatformSocialLookupV1SwitchNameset"
+        },
+        "xboxNameset": {
+          "$ref": "#/definitions/PlatformSocialLookupV1XboxNameset"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1NamesetsForPuuidsRequest": {
+      "properties": {
+        "puuids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1NamesetsForPuuidsResponse": {
+      "properties": {
+        "namesets": {
+          "items": {
+            "$ref": "#/definitions/PlatformSocialLookupV1NamesetsForPuuidResponse"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1PlaystationNameset": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1PuuidAndProvider": {
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "providerId": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1PuuidsForConsoleIdsRequest": {
+      "properties": {
+        "consoleIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1PuuidsForConsoleIdsResponse": {
+      "properties": {
+        "response": {
+          "items": {
+            "$ref": "#/definitions/PlatformSocialLookupV1PuuidAndProvider"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1SwitchNameset": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialLookupV1XboxNameset": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialPlatformSocialBlockList": {
+      "properties": {
+        "blockedUsers": {
+          "items": {
+            "$ref": "#/definitions/PlatformSocialPlatformSocialBlockedUser"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialPlatformSocialBlockedUser": {
+      "properties": {
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlatformSocialPlatformSocialMockApiState": {
+      "enum": [
+        "NoMock",
+        "BlockListEmpty",
+        "VoicePermissionNotAllowed",
+        "Success"
+      ],
+      "type": "string"
+    },
+    "PlatformSocialPlatformSocialVoicePermission": {
+      "enum": [
+        "Allowed",
+        "NotAllowed"
+      ],
+      "type": "string"
+    },
+    "PlatformSocialPlatformSocialVoicePermissionDetails": {
+      "properties": {
+        "permission": {
+          "$ref": "#/definitions/PlatformSocialPlatformSocialVoicePermission",
+          "default": "Allowed"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "PlatformUiAccessToken": {
       "properties": {
         "expiry": {
@@ -9593,6 +10211,8 @@
     "PlatformUiAliasesV1AliasValidationReason": {
       "enum": [
         "no_error",
+        "invalid_product_id_or_wallet_location",
+        "insufficient_balance",
         "name_change_forbidden",
         "name_not_available",
         "rate_limited"
@@ -11319,11 +11939,68 @@
     "PlayerAccountAliasesV1AliasValidationReason": {
       "enum": [
         "no_error",
+        "invalid_product_id_or_wallet_location",
+        "insufficient_balance",
         "name_change_forbidden",
         "name_not_available",
         "rate_limited"
       ],
       "type": "string"
+    },
+    "PlayerAccountAliasesV1PurchaseAliasInput": {
+      "properties": {
+        "gameName": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "tagLine": {
+          "type": "string"
+        },
+        "walletLocation": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlayerAccountAliasesV1PurchaseEligibilityInput": {
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "walletLocation": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlayerAccountAliasesV1PurchaseEligibilityResponse": {
+      "properties": {
+        "errorCode": {
+          "$ref": "#/definitions/PlayerAccountAliasesV1AliasValidationReason",
+          "default": "no_error"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "isFreeChangeEligible": {
+          "type": "boolean"
+        },
+        "isPaidChangeEligible": {
+          "type": "boolean"
+        },
+        "isTagLineCustomizable": {
+          "type": "boolean"
+        },
+        "walletBalance": {
+          "format": "int32",
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
     },
     "PlayerAccountAliasesV1RequiredResponse": {
       "properties": {
@@ -12035,6 +12712,31 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlayerAccountUserFieldChangeDetails": {
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "new_value": {
+          "type": "string"
+        },
+        "old_value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlayerAccountUserFieldChangeMessage": {
+      "properties": {
+        "details": {
+          "$ref": "#/definitions/PlayerAccountUserFieldChangeDetails"
+        },
+        "type": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -14059,36 +14761,6 @@
       },
       "type": "object"
     },
-    "PlayerSessionLifecyclePlayerAffinityProductToken": {
-      "properties": {
-        "affinities": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "expiry": {
-          "format": "int64",
-          "minimum": 0,
-          "type": "integer"
-        },
-        "issuedAt": {
-          "format": "int64",
-          "minimum": 0,
-          "type": "integer"
-        },
-        "product": {
-          "type": "string"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "PlayerSessionLifecyclePlayerSessionState": {
       "properties": {
         "accessToken": {
@@ -14107,6 +14779,9 @@
           "$ref": "#/definitions/PlayerSessionLifecycleInitiateLoginSessionRequest"
         },
         "errorCode": {
+          "type": "string"
+        },
+        "errorDescription": {
           "type": "string"
         },
         "id": {
@@ -19850,6 +20525,8 @@
     "RsoMobileUiAliasValidationReason": {
       "enum": [
         "no_error",
+        "invalid_product_id_or_wallet_location",
+        "insufficient_balance",
         "name_change_forbidden",
         "name_not_available",
         "rate_limited"
@@ -19897,9 +20574,6 @@
         },
         "errorMessage": {
           "type": "string"
-        },
-        "isChangeRequired": {
-          "type": "boolean"
         },
         "isSuccess": {
           "type": "boolean"
@@ -21093,6 +21767,9 @@
         "method": {
           "$ref": "#/definitions/RsoMobileUiRsoAuthenticatorWebAuthenticationMethod",
           "default": "none"
+        },
+        "riot_theme": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -21444,6 +22121,42 @@
       ],
       "type": "string"
     },
+    "SocialBlockList": {
+      "properties": {
+        "blockedUsers": {
+          "items": {
+            "$ref": "#/definitions/SocialBlockedUser"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SocialBlockedUser": {
+      "properties": {
+        "blockedPlatforms": {
+          "items": {
+            "$ref": "#/definitions/SocialOnlinePlatform"
+          },
+          "type": "array"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SocialErrorCode": {
+      "enum": [
+        "aborted",
+        "signed_out",
+        "user_not_found",
+        "not_signed_up",
+        "logout",
+        "latest_system_software_exist"
+      ],
+      "type": "string"
+    },
     "SocialFriend": {
       "properties": {
         "actor": {
@@ -21729,39 +22442,22 @@
       },
       "type": "object"
     },
-    "SocialRsoAuthenticatorPluginConfigResponse": {
+    "SocialUser": {
       "properties": {
-        "methods": {
-          "items": {
-            "$ref": "#/definitions/SocialRsoAuthenticatorV1AuthMethodConfig"
-          },
-          "type": "array"
+        "account_id": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
         },
-        "service_url": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "SocialRsoAuthenticatorV1AuthMethodConfig": {
-      "properties": {
-        "clientId": {
-          "type": "string"
+        "error_code": {
+          "$ref": "#/definitions/SocialErrorCode"
         },
-        "method": {
-          "type": "string"
-        },
-        "mode": {
-          "type": "string"
-        },
-        "scopes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "status": {
-          "type": "string"
+        "user_id": {
+          "default": -1,
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
         }
       },
       "type": "object"
@@ -22999,6 +23695,31 @@
       },
       "type": "object"
     },
+    "VoiceChatBlockList": {
+      "properties": {
+        "blockedUsers": {
+          "items": {
+            "$ref": "#/definitions/VoiceChatBlockedUser"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatBlockedUser": {
+      "properties": {
+        "blockedPlatforms": {
+          "items": {
+            "$ref": "#/definitions/VoiceChatOnlinePlatform"
+          },
+          "type": "array"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "VoiceChatCaptureDevicePermissionStatus": {
       "enum": [
         "promptForPermission",
@@ -23006,6 +23727,43 @@
         "permissionGranted"
       ],
       "type": "string"
+    },
+    "VoiceChatDebugCSRFileWritingRequest": {
+      "properties": {
+        "filePath": {
+          "type": "string"
+        },
+        "productSessionId": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatDebugCSRFileWritingResponse": {
+      "properties": {
+        "audioFramerate": {
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        "bytesWritten": {
+          "format": "int32",
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pcmFrameCount": {
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        }
+      },
+      "type": "object"
     },
     "VoiceChatDebugSimulationResource": {
       "properties": {
@@ -23081,6 +23839,9 @@
       "properties": {
         "jwt": {
           "type": "string"
+        },
+        "matchToken": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -23103,6 +23864,19 @@
       "enum": [
         "generic",
         "tokens_expired"
+      ],
+      "type": "string"
+    },
+    "VoiceChatOnlinePlatform": {
+      "enum": [
+        "absent",
+        "unknown",
+        "riot",
+        "tencent",
+        "garena",
+        "playstation",
+        "switch",
+        "xbox"
       ],
       "type": "string"
     },
@@ -23700,6 +24474,134 @@
         }
       },
       "type": "object"
+    },
+    "VoiceChatVoiceChatCSRCaptureEvent": {
+      "properties": {
+        "failedBatchesCount": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/VoiceChatVoiceChatCSRCaptureResult",
+          "default": "Success"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "totalBatchesCount": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatVoiceChatCSRCaptureResult": {
+      "enum": [
+        "Success",
+        "Failure"
+      ],
+      "type": "string"
+    },
+    "VoiceChatVoiceChatCSRInitializationEvent": {
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/VoiceChatVoiceChatCSRInitializationResult",
+          "default": "Success"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatVoiceChatCSRInitializationResult": {
+      "enum": [
+        "Success",
+        "Failure"
+      ],
+      "type": "string"
+    },
+    "VoiceChatVoiceChatCSRMonitoringEvent": {
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatVoiceChatCSRUploadEvent": {
+      "properties": {
+        "audioDurationInMs": {
+          "format": "int64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "batchNumber": {
+          "format": "int32",
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "reason": {
+          "$ref": "#/definitions/VoiceChatVoiceChatCSRUploadReason",
+          "default": "SessionLeft"
+        },
+        "result": {
+          "$ref": "#/definitions/VoiceChatVoiceChatCSRUploadResult",
+          "default": "Success"
+        },
+        "retryCount": {
+          "format": "int32",
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VoiceChatVoiceChatCSRUploadReason": {
+      "enum": [
+        "SessionLeft",
+        "GameRequestReceived",
+        "MaxRecordingSizeReached"
+      ],
+      "type": "string"
+    },
+    "VoiceChatVoiceChatCSRUploadResult": {
+      "enum": [
+        "Success",
+        "Failure"
+      ],
+      "type": "string"
     },
     "VoiceChatVoiceChatHeartbeatMetrics": {
       "properties": {
@@ -27148,6 +28050,571 @@
         ]
       }
     },
+    "/chatbox/v1/chatboxes/{id}": {
+      "delete": {
+        "operationId": "DeleteChatboxV1ChatboxesById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      },
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_instance_resource",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxChannelResource"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/broadcasts": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdBroadcasts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessageList"
+            }
+          }
+        },
+        "summary": "Get all broadcasts for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/broadcasts/{channelName}": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdBroadcastsByChannelName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessageList"
+            }
+          }
+        },
+        "summary": "Get all broadcasts for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      },
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdBroadcastsByChannelName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessagePost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Send a broadcast to the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/channels": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdChannels",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxChannels"
+            }
+          }
+        },
+        "summary": "Get all channels for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      },
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdChannels",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_channel_resource",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxChannelResource"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/channels/{channelName}": {
+      "delete": {
+        "operationId": "DeleteChatboxV1ChatboxesByIdChannelsByChannelName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/messages": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdMessages",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessageList"
+            }
+          }
+        },
+        "summary": "Get all messages for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      },
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdMessages",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessagePost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Send a message to the default channel of the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/messages/channels/{channelName}": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdMessagesChannelsByChannelName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessageList"
+            }
+          }
+        },
+        "summary": "Get all messages of the specified channel for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      },
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdMessagesChannelsByChannelName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "channelName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessagePost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Send a message to the specified channel of the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/messages/read": {
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdMessagesRead",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Mark all messages as read in a specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/messages/whispers/{puuid}": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdMessagesWhispersByPuuid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "puuid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessageList"
+            }
+          }
+        },
+        "summary": "Get whisper messages for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/messages/whispers/{puuid}/read": {
+      "post": {
+        "operationId": "PostChatboxV1ChatboxesByIdMessagesWhispersByPuuidRead",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "puuid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Mark messages as read for a specified whisper channel in a specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/participants": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdParticipants",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatParticipants"
+            }
+          }
+        },
+        "summary": "Get all participants for the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      }
+    },
+    "/chatbox/v1/chatboxes/{id}/participants/whispers": {
+      "get": {
+        "operationId": "GetChatboxV1ChatboxesByIdParticipantsWhispers",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatParticipants"
+            }
+          }
+        },
+        "summary": "Get all participants in whisper channels with friends (for the specified chatbox)",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      }
+    },
+    "/chatbox/v1/friends": {
+      "get": {
+        "operationId": "GetChatboxV1Friends",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxFriends"
+            }
+          }
+        },
+        "summary": "Get all friends of the user",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      }
+    },
+    "/chatbox/v1/ready": {
+      "get": {
+        "operationId": "GetChatboxV1Ready",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin chatbox",
+          "Subscribable"
+        ]
+      }
+    },
+    "/chatbox/v1/{id}/whispers/{puuid}/messages": {
+      "post": {
+        "operationId": "PostChatboxV1ByIdWhispersByPuuidMessages",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "puuid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "chatbox_message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChatboxChatboxMessagePost"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Send a whisper to the specified puuid of the specified chatbox",
+        "tags": [
+          "Plugins",
+          "Plugin chatbox"
+        ]
+      }
+    },
     "/client-config/v1/authorization": {
       "delete": {
         "operationId": "DeleteClientConfigV1Authorization",
@@ -28695,50 +30162,6 @@
         "tags": [
           "Plugins",
           "Plugin first-party-fulfillment"
-        ]
-      }
-    },
-    "/friends/v2/make-platform-blocks-riot-blocks": {
-      "get": {
-        "description": "\n**Description**\nThis endpoint queries the console for blocked users, looks them up in the Riot system, and checks if all of them are blocked in the Riot ecosystem.\nIf not, the blocks are 'promoted' to Riot blocks. Game teams are required to determined where this endpoint should be invoked in their app lifecycle.\n",
-        "operationId": "GetFriendsV2MakePlatformBlocksRiotBlocks",
-        "parameters": [],
-        "responses": {
-          "204": {
-            "description": "No content"
-          }
-        },
-        "summary": "Request a synchronization of blocked users from console to Riot ecosystem",
-        "tags": [
-          "Plugins",
-          "Plugin friends"
-        ]
-      }
-    },
-    "/friends/v2/mock-api/state": {
-      "put": {
-        "description": "\n**Description**\n-- To be filled out when Mock implementation is done.\nSDKFEAT-1393: [Mock] Get Console Blocked User List\n",
-        "operationId": "PutFriendsV2MockApiState",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "state",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FriendsFriendsV2MockApiState"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No content"
-          }
-        },
-        "summary": "Set whether the plugin should use a mock friends API or not and if so, how the mock API should behave",
-        "tags": [
-          "Plugins",
-          "Plugin friends",
-          "Internal"
         ]
       }
     },
@@ -30724,6 +32147,48 @@
         ]
       }
     },
+    "/platform-social/v1/block-list": {
+      "get": {
+        "operationId": "GetPlatformSocialV1BlockList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PlatformSocialPlatformSocialBlockList"
+            }
+          }
+        },
+        "summary": "Retrieves the currently-authenticated player's list of blocked users on the current platform as a list of Riot PUUIDs",
+        "tags": [
+          "Plugins",
+          "Plugin platform-social",
+          "Subscribable",
+          "Internal"
+        ]
+      }
+    },
+    "/platform-social/v1/voice-permission": {
+      "get": {
+        "operationId": "GetPlatformSocialV1VoicePermission",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PlatformSocialPlatformSocialVoicePermissionDetails"
+            }
+          }
+        },
+        "summary": "Returns if the current player has permissions from the platform to use voice chat and if not, why that is the case.",
+        "tags": [
+          "Plugins",
+          "Plugin platform-social",
+          "Subscribable",
+          "Internal"
+        ]
+      }
+    },
     "/platform-ui/v1/enabled": {
       "get": {
         "operationId": "GetPlatformUiV1Enabled",
@@ -30964,6 +32429,63 @@
         ]
       }
     },
+    "/player-account/aliases/purchase/v1/aliases": {
+      "post": {
+        "operationId": "PostPlayerAccountAliasesPurchaseV1Aliases",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayerAccountAliasesV1PurchaseAliasInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PlayerAccountAliasesV1StatusResponse"
+            }
+          }
+        },
+        "summary": "Sets a new purchased set of aliases for the player.",
+        "tags": [
+          "Plugins",
+          "Plugin player-account"
+        ]
+      }
+    },
+    "/player-account/aliases/purchase/v1/eligibility": {
+      "post": {
+        "description": "Please use /player-account/aliases/v1/eligibility if you only need information about free alias changes.",
+        "operationId": "PostPlayerAccountAliasesPurchaseV1Eligibility",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "purchaseSource",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayerAccountAliasesV1PurchaseEligibilityInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PlayerAccountAliasesV1PurchaseEligibilityResponse"
+            }
+          }
+        },
+        "summary": "Check if a player is eligible for a free or paid name change.",
+        "tags": [
+          "Plugins",
+          "Plugin player-account"
+        ]
+      }
+    },
     "/player-account/aliases/v1/active": {
       "get": {
         "description": "Deprecated, please use v1/display-name to get the players game name and tag.",
@@ -31054,6 +32576,7 @@
     },
     "/player-account/aliases/v1/eligibility": {
       "post": {
+        "description": "Use /player-account/aliases/purchase/v1/eligibility if you also need information about paid alias changes.",
         "operationId": "PostPlayerAccountAliasesV1Eligibility",
         "parameters": [],
         "responses": {
@@ -31064,7 +32587,7 @@
             }
           }
         },
-        "summary": "Check if a player is eligible for a name change.",
+        "summary": "Check if a player is eligible for a free name change.",
         "tags": [
           "Plugins",
           "Plugin player-account"
@@ -39134,6 +40657,26 @@
         ]
       }
     },
+    "/social/v1/blocklist": {
+      "get": {
+        "operationId": "GetSocialV1Blocklist",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/SocialBlockList"
+            }
+          }
+        },
+        "summary": "Returns the consolidated block list combining Riot block list with the platform block lists",
+        "tags": [
+          "Plugins",
+          "Plugin social",
+          "Subscribable"
+        ]
+      }
+    },
     "/social/v1/friends": {
       "get": {
         "operationId": "GetSocialV1Friends",
@@ -39893,6 +41436,93 @@
         ]
       }
     },
+    "/voice-chat/v1/block-list/users": {
+      "delete": {
+        "description": "The users unblocked by this endpoint will still be muted if they are blocked on either chat and/or platform blocklists",
+        "operationId": "DeleteVoiceChatV1BlockListUsers",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "unblocklist",
+            "required": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Removes a list of users from the voice provider block list",
+        "tags": [
+          "Plugins",
+          "Plugin voice-chat"
+        ]
+      },
+      "post": {
+        "description": "The users blocked by this endpoint will be muted regardless if they muted on chat and/or platform blocklists",
+        "operationId": "PostVoiceChatV1BlockListUsers",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "blocklist",
+            "required": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "summary": "Adds a list of users to the voice provider block list",
+        "tags": [
+          "Plugins",
+          "Plugin voice-chat"
+        ]
+      }
+    },
+    "/voice-chat/v1/block-list/{providerName}": {
+      "get": {
+        "operationId": "GetVoiceChatV1BlockListByProviderName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "providerName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Get the current Block List of a voice provider. Internal use only",
+        "tags": [
+          "Plugins",
+          "Plugin voice-chat",
+          "Subscribable",
+          "Internal"
+        ]
+      }
+    },
     "/voice-chat/v1/debug/simulate": {
       "post": {
         "operationId": "PostVoiceChatV1DebugSimulate",
@@ -39912,6 +41542,35 @@
           }
         },
         "summary": "Simulate provider/player behavior for testing.",
+        "tags": [
+          "Plugins",
+          "Plugin voice-chat",
+          "Internal"
+        ]
+      }
+    },
+    "/voice-chat/v1/debug/write-csr-data-to-file": {
+      "post": {
+        "operationId": "PostVoiceChatV1DebugWriteCsrDataToFile",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "csrWritingResource",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VoiceChatDebugCSRFileWritingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/VoiceChatDebugCSRFileWritingResponse"
+            }
+          }
+        },
+        "summary": "Write CSR data for a particular channel and product to the provided filepath",
         "tags": [
           "Plugins",
           "Plugin voice-chat",

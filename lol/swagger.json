@@ -8448,6 +8448,9 @@
         "name": {
           "type": "string"
         },
+        "productType": {
+          "$ref": "#/definitions/LolChampionsQuestSkinProductType"
+        },
         "splashPath": {
           "type": "string"
         },
@@ -9286,6 +9289,10 @@
         },
         "puuid": {
           "type": "string"
+        },
+        "summonerId": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -9934,6 +9941,13 @@
         },
         "isPracticeTool": {
           "type": "boolean"
+        },
+        "memberSummonerIds": {
+          "items": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "type": "array"
         },
         "queueId": {
           "format": "int32",
@@ -16575,6 +16589,12 @@
         "rank": {
           "type": "integer"
         },
+        "riotIdGameName": {
+          "type": "string"
+        },
+        "riotIdTagLine": {
+          "type": "string"
+        },
         "summonerId": {
           "format": "int64",
           "type": "integer"
@@ -20316,8 +20336,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "LOCKED",
-        "UNLOCKED"
+        "UNLOCKED",
+        "LOCKED"
       ],
       "type": "string"
     },
@@ -27012,6 +27032,9 @@
         "teamId": {
           "format": "int32",
           "type": "integer"
+        },
+        "tftNPEQueueBypass": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -27487,6 +27510,9 @@
         },
         "subteamData": {
           "$ref": "#/definitions/LolLobbySubteamDataDto"
+        },
+        "tftNPEQueueBypass": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -37572,6 +37598,9 @@
     },
     "LolPerksUIPerkMinimal": {
       "properties": {
+        "iconPath": {
+          "type": "string"
+        },
         "id": {
           "format": "int32",
           "type": "integer"
@@ -38849,6 +38878,23 @@
       },
       "type": "object"
     },
+    "LolPlayerNameTransitionAuthenticationResponse": {
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "success": {
+          "$ref": "#/definitions/LolPlayerNameTransitionSuccessResponseDetails"
+        },
+        "type": {
+          "$ref": "#/definitions/LolPlayerNameTransitionResponseType"
+        }
+      },
+      "type": "object"
+    },
     "LolPlayerNameTransitionPlayerNameTransitionModal": {
       "properties": {
         "faqUrl": {
@@ -38868,9 +38914,6 @@
     },
     "LolPlayerNameTransitionPlayerNameTransitionModalClientConfig": {
       "properties": {
-        "authenticatedRedirectEnabled": {
-          "type": "boolean"
-        },
         "dialogActivationDate": {
           "type": "string"
         },
@@ -38914,12 +38957,60 @@
     },
     "LolPlayerNameTransitionPlayerNameTransitionModalState": {
       "enum": [
+        "FOUNDATION_NOT_READY",
         "DISABLED",
         "PRE_LAUNCH",
         "POST_LAUNCH",
         "DISMISSED"
       ],
       "type": "string"
+    },
+    "LolPlayerNameTransitionRegionLocale": {
+      "properties": {
+        "locale": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPlayerNameTransitionResponseType": {
+      "enum": [
+        "auth",
+        "healup",
+        "signup",
+        "multifactor",
+        "success",
+        "error"
+      ],
+      "type": "string"
+    },
+    "LolPlayerNameTransitionSuccessResponseDetails": {
+      "properties": {
+        "linked": {
+          "type": "string"
+        },
+        "login_token": {
+          "type": "string"
+        },
+        "redirect_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPlayerNameTransitionV1AuthenticationRedirectInput": {
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "redirect_uri": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "LolPlayerPreferencesLoginSession": {
       "properties": {
@@ -44294,6 +44385,14 @@
       },
       "type": "object"
     },
+    "LolSeasonsAllProductSeasonQuery": {
+      "properties": {
+        "lastNYears": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "LolSeasonsAllSeasonsProduct": {
       "properties": {
         "act": {
@@ -47725,6 +47824,9 @@
     },
     "LolTftLolTftEvent": {
       "properties": {
+        "defaultLandingPage": {
+          "type": "boolean"
+        },
         "enabled": {
           "type": "boolean"
         },
@@ -47738,6 +47840,9 @@
           },
           "type": "array"
         },
+        "seriesId": {
+          "type": "string"
+        },
         "startDate": {
           "type": "string"
         },
@@ -47745,6 +47850,9 @@
           "type": "string"
         },
         "url": {
+          "type": "string"
+        },
+        "urlFaq": {
           "type": "string"
         }
       },
@@ -52580,6 +52688,22 @@
       },
       "type": "object"
     },
+    "PaymentsCurrencyDTO": {
+      "properties": {
+        "amount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "subCurrencies": {
+          "additionalProperties": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "PaymentsFrontEndRequest": {
       "properties": {
         "game": {
@@ -52595,6 +52719,9 @@
           "type": "boolean"
         },
         "localeId": {
+          "type": "string"
+        },
+        "openedFrom": {
           "type": "string"
         },
         "rsoToken": {
@@ -52661,6 +52788,46 @@
           "type": "integer"
         },
         "userId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PaymentsPaymentsTelemetryState": {
+      "enum": [
+        "Idle",
+        "PMCOpen",
+        "PMCComplete",
+        "PMCClosed"
+      ],
+      "type": "string"
+    },
+    "PaymentsPaymentsTelemetryTransitions": {
+      "enum": [
+        "IdleToPMCOpen",
+        "PMCOpenToPMCClose",
+        "PMCOpenToPMCComplete",
+        "PMCClosedToIdle",
+        "PMCCompleteToIdle"
+      ],
+      "type": "string"
+    },
+    "PaymentsRiotMessagingServiceMessage": {
+      "properties": {
+        "payload": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "version": {
           "type": "string"
         }
       },
@@ -53671,9 +53838,6 @@
         },
         "threadingModel": {
           "type": "string"
-        },
-        "version": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -53681,9 +53845,6 @@
     "PluginResourceContract": {
       "properties": {
         "fullName": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         }
       },
@@ -56217,7 +56378,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -70043,6 +70204,24 @@
         ]
       }
     },
+    "/lol-lobby/v1/lobby/tft-ranked-history": {
+      "get": {
+        "operationId": "GetLolLobbyV1LobbyTftRankedHistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-lobby"
+        ]
+      }
+    },
     "/lol-lobby/v1/parties/active": {
       "put": {
         "operationId": "PutLolLobbyV1PartiesActive",
@@ -75298,44 +75477,6 @@
         ]
       }
     },
-    "/lol-player-name-transition/v1/open-faq": {
-      "post": {
-        "operationId": "PostLolPlayerNameTransitionV1OpenFaq",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": true,
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-player-name-transition"
-        ]
-      }
-    },
-    "/lol-player-name-transition/v1/open-name-change": {
-      "post": {
-        "operationId": "PostLolPlayerNameTransitionV1OpenNameChange",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": true,
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-player-name-transition"
-        ]
-      }
-    },
     "/lol-player-preferences/v1/player-preferences-endpoint-override": {
       "post": {
         "operationId": "PostLolPlayerPreferencesV1PlayerPreferencesEndpointOverride",
@@ -78036,6 +78177,35 @@
         ]
       }
     },
+    "/lol-rso-auth/v1/external-session-config": {
+      "post": {
+        "operationId": "PostLolRsoAuthV1ExternalSessionConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requestDetails",
+            "required": true,
+            "schema": {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-rso-auth"
+        ]
+      }
+    },
     "/lol-rso-auth/v1/session": {
       "delete": {
         "operationId": "DeleteLolRsoAuthV1Session",
@@ -78114,14 +78284,22 @@
       }
     },
     "/lol-seasons/v1/allSeasons/product/{product}": {
-      "get": {
-        "operationId": "GetLolSeasonsV1AllSeasonsProductByProduct",
+      "post": {
+        "operationId": "PostLolSeasonsV1AllSeasonsProductByProduct",
         "parameters": [
           {
             "in": "path",
             "name": "product",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "lastNYears",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolSeasonsAllProductSeasonQuery"
+            }
           }
         ],
         "responses": {
@@ -82430,6 +82608,30 @@
         ]
       }
     },
+    "/payments/v1/updatePaymentTelemetryState": {
+      "post": {
+        "operationId": "PostPaymentsV1UpdatePaymentTelemetryState",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "transitions",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentsPaymentsTelemetryTransitions"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin payments"
+        ]
+      }
+    },
     "/performance/v1/memory": {
       "get": {
         "operationId": "GetPerformanceV1Memory",
@@ -84031,7 +84233,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "Http2ApiDocsV1",
+        "operationId": "HttpApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -84084,7 +84286,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "Http2ApiDocsV2",
+        "operationId": "HttpApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
