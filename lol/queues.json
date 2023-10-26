@@ -1247,7 +1247,7 @@
     "isRanked": false,
     "isTeamBuilderManaged": true,
     "lastToggledOffTime": 1692057526040,
-    "lastToggledOnTime": 1622127602605,
+    "lastToggledOnTime": 1698246001645,
     "mapId": 21,
     "maxDivisionForPremadeSize2": "",
     "maxTierForPremadeSize2": "",
@@ -1256,7 +1256,7 @@
     "minimumParticipantListSize": 1,
     "name": "Nexus Blitz",
     "numPlayersPerTeam": 5,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": true,
       "isIpEnabled": true,
