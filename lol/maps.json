@@ -340,6 +340,69 @@
   },
   {
     "assets": {
+      "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.TFT_Set9_Stage2.jpg",
+      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm",
+      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+      "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.TFT_Set9_Stage2.jpg",
+      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-teamfighttactics.ogg"
+    },
+    "categorizedContentBundles": {},
+    "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
+    "gameMode": "TFT",
+    "gameModeDescription": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
+    "gameModeName": "Teamfight Tactics",
+    "gameModeShortName": "",
+    "gameMutator": "TFT_Event_FF",
+    "id": 22,
+    "isDefault": false,
+    "isRGM": false,
+    "locStrings": {
+      "tutorial_subheader": "More items, more gold, more Choncc",
+      "tutorial_title": "Welcome to Choncc's Treasure"
+    },
+    "mapStringId": "TFT",
+    "name": "Teamfight Tactics",
+    "perPositionDisallowedSummonerSpells": {},
+    "perPositionRequiredSummonerSpells": {},
+    "platformId": "",
+    "platformName": "",
+    "properties": {
+      "suppressRunesMasteriesPerks": true
+    },
+    "tutorialCards": [
+      {
+        "description": "Time to live large! Start the match with a powerful Tier 4 or Tier 5 champion to form the core of your team.",
+        "footer": "",
+        "header": "STRONG START",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_1.TFT_Event_FF.png"
+      },
+      {
+        "description": "Choncc to the rescue! When your health gets low, Choncc will arrive with a care package to give you a boost!",
+        "footer": "",
+        "header": "CHONCC'S AID",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_2.TFT_Event_FF.png"
+      },
+      {
+        "description": "Items galore! After every carousel round, Choncc will visit to share an ever increasing amount of treasure!",
+        "footer": "",
+        "header": "MORE TREASURE",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_3.TFT_Event_FF.png"
+      }
+    ]
+  },
+  {
+    "assets": {
       "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
       "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
       "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",

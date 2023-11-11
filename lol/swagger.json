@@ -364,8 +364,15 @@
           "format": "int64",
           "type": "integer"
         },
+        "puuid": {
+          "type": "string"
+        },
         "skinUnlockMode": {
           "type": "string"
+        },
+        "summonerId": {
+          "format": "int64",
+          "type": "integer"
         },
         "summonerName": {
           "type": "string"
@@ -629,6 +636,9 @@
           "format": "int32",
           "type": "integer"
         },
+        "puuid": {
+          "type": "string"
+        },
         "selectedSkinIndex": {
           "format": "int32",
           "type": "integer"
@@ -639,6 +649,10 @@
         },
         "spell2Id": {
           "format": "int32",
+          "type": "integer"
+        },
+        "summonerId": {
+          "format": "int64",
           "type": "integer"
         },
         "summonerInternalName": {
@@ -656,6 +670,9 @@
         "pickTurn": {
           "format": "int32",
           "type": "integer"
+        },
+        "puuid": {
+          "type": "string"
         },
         "summonerId": {
           "format": "int64",
@@ -727,12 +744,26 @@
         "requesterInternalSummonerName": {
           "type": "string"
         },
+        "requesterPuuid": {
+          "type": "string"
+        },
+        "requesterSummonerId": {
+          "format": "int64",
+          "type": "integer"
+        },
         "responderChampionId": {
           "format": "int32",
           "type": "integer"
         },
         "responderInternalSummonerName": {
           "type": "string"
+        },
+        "responderPuuid": {
+          "type": "string"
+        },
+        "responderSummonerId": {
+          "format": "int64",
+          "type": "integer"
         },
         "state": {
           "type": "string"
@@ -1663,6 +1694,34 @@
             "$ref": "#/definitions/CriticalFlowCapture"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "DeepLinksClientConfigDeepLinksValue": {
+      "properties": {
+        "launchLorEnabled": {
+          "type": "boolean"
+        },
+        "launchLorUrl": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "DeepLinksDeepLinksSettings": {
+      "properties": {
+        "externalClientScheme": {
+          "type": "string"
+        },
+        "isSchemeReady": {
+          "type": "boolean"
+        },
+        "launchLorEnabled": {
+          "type": "boolean"
+        },
+        "launchLorUrl": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -3864,6 +3923,7 @@
         "aram",
         "blind3",
         "rank3flex",
+        "quickplay5",
         "other"
       ],
       "type": "string"
@@ -6483,6 +6543,9 @@
     },
     "LolChampSelectChampionQuestSkinInfo": {
       "properties": {
+        "productType": {
+          "$ref": "#/definitions/LolChampSelectQuestSkinProductType"
+        },
         "splashPath": {
           "type": "string"
         },
@@ -6952,6 +7015,9 @@
         "playerType": {
           "type": "string"
         },
+        "puuid": {
+          "type": "string"
+        },
         "selectedSkinId": {
           "format": "int32",
           "type": "integer"
@@ -7408,11 +7474,15 @@
           "format": "int64",
           "type": "integer"
         },
+        "puuid": {
+          "type": "string"
+        },
         "skinUnlockMode": {
           "type": "string"
         },
-        "summonerName": {
-          "type": "string"
+        "summonerId": {
+          "format": "int64",
+          "type": "integer"
         },
         "unlocked": {
           "type": "boolean"
@@ -7467,6 +7537,13 @@
         }
       },
       "type": "object"
+    },
+    "LolChampSelectQuestSkinProductType": {
+      "enum": [
+        "kQuestSkin",
+        "kTieredSkin"
+      ],
+      "type": "string"
     },
     "LolChampSelectSettingsResource": {
       "properties": {
@@ -7627,6 +7704,9 @@
         "ownership": {
           "$ref": "#/definitions/LolChampSelectCollectionsOwnership"
         },
+        "productType": {
+          "$ref": "#/definitions/LolChampSelectQuestSkinProductType"
+        },
         "rarityGemPath": {
           "type": "string"
         },
@@ -7668,6 +7748,9 @@
         "price": {
           "format": "int64",
           "type": "integer"
+        },
+        "puuid": {
+          "type": "string"
         },
         "skinUnlockMode": {
           "type": "string"
@@ -20336,8 +20419,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "LOCKED",
-        "UNLOCKED"
+        "UNLOCKED",
+        "LOCKED"
       ],
       "type": "string"
     },
@@ -29938,6 +30021,9 @@
         "price": {
           "format": "int64",
           "type": "integer"
+        },
+        "puuid": {
+          "type": "string"
         },
         "skinUnlockMode": {
           "type": "string"
@@ -49564,6 +49650,9 @@
         "activationTime": {
           "type": "string"
         },
+        "backgroundTexture": {
+          "type": "string"
+        },
         "bannerTexture": {
           "type": "string"
         },
@@ -49868,6 +49957,9 @@
     },
     "LolTftTrovesTrovesBanner": {
       "properties": {
+        "backgroundTexture": {
+          "type": "string"
+        },
         "bannerTexture": {
           "type": "string"
         },
@@ -56917,6 +57009,42 @@
         "tags": []
       }
     },
+    "/deep-links/v1/launch-lor-link": {
+      "post": {
+        "operationId": "PostDeepLinksV1LaunchLorLink",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin deep-links"
+        ]
+      }
+    },
+    "/deep-links/v1/settings": {
+      "get": {
+        "operationId": "GetDeepLinksV1Settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/DeepLinksDeepLinksSettings"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin deep-links"
+        ]
+      }
+    },
     "/entitlements/v1/token": {
       "get": {
         "operationId": "GetEntitlementsV1Token",
@@ -57256,6 +57384,7 @@
               "aram",
               "blind3",
               "rank3flex",
+              "quickplay5",
               "other"
             ],
             "in": "path",
@@ -57319,6 +57448,7 @@
               "aram",
               "blind3",
               "rank3flex",
+              "quickplay5",
               "other"
             ],
             "in": "path",
@@ -57510,6 +57640,7 @@
               "aram",
               "blind3",
               "rank3flex",
+              "quickplay5",
               "other"
             ],
             "in": "path",
@@ -57566,6 +57697,7 @@
               "aram",
               "blind3",
               "rank3flex",
+              "quickplay5",
               "other"
             ],
             "in": "path",
@@ -57787,6 +57919,7 @@
               "aram",
               "blind3",
               "rank3flex",
+              "quickplay5",
               "other"
             ],
             "in": "path",
@@ -84286,7 +84419,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
@@ -84305,7 +84438,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

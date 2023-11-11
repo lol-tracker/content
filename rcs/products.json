@@ -168,7 +168,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://bacon.secure.dyn.riotcdn.net/channels/public/releases/C68044A443F5C99E.manifest",
+          "patch_url": "https://bacon.secure.dyn.riotcdn.net/channels/public/releases/072E5A1D30C186E7.manifest",
           "patching_metadata": {},
           "path_name": "LoR/live",
           "platform": "win",
@@ -192,10 +192,10 @@
               ]
             }
           ],
-          "supported_versions": "410000+",
+          "supported_versions": "411000+",
           "tags": [],
           "theme_manifest": "https://bacon.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest.json",
-          "version": "410007"
+          "version": "411023"
         }
       }
     },
@@ -292,11 +292,31 @@
           ],
           "locale_data": {
             "available_locales": [
-              "en_GB",
+              "cs_CZ",
               "de_DE",
+              "el_GR",
+              "en_AU",
+              "en_GB",
+              "en_PH",
+              "en_SG",
+              "en_US",
+              "es_AR",
               "es_ES",
+              "es_MX",
               "fr_FR",
-              "it_IT"
+              "hu_HU",
+              "it_IT",
+              "ja_JP",
+              "ko_KR",
+              "pl_PL",
+              "pt_BR",
+              "ro_RO",
+              "ru_RU",
+              "th_TH",
+              "tr_TR",
+              "vi_VN",
+              "zh_MY",
+              "zh_TW"
             ],
             "default_locale": "en_GB"
           },
@@ -304,7 +324,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/B0FDFED859DC3764.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/15D2F97C2CAF559D.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
@@ -337,7 +357,7 @@
           "shards_data": [],
           "supported_versions": "",
           "tags": [],
-          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.21/EUW/manifest.json",
+          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.22/EUW/manifest.json",
           "version": ""
         },
         "league_of_legends.pbe": {
@@ -1061,7 +1081,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/546F3E34F277B921.manifest",
+          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/44FE57C73280C54D.manifest",
           "patching_metadata": {},
           "path_name": "VALORANT",
           "platform": "win",
