@@ -7818,7 +7818,7 @@
                     }
                 }
                 _compute() {
-                    this.getAttribute(l.PUUID) || this.getAttribute(l.SUMMONER_ID) || (this._destroyCurrentPlayerObserver = o.playerNames.observeCurrentPlayerName(this._updatePlayerName.bind(this)).destroy), this._computer.compute({
+                    this._shouldUseCurrentSummonerObserver() ? this._destroyCurrentPlayerObserver || (this._destroyCurrentPlayerObserver = o.playerNames.observeCurrentPlayerName(this._updatePlayerNameFromCurrentSummonerUpdate.bind(this)).destroy) : this._destroyCurrentPlayerObserver && (this._destroyCurrentPlayerObserver(), this._destroyCurrentPlayerObserver = null), this._computer.compute({
                         batch: this.getAttribute(l.BATCH),
                         puuid: this.getAttribute(l.PUUID),
                         summonerId: this.getAttribute(l.SUMMONER_ID),
@@ -7829,6 +7829,20 @@
                         renderModeOverride: this.getAttribute(l.RENDER_MODE_OVERRIDE),
                         renderAliasOverride: this._booleanAttribute(l.RENDER_ALIAS_OVERRIDE)
                     }).then((t => this._updatePlayerName(t)))
+                }
+                _shouldUseCurrentSummonerObserver() {
+                    const t = this.getAttribute(l.PUUID),
+                        e = this.getAttribute(l.SUMMONER_ID),
+                        n = this.getAttribute(l.SUMMONER_NAME),
+                        i = this.getAttribute(l.GAME_NAME),
+                        r = this.getAttribute(l.TAG_LINE),
+                        s = o.playerNames.currentSummonerPuuid;
+                    return !(n || i || r || t || e) || t === s
+                }
+                _updatePlayerNameFromCurrentSummonerUpdate(t) {
+                    if (!t) return;
+                    const e = this._playerName || {};
+                    e.gameName = t.gameName, e.tagLine = t.tagLine, e.summonerName = t.summonerName, this._updatePlayerName(e)
                 }
                 _updatePlayerName(t) {
                     if (t) switch (this._playerName = t, r.default.unassign(this._tooltipTarget), this._updateEnabled(this.shadowRoot, ".renderMode", (e => e.classList.contains(t.renderMode))), t.renderMode) {

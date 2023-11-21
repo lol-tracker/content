@@ -3,49 +3,48 @@
     "assets": {
       "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
       "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/champ-select-flyout-background.jpg",
-      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/game-select-icon-active.png",
-      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/game-select-icon-active.webm",
-      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-empty.png",
+      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-active.png",
+      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/video/game-select-icon-active.webm",
+      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-default.png",
       "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/game-select-icon-disabled.png",
-      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-hover.png",
-      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/game-select-icon-intro.webm",
+      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-hover.png",
+      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/video/game-select-icon-intro.webm",
       "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/gameflow-background.jpg",
       "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/gameflow-background-dark.jpg",
       "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
-      "generic-event-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/EventIcons/event.png",
-      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-defeat.png",
-      "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-defeat-v2.png",
+      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-defeat.png",
+      "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-defeat.png",
       "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/icon-defeat.webm",
-      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-empty.png",
-      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-hover.png",
-      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-leaver.png",
-      "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-leaver-v2.png",
-      "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-loss-forgiven-v2.png",
+      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-default.png",
+      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-hover.png",
+      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+      "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+      "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-loss-forgiven.png",
       "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-v2.png",
-      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/icon-victory.png",
+      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-victory.png",
       "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/video/icon-victory.webm",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/sound/music-inqueue-loop-cherry.ogg",
       "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/notification-background.jpg",
-      "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/game-select-icon-active.png",
+      "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/game-select-icon-active.png",
       "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/parties-background.jpg",
       "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
       "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/ready-check-background.png",
       "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
       "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
-      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/social-icon-leaver.png",
-      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/GameModeX/img/social-icon-victory.png",
+      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-leaver.png",
+      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/icon-victory.png",
       "tutorial-bg": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Cherry/img/one-page-tutorial-bg.jpg"
     },
     "categorizedContentBundles": {},
-    "description": "Team up with a friend or venture solo in this new game mode. Face against multiple teams in chaotic battles across diverse arenas.",
+    "description": "Queue up solo or partner with your friends in this multi-team game mode. Face against your foes in chaotic battles across diverse arenas.",
     "gameMode": "CHERRY",
-    "gameModeDescription": "Team up with a friend or venture solo in this new game mode. Face against multiple teams in chaotic battles across diverse arenas.",
+    "gameModeDescription": "Queue up solo or partner with your friends in this multi-team game mode. Face against your foes in chaotic battles across diverse arenas.",
     "gameModeName": "Arena",
     "gameModeShortName": "Arena",
     "gameMutator": "",
     "id": 30,
     "isDefault": true,
-    "isRGM": true,
+    "isRGM": false,
     "locStrings": {
       "tutorial_subheader": "Our long anticipated game mode is finally here!",
       "tutorial_title": "WELCOME TO ARENA"
@@ -67,21 +66,21 @@
     },
     "tutorialCards": [
       {
-        "description": "Queue solo or with a friend and battle against three opposing teams in this new multi-team game mode.",
+        "description": "Queue up solo or team up with your closest friends in our new 8-player lobby. You can crush your enemies or your friends in this multi-team game mode.",
         "footer": "",
         "header": "PARTNER UP",
         "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-1.jpg"
       },
       {
-        "description": "Build your arsenal by picking  game-changing upgrades to crush your opponents and become victorious!",
+        "description": "Build your arsenal with over 150+ game-changing augments. Mix and match different combinations to overwhelm the other teams or strengthen yours.",
         "footer": "",
         "header": "AUGMENTS!",
         "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-2.jpg"
       },
       {
-        "description": "Start at Wood, overcome your rivals, earn victories, and climb up tiers. Can you rise to become a Gladiator?",
+        "description": "Expand your strategies in the Arena. Heal with power flowers, pick up a fallen ally, travel with hex gates, and more! Can you and your ally claim victory?",
         "footer": "",
-        "header": "GLADIATOR TIERS",
+        "header": "STRATEGIZE",
         "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Cherry/tutorial-card-bg-3.jpg"
       }
     ]
@@ -101,11 +100,34 @@
       "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
       "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
-      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
-      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set9.ogg"
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+      "set-announcement-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-background.jpg",
+      "set-announcement-right-panel-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-right-panel.png",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg"
     },
-    "categorizedContentBundles": {},
+    "categorizedContentBundles": {
+      "set_announcement_modal": {
+        "item1": {
+          "body": "Buy 2-star champs from the Shop that grant +1 towards a Trait and a unique bonus!",
+          "footer": "",
+          "header": "HEADLINER",
+          "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item1-icon.png"
+        },
+        "item2": {
+          "body": "Create powerful boards from iconic League bands like K/DA and Pentakill, plus new favorites!",
+          "footer": "",
+          "header": "ROSTER",
+          "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item3-icon.png"
+        },
+        "item3": {
+          "body": "Vote on portals at the beginning of each game to bend the rules in your favor!",
+          "footer": "",
+          "header": "PORTALS",
+          "imagePath": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-item2-icon.png"
+        }
+      }
+    },
     "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
     "gameMode": "TFT",
     "gameModeDescription": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
@@ -116,6 +138,9 @@
     "isDefault": true,
     "isRGM": false,
     "locStrings": {
+      "set_announcement_confirm_button": "TAKE THE STAGE",
+      "set_announcement_set_name": "REMIX RUMBLE IS ON",
+      "set_announcement_splash_footer": "BEST EXPERIENCED WITH SOUND",
       "tutorial_subheader": "Teamfight Tactics is a free-for-all drafting tactics game in which you recruit powerful champions, deploy them, and battle to become the last player standing. Here's a quick guide.",
       "tutorial_title": "Welcome to Teamfight Tactics!"
     },
@@ -164,9 +189,9 @@
       "icon-empty": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-empty.png",
       "icon-victory": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/GameSelect/icon-victory.png",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
-      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
-      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set9.ogg"
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg"
     },
     "categorizedContentBundles": {},
     "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
@@ -227,9 +252,9 @@
       "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
       "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
-      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
-      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-teamfighttactics.ogg"
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg"
     },
     "categorizedContentBundles": {},
     "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
@@ -290,9 +315,9 @@
       "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
       "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
-      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
-      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-teamfighttactics.ogg"
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set10.ogg"
     },
     "categorizedContentBundles": {},
     "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
@@ -322,19 +347,19 @@
         "description": "Health is replaced with Soul Power! During training you cannot die. Focus on building your Soul Power with Soul Fighter Gwen and Sett's help.",
         "footer": "",
         "header": "TRAIN UP",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_1.TFT_Event_SF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_1.png"
       },
       {
         "description": "Champions given the Soul Crown item have increased power and bonus trait contribution. The Tournament unlocks a third Soul ability!",
         "footer": "",
         "header": "THE SOUL CROWN",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_2.TFT_Event_SF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_2.png"
       },
       {
         "description": "Go all out in the tournament phase. Each round is a best 2 of 3 with your opponent where only the winner moves on!",
         "footer": "",
         "header": "TOURNAMENT TIME",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_3.TFT_Event_SF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_SFGame_Modal_3.png"
       }
     ]
   },
@@ -353,8 +378,8 @@
       "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
       "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
       "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
-      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set9_Stage2.jpg",
-      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set9_Stage2.jpg",
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby.TFT_Set10.jpg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set10.jpg",
       "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-teamfighttactics.ogg"
     },
     "categorizedContentBundles": {},

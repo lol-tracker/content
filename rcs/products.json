@@ -219,7 +219,7 @@
           "bundles_url": "https://lol.dyn.riotcdn.net/channels/public/bundles",
           "client_product_type": "riot_game",
           "config_type": "public",
-          "configuration": "EUW",
+          "configuration": "OC1",
           "configuration_status": "has_configuration",
           "content_cookies": [],
           "content_paths": {
@@ -284,7 +284,7 @@
             "--riotclient-app-port={remoting-app-port}",
             "--no-rads",
             "--disable-self-update",
-            "--region=EUW",
+            "--region=OC1",
             "--locale={locale}",
             "--riotgamesapi-standalone",
             "--riotgamesapi-settings={settings-token}",
@@ -318,13 +318,13 @@
               "zh_MY",
               "zh_TW"
             ],
-            "default_locale": "en_GB"
+            "default_locale": "en_AU"
           },
           "matching_shards_data": {},
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/15D2F97C2CAF559D.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/6EE761053EDF7F77.manifest",
           "patching_metadata": {},
           "path_name": "League of Legends/Live",
           "platform": "win",
@@ -357,7 +357,7 @@
           "shards_data": [],
           "supported_versions": "",
           "tags": [],
-          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.22/EUW/manifest.json",
+          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.23/OC1/manifest.json",
           "version": ""
         },
         "league_of_legends.pbe": {
@@ -1081,7 +1081,7 @@
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/44FE57C73280C54D.manifest",
+          "patch_url": "https://valorant.secure.dyn.riotcdn.net/channels/public/releases/A44E14DBAD9DD21B.manifest",
           "patching_metadata": {},
           "path_name": "VALORANT",
           "platform": "win",
