@@ -2355,6 +2355,9 @@
           "observerServerPort": {
             "type": "integer"
           },
+          "packetCopMetadata": {
+            "type": "string"
+          },
           "serverIp": {
             "type": "string"
           },
@@ -49817,6 +49820,9 @@
             "format": "int32",
             "type": "integer"
           },
+          "platformTexture": {
+            "type": "string"
+          },
           "rootTable": {
             "$ref": "#/components/schemas/LolTftTrovesGameDataTrovesBannerTable"
           },
@@ -50139,6 +50145,9 @@
           "pityLimit": {
             "format": "int32",
             "type": "integer"
+          },
+          "platformTexture": {
+            "type": "string"
           },
           "pullCost": {
             "format": "int32",
@@ -52480,15 +52489,38 @@
       },
       "MissionMetadata": {
         "properties": {
+          "chain": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "chainSize": {
+            "format": "int32",
+            "type": "integer"
+          },
           "level": {
             "format": "int32",
             "type": "integer"
           },
+          "missionType": {
+            "type": "string"
+          },
           "npeRewardPack": {
             "$ref": "#/components/schemas/NpeRewardPackMetadata"
           },
+          "order": {
+            "format": "int32",
+            "type": "integer"
+          },
           "tutorial": {
             "$ref": "#/components/schemas/TutorialMetadata"
+          },
+          "weekNum": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "xpReward": {
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -56613,7 +56645,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "HttpAsyncResult",
+        "operationId": "Http2AsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56653,7 +56685,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -88824,7 +88856,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -88885,7 +88917,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

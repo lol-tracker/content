@@ -208,6 +208,73 @@
             "platforms": [],
             "product_id": ""
           },
+          "allowed_http_fallback_hostnames": [],
+          "app_store_update_info": null,
+          "available_platforms": [
+            "win",
+            "mac"
+          ],
+          "bundles_url": "",
+          "client_product_type": "riot_game",
+          "config_type": "public",
+          "configuration": "",
+          "configuration_status": "unsupported_region",
+          "content_cookies": [],
+          "content_paths": {
+            "loc": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/loc",
+            "riotstatus": "https://lol.secure.dyn.riotcdn.net/channels/public",
+            "social": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/social"
+          },
+          "default_theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest_default.json",
+          "delete_foreign_paths": false,
+          "dependencies": [],
+          "disallow_32bit_windows": false,
+          "dynamic_tags": [],
+          "excluded_compat_modes": [],
+          "excluded_paths": [],
+          "full_name": "League of Legends",
+          "had_install_settings_on_init": false,
+          "icon_path": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/icon.ico",
+          "id": "live",
+          "install_dir": "League of Legends",
+          "install_id": "league_of_legends.live",
+          "install_size_bytes": 0,
+          "launch_disabled": false,
+          "launchable_on_update_fail": false,
+          "launcher_arguments": [],
+          "locale_data": null,
+          "matching_shards_data": {},
+          "parent_patchline_id": "",
+          "patch_notes": "",
+          "patch_notes_url": "",
+          "patch_url": "",
+          "patching_metadata": {},
+          "path_name": "League of Legends/Live",
+          "platform": "win",
+          "primary_executable": "",
+          "product_id": "league_of_legends",
+          "region_data": null,
+          "rogue_process_checklist": [
+            "LeagueClient.exe"
+          ],
+          "rogue_process_whitelist": [
+            "LeagueClient.exe"
+          ],
+          "rso_client_id": "lol",
+          "rso_scopes": [],
+          "secondary_patchlines": [],
+          "seed_url": "",
+          "shards_data": [],
+          "supported_versions": "",
+          "tags": [],
+          "theme_manifest": "",
+          "version": ""
+        },
+        "league_of_legends.pbe": {
+          "alias": {
+            "platforms": [],
+            "product_id": ""
+          },
           "allowed_http_fallback_hostnames": [
             "lol.dyn.riotcdn.net"
           ],
@@ -219,7 +286,7 @@
           "bundles_url": "https://lol.dyn.riotcdn.net/channels/public/bundles",
           "client_product_type": "riot_game",
           "config_type": "public",
-          "configuration": "OC1",
+          "configuration": "PBE",
           "configuration_status": "has_configuration",
           "content_cookies": [],
           "content_paths": {
@@ -270,12 +337,12 @@
             "installation_guid",
             "Uninstall*"
           ],
-          "full_name": "League of Legends",
+          "full_name": "League of Legends PBE",
           "had_install_settings_on_init": true,
           "icon_path": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/icon.ico",
-          "id": "live",
-          "install_dir": "League of Legends",
-          "install_id": "league_of_legends.live",
+          "id": "pbe",
+          "install_dir": "League of Legends (PBE)",
+          "install_id": "league_of_legends.pbe",
           "install_size_bytes": 0,
           "launch_disabled": false,
           "launchable_on_update_fail": false,
@@ -284,7 +351,7 @@
             "--riotclient-app-port={remoting-app-port}",
             "--no-rads",
             "--disable-self-update",
-            "--region=OC1",
+            "--region=PBE",
             "--locale={locale}",
             "--riotgamesapi-standalone",
             "--riotgamesapi-settings={settings-token}",
@@ -318,15 +385,15 @@
               "zh_MY",
               "zh_TW"
             ],
-            "default_locale": "en_AU"
+            "default_locale": "en_US"
           },
           "matching_shards_data": {},
           "parent_patchline_id": "",
           "patch_notes": "",
           "patch_notes_url": "",
-          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/6C33745488AEACA9.manifest",
+          "patch_url": "https://lol.secure.dyn.riotcdn.net/channels/public/releases/6DFDF44E1F719F70.manifest",
           "patching_metadata": {},
-          "path_name": "League of Legends/Live",
+          "path_name": "League of Legends/PBE",
           "platform": "win",
           "primary_executable": "LeagueClient.exe",
           "product_id": "league_of_legends",
@@ -357,74 +424,7 @@
           "shards_data": [],
           "supported_versions": "",
           "tags": [],
-          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.23/OC1/manifest.json",
-          "version": ""
-        },
-        "league_of_legends.pbe": {
-          "alias": {
-            "platforms": [],
-            "product_id": ""
-          },
-          "allowed_http_fallback_hostnames": [],
-          "app_store_update_info": null,
-          "available_platforms": [
-            "win",
-            "mac"
-          ],
-          "bundles_url": "",
-          "client_product_type": "riot_game",
-          "config_type": "public",
-          "configuration": "",
-          "configuration_status": "unsupported_region",
-          "content_cookies": [],
-          "content_paths": {
-            "loc": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/loc",
-            "riotstatus": "https://lol.secure.dyn.riotcdn.net/channels/public",
-            "social": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/social"
-          },
-          "default_theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/manifest_default.json",
-          "delete_foreign_paths": false,
-          "dependencies": [],
-          "disallow_32bit_windows": false,
-          "dynamic_tags": [],
-          "excluded_compat_modes": [],
-          "excluded_paths": [],
-          "full_name": "League of Legends PBE",
-          "had_install_settings_on_init": false,
-          "icon_path": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/icon.ico",
-          "id": "pbe",
-          "install_dir": "League of Legends (PBE)",
-          "install_id": "league_of_legends.pbe",
-          "install_size_bytes": 0,
-          "launch_disabled": false,
-          "launchable_on_update_fail": false,
-          "launcher_arguments": [],
-          "locale_data": null,
-          "matching_shards_data": {},
-          "parent_patchline_id": "",
-          "patch_notes": "",
-          "patch_notes_url": "",
-          "patch_url": "",
-          "patching_metadata": {},
-          "path_name": "League of Legends/PBE",
-          "platform": "win",
-          "primary_executable": "",
-          "product_id": "league_of_legends",
-          "region_data": null,
-          "rogue_process_checklist": [
-            "LeagueClient.exe"
-          ],
-          "rogue_process_whitelist": [
-            "LeagueClient.exe"
-          ],
-          "rso_client_id": "lol",
-          "rso_scopes": [],
-          "secondary_patchlines": [],
-          "seed_url": "",
-          "shards_data": [],
-          "supported_versions": "",
-          "tags": [],
-          "theme_manifest": "",
+          "theme_manifest": "https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/13.24/PBE/manifest.json",
           "version": ""
         }
       }
