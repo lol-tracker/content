@@ -4591,8 +4591,11 @@
       },
       "type": "object"
     },
-    "LolCatalogGameDataSkinBorder": {
+    "LolCatalogGameDataSkinAugment": {
       "properties": {
+        "capType": {
+          "type": "string"
+        },
         "image": {
           "type": "string"
         },
@@ -15445,6 +15448,18 @@
       },
       "type": "object"
     },
+    "LolDropsCapDropTableCounterDTO": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dropTableId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "LolDropsCapDropsDropTablePityInfo": {
       "properties": {
         "chaseContentIds": {
@@ -15454,7 +15469,6 @@
           "type": "array"
         },
         "pityLimit": {
-          "format": "int32",
           "type": "integer"
         }
       },
@@ -15463,7 +15477,6 @@
     "LolDropsCapDropsDropTableWithPityDTO": {
       "properties": {
         "cost": {
-          "format": "int32",
           "type": "integer"
         },
         "currencyId": {
@@ -15529,22 +15542,9 @@
       },
       "type": "object"
     },
-    "LolDropsCapDropsPityCountDTO": {
-      "properties": {
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "dropTableId": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "LolDropsTotalRollsInfoDTO": {
       "properties": {
         "maxTotalRolls": {
-          "format": "int32",
           "type": "integer"
         },
         "totalRollsCounterId": {
@@ -20499,8 +20499,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "UNLOCKED",
-        "LOCKED"
+        "LOCKED",
+        "UNLOCKED"
       ],
       "type": "string"
     },
@@ -49698,6 +49698,18 @@
       },
       "type": "object"
     },
+    "LolTftTrovesDropCounterDTO": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dropTableId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "LolTftTrovesDropsDropTablePityInfo": {
       "properties": {
         "chaseContentIds": {
@@ -49775,13 +49787,18 @@
       },
       "type": "object"
     },
-    "LolTftTrovesDropsPityCountDTO": {
+    "LolTftTrovesEntitlementNotificationResource": {
       "properties": {
-        "count": {
-          "format": "int32",
-          "type": "integer"
+        "entitlementTypeId": {
+          "type": "string"
         },
-        "dropTableId": {
+        "itemId": {
+          "type": "string"
+        },
+        "itemTypeId": {
+          "type": "string"
+        },
+        "resourceOperation": {
           "type": "string"
         }
       },
@@ -50516,10 +50533,17 @@
         "hasPullError": {
           "type": "boolean"
         },
+        "isCollectorBountyMaxRollsMet": {
+          "type": "boolean"
+        },
         "owned": {
           "type": "boolean"
         },
         "pityCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRollsCount": {
           "format": "int32",
           "type": "integer"
         }
@@ -56600,7 +56624,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "HttpAsyncResult",
+        "operationId": "Http2AsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56636,7 +56660,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "HttpAsyncDelete",
+        "operationId": "Http2AsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -64880,7 +64904,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/LolDropsCapDropsPityCountDTO"
+              "$ref": "#/definitions/LolDropsCapDropTableCounterDTO"
             }
           }
         },
@@ -64906,7 +64930,35 @@
             "description": "Successful response",
             "schema": {
               "items": {
-                "$ref": "#/definitions/LolDropsCapDropsPityCountDTO"
+                "$ref": "#/definitions/LolDropsCapDropTableCounterDTO"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-drops"
+        ]
+      }
+    },
+    "/lol-drops/v1/players/{playerId}/total-rolls-counts": {
+      "get": {
+        "operationId": "GetLolDropsV1PlayersByPlayerIdTotalRollsCounts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "playerId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/LolDropsCapDropTableCounterDTO"
               },
               "type": "array"
             }
@@ -84641,7 +84693,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -84660,7 +84712,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "HttpApiDeclarationV1",
+        "operationId": "Http2ApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
