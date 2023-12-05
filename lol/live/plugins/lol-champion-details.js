@@ -348,15 +348,15 @@
                         } else p = new i.FullPageModalMediator({
                             Navigation: o.Navigation
                         });
-                        const m = new i.SubnavigationApi([n, s, p]);
-                        this.set("subnavigationApi", m);
+                        const d = new i.SubnavigationApi([n, s, p]);
+                        this.set("subnavigationApi", d);
                         p.getScreenNode().appendChild(this.get("element"));
-                        const d = this.get("championOwned");
-                        let f = this.get("progressionShouldLoad") && d ? "cdp_progression" : "cdp_overview";
+                        const m = this.get("championOwned");
+                        let f = this.get("progressionShouldLoad") && m ? "cdp_progression" : "cdp_overview";
                         const h = this.get("section");
-                        h && (h === a ? f = "cdp_progression" : h === r ? f = "cdp_overview" : h === l && !1 === this.get("abilitiesDisabled") ? f = "cdp_abilities" : h === c && !1 === this.get("skinsDisabled") && (f = "cdp_skins")), m.show(f), m.addEventListener("screenHidden", (() => {
+                        h && (h === a ? f = "cdp_progression" : h === r ? f = "cdp_overview" : h === l && !1 === this.get("abilitiesDisabled") ? f = "cdp_abilities" : h === c && !1 === this.get("skinsDisabled") && (f = "cdp_skins")), d.show(f), d.addEventListener("screenHidden", (() => {
                             this.get("destroyComponent")()
-                        })), this.sendTelemetryEvent(f), m.addEventListener("subnavigationSubsectionSelected", (e => {
+                        })), this.sendTelemetryEvent(f), d.addEventListener("subnavigationSubsectionSelected", (e => {
                             this.sendTelemetryEvent(e)
                         }))
                     }))
@@ -881,8 +881,8 @@
                 c = n(13);
             var u = t.EVENT_NAVIGATION_CLICKED = "lol-uikit-navigation-item-click-event",
                 p = t.NAVIGATION_ITEM_ATTR_ID = "item-id",
-                m = t.NAVIGATION_ITEM_ATTR_PRIORITY = "priority",
-                d = t.NAVIGATION_ITEM_ATTR_DISABLED = "disabled",
+                d = t.NAVIGATION_ITEM_ATTR_PRIORITY = "priority",
+                m = t.NAVIGATION_ITEM_ATTR_DISABLED = "disabled",
                 f = t.NAVIGATION_ITEM_ATTR_ALERT = "alert",
                 h = t.NAVIGATION_BAR_INDEX_ATTR = "selectedindex",
                 _ = function(e) {
@@ -948,11 +948,11 @@
                         key: "_onApiRegisterSubsection",
                         value: function(e) {
                             var t = document.createElement("lol-uikit-navigation-item");
-                            t.setAttribute(p, e.id), t.setAttribute(m, e.priority), t.innerHTML = e.title, !1 === e.enabled && t.setAttribute(d, "");
+                            t.setAttribute(p, e.id), t.setAttribute(d, e.priority), t.innerHTML = e.title, !1 === e.enabled && t.setAttribute(m, "");
                             for (var n = this._component.childNodes, o = 0; o < n.length; o++) {
                                 var i = n[o];
                                 if ("LOL-UIKIT-NAVIGATION-ITEM" === i.tagName)
-                                    if ((0, c.sanitizeInteger)(i.getAttribute(m), 1) > e.priority) return void this._component.insertBefore(t, i)
+                                    if ((0, c.sanitizeInteger)(i.getAttribute(d), 1) > e.priority) return void this._component.insertBefore(t, i)
                             }
                             this._component.appendChild(t)
                         }
@@ -960,7 +960,7 @@
                         key: "_onApiSetEnableSubsection",
                         value: function(e, t) {
                             var n = this._getSectionDataById(e);
-                            n && (t ? n.element.removeAttribute(d) : n.element.setAttribute(d, ""))
+                            n && (t ? n.element.removeAttribute(m) : n.element.setAttribute(m, ""))
                         }
                     }, {
                         key: "_onApiSetTitleSubsection",
@@ -1048,8 +1048,8 @@
             var c = t.EVENT_SECTION_WILL_SHOW = "elementWillShow",
                 u = t.EVENT_SECTION_SHOW = "elementShow",
                 p = t.EVENT_SECTION_WILL_HIDE = "elementWillHide",
-                m = t.EVENT_SECTION_HIDE = "elementHide",
-                d = t.SECTION_CONTROLLER_ATTR_SELECTED_ITEM = "selected-item",
+                d = t.EVENT_SECTION_HIDE = "elementHide",
+                m = t.SECTION_CONTROLLER_ATTR_SELECTED_ITEM = "selected-item",
                 f = t.SECTION_ATTR_DISABLED = "disabled",
                 h = t.SECTION_ATTR_ID = "section-id",
                 _ = function(e) {
@@ -1064,7 +1064,7 @@
                             if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
                             return !t || "object" != typeof t && "function" != typeof t ? e : t
                         }(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, n));
-                        return o._options = e, o.sectionsRenders = {}, o._currentSectionId = o._component.getAttribute(d), o
+                        return o._options = e, o.sectionsRenders = {}, o._currentSectionId = o._component.getAttribute(m), o
                     }
                     return function(e, t) {
                         if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
@@ -1089,13 +1089,13 @@
                     }, {
                         key: "_onSectionWillShow",
                         value: function() {
-                            var e = this._component.getAttribute(d);
+                            var e = this._component.getAttribute(m);
                             e && (this._currentSectionId = e, this._library.dispatchEvent(r.EVENT_IN_SECTION_WILL_SHOW, e))
                         }
                     }, {
                         key: "_onSectionShow",
                         value: function() {
-                            var e = this._component.getAttribute(d);
+                            var e = this._component.getAttribute(m);
                             e && (this._currentSectionId = e, this._library.dispatchEvent(r.EVENT_IN_SECTION_SHOW, e))
                         }
                     }, {
@@ -1111,7 +1111,7 @@
                     }, {
                         key: "_setComponentListeners",
                         value: function() {
-                            this._component.addEventListener(c, this._onSectionWillShow.bind(this)), this._component.addEventListener(u, this._onSectionShow.bind(this)), this._component.addEventListener(p, this._onSectionWillHide.bind(this)), this._component.addEventListener(m, this._onSectionHide.bind(this))
+                            this._component.addEventListener(c, this._onSectionWillShow.bind(this)), this._component.addEventListener(u, this._onSectionShow.bind(this)), this._component.addEventListener(p, this._onSectionWillHide.bind(this)), this._component.addEventListener(d, this._onSectionHide.bind(this))
                         }
                     }, {
                         key: "_renderSection",
@@ -1122,9 +1122,9 @@
                     }, {
                         key: "_onApiShowSubsection",
                         value: function(e, t) {
-                            if (this._component.getAttribute(d) !== e) {
+                            if (this._component.getAttribute(m) !== e) {
                                 var n = this._getSectionById(e);
-                                if (n) this.sectionsRenders.hasOwnProperty(e) && !this._options.preload && this._renderSection(n, e, t), this._component.setAttribute(d, e)
+                                if (n) this.sectionsRenders.hasOwnProperty(e) && !this._options.preload && this._renderSection(n, e, t), this._component.setAttribute(m, e)
                             }
                         }
                     }, {
@@ -1521,8 +1521,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "mc66XDXk",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-section-controller",[]],["dynamic-attr","class",["concat",["cdp-section-controller ",["unknown",["championClass"]]]]],["static-attr","animation","crossfade"],["flush-element"],["text","\\n"],["text","  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_overview"],["static-attr","class","cdp-section-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["overviewShouldLoad"]]],null,6],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_progression"],["static-attr","class","cdp-section-container progression"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["progressionDisabled"]]],null,5],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_abilities"],["static-attr","class","cdp-abilities-section-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["abilitiesDisabled"]]],null,3],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_skins"],["static-attr","class","cdp-section-container cdp-skins-section-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["skinsDisabled"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","cdp-nav-bar"],["static-attr","type","nav-bar-secondary"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_progression"],["dynamic-attr","disabled",["unknown",["progressionDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_progression"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_overview"],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_overview"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_abilities"],["dynamic-attr","disabled",["unknown",["abilitiesDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_abilities"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_skins"],["dynamic-attr","disabled",["unknown",["skinsDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_skins"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["unknown",["title-lockup"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["skins-section"],null,[["showStoreButton","sectionLoaded","destroyComponent","inputSkinId"],[["get",["showStoreButton"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null],["get",["destroyComponent"]],["get",["skinId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["skinsShouldLoad"]]],null,0]],"locals":[]},{"statements":[["text","        "],["append",["helper",["abilities-section"],null,[["abilitiesSectionShown","sectionLoaded"],[["get",["abilitiesSectionShown"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["abilitiesShouldLoad"]]],null,2]],"locals":[]},{"statements":[["text","        "],["append",["helper",["champion-backdrop"],null,[["sectionLoaded","section"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],"progression"]]],false],["text","\\n        "],["append",["helper",["progression-section"],null,[["sectionLoaded","setBackdropFadeout","destroyComponent"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],["helper",["action"],[["get",[null]],"setBackdropFadeout"],null],["get",["destroyComponent"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["progressionShouldLoad"]]],null,4]],"locals":[]},{"statements":[["text","      "],["append",["helper",["champion-backdrop"],null,[["sectionLoaded","section"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],"overview"]]],false],["text","\\n      "],["append",["helper",["overview-section"],null,[["showStoreButton","sectionLoaded","destroyComponent"],[["get",["showStoreButton"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null],["get",["destroyComponent"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "00dxEdLf",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-section-controller",[]],["dynamic-attr","class",["concat",["cdp-section-controller ",["unknown",["championClass"]]]]],["static-attr","animation","crossfade"],["flush-element"],["text","\\n"],["text","  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_overview"],["static-attr","class","cdp-section-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["overviewShouldLoad"]]],null,6],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_progression"],["static-attr","class","cdp-section-container progression"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["progressionDisabled"]]],null,5],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_abilities"],["static-attr","class","cdp-abilities-section-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["abilitiesDisabled"]]],null,3],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-section",[]],["static-attr","section-id","cdp_skins"],["static-attr","class","cdp-section-container cdp-skins-section-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["skinsDisabled"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","cdp-nav-bar"],["static-attr","type","nav-bar-secondary"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_progression"],["dynamic-attr","disabled",["unknown",["progressionDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_progression"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_overview"],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_overview"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_abilities"],["dynamic-attr","disabled",["unknown",["abilitiesDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_abilities"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["static-attr","item-id","cdp_skins"],["dynamic-attr","disabled",["unknown",["skinsDisabled"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_navigation_skins"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["unknown",["title-lockup"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["skins-section"],null,[["showStoreButton","sectionLoaded","destroyComponent","inputSkinId"],[["get",["showStoreButton"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null],["get",["destroyComponent"]],["get",["skinId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["skinsShouldLoad"]]],null,0]],"locals":[]},{"statements":[["text","        "],["append",["helper",["abilities-section"],null,[["abilitiesSectionShown","sectionLoaded"],[["get",["abilitiesSectionShown"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["abilitiesShouldLoad"]]],null,2]],"locals":[]},{"statements":[["text","        "],["append",["helper",["champion-backdrop"],null,[["sectionLoaded","section"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],"progression"]]],false],["text","\\n        "],["append",["helper",["progression-section"],null,[["sectionLoaded","setBackdropFadeout","destroyComponent"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],["helper",["action"],[["get",[null]],"setBackdropFadeout"],null],["get",["destroyComponent"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["progressionShouldLoad"]]],null,4]],"locals":[]},{"statements":[["text","      "],["append",["helper",["champion-backdrop"],null,[["sectionLoaded","section"],[["helper",["action"],[["get",[null]],"sectionLoaded"],null],"overview"]]],false],["text","\\n      "],["append",["helper",["overview-section"],null,[["showStoreButton","sectionLoaded","destroyComponent"],[["get",["showStoreButton"]],["helper",["action"],[["get",[null]],"sectionLoaded"],null],["get",["destroyComponent"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1546,8 +1546,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "FIeEIpE+",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-backdrop ",["unknown",["section"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-backdrop-img-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","cdp-backdrop-img"],["dynamic-attr","src",["concat",[["unknown",["champion","skins","0","splashPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "YtEktZ0s",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\champion-backdrop\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-backdrop ",["unknown",["section"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-backdrop-img-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","cdp-backdrop-img"],["dynamic-attr","src",["concat",[["unknown",["champion","skins","0","splashPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1582,8 +1582,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "VKsYl5Yb",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","title-lockup-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-role-icon ",["unknown",["primaryRole"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["primaryRoleString"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","title-lockup-column champion-info"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","lockup-champion-name"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","name"]],false],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","lockup-champion-title"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","title"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-role-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["primaryRoleString"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0]],"locals":[]}],"hasPartials":false}',
+                id: "Vmbd+P2q",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\shared\\\\title-lockup\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","title-lockup-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-role-icon ",["unknown",["primaryRole"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["primaryRoleString"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","title-lockup-column champion-info"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","lockup-champion-name"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","name"]],false],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","lockup-champion-title"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","title"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-role-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["primaryRoleString"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1629,8 +1629,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "RXz+6iIC",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-content-left ",["unknown",["setFadeout"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstone_title_text"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-eternals-info"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","cdp-eternals-info-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"launchInfoLink"],null],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression"],["flush-element"],["text","\\n    "],["append",["helper",["progression-series"],null,[["hoveredStatstone"],[["get",["hoveredStatstone"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-content-right ",["unknown",["hoveredClassName"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showHoverPanel"]]],null,6,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-progression-section-title"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-divider title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-progression-section-title-text"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_featured_title"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-divider title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["append",["unknown",["progression-showcase"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasFeatured"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","cdp-progression-divider"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["append",["helper",["progression-mastery"],null,[["champion"],[["get",["champion"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_statstones_rarity_common"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_statstones_rarity_unique"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-title"],["flush-element"],["text","\\n            "],["append",["unknown",["hoveredStatstone","name"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-rarity"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hoveredStatstone","isEpic"]]],null,3,2],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-blurb"],["flush-element"],["text","\\n            "],["append",["unknown",["hoveredStatstone","description"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image-panel"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_1.png\\");"]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_2.png\\");"]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_3.png\\");"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-reward-text"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","cdp_progression_statstones_hover_rewards"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-reward-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-reward-section personal-best"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-image"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_personal_best"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-description"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_personal_best_desc"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-reward-section mastery-emote"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-image"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_mastery_emote"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-description"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_mastery_emote_desc"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["details-section"],null,[["statstone"],[["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-right-hover-panel"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,5,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "zxeKFyA9",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-content-left ",["unknown",["setFadeout"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstone_title_text"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-eternals-info"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","cdp-eternals-info-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"launchInfoLink"],null],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression"],["flush-element"],["text","\\n    "],["append",["helper",["progression-series"],null,[["hoveredStatstone"],[["get",["hoveredStatstone"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-content-right ",["unknown",["hoveredClassName"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showHoverPanel"]]],null,6,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-progression-section-title"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-divider title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-progression-section-title-text"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_featured_title"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-divider title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["append",["unknown",["progression-showcase"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasFeatured"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","cdp-progression-divider"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line-end"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["append",["helper",["progression-mastery"],null,[["champion"],[["get",["champion"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_statstones_rarity_common"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_statstones_rarity_unique"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-title"],["flush-element"],["text","\\n            "],["append",["unknown",["hoveredStatstone","name"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-rarity"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hoveredStatstone","isEpic"]]],null,3,2],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-blurb"],["flush-element"],["text","\\n            "],["append",["unknown",["hoveredStatstone","description"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image-panel"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_1.png\\");"]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_2.png\\");"]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-image"],["dynamic-attr","style",["concat",["background-image: url(\\"",["unknown",["baseStatstoneImagePath"]],"_3.png\\");"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-reward-text"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","cdp_progression_statstones_hover_rewards"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-right-hover-unowned-reward-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-reward-section personal-best"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-image"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_personal_best"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-description"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_personal_best_desc"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-reward-section mastery-emote"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-image"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_mastery_emote"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-description"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_hover_mastery_emote_desc"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["details-section"],null,[["statstone"],[["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-right-hover-panel"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,5,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1737,8 +1737,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "+wlTQeDD",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-banner ",["unknown",["bannerClass"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-level-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-level"],["flush-element"],["text","\\n        "],["append",["unknown",["masteryLevelSafe"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-right-panel ",["unknown",["rightPanelMode"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMastery"]]],null,14,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-mastery-zero-panel"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelString"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-text"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_progression_mastery_mastery_zero"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","show-loot-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"showLoot"],null],null],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","cdp_progression_mastery_tokens_upgrade"]],false],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token-divider"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["requiredTokenScore"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-token-background ",["unknown",["token","iconClass"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["championIconPath"]],")"]]],["flush-element"],["close-element"],["text","\\n                  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-token-border ",["unknown",["bannerClass"]]]]],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token-rating"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["token","completed"]]],null,3],["text","                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"],["block",["unless"],[["get",["token","last"]]],null,2]],"locals":["token"]},{"statements":[["text","                "],["append",["unknown",["tra","cdp_progression_mastery_tokens_completed"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,5],["text","            "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-tokens ",["unknown",["readyToForge"]]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["tokens"]]],null,4],["text","            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-loot-button"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,1],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-right"],["flush-element"],["text","\\n              "],["append",["unknown",["masteryData","formattedChampionPoints"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-right-label"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","cdp_progression_mastery_mastery_points"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["gainTokensString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_mastery_max_level"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["masteryLevelString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_mastery_ready_to_forge"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-left"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,11,10],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMaxLevel"]]],null,9,8],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMaxLevel"]]],null,7,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelString"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_progression_mastery_mastery_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-bar"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-gradient"],["dynamic-attr","style",["concat",["width: ",["unknown",["gradientWidth"]],"px;"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-count"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryData","formattedChampionPoints"]],false],["text"," / "],["append",["unknown",["masteryData","formattedMasteryGoal"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showPoints"]]],null,13],["block",["if"],[["get",["showTokens"]]],null,12]],"locals":[]}],"hasPartials":false}',
+                id: "nSqGFW/T",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-banner ",["unknown",["bannerClass"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-level-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-level"],["flush-element"],["text","\\n        "],["append",["unknown",["masteryLevelSafe"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-right-panel ",["unknown",["rightPanelMode"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMastery"]]],null,14,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-mastery-zero-panel"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelString"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-text"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_progression_mastery_mastery_zero"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","show-loot-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"showLoot"],null],null],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","cdp_progression_mastery_tokens_upgrade"]],false],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token-divider"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["requiredTokenScore"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-token-background ",["unknown",["token","iconClass"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["championIconPath"]],")"]]],["flush-element"],["close-element"],["text","\\n                  "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-token-border ",["unknown",["bannerClass"]]]]],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-token-rating"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["token","completed"]]],null,3],["text","                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"],["block",["unless"],[["get",["token","last"]]],null,2]],"locals":["token"]},{"statements":[["text","                "],["append",["unknown",["tra","cdp_progression_mastery_tokens_completed"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,5],["text","            "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-mastery-component-tokens ",["unknown",["readyToForge"]]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["tokens"]]],null,4],["text","            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-loot-button"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,1],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-right"],["flush-element"],["text","\\n              "],["append",["unknown",["masteryData","formattedChampionPoints"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-right-label"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","cdp_progression_mastery_mastery_points"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["gainTokensString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_mastery_max_level"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["masteryLevelString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","cdp_progression_mastery_ready_to_forge"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-left"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyToForge"]]],null,11,10],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMaxLevel"]]],null,9,8],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-tokens-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMaxLevel"]]],null,7,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-header"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelString"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_progression_mastery_mastery_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-bar"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-gradient"],["dynamic-attr","style",["concat",["width: ",["unknown",["gradientWidth"]],"px;"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-mastery-component-points-count"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryData","formattedChampionPoints"]],false],["text"," / "],["append",["unknown",["masteryData","formattedMasteryGoal"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showPoints"]]],null,13],["block",["if"],[["get",["showTokens"]]],null,12]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1774,8 +1774,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "tCZAUulK",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-series-info-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasStatstoneData"]]],null,6,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["uikit-spinner"],null,[["class"],["cdp-series-info-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-series-timeout-message"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_load_error"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isTimeout"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["append",["helper",["series-info"],null,[["series","hoveredStatstone"],[["get",["series"]],["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":["series"]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","cdp-series-scrollable"],["static-attr","overflow-masks","bottom"],["flush-element"],["text","\\n"],["block",["each"],[["get",["statstonesSeries"]]],null,3],["text","    "],["close-element"],["text","\\n    "],["append",["unknown",["hover"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-series-no-statstones"],["flush-element"],["append",["unknown",["tra","cdp_progression_no_statstones_for_champ"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoStatstones"]]],null,5,4]],"locals":[]}],"hasPartials":false}',
+                id: "B9aTIs9q",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-series-info-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasStatstoneData"]]],null,6,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["uikit-spinner"],null,[["class"],["cdp-series-info-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-series-timeout-message"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_load_error"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isTimeout"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["append",["helper",["series-info"],null,[["series","hoveredStatstone"],[["get",["series"]],["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":["series"]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","cdp-series-scrollable"],["static-attr","overflow-masks","bottom"],["flush-element"],["text","\\n"],["block",["each"],[["get",["statstonesSeries"]]],null,3],["text","    "],["close-element"],["text","\\n    "],["append",["unknown",["hover"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-series-no-statstones"],["flush-element"],["append",["unknown",["tra","cdp_progression_no_statstones_for_champ"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoStatstones"]]],null,5,4]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1793,8 +1793,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "tJoDSImq",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-component"],["flush-element"],["text","\\n"],["block",["each"],[["get",["featuredStatstones"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["showcase-item"],null,[["showcaseItem"],[["get",["showcaseItem"]]]]],false],["text","\\n"]],"locals":["showcaseItem"]}],"hasPartials":false}',
+                id: "s5Cki84n",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-component"],["flush-element"],["text","\\n"],["block",["each"],[["get",["featuredStatstones"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["showcase-item"],null,[["showcaseItem"],[["get",["showcaseItem"]]]]],false],["text","\\n"]],"locals":["showcaseItem"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1916,18 +1916,18 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var o = d(n(46)),
-                i = d(n(47)),
-                s = d(n(48)),
-                a = d(n(49)),
-                r = d(n(50)),
-                l = d(n(51)),
-                c = d(n(52)),
-                u = d(n(53)),
-                p = d(n(54)),
-                m = d(n(55));
+            var o = m(n(46)),
+                i = m(n(47)),
+                s = m(n(48)),
+                a = m(n(49)),
+                r = m(n(50)),
+                l = m(n(51)),
+                c = m(n(52)),
+                u = m(n(53)),
+                p = m(n(54)),
+                d = m(n(55));
 
-            function d(e) {
+            function m(e) {
                 return e && e.__esModule ? e : {
                     default: e
                 }
@@ -1942,7 +1942,7 @@
                 OFFER_PURCHASE_STATES: c.default,
                 OFFER_VALIDATION_STATES: u.default,
                 SCROLL_LIST_DISPLAY_TYPES: p.default,
-                TEMPLATE_TYPES: m.default
+                TEMPLATE_TYPES: d.default
             };
             t.default = f
         }, (e, t) => {
@@ -2085,12 +2085,12 @@
                 c = "RANKED_TFT_PAIRS",
                 u = [n, o],
                 p = [...u, i],
-                m = [s],
-                d = [a, r],
+                d = [s],
+                m = [a, r],
                 f = [l, c],
-                h = [...d, ...f],
-                _ = [...p, ...d],
-                g = [...f, ...m];
+                h = [...m, ...f],
+                _ = [...p, ...m],
+                g = [...f, ...d];
             var v = {
                 RANKED_SOLO_5x5_QUEUE_TYPE: n,
                 RANKED_FLEX_SR_QUEUE_TYPE: o,
@@ -2102,7 +2102,7 @@
                 RANKED_TFT_PAIRS_QUEUE_TYPE: c,
                 RANKED_LOL_QUEUE_TYPES: p,
                 RANKED_SR_QUEUE_TYPES: u,
-                RANKED_TFT_QUEUE_TYPES: d,
+                RANKED_TFT_QUEUE_TYPES: m,
                 RATED_TFT_QUEUE_TYPES: f,
                 RANKED_AND_RATED_TFT_QUEUE_TYPES: h,
                 ALL_RANKED_QUEUE_TYPES: _,
@@ -2238,8 +2238,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "NLgGL2+i",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-series-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-series-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showUnlockAllButton"]]],null,10,8],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-series-overview"],["flush-element"],["text","\\n"],["block",["each"],[["get",["series","statstones"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["statstone-info"],null,[["statstone","hoveredStatstone"],[["get",["statstoneData"]],["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":["statstoneData"]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-logo"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstones-completed"],["flush-element"],["append",["unknown",["milestonesPassed"]],false],["text"," / "],["append",["unknown",["totalMilestones"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-logo"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstones-completed"],["flush-element"],["append",["unknown",["milestonesPassed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n                  "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_passed_milestones_tooltip"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_mastery_upgraded_tooltip"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-mastery-upgrade"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],4],["text","              "],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-tooltip"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["helper",["dynamic-tra"],["cdp_progression_series_pass_tooltip",["get",["pack","name"]]],null],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","cdp-progression-owned-from-packs"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","src","/fe/lol-champion-details/series-ticket.png"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["top","tooltip"]],6],["text","              "],["close-element"],["text","\\n"]],"locals":["pack"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-series-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-content"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-left"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-series-name"],["flush-element"],["append",["unknown",["series","name"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["ownedFromPacks"]]],null,7],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["setCompleted"]]],null,5],["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone-progression"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],3],["block",["if"],[["get",["setCompleted"]]],null,2,1],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-border"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-sale"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-series-sale-label"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_sale_flag_text"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","sale-box sale-blur"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","sale-box"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-series-info incomplete"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-name"],["flush-element"],["append",["unknown",["series","name"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-border"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSale"]]],null,9],["text","      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-progression-series-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockAll"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_progression_statstones_series_unlock"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "iRqq20TE",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-series-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-series-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showUnlockAllButton"]]],null,10,8],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-series-overview"],["flush-element"],["text","\\n"],["block",["each"],[["get",["series","statstones"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["statstone-info"],null,[["statstone","hoveredStatstone"],[["get",["statstoneData"]],["get",["hoveredStatstone"]]]]],false],["text","\\n"]],"locals":["statstoneData"]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-logo"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstones-completed"],["flush-element"],["append",["unknown",["milestonesPassed"]],false],["text"," / "],["append",["unknown",["totalMilestones"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-logo"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-statstones-completed"],["flush-element"],["append",["unknown",["milestonesPassed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n                  "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_passed_milestones_tooltip"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_mastery_upgraded_tooltip"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","span",[]],["static-attr","class","cdp-progression-mastery-upgrade"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],4],["text","              "],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-progression-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-tooltip"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["helper",["dynamic-tra"],["cdp_progression_series_pass_tooltip",["get",["pack","name"]]],null],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","cdp-progression-owned-from-packs"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","src","/fe/lol-champion-details/series-ticket.png"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["top","tooltip"]],6],["text","              "],["close-element"],["text","\\n"]],"locals":["pack"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-series-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-content"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-left"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-progression-series-name"],["flush-element"],["append",["unknown",["series","name"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["ownedFromPacks"]]],null,7],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["setCompleted"]]],null,5],["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone-progression"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],3],["block",["if"],[["get",["setCompleted"]]],null,2,1],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-border"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-progression-series-sale"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-series-sale-label"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_sale_flag_text"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","sale-box sale-blur"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","sale-box"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-series-info incomplete"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-name"],["flush-element"],["append",["unknown",["series","name"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-series-border"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSale"]]],null,9],["text","      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-progression-series-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockAll"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_progression_statstones_series_unlock"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2397,8 +2397,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "Fnly7Xk3",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-statstone ",["unknown",["ownedClassName"]]]]],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"onMouseEnter",["get",["statstone"]]],null],null],["dynamic-attr","onmouseleave",["helper",["action"],[["get",[null]],"onMouseLeave"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,8],["text","  "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-wrapper"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","cdp-progression-statstone-image"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isRetired"]]],null,7],["text","    "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-description"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,6,1],["text","    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["isOwned"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","statstone-locked"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-rarity"],["flush-element"],["append",["unknown",["statstoneRarity"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["dynamic-attr","class",["concat",["progress-marker ",["get",["progress"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["progress"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-logo milestone-progress"],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-milestone-progress"],["flush-element"],["text","\\n"],["block",["each"],[["get",["milestoneProgressStyleList"]]],null,2],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone-bar"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-statstone-milestone-bar-fill statstone-",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["isStatstoneNotCompleted"]]],null,3],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-value-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestones-passed"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-logo milestones-passed"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestones-passed-value"],["flush-element"],["append",["unknown",["statstone","formattedMilestoneLevel"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best-icon"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best-value"],["flush-element"],["append",["unknown",["statstone","formattedPersonalBest"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-header"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-name-info"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-name-owned"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isStatstoneCompleted"]]],null,5],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isNotRetired"]]],null,4],["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["series-featured ",["helper",["if"],[["get",["isFeatured"]],"selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleFeaturedFlyout"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-retired-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-magic-mograph-wrapper statstone-",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","class","cdp-progression-owned-magic-mograph"],["static-attr","src","/fe/lol-champion-details/video/champion-detail-owned-magic.webm"],["static-attr","cache-name","rcp-fe-lol-champion-details"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "IaGXXmdf",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\series-component\\\\series-info\\\\statstone\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-statstone ",["unknown",["ownedClassName"]]]]],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"onMouseEnter",["get",["statstone"]]],null],null],["dynamic-attr","onmouseleave",["helper",["action"],[["get",[null]],"onMouseLeave"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,8],["text","  "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-wrapper"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","cdp-progression-statstone-image"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isRetired"]]],null,7],["text","    "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-description"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOwned"]]],null,6,1],["text","    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["isOwned"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","statstone-locked"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-rarity"],["flush-element"],["append",["unknown",["statstoneRarity"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["dynamic-attr","class",["concat",["progress-marker ",["get",["progress"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["progress"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-logo milestone-progress"],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-milestone-progress"],["flush-element"],["text","\\n"],["block",["each"],[["get",["milestoneProgressStyleList"]]],null,2],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestone-bar"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-statstone-milestone-bar-fill statstone-",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["isStatstoneNotCompleted"]]],null,3],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-value-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestones-passed"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-logo milestones-passed"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-milestones-passed-value"],["flush-element"],["append",["unknown",["statstone","formattedMilestoneLevel"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best-icon"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-personal-best-value"],["flush-element"],["append",["unknown",["statstone","formattedPersonalBest"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-header"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-progression-statstone-name-info"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-progression-statstone-name-owned"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isStatstoneCompleted"]]],null,5],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isNotRetired"]]],null,4],["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["series-featured ",["helper",["if"],[["get",["isFeatured"]],"selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleFeaturedFlyout"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-retired-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-progression-magic-mograph-wrapper statstone-",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","class","cdp-progression-owned-magic-mograph"],["static-attr","src","/fe/lol-champion-details/video/champion-detail-owned-magic.webm"],["static-attr","cache-name","rcp-fe-lol-champion-details"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2416,8 +2416,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "+HDSygqV",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-logo"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-star"],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","cdp-progression-showcase-item-image"],["dynamic-attr","src",["concat",[["unknown",["showcaseItem","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showcaseItem","isRetired"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-value"],["flush-element"],["append",["unknown",["showcaseItem","formattedValue"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-name"],["flush-element"],["append",["unknown",["showcaseItem","name"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-retired-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "Y99mlISN",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\showcase-component\\\\showcase-item\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-logo"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-star"],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","cdp-progression-showcase-item-image"],["dynamic-attr","src",["concat",[["unknown",["showcaseItem","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showcaseItem","isRetired"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-value"],["flush-element"],["append",["unknown",["showcaseItem","formattedValue"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-progression-showcase-item-name"],["flush-element"],["append",["unknown",["showcaseItem","name"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-progression-retired-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2449,8 +2449,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "d6YpdlqX",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","section",[]],["static-attr","class","cdp-content-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-overview-stats"],["flush-element"],["text","\\n    "],["append",["unknown",["tactical-info"]],false],["text","\\n    "],["append",["unknown",["playstyle-info"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-overview-description"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","cdp-overview-short-bio"],["flush-element"],["append",["helper",["sanitize"],[["get",["shortBio"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","cdp-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showStoreButton"]]],null,2],["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-learn-more-button"],["static-attr","type","external"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"learnMore",["get",["champion","alias"]],["get",["locale"]]],null],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_actions_learn_more"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOwned"]]],null,1,0]],"locals":[]}],"hasPartials":false}',
+                id: "P0DwF4rW",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\root\\\\index.js\\" "],["text","\\n"],["open-element","section",[]],["static-attr","class","cdp-content-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-overview-stats"],["flush-element"],["text","\\n    "],["append",["unknown",["tactical-info"]],false],["text","\\n    "],["append",["unknown",["playstyle-info"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-overview-description"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","cdp-overview-short-bio"],["flush-element"],["append",["helper",["sanitize"],[["get",["shortBio"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","cdp-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showStoreButton"]]],null,2],["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-learn-more-button"],["static-attr","type","external"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"learnMore",["get",["champion","alias"]],["get",["locale"]]],null],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cdp_actions_learn_more"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOwned"]]],null,1,0]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2528,8 +2528,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "SxVmI7aq",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-right-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["UXSettings","largeAreaAnimationsEnabled"]]],null,13,7],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-info"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-right-description"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-rarity"],["flush-element"],["text","\\n"],["block",["if"],[["get",["statstone","isEpic"]]],null,4,3],["text","      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-purchase-date"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_date_acquired_text"]],false],["text"," "],["append",["unknown",["formattedDate"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-description"],["flush-element"],["append",["unknown",["statstone","description"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-right-progression-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isNotRetired"]]],null,2],["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_passed_milestones"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-right-value-wrapper"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-right-milestone-icon"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["append",["unknown",["statstone","formattedMilestoneLevel"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n  \\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_personal_best"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-personal-best-description"],["flush-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-right-lock-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_unlock_personal_best"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_personal_best"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-right-personal-best-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["statstone","formattedPersonalBest"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_next_milestone"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["append",["unknown",["statstone","nextMilestone"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cdp_progression_statstones_rarity_common"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cdp_progression_statstones_rarity_unique"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["statstone","isEpic"]]],null,6,5]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-background"],["flush-element"],["text","\\n          "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-background-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["static-attr","src","/fe/lol-champion-details/video/champion-detail-statstone-common-particle.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-bg-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame common ",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n        "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["dynamic-attr","src",["concat",["/fe/lol-champion-details/video/champion-detail-statstone-common-flame-",["unknown",["completionLevel"]],".webm"]]],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-object-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,8]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-background"],["flush-element"],["text","\\n          "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-background-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["static-attr","src","/fe/lol-champion-details/video/champion-detail-statstone-background.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-orb statstone-",["unknown",["statstoneCategoryLower"]]," ",["unknown",["completionLevelString"]],"-orb"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["iterate"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-orb-rings"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-right-orb-wrapper"],["flush-element"],["text","\\n"],["block",["each"],[["get",["completionLevelArray"]]],null,11],["text","      "],["close-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,10],["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame ",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n        "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["dynamic-attr","src",["concat",["/fe/lol-champion-details/video/champion-detail-statstone-flame-",["unknown",["completionLevel"]],".webm"]]],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["statstone","isEpic"]]],null,12,9]],"locals":[]}],"hasPartials":false}',
+                id: "PDFKTBw9",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\details-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-right-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["UXSettings","largeAreaAnimationsEnabled"]]],null,13,7],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-info"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-right-description"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-rarity"],["flush-element"],["text","\\n"],["block",["if"],[["get",["statstone","isEpic"]]],null,4,3],["text","      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-purchase-date"],["flush-element"],["append",["unknown",["tra","cdp_progression_statstones_date_acquired_text"]],false],["text"," "],["append",["unknown",["formattedDate"]],false],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","cdp-right-statstone-description"],["flush-element"],["append",["unknown",["statstone","description"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-progression-content-divider-line"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cdp-right-progression-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isNotRetired"]]],null,2],["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_passed_milestones"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-right-value-wrapper"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-right-milestone-icon"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["append",["unknown",["statstone","formattedMilestoneLevel"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n  \\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_personal_best"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-personal-best-description"],["flush-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","cdp-right-lock-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_progression_unlock_personal_best"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_personal_best"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","cdp-right-personal-best-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["statstone","formattedPersonalBest"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-progression"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-header"],["flush-element"],["append",["unknown",["tra","cdp_progression_next_milestone"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","cdp-right-progression-value"],["flush-element"],["append",["unknown",["statstone","nextMilestone"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cdp_progression_statstones_rarity_common"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cdp_progression_statstones_rarity_unique"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image"],["dynamic-attr","src",["concat",[["unknown",["statstone","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["statstone","isEpic"]]],null,6,5]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-background"],["flush-element"],["text","\\n          "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-background-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["static-attr","src","/fe/lol-champion-details/video/champion-detail-statstone-common-particle.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-bg-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame common ",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n        "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["dynamic-attr","src",["concat",["/fe/lol-champion-details/video/champion-detail-statstone-common-flame-",["unknown",["completionLevel"]],".webm"]]],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image common"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-object-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,8]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","cdp-right-eternal-background"],["flush-element"],["text","\\n          "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-background-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["static-attr","src","/fe/lol-champion-details/video/champion-detail-statstone-background.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-orb statstone-",["unknown",["statstoneCategoryLower"]]," ",["unknown",["completionLevelString"]],"-orb"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["iterate"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cdp-right-orb-rings"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-right-orb-wrapper"],["flush-element"],["text","\\n"],["block",["each"],[["get",["completionLevelArray"]]],null,11],["text","      "],["close-element"],["text","\\n"],["block",["if"],[["get",["isMilestonesCompleted"]]],null,10],["text","      "],["open-element","img",[]],["static-attr","class","cdp-right-eternal-image"],["dynamic-attr","src",["concat",["/fe/lol-champion-details/",["unknown",["statstoneCategoryLower"]],"-",["unknown",["statstoneRarityLower"]],"-",["unknown",["completionLevel"]],".png"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame ",["unknown",["statstoneCategoryLower"]]]]],["flush-element"],["text","\\n        "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["cdp-right-eternal-flame-mograph statstone-",["unknown",["statstoneCategoryLower"]]]]],["dynamic-attr","src",["concat",["/fe/lol-champion-details/video/champion-detail-statstone-flame-",["unknown",["completionLevel"]],".webm"]]],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["statstone","isEpic"]]],null,12,9]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2566,8 +2566,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "DcF7zUYK",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","tactical-info-damage"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","damage-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","p",[]],["static-attr","class","damage-value"],["flush-element"],["append",["unknown",["damageType"]],false],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],2],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","tactical-info-style"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","style-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","continuum-graph-container"],["flush-element"],["text","\\n    "],["open-element","span",[]],["dynamic-attr","class",["concat",["continuum-graph-icon ",["unknown",["attacksIconClass"]]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","continuum-graph"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","continuum-graph-pip-container"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","continuum-graph-pip"],["dynamic-attr","style",["concat",["left:",["unknown",["stylePercent"]],"%"]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","span",[]],["dynamic-attr","class",["concat",["continuum-graph-icon ",["unknown",["abilityIconClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","tactical-info-difficulty"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","difficulty-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","span",[]],["dynamic-attr","class",["concat",["difficulty-graph difficulty-level-",["unknown",["difficultyLevel"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","difficulty-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","style-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","damage-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "9sknuYV9",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\tactical-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","tactical-info-damage"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","damage-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","p",[]],["static-attr","class","damage-value"],["flush-element"],["append",["unknown",["damageType"]],false],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],2],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","tactical-info-style"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","style-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","continuum-graph-container"],["flush-element"],["text","\\n    "],["open-element","span",[]],["dynamic-attr","class",["concat",["continuum-graph-icon ",["unknown",["attacksIconClass"]]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","continuum-graph"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","continuum-graph-pip-container"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","continuum-graph-pip"],["dynamic-attr","style",["concat",["left:",["unknown",["stylePercent"]],"%"]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","span",[]],["dynamic-attr","class",["concat",["continuum-graph-icon ",["unknown",["abilityIconClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","tactical-info-difficulty"],["flush-element"],["text","\\n  "],["open-element","h6",[]],["static-attr","class","difficulty-label"],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip_title"]],false],["text",":"],["close-element"],["text","\\n  "],["open-element","span",[]],["dynamic-attr","class",["concat",["difficulty-graph difficulty-level-",["unknown",["difficultyLevel"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","class"],["right","tooltip"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","difficulty-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_difficulty_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","style-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_style_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","damage-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_tactical_damage_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2602,8 +2602,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "aR8+v/vf",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-graph-background"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment damage"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],4],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","damage"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment toughness"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],3],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","durability"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment crowd-control"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["bottom","show","hide","tooltip"]],2],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","crowdControl"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment mobility"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["bottom","show","hide","tooltip"]],1],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","mobility"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment utility"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],0],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","utility"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","utility-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_utility_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_utility_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","mobility-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_mobility_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_mobility_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","crowd-control-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_crowd_control_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_crowd_control_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","toughness-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_toughness_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_toughness_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","damage-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_damage_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_damage_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "PK2wNVn2",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\overview-section\\\\playstyle-info\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-graph-background"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment damage"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],4],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","damage"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment toughness"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],3],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","durability"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment crowd-control"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["bottom","show","hide","tooltip"]],2],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","crowdControl"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment mobility"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["bottom","show","hide","tooltip"]],1],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","mobility"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stat-segment utility"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tooltip-anchor"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","showEvent","hideEvent","class"],["top","show","hide","tooltip"]],0],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hover-event-mask"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["segment-fill level-",["unknown",["champion","playstyleInfo","utility"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","utility-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_utility_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_utility_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","mobility-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_mobility_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_mobility_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","crowd-control-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_crowd_control_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_crowd_control_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","toughness-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_toughness_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_toughness_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","damage-tt"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_damage_tooltip_title"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cdp_playstyle_damage_tooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2657,8 +2657,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "6Ih2KQ91",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["champion","spells"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["ability_",["unknown",["ability","spellKey"]]]]],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n                "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["ability"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n                "],["append",["helper",["ability-description"],null,[["ability","isOverride"],[["get",["ability"]],true]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["block",["each"],[["get",["abilityOverride"]]],null,0]],"locals":["abilityOverride"]},{"statements":[["block",["each"],[["get",["spellbookOverride"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["ability_",["unknown",["ability","spellKey"]]]]],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n        "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["ability"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n        "],["append",["helper",["ability-description"],null,[["ability","isOverride"],[["get",["ability"]],["get",["ability","hasOverride"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["open-element","lol-uikit-section-controller",[]],["dynamic-attr","selected-item",["concat",[["unknown",["activeAbility"]]]]],["static-attr","class","cdp-abilities-section-controller"],["static-attr","animation","crossfade"],["flush-element"],["text","\\n"],["block",["each"],[["get",["champion","spells"]]],null,3],["block",["if"],[["get",["spellbookOverride"]]],null,2],["text","\\n    "],["open-element","lol-uikit-section",[]],["static-attr","section-id","ability_p"],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n        "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["champion","passive"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n        "],["append",["helper",["ability-description"],null,[["ability"],[["get",["champion","passive"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n  "],["append",["helper",["ability-picker"],null,[["changeAbility","abilitiesSectionShown"],[["helper",["action"],[["get",[null]],"changeAbility"],null],["get",["abilitiesSectionShown"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "wM5c8sP+",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\root\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["champion","spells"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["ability_",["unknown",["ability","spellKey"]]]]],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n                "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["ability"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n                "],["append",["helper",["ability-description"],null,[["ability","isOverride"],[["get",["ability"]],true]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["block",["each"],[["get",["abilityOverride"]]],null,0]],"locals":["abilityOverride"]},{"statements":[["block",["each"],[["get",["spellbookOverride"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["ability_",["unknown",["ability","spellKey"]]]]],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n        "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["ability"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n        "],["append",["helper",["ability-description"],null,[["ability","isOverride"],[["get",["ability"]],["get",["ability","hasOverride"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["open-element","lol-uikit-section-controller",[]],["dynamic-attr","selected-item",["concat",[["unknown",["activeAbility"]]]]],["static-attr","class","cdp-abilities-section-controller"],["static-attr","animation","crossfade"],["flush-element"],["text","\\n"],["block",["each"],[["get",["champion","spells"]]],null,3],["block",["if"],[["get",["spellbookOverride"]]],null,2],["text","\\n    "],["open-element","lol-uikit-section",[]],["static-attr","section-id","ability_p"],["static-attr","class","cdp-ability-section-container"],["flush-element"],["text","\\n        "],["append",["helper",["ability-video"],null,[["ability","videoPreloadDone"],[["get",["champion","passive"]],["helper",["action"],[["get",[null]],"videoPreloadDone"],null]]]],false],["text","\\n        "],["append",["helper",["ability-description"],null,[["ability"],[["get",["champion","passive"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n  "],["append",["helper",["ability-picker"],null,[["changeAbility","abilitiesSectionShown"],[["helper",["action"],[["get",[null]],"changeAbility"],null],["get",["abilitiesSectionShown"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2760,7 +2760,7 @@
                             o = this.get("abilities"),
                             i = this.getOverridesForSpellbook(t, n),
                             s = e.substring(0, 1);
-                        i.findBy("spellKey", e).set("active", !0), o.findBy("spellKey", s).set("active", !0), this.startVideo(e)
+                        i.findBy("spellKey", e).set("active", !0), i.findBy("spellKey", e).set("preload", "auto"), o.findBy("spellKey", s).set("active", !0), this.startVideo(e)
                     }
                 }
             })
@@ -2770,8 +2770,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "J/qjlc1Y",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","spellbook-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","spellbook"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["abilitiesPickerState"]]," ability ability-passive ",["helper",["if"],[["get",["champion","passive","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["champion","passive","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbility","p"],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["champion","passive","active"]]],null,4],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["tra","cdp_ability_key_passive"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n"],["block",["each"],[["get",["abilities"]]],null,3],["text","    "],["close-element"],["text","\\n\\n\\n"],["block",["if"],[["get",["spellbookOverride"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ability ability-",["unknown",["abilityOverride","spellKey"]]," ",["helper",["if"],[["get",["abilityOverride","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["abilityOverride","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbilityOverride",["get",["abilityOverride","spellKey"]]],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["abilityOverride","spellKeyTra"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["abilityOverride"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","spellbookOverride"],["flush-element"],["text","\\n"],["block",["each"],[["get",["spellbookOverride"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","ability-video-progress"],["dynamic-attr","style",["concat",["width:",["unknown",["videoProgress"]],"%"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ability ability-",["unknown",["ability","spellKey"]]," ",["helper",["if"],[["get",["ability","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["ability","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbility",["get",["ability","spellKey"]]],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["ability","active"]]],null,2],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["ability","spellKeyTra"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","ability-video-progress"],["dynamic-attr","style",["concat",["width:",["unknown",["videoProgress"]],"%"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "BHvyALk2",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-picker\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","spellbook-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","spellbook"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["abilitiesPickerState"]]," ability ability-passive ",["helper",["if"],[["get",["champion","passive","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["champion","passive","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbility","p"],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["champion","passive","active"]]],null,4],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["tra","cdp_ability_key_passive"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n"],["block",["each"],[["get",["abilities"]]],null,3],["text","    "],["close-element"],["text","\\n\\n\\n"],["block",["if"],[["get",["spellbookOverride"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ability ability-",["unknown",["abilityOverride","spellKey"]]," ",["helper",["if"],[["get",["abilityOverride","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["abilityOverride","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbilityOverride",["get",["abilityOverride","spellKey"]]],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["abilityOverride","spellKeyTra"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["abilityOverride"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","spellbookOverride"],["flush-element"],["text","\\n"],["block",["each"],[["get",["spellbookOverride"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","ability-video-progress"],["dynamic-attr","style",["concat",["width:",["unknown",["videoProgress"]],"%"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ability ability-",["unknown",["ability","spellKey"]]," ",["helper",["if"],[["get",["ability","active"]],"active"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-icon-wrapper"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","ability-icon"],["dynamic-attr","src",["concat",[["unknown",["ability","abilityIconPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectAbility",["get",["ability","spellKey"]]],null],null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["ability","active"]]],null,2],["text","\\n            "],["open-element","div",[]],["static-attr","class","ability-key"],["flush-element"],["append",["unknown",["ability","spellKeyTra"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["ability"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","ability-video-progress"],["dynamic-attr","style",["concat",["width:",["unknown",["videoProgress"]],"%"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2826,8 +2826,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "jkMa3a4e",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["ability","abilityVideoPath"]]],null,1,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["champion-backdrop"]],false],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","cdp-ability-video"],["flush-element"],["text","\\n  "],["open-element","video",[]],["dynamic-attr","class",["concat",["ability-video-",["helper",["if"],[["get",["ability","spellKey"]],["get",["ability","spellKey"]],"p"],null]]]],["dynamic-attr","preload",["concat",[["unknown",["preloadVideo"]]]]],["dynamic-attr","src",["concat",[["unknown",["abilityVideoBasePath"]],["unknown",["ability","abilityVideoPath"]]]]],["dynamic-attr","poster",["concat",[["unknown",["abilityVideoBasePath"]],["unknown",["ability","abilityVideoImagePath"]]]]],["static-attr","width","100%"],["static-attr","height","100%"],["dynamic-attr","volume",["unknown",["audioVolume"]],null],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "xYjacMDl",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-video\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["ability","abilityVideoPath"]]],null,1,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["champion-backdrop"]],false],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","cdp-ability-video"],["flush-element"],["text","\\n  "],["open-element","video",[]],["dynamic-attr","class",["concat",["ability-video-",["helper",["if"],[["get",["ability","spellKey"]],["get",["ability","spellKey"]],"p"],null]]]],["dynamic-attr","preload",["concat",[["unknown",["preloadVideo"]]]]],["dynamic-attr","src",["concat",[["unknown",["abilityVideoBasePath"]],["unknown",["ability","abilityVideoPath"]]]]],["dynamic-attr","poster",["concat",[["unknown",["abilityVideoBasePath"]],["unknown",["ability","abilityVideoImagePath"]]]]],["static-attr","width","100%"],["static-attr","height","100%"],["dynamic-attr","volume",["unknown",["audioVolume"]],null],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2998,8 +2998,8 @@
                         c = 32,
                         u = 64,
                         p = 128,
-                        m = 256,
-                        d = 1 / 0,
+                        d = 256,
+                        m = 1 / 0,
                         f = 9007199254740991,
                         h = NaN,
                         _ = 4294967295,
@@ -3012,7 +3012,7 @@
                             ["flip", 512],
                             ["partial", c],
                             ["partialRight", u],
-                            ["rearg", m]
+                            ["rearg", d]
                         ],
                         v = "[object Arguments]",
                         y = "[object Array]",
@@ -3027,8 +3027,8 @@
                         O = "[object Promise]",
                         I = "[object RegExp]",
                         L = "[object Set]",
-                        R = "[object String]",
-                        P = "[object Symbol]",
+                        P = "[object String]",
+                        R = "[object Symbol]",
                         A = "[object WeakMap]",
                         N = "[object ArrayBuffer]",
                         D = "[object DataView]",
@@ -3062,8 +3062,8 @@
                         ce = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
                         ue = /\{\n\/\* \[wrapped with (.+)\] \*/,
                         pe = /,? & /,
-                        me = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,
-                        de = /\\(\\)?/g,
+                        de = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,
+                        me = /\\(\\)?/g,
                         fe = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,
                         he = /\w*$/,
                         _e = /^[-+]0x[0-9a-f]+$/i,
@@ -3081,8 +3081,8 @@
                         Oe = "A-Z\\xc0-\\xd6\\xd8-\\xde",
                         Ie = "\\ufe0e\\ufe0f",
                         Le = "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",
-                        Re = "['’]",
-                        Pe = "[" + xe + "]",
+                        Pe = "['’]",
+                        Re = "[" + xe + "]",
                         Ae = "[" + Le + "]",
                         Ne = "[" + we + "]",
                         De = "\\d+",
@@ -3103,8 +3103,8 @@
                         Qe = "[" + Ie + "]?",
                         Xe = Qe + Ye + ("(?:" + Ke + "(?:" + [Ve, Be, He].join("|") + ")" + Qe + Ye + ")*"),
                         Ze = "(?:" + [Me, Be, He].join("|") + ")" + Xe,
-                        Je = "(?:" + [Ve + Ne + "?", Ne, Be, He, Pe].join("|") + ")",
-                        et = RegExp(Re, "g"),
+                        Je = "(?:" + [Ve + Ne + "?", Ne, Be, He, Re].join("|") + ")",
+                        et = RegExp(Pe, "g"),
                         tt = RegExp(Ne, "g"),
                         nt = RegExp(Ue + "(?=" + Ue + ")|" + Je + Xe, "g"),
                         ot = RegExp([We + "?" + je + "+" + Ge + "(?=" + [Ae, We, "$"].join("|") + ")", $e + "+" + ze + "(?=" + [Ae, We + qe, "$"].join("|") + ")", We + "?" + qe + "+" + Ge, We + "+" + ze, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", De, Ze].join("|"), "g"),
@@ -3113,9 +3113,9 @@
                         at = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"],
                         rt = -1,
                         lt = {};
-                    lt[M] = lt[j] = lt[F] = lt[U] = lt[V] = lt[B] = lt[H] = lt[W] = lt[K] = !0, lt[v] = lt[y] = lt[N] = lt[b] = lt[D] = lt[E] = lt[k] = lt[S] = lt[w] = lt[T] = lt[C] = lt[I] = lt[L] = lt[R] = lt[A] = !1;
+                    lt[M] = lt[j] = lt[F] = lt[U] = lt[V] = lt[B] = lt[H] = lt[W] = lt[K] = !0, lt[v] = lt[y] = lt[N] = lt[b] = lt[D] = lt[E] = lt[k] = lt[S] = lt[w] = lt[T] = lt[C] = lt[I] = lt[L] = lt[P] = lt[A] = !1;
                     var ct = {};
-                    ct[v] = ct[y] = ct[N] = ct[D] = ct[b] = ct[E] = ct[M] = ct[j] = ct[F] = ct[U] = ct[V] = ct[w] = ct[T] = ct[C] = ct[I] = ct[L] = ct[R] = ct[P] = ct[B] = ct[H] = ct[W] = ct[K] = !0, ct[k] = ct[S] = ct[A] = !1;
+                    ct[v] = ct[y] = ct[N] = ct[D] = ct[b] = ct[E] = ct[M] = ct[j] = ct[F] = ct[U] = ct[V] = ct[w] = ct[T] = ct[C] = ct[I] = ct[L] = ct[P] = ct[R] = ct[B] = ct[H] = ct[W] = ct[K] = !0, ct[k] = ct[S] = ct[A] = !1;
                     var ut = {
                             "\\": "\\",
                             "'": "'",
@@ -3125,14 +3125,14 @@
                             "\u2029": "u2029"
                         },
                         pt = parseFloat,
-                        mt = parseInt,
-                        dt = "object" == typeof n.g && n.g && n.g.Object === Object && n.g,
+                        dt = parseInt,
+                        mt = "object" == typeof n.g && n.g && n.g.Object === Object && n.g,
                         ft = "object" == typeof self && self && self.Object === Object && self,
-                        ht = dt || ft || Function("return this")(),
+                        ht = mt || ft || Function("return this")(),
                         _t = t && !t.nodeType && t,
                         gt = _t && e && !e.nodeType && e,
                         vt = gt && gt.exports === _t,
-                        yt = vt && dt.process,
+                        yt = vt && mt.process,
                         bt = function() {
                             try {
                                 var e = gt && gt.require && gt.require("util").types;
@@ -3178,13 +3178,13 @@
                         return e
                     }
 
-                    function Rt(e, t) {
+                    function Pt(e, t) {
                         for (var n = -1, o = null == e ? 0 : e.length; ++n < o;)
                             if (!t(e[n], n, e)) return !1;
                         return !0
                     }
 
-                    function Pt(e, t) {
+                    function Rt(e, t) {
                         for (var n = -1, o = null == e ? 0 : e.length, i = 0, s = []; ++n < o;) {
                             var a = e[n];
                             t(a, n, e) && (s[i++] = a)
@@ -3560,7 +3560,7 @@
                         return "__proto__" == t ? i : e[t]
                     }
 
-                    function mn(e) {
+                    function dn(e) {
                         var t = -1,
                             n = Array(e.size);
                         return e.forEach((function(e) {
@@ -3568,7 +3568,7 @@
                         })), n
                     }
 
-                    function dn(e) {
+                    function mn(e) {
                         var t = -1,
                             n = Array(e.size);
                         return e.forEach((function(e) {
@@ -3607,8 +3607,8 @@
                             Oe = t.Object,
                             Ie = t.RegExp,
                             Le = t.String,
-                            Re = t.TypeError,
-                            Pe = o.prototype,
+                            Pe = t.TypeError,
+                            Re = o.prototype,
                             Ae = Te.prototype,
                             Ne = Oe.prototype,
                             De = t["__core-js_shared__"],
@@ -3627,40 +3627,40 @@
                             ze = cn(Oe.getPrototypeOf, Oe),
                             Ye = Oe.create,
                             Qe = Ne.propertyIsEnumerable,
-                            Xe = Pe.splice,
+                            Xe = Re.splice,
                             Ze = qe ? qe.isConcatSpreadable : i,
                             Je = qe ? qe.iterator : i,
                             nt = qe ? qe.toStringTag : i,
                             it = function() {
                                 try {
-                                    var e = ds(Oe, "defineProperty");
+                                    var e = ms(Oe, "defineProperty");
                                     return e({}, "", {}), e
                                 } catch (e) {}
                             }(),
                             ut = t.clearTimeout !== ht.clearTimeout && t.clearTimeout,
-                            dt = xe && xe.now !== ht.Date.now && xe.now,
+                            mt = xe && xe.now !== ht.Date.now && xe.now,
                             ft = t.setTimeout !== ht.setTimeout && t.setTimeout,
                             _t = Ce.ceil,
                             gt = Ce.floor,
                             yt = Oe.getOwnPropertySymbols,
                             bt = Ke ? Ke.isBuffer : i,
                             Vt = t.isFinite,
-                            zt = Pe.join,
+                            zt = Re.join,
                             vn = cn(Oe.keys, Oe),
                             yn = Ce.max,
                             bn = Ce.min,
                             En = xe.now,
                             kn = t.parseInt,
                             Sn = Ce.random,
-                            xn = Pe.reverse,
-                            wn = ds(t, "DataView"),
-                            Tn = ds(t, "Map"),
-                            Cn = ds(t, "Promise"),
-                            On = ds(t, "Set"),
-                            In = ds(t, "WeakMap"),
-                            Ln = ds(Oe, "create"),
-                            Rn = In && new In,
-                            Pn = {},
+                            xn = Re.reverse,
+                            wn = ms(t, "DataView"),
+                            Tn = ms(t, "Map"),
+                            Cn = ms(t, "Promise"),
+                            On = ms(t, "Set"),
+                            In = ms(t, "WeakMap"),
+                            Ln = ms(Oe, "create"),
+                            Pn = In && new In,
+                            Rn = {},
                             An = Fs(wn),
                             Nn = Fs(Tn),
                             Dn = Fs(Cn),
@@ -3754,11 +3754,11 @@
                         }
 
                         function Jn(e, t) {
-                            return Ds(Ri(e), lo(t, 0, e.length))
+                            return Ds(Pi(e), lo(t, 0, e.length))
                         }
 
                         function eo(e) {
-                            return Ds(Ri(e))
+                            return Ds(Pi(e))
                         }
 
                         function to(e, t, n) {
@@ -3783,7 +3783,7 @@
                         }
 
                         function so(e, t) {
-                            return e && Pi(t, Rr(t), e)
+                            return e && Ri(t, Pr(t), e)
                         }
 
                         function ao(e, t, n) {
@@ -3817,21 +3817,21 @@
                                             n = new e.constructor(t);
                                         t && "string" == typeof e[0] && je.call(e, "index") && (n.index = e.index, n.input = e.input);
                                         return n
-                                    }(e), !l) return Ri(e, r)
+                                    }(e), !l) return Pi(e, r)
                             } else {
-                                var m = _s(e),
-                                    d = m == S || m == x;
+                                var d = _s(e),
+                                    m = d == S || d == x;
                                 if (za(e)) return wi(e, l);
-                                if (m == C || m == v || d && !s) {
-                                    if (r = c || d ? {} : vs(e), !l) return c ? function(e, t) {
-                                        return Pi(e, hs(e), t)
+                                if (d == C || d == v || m && !s) {
+                                    if (r = c || m ? {} : vs(e), !l) return c ? function(e, t) {
+                                        return Ri(e, hs(e), t)
                                     }(e, function(e, t) {
-                                        return e && Pi(t, Pr(t), e)
+                                        return e && Ri(t, Rr(t), e)
                                     }(r, e)) : function(e, t) {
-                                        return Pi(e, fs(e), t)
+                                        return Ri(e, fs(e), t)
                                     }(e, so(r, e))
                                 } else {
-                                    if (!ct[m]) return s ? e : {};
+                                    if (!ct[d]) return s ? e : {};
                                     r = function(e, t, n) {
                                         var o = e.constructor;
                                         switch (t) {
@@ -3858,7 +3858,7 @@
                                             case w:
                                                 return new o;
                                             case T:
-                                            case R:
+                                            case P:
                                                 return new o(e);
                                             case I:
                                                 return function(e) {
@@ -3867,11 +3867,11 @@
                                                 }(e);
                                             case L:
                                                 return new o;
-                                            case P:
+                                            case R:
                                                 return i = e, Un ? Oe(Un.call(i)) : {}
                                         }
                                         var i
-                                    }(e, m, l)
+                                    }(e, d, l)
                                 }
                             }
                             a || (a = new Qn);
@@ -3883,7 +3883,7 @@
                             if (nr(e)) return e.forEach((function(o, i) {
                                 r.set(i, co(o, t, n, i, e, a))
                             })), r;
-                            var h = p ? i : (u ? c ? as : ss : c ? Pr : Rr)(e);
+                            var h = p ? i : (u ? c ? as : ss : c ? Rr : Pr)(e);
                             return It(h || e, (function(o, i) {
                                 h && (o = e[i = o]), no(r, i, co(o, t, n, i, e, a))
                             })), r
@@ -3902,8 +3902,8 @@
                         }
 
                         function po(e, t, n) {
-                            if ("function" != typeof e) throw new Re(s);
-                            return Rs((function() {
+                            if ("function" != typeof e) throw new Pe(s);
+                            return Ps((function() {
                                 e.apply(i, n)
                             }), t)
                         }
@@ -3921,8 +3921,8 @@
                                 var u = e[i],
                                     p = null == n ? u : n(u);
                                 if (u = o || 0 !== u ? u : 0, a && p == p) {
-                                    for (var m = c; m--;)
-                                        if (t[m] === p) continue e;
+                                    for (var d = c; d--;)
+                                        if (t[d] === p) continue e;
                                     l.push(u)
                                 } else s(t, p, o) || l.push(u)
                             }
@@ -4050,15 +4050,15 @@
                             Eo = Mi(!0);
 
                         function ko(e, t) {
-                            return e && bo(e, t, Rr)
+                            return e && bo(e, t, Pr)
                         }
 
                         function So(e, t) {
-                            return e && Eo(e, t, Rr)
+                            return e && Eo(e, t, Pr)
                         }
 
                         function xo(e, t) {
-                            return Pt(t, (function(t) {
+                            return Rt(t, (function(t) {
                                 return Xa(e[t])
                             }))
                         }
@@ -4101,16 +4101,16 @@
                             return null != e && t in Oe(e)
                         }
 
-                        function Ro(e, t, n) {
+                        function Po(e, t, n) {
                             for (var s = n ? Nt : At, a = e[0].length, r = e.length, l = r, c = o(r), u = 1 / 0, p = []; l--;) {
-                                var m = e[l];
-                                l && t && (m = Dt(m, Zt(t))), u = bn(m.length, u), c[l] = !n && (t || a >= 120 && m.length >= 120) ? new Yn(l && m) : i
+                                var d = e[l];
+                                l && t && (d = Dt(d, Zt(t))), u = bn(d.length, u), c[l] = !n && (t || a >= 120 && d.length >= 120) ? new Yn(l && d) : i
                             }
-                            m = e[0];
-                            var d = -1,
+                            d = e[0];
+                            var m = -1,
                                 f = c[0];
-                            e: for (; ++d < a && p.length < u;) {
-                                var h = m[d],
+                            e: for (; ++m < a && p.length < u;) {
+                                var h = d[m],
                                     _ = t ? t(h) : h;
                                 if (h = n || 0 !== h ? h : 0, !(f ? en(f, _) : s(p, _, n))) {
                                     for (l = r; --l;) {
@@ -4123,7 +4123,7 @@
                             return p
                         }
 
-                        function Po(e, t, n) {
+                        function Ro(e, t, n) {
                             var o = null == (e = Is(e, t = Ei(t, e))) ? e : e[js(Qs(t))];
                             return null == o ? i : Ct(o, e, n)
                         }
@@ -4139,13 +4139,13 @@
                                     c = r ? y : _s(e),
                                     u = l ? y : _s(t),
                                     p = (c = c == v ? C : c) == C,
-                                    m = (u = u == v ? C : u) == C,
-                                    d = c == u;
-                                if (d && za(e)) {
+                                    d = (u = u == v ? C : u) == C,
+                                    m = c == u;
+                                if (m && za(e)) {
                                     if (!za(t)) return !1;
                                     r = !0, p = !1
                                 }
-                                if (d && !p) return a || (a = new Qn), r || cr(e) ? os(e, t, n, o, s, a) : function(e, t, n, o, i, s, a) {
+                                if (m && !p) return a || (a = new Qn), r || cr(e) ? os(e, t, n, o, s, a) : function(e, t, n, o, i, s, a) {
                                     switch (n) {
                                         case D:
                                             if (e.byteLength != t.byteLength || e.byteOffset != t.byteOffset) return !1;
@@ -4159,33 +4159,33 @@
                                         case k:
                                             return e.name == t.name && e.message == t.message;
                                         case I:
-                                        case R:
+                                        case P:
                                             return e == t + "";
                                         case w:
                                             var r = ln;
                                         case L:
                                             var l = 1 & o;
-                                            if (r || (r = mn), e.size != t.size && !l) return !1;
+                                            if (r || (r = dn), e.size != t.size && !l) return !1;
                                             var c = a.get(e);
                                             if (c) return c == t;
                                             o |= 2, a.set(e, t);
                                             var u = os(r(e), r(t), o, i, s, a);
                                             return a.delete(e), u;
-                                        case P:
+                                        case R:
                                             if (Un) return Un.call(e) == Un.call(t)
                                     }
                                     return !1
                                 }(e, t, c, n, o, s, a);
                                 if (!(1 & n)) {
                                     var f = p && je.call(e, "__wrapped__"),
-                                        h = m && je.call(t, "__wrapped__");
+                                        h = d && je.call(t, "__wrapped__");
                                     if (f || h) {
                                         var _ = f ? e.value() : e,
                                             g = h ? t.value() : t;
                                         return a || (a = new Qn), s(_, g, n, o, a)
                                     }
                                 }
-                                if (!d) return !1;
+                                if (!m) return !1;
                                 return a || (a = new Qn),
                                     function(e, t, n, o, s, a) {
                                         var r = 1 & n,
@@ -4194,25 +4194,25 @@
                                             u = ss(t),
                                             p = u.length;
                                         if (c != p && !r) return !1;
-                                        var m = c;
-                                        for (; m--;) {
-                                            var d = l[m];
-                                            if (!(r ? d in t : je.call(t, d))) return !1
+                                        var d = c;
+                                        for (; d--;) {
+                                            var m = l[d];
+                                            if (!(r ? m in t : je.call(t, m))) return !1
                                         }
                                         var f = a.get(e);
                                         if (f && a.get(t)) return f == t;
                                         var h = !0;
                                         a.set(e, t), a.set(t, e);
                                         var _ = r;
-                                        for (; ++m < c;) {
-                                            var g = e[d = l[m]],
-                                                v = t[d];
-                                            if (o) var y = r ? o(v, g, d, t, e, a) : o(g, v, d, e, t, a);
+                                        for (; ++d < c;) {
+                                            var g = e[m = l[d]],
+                                                v = t[m];
+                                            if (o) var y = r ? o(v, g, m, t, e, a) : o(g, v, m, e, t, a);
                                             if (!(y === i ? g === v || s(g, v, n, o, a) : y)) {
                                                 h = !1;
                                                 break
                                             }
-                                            _ || (_ = "constructor" == d)
+                                            _ || (_ = "constructor" == m)
                                         }
                                         if (h && !_) {
                                             var b = e.constructor,
@@ -4240,9 +4240,9 @@
                                 if (r && l[2]) {
                                     if (u === i && !(c in e)) return !1
                                 } else {
-                                    var m = new Qn;
-                                    if (o) var d = o(u, p, c, e, t, m);
-                                    if (!(d === i ? No(p, u, 3, o, m) : d)) return !1
+                                    var d = new Qn;
+                                    if (o) var m = o(u, p, c, e, t, d);
+                                    if (!(m === i ? No(p, u, 3, o, d) : m)) return !1
                                 }
                             }
                             return !0
@@ -4254,7 +4254,7 @@
                         }
 
                         function jo(e) {
-                            return "function" == typeof e ? e : null == e ? ol : "object" == typeof e ? Ka(e) ? Wo(e[0], e[1]) : Ho(e) : ml(e)
+                            return "function" == typeof e ? e : null == e ? ol : "object" == typeof e ? Ka(e) ? Wo(e[0], e[1]) : Ho(e) : dl(e)
                         }
 
                         function Fo(e) {
@@ -4290,7 +4290,7 @@
                         }
 
                         function Ho(e) {
-                            var t = ms(e);
+                            var t = ds(e);
                             return 1 == t.length && t[0][2] ? Cs(t[0][0], t[0][1]) : function(n) {
                                 return n === e || Do(n, e, t)
                             }
@@ -4312,21 +4312,21 @@
                                             u = r.get(c);
                                         if (u) return void to(e, n, u);
                                         var p = a ? a(l, c, n + "", e, t, r) : i,
-                                            m = p === i;
-                                        if (m) {
-                                            var d = Ka(c),
-                                                f = !d && za(c),
-                                                h = !d && !f && cr(c);
-                                            p = c, d || f || h ? Ka(l) ? p = l : Ga(l) ? p = Ri(l) : f ? (m = !1, p = wi(c, !0)) : h ? (m = !1, p = Ci(c, !0)) : p = [] : ir(c) || Wa(c) ? (p = l, Wa(l) ? p = gr(l) : (!er(l) || o && Xa(l)) && (p = vs(c))) : m = !1
+                                            d = p === i;
+                                        if (d) {
+                                            var m = Ka(c),
+                                                f = !m && za(c),
+                                                h = !m && !f && cr(c);
+                                            p = c, m || f || h ? Ka(l) ? p = l : Ga(l) ? p = Pi(l) : f ? (d = !1, p = wi(c, !0)) : h ? (d = !1, p = Ci(c, !0)) : p = [] : ir(c) || Wa(c) ? (p = l, Wa(l) ? p = gr(l) : (!er(l) || o && Xa(l)) && (p = vs(c))) : d = !1
                                         }
-                                        m && (r.set(c, p), s(p, c, o, a, r), r.delete(c));
+                                        d && (r.set(c, p), s(p, c, o, a, r), r.delete(c));
                                         to(e, n, p)
                                     }(e, t, r, n, Ko, o, s);
                                 else {
                                     var l = o ? o(pn(e, r), a, r + "", e, t, s) : i;
                                     l === i && (l = a), to(e, r, l)
                                 }
-                            }), Pr)
+                            }), Rr)
                         }
 
                         function qo(e, t) {
@@ -4381,7 +4381,7 @@
                                 s = -1,
                                 a = t.length,
                                 r = e;
-                            for (e === t && (t = Ri(t)), n && (r = Dt(e, Zt(n))); ++s < a;)
+                            for (e === t && (t = Pi(t)), n && (r = Dt(e, Zt(n))); ++s < a;)
                                 for (var l = 0, c = t[s], u = n ? n(c) : c;
                                     (l = i(r, u, l, o)) > -1;) r !== e && Xe.call(r, l, 1), Xe.call(e, l, 1);
                             return e
@@ -4392,7 +4392,7 @@
                                 var i = t[n];
                                 if (n == o || i !== s) {
                                     var s = i;
-                                    bs(i) ? Xe.call(e, i, 1) : di(e, i)
+                                    bs(i) ? Xe.call(e, i, 1) : mi(e, i)
                                 }
                             }
                             return e
@@ -4412,7 +4412,7 @@
                         }
 
                         function Zo(e, t) {
-                            return Ps(Os(e, t, ol), e + "")
+                            return Rs(Os(e, t, ol), e + "")
                         }
 
                         function Jo(e) {
@@ -4437,8 +4437,8 @@
                             }
                             return e
                         }
-                        var ni = Rn ? function(e, t) {
-                                return Rn.set(e, t), e
+                        var ni = Pn ? function(e, t) {
+                                return Pn.set(e, t), e
                             } : ol,
                             oi = it ? function(e, t) {
                                 return it(e, "toString", {
@@ -4486,13 +4486,13 @@
                             t = n(t);
                             for (var s = 0, a = null == e ? 0 : e.length, r = t != t, l = null === t, c = lr(t), u = t === i; s < a;) {
                                 var p = gt((s + a) / 2),
-                                    m = n(e[p]),
-                                    d = m !== i,
-                                    f = null === m,
-                                    h = m == m,
-                                    _ = lr(m);
+                                    d = n(e[p]),
+                                    m = d !== i,
+                                    f = null === d,
+                                    h = d == d,
+                                    _ = lr(d);
                                 if (r) var g = o || h;
-                                else g = u ? h && (o || d) : l ? h && d && (o || !f) : c ? h && d && !f && (o || !_) : !f && !_ && (o ? m <= t : m < t);
+                                else g = u ? h && (o || m) : l ? h && m && (o || !f) : c ? h && m && !f && (o || !_) : !f && !_ && (o ? d <= t : d < t);
                                 g ? s = p + 1 : a = p
                             }
                             return bn(a, 4294967294)
@@ -4522,7 +4522,7 @@
                             return "0" == t && 1 / e == -1 / 0 ? "-0" : t
                         }
 
-                        function mi(e, t, n) {
+                        function di(e, t, n) {
                             var o = -1,
                                 i = At,
                                 s = e.length,
@@ -4532,22 +4532,22 @@
                             if (n) a = !1, i = Nt;
                             else if (s >= 200) {
                                 var c = t ? null : Xi(e);
-                                if (c) return mn(c);
+                                if (c) return dn(c);
                                 a = !1, i = en, l = new Yn
                             } else l = t ? [] : r;
                             e: for (; ++o < s;) {
                                 var u = e[o],
                                     p = t ? t(u) : u;
                                 if (u = n || 0 !== u ? u : 0, a && p == p) {
-                                    for (var m = l.length; m--;)
-                                        if (l[m] === p) continue e;
+                                    for (var d = l.length; d--;)
+                                        if (l[d] === p) continue e;
                                     t && l.push(p), r.push(u)
                                 } else i(l, p, n) || (l !== r && l.push(p), r.push(u))
                             }
                             return r
                         }
 
-                        function di(e, t) {
+                        function mi(e, t) {
                             return null == (e = Is(e, t = Ei(t, e))) || delete e[js(Qs(t))]
                         }
 
@@ -4570,10 +4570,10 @@
 
                         function gi(e, t, n) {
                             var i = e.length;
-                            if (i < 2) return i ? mi(e[0]) : [];
+                            if (i < 2) return i ? di(e[0]) : [];
                             for (var s = -1, a = o(i); ++s < i;)
                                 for (var r = e[s], l = -1; ++l < i;) l != s && (a[s] = mo(a[s] || r, e[l], t, n));
-                            return mi(yo(a, 1), t, n)
+                            return di(yo(a, 1), t, n)
                         }
 
                         function vi(e, t, n) {
@@ -4639,27 +4639,27 @@
                         }
 
                         function Ii(e, t, n, i) {
-                            for (var s = -1, a = e.length, r = n.length, l = -1, c = t.length, u = yn(a - r, 0), p = o(c + u), m = !i; ++l < c;) p[l] = t[l];
-                            for (; ++s < r;)(m || s < a) && (p[n[s]] = e[s]);
+                            for (var s = -1, a = e.length, r = n.length, l = -1, c = t.length, u = yn(a - r, 0), p = o(c + u), d = !i; ++l < c;) p[l] = t[l];
+                            for (; ++s < r;)(d || s < a) && (p[n[s]] = e[s]);
                             for (; u--;) p[l++] = e[s++];
                             return p
                         }
 
                         function Li(e, t, n, i) {
-                            for (var s = -1, a = e.length, r = -1, l = n.length, c = -1, u = t.length, p = yn(a - l, 0), m = o(p + u), d = !i; ++s < p;) m[s] = e[s];
-                            for (var f = s; ++c < u;) m[f + c] = t[c];
-                            for (; ++r < l;)(d || s < a) && (m[f + n[r]] = e[s++]);
-                            return m
+                            for (var s = -1, a = e.length, r = -1, l = n.length, c = -1, u = t.length, p = yn(a - l, 0), d = o(p + u), m = !i; ++s < p;) d[s] = e[s];
+                            for (var f = s; ++c < u;) d[f + c] = t[c];
+                            for (; ++r < l;)(m || s < a) && (d[f + n[r]] = e[s++]);
+                            return d
                         }
 
-                        function Ri(e, t) {
+                        function Pi(e, t) {
                             var n = -1,
                                 i = e.length;
                             for (t || (t = o(i)); ++n < i;) t[n] = e[n];
                             return t
                         }
 
-                        function Pi(e, t, n, o) {
+                        function Ri(e, t, n, o) {
                             var s = !n;
                             n || (n = {});
                             for (var a = -1, r = t.length; ++a < r;) {
@@ -4759,7 +4759,7 @@
                                 var s = Oe(t);
                                 if (!$a(t)) {
                                     var a = us(n, 3);
-                                    t = Rr(t), n = function(e) {
+                                    t = Pr(t), n = function(e) {
                                         return a(s[e], e, s)
                                     }
                                 }
@@ -4775,7 +4775,7 @@
                                     a = Kn.prototype.thru;
                                 for (e && t.reverse(); o--;) {
                                     var r = t[o];
-                                    if ("function" != typeof r) throw new Re(s);
+                                    if ("function" != typeof r) throw new Pe(s);
                                     if (a && !l && "wrapper" == ls(r)) var l = new Kn([], !0)
                                 }
                                 for (o = l ? o : n; ++o < n;) {
@@ -4793,8 +4793,8 @@
                             }))
                         }
 
-                        function Hi(e, t, n, s, a, r, l, c, u, m) {
-                            var d = t & p,
+                        function Hi(e, t, n, s, a, r, l, c, u, d) {
+                            var m = t & p,
                                 f = 1 & t,
                                 h = 2 & t,
                                 _ = 24 & t,
@@ -4807,22 +4807,22 @@
                                         for (var n = e.length, o = 0; n--;) e[n] === t && ++o;
                                         return o
                                     }(b, k);
-                                if (s && (b = Ii(b, s, a, _)), r && (b = Li(b, r, l, _)), y -= S, _ && y < m) {
+                                if (s && (b = Ii(b, s, a, _)), r && (b = Li(b, r, l, _)), y -= S, _ && y < d) {
                                     var x = un(b, k);
-                                    return Yi(e, t, Hi, p.placeholder, n, b, x, c, u, m - y)
+                                    return Yi(e, t, Hi, p.placeholder, n, b, x, c, u, d - y)
                                 }
                                 var w = f ? n : this,
                                     T = h ? w[e] : e;
                                 return y = b.length, c ? b = function(e, t) {
                                     var n = e.length,
                                         o = bn(t.length, n),
-                                        s = Ri(e);
+                                        s = Pi(e);
                                     for (; o--;) {
                                         var a = t[o];
                                         e[o] = bs(a, n) ? s[a] : i
                                     }
                                     return e
-                                }(b, c) : g && y > 1 && b.reverse(), d && u < y && (b.length = u), this && this !== ht && this instanceof p && (T = v || Ui(T)), T.apply(w, b)
+                                }(b, c) : g && y > 1 && b.reverse(), m && u < y && (b.length = u), this && this !== ht && this instanceof p && (T = v || Ui(T)), T.apply(w, b)
                             }
                         }
 
@@ -4868,11 +4868,11 @@
 
                         function Gi(e) {
                             return function(t, n, s) {
-                                return s && "number" != typeof s && Es(t, n, s) && (n = s = i), t = dr(t), n === i ? (n = t, t = 0) : n = dr(n),
+                                return s && "number" != typeof s && Es(t, n, s) && (n = s = i), t = mr(t), n === i ? (n = t, t = 0) : n = mr(n),
                                     function(e, t, n, i) {
                                         for (var s = -1, a = yn(_t((t - e) / (n || 1)), 0), r = o(a); a--;) r[i ? a : ++s] = e, e += n;
                                         return r
-                                    }(t, n, s = s === i ? t < n ? 1 : -1 : dr(s), e)
+                                    }(t, n, s = s === i ? t < n ? 1 : -1 : mr(s), e)
                             }
                         }
 
@@ -4882,10 +4882,10 @@
                             }
                         }
 
-                        function Yi(e, t, n, o, s, a, r, l, p, m) {
-                            var d = 8 & t;
-                            t |= d ? c : u, 4 & (t &= ~(d ? u : c)) || (t &= -4);
-                            var f = [e, t, s, d ? a : i, d ? r : i, d ? i : a, d ? i : r, l, p, m],
+                        function Yi(e, t, n, o, s, a, r, l, p, d) {
+                            var m = 8 & t;
+                            t |= m ? c : u, 4 & (t &= ~(m ? u : c)) || (t &= -4);
+                            var f = [e, t, s, m ? a : i, m ? r : i, m ? i : a, m ? i : r, l, p, d],
                                 h = n.apply(i, f);
                             return Ss(e) && Ls(h, f), h.placeholder = o, As(h, e, t)
                         }
@@ -4900,14 +4900,14 @@
                                 return t(e)
                             }
                         }
-                        var Xi = On && 1 / mn(new On([, -0]))[1] == d ? function(e) {
+                        var Xi = On && 1 / dn(new On([, -0]))[1] == m ? function(e) {
                             return new On(e)
                         } : ll;
 
                         function Zi(e) {
                             return function(t) {
                                 var n = _s(t);
-                                return n == w ? ln(t) : n == L ? dn(t) : function(e, t) {
+                                return n == w ? ln(t) : n == L ? mn(t) : function(e, t) {
                                     return Dt(t, (function(t) {
                                         return [t, e[t]]
                                     }))
@@ -4915,23 +4915,23 @@
                             }
                         }
 
-                        function Ji(e, t, n, a, d, f, h, _) {
+                        function Ji(e, t, n, a, m, f, h, _) {
                             var g = 2 & t;
-                            if (!g && "function" != typeof e) throw new Re(s);
+                            if (!g && "function" != typeof e) throw new Pe(s);
                             var v = a ? a.length : 0;
-                            if (v || (t &= -97, a = d = i), h = h === i ? h : yn(fr(h), 0), _ = _ === i ? _ : fr(_), v -= d ? d.length : 0, t & u) {
+                            if (v || (t &= -97, a = m = i), h = h === i ? h : yn(fr(h), 0), _ = _ === i ? _ : fr(_), v -= m ? m.length : 0, t & u) {
                                 var y = a,
-                                    b = d;
-                                a = d = i
+                                    b = m;
+                                a = m = i
                             }
                             var E = g ? i : rs(e),
-                                k = [e, t, n, a, d, y, b, f, h, _];
+                                k = [e, t, n, a, m, y, b, f, h, _];
                             if (E && function(e, t) {
                                     var n = e[1],
                                         o = t[1],
                                         i = n | o,
                                         s = i < 131,
-                                        a = o == p && 8 == n || o == p && n == m && e[7].length <= t[8] || 384 == o && t[7].length <= t[8] && 8 == n;
+                                        a = o == p && 8 == n || o == p && n == d && e[7].length <= t[8] || 384 == o && t[7].length <= t[8] && 8 == n;
                                     if (!s && !a) return e;
                                     1 & o && (e[2] = t[2], i |= 1 & n ? 0 : 4);
                                     var l = t[3];
@@ -4943,20 +4943,20 @@
                                     o & p && (e[8] = null == e[8] ? t[8] : bn(e[8], t[8]));
                                     null == e[9] && (e[9] = t[9]);
                                     e[0] = t[0], e[1] = i
-                                }(k, E), e = k[0], t = k[1], n = k[2], a = k[3], d = k[4], !(_ = k[9] = k[9] === i ? g ? 0 : e.length : yn(k[9] - v, 0)) && 24 & t && (t &= -25), t && 1 != t) S = 8 == t || t == l ? function(e, t, n) {
+                                }(k, E), e = k[0], t = k[1], n = k[2], a = k[3], m = k[4], !(_ = k[9] = k[9] === i ? g ? 0 : e.length : yn(k[9] - v, 0)) && 24 & t && (t &= -25), t && 1 != t) S = 8 == t || t == l ? function(e, t, n) {
                                 var s = Ui(e);
                                 return function a() {
                                     for (var r = arguments.length, l = o(r), c = r, u = cs(a); c--;) l[c] = arguments[c];
                                     var p = r < 3 && l[0] !== u && l[r - 1] !== u ? [] : un(l, u);
                                     return (r -= p.length) < n ? Yi(e, t, Hi, a.placeholder, i, l, p, i, i, n - r) : Ct(this && this !== ht && this instanceof a ? s : e, this, l)
                                 }
-                            }(e, t, _) : t != c && 33 != t || d.length ? Hi.apply(i, k) : function(e, t, n, i) {
+                            }(e, t, _) : t != c && 33 != t || m.length ? Hi.apply(i, k) : function(e, t, n, i) {
                                 var s = 1 & t,
                                     a = Ui(e);
                                 return function t() {
-                                    for (var r = -1, l = arguments.length, c = -1, u = i.length, p = o(u + l), m = this && this !== ht && this instanceof t ? a : e; ++c < u;) p[c] = i[c];
+                                    for (var r = -1, l = arguments.length, c = -1, u = i.length, p = o(u + l), d = this && this !== ht && this instanceof t ? a : e; ++c < u;) p[c] = i[c];
                                     for (; l--;) p[c++] = arguments[++r];
-                                    return Ct(m, s ? n : this, p)
+                                    return Ct(d, s ? n : this, p)
                                 }
                             }(e, t, n, a);
                             else var S = function(e, t, n) {
@@ -4989,49 +4989,49 @@
                             var u = a.get(e);
                             if (u && a.get(t)) return u == t;
                             var p = -1,
-                                m = !0,
-                                d = 2 & n ? new Yn : i;
+                                d = !0,
+                                m = 2 & n ? new Yn : i;
                             for (a.set(e, t), a.set(t, e); ++p < l;) {
                                 var f = e[p],
                                     h = t[p];
                                 if (o) var _ = r ? o(h, f, p, t, e, a) : o(f, h, p, e, t, a);
                                 if (_ !== i) {
                                     if (_) continue;
-                                    m = !1;
+                                    d = !1;
                                     break
                                 }
-                                if (d) {
+                                if (m) {
                                     if (!Ut(t, (function(e, t) {
-                                            if (!en(d, t) && (f === e || s(f, e, n, o, a))) return d.push(t)
+                                            if (!en(m, t) && (f === e || s(f, e, n, o, a))) return m.push(t)
                                         }))) {
-                                        m = !1;
+                                        d = !1;
                                         break
                                     }
                                 } else if (f !== h && !s(f, h, n, o, a)) {
-                                    m = !1;
+                                    d = !1;
                                     break
                                 }
                             }
-                            return a.delete(e), a.delete(t), m
+                            return a.delete(e), a.delete(t), d
                         }
 
                         function is(e) {
-                            return Ps(Os(e, i, qs), e + "")
+                            return Rs(Os(e, i, qs), e + "")
                         }
 
                         function ss(e) {
-                            return To(e, Rr, fs)
+                            return To(e, Pr, fs)
                         }
 
                         function as(e) {
-                            return To(e, Pr, hs)
+                            return To(e, Rr, hs)
                         }
-                        var rs = Rn ? function(e) {
-                            return Rn.get(e)
+                        var rs = Pn ? function(e) {
+                            return Pn.get(e)
                         } : ll;
 
                         function ls(e) {
-                            for (var t = e.name + "", n = Pn[t], o = je.call(Pn, t) ? n.length : 0; o--;) {
+                            for (var t = e.name + "", n = Rn[t], o = je.call(Rn, t) ? n.length : 0; o--;) {
                                 var i = n[o],
                                     s = i.func;
                                 if (null == s || s == e) return i.name
@@ -5053,8 +5053,8 @@
                             return ("string" == (o = typeof(n = t)) || "number" == o || "symbol" == o || "boolean" == o ? "__proto__" !== n : null === n) ? i["string" == typeof t ? "string" : "hash"] : i.map
                         }
 
-                        function ms(e) {
-                            for (var t = Rr(e), n = t.length; n--;) {
+                        function ds(e) {
+                            for (var t = Pr(e), n = t.length; n--;) {
                                 var o = t[n],
                                     i = e[o];
                                 t[n] = [o, i, Ts(i)]
@@ -5062,14 +5062,14 @@
                             return t
                         }
 
-                        function ds(e, t) {
+                        function ms(e, t) {
                             var n = function(e, t) {
                                 return null == e ? i : e[t]
                             }(e, t);
                             return Mo(n) ? n : i
                         }
                         var fs = yt ? function(e) {
-                                return null == e ? [] : (e = Oe(e), Pt(yt(e), (function(t) {
+                                return null == e ? [] : (e = Oe(e), Rt(yt(e), (function(t) {
                                     return Qe.call(e, t)
                                 })))
                             } : hl,
@@ -5169,14 +5169,14 @@
                             return t.length < 2 ? e : wo(e, si(t, 0, -1))
                         }
                         var Ls = Ns(ni),
-                            Rs = ft || function(e, t) {
+                            Ps = ft || function(e, t) {
                                 return ht.setTimeout(e, t)
                             },
-                            Ps = Ns(oi);
+                            Rs = Ns(oi);
 
                         function As(e, t, n) {
                             var o = t + "";
-                            return Ps(e, function(e, t) {
+                            return Rs(e, function(e, t) {
                                 var n = t.length;
                                 if (!n) return e;
                                 var o = n - 1;
@@ -5225,7 +5225,7 @@
                         }((function(e) {
                             var t = [];
                             return 46 === e.charCodeAt(0) && t.push(""), e.replace(oe, (function(e, n, o, i) {
-                                t.push(o ? i.replace(de, "$1") : n || e)
+                                t.push(o ? i.replace(me, "$1") : n || e)
                             })), t
                         }));
 
@@ -5250,7 +5250,7 @@
                         function Us(e) {
                             if (e instanceof qn) return e.clone();
                             var t = new Kn(e.__wrapped__, e.__chain__);
-                            return t.__actions__ = Ri(e.__actions__), t.__index__ = e.__index__, t.__values__ = e.__values__, t
+                            return t.__actions__ = Pi(e.__actions__), t.__index__ = e.__index__, t.__values__ = e.__values__, t
                         }
                         var Vs = Zo((function(e, t) {
                                 return Ga(e) ? mo(e, yo(t, 1, Ga, !0)) : []
@@ -5287,17 +5287,17 @@
                         }
                         var Gs = Zo((function(e) {
                                 var t = Dt(e, yi);
-                                return t.length && t[0] === e[0] ? Ro(t) : []
+                                return t.length && t[0] === e[0] ? Po(t) : []
                             })),
                             zs = Zo((function(e) {
                                 var t = Qs(e),
                                     n = Dt(e, yi);
-                                return t === Qs(n) ? t = i : n.pop(), n.length && n[0] === e[0] ? Ro(n, us(t, 2)) : []
+                                return t === Qs(n) ? t = i : n.pop(), n.length && n[0] === e[0] ? Po(n, us(t, 2)) : []
                             })),
                             Ys = Zo((function(e) {
                                 var t = Qs(e),
                                     n = Dt(e, yi);
-                                return (t = "function" == typeof t ? t : i) && n.pop(), n.length && n[0] === e[0] ? Ro(n, i, t) : []
+                                return (t = "function" == typeof t ? t : i) && n.pop(), n.length && n[0] === e[0] ? Po(n, i, t) : []
                             }));
 
                         function Qs(e) {
@@ -5321,21 +5321,21 @@
                             return null == e ? e : xn.call(e)
                         }
                         var ta = Zo((function(e) {
-                                return mi(yo(e, 1, Ga, !0))
+                                return di(yo(e, 1, Ga, !0))
                             })),
                             na = Zo((function(e) {
                                 var t = Qs(e);
-                                return Ga(t) && (t = i), mi(yo(e, 1, Ga, !0), us(t, 2))
+                                return Ga(t) && (t = i), di(yo(e, 1, Ga, !0), us(t, 2))
                             })),
                             oa = Zo((function(e) {
                                 var t = Qs(e);
-                                return t = "function" == typeof t ? t : i, mi(yo(e, 1, Ga, !0), i, t)
+                                return t = "function" == typeof t ? t : i, di(yo(e, 1, Ga, !0), i, t)
                             }));
 
                         function ia(e) {
                             if (!e || !e.length) return [];
                             var t = 0;
-                            return e = Pt(e, (function(e) {
+                            return e = Rt(e, (function(e) {
                                 if (Ga(e)) return t = yn(e.length, t), !0
                             })), Xt(t, (function(t) {
                                 return Dt(e, Gt(t))
@@ -5353,15 +5353,15 @@
                                 return Ga(e) ? mo(e, t) : []
                             })),
                             ra = Zo((function(e) {
-                                return gi(Pt(e, Ga))
+                                return gi(Rt(e, Ga))
                             })),
                             la = Zo((function(e) {
                                 var t = Qs(e);
-                                return Ga(t) && (t = i), gi(Pt(e, Ga), us(t, 2))
+                                return Ga(t) && (t = i), gi(Rt(e, Ga), us(t, 2))
                             })),
                             ca = Zo((function(e) {
                                 var t = Qs(e);
-                                return t = "function" == typeof t ? t : i, gi(Pt(e, Ga), i, t)
+                                return t = "function" == typeof t ? t : i, gi(Rt(e, Ga), i, t)
                             })),
                             ua = Zo(ia);
                         var pa = Zo((function(e) {
@@ -5370,12 +5370,12 @@
                             return n = "function" == typeof n ? (e.pop(), n) : i, sa(e, n)
                         }));
 
-                        function ma(e) {
+                        function da(e) {
                             var t = Bn(e);
                             return t.__chain__ = !0, t
                         }
 
-                        function da(e, t) {
+                        function ma(e, t) {
                             return t(e)
                         }
                         var fa = is((function(e) {
@@ -5386,7 +5386,7 @@
                                     return ro(t, e)
                                 };
                             return !(t > 1 || this.__actions__.length) && o instanceof qn && bs(n) ? ((o = o.slice(n, +n + (t ? 1 : 0))).__actions__.push({
-                                func: da,
+                                func: ma,
                                 args: [s],
                                 thisArg: i
                             }), new Kn(o, this.__chain__).thru((function(e) {
@@ -5414,7 +5414,7 @@
                                     s = "function" == typeof t,
                                     a = $a(e) ? o(e.length) : [];
                                 return fo(e, (function(e) {
-                                    a[++i] = s ? Ct(t, e, n) : Po(e, t, n)
+                                    a[++i] = s ? Ct(t, e, n) : Ro(e, t, n)
                                 })), a
                             })),
                             ka = Ai((function(e, t, n) {
@@ -5437,7 +5437,7 @@
                                 var n = t.length;
                                 return n > 1 && Es(e, t[0], t[1]) ? t = [] : n > 2 && Es(t[0], t[1], t[2]) && (t = [t[0]]), $o(e, yo(t, 1), [])
                             })),
-                            Ta = dt || function() {
+                            Ta = mt || function() {
                                 return ht.Date.now()
                             };
 
@@ -5447,7 +5447,7 @@
 
                         function Oa(e, t) {
                             var n;
-                            if ("function" != typeof t) throw new Re(s);
+                            if ("function" != typeof t) throw new Pe(s);
                             return e = fr(e),
                                 function() {
                                     return --e > 0 && (n = t.apply(this, arguments)), e <= 1 && (t = i), n
@@ -5470,12 +5470,12 @@
                                 return Ji(t, o, e, n, i)
                             }));
 
-                        function Ra(e, t, n) {
+                        function Pa(e, t, n) {
                             var o, a, r, l, c, u, p = 0,
-                                m = !1,
                                 d = !1,
+                                m = !1,
                                 f = !0;
-                            if ("function" != typeof e) throw new Re(s);
+                            if ("function" != typeof e) throw new Pe(s);
 
                             function h(t) {
                                 var n = o,
@@ -5485,15 +5485,15 @@
 
                             function _(e) {
                                 var n = e - u;
-                                return u === i || n >= t || n < 0 || d && e - p >= r
+                                return u === i || n >= t || n < 0 || m && e - p >= r
                             }
 
                             function g() {
                                 var e = Ta();
                                 if (_(e)) return v(e);
-                                c = Rs(g, function(e) {
+                                c = Ps(g, function(e) {
                                     var n = t - (e - u);
-                                    return d ? bn(n, r - (e - p)) : n
+                                    return m ? bn(n, r - (e - p)) : n
                                 }(e))
                             }
 
@@ -5506,19 +5506,19 @@
                                     n = _(e);
                                 if (o = arguments, a = this, u = e, n) {
                                     if (c === i) return function(e) {
-                                        return p = e, c = Rs(g, t), m ? h(e) : l
+                                        return p = e, c = Ps(g, t), d ? h(e) : l
                                     }(u);
-                                    if (d) return c = Rs(g, t), h(u)
+                                    if (m) return c = Ps(g, t), h(u)
                                 }
-                                return c === i && (c = Rs(g, t)), l
+                                return c === i && (c = Ps(g, t)), l
                             }
-                            return t = _r(t) || 0, er(n) && (m = !!n.leading, r = (d = "maxWait" in n) ? yn(_r(n.maxWait) || 0, t) : r, f = "trailing" in n ? !!n.trailing : f), y.cancel = function() {
+                            return t = _r(t) || 0, er(n) && (d = !!n.leading, r = (m = "maxWait" in n) ? yn(_r(n.maxWait) || 0, t) : r, f = "trailing" in n ? !!n.trailing : f), y.cancel = function() {
                                 c !== i && xi(c), p = 0, o = u = a = c = i
                             }, y.flush = function() {
                                 return c === i ? l : v(Ta())
                             }, y
                         }
-                        var Pa = Zo((function(e, t) {
+                        var Ra = Zo((function(e, t) {
                                 return po(e, 1, t)
                             })),
                             Aa = Zo((function(e, t, n) {
@@ -5526,7 +5526,7 @@
                             }));
 
                         function Na(e, t) {
-                            if ("function" != typeof e || null != t && "function" != typeof t) throw new Re(s);
+                            if ("function" != typeof e || null != t && "function" != typeof t) throw new Pe(s);
                             var n = function() {
                                 var o = arguments,
                                     i = t ? t.apply(this, o) : o[0],
@@ -5539,7 +5539,7 @@
                         }
 
                         function Da(e) {
-                            if ("function" != typeof e) throw new Re(s);
+                            if ("function" != typeof e) throw new Pe(s);
                             return function() {
                                 var t = arguments;
                                 switch (t.length) {
@@ -5572,7 +5572,7 @@
                                 return Ji(e, u, i, t, n)
                             })),
                             Ua = is((function(e, t) {
-                                return Ji(e, m, i, i, i, t)
+                                return Ji(e, d, i, i, i, t)
                             }));
 
                         function Va(e, t) {
@@ -5655,11 +5655,11 @@
                         };
 
                         function rr(e) {
-                            return "string" == typeof e || !Ka(e) && tr(e) && Co(e) == R
+                            return "string" == typeof e || !Ka(e) && tr(e) && Co(e) == P
                         }
 
                         function lr(e) {
-                            return "symbol" == typeof e || tr(e) && Co(e) == P
+                            return "symbol" == typeof e || tr(e) && Co(e) == R
                         }
                         var cr = Tt ? Zt(Tt) : function(e) {
                             return tr(e) && Ja(e.length) && !!lt[Co(e)]
@@ -5669,23 +5669,23 @@
                                 return e <= t
                             }));
 
-                        function mr(e) {
+                        function dr(e) {
                             if (!e) return [];
-                            if ($a(e)) return rr(e) ? hn(e) : Ri(e);
+                            if ($a(e)) return rr(e) ? hn(e) : Pi(e);
                             if (Je && e[Je]) return function(e) {
                                 for (var t, n = []; !(t = e.next()).done;) n.push(t.value);
                                 return n
                             }(e[Je]());
                             var t = _s(e);
-                            return (t == w ? ln : t == L ? mn : Vr)(e)
+                            return (t == w ? ln : t == L ? dn : Vr)(e)
                         }
 
-                        function dr(e) {
-                            return e ? (e = _r(e)) === d || e === -1 / 0 ? 17976931348623157e292 * (e < 0 ? -1 : 1) : e == e ? e : 0 : 0 === e ? e : 0
+                        function mr(e) {
+                            return e ? (e = _r(e)) === m || e === -1 / 0 ? 17976931348623157e292 * (e < 0 ? -1 : 1) : e == e ? e : 0 : 0 === e ? e : 0
                         }
 
                         function fr(e) {
-                            var t = dr(e),
+                            var t = mr(e),
                                 n = t % 1;
                             return t == t ? n ? t - n : t : 0
                         }
@@ -5704,29 +5704,29 @@
                             if ("string" != typeof e) return 0 === e ? e : +e;
                             e = e.replace(ae, "");
                             var n = ge.test(e);
-                            return n || ye.test(e) ? mt(e.slice(2), n ? 2 : 8) : _e.test(e) ? h : +e
+                            return n || ye.test(e) ? dt(e.slice(2), n ? 2 : 8) : _e.test(e) ? h : +e
                         }
 
                         function gr(e) {
-                            return Pi(e, Pr(e))
+                            return Ri(e, Rr(e))
                         }
 
                         function vr(e) {
                             return null == e ? "" : pi(e)
                         }
                         var yr = Ni((function(e, t) {
-                                if (ws(t) || $a(t)) Pi(t, Rr(t), e);
+                                if (ws(t) || $a(t)) Ri(t, Pr(t), e);
                                 else
                                     for (var n in t) je.call(t, n) && no(e, n, t[n])
                             })),
                             br = Ni((function(e, t) {
-                                Pi(t, Pr(t), e)
+                                Ri(t, Rr(t), e)
                             })),
                             Er = Ni((function(e, t, n, o) {
-                                Pi(t, Pr(t), e, o)
+                                Ri(t, Rr(t), e, o)
                             })),
                             kr = Ni((function(e, t, n, o) {
-                                Pi(t, Rr(t), e, o)
+                                Ri(t, Pr(t), e, o)
                             })),
                             Sr = is(ro);
                         var xr = Zo((function(e, t) {
@@ -5735,7 +5735,7 @@
                                     o = t.length,
                                     s = o > 2 ? t[2] : i;
                                 for (s && Es(t[0], t[1], s) && (o = 1); ++n < o;)
-                                    for (var a = t[n], r = Pr(a), l = -1, c = r.length; ++l < c;) {
+                                    for (var a = t[n], r = Rr(a), l = -1, c = r.length; ++l < c;) {
                                         var u = r[l],
                                             p = e[u];
                                         (p === i || Va(p, Ne[u]) && !je.call(e, u)) && (e[u] = a[u])
@@ -5760,13 +5760,13 @@
                             Ir = Wi((function(e, t, n) {
                                 null != t && "function" != typeof t.toString && (t = Ve.call(t)), je.call(e, t) ? e[t].push(n) : e[t] = [n]
                             }), us),
-                            Lr = Zo(Po);
+                            Lr = Zo(Ro);
 
-                        function Rr(e) {
+                        function Pr(e) {
                             return $a(e) ? Xn(e) : Fo(e)
                         }
 
-                        function Pr(e) {
+                        function Rr(e) {
                             return $a(e) ? Xn(e, !0) : Uo(e)
                         }
                         var Ar = Ni((function(e, t, n) {
@@ -5781,8 +5781,8 @@
                                 var o = !1;
                                 t = Dt(t, (function(t) {
                                     return t = Ei(t, e), o || (o = t.length > 1), t
-                                })), Pi(e, as(e), n), o && (n = co(n, 7, ns));
-                                for (var i = t.length; i--;) di(n, t[i]);
+                                })), Ri(e, as(e), n), o && (n = co(n, 7, ns));
+                                for (var i = t.length; i--;) mi(n, t[i]);
                                 return n
                             }));
                         var Mr = is((function(e, t) {
@@ -5802,11 +5802,11 @@
                                 return t(e, n[0])
                             }))
                         }
-                        var Fr = Zi(Rr),
-                            Ur = Zi(Pr);
+                        var Fr = Zi(Pr),
+                            Ur = Zi(Rr);
 
                         function Vr(e) {
-                            return null == e ? [] : Jt(e, Rr(e))
+                            return null == e ? [] : Jt(e, Pr(e))
                         }
                         var Br = Fi((function(e, t, n) {
                             return t = t.toLowerCase(), e + (n ? Hr(t) : t)
@@ -5843,7 +5843,7 @@
                             }(e) ? function(e) {
                                 return e.match(ot) || []
                             }(e) : function(e) {
-                                return e.match(me) || []
+                                return e.match(de) || []
                             }(e) : e.match(t) || []
                         }
                         var Zr = Zo((function(e, t) {
@@ -5876,19 +5876,19 @@
                         }
                         var sl = Zo((function(e, t) {
                                 return function(n) {
-                                    return Po(n, e, t)
+                                    return Ro(n, e, t)
                                 }
                             })),
                             al = Zo((function(e, t) {
                                 return function(n) {
-                                    return Po(e, n, t)
+                                    return Ro(e, n, t)
                                 }
                             }));
 
                         function rl(e, t, n) {
-                            var o = Rr(t),
+                            var o = Pr(t),
                                 i = xo(t, o);
-                            null != n || er(t) && (i.length || !o.length) || (n = t, t = e, e = this, i = xo(t, Rr(t)));
+                            null != n || er(t) && (i.length || !o.length) || (n = t, t = e, e = this, i = xo(t, Pr(t)));
                             var s = !(er(n) && "chain" in n && !n.chain),
                                 a = Xa(e);
                             return It(i, (function(n) {
@@ -5897,7 +5897,7 @@
                                     var t = this.__chain__;
                                     if (s || t) {
                                         var n = e(this.__wrapped__);
-                                        return (n.__actions__ = Ri(this.__actions__)).push({
+                                        return (n.__actions__ = Pi(this.__actions__)).push({
                                             func: o,
                                             args: arguments,
                                             thisArg: e
@@ -5910,17 +5910,17 @@
 
                         function ll() {}
                         var cl = qi(Dt),
-                            ul = qi(Rt),
+                            ul = qi(Pt),
                             pl = qi(Ut);
 
-                        function ml(e) {
+                        function dl(e) {
                             return ks(e) ? Gt(js(e)) : function(e) {
                                 return function(t) {
                                     return wo(t, e)
                                 }
                             }(e)
                         }
-                        var dl = Gi(),
+                        var ml = Gi(),
                             fl = Gi(!0);
 
                         function hl() {
@@ -5946,7 +5946,7 @@
                                 return e - t
                             }), 0);
                         return Bn.after = function(e, t) {
-                            if ("function" != typeof t) throw new Re(s);
+                            if ("function" != typeof t) throw new Pe(s);
                             return e = fr(e),
                                 function() {
                                     if (--e < 1) return t.apply(this, arguments)
@@ -5955,7 +5955,7 @@
                             if (!arguments.length) return [];
                             var e = arguments[0];
                             return Ka(e) ? e : [e]
-                        }, Bn.chain = ma, Bn.chunk = function(e, t, n) {
+                        }, Bn.chain = da, Bn.chunk = function(e, t, n) {
                             t = (n ? Es(e, t, n) : t === i) ? 1 : yn(fr(t), 0);
                             var s = null == e ? 0 : e.length;
                             if (!s || t < 1) return [];
@@ -5971,12 +5971,12 @@
                             var e = arguments.length;
                             if (!e) return [];
                             for (var t = o(e - 1), n = arguments[0], i = e; i--;) t[i - 1] = arguments[i];
-                            return Mt(Ka(n) ? Ri(n) : [n], yo(t, 1))
+                            return Mt(Ka(n) ? Pi(n) : [n], yo(t, 1))
                         }, Bn.cond = function(e) {
                             var t = null == e ? 0 : e.length,
                                 n = us();
                             return e = t ? Dt(e, (function(e) {
-                                if ("function" != typeof e[1]) throw new Re(s);
+                                if ("function" != typeof e[1]) throw new Pe(s);
                                 return [n(e[0]), e[1]]
                             })) : [], Zo((function(n) {
                                 for (var o = -1; ++o < t;) {
@@ -5986,7 +5986,7 @@
                             }))
                         }, Bn.conforms = function(e) {
                             return function(e) {
-                                var t = Rr(e);
+                                var t = Pr(e);
                                 return function(n) {
                                     return uo(n, e, t)
                                 }
@@ -6000,7 +6000,7 @@
                         }, Bn.curryRight = function e(t, n, o) {
                             var s = Ji(t, l, i, i, i, i, i, n = o ? i : n);
                             return s.placeholder = e.placeholder, s
-                        }, Bn.debounce = Ra, Bn.defaults = xr, Bn.defaultsDeep = wr, Bn.defer = Pa, Bn.delay = Aa, Bn.difference = Vs, Bn.differenceBy = Bs, Bn.differenceWith = Hs, Bn.drop = function(e, t, n) {
+                        }, Bn.debounce = Pa, Bn.defaults = xr, Bn.defaultsDeep = wr, Bn.defer = Ra, Bn.delay = Aa, Bn.difference = Vs, Bn.differenceBy = Bs, Bn.differenceWith = Hs, Bn.drop = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
                             return o ? si(e, (t = n || t === i ? 1 : fr(t)) < 0 ? 0 : t, o) : []
                         }, Bn.dropRight = function(e, t, n) {
@@ -6018,15 +6018,15 @@
                                 return e
                             }(e, t, n, o)) : []
                         }, Bn.filter = function(e, t) {
-                            return (Ka(e) ? Pt : vo)(e, us(t, 3))
+                            return (Ka(e) ? Rt : vo)(e, us(t, 3))
                         }, Bn.flatMap = function(e, t) {
                             return yo(Sa(e, t), 1)
                         }, Bn.flatMapDeep = function(e, t) {
-                            return yo(Sa(e, t), d)
+                            return yo(Sa(e, t), m)
                         }, Bn.flatMapDepth = function(e, t, n) {
                             return n = n === i ? 1 : fr(n), yo(Sa(e, t), n)
                         }, Bn.flatten = qs, Bn.flattenDeep = function(e) {
-                            return (null == e ? 0 : e.length) ? yo(e, d) : []
+                            return (null == e ? 0 : e.length) ? yo(e, m) : []
                         }, Bn.flattenDepth = function(e, t) {
                             return (null == e ? 0 : e.length) ? yo(e, t = t === i ? 1 : fr(t)) : []
                         }, Bn.flip = function(e) {
@@ -6038,12 +6038,12 @@
                             }
                             return o
                         }, Bn.functions = function(e) {
-                            return null == e ? [] : xo(e, Rr(e))
-                        }, Bn.functionsIn = function(e) {
                             return null == e ? [] : xo(e, Pr(e))
+                        }, Bn.functionsIn = function(e) {
+                            return null == e ? [] : xo(e, Rr(e))
                         }, Bn.groupBy = ba, Bn.initial = function(e) {
                             return (null == e ? 0 : e.length) ? si(e, 0, -1) : []
-                        }, Bn.intersection = Gs, Bn.intersectionBy = zs, Bn.intersectionWith = Ys, Bn.invert = Or, Bn.invertBy = Ir, Bn.invokeMap = Ea, Bn.iteratee = il, Bn.keyBy = ka, Bn.keys = Rr, Bn.keysIn = Pr, Bn.map = Sa, Bn.mapKeys = function(e, t) {
+                        }, Bn.intersection = Gs, Bn.intersectionBy = zs, Bn.intersectionWith = Ys, Bn.invert = Or, Bn.invertBy = Ir, Bn.invokeMap = Ea, Bn.iteratee = il, Bn.keyBy = ka, Bn.keys = Pr, Bn.keysIn = Rr, Bn.map = Sa, Bn.mapKeys = function(e, t) {
                             var n = {};
                             return t = us(t, 3), ko(e, (function(e, o, i) {
                                 ao(n, t(e, o, i), e)
@@ -6067,7 +6067,7 @@
                             return Oa(2, e)
                         }, Bn.orderBy = function(e, t, n, o) {
                             return null == e ? [] : (Ka(t) || (t = null == t ? [] : [t]), Ka(n = o ? i : n) || (n = null == n ? [] : [n]), $o(e, t, n))
-                        }, Bn.over = cl, Bn.overArgs = Ma, Bn.overEvery = ul, Bn.overSome = pl, Bn.partial = ja, Bn.partialRight = Fa, Bn.partition = xa, Bn.pick = Mr, Bn.pickBy = jr, Bn.property = ml, Bn.propertyOf = function(e) {
+                        }, Bn.over = cl, Bn.overArgs = Ma, Bn.overEvery = ul, Bn.overSome = pl, Bn.partial = ja, Bn.partialRight = Fa, Bn.partition = xa, Bn.pick = Mr, Bn.pickBy = jr, Bn.property = dl, Bn.propertyOf = function(e) {
                             return function(t) {
                                 return null == e ? i : wo(e, t)
                             }
@@ -6075,8 +6075,8 @@
                             return e && e.length && t && t.length ? zo(e, t, us(n, 2)) : e
                         }, Bn.pullAllWith = function(e, t, n) {
                             return e && e.length && t && t.length ? zo(e, t, i, n) : e
-                        }, Bn.pullAt = Js, Bn.range = dl, Bn.rangeRight = fl, Bn.rearg = Ua, Bn.reject = function(e, t) {
-                            return (Ka(e) ? Pt : vo)(e, Da(us(t, 3)))
+                        }, Bn.pullAt = Js, Bn.range = ml, Bn.rangeRight = fl, Bn.rearg = Ua, Bn.reject = function(e, t) {
+                            return (Ka(e) ? Rt : vo)(e, Da(us(t, 3)))
                         }, Bn.remove = function(e, t) {
                             var n = [];
                             if (!e || !e.length) return n;
@@ -6089,7 +6089,7 @@
                             }
                             return Yo(e, i), n
                         }, Bn.rest = function(e, t) {
-                            if ("function" != typeof e) throw new Re(s);
+                            if ("function" != typeof e) throw new Pe(s);
                             return Zo(e, t = t === i ? t : fr(t))
                         }, Bn.reverse = ea, Bn.sampleSize = function(e, t, n) {
                             return t = (n ? Es(e, t, n) : t === i) ? 1 : fr(t), (Ka(e) ? Jn : ei)(e, t)
@@ -6109,7 +6109,7 @@
                         }, Bn.split = function(e, t, n) {
                             return n && "number" != typeof n && Es(e, t, n) && (t = n = i), (n = n === i ? _ : n >>> 0) ? (e = vr(e)) && ("string" == typeof t || null != t && !sr(t)) && !(t = pi(t)) && rn(e) ? Si(hn(e), 0, n) : e.split(t, n) : []
                         }, Bn.spread = function(e, t) {
-                            if ("function" != typeof e) throw new Re(s);
+                            if ("function" != typeof e) throw new Pe(s);
                             return t = null == t ? 0 : yn(fr(t), 0), Zo((function(n) {
                                 var o = n[t],
                                     i = Si(n, 0, t);
@@ -6132,14 +6132,14 @@
                         }, Bn.throttle = function(e, t, n) {
                             var o = !0,
                                 i = !0;
-                            if ("function" != typeof e) throw new Re(s);
-                            return er(n) && (o = "leading" in n ? !!n.leading : o, i = "trailing" in n ? !!n.trailing : i), Ra(e, t, {
+                            if ("function" != typeof e) throw new Pe(s);
+                            return er(n) && (o = "leading" in n ? !!n.leading : o, i = "trailing" in n ? !!n.trailing : i), Pa(e, t, {
                                 leading: o,
                                 maxWait: t,
                                 trailing: i
                             })
-                        }, Bn.thru = da, Bn.toArray = mr, Bn.toPairs = Fr, Bn.toPairsIn = Ur, Bn.toPath = function(e) {
-                            return Ka(e) ? Dt(e, js) : lr(e) ? [e] : Ri(Ms(vr(e)))
+                        }, Bn.thru = ma, Bn.toArray = dr, Bn.toPairs = Fr, Bn.toPairsIn = Ur, Bn.toPath = function(e) {
+                            return Ka(e) ? Dt(e, js) : lr(e) ? [e] : Pi(Ms(vr(e)))
                         }, Bn.toPlainObject = gr, Bn.transform = function(e, t, n) {
                             var o = Ka(e),
                                 i = o || za(e) || cr(e);
@@ -6153,19 +6153,19 @@
                         }, Bn.unary = function(e) {
                             return Ca(e, 1)
                         }, Bn.union = ta, Bn.unionBy = na, Bn.unionWith = oa, Bn.uniq = function(e) {
-                            return e && e.length ? mi(e) : []
+                            return e && e.length ? di(e) : []
                         }, Bn.uniqBy = function(e, t) {
-                            return e && e.length ? mi(e, us(t, 2)) : []
+                            return e && e.length ? di(e, us(t, 2)) : []
                         }, Bn.uniqWith = function(e, t) {
-                            return t = "function" == typeof t ? t : i, e && e.length ? mi(e, i, t) : []
+                            return t = "function" == typeof t ? t : i, e && e.length ? di(e, i, t) : []
                         }, Bn.unset = function(e, t) {
-                            return null == e || di(e, t)
+                            return null == e || mi(e, t)
                         }, Bn.unzip = ia, Bn.unzipWith = sa, Bn.update = function(e, t, n) {
                             return null == e ? e : fi(e, t, bi(n))
                         }, Bn.updateWith = function(e, t, n, o) {
                             return o = "function" == typeof o ? o : i, null == e ? e : fi(e, t, bi(n), o)
                         }, Bn.values = Vr, Bn.valuesIn = function(e) {
-                            return null == e ? [] : Jt(e, Pr(e))
+                            return null == e ? [] : Jt(e, Rr(e))
                         }, Bn.without = aa, Bn.words = Xr, Bn.wrap = function(e, t) {
                             return ja(bi(t), e)
                         }, Bn.xor = ra, Bn.xorBy = la, Bn.xorWith = ca, Bn.zip = ua, Bn.zipObject = function(e, t) {
@@ -6183,7 +6183,7 @@
                         }, Bn.cloneWith = function(e, t) {
                             return co(e, 4, t = "function" == typeof t ? t : i)
                         }, Bn.conformsTo = function(e, t) {
-                            return null == t || uo(e, t, Rr(t))
+                            return null == t || uo(e, t, Pr(t))
                         }, Bn.deburr = Wr, Bn.defaultTo = function(e, t) {
                             return null == e || e != e ? t : e
                         }, Bn.divide = yl, Bn.endsWith = function(e, t, n) {
@@ -6196,16 +6196,16 @@
                         }, Bn.escapeRegExp = function(e) {
                             return (e = vr(e)) && se.test(e) ? e.replace(ie, "\\$&") : e
                         }, Bn.every = function(e, t, n) {
-                            var o = Ka(e) ? Rt : _o;
+                            var o = Ka(e) ? Pt : _o;
                             return n && Es(e, t, n) && (t = i), o(e, us(t, 3))
                         }, Bn.find = _a, Bn.findIndex = Ws, Bn.findKey = function(e, t) {
                             return Bt(e, us(t, 3), ko)
                         }, Bn.findLast = ga, Bn.findLastIndex = Ks, Bn.findLastKey = function(e, t) {
                             return Bt(e, us(t, 3), So)
                         }, Bn.floor = bl, Bn.forEach = va, Bn.forEachRight = ya, Bn.forIn = function(e, t) {
-                            return null == e ? e : bo(e, us(t, 3), Pr)
+                            return null == e ? e : bo(e, us(t, 3), Rr)
                         }, Bn.forInRight = function(e, t) {
-                            return null == e ? e : Eo(e, us(t, 3), Pr)
+                            return null == e ? e : Eo(e, us(t, 3), Rr)
                         }, Bn.forOwn = function(e, t) {
                             return e && ko(e, us(t, 3))
                         }, Bn.forOwnRight = function(e, t) {
@@ -6222,7 +6222,7 @@
                             var i = null == n ? 0 : fr(n);
                             return i < 0 && (i = yn(o + i, 0)), Wt(e, t, i)
                         }, Bn.inRange = function(e, t, n) {
-                            return t = dr(t), n === i ? (n = t, t = 0) : n = dr(n),
+                            return t = mr(t), n === i ? (n = t, t = 0) : n = mr(n),
                                 function(e, t, n) {
                                     return e >= bn(t, n) && e < yn(t, n)
                                 }(e = _r(e), t, n)
@@ -6247,9 +6247,9 @@
                         }, Bn.isError = Qa, Bn.isFinite = function(e) {
                             return "number" == typeof e && Vt(e)
                         }, Bn.isFunction = Xa, Bn.isInteger = Za, Bn.isLength = Ja, Bn.isMap = nr, Bn.isMatch = function(e, t) {
-                            return e === t || Do(e, t, ms(t))
+                            return e === t || Do(e, t, ds(t))
                         }, Bn.isMatchWith = function(e, t, n) {
-                            return n = "function" == typeof n ? n : i, Do(e, t, ms(t), n)
+                            return n = "function" == typeof n ? n : i, Do(e, t, ds(t), n)
                         }, Bn.isNaN = function(e) {
                             return or(e) && e != +e
                         }, Bn.isNative = function(e) {
@@ -6317,7 +6317,7 @@
                         }, Bn.parseInt = function(e, t, n) {
                             return n || null == t ? t = 0 : t && (t = +t), kn(vr(e).replace(re, ""), t || 0)
                         }, Bn.random = function(e, t, n) {
-                            if (n && "boolean" != typeof n && Es(e, t, n) && (t = n = i), n === i && ("boolean" == typeof t ? (n = t, t = i) : "boolean" == typeof e && (n = e, e = i)), e === i && t === i ? (e = 0, t = 1) : (e = dr(e), t === i ? (t = e, e = 0) : t = dr(t)), e > t) {
+                            if (n && "boolean" != typeof n && Es(e, t, n) && (t = n = i), n === i && ("boolean" == typeof t ? (n = t, t = i) : "boolean" == typeof e && (n = e, e = i)), e === i && t === i ? (e = 0, t = 1) : (e = mr(e), t === i ? (t = e, e = 0) : t = mr(t)), e > t) {
                                 var o = e;
                                 e = t, t = o
                             }
@@ -6389,22 +6389,22 @@
                             var o = Bn.templateSettings;
                             n && Es(e, t, n) && (t = i), e = vr(e), t = Er({}, t, o, es);
                             var s, a, r = Er({}, t.imports, o.imports, es),
-                                l = Rr(r),
+                                l = Pr(r),
                                 c = Jt(r, l),
                                 u = 0,
                                 p = t.interpolate || ke,
-                                m = "__p += '",
-                                d = Ie((t.escape || ke).source + "|" + p.source + "|" + (p === ee ? fe : ke).source + "|" + (t.evaluate || ke).source + "|$", "g"),
+                                d = "__p += '",
+                                m = Ie((t.escape || ke).source + "|" + p.source + "|" + (p === ee ? fe : ke).source + "|" + (t.evaluate || ke).source + "|$", "g"),
                                 f = "//# sourceURL=" + ("sourceURL" in t ? t.sourceURL : "lodash.templateSources[" + ++rt + "]") + "\n";
-                            e.replace(d, (function(t, n, o, i, r, l) {
-                                return o || (o = i), m += e.slice(u, l).replace(Se, an), n && (s = !0, m += "' +\n__e(" + n + ") +\n'"), r && (a = !0, m += "';\n" + r + ";\n__p += '"), o && (m += "' +\n((__t = (" + o + ")) == null ? '' : __t) +\n'"), u = l + t.length, t
-                            })), m += "';\n";
+                            e.replace(m, (function(t, n, o, i, r, l) {
+                                return o || (o = i), d += e.slice(u, l).replace(Se, an), n && (s = !0, d += "' +\n__e(" + n + ") +\n'"), r && (a = !0, d += "';\n" + r + ";\n__p += '"), o && (d += "' +\n((__t = (" + o + ")) == null ? '' : __t) +\n'"), u = l + t.length, t
+                            })), d += "';\n";
                             var h = t.variable;
-                            h || (m = "with (obj) {\n" + m + "\n}\n"), m = (a ? m.replace(q, "") : m).replace($, "$1").replace(G, "$1;"), m = "function(" + (h || "obj") + ") {\n" + (h ? "" : "obj || (obj = {});\n") + "var __t, __p = ''" + (s ? ", __e = _.escape" : "") + (a ? ", __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, '') }\n" : ";\n") + m + "return __p\n}";
+                            h || (d = "with (obj) {\n" + d + "\n}\n"), d = (a ? d.replace(q, "") : d).replace($, "$1").replace(G, "$1;"), d = "function(" + (h || "obj") + ") {\n" + (h ? "" : "obj || (obj = {});\n") + "var __t, __p = ''" + (s ? ", __e = _.escape" : "") + (a ? ", __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, '') }\n" : ";\n") + d + "return __p\n}";
                             var _ = Zr((function() {
-                                return Te(l, f + "return " + m).apply(i, c)
+                                return Te(l, f + "return " + d).apply(i, c)
                             }));
-                            if (_.source = m, Qa(_)) throw _;
+                            if (_.source = d, Qa(_)) throw _;
                             return _
                         }, Bn.times = function(e, t) {
                             if ((e = fr(e)) < 1 || e > f) return [];
@@ -6413,7 +6413,7 @@
                             t = us(t), e -= _;
                             for (var i = Xt(o, t); ++n < e;) t(n);
                             return i
-                        }, Bn.toFinite = dr, Bn.toInteger = fr, Bn.toLength = hr, Bn.toLower = function(e) {
+                        }, Bn.toFinite = mr, Bn.toInteger = fr, Bn.toLength = hr, Bn.toLower = function(e) {
                             return vr(e).toLowerCase()
                         }, Bn.toNumber = _r, Bn.toSafeInteger = function(e) {
                             return e ? lo(fr(e), -9007199254740991, f) : 0 === e ? e : 0
@@ -6455,12 +6455,12 @@
                             if (r && (l += c.length - l), sr(s)) {
                                 if (e.slice(l).search(s)) {
                                     var u, p = c;
-                                    for (s.global || (s = Ie(s.source, vr(he.exec(s)) + "g")), s.lastIndex = 0; u = s.exec(p);) var m = u.index;
-                                    c = c.slice(0, m === i ? l : m)
+                                    for (s.global || (s = Ie(s.source, vr(he.exec(s)) + "g")), s.lastIndex = 0; u = s.exec(p);) var d = u.index;
+                                    c = c.slice(0, d === i ? l : d)
                                 }
                             } else if (e.indexOf(pi(s), l) != l) {
-                                var d = c.lastIndexOf(s);
-                                d > -1 && (c = c.slice(0, d))
+                                var m = c.lastIndexOf(s);
+                                m > -1 && (c = c.slice(0, m))
                             }
                             return c + o
                         }, Bn.unescape = function(e) {
@@ -6513,7 +6513,7 @@
                             return this.reverse().find(e)
                         }, qn.prototype.invokeMap = Zo((function(e, t) {
                             return "function" == typeof e ? new qn(this) : this.map((function(n) {
-                                return Po(n, e, t)
+                                return Ro(n, e, t)
                             }))
                         })), qn.prototype.reject = function(e) {
                             return this.filter(Da(us(e)))
@@ -6538,26 +6538,26 @@
                                     u = l || Ka(t),
                                     p = function(e) {
                                         var t = s.apply(Bn, Mt([e], r));
-                                        return o && m ? t[0] : t
+                                        return o && d ? t[0] : t
                                     };
                                 u && n && "function" == typeof c && 1 != c.length && (l = u = !1);
-                                var m = this.__chain__,
-                                    d = !!this.__actions__.length,
-                                    f = a && !m,
-                                    h = l && !d;
+                                var d = this.__chain__,
+                                    m = !!this.__actions__.length,
+                                    f = a && !d,
+                                    h = l && !m;
                                 if (!a && u) {
                                     t = h ? t : new qn(this);
                                     var _ = e.apply(t, r);
                                     return _.__actions__.push({
-                                        func: da,
+                                        func: ma,
                                         args: [p],
                                         thisArg: i
-                                    }), new Kn(_, m)
+                                    }), new Kn(_, d)
                                 }
                                 return f && h ? e.apply(this, r) : (_ = this.thru(p), f ? o ? _.value()[0] : _.value() : _)
                             })
                         })), It(["pop", "push", "shift", "sort", "splice", "unshift"], (function(e) {
-                            var t = Pe[e],
+                            var t = Re[e],
                                 n = /^(?:push|sort|unshift)$/.test(e) ? "tap" : "thru",
                                 o = /^(?:pop|shift)$/.test(e);
                             Bn.prototype[e] = function() {
@@ -6574,17 +6574,17 @@
                             var n = Bn[t];
                             if (n) {
                                 var o = n.name + "";
-                                (Pn[o] || (Pn[o] = [])).push({
+                                (Rn[o] || (Rn[o] = [])).push({
                                     name: t,
                                     func: n
                                 })
                             }
-                        })), Pn[Hi(i, 2).name] = [{
+                        })), Rn[Hi(i, 2).name] = [{
                             name: "wrapper",
                             func: i
                         }], qn.prototype.clone = function() {
                             var e = new qn(this.__wrapped__);
-                            return e.__actions__ = Ri(this.__actions__), e.__dir__ = this.__dir__, e.__filtered__ = this.__filtered__, e.__iteratees__ = Ri(this.__iteratees__), e.__takeCount__ = this.__takeCount__, e.__views__ = Ri(this.__views__), e
+                            return e.__actions__ = Pi(this.__actions__), e.__dir__ = this.__dir__, e.__filtered__ = this.__filtered__, e.__iteratees__ = Pi(this.__iteratees__), e.__takeCount__ = this.__takeCount__, e.__views__ = Pi(this.__views__), e
                         }, qn.prototype.reverse = function() {
                             if (this.__filtered__) {
                                 var e = new qn(this);
@@ -6628,11 +6628,11 @@
                                 c = o ? r : a - 1,
                                 u = this.__iteratees__,
                                 p = u.length,
-                                m = 0,
-                                d = bn(l, this.__takeCount__);
-                            if (!n || !o && i == l && d == l) return _i(e, this.__actions__);
+                                d = 0,
+                                m = bn(l, this.__takeCount__);
+                            if (!n || !o && i == l && m == l) return _i(e, this.__actions__);
                             var f = [];
-                            e: for (; l-- && m < d;) {
+                            e: for (; l-- && d < m;) {
                                 for (var h = -1, _ = e[c += t]; ++h < p;) {
                                     var g = u[h],
                                         v = g.iteratee,
@@ -6644,15 +6644,15 @@
                                         break e
                                     }
                                 }
-                                f[m++] = _
+                                f[d++] = _
                             }
                             return f
                         }, Bn.prototype.at = fa, Bn.prototype.chain = function() {
-                            return ma(this)
+                            return da(this)
                         }, Bn.prototype.commit = function() {
                             return new Kn(this.value(), this.__chain__)
                         }, Bn.prototype.next = function() {
-                            this.__values__ === i && (this.__values__ = mr(this.value()));
+                            this.__values__ === i && (this.__values__ = dr(this.value()));
                             var e = this.__index__ >= this.__values__.length;
                             return {
                                 done: e,
@@ -6671,7 +6671,7 @@
                             if (e instanceof qn) {
                                 var t = e;
                                 return this.__actions__.length && (t = new qn(this)), (t = t.reverse()).__actions__.push({
-                                    func: da,
+                                    func: ma,
                                     args: [ea],
                                     thisArg: i
                                 }), new Kn(t, this.__chain__)
@@ -6690,8 +6690,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "ttmgtAkf",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-content-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-ability-description-wrapper"],["flush-element"],["text","\\n      "],["open-element","h4",[]],["static-attr","class","cdp-ability-name"],["flush-element"],["append",["unknown",["ability","name"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-ability-info-wrapper"],["flush-element"],["text","\\n"],["text","      "],["close-element"],["text","\\n\\n      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-ability-description"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["text","          "],["open-element","p",[]],["static-attr","class","cdp-ability-dynamic-desc"],["flush-element"],["append",["helper",["sanitize"],[["get",["ability","description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "QlH4Hz9I",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\abilities-section\\\\ability-description\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-content-column"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-ability-description-wrapper"],["flush-element"],["text","\\n      "],["open-element","h4",[]],["static-attr","class","cdp-ability-name"],["flush-element"],["append",["unknown",["ability","name"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-ability-info-wrapper"],["flush-element"],["text","\\n"],["text","      "],["close-element"],["text","\\n\\n      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-ability-description"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["text","          "],["open-element","p",[]],["static-attr","class","cdp-ability-dynamic-desc"],["flush-element"],["append",["helper",["sanitize"],[["get",["ability","description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -6935,8 +6935,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "PdfL6OBw",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["skins"]]],null,22],["text","\\n\\n\\n"],["block",["if"],[["get",["showTieredSkinEventPurchaseButton"]]],null,16,9]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockSkin",["get",["skinInfo"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasable"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["skinOwned"]]],null,3,2]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOwned"]]],null,6,5]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["activeSkinObject","isBase"]]],null,7,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showStoreButton"]]],null,8]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["selectedSkinTier","ownership","owned"]]],null,11,10]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-content"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/skin-viewer/tiered/purchase-pass-icon.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["tra","cdp_actions_purchase_pass"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_pass_purchased"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isTieredSkinEventPurchased"]]],null,14,13]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOn"]]],null,15,12],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["tiered-transformations"],null,[["showcaseComponent","skinTiers"],[["get",[null]],["get",["questSkinTiers"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","class",["concat",["quest-forms ",["helper",["unless"],[["get",["hasQuestForms"]],"hidden"],null]," ",["helper",["if"],[["get",["isTieredSkin"]],"hidden"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"toggleFlyout"],null],null],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","quest-forms"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"toggleFlyout"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","icon tiered"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","theme-features"],["flush-element"],["text","\\n        "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","cdp_theme_features"]],false],["close-element"],["text","\\n        "],["append",["helper",["sanitize"],[["get",["currentSkinDescription"]]],null],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["skin_",["get",["index"]]]]],["static-attr","class","cdp-skin-overlay-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["currentSkinDescription"]]],null,20],["text","    "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","  "],["append",["helper",["uikit-background-switcher"],null,[["src"],[["get",["currentBackgroundPath"]]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-skin-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-section-controller",[]],["dynamic-attr","selected-item",["concat",[["unknown",["activeSkin"]]]]],["static-attr","animation","crossfade"],["static-attr","class","cdp-skins-section-controller"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skins"]]],null,21],["text","  "],["close-element"],["text","\\n\\n  "],["append",["helper",["skins-carousel"],null,[["storeSkinInfo","champion","championSkins","activeSkinIndex","updateActiveSkin"],[["get",["skinInfo"]],["get",["champion"]],["get",["skins"]],["get",["activeSkinIndex"]],["helper",["action"],[["get",[null]],"updateActiveSkin"],null]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","related"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOff"]]],null,19,18],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOn"]]],null,17]],"locals":[]}],"hasPartials":false}',
+                id: "VzM5MwEt",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\root\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["skins"]]],null,22],["text","\\n\\n\\n"],["block",["if"],[["get",["showTieredSkinEventPurchaseButton"]]],null,16,9]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockSkin",["get",["skinInfo"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasable"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["skinOwned"]]],null,3,2]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"unlockChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unlock"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOwned"]]],null,6,5]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["activeSkinObject","isBase"]]],null,7,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showStoreButton"]]],null,8]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_actions_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_store_owned_message"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["selectedSkinTier","ownership","owned"]]],null,11,10]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-content"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/skin-viewer/tiered/purchase-pass-icon.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["tra","cdp_actions_purchase_pass"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cdp-unlock-button"],["static-attr","disabled",""],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cdp_pass_purchased"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isTieredSkinEventPurchased"]]],null,14,13]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","cdp-unlock-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOn"]]],null,15,12],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["tiered-transformations"],null,[["showcaseComponent","skinTiers"],[["get",[null]],["get",["questSkinTiers"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","class",["concat",["quest-forms ",["helper",["unless"],[["get",["hasQuestForms"]],"hidden"],null]," ",["helper",["if"],[["get",["isTieredSkin"]],"hidden"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"toggleFlyout"],null],null],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","quest-forms"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"toggleFlyout"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","icon tiered"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","theme-features"],["flush-element"],["text","\\n        "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","cdp_theme_features"]],false],["close-element"],["text","\\n        "],["append",["helper",["sanitize"],[["get",["currentSkinDescription"]]],null],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-section",[]],["dynamic-attr","section-id",["concat",["skin_",["get",["index"]]]]],["static-attr","class","cdp-skin-overlay-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["currentSkinDescription"]]],null,20],["text","    "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","  "],["append",["helper",["uikit-background-switcher"],null,[["src"],[["get",["currentBackgroundPath"]]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","cdp-skin-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-section-controller",[]],["dynamic-attr","selected-item",["concat",[["unknown",["activeSkin"]]]]],["static-attr","animation","crossfade"],["static-attr","class","cdp-skins-section-controller"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skins"]]],null,21],["text","  "],["close-element"],["text","\\n\\n  "],["append",["helper",["skins-carousel"],null,[["storeSkinInfo","champion","championSkins","activeSkinIndex","updateActiveSkin"],[["get",["skinInfo"]],["get",["champion"]],["get",["skins"]],["get",["activeSkinIndex"]],["helper",["action"],[["get",[null]],"updateActiveSkin"],null]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","related"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOff"]]],null,19,18],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkinWithEventOn"]]],null,17]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -7105,8 +7105,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "T9MOOUQP",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-emblem-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["activeSkinEmblems"]]],null,10],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-skin-name ",["helper",["if"],[["get",["isBaseSkin"]],"base-skin","skin-name"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["activeSkinName"]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skins-carousel"],["flush-element"],["text","\\n"],["block",["if"],[["get",["longCarousel"]]],null,8],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-track-container"],["dynamic-attr","style",["concat",["width:",["unknown",["carouselWidth"]],"px"]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","carousel-track"],["dynamic-attr","style",["concat",["transform: translateX(",["unknown",["initialOffset"]],"px)"]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["leftCarouselBuffer"]]],null,7],["text","\\n"],["block",["each"],[["get",["skins"]]],null,5],["text","\\n"],["block",["each"],[["get",["rightCarouselBuffer"]]],null,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["longCarousel"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skin-selection-indicator"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-left"],["flush-element"],["close-element"],["text","\\n  "],["open-element","ul",[]],["static-attr","class","skin-selection-indicator-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skins"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-right"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-pip ",["helper",["if"],[["get",["skin","isViewed"]],"skin-pip-selected"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinPipClicked",["get",["index"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","    "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","right"],["static-attr","class","next-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"nextSkin"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["buffer-wrapper\\n        ",["helper",["if"],[["get",["skin","ownership","owned"]],"owned"],null],"\\n        ",["helper",["unless"],[["get",["skin","ownership","owned"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-buffer"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","skin-thumbnail-buffer"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"right"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["thumbnail-wrapper\\n        ",["helper",["if"],[["get",["skin","ownership","owned"]],"owned"],null],"\\n        ",["helper",["unless"],[["get",["skin","ownership","owned"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-skin"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-img"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"center"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["buffer-wrapper\\n        ",["helper",["unless"],[["get",["skin","playable"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-buffer"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","skin-thumbnail-buffer"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"left"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,6],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","    "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","left"],["static-attr","class","prev-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"prevSkin"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["block",["each"],[["get",["activeSkinEmblems"]]],null,9]],"locals":[]}],"hasPartials":false}',
+                id: "9H6QdZcJ",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\skins-carousel\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cdp-emblem-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["activeSkinEmblems"]]],null,10],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-skin-name ",["helper",["if"],[["get",["isBaseSkin"]],"base-skin","skin-name"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["activeSkinName"]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skins-carousel"],["flush-element"],["text","\\n"],["block",["if"],[["get",["longCarousel"]]],null,8],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-track-container"],["dynamic-attr","style",["concat",["width:",["unknown",["carouselWidth"]],"px"]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","carousel-track"],["dynamic-attr","style",["concat",["transform: translateX(",["unknown",["initialOffset"]],"px)"]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["leftCarouselBuffer"]]],null,7],["text","\\n"],["block",["each"],[["get",["skins"]]],null,5],["text","\\n"],["block",["each"],[["get",["rightCarouselBuffer"]]],null,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["longCarousel"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skin-selection-indicator"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-left"],["flush-element"],["close-element"],["text","\\n  "],["open-element","ul",[]],["static-attr","class","skin-selection-indicator-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skins"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-right"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-pip ",["helper",["if"],[["get",["skin","isViewed"]],"skin-pip-selected"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinPipClicked",["get",["index"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","    "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","right"],["static-attr","class","next-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"nextSkin"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["buffer-wrapper\\n        ",["helper",["if"],[["get",["skin","ownership","owned"]],"owned"],null],"\\n        ",["helper",["unless"],[["get",["skin","ownership","owned"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-buffer"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","skin-thumbnail-buffer"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"right"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["thumbnail-wrapper\\n        ",["helper",["if"],[["get",["skin","ownership","owned"]],"owned"],null],"\\n        ",["helper",["unless"],[["get",["skin","ownership","owned"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-skin"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-img"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"center"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","cdp-skin-thumbnail-gem-overlay"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["buffer-wrapper\\n        ",["helper",["unless"],[["get",["skin","playable"]],"not-owned"],null],"\\n        ",["unknown",["skin","ftpStyleClassName"]],"\\n        ",["helper",["if"],[["get",["skin","isViewed"]],"active-buffer"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","skin-thumbnail-buffer"],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["skin","customTilePath"]],["get",["skin","customTilePath"]],["get",["skin","tilePath"]]],null],")"]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"skinThumbnailClicked",["get",["index"]],"left"],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["skin","rarityGemPath"]]],null,6],["text","      "],["close-element"],["text","\\n"]],"locals":["skin","index"]},{"statements":[["text","    "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","left"],["static-attr","class","prev-button"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"prevSkin"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["block",["each"],[["get",["activeSkinEmblems"]]],null,9]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -7138,8 +7138,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "cMfDJcvN",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","tiered-transformations__container"],["flush-element"],["text","\\n  "],["open-element","hr",[]],["static-attr","class","tiered-transformations__bar"],["flush-element"],["close-element"],["text","\\n"],["block",["each"],[["get",["skinTiers"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tiered-transformations__item"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["image ",["helper",["if"],[["get",["tier","ownership","owned"]]," obtained"],null]," ",["helper",["if"],[["helper",["eq"],[["get",["selectedSkinIndex"]],["get",["index"]]],null],"selected"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"tierClicked",["get",["index"]]],null],null],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"onMouseEnterTier",["get",["index"]]],null],null],["dynamic-attr","onmouseleave",["helper",["action"],[["get",[null]],"onMouseLeaveTier"],null],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":["tier","index"]}],"hasPartials":false}',
+                id: "0tL7HPRl",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\tiered-transformations\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","tiered-transformations__container"],["flush-element"],["text","\\n  "],["open-element","hr",[]],["static-attr","class","tiered-transformations__bar"],["flush-element"],["close-element"],["text","\\n"],["block",["each"],[["get",["skinTiers"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tiered-transformations__item"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["image ",["helper",["if"],[["get",["tier","ownership","owned"]]," obtained"],null]," ",["helper",["if"],[["helper",["eq"],[["get",["selectedSkinIndex"]],["get",["index"]]],null],"selected"],null]]]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"tierClicked",["get",["index"]]],null],null],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"onMouseEnterTier",["get",["index"]]],null],null],["dynamic-attr","onmouseleave",["helper",["action"],[["get",[null]],"onMouseLeaveTier"],null],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":["tier","index"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -7474,8 +7474,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "QBZVe0py",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","cdp-feature-flyout"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-feature-flyout-content"],["flush-element"],["text","\\n  "],["open-element","h5",[]],["static-attr","class","cdp-feature-flyout-title"],["flush-element"],["append",["unknown",["tra","cdp_statstones_feature_title"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["featuredStatstones"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-item"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setFeatured",["get",["index"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"mouseOver"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-image"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","cdp-feature-flyout-statstone-statue"],["dynamic-attr","src",["unknown",["statstone","imageUrl"]],null],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-featured"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-info"],["flush-element"],["text","\\n        "],["open-element","h5",[]],["static-attr","class","cdp-feature-flyout-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n        "],["open-element","p",[]],["static-attr","class","cdp-feature-flyout-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-slot-numbner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["statstone","index"]}],"hasPartials":false}',
+                id: "B9k8wvLl",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\progression-section\\\\feature-flyout\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","cdp-feature-flyout"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","cdp-feature-flyout-content"],["flush-element"],["text","\\n  "],["open-element","h5",[]],["static-attr","class","cdp-feature-flyout-title"],["flush-element"],["append",["unknown",["tra","cdp_statstones_feature_title"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["featuredStatstones"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-item"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setFeatured",["get",["index"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"mouseOver"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-image"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","cdp-feature-flyout-statstone-statue"],["dynamic-attr","src",["unknown",["statstone","imageUrl"]],null],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-featured"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-info"],["flush-element"],["text","\\n        "],["open-element","h5",[]],["static-attr","class","cdp-feature-flyout-statstone-value"],["flush-element"],["append",["unknown",["statstone","formattedValue"]],false],["close-element"],["text","\\n        "],["open-element","p",[]],["static-attr","class","cdp-feature-flyout-statstone-name"],["flush-element"],["append",["unknown",["statstone","name"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","cdp-feature-flyout-statstone-slot-numbner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["statstone","index"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -7548,8 +7548,8 @@
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
-                id: "iFyiYOrR",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_23\\\\LeagueClientContent_Release\\\\15680\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["quest-forms ",["helper",["if"],[["get",["isTieredSkin"]],"tiered"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinTiers"]]],null,4],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-lock"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-number"],["flush-element"],["append",["helper",["concat-tra"],["cdp_skins_quest_form_stage_",["get",["tier","stage"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["tier","ownership","owned"]]],null,1,0]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-emblem"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["quest-form-tier form-",["get",["index"]],"  ",["helper",["if"],[["helper",["eq"],[["get",["selectedSkinIndex"]],["get",["index"]]],null],"selected"],null]," ",["helper",["if"],[["get",["tier","ownership","owned"]],"unlocked"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"tierClicked",["get",["index"]]],null],null],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","quest-form-tier-name"],["flush-element"],["append",["unknown",["tier","shortName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkin"]]],null,3,2],["text","      "],["close-element"],["text","\\n"]],"locals":["tier","index"]}],"hasPartials":false}',
+                id: "cuOhZnw5",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champion-details\\\\src\\\\app\\\\champion-details\\\\skins-section\\\\quest-forms-popup\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["quest-forms ",["helper",["if"],[["get",["isTieredSkin"]],"tiered"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinTiers"]]],null,4],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-lock"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-number"],["flush-element"],["append",["helper",["concat-tra"],["cdp_skins_quest_form_stage_",["get",["tier","stage"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["tier","ownership","owned"]]],null,1,0]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","quest-form-tier-emblem"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["quest-form-tier form-",["get",["index"]],"  ",["helper",["if"],[["helper",["eq"],[["get",["selectedSkinIndex"]],["get",["index"]]],null],"selected"],null]," ",["helper",["if"],[["get",["tier","ownership","owned"]],"unlocked"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"tierClicked",["get",["index"]]],null],null],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","quest-form-tier-name"],["flush-element"],["append",["unknown",["tier","shortName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isTieredSkin"]]],null,3,2],["text","      "],["close-element"],["text","\\n"]],"locals":["tier","index"]}],"hasPartials":false}',
                 meta: {}
             })
         }],

@@ -3623,7 +3623,7 @@
                     summonerId: n
                 }) {
                     const i = this._api;
-                    return t ? (0, r.batchPlayerNameByPuuid)(e) : e ? e === i.currentSummonerPuuid ? i.getCurrentPlayerName() : i.getDisplayNameByPUUID(e) : n ? i.getDisplayNameBySummonerId(n) : i.getCurrentPlayerName()
+                    return t ? (0, r.batchPlayerNameByPuuid)(i, e) : e ? e === i.currentSummonerPuuid ? i.getCurrentPlayerName() : i.getDisplayNameByPUUID(e) : n ? i.getDisplayNameBySummonerId(n) : i.getCurrentPlayerName()
                 }
                 async _fetchPlayerName(t) {
                     try {
@@ -3674,32 +3674,29 @@
                     }
                 }
             }
-        }, (t, e, n) => {
+        }, (t, e) => {
             "use strict";
             Object.defineProperty(e, "__esModule", {
                 value: !0
-            }), e.batchPlayerNameByPuuid = function(t) {
-                return new Promise(((e, n) => {
-                    clearTimeout(u), a.set(t, [e, n]), u = setTimeout(l, s)
+            }), e.batchPlayerNameByPuuid = function(t, e) {
+                return new Promise(((r, a) => {
+                    clearTimeout(s), i.set(e, [r, a]), s = setTimeout(o, n, t)
                 }))
             };
-            var r, i = (r = n(1)) && r.__esModule ? r : {
-                default: r
-            };
-            const s = 10,
-                o = 200,
-                a = new Map;
-            let u = null;
+            const n = 10,
+                r = 200,
+                i = new Map;
+            let s = null;
 
-            function l() {
-                const t = Array.from(a.keys());
-                for (let e = 0; e < t.length; e += o) {
-                    const n = t.slice(e, e + o);
-                    i.default.playerNames.postAliasesByPUUID(n).then((t => {
+            function o(t) {
+                const e = Array.from(i.keys());
+                for (let n = 0; n < e.length; n += r) {
+                    const s = e.slice(n, n + r);
+                    t.postAliasesByPUUID(s).then((t => {
                         for (const e in t)
-                            if (a.has(e)) {
-                                const [n, r] = a.get(e);
-                                t[e] ? n(t[e]) : r(new Error(`Could not find player ${e}`)), a.delete(e)
+                            if (i.has(e)) {
+                                const [n, r] = i.get(e);
+                                t[e] ? n(t[e]) : r(new Error(`Could not find player ${e}`)), i.delete(e)
                             }
                     }))
                 }
