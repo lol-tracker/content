@@ -91,33 +91,38 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.createRootComponent = a, t.default = function() {
+            }), t.createRootComponent = l, t.default = function() {
                 const e = i.getProvider().get("rcp-fe-lol-l10n").tra().overlay("/fe/lol-l10n/trans.json").overlay("/fe/lol-esports-spectate/trans.json"),
-                    t = o(s, e),
-                    l = r.create({
+                    t = c(o, e),
+                    a = d.create({
                         traService: t
                     });
-                return l.set("sessionActions", n(17).create({
-                    root: l
-                })), c.resolve().then((function() {
-                    return a(l, t)
+                return a.set("sessionActions", n(17).create({
+                    root: a
+                })), s.resolve().then((function() {
+                    return l(a, t)
                 }))
             };
             const i = n(1),
                 {
-                    Ember: s,
-                    EmberL10n: o,
-                    Bluebird: c
-                } = i;
+                    Bluebird: s,
+                    Ember: o,
+                    EmberL10n: c,
+                    SharedComponents: a
+                } = i,
+                {
+                    PlayerNameComponent: r
+                } = a.getSharedEmberComponents();
 
-            function a(e, t) {
+            function l(e, t) {
                 return i.EmberApplicationFactory.create("SpectateRootComponent", e, {
                     SpectateRootComponent: n(4),
-                    SummonerObjectComponent: n(8)
+                    SummonerObjectComponent: n(8),
+                    PlayerNameComponent: r
                 }, t)
             }
-            const l = i.EmberDataBinding({
-                    Ember: s,
+            const m = i.EmberDataBinding({
+                    Ember: o,
                     websocket: i.getProvider().getSocket(),
                     defaultPropertyValue: {},
                     boundProperties: {
@@ -151,10 +156,10 @@
                         }
                     }
                 }),
-                r = s.Object.extend(l, {
-                    summoners: s.computed.union("session.myTeam", "session.theirTeam"),
+                d = o.Object.extend(m, {
+                    summoners: o.computed.union("session.myTeam", "session.theirTeam"),
                     isSpectating: !0,
-                    loggedInPlayer: s.computed("login.summonerId", (function() {
+                    loggedInPlayer: o.computed("login.summonerId", (function() {
                         if (this.get("login.summonerId") && this.get("login.summonerId") > 0) return this.get("login.summonerId")
                     }))
                 })
@@ -246,8 +251,8 @@
         }, (e, t, n) => {
             const i = n(1).Ember;
             e.exports = i.HTMLBars.template({
-                id: "CEJw4qCq",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-object-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","base-color-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","gradient-background-overlay"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["oldBackground"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","background-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["summoner","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","edge-border"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","action-text"],["flush-element"],["append",["unknown",["tra","picking"]],false],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","spells"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summoner","spell1"]]],null,1],["block",["if"],[["get",["summoner","spell2"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n    "],["append",["unknown",["summoner","displayName"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","old-background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["oldBackground"]],")"]]],["flush-element"],["close-element"],["text","\\n    }\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "02Id9ChG",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-object-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","base-color-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","gradient-background-overlay"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["oldBackground"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","background-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["summoner","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","edge-border"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","action-text"],["flush-element"],["append",["unknown",["tra","picking"]],false],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","spells"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summoner","spell1"]]],null,1],["block",["if"],[["get",["summoner","spell2"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n    "],["append",["helper",["player-name"],null,[["format","summonerId","gameName","tagLine"],["short",["get",["summoner","summonerId"]],["get",["summoner","gameName"]],["get",["summoner","tagLine"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","old-background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["oldBackground"]],")"]]],["flush-element"],["close-element"],["text","\\n    }\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -380,8 +385,13 @@
                         if (this._summonerDataBinding || (this._summonerDataBinding = o("/lol-summoner/v1", c)), this.get("summonerId")) {
                             const e = "/summoners/" + this.get("summonerId");
                             this._summonerDataBinding.get(e).then((e => {
-                                const t = e ? e.displayName : void 0;
-                                this.set("displayName", t)
+                                if (e) {
+                                    const {
+                                        gameName: t,
+                                        tagLine: n
+                                    } = e;
+                                    this.set("displayName", t), this.set("gameName", t), this.set("tagLine", n)
+                                }
                             }))
                         }
                     })),
@@ -676,6 +686,7 @@
                     l10n: e => e.get("rcp-fe-lol-l10n"),
                     Lodash: e => e.get("rcp-fe-common-libs").getLodash(4),
                     logger: e => e.get("rcp-fe-common-libs").logging.create(i),
+                    SharedComponents: e => e.get("rcp-fe-lol-shared-components"),
                     socket: e => e.getSocket(),
                     UiKitPlugin: e => e.get("rcp-fe-lol-uikit"),
                     ViewportPlugin: e => e.get("rcp-fe-lol-shared-components").getApi_Viewport()
