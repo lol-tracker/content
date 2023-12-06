@@ -16749,6 +16749,9 @@
           "riotIdTagLine": {
             "type": "string"
           },
+          "setCoreName": {
+            "type": "string"
+          },
           "summonerId": {
             "format": "int64",
             "type": "integer"
@@ -20490,8 +20493,8 @@
       "LolEventShopTokenUpsellLockedType": {
         "enum": [
           "UNASSIGNED",
-          "UNLOCKED",
-          "LOCKED"
+          "LOCKED",
+          "UNLOCKED"
         ],
         "type": "string"
       },
@@ -21231,6 +21234,27 @@
         ],
         "type": "string"
       },
+      "LolGameQueuesOperationalQueueConfig": {
+        "properties": {
+          "isSpectatable": {
+            "type": "boolean"
+          },
+          "isVisibleInClient": {
+            "type": "boolean"
+          },
+          "mutators": {
+            "type": "string"
+          },
+          "queueId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "queueState": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "LolGameQueuesPlatformConfigEnabledMap": {
         "properties": {
           "gameMapId": {
@@ -21286,6 +21310,9 @@
             "type": "boolean"
           },
           "isTeamBuilderManaged": {
+            "type": "boolean"
+          },
+          "isVisible": {
             "type": "boolean"
           },
           "lastToggledOffTime": {
@@ -49818,6 +49845,9 @@
           "description": {
             "type": "string"
           },
+          "eventHubBannerTexture": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -50138,6 +50168,9 @@
             "type": "string"
           },
           "endDate": {
+            "type": "string"
+          },
+          "eventHubBannerTexture": {
             "type": "string"
           },
           "id": {
@@ -56709,7 +56742,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -65309,6 +65342,36 @@
         "tags": [
           "Plugins",
           "Plugin lol-clash"
+        ]
+      }
+    },
+    "/lol-client-config/v3/client-config/operational/{name}": {
+      "get": {
+        "operationId": "GetLolClientConfigV3ClientConfigOperationalByName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-client-config"
         ]
       }
     },
@@ -88889,7 +88952,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "Http2ApiDocsV1",
+        "operationId": "HttpApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -88912,7 +88975,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "HttpApiDeclarationV1",
+        "operationId": "Http2ApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -88950,7 +89013,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
