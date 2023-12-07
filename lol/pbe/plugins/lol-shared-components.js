@@ -1576,7 +1576,8 @@
                 EMOTE: "EMOTE",
                 WARD_SHARD: "WARD_SHARD",
                 MYSTERY_EMOTE: "MYSTERY_EMOTE",
-                CHAMPION_SKIN_CHROMA: "CHAMPION_SKIN_CHROMA"
+                CHAMPION_SKIN_CHROMA: "CHAMPION_SKIN_CHROMA",
+                HEXTECH_KEY_FRAGMENT: "HEXTECH_KEY_FRAGMENT"
             };
             t.REWARD_ASSET_PATHS = {
                 ETERNALS_CAPSULE: "/lol-game-data/assets/ASSETS/Loot/Eternals/capsule.png",
@@ -1585,7 +1586,8 @@
                 HEXTECH_KEY: "/fe/lol-loot/assets/loot_item_icons/material_key.png",
                 MASTERWORK_CHEST: "/lol-game-data/assets/ASSETS/Loot/Masterwork_chest_224.png",
                 WARD_SHARD: "/lol-game-data/assets/ASSETS/Loot/WardSkinIconShard_490x490.png",
-                MYSTERY_EMOTE: "/fe/lol-loot/assets/loot_item_icons/chest_187.png"
+                MYSTERY_EMOTE: "/fe/lol-loot/assets/loot_item_icons/chest_187.png",
+                HEXTECH_KEY_FRAGMENT: "/fe/lol-loot/assets/loot_item_icons/material_key_fragment.png"
             };
 
             function C(e) {
@@ -1602,7 +1604,7 @@
                 value: !0
             }), t.isTftQueueType = o, t.sanitizeCherryRatedTier = r, t.sanitizeDivision = function(e) {
                 const t = e;
-                if ("string" == typeof t) return s.DIVISION_TO_NUMERAL[t];
+                if (Boolean(e) && "string" == typeof t) return s.DIVISION_TO_NUMERAL[t];
                 return a.logger.warning("LeagueTierNames received an unrecognized division", e), t
             }, t.sanitizeLp = function(e) {
                 if ("string" == typeof e && /[^\d]+/.test(e)) return null;
@@ -1612,7 +1614,7 @@
             }, t.sanitizeRatedTier = function(e, t) {
                 return o(t) ? l(e) : r(e)
             }, t.sanitizeTFTRatedTier = l, t.sanitizeTier = function(e) {
-                let t = "string" == typeof e ? e.toUpperCase() : s.TIER_NAME_UNRANKED;
+                let t = Boolean(e) && "string" == typeof e ? e.toUpperCase() : s.TIER_NAME_UNRANKED;
                 t === s.TIER_NAME_NONE && (t = s.TIER_NAME_UNRANKED);
                 if (s.ALL_TIERS.includes(t)) return t;
                 return a.logger.warning("LeagueTierNames received an unrecognized tier", e), s.TIER_NAME_UNRANKED
@@ -8438,7 +8440,7 @@
                 getCountryCallingCode: () => q,
                 getCountryCallingCodeCustom: () => b.getCountryCallingCode,
                 getExampleNumber: () => N,
-                getExtPrefix: () => j,
+                getExtPrefix: () => Y,
                 getNumberType: () => R,
                 getNumberTypeCustom: () => l.default,
                 getPhoneCode: () => K,
@@ -8456,7 +8458,7 @@
                 parsePhoneNumber: () => x,
                 parsePhoneNumberCharacter: () => y.parsePhoneNumberCharacter,
                 parsePhoneNumberFromString: () => T,
-                parseRFC3966: () => Y,
+                parseRFC3966: () => j,
                 searchNumbers: () => V,
                 searchPhoneNumbers: () => M,
                 searchPhoneNumbersCustom: () => p.searchPhoneNumbers
@@ -8576,12 +8578,12 @@
                 return e.push(a), b.isSupportedCountry.apply(this, e)
             }
 
-            function j() {
+            function Y() {
                 var e = Array.prototype.slice.call(arguments);
                 return e.push(a), b.getExtPrefix.apply(this, e)
             }
 
-            function Y() {
+            function j() {
                 var e = Array.prototype.slice.call(arguments);
                 return e.push(a), v.parseRFC3966.apply(this, e)
             }

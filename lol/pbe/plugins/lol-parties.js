@@ -644,6 +644,8 @@
                         !e || this.isDestroying || this.isDestroyed || this.set("platformJson", e)
                     })), u.observe("/v3/client-config/lol.client_settings.queues.use_operational_config", this, (e => {
                         this.isDestroying || this.isDestroyed || this.set("useOperationalConfigs", e)
+                    })), u.observe("/v3/client-config/operational/operational.queue.order", this, (e => {
+                        !e || this.isDestroying || this.isDestroyed || this.set("orderedQueueIds", this._splitQueues(e))
                     }))
                 },
                 platformConfigSingleton: o.default,
@@ -660,6 +662,7 @@
                 useOperationalConfigs: null,
                 availableQueues: {},
                 availableQueueIds: i.Ember.A(),
+                orderedQueueIds: i.Ember.A(),
                 mapsPlatformJson: i.Ember.computed({
                     set: function(e, t) {
                         if (!t || !t.reduce) return;
@@ -791,12 +794,19 @@
                     return o[e] && o[e][a] && o[e][a].queues && (i = o[e][a].queues), this._sortQueuesPlaceDefaultsFirst(i), i
                 },
                 _sortQueuesPlaceDefaultsFirst: function(e) {
-                    const t = this.platformConfigSingleton.get("defaultGameQueues");
+                    const t = this.get("useOperationalConfigs") ? this.get("orderedQueueIds") : this.platformConfigSingleton.get("defaultGameQueues");
                     if (t) return e.sort((function(e, n) {
                         const i = t.indexOf(e),
                             s = t.indexOf(n);
                         return i > -1 ? s > -1 ? i - s : -1 : s > -1 ? 1 : 0
                     }))
+                },
+                _splitQueues: function(e) {
+                    const t = e ? `${e}`.split(",") : [],
+                        n = [];
+                    return t.forEach((e => {
+                        n.push(parseInt(e, 10))
+                    })), i.Ember.A(n)
                 },
                 getDefaultQueueForCategory: function(e) {
                     const t = this.get("availableQueues");
@@ -3610,8 +3620,8 @@
             }
             const v = "/lol-summoner/v1/current-summoner",
                 S = i.default.getProvider().getSocket(),
-                x = i.Navigation.getFullPageModalManager(),
-                E = i.UIKit.getModalManager();
+                E = i.Navigation.getFullPageModalManager(),
+                x = i.UIKit.getModalManager();
             e.exports = class {
                 constructor() {
                     this._currentParty = null, this._currentPlayer = null, this._selected = null, this._application = null, this._lastGameflowPhase = null, this._factoryRegistered = !1, this._restoreNavigationState = null, this._applicationRegisteredPromise = null, this._partyCreatedCallback = null, this._lobbiesObserver = !1, this._gameflowObserver = !1, this._queues = m.default, this._platformConfigSingleton = d.default, this._showingState = r.default.create();
@@ -3743,7 +3753,7 @@
                 _setSelectedAndShowGameSelect(e) {
                     let t;
                     if (e) {
-                        const n = this._platformConfigSingleton.get("defaultGameQueues");
+                        const n = this._queues.get("useOperationalConfigs") ? this._queues.get("orderedQueueIds") : this._platformConfigSingleton.get("defaultGameQueues");
                         t = this._getFirstEligibleQueue(e, n)
                     } else t = this._getLastSelected();
                     t.then((e => {
@@ -3768,7 +3778,7 @@
                 }
                 _getLastSelected() {
                     return this._queueIdIfAlreadyPlayed().then((e => {
-                        const t = this._platformConfigSingleton.get("defaultGameQueues");
+                        const t = this._queues.get("useOperationalConfigs") ? this._queues.get("orderedQueueIds") : this._platformConfigSingleton.get("defaultGameQueues");
                         return e ? (i.logger.trace("Found last-played-queue, checking eligibility...", e), this._getFirstEligibleQueue(e, t)) : this._getFirstEligibleQueue(null, t)
                     }))
                 }
@@ -3861,7 +3871,7 @@
                         u = i.ComponentFactory.getDOMNode(m);
                     let d;
                     if (r) {
-                        d = E.add({
+                        d = x.add({
                             type: "DialogAlert",
                             data: {
                                 contents: u,
@@ -3871,7 +3881,7 @@
                             }
                         }).okPromise
                     } else {
-                        x.open({
+                        E.open({
                             data: {
                                 contents: u
                             }
@@ -3887,7 +3897,7 @@
                     e.tryShow(), this._flexRestrictionModal || (this._flexRestrictionModal = e)
                 }
                 loadQueueEligibilitiesIfDirty() {
-                    const e = this._platformConfigSingleton.get("defaultGameQueues");
+                    const e = this._queues.get("useOperationalConfigs") ? this._queues.get("orderedQueueIds") : this._platformConfigSingleton.get("defaultGameQueues");
                     return this._getFirstEligibleQueue(null, e)
                 }
             }
@@ -5109,8 +5119,8 @@
                         SkinQuestFormModalComponent: S
                     } = s.SharedComponents.getSharedEmberComponents(),
                     {
-                        ChallengeBannerTitleComponent: x,
-                        ChallengeBannerTokenComponent: E,
+                        ChallengeBannerTitleComponent: E,
+                        ChallengeBannerTokenComponent: x,
                         ChallengeBannerTokenContainerComponent: k,
                         ChallengeItemTooltipComponent: C,
                         ChallengeItemFooterComponent: P,
@@ -5218,8 +5228,8 @@
                     GenericButtonComponent: n(369),
                     AnimatedFindMatchButtonComponent: n(373),
                     CherryRatingComponent: n(376),
-                    ChallengeBannerTitleComponent: x,
-                    ChallengeBannerTokenComponent: E,
+                    ChallengeBannerTitleComponent: E,
+                    ChallengeBannerTokenComponent: x,
                     ChallengeBannerTokenContainerComponent: k,
                     ChallengeItemTooltipComponent: C,
                     ChallengeItemFooterComponent: P,
@@ -7808,17 +7818,19 @@
                         n = (e || []).map((e => {
                             const {
                                 championId: t,
-                                positionPreference: n,
-                                skinId: i,
-                                spell1: s,
-                                spell2: o
+                                skinId: n,
+                                positionPreference: i,
+                                perks: s,
+                                spell1: o,
+                                spell2: a
                             } = e;
                             return {
                                 championId: t,
-                                skinId: i,
-                                positionPreference: n,
-                                spell1: s,
-                                spell2: o
+                                skinId: n,
+                                positionPreference: i,
+                                perks: s,
+                                spell1: o,
+                                spell2: a
                             }
                         }));
                     if (!t) return Promise.resolve();
@@ -12766,24 +12778,24 @@
                             }
                 }, s.prototype._analyze = function(e, t, i, s) {
                     var a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S = this.options,
-                        x = !1;
+                        E = !1;
                     if (null != t) {
                         r = [];
-                        var E = 0;
+                        var x = 0;
                         if ("string" == typeof t) {
                             if (a = t.split(S.tokenSeparator), S.verbose && n("---------\nKey:", e), this.options.tokenize) {
                                 for (y = 0; y < this.tokenSearchers.length; y++) {
                                     for (p = this.tokenSearchers[y], S.verbose && n("Pattern:", p.pattern), h = [], f = !1, v = 0; v < a.length; v++) {
                                         g = a[v];
                                         var k = {};
-                                        (b = p.search(g)).isMatch ? (k[g] = b.score, x = !0, f = !0, r.push(b.score)) : (k[g] = 1, this.options.matchAllTokens || r.push(1)), h.push(k)
+                                        (b = p.search(g)).isMatch ? (k[g] = b.score, E = !0, f = !0, r.push(b.score)) : (k[g] = 1, this.options.matchAllTokens || r.push(1)), h.push(k)
                                     }
-                                    f && E++, S.verbose && n("Token scores:", h)
+                                    f && x++, S.verbose && n("Token scores:", h)
                                 }
                                 for (c = r[0], u = r.length, y = 1; y < u; y++) c += r[y];
                                 c /= u, S.verbose && n("Token score average:", c)
                             }
-                            d = this.fullSeacher.search(t), S.verbose && n("Full text score:", d.score), m = d.score, void 0 !== c && (m = (m + c) / 2), S.verbose && n("Score average:", m), _ = !this.options.tokenize || !this.options.matchAllTokens || E >= this.tokenSearchers.length, S.verbose && n("Check Matches", _), (x || d.isMatch) && _ && ((l = this.resultMap[s]) ? l.output.push({
+                            d = this.fullSeacher.search(t), S.verbose && n("Full text score:", d.score), m = d.score, void 0 !== c && (m = (m + c) / 2), S.verbose && n("Score average:", m), _ = !this.options.tokenize || !this.options.matchAllTokens || x >= this.tokenSearchers.length, S.verbose && n("Check Matches", _), (E || d.isMatch) && _ && ((l = this.resultMap[s]) ? l.output.push({
                                 key: e,
                                 score: m,
                                 matchedIndices: d.matchedIndices
@@ -12845,7 +12857,7 @@
                         i = Math.abs(this.options.location - t);
                     return this.options.distance ? n + i / this.options.distance : i ? 1 : n
                 }, a.prototype.search = function(e) {
-                    var t, n, i, s, o, a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S, x, E, k = this.options;
+                    var t, n, i, s, o, a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S, E, x, k = this.options;
                     if (e = k.caseSensitive ? e : e.toLowerCase(), this.pattern === e) return {
                         isMatch: !0,
                         score: 0,
@@ -12855,7 +12867,7 @@
                     };
                     if (this.patternLen > k.maxPatternLength) {
                         if (y = !!(_ = e.match(new RegExp(this.pattern.replace(k.tokenSeparator, "|")))))
-                            for (S = [], t = 0, x = _.length; t < x; t++) E = _[t], S.push([e.indexOf(E), E.length - 1]);
+                            for (S = [], t = 0, E = _.length; t < E; t++) x = _[t], S.push([e.indexOf(x), x.length - 1]);
                         return {
                             isMatch: y,
                             score: y ? .5 : 1,
@@ -16529,14 +16541,14 @@
                 rankedQueueLeaguePointsText: i.Ember.computed("rankedQueue.leaguePoints", "tra.ready", (function() {
                     return this.formatLeaguePointsText(this.get("rankedQueue.leaguePoints"))
                 })),
-                pastRankTierUnranked: i.Ember.computed.equal("rankedData.highestPreviousSeasonAchievedTier", "NONE"),
+                pastRankTierUnranked: i.Ember.computed.equal("rankedData.highestPreviousSeasonEndTier", "NONE"),
                 hasPastRank: i.Ember.computed.not("pastRankTierUnranked"),
-                pastMiniRegaliaIconPath: i.Ember.computed("rankedData.highestPreviousSeasonAchievedTier", (function() {
-                    const e = this.get("rankedData.highestPreviousSeasonAchievedTier");
+                pastMiniRegaliaIconPath: i.Ember.computed("rankedData.highestPreviousSeasonEndTier", (function() {
+                    const e = this.get("rankedData.highestPreviousSeasonEndTier");
                     return i.LeagueTierNames.getRankedMiniRegaliaSvg(e)
                 })),
-                pastRankedTierText: i.Ember.computed("rankedData.highestPreviousSeasonAchievedTier", "tra.ready", (function() {
-                    const e = this.get("rankedData.highestPreviousSeasonAchievedTier");
+                pastRankedTierText: i.Ember.computed("rankedData.highestPreviousSeasonEndTier", "tra.ready", (function() {
+                    const e = this.get("rankedData.highestPreviousSeasonEndTier");
                     return this.get("tra.formatString")("parties_past_rank", {
                         rankedTier: i.LeagueTierNames.getTierName(e)
                     })
@@ -17021,8 +17033,8 @@
                     const e = (this.get("defaultSelections") || []).map((e => ({
                         ...e
                     })));
-                    return Promise.allSettled(e.map((e => this.getLastUsedQuickPlayPageForChampPosition(e.championId, e.positionPreference)))).then((t => (t.forEach(((t, n) => {
-                        t.value ? e[n].perks = t.value : i.logger.error(`Failed to get perks page for champId: ${e[n].championId} position: \n            ${e[n].positionPreference} error: ${t.reason}`)
+                    return e.map((e => e.perks)).filter((e => Boolean(e))).length === e.length ? this.putQuickPlaySlots(e) : Promise.allSettled(e.map((e => this.getLastUsedQuickPlayPageForChampPosition(e.championId, e.positionPreference)))).then((t => (t.forEach(((t, n) => {
+                        t.value ? e[n].perks = t.value : i.logger.error(`Failed to get perks page for champId: ${e[n].championId} position: \n              ${e[n].positionPreference} error: ${t.reason}`)
                     })), this.putQuickPlaySlots(e))))
                 },
                 skins: i.Ember.computed("quickPlayService.championByChampId", "selectingSlotIndex", "quickPlayViewSlots", "localPlayer.playerSlots.@each.championId", (function() {
@@ -17440,13 +17452,12 @@
                     }))
                 },
                 getRuneRecommenderContext(e) {
-                    const t = this.get("playerSlots") || [],
-                        n = t[e];
-                    return n ? {
-                        champId: n.championId,
-                        position: n.positionPreference,
+                    const t = (this.get("playerSlots") || [])[e];
+                    return t ? {
+                        champId: t.championId,
+                        position: t.positionPreference,
                         mapId: 11,
-                        currentSpells: [t.spell1, t.spell2],
+                        spellIds: [t.spell1, t.spell2],
                         setRecommendedPage: (t, n) => this._setRecommendedPage(t, n, e),
                         setPerksPage: t => this._setPerksPage(t, e)
                     } : {}
@@ -17494,9 +17505,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.useEmotesApi = function(e) {
-                return i.default.getProvider().getOptional("rcp-fe-lol-collections").then((t => e(t.getEmotePanelApi())), (e => i.logger.error("Provider getOptional failure", e)))
-            }, t.usePerksApi = function(e) {
+            }), t.usePerksApi = function(e) {
                 return i.default.getProvider().getOptional("rcp-fe-lol-collections").then((t => e(t.perksApi())), (e => i.logger.error("Provider getOptional failure", e)))
             };
             var i = function(e, t) {

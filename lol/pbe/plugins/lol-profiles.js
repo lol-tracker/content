@@ -1173,9 +1173,9 @@
                     const e = this.get("computedQueueInfos");
                     return e ? this.getHighestWarning(e) : 0
                 })),
-                lastSeasonTier: s.Ember.computed("summoner.puuid", "rankedData.{highestPreviousSeasonAchievedTier,highestPreviousSeasonAchievedDivision}", (function() {
+                lastSeasonTier: s.Ember.computed("summoner.puuid", "rankedData.{highestPreviousSeasonEndTier,highestPreviousSeasonEndDivision}", (function() {
                     if (!this.get("summoner.puuid") || !this.get("rankedData")) return d;
-                    let e = this.get("rankedData.highestPreviousSeasonAchievedTier");
+                    let e = this.get("rankedData.highestPreviousSeasonEndTier");
                     return e && "NONE" !== e || (e = d), e
                 })),
                 lastSeasonTierText: s.Ember.computed("lastSeasonTier", (function() {
@@ -1336,19 +1336,19 @@
                 layout: n(58),
                 profileService: s.Ember.inject.service("profile"),
                 rankedData: null,
-                lastSeasonTier: s.Ember.computed("summoner.puuid", "rankedData.{highestPreviousSeasonAchievedTier,highestPreviousSeasonAchievedDivision}", (function() {
+                lastSeasonTier: s.Ember.computed("summoner.puuid", "rankedData.{highestPreviousSeasonEndTier,highestPreviousSeasonEndDivision}", (function() {
                     if (!this.get("summoner.puuid") || !this.get("rankedData")) return;
-                    let e = this.get("rankedData.highestPreviousSeasonAchievedTier");
+                    let e = this.get("rankedData.highestPreviousSeasonEndTier");
                     return e && "NONE" !== e || (e = "UNRANKED"), e
                 })),
                 lastSeasonIsUnranked: s.Ember.computed("lastSeasonTier", (function() {
                     const e = this.get("lastSeasonTier");
                     return Boolean(!e || "UNRANKED" === e)
                 })),
-                tooltipLastSeasonLabel: s.Ember.computed("lastSeasonTier", "rankedData.{highestPreviousSeasonDivision}", (function() {
+                tooltipLastSeasonLabel: s.Ember.computed("lastSeasonTier", "rankedData.{highestPreviousSeasonEndDivision}", (function() {
                     const e = this.get("lastSeasonTier");
                     if (!e) return;
-                    const t = this.get("rankedData.highestPreviousSeasonAchievedDivision");
+                    const t = this.get("rankedData.highestPreviousSeasonEndDivision");
                     return s.LeagueTierNames.getFullTierDivisionName(e, t)
                 }))
             });

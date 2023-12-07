@@ -1181,7 +1181,7 @@
                     }))
                 },
                 setRankedData(e, t, n) {
-                    e && t && n && this.get("displayedPuuid") === e && this.get("displayedQueueType") === t && (n && n.rankedRegaliaLevel ? this.set("displayedRegaliaLevel", n.rankedRegaliaLevel) : this.set("displayedRegaliaLevel", 0), n.queueMap && n.queueMap[t] && n.queueMap[t].previousSeasonAchievedTier && n.queueMap[t].previousSeasonAchievedTier !== a.LeaguesConsts.TIER_NAME_NONE ? this.set("displayedPreviousTier", n.queueMap[t].previousSeasonAchievedTier) : this.set("displayedPreviousTier", ""), n.queueMap && n.queueMap[t] && n.queueMap[t].tier && n.queueMap[t].tier !== a.LeaguesConsts.TIER_NAME_NONE ? this.set("displayedTier", n.queueMap[t].tier) : this.set("displayedTier", ""), n.queueMap && n.queueMap[t] && n.queueMap[t].division ? this.set("displayedDivision", n.queueMap[t].division) : this.set("displayedDivision", ""))
+                    e && t && n && this.get("displayedPuuid") === e && this.get("displayedQueueType") === t && (n && n.rankedRegaliaLevel ? this.set("displayedRegaliaLevel", n.rankedRegaliaLevel) : this.set("displayedRegaliaLevel", 0), n.queueMap && n.queueMap[t] && n.queueMap[t].previousSeasonEndTier && n.queueMap[t].previousSeasonEndTier !== a.LeaguesConsts.TIER_NAME_NONE ? this.set("displayedPreviousTier", n.queueMap[t].previousSeasonEndTier) : this.set("displayedPreviousTier", ""), n.queueMap && n.queueMap[t] && n.queueMap[t].tier && n.queueMap[t].tier !== a.LeaguesConsts.TIER_NAME_NONE ? this.set("displayedTier", n.queueMap[t].tier) : this.set("displayedTier", ""), n.queueMap && n.queueMap[t] && n.queueMap[t].division ? this.set("displayedDivision", n.queueMap[t].division) : this.set("displayedDivision", ""))
                 },
                 layout: n(35),
                 unranked: a.Ember.computed("tier", "displayedTier", (function() {
@@ -3349,9 +3349,9 @@
                         platform: "/lol-platform-config"
                     },
                     boundProperties: {
-                        isSplitStartModalEnabled: {
+                        EosNotificationsEnabled: {
                             api: "platform",
-                            path: "/v1/namespaces/LeagueConfig/IsSplitStartModalEnabled",
+                            path: "/v1/namespaces/LeagueConfig/EosNotificationsEnabled",
                             default: null
                         }
                     }
@@ -3383,16 +3383,17 @@
                 currentSplit: s.Ember.computed("splitsConfig", "splitsConfig.currentSplitId", (function() {
                     return this._getCurrentSplitData(this.get("splitsConfig"))
                 })),
-                platformConfigObserver: s.Ember.observer("splitsConfig", "splitsConfig.currentSplitId", "currentRankedStats", "currentRankedStats.queues", "rewardsService", "rewardsService.emoteCatalog", "rewardsService.summonerIconCatalog", "isSplitStartModalEnabled", "careerStatsService", (function() {
+                platformConfigObserver: s.Ember.observer("splitsConfig", "splitsConfig.currentSplitId", "currentRankedStats", "currentRankedStats.queues", "rewardsService", "rewardsService.emoteCatalog", "rewardsService.summonerIconCatalog", "EosNotificationsEnabled", "careerStatsService", (function() {
                     const e = this.get("accountLeaguesSettings"),
                         t = this.get("currentSeason"),
                         n = this.get("regionLocale"),
                         a = this.get("hasSplitEndNotificationSentThisSession"),
-                        s = this.get("currentSplit");
-                    if (!s) return;
-                    const i = parseFloat(t + "." + s.splitId),
-                        l = (0, o.getDaysBetweenDateMillis)(Date.now(), s.endTimeMillis);
-                    this._shouldDisplaySplitEndNotification(i, l, e, a) && this._displaySplitEndNotification(i, s, n)
+                        s = this.get("EosNotificationsEnabled"),
+                        i = this.get("currentSplit");
+                    if (!i || !s) return;
+                    const l = parseFloat(t + "." + i.splitId),
+                        r = (0, o.getDaysBetweenDateMillis)(Date.now(), i.endTimeMillis);
+                    this._shouldDisplaySplitEndNotification(l, r, e, a) && this._displaySplitEndNotification(l, i, n)
                 })),
                 _shouldDisplaySplitEndNotification: function(e, t, n, a) {
                     const s = n.data && n.data[g] >= e;
@@ -4328,7 +4329,7 @@
                         c = [],
                         u = n.seasons[e],
                         d = u ? u.rewards : null,
-                        p = s.LeaguesConsts.TIER_NAME_TO_ORDINAL[a.previousSeasonAchievedTier];
+                        p = s.LeaguesConsts.TIER_NAME_TO_ORDINAL[a.previousSeasonEndTier];
                     if (d) {
                         const e = s.LeaguesConsts.TIER_NAME_TO_ORDINAL[l];
                         if (p >= e) {
@@ -4362,7 +4363,7 @@
                                         c.push(s.LeagueTierNames.asyncGetRewardImage(a)), r.push(t)
                                     }
                                 }
-                            const t = d[`SUMMONER_ICON_${f.get(e.queueType)}_${e.previousSeasonAchievedTier}`],
+                            const t = d[`SUMMONER_ICON_${f.get(e.queueType)}_${e.previousSeasonEndTier}`],
                                 n = t ? t.id : null;
                             if (n) {
                                 const t = o.SUMMONER_ICON_REWARD_TYPE,
@@ -4382,8 +4383,8 @@
                 _getSeasonMemorialModalRankInfo: function() {
                     const e = this.get("currentRankedStats"),
                         t = this.get("highestRankedNonTFTEntryQueue"),
-                        n = t.previousSeasonAchievedTier,
-                        a = t.previousSeasonAchievedDivision;
+                        n = t.previousSeasonEndTier,
+                        a = t.previousSeasonEndDivision;
                     return {
                         currentRankTitle: this.get("tra.SEASON_MEMORIAL_TAKEOVER_FINAL_RANK_TEXT"),
                         currentRankTier: n,
@@ -4457,11 +4458,11 @@
                 },
                 _getBestChampionInfoForRanked(e, t, n) {
                     const a = n.queueType;
-                    let i = this._getBestChampionInfoForQueue(e, a, n.previousSeasonAchievedTier);
+                    let i = this._getBestChampionInfoForQueue(e, a, n.previousSeasonEndTier);
                     return i || s.Lodash.forEach(t.queues, (t => {
                         const n = t.queueType;
                         if (n !== a && this._isRankedQueueValid(t) && this._isRankedQueueSR(t)) {
-                            const a = this._getBestChampionInfoForQueue(e, n, t.previousSeasonAchievedTier);
+                            const a = this._getBestChampionInfoForQueue(e, n, t.previousSeasonEndTier);
                             a && (!i || a.winrate > i.winrate || a.winrate === i.winrate && a.games.length > i.games.length) && (i = a)
                         }
                     })), i
@@ -4561,7 +4562,7 @@
                     return Boolean(e) && Boolean(e.queueType) && (0, c.isTftQueueType)(e.queueType)
                 },
                 _isRankedQueueValid: function(e) {
-                    return Boolean(e) && Boolean(e.queueType) && Boolean(e.previousSeasonAchievedTier) && e.previousSeasonAchievedTier !== s.LeaguesConsts.TIER_NAME_NONE
+                    return Boolean(e) && Boolean(e.queueType) && Boolean(e.previousSeasonEndTier) && e.previousSeasonEndTier !== s.LeaguesConsts.TIER_NAME_NONE
                 },
                 _getMiniSeriesWinsNeeded: function(e) {
                     if (e) {
