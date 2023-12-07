@@ -87,7 +87,7 @@
     "shortName": "TFT Hyper Roll Custom",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "TURBO_TFT"
   },
   {
@@ -158,7 +158,7 @@
     "shortName": "Teamfight Tactics (Normal)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -290,7 +290,7 @@
     "shortName": "1v0",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -423,7 +423,7 @@
     "shortName": "2v0",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -1016,7 +1016,7 @@
     "shortName": "Tutorial Part 1",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "TUTORIAL_MODULE_1"
   },
   {
@@ -1151,7 +1151,7 @@
     "shortName": "Teamfight Tactics (Fortune's Favor)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -1351,7 +1351,7 @@
     "shortName": "Teamfight Tactics (Tutorial)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "TUTORIAL_TFT"
   },
   {
@@ -1415,7 +1415,7 @@
     "shortName": "TFT Simulation",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -1486,7 +1486,7 @@
     "shortName": "Teamfight Tactics (Normal)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
@@ -1550,7 +1550,7 @@
     "shortName": "Tutorial Part 2",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "TUTORIAL_MODULE_2"
   },
   {
@@ -1621,7 +1621,7 @@
     "shortName": "Teamfight Tactics (Soul Brawl)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "SF_TFT"
   },
   {
@@ -1825,7 +1825,7 @@
     "shortName": "Arena",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "CHERRY"
   },
   {
@@ -1889,7 +1889,7 @@
     "shortName": "Tutorial Part 3",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "TUTORIAL_MODULE_3"
   },
   {
@@ -1960,7 +1960,7 @@
     "shortName": "Teamfight Tactics (Choncc's Treasure)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "LNY23_TFT"
   },
   {
@@ -2435,7 +2435,7 @@
     "shortName": "Arena",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "CHERRY_UNRANKED"
   },
   {
@@ -2665,7 +2665,7 @@
     "shortName": "TFT Custom",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "NORMAL_TFT"
   },
   {
