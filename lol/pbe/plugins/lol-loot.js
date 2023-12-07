@@ -503,8 +503,7 @@
                     UxSettingsService: n(249),
                     TelemetryService: n(250),
                     LootLocHelperService: n(251),
-                    LootRedeemConfirmService: n(252),
-                    ClientConfigService: n(255)
+                    LootRedeemConfirmService: n(252)
                 })
             };
             var o, r = n(1),
@@ -1076,10 +1075,10 @@
                         G = "[object Uint32Array]",
                         z = /\b__p \+= '';/g,
                         W = /\b(__p \+=) '' \+/g,
-                        $ = /(__e\(.*?\)|\b__t\)) \+\n'';/g,
-                        Y = /&(?:amp|lt|gt|quot|#39);/g,
+                        Y = /(__e\(.*?\)|\b__t\)) \+\n'';/g,
+                        $ = /&(?:amp|lt|gt|quot|#39);/g,
                         K = /[&<>"']/g,
-                        Q = RegExp(Y.source),
+                        Q = RegExp($.source),
                         X = RegExp(K.source),
                         Z = /<%-([\s\S]+?)%>/g,
                         J = /<%([\s\S]+?)%>/g,
@@ -1130,8 +1129,8 @@
                         Ge = "\\u200d",
                         ze = "(?:" + je + "|" + Be + ")",
                         We = "(?:" + qe + "|" + Be + ")",
-                        $e = "(?:['’](?:d|ll|m|re|s|t|ve))?",
-                        Ye = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
+                        Ye = "(?:['’](?:d|ll|m|re|s|t|ve))?",
+                        $e = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
                         Ke = "(?:" + Oe + "|" + He + ")" + "?",
                         Qe = "[" + ke + "]?",
                         Xe = Qe + Ke + ("(?:" + Ge + "(?:" + [Ue, Fe, Ve].join("|") + ")" + Qe + Ke + ")*"),
@@ -1140,7 +1139,7 @@
                         et = RegExp(Re, "g"),
                         tt = RegExp(Oe, "g"),
                         nt = RegExp(He + "(?=" + He + ")|" + Je + Xe, "g"),
-                        ot = RegExp([qe + "?" + je + "+" + $e + "(?=" + [Me, qe, "$"].join("|") + ")", We + "+" + Ye + "(?=" + [Me, qe + ze, "$"].join("|") + ")", qe + "?" + ze + "+" + $e, qe + "+" + Ye, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", Pe, Ze].join("|"), "g"),
+                        ot = RegExp([qe + "?" + je + "+" + Ye + "(?=" + [Me, qe, "$"].join("|") + ")", We + "+" + $e + "(?=" + [Me, qe + ze, "$"].join("|") + ")", qe + "?" + ze + "+" + Ye, qe + "+" + $e, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", Pe, Ze].join("|"), "g"),
                         rt = RegExp("[" + Ge + Ce + we + ke + "]"),
                         it = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,
                         st = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"],
@@ -1263,7 +1262,7 @@
                             if (t(e[n], n, e)) return !0;
                         return !1
                     }
-                    var Ut = $t("length");
+                    var Ut = Yt("length");
 
                     function Ft(e, t, n) {
                         var o;
@@ -1303,13 +1302,13 @@
                         return n ? Qt(e, t) / n : f
                     }
 
-                    function $t(e) {
+                    function Yt(e) {
                         return function(t) {
                             return null == t ? r : t[e]
                         }
                     }
 
-                    function Yt(e) {
+                    function $t(e) {
                         return function(t) {
                             return null == e ? r : e[t]
                         }
@@ -1359,7 +1358,7 @@
                         for (var n = e.length; n-- && qt(t, e[n], 0) > -1;);
                         return n
                     }
-                    var on = Yt({
+                    var on = $t({
                             À: "A",
                             Á: "A",
                             Â: "A",
@@ -1551,7 +1550,7 @@
                             ŉ: "'n",
                             ſ: "s"
                         }),
-                        rn = Yt({
+                        rn = $t({
                             "&": "&amp;",
                             "<": "&lt;",
                             ">": "&gt;",
@@ -1624,7 +1623,7 @@
                             return e.split("")
                         }(e)
                     }
-                    var gn = Yt({
+                    var gn = $t({
                         "&amp;": "&",
                         "&lt;": "<",
                         "&gt;": ">",
@@ -1656,8 +1655,8 @@
                             Ge = yt ? t.Buffer : r,
                             ze = t.Symbol,
                             We = t.Uint8Array,
-                            $e = Ge ? Ge.allocUnsafe : r,
-                            Ye = cn(Ae.getPrototypeOf, Ae),
+                            Ye = Ge ? Ge.allocUnsafe : r,
+                            $e = cn(Ae.getPrototypeOf, Ae),
                             Ke = Ae.create,
                             Qe = Oe.propertyIsEnumerable,
                             Xe = Le.splice,
@@ -1678,7 +1677,7 @@
                             vt = Ae.getOwnPropertySymbols,
                             bt = Ge ? Ge.isBuffer : r,
                             Ut = t.isFinite,
-                            Yt = Le.join,
+                            $t = Le.join,
                             yn = cn(Ae.keys, Ae),
                             vn = Te.max,
                             bn = Te.min,
@@ -1740,7 +1739,7 @@
                             }
                         }
 
-                        function $n(e) {
+                        function Yn(e) {
                             var t = -1,
                                 n = null == e ? 0 : e.length;
                             for (this.clear(); ++t < n;) {
@@ -1749,7 +1748,7 @@
                             }
                         }
 
-                        function Yn(e) {
+                        function $n(e) {
                             var t = -1,
                                 n = null == e ? 0 : e.length;
                             for (this.clear(); ++t < n;) {
@@ -1761,18 +1760,18 @@
                         function Kn(e) {
                             var t = -1,
                                 n = null == e ? 0 : e.length;
-                            for (this.__data__ = new Yn; ++t < n;) this.add(e[t])
+                            for (this.__data__ = new $n; ++t < n;) this.add(e[t])
                         }
 
                         function Qn(e) {
-                            var t = this.__data__ = new $n(e);
+                            var t = this.__data__ = new Yn(e);
                             this.size = t.size
                         }
 
                         function Xn(e, t) {
                             var n = Gs(e),
                                 o = !n && qs(e),
-                                r = !n && !o && Ys(e),
+                                r = !n && !o && $s(e),
                                 i = !n && !o && !r && ca(e),
                                 s = n || o || r || i,
                                 a = s ? Xt(e.length, Ne) : [],
@@ -1854,7 +1853,7 @@
                             } else {
                                 var p = gi(e),
                                     h = p == S || p == C;
-                                if (Ys(e)) return wr(e, l);
+                                if ($s(e)) return wr(e, l);
                                 if (p == T || p == y || h && !i) {
                                     if (a = c || h ? {} : yi(e), !l) return c ? function(e, t) {
                                         return Lr(e, fi(e), t)
@@ -1987,36 +1986,36 @@
                         }, Wn.prototype.set = function(e, t) {
                             var n = this.__data__;
                             return this.size += this.has(e) ? 0 : 1, n[e] = Nn && t === r ? s : t, this
-                        }, $n.prototype.clear = function() {
+                        }, Yn.prototype.clear = function() {
                             this.__data__ = [], this.size = 0
-                        }, $n.prototype.delete = function(e) {
+                        }, Yn.prototype.delete = function(e) {
                             var t = this.__data__,
                                 n = oo(t, e);
                             return !(n < 0) && (n == t.length - 1 ? t.pop() : Xe.call(t, n, 1), --this.size, !0)
-                        }, $n.prototype.get = function(e) {
+                        }, Yn.prototype.get = function(e) {
                             var t = this.__data__,
                                 n = oo(t, e);
                             return n < 0 ? r : t[n][1]
-                        }, $n.prototype.has = function(e) {
+                        }, Yn.prototype.has = function(e) {
                             return oo(this.__data__, e) > -1
-                        }, $n.prototype.set = function(e, t) {
+                        }, Yn.prototype.set = function(e, t) {
                             var n = this.__data__,
                                 o = oo(n, e);
                             return o < 0 ? (++this.size, n.push([e, t])) : n[o][1] = t, this
-                        }, Yn.prototype.clear = function() {
+                        }, $n.prototype.clear = function() {
                             this.size = 0, this.__data__ = {
                                 hash: new Wn,
-                                map: new(In || $n),
+                                map: new(In || Yn),
                                 string: new Wn
                             }
-                        }, Yn.prototype.delete = function(e) {
+                        }, $n.prototype.delete = function(e) {
                             var t = mi(this, e).delete(e);
                             return this.size -= t ? 1 : 0, t
-                        }, Yn.prototype.get = function(e) {
+                        }, $n.prototype.get = function(e) {
                             return mi(this, e).get(e)
-                        }, Yn.prototype.has = function(e) {
+                        }, $n.prototype.has = function(e) {
                             return mi(this, e).has(e)
-                        }, Yn.prototype.set = function(e, t) {
+                        }, $n.prototype.set = function(e, t) {
                             var n = mi(this, e),
                                 o = n.size;
                             return n.set(e, t), this.size += n.size == o ? 0 : 1, this
@@ -2025,7 +2024,7 @@
                         }, Kn.prototype.has = function(e) {
                             return this.__data__.has(e)
                         }, Qn.prototype.clear = function() {
-                            this.__data__ = new $n, this.size = 0
+                            this.__data__ = new Yn, this.size = 0
                         }, Qn.prototype.delete = function(e) {
                             var t = this.__data__,
                                 n = t.delete(e);
@@ -2036,10 +2035,10 @@
                             return this.__data__.has(e)
                         }, Qn.prototype.set = function(e, t) {
                             var n = this.__data__;
-                            if (n instanceof $n) {
+                            if (n instanceof Yn) {
                                 var o = n.__data__;
                                 if (!In || o.length < 199) return o.push([e, t]), this.size = ++n.size, this;
-                                n = this.__data__ = new Yn(o)
+                                n = this.__data__ = new $n(o)
                             }
                             return n.set(e, t), this.size = n.size, this
                         };
@@ -2174,8 +2173,8 @@
                                     m = (c = c == y ? T : c) == T,
                                     p = (u = u == y ? T : u) == T,
                                     h = c == u;
-                                if (h && Ys(e)) {
-                                    if (!Ys(t)) return !1;
+                                if (h && $s(e)) {
+                                    if (!$s(t)) return !1;
                                     a = !0, m = !1
                                 }
                                 if (h && !m) return s || (s = new Qn), a || ca(e) ? oi(e, t, n, o, i, s) : function(e, t, n, o, r, i, s) {
@@ -2348,9 +2347,9 @@
                                             p = m === r;
                                         if (p) {
                                             var h = Gs(c),
-                                                d = !h && Ys(c),
+                                                d = !h && $s(c),
                                                 f = !h && !d && ca(c);
-                                            m = c, h || d || f ? Gs(l) ? m = l : $s(l) ? m = Rr(l) : d ? (p = !1, m = wr(c, !0)) : f ? (p = !1, m = Tr(c, !0)) : m = [] : ra(c) || qs(c) ? (m = l, qs(l) ? m = _a(l) : (!ea(l) || o && Xs(l)) && (m = yi(c))) : p = !1
+                                            m = c, h || d || f ? Gs(l) ? m = l : Ys(l) ? m = Rr(l) : d ? (p = !1, m = wr(c, !0)) : f ? (p = !1, m = Tr(c, !0)) : m = [] : ra(c) || qs(c) ? (m = l, qs(l) ? m = _a(l) : (!ea(l) || o && Xs(l)) && (m = yi(c))) : p = !1
                                         }
                                         p && (a.set(c, m), i(m, c, o, s, a), a.delete(c));
                                         to(e, n, m)
@@ -2400,7 +2399,7 @@
                             }))
                         }
 
-                        function $o(e, t, n) {
+                        function Yo(e, t, n) {
                             for (var o = -1, r = t.length, i = {}; ++o < r;) {
                                 var s = t[o],
                                     a = wo(e, s);
@@ -2409,7 +2408,7 @@
                             return i
                         }
 
-                        function Yo(e, t, n, o) {
+                        function $o(e, t, n, o) {
                             var r = o ? Gt : qt,
                                 i = -1,
                                 s = t.length,
@@ -2618,7 +2617,7 @@
                         }
 
                         function vr(e) {
-                            return $s(e) ? e : []
+                            return Ys(e) ? e : []
                         }
 
                         function br(e) {
@@ -2641,7 +2640,7 @@
                         function wr(e, t) {
                             if (t) return e.slice();
                             var n = e.length,
-                                o = $e ? $e(n) : new e.constructor(n);
+                                o = Ye ? Ye(n) : new e.constructor(n);
                             return e.copy(o), o
                         }
 
@@ -2899,7 +2898,7 @@
                             return an(t) ? Sr(fn(o), 0, e).join("") : o.slice(0, e)
                         }
 
-                        function $r(e) {
+                        function Yr(e) {
                             return function(t, n, i) {
                                 return i && "number" != typeof i && xi(t, n, i) && (n = i = r), t = ha(t), n === r ? (n = t, t = 0) : n = ha(n),
                                     function(e, t, n, r) {
@@ -2909,7 +2908,7 @@
                             }
                         }
 
-                        function Yr(e) {
+                        function $r(e) {
                             return function(t, n) {
                                 return "string" == typeof t && "string" == typeof n || (t = ga(t), n = ga(n)), e(t, n)
                             }
@@ -3107,7 +3106,7 @@
                                 })))
                             } : fl,
                             fi = vt ? function(e) {
-                                for (var t = []; e;) Dt(t, di(e)), e = Ye(e);
+                                for (var t = []; e;) Dt(t, di(e)), e = $e(e);
                                 return t
                             } : fl,
                             gi = To;
@@ -3122,7 +3121,7 @@
                         }
 
                         function yi(e) {
-                            return "function" != typeof e.constructor || wi(e) ? {} : Vn(Ye(e))
+                            return "function" != typeof e.constructor || wi(e) ? {} : Vn($e(e))
                         }
 
                         function vi(e) {
@@ -3286,15 +3285,15 @@
                             return t.__actions__ = Rr(e.__actions__), t.__index__ = e.__index__, t.__values__ = e.__values__, t
                         }
                         var Ui = Zo((function(e, t) {
-                                return $s(e) ? po(e, vo(t, 1, $s, !0)) : []
+                                return Ys(e) ? po(e, vo(t, 1, Ys, !0)) : []
                             })),
                             Fi = Zo((function(e, t) {
                                 var n = Qi(t);
-                                return $s(n) && (n = r), $s(e) ? po(e, vo(t, 1, $s, !0), ui(n, 2)) : []
+                                return Ys(n) && (n = r), Ys(e) ? po(e, vo(t, 1, Ys, !0), ui(n, 2)) : []
                             })),
                             Vi = Zo((function(e, t) {
                                 var n = Qi(t);
-                                return $s(n) && (n = r), $s(e) ? po(e, vo(t, 1, $s, !0), r, n) : []
+                                return Ys(n) && (n = r), Ys(e) ? po(e, vo(t, 1, Ys, !0), r, n) : []
                             }));
 
                         function qi(e, t, n) {
@@ -3318,11 +3317,11 @@
                         function Wi(e) {
                             return e && e.length ? e[0] : r
                         }
-                        var $i = Zo((function(e) {
+                        var Yi = Zo((function(e) {
                                 var t = Pt(e, vr);
                                 return t.length && t[0] === e[0] ? Ro(t) : []
                             })),
-                            Yi = Zo((function(e) {
+                            $i = Zo((function(e) {
                                 var t = Qi(e),
                                     n = Pt(e, vr);
                                 return t === Qi(n) ? t = r : n.pop(), n.length && n[0] === e[0] ? Ro(n, ui(t, 2)) : []
@@ -3340,7 +3339,7 @@
                         var Xi = Zo(Zi);
 
                         function Zi(e, t) {
-                            return e && e.length && t && t.length ? Yo(e, t) : e
+                            return e && e.length && t && t.length ? $o(e, t) : e
                         }
                         var Ji = ri((function(e, t) {
                             var n = null == e ? 0 : e.length,
@@ -3354,24 +3353,24 @@
                             return null == e ? e : Cn.call(e)
                         }
                         var ts = Zo((function(e) {
-                                return pr(vo(e, 1, $s, !0))
+                                return pr(vo(e, 1, Ys, !0))
                             })),
                             ns = Zo((function(e) {
                                 var t = Qi(e);
-                                return $s(t) && (t = r), pr(vo(e, 1, $s, !0), ui(t, 2))
+                                return Ys(t) && (t = r), pr(vo(e, 1, Ys, !0), ui(t, 2))
                             })),
                             os = Zo((function(e) {
                                 var t = Qi(e);
-                                return t = "function" == typeof t ? t : r, pr(vo(e, 1, $s, !0), r, t)
+                                return t = "function" == typeof t ? t : r, pr(vo(e, 1, Ys, !0), r, t)
                             }));
 
                         function rs(e) {
                             if (!e || !e.length) return [];
                             var t = 0;
                             return e = Lt(e, (function(e) {
-                                if ($s(e)) return t = vn(e.length, t), !0
+                                if (Ys(e)) return t = vn(e.length, t), !0
                             })), Xt(t, (function(t) {
-                                return Pt(e, $t(t))
+                                return Pt(e, Yt(t))
                             }))
                         }
 
@@ -3383,18 +3382,18 @@
                             }))
                         }
                         var ss = Zo((function(e, t) {
-                                return $s(e) ? po(e, t) : []
+                                return Ys(e) ? po(e, t) : []
                             })),
                             as = Zo((function(e) {
-                                return _r(Lt(e, $s))
+                                return _r(Lt(e, Ys))
                             })),
                             ls = Zo((function(e) {
                                 var t = Qi(e);
-                                return $s(t) && (t = r), _r(Lt(e, $s), ui(t, 2))
+                                return Ys(t) && (t = r), _r(Lt(e, Ys), ui(t, 2))
                             })),
                             cs = Zo((function(e) {
                                 var t = Qi(e);
-                                return t = "function" == typeof t ? t : r, _r(Lt(e, $s), r, t)
+                                return t = "function" == typeof t ? t : r, _r(Lt(e, Ys), r, t)
                             })),
                             us = Zo(rs);
                         var ms = Zo((function(e) {
@@ -3568,7 +3567,7 @@
                                 var s = e.apply(this, o);
                                 return n.cache = i.set(r, s) || i, s
                             };
-                            return n.cache = new(Os.Cache || Yn), n
+                            return n.cache = new(Os.Cache || $n), n
                         }
 
                         function Ps(e) {
@@ -3588,7 +3587,7 @@
                                 return !e.apply(this, t)
                             }
                         }
-                        Os.Cache = Yn;
+                        Os.Cache = $n;
                         var Ds = Er((function(e, t) {
                                 var n = (t = 1 == t.length && Gs(t[0]) ? Pt(t[0], Zt(ui())) : Pt(vo(t, 1), Zt(ui()))).length;
                                 return Zo((function(o) {
@@ -3611,8 +3610,8 @@
                         function Us(e, t) {
                             return e === t || e != e && t != t
                         }
-                        var Fs = Yr(Ao),
-                            Vs = Yr((function(e, t) {
+                        var Fs = $r(Ao),
+                            Vs = $r((function(e, t) {
                                 return e >= t
                             })),
                             qs = Mo(function() {
@@ -3629,10 +3628,10 @@
                             return null != e && Js(e.length) && !Xs(e)
                         }
 
-                        function $s(e) {
+                        function Ys(e) {
                             return ta(e) && Ws(e)
                         }
-                        var Ys = bt || gl,
+                        var $s = bt || gl,
                             Ks = Et ? Zt(Et) : function(e) {
                                 return ta(e) && To(e) == x
                             };
@@ -3675,7 +3674,7 @@
 
                         function ra(e) {
                             if (!ta(e) || To(e) != T) return !1;
-                            var t = Ye(e);
+                            var t = $e(e);
                             if (null === t) return !0;
                             var n = je.call(t, "constructor") && t.constructor;
                             return "function" == typeof n && n instanceof n && De.call(n) == Fe
@@ -3697,8 +3696,8 @@
                         var ca = It ? Zt(It) : function(e) {
                             return ta(e) && Js(e.length) && !!lt[To(e)]
                         };
-                        var ua = Yr(Uo),
-                            ma = Yr((function(e, t) {
+                        var ua = $r(Uo),
+                            ma = $r((function(e, t) {
                                 return e <= t
                             }));
 
@@ -3820,7 +3819,7 @@
                             }));
                         var Da = ri((function(e, t) {
                             return null == e ? {} : function(e, t) {
-                                return $o(e, t, (function(t, n) {
+                                return Yo(e, t, (function(t, n) {
                                     return Ta(e, n)
                                 }))
                             }(e, t)
@@ -3831,7 +3830,7 @@
                             var n = Pt(si(e), (function(e) {
                                 return [e]
                             }));
-                            return t = ui(t), $o(e, n, (function(e, n) {
+                            return t = ui(t), Yo(e, n, (function(e, n) {
                                 return t(e, n[0])
                             }))
                         }
@@ -3859,10 +3858,10 @@
                                 return e + (n ? " " : "") + t.toLowerCase()
                             })),
                             Wa = jr("toLowerCase");
-                        var $a = Br((function(e, t, n) {
+                        var Ya = Br((function(e, t, n) {
                             return e + (n ? "_" : "") + t.toLowerCase()
                         }));
-                        var Ya = Br((function(e, t, n) {
+                        var $a = Br((function(e, t, n) {
                             return e + (n ? " " : "") + Qa(t)
                         }));
                         var Ka = Br((function(e, t, n) {
@@ -3947,14 +3946,14 @@
                             ml = zr(Ht);
 
                         function pl(e) {
-                            return Ei(e) ? $t(ji(e)) : function(e) {
+                            return Ei(e) ? Yt(ji(e)) : function(e) {
                                 return function(t) {
                                     return wo(t, e)
                                 }
                             }(e)
                         }
-                        var hl = $r(),
-                            dl = $r(!0);
+                        var hl = Yr(),
+                            dl = Yr(!0);
 
                         function fl() {
                             return []
@@ -4076,7 +4075,7 @@
                             return null == e ? [] : Co(e, La(e))
                         }, Fn.groupBy = bs, Fn.initial = function(e) {
                             return (null == e ? 0 : e.length) ? ir(e, 0, -1) : []
-                        }, Fn.intersection = $i, Fn.intersectionBy = Yi, Fn.intersectionWith = Ki, Fn.invert = Aa, Fn.invertBy = ka, Fn.invokeMap = xs, Fn.iteratee = rl, Fn.keyBy = Es, Fn.keys = Ra, Fn.keysIn = La, Fn.map = Ss, Fn.mapKeys = function(e, t) {
+                        }, Fn.intersection = Yi, Fn.intersectionBy = $i, Fn.intersectionWith = Ki, Fn.invert = Aa, Fn.invertBy = ka, Fn.invokeMap = xs, Fn.iteratee = rl, Fn.keyBy = Es, Fn.keys = Ra, Fn.keysIn = La, Fn.map = Ss, Fn.mapKeys = function(e, t) {
                             var n = {};
                             return t = ui(t, 3), Eo(e, (function(e, o, r) {
                                 so(n, t(e, o, r), e)
@@ -4105,9 +4104,9 @@
                                 return null == e ? r : wo(e, t)
                             }
                         }, Fn.pull = Xi, Fn.pullAll = Zi, Fn.pullAllBy = function(e, t, n) {
-                            return e && e.length && t && t.length ? Yo(e, t, ui(n, 2)) : e
+                            return e && e.length && t && t.length ? $o(e, t, ui(n, 2)) : e
                         }, Fn.pullAllWith = function(e, t, n) {
-                            return e && e.length && t && t.length ? Yo(e, t, r, n) : e
+                            return e && e.length && t && t.length ? $o(e, t, r, n) : e
                         }, Fn.pullAt = Ji, Fn.range = hl, Fn.rangeRight = dl, Fn.rearg = Hs, Fn.reject = function(e, t) {
                             return (Gs(e) ? Lt : yo)(e, Ps(ui(t, 3)))
                         }, Fn.remove = function(e, t) {
@@ -4175,10 +4174,10 @@
                             return Gs(e) ? Pt(e, ji) : la(e) ? [e] : Rr(Di(ya(e)))
                         }, Fn.toPlainObject = _a, Fn.transform = function(e, t, n) {
                             var o = Gs(e),
-                                r = o || Ys(e) || ca(e);
+                                r = o || $s(e) || ca(e);
                             if (t = ui(t, 4), null == n) {
                                 var i = e && e.constructor;
-                                n = r ? o ? new i : [] : ea(e) && Xs(i) ? Vn(Ye(e)) : {}
+                                n = r ? o ? new i : [] : ea(e) && Xs(i) ? Vn($e(e)) : {}
                             }
                             return (r ? kt : Eo)(e, (function(e, o, r) {
                                 return t(n, e, o, r)
@@ -4259,13 +4258,13 @@
                                 function(e, t, n) {
                                     return e >= bn(t, n) && e < vn(t, n)
                                 }(e = ga(e), t, n)
-                        }, Fn.invoke = Na, Fn.isArguments = qs, Fn.isArray = Gs, Fn.isArrayBuffer = zs, Fn.isArrayLike = Ws, Fn.isArrayLikeObject = $s, Fn.isBoolean = function(e) {
+                        }, Fn.invoke = Na, Fn.isArguments = qs, Fn.isArray = Gs, Fn.isArrayBuffer = zs, Fn.isArrayLike = Ws, Fn.isArrayLikeObject = Ys, Fn.isBoolean = function(e) {
                             return !0 === e || !1 === e || ta(e) && To(e) == b
-                        }, Fn.isBuffer = Ys, Fn.isDate = Ks, Fn.isElement = function(e) {
+                        }, Fn.isBuffer = $s, Fn.isDate = Ks, Fn.isElement = function(e) {
                             return ta(e) && 1 === e.nodeType && !ra(e)
                         }, Fn.isEmpty = function(e) {
                             if (null == e) return !0;
-                            if (Ws(e) && (Gs(e) || "string" == typeof e || "function" == typeof e.splice || Ys(e) || ca(e) || qs(e))) return !e.length;
+                            if (Ws(e) && (Gs(e) || "string" == typeof e || "function" == typeof e.splice || $s(e) || ca(e) || qs(e))) return !e.length;
                             var t = gi(e);
                             if (t == w || t == N) return !e.size;
                             if (wi(e)) return !Bo(e).length;
@@ -4301,7 +4300,7 @@
                         }, Fn.isWeakSet = function(e) {
                             return ta(e) && "[object WeakSet]" == To(e)
                         }, Fn.join = function(e, t) {
-                            return null == e ? "" : Yt.call(e, t)
+                            return null == e ? "" : $t.call(e, t)
                         }, Fn.kebabCase = Ga, Fn.last = Qi, Fn.lastIndexOf = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
                             if (!o) return -1;
@@ -4388,7 +4387,7 @@
                             if (Ws(e)) return aa(e) ? dn(e) : e.length;
                             var t = gi(e);
                             return t == w || t == N ? e.size : Bo(e).length
-                        }, Fn.snakeCase = $a, Fn.some = function(e, t, n) {
+                        }, Fn.snakeCase = Ya, Fn.some = function(e, t, n) {
                             var o = Gs(e) ? Ht : sr;
                             return n && xi(e, t, n) && (t = r), o(e, ui(t, 3))
                         }, Fn.sortedIndex = function(e, t) {
@@ -4412,7 +4411,7 @@
                                 if (Us(e[n], t)) return n
                             }
                             return -1
-                        }, Fn.startCase = Ya, Fn.startsWith = function(e, t, n) {
+                        }, Fn.startCase = $a, Fn.startsWith = function(e, t, n) {
                             return e = ya(e), n = null == n ? 0 : lo(da(n), 0, e.length), t = mr(t), e.slice(n, n + t.length) == t
                         }, Fn.subtract = Cl, Fn.sum = function(e) {
                             return e && e.length ? Qt(e, ol) : 0
@@ -4433,7 +4432,7 @@
                                 return o || (o = r), p += e.slice(u, l).replace(Se, sn), n && (i = !0, p += "' +\n__e(" + n + ") +\n'"), a && (s = !0, p += "';\n" + a + ";\n__p += '"), o && (p += "' +\n((__t = (" + o + ")) == null ? '' : __t) +\n'"), u = l + t.length, t
                             })), p += "';\n";
                             var f = t.variable;
-                            f || (p = "with (obj) {\n" + p + "\n}\n"), p = (s ? p.replace(z, "") : p).replace(W, "$1").replace($, "$1;"), p = "function(" + (f || "obj") + ") {\n" + (f ? "" : "obj || (obj = {});\n") + "var __t, __p = ''" + (i ? ", __e = _.escape" : "") + (s ? ", __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, '') }\n" : ";\n") + p + "return __p\n}";
+                            f || (p = "with (obj) {\n" + p + "\n}\n"), p = (s ? p.replace(z, "") : p).replace(W, "$1").replace(Y, "$1;"), p = "function(" + (f || "obj") + ") {\n" + (f ? "" : "obj || (obj = {});\n") + "var __t, __p = ''" + (i ? ", __e = _.escape" : "") + (s ? ", __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, '') }\n" : ";\n") + p + "return __p\n}";
                             var g = Za((function() {
                                 return Ie(l, d + "return " + p).apply(r, c)
                             }));
@@ -4497,7 +4496,7 @@
                             }
                             return c + o
                         }, Fn.unescape = function(e) {
-                            return (e = ya(e)) && Q.test(e) ? e.replace(Y, gn) : e
+                            return (e = ya(e)) && Q.test(e) ? e.replace($, gn) : e
                         }, Fn.uniqueId = function(e) {
                             var t = ++Be;
                             return ya(e) + t
@@ -6456,8 +6455,8 @@
                 G = a++,
                 z = a++,
                 W = a++,
-                $ = a++,
                 Y = a++,
+                $ = a++,
                 K = a++,
                 Q = a++,
                 X = a++,
@@ -6556,7 +6555,7 @@
                 this._special !== me || "c" !== e && "C" !== e ? this._special !== pe || "t" !== e && "T" !== e ? this._state = l : this._state = ee : this._state = z
             }, ge.prototype._stateBeforeScript1 = fe("R", F), ge.prototype._stateBeforeScript2 = fe("I", V), ge.prototype._stateBeforeScript3 = fe("P", q), ge.prototype._stateBeforeScript4 = fe("T", G), ge.prototype._stateBeforeScript5 = function(e) {
                 ("/" === e || ">" === e || he(e)) && (this._special = me), this._state = u, this._index--
-            }, ge.prototype._stateAfterScript1 = de("R", W, l), ge.prototype._stateAfterScript2 = de("I", $, l), ge.prototype._stateAfterScript3 = de("P", Y, l), ge.prototype._stateAfterScript4 = de("T", K, l), ge.prototype._stateAfterScript5 = function(e) {
+            }, ge.prototype._stateAfterScript1 = de("R", W, l), ge.prototype._stateAfterScript2 = de("I", Y, l), ge.prototype._stateAfterScript3 = de("P", $, l), ge.prototype._stateAfterScript4 = de("T", K, l), ge.prototype._stateAfterScript5 = function(e) {
                 ">" === e || he(e) ? (this._special = ue, this._state = h, this._sectionStart = this._index - 6, this._index--) : this._state = l
             }, ge.prototype._stateBeforeStyle1 = fe("Y", X), ge.prototype._stateBeforeStyle2 = fe("L", Z), ge.prototype._stateBeforeStyle3 = fe("E", J), ge.prototype._stateBeforeStyle4 = function(e) {
                 ("/" === e || ">" === e || he(e)) && (this._special = pe), this._state = u, this._index--
@@ -6597,7 +6596,7 @@
             }, ge.prototype._parse = function() {
                 for (; this._index < this._buffer.length && this._running;) {
                     var e = this._buffer.charAt(this._index);
-                    this._state === l ? this._stateText(e) : this._state === c ? this._stateBeforeTagName(e) : this._state === u ? this._stateInTagName(e) : this._state === p ? this._stateBeforeCloseingTagName(e) : this._state === h ? this._stateInCloseingTagName(e) : this._state === d ? this._stateAfterCloseingTagName(e) : this._state === m ? this._stateInSelfClosingTag(e) : this._state === f ? this._stateBeforeAttributeName(e) : this._state === g ? this._stateInAttributeName(e) : this._state === _ ? this._stateAfterAttributeName(e) : this._state === y ? this._stateBeforeAttributeValue(e) : this._state === v ? this._stateInAttributeValueDoubleQuotes(e) : this._state === b ? this._stateInAttributeValueSingleQuotes(e) : this._state === x ? this._stateInAttributeValueNoQuotes(e) : this._state === E ? this._stateBeforeDeclaration(e) : this._state === S ? this._stateInDeclaration(e) : this._state === C ? this._stateInProcessingInstruction(e) : this._state === w ? this._stateBeforeComment(e) : this._state === I ? this._stateInComment(e) : this._state === T ? this._stateAfterComment1(e) : this._state === A ? this._stateAfterComment2(e) : this._state === k ? this._stateBeforeCdata1(e) : this._state === N ? this._stateBeforeCdata2(e) : this._state === R ? this._stateBeforeCdata3(e) : this._state === L ? this._stateBeforeCdata4(e) : this._state === M ? this._stateBeforeCdata5(e) : this._state === O ? this._stateBeforeCdata6(e) : this._state === P ? this._stateInCdata(e) : this._state === D ? this._stateAfterCdata1(e) : this._state === j ? this._stateAfterCdata2(e) : this._state === B ? this._stateBeforeSpecial(e) : this._state === H ? this._stateBeforeSpecialEnd(e) : this._state === U ? this._stateBeforeScript1(e) : this._state === F ? this._stateBeforeScript2(e) : this._state === V ? this._stateBeforeScript3(e) : this._state === q ? this._stateBeforeScript4(e) : this._state === G ? this._stateBeforeScript5(e) : this._state === z ? this._stateAfterScript1(e) : this._state === W ? this._stateAfterScript2(e) : this._state === $ ? this._stateAfterScript3(e) : this._state === Y ? this._stateAfterScript4(e) : this._state === K ? this._stateAfterScript5(e) : this._state === Q ? this._stateBeforeStyle1(e) : this._state === X ? this._stateBeforeStyle2(e) : this._state === Z ? this._stateBeforeStyle3(e) : this._state === J ? this._stateBeforeStyle4(e) : this._state === ee ? this._stateAfterStyle1(e) : this._state === te ? this._stateAfterStyle2(e) : this._state === ne ? this._stateAfterStyle3(e) : this._state === oe ? this._stateAfterStyle4(e) : this._state === re ? this._stateBeforeEntity(e) : this._state === ie ? this._stateBeforeNumericEntity(e) : this._state === se ? this._stateInNamedEntity(e) : this._state === ae ? this._stateInNumericEntity(e) : this._state === le ? this._stateInHexEntity(e) : this._cbs.onerror(Error("unknown _state"), this._state), this._index++
+                    this._state === l ? this._stateText(e) : this._state === c ? this._stateBeforeTagName(e) : this._state === u ? this._stateInTagName(e) : this._state === p ? this._stateBeforeCloseingTagName(e) : this._state === h ? this._stateInCloseingTagName(e) : this._state === d ? this._stateAfterCloseingTagName(e) : this._state === m ? this._stateInSelfClosingTag(e) : this._state === f ? this._stateBeforeAttributeName(e) : this._state === g ? this._stateInAttributeName(e) : this._state === _ ? this._stateAfterAttributeName(e) : this._state === y ? this._stateBeforeAttributeValue(e) : this._state === v ? this._stateInAttributeValueDoubleQuotes(e) : this._state === b ? this._stateInAttributeValueSingleQuotes(e) : this._state === x ? this._stateInAttributeValueNoQuotes(e) : this._state === E ? this._stateBeforeDeclaration(e) : this._state === S ? this._stateInDeclaration(e) : this._state === C ? this._stateInProcessingInstruction(e) : this._state === w ? this._stateBeforeComment(e) : this._state === I ? this._stateInComment(e) : this._state === T ? this._stateAfterComment1(e) : this._state === A ? this._stateAfterComment2(e) : this._state === k ? this._stateBeforeCdata1(e) : this._state === N ? this._stateBeforeCdata2(e) : this._state === R ? this._stateBeforeCdata3(e) : this._state === L ? this._stateBeforeCdata4(e) : this._state === M ? this._stateBeforeCdata5(e) : this._state === O ? this._stateBeforeCdata6(e) : this._state === P ? this._stateInCdata(e) : this._state === D ? this._stateAfterCdata1(e) : this._state === j ? this._stateAfterCdata2(e) : this._state === B ? this._stateBeforeSpecial(e) : this._state === H ? this._stateBeforeSpecialEnd(e) : this._state === U ? this._stateBeforeScript1(e) : this._state === F ? this._stateBeforeScript2(e) : this._state === V ? this._stateBeforeScript3(e) : this._state === q ? this._stateBeforeScript4(e) : this._state === G ? this._stateBeforeScript5(e) : this._state === z ? this._stateAfterScript1(e) : this._state === W ? this._stateAfterScript2(e) : this._state === Y ? this._stateAfterScript3(e) : this._state === $ ? this._stateAfterScript4(e) : this._state === K ? this._stateAfterScript5(e) : this._state === Q ? this._stateBeforeStyle1(e) : this._state === X ? this._stateBeforeStyle2(e) : this._state === Z ? this._stateBeforeStyle3(e) : this._state === J ? this._stateBeforeStyle4(e) : this._state === ee ? this._stateAfterStyle1(e) : this._state === te ? this._stateAfterStyle2(e) : this._state === ne ? this._stateAfterStyle3(e) : this._state === oe ? this._stateAfterStyle4(e) : this._state === re ? this._stateBeforeEntity(e) : this._state === ie ? this._stateBeforeNumericEntity(e) : this._state === se ? this._stateInNamedEntity(e) : this._state === ae ? this._stateInNumericEntity(e) : this._state === le ? this._stateInHexEntity(e) : this._cbs.onerror(Error("unknown _state"), this._state), this._index++
                 }
                 this._cleanup()
             }, ge.prototype.pause = function() {
@@ -8230,11 +8229,11 @@
                     n[++t] = e
                 })), n
             }
-            var $, Y = Array.prototype,
+            var Y, $ = Array.prototype,
                 K = Function.prototype,
                 Q = Object.prototype,
                 X = D["__core-js_shared__"],
-                Z = ($ = /[^.]+$/.exec(X && X.keys && X.keys.IE_PROTO || "")) ? "Symbol(src)_1." + $ : "",
+                Z = (Y = /[^.]+$/.exec(X && X.keys && X.keys.IE_PROTO || "")) ? "Symbol(src)_1." + Y : "",
                 J = K.toString,
                 ee = Q.hasOwnProperty,
                 te = Q.toString,
@@ -8245,7 +8244,7 @@
                 se = z(Object.getPrototypeOf, Object),
                 ae = Object.create,
                 le = Q.propertyIsEnumerable,
-                ce = Y.splice,
+                ce = $.splice,
                 ue = Object.getOwnPropertySymbols,
                 me = oe ? oe.isBuffer : void 0,
                 pe = z(Object.keys, Object),
@@ -8343,7 +8342,7 @@
                 } else {
                     var O = Ue(e),
                         P = O == l || O == c;
-                    if ($e(e)) return function(e, t) {
+                    if (Ye(e)) return function(e, t) {
                         if (t) return e.slice();
                         var n = new e.constructor(e.length);
                         return e.copy(n), n
@@ -8431,7 +8430,7 @@
             }
 
             function Oe(e) {
-                return !(!Ke(e) || (t = e, Z && Z in t)) && (Ye(e) || q(e) ? ne : R).test(qe(e));
+                return !(!Ke(e) || (t = e, Z && Z in t)) && ($e(e) || q(e) ? ne : R).test(qe(e));
                 var t
             }
 
@@ -8577,13 +8576,13 @@
             function We(e) {
                 return null != e && function(e) {
                     return "number" == typeof e && e > -1 && e % 1 == 0 && e <= r
-                }(e.length) && !Ye(e)
+                }(e.length) && !$e(e)
             }
-            var $e = me || function() {
+            var Ye = me || function() {
                 return !1
             };
 
-            function Ye(e) {
+            function $e(e) {
                 var t = Ke(e) ? te.call(e) : "";
                 return t == l || t == c
             }
@@ -8657,8 +8656,8 @@
                 G = Object.create,
                 z = R.propertyIsEnumerable,
                 W = k.splice,
-                $ = U ? U.toStringTag : void 0,
-                Y = function() {
+                Y = U ? U.toStringTag : void 0,
+                $ = function() {
                     try {
                         var e = be(Object, "defineProperty");
                         return e({}, "", {}), e
@@ -8743,7 +8742,7 @@
             }
 
             function ce(e, t, n) {
-                "__proto__" == t && Y ? Y(e, t, {
+                "__proto__" == t && $ ? $(e, t, {
                     configurable: !0,
                     enumerable: !0,
                     value: n,
@@ -8829,15 +8828,15 @@
             };
 
             function pe(e) {
-                return null == e ? void 0 === e ? p : c : $ && $ in Object(e) ? function(e) {
-                    var t = O.call(e, $),
-                        n = e[$];
+                return null == e ? void 0 === e ? p : c : Y && Y in Object(e) ? function(e) {
+                    var t = O.call(e, Y),
+                        n = e[Y];
                     try {
-                        e[$] = void 0;
+                        e[Y] = void 0;
                         var o = !0
                     } catch (e) {}
                     var r = D.call(e);
-                    o && (t ? e[$] = n : delete e[$]);
+                    o && (t ? e[Y] = n : delete e[Y]);
                     return r
                 }(e) : function(e) {
                     return D.call(e)
@@ -8961,8 +8960,8 @@
                         }
                 }(e, t, je), e + "")
             }
-            var ye = Y ? function(e, t) {
-                return Y(e, "toString", {
+            var ye = $ ? function(e, t) {
+                return $(e, "toString", {
                     configurable: !0,
                     enumerable: !1,
                     value: (n = t, function() {
@@ -13035,7 +13034,6 @@
                 layout: n(188),
                 locHelper: o.Ember.inject.service("lootLocHelper"),
                 lootService: o.Ember.inject.service("loot"),
-                clientConfigService: o.Ember.inject.service("clientConfig"),
                 counterData: null,
                 claimRewardClicked: !1,
                 filledProgressAnimationValue: 0,
@@ -13048,7 +13046,7 @@
                 recipe: null,
                 lootMilestones: null,
                 milestonesUnavailable: !1,
-                scrollingArrowsEnabled: o.Ember.computed.alias("clientConfigService.scrollingArrowsEnabled"),
+                scrollingArrowsEnabled: !0,
                 onInit: o.Ember.on("init", (function() {
                     const e = this.get("recipe.lootMilestoneIds.0");
                     e && (this._milestones = [], this._animationsStartTs = {}, this._binding = o.dataBinding.bindTo((0, o.getProvider)().getSocket()), this._binding.addObserver(`/lol-loot/v1/milestones/${e}/counter`, this, this._updateMilestoneCounter))
@@ -16225,25 +16223,6 @@
                     }) : i) + "\r\n    </div>\r\n  </div>\r\n</div>\r\n"
                 },
                 useData: !0
-            })
-        }, (e, t, n) => {
-            "use strict";
-            var o = n(1);
-            e.exports = o.Ember.Service.extend({
-                init() {
-                    this._super(...arguments), this.clientConfigDataBinding = (0, o.dataBinding)("/client-config/v2/config", o.socket), this.initConfigObservers()
-                },
-                initConfigObservers() {
-                    this.observeConfig("scrollingArrowsEnabled", "/lol.client_settings.reward_track.scrolling_arrows_enabled")
-                },
-                observeConfig(e, t, n = !1, r = [!0, !1]) {
-                    this.clientConfigDataBinding.observe(t, this, (t => {
-                        this.isDestroying || this.isDestroyed || (r.includes(t) || (o.logger.warning(`Configuration: ${JSON.stringify(t)} for ${e} is not an accepted value in ${JSON.stringify(r)}. Using default value: ${JSON.stringify(n)}`), t = n), this.set(e, t))
-                    }))
-                },
-                willDestroyElement() {
-                    this._super(...arguments), this.clientConfigDataBinding.unobserve(this)
-                }
             })
         }],
         t = {};

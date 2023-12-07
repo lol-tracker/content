@@ -46,7 +46,7 @@
                 return new a.default(e)
             };
             var s = o(n(3)),
-                a = o(n(86));
+                a = o(n(85));
 
             function o(e) {
                 return e && e.__esModule ? e : {
@@ -115,7 +115,7 @@
                 value: !0
             }), t.APP_NAME = void 0, t.default = function() {
                 const e = {
-                    name: W,
+                    name: Y,
                     ComponentFactory: s.ComponentFactory,
                     Router: a.default,
                     ApplicationRoute: o.default,
@@ -123,98 +123,96 @@
                     tra: s.traService,
                     EventShopService: r.default,
                     PlayerSettingsService: i.default,
-                    ClientConfigService: c.default,
-                    EventShopCardMultiPurchaseModalComponent: p.default,
-                    EventShopCategoryNavBarComponent: d.default,
-                    EventShopCategoryNavBarTabComponent: u.default,
-                    EventShopCategoryOffersComponent: m.default,
-                    EventShopFallbackComponent: h.default,
-                    EventShopMainViewComponent: f.default,
-                    EventShopOfferCardComponent: v.default,
-                    EventShopPageHeaderComponent: _.default,
-                    EventShopProgressionComponent: g.default,
-                    EventShopPurchaseModalComponent: E.default,
-                    EventShopRewardTrackWrapperComponent: x.default,
-                    EventShopTokenBalanceAmountComponent: b.default,
+                    EventShopCardMultiPurchaseModalComponent: c.default,
+                    EventShopCategoryNavBarComponent: p.default,
+                    EventShopCategoryNavBarTabComponent: d.default,
+                    EventShopCategoryOffersComponent: u.default,
+                    EventShopFallbackComponent: m.default,
+                    EventShopMainViewComponent: h.default,
+                    EventShopOfferCardComponent: f.default,
+                    EventShopPageHeaderComponent: v.default,
+                    EventShopProgressionComponent: _.default,
+                    EventShopPurchaseModalComponent: g.default,
+                    EventShopRewardTrackWrapperComponent: E.default,
+                    EventShopTokenBalanceAmountComponent: x.default,
                     EventShopTokenShopComponent: T.default,
-                    EventShopXpComponent: k.default,
-                    RemainingTimeTextComponent: Y,
+                    EventShopXpComponent: b.default,
+                    RemainingTimeTextComponent: K,
                     ...s.RewardTrackerEmberComponents,
                     ...s.MultiPurchaseSliderEmberComponents,
-                    ApplicationController: y.default,
-                    IndexController: S.default,
-                    InventoryTypeNameHelper: C.default,
-                    EqHelper: P.default,
+                    ApplicationController: k.default,
+                    IndexController: y.default,
+                    InventoryTypeNameHelper: S.default,
+                    EqHelper: C.default,
                     TEMPLATES: {
-                        application: A.default,
-                        index: O.default,
-                        "components/event-shop-card-multi-purchase-modal": M.default,
-                        "components/event-shop-category-nav-bar-tab": w.default,
-                        "components/event-shop-category-nav-bar": R.default,
-                        "components/event-shop-category-offers": I.default,
-                        "components/event-shop-fallback": D.default,
-                        "components/event-shop-main-view": N.default,
-                        "components/event-shop-offer-card": L.default,
-                        "components/event-shop-page-header": B.default,
-                        "components/event-shop-progression": U.default,
-                        "components/event-shop-purchase-modal": H.default,
-                        "components/event-shop-reward-track-wrapper": j.default,
-                        "components/event-shop-token-shop": F.default,
-                        "components/event-shop-xp": V.default
+                        application: P.default,
+                        index: A.default,
+                        "components/event-shop-card-multi-purchase-modal": O.default,
+                        "components/event-shop-category-nav-bar-tab": M.default,
+                        "components/event-shop-category-nav-bar": w.default,
+                        "components/event-shop-category-offers": R.default,
+                        "components/event-shop-fallback": I.default,
+                        "components/event-shop-main-view": D.default,
+                        "components/event-shop-offer-card": N.default,
+                        "components/event-shop-page-header": L.default,
+                        "components/event-shop-progression": B.default,
+                        "components/event-shop-purchase-modal": U.default,
+                        "components/event-shop-reward-track-wrapper": H.default,
+                        "components/event-shop-token-shop": j.default,
+                        "components/event-shop-xp": F.default
                     }
                 };
                 s.emberApplicationFactory.setFactoryDefinition(e)
             };
             var s = n(1),
-                a = K(n(5)),
-                o = K(n(6)),
-                l = K(n(8)),
-                r = K(n(9)),
-                i = K(n(10)),
-                c = K(n(11)),
-                p = K(n(12)),
-                d = K(n(14)),
-                u = K(n(15)),
-                m = K(n(16)),
-                h = K(n(17)),
-                f = K(n(18)),
-                v = K(n(19)),
-                _ = K(n(40)),
-                g = K(n(42)),
-                E = K(n(43)),
-                x = K(n(44)),
-                b = K(n(63)),
-                T = K(n(64)),
-                k = K(n(65)),
-                y = K(n(66)),
-                S = K(n(68)),
-                C = K(n(69)),
-                P = K(n(70)),
-                A = K(n(71)),
-                O = K(n(72)),
-                M = K(n(73)),
-                w = K(n(74)),
-                R = K(n(75)),
-                I = K(n(76)),
-                D = K(n(77)),
-                N = K(n(78)),
-                L = K(n(79)),
-                B = K(n(80)),
-                U = K(n(81)),
-                H = K(n(82)),
-                j = K(n(83)),
-                F = K(n(84)),
-                V = K(n(85));
+                a = V(n(5)),
+                o = V(n(6)),
+                l = V(n(8)),
+                r = V(n(9)),
+                i = V(n(10)),
+                c = V(n(11)),
+                p = V(n(13)),
+                d = V(n(14)),
+                u = V(n(15)),
+                m = V(n(16)),
+                h = V(n(17)),
+                f = V(n(18)),
+                v = V(n(39)),
+                _ = V(n(41)),
+                g = V(n(42)),
+                E = V(n(43)),
+                x = V(n(62)),
+                T = V(n(63)),
+                b = V(n(64)),
+                k = V(n(65)),
+                y = V(n(67)),
+                S = V(n(68)),
+                C = V(n(69)),
+                P = V(n(70)),
+                A = V(n(71)),
+                O = V(n(72)),
+                M = V(n(73)),
+                w = V(n(74)),
+                R = V(n(75)),
+                I = V(n(76)),
+                D = V(n(77)),
+                N = V(n(78)),
+                L = V(n(79)),
+                B = V(n(80)),
+                U = V(n(81)),
+                H = V(n(82)),
+                j = V(n(83)),
+                F = V(n(84));
 
-            function K(e) {
+            function V(e) {
                 return e && e.__esModule ? e : {
                     default: e
                 }
             }
             const {
-                RemainingTimeTextComponent: Y
-            } = s.SharedComponents, W = "rcp-fe-lol-event-shop";
-            t.APP_NAME = W
+                RemainingTimeTextComponent: K
+            } = s.SharedComponents, Y = "rcp-fe-lol-event-shop";
+            t.APP_NAME = Y
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -448,32 +446,9 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var s = n(1);
-            var a = s.Ember.Service.extend({
-                init() {
-                    this._super(...arguments), this.clientConfigDataBinding = (0, s.dataBinding)("/client-config/v2/config", s.socket), this.initConfigObservers()
-                },
-                initConfigObservers() {
-                    this.observeConfig("scrollingArrowsEnabled", "/lol.client_settings.reward_track.scrolling_arrows_enabled")
-                },
-                observeConfig(e, t, n = !1, a = [!0, !1]) {
-                    this.clientConfigDataBinding.observe(t, this, (t => {
-                        this.isDestroying || this.isDestroyed || (a.includes(t) || (s.logger.warning(`Configuration: ${JSON.stringify(t)} for ${e} is not an accepted value in ${JSON.stringify(a)}. Using default value: ${JSON.stringify(n)}`), t = n), this.set(e, t))
-                    }))
-                },
-                willDestroyElement() {
-                    this._super(...arguments), this.clientConfigDataBinding.unobserve(this)
-                }
-            });
-            t.default = a
-        }, (e, t, n) => {
-            "use strict";
-            Object.defineProperty(t, "__esModule", {
-                value: !0
-            }), t.default = void 0;
             var s = n(1),
                 a = n(7),
-                o = n(13),
+                o = n(12),
                 l = s.Ember.Component.extend({
                     classNames: ["event-shop-card-multi-purchase-modal"],
                     eventShopService: s.Ember.inject.service("event-shop"),
@@ -601,7 +576,7 @@
             }), t.default = void 0;
             var s = n(1),
                 a = n(7),
-                o = n(13),
+                o = n(12),
                 l = s.Ember.Component.extend({
                     classNames: ["event-shop-nav-bar-tab"],
                     classNameBindings: ["isTabSelected:event-shop-nav-bar-tab-selected"],
@@ -628,7 +603,7 @@
             }), t.default = void 0;
             var s = n(1),
                 a = n(7),
-                o = n(13),
+                o = n(12),
                 l = s.Ember.Component.extend({
                     classNames: ["event-shop-category-offers"],
                     categoryOffersId: s.Ember.computed("categoryOffers.category", (function() {
@@ -687,7 +662,7 @@
             }), t.default = void 0;
             var s = n(1),
                 a = n(7);
-            const o = n(20);
+            const o = n(19);
             var l = s.Ember.Component.extend({
                 classNames: [a.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME],
                 classNameBindings: ["offer.highlighted:event-shop-token-shop-highlighted-card", "isOfferOwned:event-shop-token-shop-card-owned", "isOfferAvailable:event-shop-token-shop-card-available", "isOfferUnavailable:event-shop-token-shop-card-unavailable"],
@@ -792,7 +767,7 @@
             });
             t.default = l
         }, (e, t, n) => {
-            var s = n(21);
+            var s = n(20);
             e.exports = (s.default || s).template({
                 compiler: [7, ">= 4.0.0"],
                 main: function(e, t, n, s, a) {
@@ -821,7 +796,7 @@
                 useData: !0
             })
         }, (e, t, n) => {
-            e.exports = n(22).default
+            e.exports = n(21).default
         }, (e, t, n) => {
             "use strict";
 
@@ -839,12 +814,12 @@
                 return t.default = e, t
             }
             t.__esModule = !0;
-            var o = a(n(23)),
-                l = s(n(37)),
-                r = s(n(25)),
-                i = a(n(24)),
-                c = a(n(38)),
-                p = s(n(39));
+            var o = a(n(22)),
+                l = s(n(36)),
+                r = s(n(24)),
+                i = a(n(23)),
+                c = a(n(37)),
+                p = s(n(38));
 
             function d() {
                 var e = new o.HandlebarsEnvironment;
@@ -863,11 +838,11 @@
                 }
             }
             t.__esModule = !0, t.HandlebarsEnvironment = p;
-            var a = n(24),
-                o = s(n(25)),
-                l = n(26),
-                r = n(34),
-                i = s(n(36));
+            var a = n(23),
+                o = s(n(24)),
+                l = n(25),
+                r = n(33),
+                i = s(n(35));
             t.VERSION = "4.1.2";
             t.COMPILER_REVISION = 7;
             t.REVISION_CHANGES = {
@@ -1008,17 +983,17 @@
             t.__esModule = !0, t.registerDefaultHelpers = function(e) {
                 a.default(e), o.default(e), l.default(e), r.default(e), i.default(e), c.default(e), p.default(e)
             };
-            var a = s(n(27)),
-                o = s(n(28)),
-                l = s(n(29)),
-                r = s(n(30)),
-                i = s(n(31)),
-                c = s(n(32)),
-                p = s(n(33))
+            var a = s(n(26)),
+                o = s(n(27)),
+                l = s(n(28)),
+                r = s(n(29)),
+                i = s(n(30)),
+                c = s(n(31)),
+                p = s(n(32))
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s = n(24);
+            var s = n(23);
             t.default = function(e) {
                 e.registerHelper("blockHelperMissing", (function(t, n) {
                     var a = n.inverse,
@@ -1038,8 +1013,8 @@
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s, a = n(24),
-                o = n(25),
+            var s, a = n(23),
+                o = n(24),
                 l = (s = o) && s.__esModule ? s : {
                     default: s
                 };
@@ -1072,7 +1047,7 @@
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s, a = n(25),
+            var s, a = n(24),
                 o = (s = a) && s.__esModule ? s : {
                     default: s
                 };
@@ -1084,7 +1059,7 @@
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s = n(24);
+            var s = n(23);
             t.default = function(e) {
                 e.registerHelper("if", (function(e, t) {
                     return s.isFunction(e) && (e = e.call(this)), !t.hash.includeZero && !e || s.isEmpty(e) ? t.inverse(this) : t.fn(this)
@@ -1115,7 +1090,7 @@
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s = n(24);
+            var s = n(23);
             t.default = function(e) {
                 e.registerHelper("with", (function(e, t) {
                     s.isFunction(e) && (e = e.call(this));
@@ -1133,14 +1108,14 @@
             t.__esModule = !0, t.registerDefaultDecorators = function(e) {
                 o.default(e)
             };
-            var s, a = n(35),
+            var s, a = n(34),
                 o = (s = a) && s.__esModule ? s : {
                     default: s
                 }
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s = n(24);
+            var s = n(23);
             t.default = function(e) {
                 e.registerDecorator("inline", (function(e, t, n, a) {
                     var o = e;
@@ -1155,7 +1130,7 @@
         }, (e, t, n) => {
             "use strict";
             t.__esModule = !0;
-            var s = n(24),
+            var s = n(23),
                 a = {
                     methodMap: ["debug", "info", "warn", "error"],
                     level: "info",
@@ -1297,12 +1272,12 @@
                     if (null != e)
                         for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
                     return t.default = e, t
-                }(n(24)),
-                o = n(25),
+                }(n(23)),
+                o = n(24),
                 l = (s = o) && s.__esModule ? s : {
                     default: s
                 },
-                r = n(23);
+                r = n(22);
 
             function i(e, t, n, s, a, o, l) {
                 function r(t) {
@@ -1340,7 +1315,7 @@
             }), t.default = void 0;
             var s = n(1),
                 a = n(7);
-            const o = n(41);
+            const o = n(40);
             var l = s.Ember.Component.extend({
                 classNames: ["event-shop-page-header"],
                 eventShopService: s.Ember.inject.service("event-shop"),
@@ -1434,7 +1409,7 @@
             });
             t.default = l
         }, (e, t, n) => {
-            var s = n(21);
+            var s = n(20);
             e.exports = (s.default || s).template({
                 compiler: [7, ">= 4.0.0"],
                 main: function(e, t, n, s, a) {
@@ -1750,7 +1725,7 @@
                 value: !0
             }), t.default = void 0;
             var s = n(1),
-                a = n(45),
+                a = n(44),
                 o = n(7);
             const {
                 TRACKER_SIZE: l
@@ -1758,7 +1733,6 @@
             var r = s.Ember.Component.extend({
                 classNames: ["event-shop-reward-track-wrapper"],
                 eventShopService: s.Ember.inject.service("event-shop"),
-                clientConfigService: s.Ember.inject.service("client-config"),
                 trackerSize: l.SMALL,
                 displayCurrentBonusIteration: !0,
                 rewardTrackProgress: s.Ember.computed.alias("eventShopService.rewardTrackProgress"),
@@ -1766,7 +1740,7 @@
                 rewardTrackBonusProgress: s.Ember.computed.alias("eventShopService.rewardTrackBonusProgress"),
                 rewardTrackBonusItems: s.Ember.computed.alias("eventShopService.rewardTrackBonusItems"),
                 isGracePeriod: s.Ember.computed.alias("eventShopService.isGracePeriod"),
-                scrollingArrowsEnabled: s.Ember.computed.alias("clientConfigService.scrollingArrowsEnabled"),
+                scrollingArrowsEnabled: !0,
                 handleClickItem(e, t = !1) {
                     this.trackItemHasUnclaimedRewards(e) && (s.AudioPlugin.getChannel("sfx-ui").playSound("/fe/lol-static-assets/sounds/sfx-uikit-grid-click.ogg"), t ? this.get("eventShopService").claimCurrentBonusItems() : this.get("eventShopService").claimAllPendingRewards())
                 },
@@ -1825,13 +1799,13 @@
                     return c.default
                 }
             });
-            var s = p(n(46)),
-                a = p(n(57)),
-                o = p(n(58)),
-                l = p(n(59)),
-                r = p(n(60)),
-                i = p(n(61)),
-                c = p(n(62));
+            var s = p(n(45)),
+                a = p(n(56)),
+                o = p(n(57)),
+                l = p(n(58)),
+                r = p(n(59)),
+                i = p(n(60)),
+                c = p(n(61));
 
             function p(e) {
                 return e && e.__esModule ? e : {
@@ -1843,16 +1817,16 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var s = m(n(47)),
-                a = m(n(48)),
-                o = m(n(49)),
-                l = m(n(50)),
-                r = m(n(51)),
-                i = m(n(52)),
-                c = m(n(53)),
-                p = m(n(54)),
-                d = m(n(55)),
-                u = m(n(56));
+            var s = m(n(46)),
+                a = m(n(47)),
+                o = m(n(48)),
+                l = m(n(49)),
+                r = m(n(50)),
+                i = m(n(51)),
+                c = m(n(52)),
+                p = m(n(53)),
+                d = m(n(54)),
+                u = m(n(55));
 
             function m(e) {
                 return e && e.__esModule ? e : {
@@ -2179,7 +2153,7 @@
             }), t.default = void 0;
             var s = n(1),
                 a = n(7),
-                o = n(13);
+                o = n(12);
             var l = s.Ember.Component.extend({
                 classNames: ["event-shop-token-shop"],
                 eventShopService: s.Ember.inject.service("event-shop"),
@@ -2249,7 +2223,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.default = void 0, n(67);
+            }), t.default = void 0, n(66);
             var s = n(1),
                 a = s.Ember.Controller.extend({
                     init() {

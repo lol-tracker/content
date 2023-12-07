@@ -164,6 +164,7 @@
                             StatstonesService: n(110),
                             UxSettingsService: n(111),
                             ClientConfigService: n(112),
+                            EventHubService: n(113),
                             DynamicTraHelper: o.SharedComponents.getApi_traTemplateHelpers().DynamicTra,
                             EqHelper: i.default
                         },
@@ -171,14 +172,14 @@
                             name: "ProgressionFeatureFlyoutComponent",
                             tra: e,
                             ComponentFactory: o.ComponentFactory,
-                            ProgressionFeatureFlyoutComponent: n(113),
+                            ProgressionFeatureFlyoutComponent: n(114),
                             StatstonesService: n(110)
                         },
                         r = {
                             name: "QuestFormsPopup",
                             tra: e,
                             ComponentFactory: o.ComponentFactory,
-                            QuestFormsPopupComponent: n(116).default,
+                            QuestFormsPopupComponent: n(117).default,
                             ConcatTraHelper: o.SharedComponents.getApi_traTemplateHelpers().ConcatTra,
                             EqHelper: i.default
                         };
@@ -6715,6 +6716,8 @@
                 layout: n(100),
                 clientConfig: o.Ember.inject.service("client-config"),
                 tieredSkinsConfig: o.Ember.computed.alias("clientConfig.tieredSkins"),
+                eventHubService: o.Ember.inject.service("event-hub"),
+                skinsFromActiveEvents: o.Ember.computed.alias("eventHubService.skinsFromActiveEvents"),
                 selectedQuestFormIndex: null,
                 flyoutComponentName: "QuestFormsPopup",
                 flyoutTargetClass: ".quest-forms",
@@ -6785,8 +6788,12 @@
                 hasQuestForms: o.Ember.computed.notEmpty("questSkinInfo.tiers"),
                 lastSelectedSkinIndex: null,
                 isTieredSkin: o.Ember.computed.equal("questSkinInfo.productType", "kTieredSkin"),
-                isTieredSkinEventActive: o.Ember.computed.alias("tieredSkinsConfig.eventActive"),
-                isTieredSkinEventPurchased: o.Ember.computed.alias("tieredSkinsConfig.eventPassPurchased"),
+                isTieredSkinEventActive: o.Ember.computed("activeSkinObject.id", "skinsFromActiveEvents", (function() {
+                    return !!this.get("skinsFromActiveEvents")?.[this.get("activeSkinObject.id")]
+                })),
+                isTieredSkinEventPurchased: o.Ember.computed("activeSkinObject.id", "skinsFromActiveEvents", (function() {
+                    return !!this.get("skinsFromActiveEvents")?.[this.get("activeSkinObject.id")]?.isPassPurchased
+                })),
                 selectedSkinTier: o.Ember.computed("questSkinTiers", "selectedQuestFormIndex", (function() {
                     return this.get("questSkinTiers")[this.get("selectedQuestFormIndex")]
                 })),
@@ -7430,11 +7437,25 @@
             })
         }, (e, t, n) => {
             "use strict";
+            var o = n(1);
+            const i = "v1/skins";
+            e.exports = o.Ember.Service.extend({
+                init: function() {
+                    this._super(...arguments), this.eventHubDataBinding = (0, o.DataBinding)("/lol-event-hub", o.socket), this.eventHubDataBinding.observe(i, this, (e => {
+                        this.set("skinsFromActiveEvents", e)
+                    }))
+                },
+                willDestroy() {
+                    this._super(...arguments), this.eventHubDataBinding.unobserve(i, this)
+                }
+            })
+        }, (e, t, n) => {
+            "use strict";
             var o = n(1),
                 i = n(66);
-            n(114), e.exports = o.Ember.Component.extend({
+            n(115), e.exports = o.Ember.Component.extend({
                 classNames: ["rcp-fe-lol-champion-details-featured-statstones"],
-                layout: n(115),
+                layout: n(116),
                 statstonesService: o.Ember.inject.service("statstones"),
                 featured: null,
                 selection: null,
@@ -7485,12 +7506,12 @@
             }), t.default = void 0;
             var o = n(1),
                 i = n(66);
-            n(117);
+            n(118);
             const s = o.UIKit.getFlyoutManager();
             var r = o.Ember.Component.extend({
                 classNames: ["quest-forms-flyout"],
                 isShow: !1,
-                layout: n(118),
+                layout: n(119),
                 selectedSkinIndex: o.Ember.computed.alias("showcaseComponent.selectedQuestFormIndex"),
                 skinTiers: null,
                 caller: null,

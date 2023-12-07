@@ -20502,8 +20502,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "UNLOCKED",
-        "LOCKED"
+        "LOCKED",
+        "UNLOCKED"
       ],
       "type": "string"
     },
@@ -23199,9 +23199,6 @@
           "type": "boolean"
         },
         "HonorVisibilityEnabled": {
-          "type": "boolean"
-        },
-        "RecallRewardEnabled": {
           "type": "boolean"
         },
         "SecondsToVote": {
@@ -56727,7 +56724,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -74976,48 +74973,6 @@
         ]
       }
     },
-    "/lol-perks/v1/quick-play-selections/champion/{championId}/slot/{slotId}": {
-      "post": {
-        "operationId": "PostLolPerksV1QuickPlaySelectionsChampionByChampionIdSlotBySlotId",
-        "parameters": [
-          {
-            "format": "int32",
-            "in": "path",
-            "name": "championId",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "format": "int64",
-            "in": "path",
-            "name": "slotId",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "in": "body",
-            "name": "page",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LolPerksPerkPageResource"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": true,
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-perks"
-        ]
-      }
-    },
     "/lol-perks/v1/recommended-pages-position/champion/{championId}": {
       "get": {
         "operationId": "GetLolPerksV1RecommendedPagesPositionChampionByChampionId",
@@ -84824,7 +84779,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "Http2ApiDocsV3",
+        "operationId": "HttpApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

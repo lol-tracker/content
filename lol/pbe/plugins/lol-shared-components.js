@@ -5132,7 +5132,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.SORTED_CHALLENGE_LEVELS = t.SORTED_CHALLENGE_CATEGORIES = t.REKINDLED_MILESTONE_MARKER = t.MS_IN_ONE_DAY = t.MAX_SELECTED_TOKENS = t.LOTTIE_RADIAL_UNITS = t.IMG_BASE_PATH = t.ID_LIST_MAPPING_TYPES = t.DEFAULT_TITLE_CHALLENGE_ID = t.DEFAULT_CHALLENGE_CRYSTAL_LEVEL = t.CREST_ID_PRESTIGE = t.CREST_ID_CURRENT_RANK = t.CHALLENGE_TOKEN_SORT_TYPES = t.CHALLENGE_TITLE_SORT_TYPES = t.CHALLENGE_TITLE_FILTER_TYPES = t.CHALLENGE_SORT_TYPES = t.CHALLENGE_SORT_RARITY_TITLE_UNOWNED_KEY = t.CHALLENGE_SORT_RARITY_OTHER_KEY = t.CHALLENGE_SORTING_RETIRED_GROUP_DELIMITER = t.CHALLENGE_REWARD_CATEGORIES = t.CHALLENGE_MINI_CRYSTAL_PATH = t.CHALLENGE_MILESTONE_REWARDS = t.CHALLENGE_LEVEL_TO_ORDINAL = t.CHALLENGE_LEVELS = t.CHALLENGE_FLAG_NAMES = t.CHALLENGE_FLAG_DEFAULTS = t.CHALLENGE_CURRENCY_REWARDS = t.CHALLENGE_CATEGORY_IDS_LIST = t.CHALLENGE_CATEGORY_IDS = t.CHALLENGE_CATEGORIES = t.CHALLENGES_RETIRE_DISPLAY_THRESHOLD_MS = t.CHALLENGES_CLIENT_STATES = t.BANNER_ID_PAST_RANK = t.BANNER_ID_DEFAULT = t.APEX_CHALLENGE_LEVELS = void 0, t.getChallengeMiniCrystal = function(e) {
+            }), t.SORTED_CHALLENGE_LEVELS = t.SORTED_CHALLENGE_CATEGORIES = t.REKINDLED_MILESTONE_MARKER = t.MS_IN_ONE_DAY = t.MAX_SELECTED_TOKENS = t.LOTTIE_RADIAL_UNITS = t.IMG_BASE_PATH = t.ID_LIST_MAPPING_TYPES = t.DEFAULT_TITLE_CHALLENGE_ID = t.DEFAULT_CHALLENGE_CRYSTAL_LEVEL = t.CREST_ID_PRESTIGE = t.CREST_ID_CURRENT_RANK = t.CHALLENGE_TOKEN_SORT_TYPES = t.CHALLENGE_TITLE_SORT_TYPES = t.CHALLENGE_SORT_TYPES = t.CHALLENGE_SORT_RARITY_TITLE_UNOWNED_KEY = t.CHALLENGE_SORT_RARITY_OTHER_KEY = t.CHALLENGE_SORTING_RETIRED_GROUP_DELIMITER = t.CHALLENGE_REWARD_CATEGORIES = t.CHALLENGE_MINI_CRYSTAL_PATH = t.CHALLENGE_MILESTONE_REWARDS = t.CHALLENGE_LEVEL_TO_ORDINAL = t.CHALLENGE_LEVELS = t.CHALLENGE_FLAG_NAMES = t.CHALLENGE_FLAG_DEFAULTS = t.CHALLENGE_CURRENCY_REWARDS = t.CHALLENGE_CATEGORY_IDS_LIST = t.CHALLENGE_CATEGORY_IDS = t.CHALLENGE_CATEGORIES = t.CHALLENGES_RETIRE_DISPLAY_THRESHOLD_MS = t.CHALLENGES_CLIENT_STATES = t.BANNER_ID_PAST_RANK = t.BANNER_ID_DEFAULT = t.APEX_CHALLENGE_LEVELS = void 0, t.getChallengeMiniCrystal = function(e) {
                 if (!e) return g;
                 const t = f(e);
                 return `${h}/${t}.svg`.toLowerCase()
@@ -5221,11 +5221,6 @@
                 SYSTEM: "SYSTEM",
                 LEVEL: "LEVEL",
                 ACQUIRED: "ACQUIRED"
-            };
-            t.CHALLENGE_TITLE_FILTER_TYPES = {
-                ALL: "ALL",
-                CHALLENGES: "CHALLENGE",
-                EVENTS: "EVENT"
             };
             t.CHALLENGE_SORT_TYPES = {
                 CAPSTONE: "CAPSTONE",
@@ -18843,7 +18838,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.PLAYER_TITLE_ACQUISITION_TYPE_MAP = t.PLAYER_TITLE_ACQUISITION_TRA_MAP = t.NO_TITLE_DATA_ID = void 0;
+            }), t.PLAYER_TITLE_FILTER_TYPES = t.PLAYER_TITLE_ACQUISITION_TYPE_MAP = t.PLAYER_TITLE_ACQUISITION_TRA_MAP = t.NO_TITLE_DATA_ID = void 0;
             t.NO_TITLE_DATA_ID = -1;
             t.PLAYER_TITLE_ACQUISITION_TYPE_MAP = {
                 DEFAULT: "default",
@@ -18851,6 +18846,11 @@
             };
             t.PLAYER_TITLE_ACQUISITION_TRA_MAP = {
                 CHALLENGE: "player_title_acquisition_type_challenges"
+            };
+            t.PLAYER_TITLE_FILTER_TYPES = {
+                ALL: "ALL",
+                CHALLENGES: "CHALLENGE",
+                EVENTS: "EVENT"
             }
         }, (e, t, n) => {
             "use strict";
@@ -20416,8 +20416,9 @@
             "use strict";
             var a = n(1),
                 i = n(114),
-                s = n(493),
-                r = n(491);
+                s = n(467),
+                r = n(493),
+                o = n(491);
             n(496), e.exports = a.Ember.Component.extend({
                 layout: n(497),
                 classNames: ["challenges-identity-customizer-tab-titles-component"],
@@ -20446,14 +20447,14 @@
                         e && e.data && this.set("titleSettings", e.data)
                     }))
                 },
-                selectedFilterOption: i.CHALLENGE_TITLE_FILTER_TYPES.ALL,
+                selectedFilterOption: s.PLAYER_TITLE_FILTER_TYPES.ALL,
                 filterOptions: a.Ember.computed("selectedFilterOption", (function() {
                     const e = this.get("selectedFilterOption"),
                         t = [];
-                    return Object.keys(i.CHALLENGE_TITLE_FILTER_TYPES).forEach((n => {
-                        const a = i.CHALLENGE_TITLE_FILTER_TYPES[n];
+                    return Object.keys(s.PLAYER_TITLE_FILTER_TYPES).forEach((n => {
+                        const a = s.PLAYER_TITLE_FILTER_TYPES[n];
                         t.push({
-                            name: this.get(`tra.challenges_filter_type_option_${a.toLowerCase()}`),
+                            name: this.get(`tra.player_title_filter_type_option_${a.toLowerCase()}`),
                             value: a,
                             isSelected: e === a
                         })
@@ -20493,16 +20494,16 @@
                         t = this.get("selectedSortOption"),
                         n = this.get("selectedFilterOption");
                     let a = this._getAllTitlesWithOwnershipData();
-                    a = a.filter((e => e.challengeTitleData ? e.challengeData || e.challengeTitleData.challengeId === i.DEFAULT_TITLE_CHALLENGE_ID : e.titleAcquisitionName || e.titleRequirementDescription)), n !== i.CHALLENGE_TITLE_FILTER_TYPES.ALL && (a = a.filter((e => e.titleAcquisitionType === n))), this.get("isUnownedShown") || (a = a.filter((e => e.isOwned)));
-                    const s = this.get("searchFilter");
-                    s && (a = this._matchTitleName(a, s, e));
-                    const r = this._groupAndSort(a, t),
-                        o = {
+                    a = a.filter((e => e.challengeTitleData ? e.challengeData || e.challengeTitleData.challengeId === i.DEFAULT_TITLE_CHALLENGE_ID : e.titleAcquisitionName || e.titleRequirementDescription)), n !== s.PLAYER_TITLE_FILTER_TYPES.ALL && (a = a.filter((e => e.titleAcquisitionType === n))), this.get("isUnownedShown") || (a = a.filter((e => e.isOwned)));
+                    const r = this.get("searchFilter");
+                    r && (a = this._matchTitleName(a, r, e));
+                    const o = this._groupAndSort(a, t),
+                        l = {
                             itemId: -1,
                             name: this.get("tra.challenges_identity_customizer_no_title"),
                             isOwned: !0
                         };
-                    return s && e && !this._matchTitleName([o], s, e) || r.unshift(o), r
+                    return r && e && !this._matchTitleName([l], r, e) || o.unshift(l), o
                 })),
                 _getAllTitlesWithOwnershipData() {
                     const e = Object.assign({}, this.get("allTitles")),
@@ -20524,23 +20525,23 @@
                     return e.filter((e => e.name.toLocaleLowerCase(n).includes(a)))
                 },
                 _groupAndSort(e, t) {
-                    const n = (0, r.sortTitles)(e, t);
+                    const n = (0, o.sortTitles)(e, t);
                     return t === i.CHALLENGE_TITLE_SORT_TYPES.ALPHABETICAL ? n : t === i.CHALLENGE_TITLE_SORT_TYPES.ACQUIRED ? this._groupAndSortAcquired(n) : t === i.CHALLENGE_TITLE_SORT_TYPES.LEVEL ? this._groupAndSortLevel(n) : t === i.CHALLENGE_TITLE_SORT_TYPES.RARITY ? this._groupAndSortRarity(n) : t === i.CHALLENGE_TITLE_SORT_TYPES.SYSTEM ? this._groupAndSortSystem(n) : n
                 },
                 _groupAndSortAcquired(e) {
-                    const t = (0, s.groupTitlesByYearAcquired)(e);
+                    const t = (0, r.groupTitlesByYearAcquired)(e);
                     return this._convertGroupTitles(t, i.CHALLENGE_TITLE_SORT_TYPES.ACQUIRED)
                 },
                 _groupAndSortLevel(e) {
-                    const t = (0, s.groupTitlesByLevel)(e);
+                    const t = (0, r.groupTitlesByLevel)(e);
                     return this._convertGroupTitles(t, i.CHALLENGE_TITLE_SORT_TYPES.LEVEL)
                 },
                 _groupAndSortRarity(e) {
-                    const t = (0, s.groupTitlesByRarity)(e);
+                    const t = (0, r.groupTitlesByRarity)(e);
                     return this._convertGroupTitles(t, i.CHALLENGE_TITLE_SORT_TYPES.RARITY)
                 },
                 _groupAndSortSystem(e) {
-                    const t = (0, s.groupTitlesBySystem)(e);
+                    const t = (0, r.groupTitlesBySystem)(e);
                     return this._convertGroupTitles(t, i.CHALLENGE_TITLE_SORT_TYPES.SYSTEM)
                 },
                 _convertGroupTitles(e, t) {

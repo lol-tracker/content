@@ -4586,6 +4586,9 @@
                 shouldShowDescription: s.Ember.computed("isSkin", "inventoryItem.description", (function() {
                     return !this.get("isSkin") && this.get("inventoryItem.description")
                 })),
+                isTieredSkin: s.Ember.computed("isSkin", "inventoryItem", (function() {
+                    return this.get("isSkin") && "kTieredSkin" === this.get("inventoryItem.questSkinInfo.productType")
+                })),
                 hasQuestSkinIndicator: s.Ember.computed("isSkin", "inventoryItem", (function() {
                     const e = this.get("isSkin"),
                         t = this.get("inventoryItem"),
@@ -4628,8 +4631,9 @@
                     return !!(e.rarity && "ultimate" === e.rarity.borderRarity && t && t.collectionView)
                 })),
                 itemName: s.Ember.computed("inventoryItem", "hasQuestSkinIndicator", (function() {
-                    const e = this.get("inventoryItem");
-                    return this.get("hasQuestSkinIndicator") ? e.questSkinInfo.name : e.name
+                    const e = this.get("inventoryItem"),
+                        t = this.get("hasQuestSkinIndicator");
+                    return this.get("isTieredSkin") ? e?.questSkinInfo?.tiers?.reduce?.(((e, t) => t.ownership.owned ? t.name : e), e?.questSkinInfo?.tiers?.[0]?.name) : t ? e.questSkinInfo.name : e.name
                 })),
                 itemVideoPath: s.Ember.computed("hasItemVideo", "inventoryItem.id", (function() {
                     if (!this.get("hasItemVideo")) return "";
@@ -4701,8 +4705,9 @@
                         t = this.get("isSkin"),
                         n = this.get("isWard"),
                         s = this.get("isChroma"),
-                        o = this.get("isOwned");
-                    return this.get("hasQuestSkinIndicator") ? e.questSkinInfo.collectionCardPath : n ? e.wardImagePath : s ? e.chromaPath : t ? o && e.isVintage && e.loadScreenVintagePath ? e.loadScreenVintagePath : e.loadScreenPath : e.imagePath
+                        o = this.get("isOwned"),
+                        i = this.get("hasQuestSkinIndicator");
+                    return this.get("isTieredSkin") ? e?.questSkinInfo?.tiers?.reduce?.(((e, t) => t.ownership.owned ? t.loadScreenPath : e), e?.questSkinInfo?.tiers?.[0]?.loadScreenPath) : i ? e.questSkinInfo.collectionCardPath : n ? e.wardImagePath : s ? e.chromaPath : t ? o && e.isVintage && e.loadScreenVintagePath ? e.loadScreenVintagePath : e.loadScreenPath : e.imagePath
                 })),
                 didInsertElement() {
                     this._super(...arguments);
@@ -19228,17 +19233,18 @@
                     SkinCarouselComponent: n(398),
                     TieredTransformationsComponent: n(401),
                     EqHelper: n(404).eqHelper,
-                    ClientConfigService: n(101).default
+                    ClientConfigService: n(101).default,
+                    EventHubService: n(405).default
                 }), o.EmberApplicationFactory.setFactoryDefinition({
                     name: "SkinLinePopup",
                     ComponentFactory: o.ComponentFactory,
                     tra: o.traService,
-                    SkinLinePopupComponent: n(405)
+                    SkinLinePopupComponent: n(406)
                 }), o.EmberApplicationFactory.setFactoryDefinition({
                     name: "ChromaPopup",
                     ComponentFactory: o.ComponentFactory,
                     tra: o.traService,
-                    ChromaPopupComponent: n(408)
+                    ChromaPopupComponent: n(409)
                 }), o.EmberApplicationFactory.setFactoryDefinition({
                     name: "QuestFormsPopup",
                     ComponentFactory: o.ComponentFactory,
@@ -19398,6 +19404,8 @@
             e.exports = k.extend(y, d.default, c.default, m.default, {
                 clientConfig: s.Ember.inject.service("client-config"),
                 tieredSkinsConfig: s.Ember.computed.alias("clientConfig.tieredSkins"),
+                eventHubService: s.Ember.inject.service("event-hub"),
+                skinsFromActiveEvents: s.Ember.computed.alias("eventHubService.skinsFromActiveEvents"),
                 classNames: ["showcase-view-root-component"],
                 currentSkinId: -1,
                 rp: 0,
@@ -19480,8 +19488,12 @@
                 questSkinInfo: s.Ember.computed.alias("currentSkin.questSkinInfo"),
                 questSkinTiers: s.Ember.computed.alias("questSkinInfo.tiers"),
                 isTieredSkin: s.Ember.computed.equal("questSkinInfo.productType", "kTieredSkin"),
-                isTieredSkinEventActive: s.Ember.computed.alias("tieredSkinsConfig.eventActive"),
-                isTieredSkinEventPurchased: s.Ember.computed.alias("tieredSkinsConfig.eventPassPurchased"),
+                isTieredSkinEventActive: s.Ember.computed("currentSkin.id", "skinsFromActiveEvents", (function() {
+                    return !!this.get("skinsFromActiveEvents")?.[this.get("currentSkin.id")]
+                })),
+                isTieredSkinEventPurchased: s.Ember.computed("currentSkin.id", "skinsFromActiveEvents", (function() {
+                    return !!this.get("skinsFromActiveEvents")?.[this.get("currentSkin.id")]?.isPassPurchased
+                })),
                 selectedSkinTier: s.Ember.computed("questSkinTiers", "selectedQuestFormIndex", (function() {
                     return this.get("questSkinTiers")[this.get("selectedQuestFormIndex")]
                 })),
@@ -20937,8 +20949,26 @@
             t.eqHelper = l
         }, (e, t, n) => {
             "use strict";
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            }), t.default = void 0;
+            var s = n(1);
+            const o = "v1/skins";
+            var i = s.Ember.Service.extend({
+                init: function() {
+                    this._super(...arguments), this.eventHubDataBinding = (0, s.dataBinding)("/lol-event-hub", s.socket), this.eventHubDataBinding.observe(o, this, (e => {
+                        this.set("skinsFromActiveEvents", e)
+                    }))
+                },
+                willDestroy() {
+                    this._super(...arguments), this.eventHubDataBinding.unobserve(o, this)
+                }
+            });
+            t.default = i
+        }, (e, t, n) => {
+            "use strict";
             var s = r(n(1));
-            n(406);
+            n(407);
             var o = n(374),
                 i = n(375),
                 l = r(n(382)),
@@ -20958,7 +20988,7 @@
             } = c, u = m.extend({
                 classNames: ["skin-line-flyout"],
                 isShow: !1,
-                layout: n(407),
+                layout: n(408),
                 skins: d.alias("skinLine.skins"),
                 didInsertElement: function() {
                     this._super(...arguments);
@@ -21000,7 +21030,7 @@
         }, (e, t, n) => {
             "use strict";
             var s = n(1);
-            n(409);
+            n(410);
             var o, i = n(374),
                 l = n(375),
                 a = n(381),
@@ -21016,7 +21046,7 @@
             } = s.Ember, h = p.extend({
                 classNames: ["chroma-flyout"],
                 isShow: !1,
-                layout: n(410),
+                layout: n(411),
                 parentSkinOwned: m.alias("skin.ownership.owned"),
                 chromas: m.alias("skin.chromas"),
                 chromaBundlePurchaseDisabled: m.or("allChromasOwned", "purchaseDisabled"),

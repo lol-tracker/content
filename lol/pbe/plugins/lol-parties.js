@@ -7814,32 +7814,13 @@
                     return (0, r.getSpellIdsWithSmiteAssignedIfAppropriate)(l, e, n)
                 },
                 saveQuickPlaySelections(e) {
-                    const t = this.get("settingsReady"),
-                        n = (e || []).map((e => {
-                            const {
-                                championId: t,
-                                skinId: n,
-                                positionPreference: i,
-                                perks: s,
-                                spell1: o,
-                                spell2: a
-                            } = e;
-                            return {
-                                championId: t,
-                                skinId: n,
-                                positionPreference: i,
-                                perks: s,
-                                spell1: o,
-                                spell2: a
-                            }
-                        }));
-                    if (!t) return Promise.resolve();
-                    const i = {
+                    if (!this.get("settingsReady")) return Promise.resolve();
+                    const t = {
                         data: {
-                            slots: n
+                            slots: e
                         }
                     };
-                    return this._binding.put(u, Object.assign({}, d, i))
+                    return this._binding.put(u, Object.assign({}, d, t))
                 }
             })
         }, (e, t, n) => {
@@ -17033,8 +17014,8 @@
                     const e = (this.get("defaultSelections") || []).map((e => ({
                         ...e
                     })));
-                    return e.map((e => e.perks)).filter((e => Boolean(e))).length === e.length ? this.putQuickPlaySlots(e) : Promise.allSettled(e.map((e => this.getLastUsedQuickPlayPageForChampPosition(e.championId, e.positionPreference)))).then((t => (t.forEach(((t, n) => {
-                        t.value ? e[n].perks = t.value : i.logger.error(`Failed to get perks page for champId: ${e[n].championId} position: \n              ${e[n].positionPreference} error: ${t.reason}`)
+                    return Promise.allSettled(e.map((e => Boolean(e.perks) ? Promise.resolve(e.perks) : this.getLastUsedQuickPlayPageForChampPosition(e.championId, e.positionPreference)))).then((t => (t.forEach(((t, n) => {
+                        t.value ? e[n].perks = t.value : i.logger.error(`Failed to get perks page for champId: ${e[n].championId} position: \n            ${e[n].positionPreference} error: ${t.reason}`)
                     })), this.putQuickPlaySlots(e))))
                 },
                 skins: i.Ember.computed("quickPlayService.championByChampId", "selectingSlotIndex", "quickPlayViewSlots", "localPlayer.playerSlots.@each.championId", (function() {
@@ -17074,14 +17055,8 @@
                     })
                 },
                 updateQuickPlayPerksPage: function(e, t) {
-                    const n = this.getPlayerSlotsSetRequestBase()[t];
-                    if (n) {
-                        const {
-                            championId: s
-                        } = n, o = `/v1/quick-play-selections/champion/${s}/slot/${t}`;
-                        return (0, i.dataBinding)("/lol-perks").post(o, e)
-                    }
-                    return Promise.reject(`Unable to set perks page for Quickplay slotIndex: ${t} pageId: ${e.id}.`)
+                    const n = this.getPlayerSlotsSetRequestBase();
+                    return n[t] ? (n[t].perks = JSON.stringify((0, a.getPerkSettingsFromPage)(e)), this.putQuickPlaySlots(n)) : Promise.reject(`Unable to set perks page for Quickplay slotIndex: ${t} pageId: ${e.id}.`)
                 },
                 _setCurrentSelectedSkin(e) {
                     if (!e) return;
@@ -17186,6 +17161,12 @@
                 return e.map((e => ({
                     ...e
                 })))
+            }, t.getPerkSettingsFromPage = function(e) {
+                return {
+                    perkIds: e.selectedPerkIds,
+                    perkStyle: e.primaryStyleId,
+                    perkSubStyle: e.subStyleId
+                }
             };
             const n = ["championId", "positionPreference", "skinId", "spell1", "spell2", "perks"];
 
