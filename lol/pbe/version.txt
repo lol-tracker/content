@@ -1,4 +1,4 @@
 {
-  "client": "14.1.548.1258",
-  "game": "14.1.5481258+branch.main.code.public.content.beta"
+  "client": "14.1.548.3049",
+  "game": "14.1.5483049+branch.main.code.public.content.beta"
 }

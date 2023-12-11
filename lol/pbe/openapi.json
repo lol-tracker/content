@@ -1751,25 +1751,6 @@
         },
         "type": "object"
       },
-      "EndOfGameLcdsClientReportV1": {
-        "properties": {
-          "comments": {
-            "type": "string"
-          },
-          "gameId": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "offenderSummonerId": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "offenses": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "EndOfGameLcdsEndOfGameStats": {
         "properties": {
           "basePoints": {
@@ -39369,14 +39350,6 @@
         },
         "type": "object"
       },
-      "LolPlayerReportSenderReportRecipientMode": {
-        "enum": [
-          "Legacy",
-          "Game-Agnostic",
-          "Combined"
-        ],
-        "type": "string"
-      },
       "LolPlayerReportSenderSummoner": {
         "properties": {
           "puuid": {
@@ -56699,7 +56672,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56739,7 +56712,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -56777,7 +56750,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -88925,7 +88898,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -88963,7 +88936,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
