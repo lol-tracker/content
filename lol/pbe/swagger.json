@@ -3036,6 +3036,9 @@
         },
         "region": {
           "type": "string"
+        },
+        "spectatorDelayEnabled": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -19622,6 +19625,20 @@
       },
       "type": "object"
     },
+    "LolEventShopRequestDTO-vector-string": {
+      "properties": {
+        "data": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "$ref": "#/definitions/LolEventShopRequestMetadataDTO"
+        }
+      },
+      "type": "object"
+    },
     "LolEventShopRequestMetadataDTO": {
       "properties": {
         "transactionId": {
@@ -20483,8 +20500,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "LOCKED",
-        "UNLOCKED"
+        "UNLOCKED",
+        "LOCKED"
       ],
       "type": "string"
     },
@@ -21240,6 +21257,17 @@
           "type": "integer"
         },
         "queueState": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "LolGameQueuesOperationalSpectatorConfig": {
+      "properties": {
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isUsingOperationalConfig": {
           "type": "boolean"
         }
       },
@@ -26444,6 +26472,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "spectatorDelayEnabled": {
+          "type": "boolean"
         },
         "wasKicked": {
           "type": "boolean"
@@ -32320,6 +32351,20 @@
         "data": {
           "items": {
             "$ref": "#/definitions/LolLootSelectionRequestDTO"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "$ref": "#/definitions/LolLootRequestMetadataDTO"
+        }
+      },
+      "type": "object"
+    },
+    "LolLootRequestDTO-vector-string": {
+      "properties": {
+        "data": {
+          "items": {
+            "type": "string"
           },
           "type": "array"
         },
@@ -43953,6 +43998,20 @@
       },
       "type": "object"
     },
+    "LolRewardsRequestDTO-vector-string": {
+      "properties": {
+        "data": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "$ref": "#/definitions/LolRewardsRequestMetadataDTO"
+        }
+      },
+      "type": "object"
+    },
     "LolRewardsRequestMetadataDTO": {
       "properties": {
         "transactionId": {
@@ -45372,6 +45431,18 @@
       },
       "type": "object"
     },
+    "LolSpectatorQueue": {
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isSpectatable": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "LolSpectatorSpectateAvailabilityResponseDto": {
       "properties": {
         "availableForWatching": {
@@ -45395,6 +45466,17 @@
       },
       "type": "object"
     },
+    "LolSpectatorSpectateAvailabilityResponseDtoV3": {
+      "properties": {
+        "availableForWatching": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "LolSpectatorSpectateGameInfo": {
       "properties": {
         "allowObserveMode": {
@@ -45408,6 +45490,49 @@
         },
         "puuid": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolSpectatorSpectateResource": {
+      "properties": {
+        "availableForWatching": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "LolSpectatorSpectatorConfig": {
+      "properties": {
+        "isBracketSpectatingEnabled": {
+          "type": "boolean"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isSpectatorDelayConfigurable": {
+          "type": "boolean"
+        },
+        "spectatableQueues": {
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "LolSpectatorSpectatorDynamicConfiguration": {
+      "properties": {
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isSpectatorDelayConfigurable": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -56627,7 +56752,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "HttpAsyncResult",
+        "operationId": "Http2AsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56663,7 +56788,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "HttpAsyncDelete",
+        "operationId": "Http2AsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -78200,6 +78325,33 @@
         ]
       }
     },
+    "/lol-rewards/v1/grants/view": {
+      "patch": {
+        "operationId": "PatchLolRewardsV1GrantsView",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "grantIds",
+            "required": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-rewards"
+        ]
+      }
+    },
     "/lol-rewards/v1/grants/{grantId}/select": {
       "post": {
         "operationId": "PostLolRewardsV1GrantsByGrantIdSelect",
@@ -79454,6 +79606,24 @@
         ]
       }
     },
+    "/lol-spectator/v1/spectate/config": {
+      "get": {
+        "operationId": "GetLolSpectatorV1SpectateConfig",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/LolSpectatorSpectatorConfig"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-spectator"
+        ]
+      }
+    },
     "/lol-spectator/v1/spectate/launch": {
       "post": {
         "operationId": "PostLolSpectatorV1SpectateLaunch",
@@ -79505,6 +79675,49 @@
             "schema": {
               "$ref": "#/definitions/LolSpectatorSummonerIdAvailability"
             }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-spectator"
+        ]
+      }
+    },
+    "/lol-spectator/v3/buddy/spectate": {
+      "get": {
+        "operationId": "GetLolSpectatorV3BuddySpectate",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/LolSpectatorSpectateResource"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-spectator"
+        ]
+      },
+      "post": {
+        "operationId": "PostLolSpectatorV3BuddySpectate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "puuids",
+            "required": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
           }
         },
         "tags": [
@@ -84733,7 +84946,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "Http2ApiDocsV2",
+        "operationId": "HttpApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {

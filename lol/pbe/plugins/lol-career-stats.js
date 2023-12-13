@@ -353,8 +353,9 @@
                     return e
                 })),
                 queueFilters: s.Ember.computed("tra", "validQueues", (function() {
-                    const e = this.get("validQueues");
-                    return s.Ember.A(s.Lodash.map(c.QUEUE_FILTERS, (t => s.Ember.Object.create(s.Lodash.assign({
+                    const e = this.get("validQueues"),
+                        t = this.get("currentSelectedSeason");
+                    return s.Ember.A(s.Lodash.map((0, c.getQueueFilters)(t), (t => s.Ember.Object.create(s.Lodash.assign({
                         displayName: this.get("tra").get(`career_stats_queue_filter_${t.traKey}`),
                         selected: !1,
                         disabled: !s.Lodash.includes(e, t.queueTypes[0])
@@ -1302,29 +1303,47 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.UNAVAILABLE_GRADE = t.TIME_FILTERS = t.TIER_NAME_NONE = t.STAT_TO_CATEGORY_MAP = t.STATS_FORMAT_MAPPING = t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = t.SORT_OPTIONS = t.SMOOTHENING_REQUIRED_SIZE = t.SEASON_2018_NUM = t.ROLLING_AVERAGE_WINDOW_SIZE = t.RANKED_QUEUE_TYPE_MAPPINGS = t.QUEUE_FILTERS = t.POSITION_ID_MAP = t.POSITIONS = t.PLAY_STYLES = t.PERFORMANCE_GRADES = t.OVERVIEW_CHAMPIONS_PER_ROW = t.NUM_OF_MATCH_UPS = t.NO_DIVISION_TIERS = t.NORMAL_STAT_RANGE_MIN_PERCENTILE = t.NORMAL_STAT_RANGE_MAX_PERCENTILE = t.NORMAL_GAMES_QUEUE_TYPES = t.MOST_PLAYED_SHOW_LIMIT = t.MIN_GAMES_TO_UNLOCK_STATS = t.MILLIS_IN_A_DAY = t.MILLIS_IN_AN_HOUR = t.MAX_RECENTLY_PLAYED_WITH_SUMMONERS = t.MAX_RECENTLY_COMPARED_SUMMONERS = t.MAX_GRADE_VALUE = t.MAX_DATA_POINTS = t.LEAGUES_QUEUE_TYPE_MAP = t.INVALID_EARLIEST_SEASON = t.INVALID_CURRENT_SEASON = t.GRADE_MIN_PERCENTILES = t.EXPERT_GAME_QUEUE = t.DEFAULT_STATS_RANGES = t.DEFAULT_STATS_PERCENTILES = t.DEFAULT_PREV_SEASON_YEAR_COUNT = t.COMPARE_OPTION_OPEN_DIALOG = t.COMPARABLE_RANK_TIER_FORWARD = t.CHAMPION_ID_FOR_POSITION_STATS = t.CATEGORY_TO_STATS_MAP = t.CAREER_STATS_KEY = t.ALL_RANKS = void 0;
+            }), t.UNAVAILABLE_GRADE = t.TIME_FILTERS = t.TIER_NAME_NONE = t.STAT_TO_CATEGORY_MAP = t.STATS_FORMAT_MAPPING = t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = t.SORT_OPTIONS = t.SMOOTHENING_REQUIRED_SIZE = t.SEASON_2018_NUM = t.ROLLING_AVERAGE_WINDOW_SIZE = t.RANKED_QUEUE_TYPE_MAPPINGS = t.QUEUE_FILTER_RANKED_SOLO = t.QUEUE_FILTER_RANKED_FLEX = t.QUEUE_FILTER_QUICKPLAY_5V5 = t.QUEUE_FILTER_DRAFT_5V5 = t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = t.POSITION_ID_MAP = t.POSITIONS = t.PLAY_STYLES = t.PERFORMANCE_GRADES = t.OVERVIEW_CHAMPIONS_PER_ROW = t.NUM_OF_MATCH_UPS = t.NO_DIVISION_TIERS = t.NORMAL_STAT_RANGE_MIN_PERCENTILE = t.NORMAL_STAT_RANGE_MAX_PERCENTILE = t.NORMAL_GAMES_QUEUE_TYPES = t.MOST_PLAYED_SHOW_LIMIT = t.MIN_GAMES_TO_UNLOCK_STATS = t.MILLIS_IN_A_DAY = t.MILLIS_IN_AN_HOUR = t.MAX_RECENTLY_PLAYED_WITH_SUMMONERS = t.MAX_RECENTLY_COMPARED_SUMMONERS = t.MAX_GRADE_VALUE = t.MAX_DATA_POINTS = t.LEAGUES_QUEUE_TYPE_MAP = t.INVALID_EARLIEST_SEASON = t.INVALID_CURRENT_SEASON = t.GRADE_MIN_PERCENTILES = t.EXPERT_GAME_QUEUE = t.DEFAULT_STATS_RANGES = t.DEFAULT_STATS_PERCENTILES = t.DEFAULT_PREV_SEASON_YEAR_COUNT = t.COMPARE_OPTION_OPEN_DIALOG = t.COMPARABLE_RANK_TIER_FORWARD = t.CHAMPION_ID_FOR_POSITION_STATS = t.CATEGORY_TO_STATS_MAP = t.CAREER_STATS_KEY = t.ALL_RANKS = void 0, t.getQueueFilters = function(e) {
+                return i.has(e) ? i.get(e) : [n, s, o, r]
+            };
             t.MILLIS_IN_A_DAY = 864e5;
             t.MILLIS_IN_AN_HOUR = 36e5;
-            const a = ["quickplay5", "draft5"];
+            const a = ["quickplay5", "draft5", "blind5"];
             t.NORMAL_GAMES_QUEUE_TYPES = a;
-            const s = [{
+            const s = {
                 queueTypes: ["rank5solo"],
                 traKey: "rank5solo",
                 isRanked: !0
-            }, {
+            };
+            t.QUEUE_FILTER_RANKED_SOLO = s;
+            const n = {
                 queueTypes: ["rank5flex"],
                 traKey: "rank5flex",
                 isRanked: !0
-            }, {
+            };
+            t.QUEUE_FILTER_RANKED_FLEX = n;
+            const o = {
                 queueTypes: [a[0]],
                 traKey: a[0],
                 isRanked: !1
-            }, {
+            };
+            t.QUEUE_FILTER_QUICKPLAY_5V5 = o;
+            const r = {
                 queueTypes: [a[1]],
                 traKey: a[1],
                 isRanked: !1
-            }];
-            t.QUEUE_FILTERS = s;
+            };
+            t.QUEUE_FILTER_DRAFT_5V5 = r;
+            const l = {
+                queueTypes: [a[2]],
+                traKey: a[2],
+                isRanked: !1
+            };
+            t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = l;
+            const i = new Map([
+                [12, [s, n, l, r]],
+                [13, [s, n, l, r]]
+            ]);
             t.TIME_FILTERS = [{
                 key: "this_season",
                 traKey: "this_season",
@@ -1360,7 +1379,7 @@
             t.MOST_PLAYED_SHOW_LIMIT = 8;
             t.TIER_NAME_NONE = "NONE";
             t.ALL_RANKS = "ALL";
-            const n = [{
+            const c = [{
                 traKey: "all_players",
                 type: "playerGroup",
                 rank: "ALL"
@@ -1415,7 +1434,7 @@
                 rank: "CHALLENGER",
                 rankedOnly: !0
             }];
-            t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = n;
+            t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = c;
             t.COMPARE_OPTION_OPEN_DIALOG = {
                 traKey: "choose_comparison",
                 openDialog: !0
@@ -1562,8 +1581,8 @@
             t.MAX_RECENTLY_COMPARED_SUMMONERS = 5;
             t.MAX_RECENTLY_PLAYED_WITH_SUMMONERS = 18;
             t.NUM_OF_MATCH_UPS = 4;
-            const o = new Set(["challenger", "master"]);
-            t.NO_DIVISION_TIERS = o;
+            const m = new Set(["challenger", "master"]);
+            t.NO_DIVISION_TIERS = m;
             t.LEAGUES_QUEUE_TYPE_MAP = {
                 rank5solo: 1,
                 rank5flex: 3
@@ -1576,10 +1595,10 @@
                 4: "SUPPORT"
             };
             t.DEFAULT_PREV_SEASON_YEAR_COUNT = 2;
-            const r = Number.MAX_SAFE_INTEGER;
-            t.INVALID_EARLIEST_SEASON = r;
-            const l = Number.MIN_SAFE_INTEGER;
-            t.INVALID_CURRENT_SEASON = l;
+            const p = Number.MAX_SAFE_INTEGER;
+            t.INVALID_EARLIEST_SEASON = p;
+            const d = Number.MIN_SAFE_INTEGER;
+            t.INVALID_CURRENT_SEASON = d;
             t.SEASON_2018_NUM = 8;
             t.SMOOTHENING_REQUIRED_SIZE = 50;
             t.ROLLING_AVERAGE_WINDOW_SIZE = 10;
@@ -2934,8 +2953,9 @@
                 isStatsLoaded: !0,
                 serverError: !1,
                 queueFilters: s.Ember.computed("tra", "statsOverview.season.queues", (function() {
-                    const e = s.Lodash.keys(this.get("statsOverview.season.queues"));
-                    return s.Ember.A(s.Lodash.map(o.QUEUE_FILTERS, (t => s.Ember.Object.create(s.Lodash.assign({
+                    const e = s.Lodash.keys(this.get("statsOverview.season.queues")),
+                        t = this.get("currentTimeFilter.season");
+                    return s.Ember.A(s.Lodash.map((0, o.getQueueFilters)(t), (t => s.Ember.Object.create(s.Lodash.assign({
                         displayName: this.get("tra").get(`career_stats_queue_filter_${t.traKey}`),
                         selected: !1,
                         disabled: !s.Lodash.includes(e, t.queueTypes[0])
@@ -3723,27 +3743,32 @@
                     const e = this.get("season"),
                         t = this.get("currentSeason"),
                         a = this.get("earliestSeason"),
-                        n = this.get("careerStatsService"),
-                        r = this.get("championId"),
-                        l = this.get("position"),
-                        i = this.get("queueFilter.queueTypes.0"),
-                        c = this.get("summoner.puuid"),
-                        m = this.get("minGamesToUnlockStats"),
-                        p = this.get("tra"),
-                        d = [];
-                    for (let e = a; e <= t; e++) d.push(n.loadStatsSummary(c, e, i, l, r).then((t => ({
-                        season: e,
-                        stats: t
-                    }))));
-                    return Promise.all(d).then((t => {
+                        r = this.get("careerStatsService"),
+                        l = this.get("championId"),
+                        i = this.get("position"),
+                        c = this.get("queueFilter.queueTypes.0"),
+                        m = this.get("summoner.puuid"),
+                        p = this.get("minGamesToUnlockStats"),
+                        d = this.get("tra"),
+                        u = [];
+                    for (let e = a; e <= t; e++) {
+                        (0, n.getQueueFilters)(e).some((e => e.queueTypes.includes(c))) ? u.push(r.loadStatsSummary(m, e, c, i, l).then((t => ({
+                            season: e,
+                            stats: t
+                        })))) : u.push(Promise.resolve({
+                            season: e,
+                            stats: {}
+                        }))
+                    }
+                    return Promise.all(u).then((t => {
                         this.set("seasonCompareOptions", s.Ember.A(s.Lodash.reverse(s.Lodash.map(t, (t => {
                             const a = s.Lodash.get(t, "stats.gamePlayed") || 0;
                             return {
                                 seasonName: this.get("careerStatsService").getSeasonDisplayTra(t.season),
                                 gamesPlayed: a,
-                                winRate: a > 0 ? (0, o.getWinRateDisplay)(t.stats.victory / a, 0) + "%" : p.get("career_stats_stats_unavailable_number"),
-                                disabled: e === t.season || a < m,
-                                buttonTooltip: p.get("career_stats_compare_season_" + (e !== t.season ? a >= m ? "normal" : "not_enough_games" : "same_season")),
+                                winRate: a > 0 ? (0, o.getWinRateDisplay)(t.stats.victory / a, 0) + "%" : d.get("career_stats_stats_unavailable_number"),
+                                disabled: e === t.season || a < p,
+                                buttonTooltip: d.get("career_stats_compare_season_" + (e !== t.season ? a >= p ? "normal" : "not_enough_games" : "same_season")),
                                 stats: t.stats
                             }
                         }))))), this.set("isSeasonSummaryLoaded", !0)
