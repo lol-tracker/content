@@ -2518,7 +2518,7 @@
       8
     ],
     "areFreeChampionsAllowed": true,
-    "assetMutator": "",
+    "assetMutator": "TFT_Set3",
     "category": "PvP",
     "championsRequiredToPlay": 22,
     "description": "",
@@ -2570,7 +2570,7 @@
       "partySizeIpRewards": []
     },
     "removalFromGameAllowed": true,
-    "removalFromGameDelayMinutes": 0,
+    "removalFromGameDelayMinutes": 10,
     "shortName": "",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,

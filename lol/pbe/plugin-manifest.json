@@ -1,0 +1,962 @@
+{
+  "id": "leagueclient",
+  "plugins": [
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-l10n"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-client-config"
+    },
+    {
+      "affinity": null,
+      "as": [
+        "rcp-be-client-config"
+      ],
+      "lazy": false,
+      "name": "rcp-be-rga-client-config"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-client-config"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-rso-auth"
+    },
+    {
+      "affinity": null,
+      "as": [
+        "rcp-be-lol-rso-auth"
+      ],
+      "lazy": false,
+      "name": "rcp-be-rga-rso-auth"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-patch"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-patcher"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-login"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-platform-config"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-riot-messaging-service"
+    },
+    {
+      "affinity": null,
+      "as": [
+        "rcp-be-riot-messaging-service"
+      ],
+      "lazy": false,
+      "name": "rcp-be-rga-riot-messaging-service"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-common-libs"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-player-notifications"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-anti-addiction"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-league-session"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-game-data"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-preferences"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-loyalty"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-l10n"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-audio"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-store"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-inventory"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-lock-and-load"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-game-settings"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-summoner"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-typekit"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-uikit"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-settings"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-game-queues"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-maps"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-gameflow"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-ember-libs"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-shared-components"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-champions"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-match-history"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-lobby-team-builder"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-collections"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-champ-select-legacy"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-champ-select"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-pft"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-navigation"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-end-of-game"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-paw"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-pre-end-of-game"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-champion-statistics"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-parties"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-ranked"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-matchmaking"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-spectator"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-sanitizer"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-skins-picker"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-chat"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-profiles"
+    },
+    {
+      "affinity": [
+        "postgame",
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-social"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-kr-shutdown-law"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-leaver-buster"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-lobby"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-loadouts"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-tastes"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-champion-details"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-catalog"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-publishing-content"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-rewards"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-entitlements"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-tft"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-honor-v2"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-missions"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-progression"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-loot"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-settings"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-clash"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-purchase-widget"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-seasons"
+    },
+    {
+      "affinity": [
+        "postgame"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-postgame"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-premade-voice"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-gcloud-voice-chat"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-cosmetics"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-drops"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-geoinfo"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-kr-playtime-reminder"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-statstones"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-career-stats"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-champ-select"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-store"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-client-config-dep-injector"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-deep-links"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-account-verification"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-active-boosts"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-banners"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-career-stats"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-challenges"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-content-targeting"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-discord-rp"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-email-verification"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-esport-stream-notifications"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-event-shop"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-featured-modes"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-game-client-chat"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-heartbeat"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-highlights"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-honeyfruit"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-hovercard"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-item-sets"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-kickout"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-license-agreement"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-loot"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-marketing-preferences"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-mode-progression"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-npe-rewards"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-npe-tutorial-path"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-perks"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-pft"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-behavior"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-level-up"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-messaging"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-name-transition"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-player-report-sender"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-premade-voice"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-regalia"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-replays"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-riot-messaging-service"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-riotclient-upgrader"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-service-status"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-shutdown"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-simple-dialog-messages"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-be-lol-social-leaderboard"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-suggested-players"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-tft-pass"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-tft-team-planner"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-tft-troves"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-trophies"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-user-experience"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-yourshop"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-payments"
+    },
+    {
+      "affinity": null,
+      "as": [
+        "rcp-be-lol-license-agreement"
+      ],
+      "lazy": false,
+      "name": "rcp-be-rga-license-agreement"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-clash"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-collections"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-esports-spectate"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-event-shop"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-highlights"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-honeyfruit-account-claiming"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-honor"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-kickout"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-leagues"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-match-history"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-new-player-experience"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-npe-rewards"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-startup"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-static-assets"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-tft"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-tft-team-planner"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-tft-troves"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-yourshop"
+    }
+  ],
+  "preloaded_plugins": [
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-plugin-runner"
+    }
+  ]
+}
