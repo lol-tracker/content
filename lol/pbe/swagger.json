@@ -20500,8 +20500,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "LOCKED",
-        "UNLOCKED"
+        "UNLOCKED",
+        "LOCKED"
       ],
       "type": "string"
     },
@@ -56788,7 +56788,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -56822,7 +56822,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
