@@ -42598,6 +42598,10 @@
       },
       "LolRankedRankedStats": {
         "properties": {
+          "currentSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
+          },
           "earnedRegaliaRewardIds": {
             "items": {
               "type": "string"
@@ -42624,6 +42628,10 @@
           },
           "highestRankedEntrySR": {
             "$ref": "#/components/schemas/LolRankedRankedQueueStats"
+          },
+          "previousSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
           },
           "queueMap": {
             "additionalProperties": {
@@ -42659,6 +42667,10 @@
       },
       "LolRankedRankedStatsDTO": {
         "properties": {
+          "currentSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
+          },
           "earnedRegaliaRewardIds": {
             "items": {
               "type": "string"
@@ -42676,6 +42688,10 @@
           },
           "highestPreviousSeasonEndTier": {
             "type": "string"
+          },
+          "previousSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
           },
           "queues": {
             "items": {
@@ -42930,6 +42946,10 @@
       },
       "LolRankedSignedRankedStatsDTO": {
         "properties": {
+          "currentSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
+          },
           "earnedRegaliaRewardIds": {
             "items": {
               "type": "string"
@@ -42950,6 +42970,10 @@
           },
           "jwt": {
             "type": "string"
+          },
+          "previousSeasonSplitPoints": {
+            "format": "int32",
+            "type": "integer"
           },
           "queues": {
             "items": {
@@ -48288,6 +48312,28 @@
           "promoButtons": {
             "items": {
               "$ref": "#/components/schemas/LolTftLolTftPromoButton"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "LolTftLolTftTencentEventHubConfig": {
+        "properties": {
+          "troveAssetId": {
+            "type": "string"
+          },
+          "troveURL": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "LolTftLolTftTencentEventHubConfigs": {
+        "properties": {
+          "tencentEventhubConfigs": {
+            "items": {
+              "$ref": "#/components/schemas/LolTftLolTftTencentEventHubConfig"
             },
             "type": "array"
           }
@@ -54108,16 +54154,13 @@
             "type": "string"
           },
           "pluginDependencies": {
-            "additionalProperties": {
+            "items": {
               "type": "string"
             },
-            "type": "object"
+            "type": "array"
           },
           "riotMeta": {
             "$ref": "#/components/schemas/PluginMetadataResource"
-          },
-          "version": {
-            "type": "string"
           }
         },
         "type": "object"
@@ -56797,7 +56840,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56875,7 +56918,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -86332,6 +86375,28 @@
         ]
       }
     },
+    "/lol-tft/v1/tft/tencentEventhubConfigs": {
+      "get": {
+        "operationId": "GetLolTftV1TftTencentEventhubConfigs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LolTftLolTftTencentEventHubConfigs"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-tft"
+        ]
+      }
+    },
     "/lol-tft/v1/tft_experiment_bucket": {
       "put": {
         "operationId": "PutLolTftV1TftExperimentBucket",
@@ -89096,7 +89161,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -89180,7 +89245,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

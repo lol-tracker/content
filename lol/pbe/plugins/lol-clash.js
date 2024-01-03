@@ -29985,7 +29985,7 @@
                         defaultSectionIdOnShow: e,
                         tooltipRenderer: t,
                         alignment: "right",
-                        iconPath: "/fe/lol-clash/assets/images/trophy.png"
+                        iconPath: "/fe/lol-clash/assets/images/hub/clash-logo.svg"
                     }),
                     o = i.getScreenNode(),
                     r = document.createElement("lol-uikit-navigation-bar"),

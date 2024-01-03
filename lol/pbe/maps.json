@@ -388,7 +388,7 @@
     "gameModeDescription": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
     "gameModeName": "Teamfight Tactics",
     "gameModeShortName": "",
-    "gameMutator": "TFT_Event_FF",
+    "gameMutator": "TFT_Event_CT",
     "id": 22,
     "isDefault": false,
     "isRGM": false,
