@@ -552,7 +552,7 @@
     "shortName": "Teamfight Tactics (Double Up Workshop)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT_DOUBLE_UP"
   },
   {
@@ -691,7 +691,7 @@
     "shortName": "Teamfight Tactics (Ranked)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT"
   },
   {
@@ -755,7 +755,7 @@
     "shortName": "1v0 (Ranked)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT"
   },
   {
@@ -820,7 +820,7 @@
     "shortName": "2v0 (Ranked)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT"
   },
   {
@@ -1667,8 +1667,8 @@
     "isRanked": false,
     "isTeamBuilderManaged": true,
     "isVisible": false,
-    "lastToggledOffTime": 1704227597456,
-    "lastToggledOnTime": 1704226412742,
+    "lastToggledOffTime": 1704400411887,
+    "lastToggledOnTime": 1704399263222,
     "mapId": 12,
     "maxDivisionForPremadeSize2": "",
     "maxTierForPremadeSize2": "",
@@ -2167,7 +2167,7 @@
     "shortName": "Teamfight Tactics (Hyper Roll)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT_TURBO"
   },
   {
@@ -2231,7 +2231,7 @@
     "shortName": "1v0 (Hyper Roll)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT_TURBO"
   },
   {
@@ -2364,7 +2364,7 @@
     "shortName": "2v0 (Hyper Roll)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT_TURBO"
   },
   {
@@ -3130,7 +3130,7 @@
     "shortName": "Teamfight Tactics (Double Up Workshop)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "RANKED_TFT_PAIRS"
   }
 ]
