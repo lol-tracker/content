@@ -56795,7 +56795,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -56831,7 +56831,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -84954,7 +84954,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -84973,7 +84973,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "HttpApiDeclarationV1",
+        "operationId": "Http2ApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
