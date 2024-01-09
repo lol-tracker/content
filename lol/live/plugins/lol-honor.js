@@ -426,43 +426,38 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var n = o(1),
-                r = l(o(4)),
-                a = o(5),
-                i = l(o(17));
-
-            function l(e) {
-                return e && e.__esModule ? e : {
-                    default: e
-                }
-            }
+            var n, r = o(1),
+                a = (n = o(4)) && n.__esModule ? n : {
+                    default: n
+                },
+                i = o(5);
             t.default = class {
                 constructor(e) {
-                    this._screenRoot = e, this._dataBinding = n.dataBinding.bindTo((0, n.getProvider)().getSocket()), this._dataBinding.observe("/lol-gameflow/v1/session", this, this._handleGameflowData.bind(this)), this._notificationObserver = new i.default
+                    this._screenRoot = e, this._dataBinding = r.dataBinding.bindTo((0, r.getProvider)().getSocket()), this._dataBinding.observe("/lol-gameflow/v1/session", this, this._handleGameflowData.bind(this))
                 }
                 _showHonor(e) {
                     this._screenRoot.getElement().firstChild || (this._screenRoot.once("show", (() => {
                         e && this._waitForUnlock(e)
-                    })), this._screenRoot.getElement().appendChild(this._application.domNode), this._screenRoot.bump(), n.Telemetry.recordTracingStepEvent("UI_Honor: SHOW"), n.logger.info("rcp-fe-lol-honor: api: showHonor"))
+                    })), this._screenRoot.getElement().appendChild(this._application.domNode), this._screenRoot.bump(), r.Telemetry.recordTracingStepEvent("UI_Honor: SHOW"), r.logger.info("rcp-fe-lol-honor: api: showHonor"))
                 }
                 _hideHonor() {
                     if (!this._screenRoot.getElement().firstChild) return;
                     this._screenRoot.release();
                     const e = this._screenRoot.getElement();
                     for (; e.hasChildNodes();) e.removeChild(e.lastChild);
-                    n.Telemetry.recordTracingStepEvent("UI_Honor: HIDE"), n.logger.info("rcp-fe-lol-honor: api: hideHonor")
+                    r.Telemetry.recordTracingStepEvent("UI_Honor: HIDE"), r.logger.info("rcp-fe-lol-honor: api: hideHonor")
                 }
                 _waitForUnlock(e) {
-                    if (n.LockAndLoad.getLockState()) {
+                    if (r.LockAndLoad.getLockState()) {
                         const t = function() {
-                            n.LockAndLoad.removeEventListener("unlock", t), e()
+                            r.LockAndLoad.removeEventListener("unlock", t), e()
                         };
-                        n.LockAndLoad.addEventListener("unlock", t)
+                        r.LockAndLoad.addEventListener("unlock", t)
                     } else e()
                 }
                 _createApplication() {
-                    const e = (0, r.default)(n.Ember, n.tra);
-                    this._application = (0, a.createEmberApp)(e)
+                    const e = (0, a.default)(r.Ember, r.tra);
+                    this._application = (0, i.createEmberApp)(e)
                 }
                 _handleGameflowData(e) {
                     this._application || !e || "GameStart" !== e.phase && "PreEndOfGame" !== e.phase || this._createApplication()
@@ -678,8 +673,8 @@
         }, (e, t, o) => {
             const n = o(1).Ember;
             e.exports = n.HTMLBars.template({
-                id: "PCGWLyn1",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isShowing"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["skipButtonTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","index","totalCandidates","localSummonerId","hoveredPlayer","hoveredCategory","selectionChosen","canVote","gameId","submitHonor"],[["get",["candidate"]],["get",["index"]],["get",["eligiblePlayers","length"]],["get",["localSummonerId"]],["get",["hoveredPlayer"]],["get",["hoveredCategory"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]],"submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligiblePlayers"]]],null,1],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette-glow"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette bottom"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-header"],["flush-element"],["text","\\n      "],["append",["unknown",["promptedVotingHeaderText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","next"],["dynamic-attr","class",["concat",["prompted-voting-skip-button ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["dynamic-attr","disabled",["unknown",["selectionChosen"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"optOutHonor"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-timer ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-minutes"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextMinutes"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-colon"],["flush-element"],["text","\\n        :\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-seconds"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextSeconds"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],2]],"locals":[]}],"hasPartials":false}',
+                id: "CVpqGL1U",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isShowing"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["skipButtonTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","index","totalCandidates","localSummonerId","hoveredPlayer","hoveredCategory","selectionChosen","canVote","gameId","submitHonor"],[["get",["candidate"]],["get",["index"]],["get",["eligiblePlayers","length"]],["get",["localSummonerId"]],["get",["hoveredPlayer"]],["get",["hoveredCategory"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]],"submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligiblePlayers"]]],null,1],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette-glow"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette bottom"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-header"],["flush-element"],["text","\\n      "],["append",["unknown",["promptedVotingHeaderText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","next"],["dynamic-attr","class",["concat",["prompted-voting-skip-button ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["dynamic-attr","disabled",["unknown",["selectionChosen"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"optOutHonor"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-timer ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-minutes"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextMinutes"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-colon"],["flush-element"],["text","\\n        :\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-seconds"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextSeconds"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],2]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, o) => {
@@ -770,8 +765,8 @@
         }, (e, t, o) => {
             const n = o(1).Ember;
             e.exports = n.HTMLBars.template({
-                id: "DIxZ00AH",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-champ"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","championName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["candidate","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-candidate-overlay ",["unknown",["candidateBrightnessClass"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["each"],[["helper",["-each-in"],[["get",["honorCategories"]]],null]],null,0],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-header"],["flush-element"],["text","\\n  "],["append",["unknown",["promptHeader"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-body"],["flush-element"],["text","\\n  "],["append",["unknown",["promptBody"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["prompted-voting-category-select"],null,[["candidate","totalCandidates","candidateIsHovered","candidateIsSelected","honorCategory","honorCategoryKey","hoveredCategory","hoveredPlayer","selectionChosen","canVote","gameId"],[["get",["candidate"]],["get",["totalCandidates"]],["get",["candidateIsHovered"]],["get",["candidateIsSelected"]],["get",["honorCategory"]],["get",["honorCategoryKey"]],["get",["hoveredCategory"]],["get",["hoveredPlayer"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]]]]],false],["text","\\n"]],"locals":["honorCategoryKey","honorCategory"]}],"hasPartials":false}',
+                id: "ig9LKmem",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-champ"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","championName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["candidate","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-candidate-overlay ",["unknown",["candidateBrightnessClass"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["each"],[["helper",["-each-in"],[["get",["honorCategories"]]],null]],null,0],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-header"],["flush-element"],["text","\\n  "],["append",["unknown",["promptHeader"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-body"],["flush-element"],["text","\\n  "],["append",["unknown",["promptBody"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["prompted-voting-category-select"],null,[["candidate","totalCandidates","candidateIsHovered","candidateIsSelected","honorCategory","honorCategoryKey","hoveredCategory","hoveredPlayer","selectionChosen","canVote","gameId"],[["get",["candidate"]],["get",["totalCandidates"]],["get",["candidateIsHovered"]],["get",["candidateIsSelected"]],["get",["honorCategory"]],["get",["honorCategoryKey"]],["get",["hoveredCategory"]],["get",["hoveredPlayer"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]]]]],false],["text","\\n"]],"locals":["honorCategoryKey","honorCategory"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, o) => {
@@ -793,7 +788,7 @@
             const {
                 RunMixin: s
             } = n.EmberAddons.EmberLifeline;
-            var c = n.Ember.Component.extend(s, a.default, {
+            var _ = n.Ember.Component.extend(s, a.default, {
                 classNameBindings: ["baseClassName", "categoryPosition", "categoryClassName", "totalCandidatesClassName", "candidateIsHovered:visible", "candidateCategoryIsSelected:selected", "candidateCategoryIsRejected:rejected"],
                 baseClassName: "prompted-voting-category-select-component",
                 lowSpecGlowPath: r.ASSET_PATH + "Honor_Voting_Selection_Glow.png",
@@ -858,15 +853,15 @@
                     }
                 }
             });
-            t.default = c
+            t.default = _
         }, (e, t, o) => {
             "use strict";
             o.r(t)
         }, (e, t, o) => {
             const n = o(1).Ember;
             e.exports = n.HTMLBars.template({
-                id: "c/B3XMW2",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_13_24\\\\LeagueClientContent_Release\\\\15690\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-selector ",["helper",["if"],[["get",["candidateCategoryIsHovered"]],"active"],null]," ",["unknown",["totalCandidatesClassName"]]," ",["unknown",["categoryPosition"]]]]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"mouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"click"],[["on"],["click"]]],["flush-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-image-container ",["unknown",["categoryPosition"]]," ",["unknown",["totalCandidatesClassName"]]," ",["helper",["if"],[["get",["candidateIsHovered"]],"active"],null]," ",["helper",["if"],[["get",["candidateCategoryIsSelected"]],"selected"],null]]]],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-honor-category-image"],["dynamic-attr","src",["concat",[["unknown",["categoryIcon"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["playLowSpecAnimation"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-selection-animation-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-glow"],["dynamic-attr","src",["concat",[["unknown",["lowSpecGlowPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-outro"],["dynamic-attr","src",["concat",[["unknown",["lowSpecOutroPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "LPO1Uhpt",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-selector ",["helper",["if"],[["get",["candidateCategoryIsHovered"]],"active"],null]," ",["unknown",["totalCandidatesClassName"]]," ",["unknown",["categoryPosition"]]]]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"mouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"click"],[["on"],["click"]]],["flush-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-image-container ",["unknown",["categoryPosition"]]," ",["unknown",["totalCandidatesClassName"]]," ",["helper",["if"],[["get",["candidateIsHovered"]],"active"],null]," ",["helper",["if"],[["get",["candidateCategoryIsSelected"]],"selected"],null]]]],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-honor-category-image"],["dynamic-attr","src",["concat",[["unknown",["categoryIcon"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["playLowSpecAnimation"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-selection-animation-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-glow"],["dynamic-attr","src",["concat",[["unknown",["lowSpecGlowPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-outro"],["dynamic-attr","src",["concat",[["unknown",["lowSpecOutroPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, o) => {
@@ -899,636 +894,6 @@
                 }
             });
             t.default = a
-        }, (e, t, o) => {
-            "use strict";
-            Object.defineProperty(t, "__esModule", {
-                value: !0
-            }), t.default = void 0;
-            var n = o(1),
-                r = o(2);
-            o(18);
-            const a = o(19),
-                i = "honor",
-                l = "recall",
-                s = "honor_recall_release_notification_title",
-                c = "honor_recall_release_notification_detail",
-                d = r.ASSET_PATH + "Honor_Recall_Release_Toast.png",
-                _ = r.ASSET_PATH + "Honor_Recall_Release_Toast_Icon.png",
-                h = "/lol-honor-v2/v1/config",
-                p = "/lol-settings/v2/ready",
-                u = "/lol-settings/v2/account/LCUPreferences/lol-honor";
-            t.default = class {
-                constructor() {
-                    this._requirements = {
-                        honorEnabled: !1,
-                        recallEnabled: !1,
-                        settingsReady: !1,
-                        notificationSent: !0
-                    }, this._binding = n.dataBinding.bindTo((0, n.getProvider)().getSocket()), this._binding.addObserver(p, this, this._handleSettingsReady), this._binding.addObserver(h, this, this._handleHonorConfig), this._registerNotification()
-                }
-                _registerNotification() {
-                    n.Social.playerNotifications().registerToastRenderer(i, l, (() => {
-                        const e = document.createElement("div");
-                        return e.innerHTML = a({
-                            title: n.tra.get(s),
-                            detail: n.tra.get(c),
-                            backgroundUrl: d,
-                            iconUrl: _
-                        }), e.classList.add("honor-recall-release-toast"), e
-                    }))
-                }
-                _handleSettingsReady(e) {
-                    e = Boolean(e), this._updateRequirements({
-                        settingsReady: e
-                    }), e && this._binding.addObserver(u, this, this._handleSettingUpdate)
-                }
-                _handleSettingUpdate(e) {
-                    const t = Boolean(e && e.data && e.data.recallReleaseNotified);
-                    t ? this._removeObservers() : this._updateRequirements({
-                        notificationSent: t
-                    })
-                }
-                _handleHonorConfig(e) {
-                    const t = Boolean(e && e.Enabled),
-                        o = Boolean(e && e.RecallRewardEnabled);
-                    this._updateRequirements({
-                        honorEnabled: t,
-                        recallEnabled: o
-                    })
-                }
-                _updateRequirements(e) {
-                    Object.assign(this._requirements, e), this._trySendingRecallNotification()
-                }
-                _checkRequirements() {
-                    return this._requirements.honorEnabled && this._requirements.recallEnabled && this._requirements.settingsReady && !this._requirements.notificationSent
-                }
-                _trySendingRecallNotification() {
-                    if (!this._checkRequirements()) return;
-                    const e = {
-                        source: i,
-                        type: l,
-                        titleKey: s,
-                        detailKey: c,
-                        iconUrl: _
-                    };
-                    (0, n.dataBinding)("/player-notifications").post("/v1/notifications", e).then((() => {
-                        (0, n.dataBinding)("lol-settings").patch("/v2/account/LCUPreferences/lol-honor", {
-                            data: {
-                                recallReleaseNotified: !0
-                            },
-                            schemaVersion: 1
-                        })
-                    }))
-                }
-                _removeObservers() {
-                    this._binding.removeObserver(u, this), this._binding.removeObserver(p, this), this._binding.removeObserver(h, this)
-                }
-            }
-        }, (e, t, o) => {
-            "use strict";
-            o.r(t)
-        }, (e, t, o) => {
-            var n = o(20);
-            e.exports = (n.default || n).template({
-                compiler: [7, ">= 4.0.0"],
-                main: function(e, t, o, n, r) {
-                    var a, i = null != t ? t : e.nullContext || {},
-                        l = o.helperMissing,
-                        s = "function",
-                        c = e.escapeExpression;
-                    return '<div class="honor-recall-release-toast">\r\n    <img class="honor-recall-release-toast-background" src="' + c(typeof(a = null != (a = o.backgroundUrl || (null != t ? t.backgroundUrl : t)) ? a : l) === s ? a.call(i, {
-                        name: "backgroundUrl",
-                        hash: {},
-                        data: r
-                    }) : a) + '"/>\r\n    <img class="honor-recall-release-toast-icon" src="' + c(typeof(a = null != (a = o.iconUrl || (null != t ? t.iconUrl : t)) ? a : l) === s ? a.call(i, {
-                        name: "iconUrl",
-                        hash: {},
-                        data: r
-                    }) : a) + '"/>\r\n    <div class="honor-recall-release-toast-text-container">\r\n        <div class="honor-recall-release-toast-title">' + c(typeof(a = null != (a = o.title || (null != t ? t.title : t)) ? a : l) === s ? a.call(i, {
-                        name: "title",
-                        hash: {},
-                        data: r
-                    }) : a) + '</div>\r\n        <div class="honor-recall-release-toast-detail">' + c(typeof(a = null != (a = o.detail || (null != t ? t.detail : t)) ? a : l) === s ? a.call(i, {
-                        name: "detail",
-                        hash: {},
-                        data: r
-                    }) : a) + "</div>\r\n    </div>\r\n</div>"
-                },
-                useData: !0
-            })
-        }, (e, t, o) => {
-            e.exports = o(21).default
-        }, (e, t, o) => {
-            "use strict";
-
-            function n(e) {
-                return e && e.__esModule ? e : {
-                    default: e
-                }
-            }
-
-            function r(e) {
-                if (e && e.__esModule) return e;
-                var t = {};
-                if (null != e)
-                    for (var o in e) Object.prototype.hasOwnProperty.call(e, o) && (t[o] = e[o]);
-                return t.default = e, t
-            }
-            t.__esModule = !0;
-            var a = r(o(22)),
-                i = n(o(36)),
-                l = n(o(24)),
-                s = r(o(23)),
-                c = r(o(37)),
-                d = n(o(38));
-
-            function _() {
-                var e = new a.HandlebarsEnvironment;
-                return s.extend(e, a), e.SafeString = i.default, e.Exception = l.default, e.Utils = s, e.escapeExpression = s.escapeExpression, e.VM = c, e.template = function(t) {
-                    return c.template(t, e)
-                }, e
-            }
-            var h = _();
-            h.create = _, d.default(h), h.default = h, t.default = h, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-
-            function n(e) {
-                return e && e.__esModule ? e : {
-                    default: e
-                }
-            }
-            t.__esModule = !0, t.HandlebarsEnvironment = d;
-            var r = o(23),
-                a = n(o(24)),
-                i = o(25),
-                l = o(33),
-                s = n(o(35));
-            t.VERSION = "4.1.2";
-            t.COMPILER_REVISION = 7;
-            t.REVISION_CHANGES = {
-                1: "<= 1.0.rc.2",
-                2: "== 1.0.0-rc.3",
-                3: "== 1.0.0-rc.4",
-                4: "== 1.x.x",
-                5: "== 2.0.0-alpha.x",
-                6: ">= 2.0.0-beta.1",
-                7: ">= 4.0.0"
-            };
-            var c = "[object Object]";
-
-            function d(e, t, o) {
-                this.helpers = e || {}, this.partials = t || {}, this.decorators = o || {}, i.registerDefaultHelpers(this), l.registerDefaultDecorators(this)
-            }
-            d.prototype = {
-                constructor: d,
-                logger: s.default,
-                log: s.default.log,
-                registerHelper: function(e, t) {
-                    if (r.toString.call(e) === c) {
-                        if (t) throw new a.default("Arg not supported with multiple helpers");
-                        r.extend(this.helpers, e)
-                    } else this.helpers[e] = t
-                },
-                unregisterHelper: function(e) {
-                    delete this.helpers[e]
-                },
-                registerPartial: function(e, t) {
-                    if (r.toString.call(e) === c) r.extend(this.partials, e);
-                    else {
-                        if (void 0 === t) throw new a.default('Attempting to register a partial called "' + e + '" as undefined');
-                        this.partials[e] = t
-                    }
-                },
-                unregisterPartial: function(e) {
-                    delete this.partials[e]
-                },
-                registerDecorator: function(e, t) {
-                    if (r.toString.call(e) === c) {
-                        if (t) throw new a.default("Arg not supported with multiple decorators");
-                        r.extend(this.decorators, e)
-                    } else this.decorators[e] = t
-                },
-                unregisterDecorator: function(e) {
-                    delete this.decorators[e]
-                }
-            };
-            var _ = s.default.log;
-            t.log = _, t.createFrame = r.createFrame, t.logger = s.default
-        }, (e, t) => {
-            "use strict";
-            t.__esModule = !0, t.extend = i, t.indexOf = function(e, t) {
-                for (var o = 0, n = e.length; o < n; o++)
-                    if (e[o] === t) return o;
-                return -1
-            }, t.escapeExpression = function(e) {
-                if ("string" != typeof e) {
-                    if (e && e.toHTML) return e.toHTML();
-                    if (null == e) return "";
-                    if (!e) return e + "";
-                    e = "" + e
-                }
-                if (!r.test(e)) return e;
-                return e.replace(n, a)
-            }, t.isEmpty = function(e) {
-                return !e && 0 !== e || !(!c(e) || 0 !== e.length)
-            }, t.createFrame = function(e) {
-                var t = i({}, e);
-                return t._parent = e, t
-            }, t.blockParams = function(e, t) {
-                return e.path = t, e
-            }, t.appendContextPath = function(e, t) {
-                return (e ? e + "." : "") + t
-            };
-            var o = {
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#x27;",
-                    "`": "&#x60;",
-                    "=": "&#x3D;"
-                },
-                n = /[&<>"'`=]/g,
-                r = /[&<>"'`=]/;
-
-            function a(e) {
-                return o[e]
-            }
-
-            function i(e) {
-                for (var t = 1; t < arguments.length; t++)
-                    for (var o in arguments[t]) Object.prototype.hasOwnProperty.call(arguments[t], o) && (e[o] = arguments[t][o]);
-                return e
-            }
-            var l = Object.prototype.toString;
-            t.toString = l;
-            var s = function(e) {
-                return "function" == typeof e
-            };
-            s(/x/) && (t.isFunction = s = function(e) {
-                return "function" == typeof e && "[object Function]" === l.call(e)
-            }), t.isFunction = s;
-            var c = Array.isArray || function(e) {
-                return !(!e || "object" != typeof e) && "[object Array]" === l.call(e)
-            };
-            t.isArray = c
-        }, (e, t) => {
-            "use strict";
-            t.__esModule = !0;
-            var o = ["description", "fileName", "lineNumber", "message", "name", "number", "stack"];
-
-            function n(e, t) {
-                var r = t && t.loc,
-                    a = void 0,
-                    i = void 0;
-                r && (e += " - " + (a = r.start.line) + ":" + (i = r.start.column));
-                for (var l = Error.prototype.constructor.call(this, e), s = 0; s < o.length; s++) this[o[s]] = l[o[s]];
-                Error.captureStackTrace && Error.captureStackTrace(this, n);
-                try {
-                    r && (this.lineNumber = a, Object.defineProperty ? Object.defineProperty(this, "column", {
-                        value: i,
-                        enumerable: !0
-                    }) : this.column = i)
-                } catch (e) {}
-            }
-            n.prototype = new Error, t.default = n, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-
-            function n(e) {
-                return e && e.__esModule ? e : {
-                    default: e
-                }
-            }
-            t.__esModule = !0, t.registerDefaultHelpers = function(e) {
-                r.default(e), a.default(e), i.default(e), l.default(e), s.default(e), c.default(e), d.default(e)
-            };
-            var r = n(o(26)),
-                a = n(o(27)),
-                i = n(o(28)),
-                l = n(o(29)),
-                s = n(o(30)),
-                c = n(o(31)),
-                d = n(o(32))
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n = o(23);
-            t.default = function(e) {
-                e.registerHelper("blockHelperMissing", (function(t, o) {
-                    var r = o.inverse,
-                        a = o.fn;
-                    if (!0 === t) return a(this);
-                    if (!1 === t || null == t) return r(this);
-                    if (n.isArray(t)) return t.length > 0 ? (o.ids && (o.ids = [o.name]), e.helpers.each(t, o)) : r(this);
-                    if (o.data && o.ids) {
-                        var i = n.createFrame(o.data);
-                        i.contextPath = n.appendContextPath(o.data.contextPath, o.name), o = {
-                            data: i
-                        }
-                    }
-                    return a(t, o)
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n, r = o(23),
-                a = o(24),
-                i = (n = a) && n.__esModule ? n : {
-                    default: n
-                };
-            t.default = function(e) {
-                e.registerHelper("each", (function(e, t) {
-                    if (!t) throw new i.default("Must pass iterator to #each");
-                    var o = t.fn,
-                        n = t.inverse,
-                        a = 0,
-                        l = "",
-                        s = void 0,
-                        c = void 0;
-
-                    function d(t, n, a) {
-                        s && (s.key = t, s.index = n, s.first = 0 === n, s.last = !!a, c && (s.contextPath = c + t)), l += o(e[t], {
-                            data: s,
-                            blockParams: r.blockParams([e[t], t], [c + t, null])
-                        })
-                    }
-                    if (t.data && t.ids && (c = r.appendContextPath(t.data.contextPath, t.ids[0]) + "."), r.isFunction(e) && (e = e.call(this)), t.data && (s = r.createFrame(t.data)), e && "object" == typeof e)
-                        if (r.isArray(e))
-                            for (var _ = e.length; a < _; a++) a in e && d(a, a, a === e.length - 1);
-                        else {
-                            var h = void 0;
-                            for (var p in e) e.hasOwnProperty(p) && (void 0 !== h && d(h, a - 1), h = p, a++);
-                            void 0 !== h && d(h, a - 1, !0)
-                        } return 0 === a && (l = n(this)), l
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n, r = o(24),
-                a = (n = r) && n.__esModule ? n : {
-                    default: n
-                };
-            t.default = function(e) {
-                e.registerHelper("helperMissing", (function() {
-                    if (1 !== arguments.length) throw new a.default('Missing helper: "' + arguments[arguments.length - 1].name + '"')
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n = o(23);
-            t.default = function(e) {
-                e.registerHelper("if", (function(e, t) {
-                    return n.isFunction(e) && (e = e.call(this)), !t.hash.includeZero && !e || n.isEmpty(e) ? t.inverse(this) : t.fn(this)
-                })), e.registerHelper("unless", (function(t, o) {
-                    return e.helpers.if.call(this, t, {
-                        fn: o.inverse,
-                        inverse: o.fn,
-                        hash: o.hash
-                    })
-                }))
-            }, e.exports = t.default
-        }, (e, t) => {
-            "use strict";
-            t.__esModule = !0, t.default = function(e) {
-                e.registerHelper("log", (function() {
-                    for (var t = [void 0], o = arguments[arguments.length - 1], n = 0; n < arguments.length - 1; n++) t.push(arguments[n]);
-                    var r = 1;
-                    null != o.hash.level ? r = o.hash.level : o.data && null != o.data.level && (r = o.data.level), t[0] = r, e.log.apply(e, t)
-                }))
-            }, e.exports = t.default
-        }, (e, t) => {
-            "use strict";
-            t.__esModule = !0, t.default = function(e) {
-                e.registerHelper("lookup", (function(e, t) {
-                    return e ? "constructor" !== t || e.propertyIsEnumerable(t) ? e[t] : void 0 : e
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n = o(23);
-            t.default = function(e) {
-                e.registerHelper("with", (function(e, t) {
-                    n.isFunction(e) && (e = e.call(this));
-                    var o = t.fn;
-                    if (n.isEmpty(e)) return t.inverse(this);
-                    var r = t.data;
-                    return t.data && t.ids && ((r = n.createFrame(t.data)).contextPath = n.appendContextPath(t.data.contextPath, t.ids[0])), o(e, {
-                        data: r,
-                        blockParams: n.blockParams([e], [r && r.contextPath])
-                    })
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0, t.registerDefaultDecorators = function(e) {
-                a.default(e)
-            };
-            var n, r = o(34),
-                a = (n = r) && n.__esModule ? n : {
-                    default: n
-                }
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n = o(23);
-            t.default = function(e) {
-                e.registerDecorator("inline", (function(e, t, o, r) {
-                    var a = e;
-                    return t.partials || (t.partials = {}, a = function(r, a) {
-                        var i = o.partials;
-                        o.partials = n.extend({}, i, t.partials);
-                        var l = e(r, a);
-                        return o.partials = i, l
-                    }), t.partials[r.args[0]] = r.fn, a
-                }))
-            }, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0;
-            var n = o(23),
-                r = {
-                    methodMap: ["debug", "info", "warn", "error"],
-                    level: "info",
-                    lookupLevel: function(e) {
-                        if ("string" == typeof e) {
-                            var t = n.indexOf(r.methodMap, e.toLowerCase());
-                            e = t >= 0 ? t : parseInt(e, 10)
-                        }
-                        return e
-                    },
-                    log: function(e) {
-                        if (e = r.lookupLevel(e), "undefined" != typeof console && r.lookupLevel(r.level) <= e) {
-                            var t = r.methodMap[e];
-                            console[t] || (t = "log");
-                            for (var o = arguments.length, n = Array(o > 1 ? o - 1 : 0), a = 1; a < o; a++) n[a - 1] = arguments[a];
-                            console[t].apply(console, n)
-                        }
-                    }
-                };
-            t.default = r, e.exports = t.default
-        }, (e, t) => {
-            "use strict";
-
-            function o(e) {
-                this.string = e
-            }
-            t.__esModule = !0, o.prototype.toString = o.prototype.toHTML = function() {
-                return "" + this.string
-            }, t.default = o, e.exports = t.default
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0, t.checkRevision = function(e) {
-                var t = e && e[0] || 1,
-                    o = l.COMPILER_REVISION;
-                if (t !== o) {
-                    if (t < o) {
-                        var n = l.REVISION_CHANGES[o],
-                            r = l.REVISION_CHANGES[t];
-                        throw new i.default("Template was precompiled with an older version of Handlebars than the current runtime. Please update your precompiler to a newer version (" + n + ") or downgrade your runtime to an older version (" + r + ").")
-                    }
-                    throw new i.default("Template was precompiled with a newer version of Handlebars than the current runtime. Please update your runtime to a newer version (" + e[1] + ").")
-                }
-            }, t.template = function(e, t) {
-                if (!t) throw new i.default("No environment passed to template");
-                if (!e || !e.main) throw new i.default("Unknown template object: " + typeof e);
-                e.main.decorator = e.main_d, t.VM.checkRevision(e.compiler);
-                var o = {
-                    strict: function(e, t) {
-                        if (!(t in e)) throw new i.default('"' + t + '" not defined in ' + e);
-                        return e[t]
-                    },
-                    lookup: function(e, t) {
-                        for (var o = e.length, n = 0; n < o; n++)
-                            if (e[n] && null != e[n][t]) return e[n][t]
-                    },
-                    lambda: function(e, t) {
-                        return "function" == typeof e ? e.call(t) : e
-                    },
-                    escapeExpression: r.escapeExpression,
-                    invokePartial: function(o, n, a) {
-                        a.hash && (n = r.extend({}, n, a.hash), a.ids && (a.ids[0] = !0)), o = t.VM.resolvePartial.call(this, o, n, a);
-                        var l = t.VM.invokePartial.call(this, o, n, a);
-                        if (null == l && t.compile && (a.partials[a.name] = t.compile(o, e.compilerOptions, t), l = a.partials[a.name](n, a)), null != l) {
-                            if (a.indent) {
-                                for (var s = l.split("\n"), c = 0, d = s.length; c < d && (s[c] || c + 1 !== d); c++) s[c] = a.indent + s[c];
-                                l = s.join("\n")
-                            }
-                            return l
-                        }
-                        throw new i.default("The partial " + a.name + " could not be compiled when running in runtime-only mode")
-                    },
-                    fn: function(t) {
-                        var o = e[t];
-                        return o.decorator = e[t + "_d"], o
-                    },
-                    programs: [],
-                    program: function(e, t, o, n, r) {
-                        var a = this.programs[e],
-                            i = this.fn(e);
-                        return t || r || n || o ? a = s(this, e, i, t, o, n, r) : a || (a = this.programs[e] = s(this, e, i)), a
-                    },
-                    data: function(e, t) {
-                        for (; e && t--;) e = e._parent;
-                        return e
-                    },
-                    merge: function(e, t) {
-                        var o = e || t;
-                        return e && t && e !== t && (o = r.extend({}, t, e)), o
-                    },
-                    nullContext: Object.seal({}),
-                    noop: t.VM.noop,
-                    compilerInfo: e.compiler
-                };
-
-                function n(t) {
-                    var r = arguments.length <= 1 || void 0 === arguments[1] ? {} : arguments[1],
-                        a = r.data;
-                    n._setup(r), !r.partial && e.useData && (a = function(e, t) {
-                        t && "root" in t || ((t = t ? l.createFrame(t) : {}).root = e);
-                        return t
-                    }(t, a));
-                    var i = void 0,
-                        s = e.useBlockParams ? [] : void 0;
-
-                    function c(t) {
-                        return "" + e.main(o, t, o.helpers, o.partials, a, s, i)
-                    }
-                    return e.useDepths && (i = r.depths ? t != r.depths[0] ? [t].concat(r.depths) : r.depths : [t]), (c = d(e.main, c, o, r.depths || [], a, s))(t, r)
-                }
-                return n.isTop = !0, n._setup = function(n) {
-                    n.partial ? (o.helpers = n.helpers, o.partials = n.partials, o.decorators = n.decorators) : (o.helpers = o.merge(n.helpers, t.helpers), e.usePartial && (o.partials = o.merge(n.partials, t.partials)), (e.usePartial || e.useDecorators) && (o.decorators = o.merge(n.decorators, t.decorators)))
-                }, n._child = function(t, n, r, a) {
-                    if (e.useBlockParams && !r) throw new i.default("must pass block params");
-                    if (e.useDepths && !a) throw new i.default("must pass parent depths");
-                    return s(o, t, e[t], n, 0, r, a)
-                }, n
-            }, t.wrapProgram = s, t.resolvePartial = function(e, t, o) {
-                e ? e.call || o.name || (o.name = e, e = o.partials[e]) : e = "@partial-block" === o.name ? o.data["partial-block"] : o.partials[o.name];
-                return e
-            }, t.invokePartial = function(e, t, o) {
-                var n = o.data && o.data["partial-block"];
-                o.partial = !0, o.ids && (o.data.contextPath = o.ids[0] || o.data.contextPath);
-                var a = void 0;
-                o.fn && o.fn !== c && function() {
-                    o.data = l.createFrame(o.data);
-                    var e = o.fn;
-                    a = o.data["partial-block"] = function(t) {
-                        var o = arguments.length <= 1 || void 0 === arguments[1] ? {} : arguments[1];
-                        return o.data = l.createFrame(o.data), o.data["partial-block"] = n, e(t, o)
-                    }, e.partials && (o.partials = r.extend({}, o.partials, e.partials))
-                }();
-                void 0 === e && a && (e = a);
-                if (void 0 === e) throw new i.default("The partial " + o.name + " could not be found");
-                if (e instanceof Function) return e(t, o)
-            }, t.noop = c;
-            var n, r = function(e) {
-                    if (e && e.__esModule) return e;
-                    var t = {};
-                    if (null != e)
-                        for (var o in e) Object.prototype.hasOwnProperty.call(e, o) && (t[o] = e[o]);
-                    return t.default = e, t
-                }(o(23)),
-                a = o(24),
-                i = (n = a) && n.__esModule ? n : {
-                    default: n
-                },
-                l = o(22);
-
-            function s(e, t, o, n, r, a, i) {
-                function l(t) {
-                    var r = arguments.length <= 1 || void 0 === arguments[1] ? {} : arguments[1],
-                        l = i;
-                    return !i || t == i[0] || t === e.nullContext && null === i[0] || (l = [t].concat(i)), o(e, t, e.helpers, e.partials, r.data || n, a && [r.blockParams].concat(a), l)
-                }
-                return (l = d(o, l, e, i, n, a)).program = t, l.depth = i ? i.length : 0, l.blockParams = r || 0, l
-            }
-
-            function c() {
-                return ""
-            }
-
-            function d(e, t, o, n, a, i) {
-                if (e.decorator) {
-                    var l = {};
-                    t = e.decorator(t, l, o, n && n[0], a, i, n), r.extend(t, l)
-                }
-                return t
-            }
-        }, (e, t, o) => {
-            "use strict";
-            t.__esModule = !0, t.default = function(e) {
-                var t = void 0 !== o.g ? o.g : window,
-                    n = t.Handlebars;
-                e.noConflict = function() {
-                    return t.Handlebars === e && (t.Handlebars = n), e
-                }
-            }, e.exports = t.default
         }],
         t = {};
 
@@ -1540,14 +905,7 @@
         };
         return e[n](a, a.exports, o), a.exports
     }
-    o.g = function() {
-        if ("object" == typeof globalThis) return globalThis;
-        try {
-            return this || new Function("return this")()
-        } catch (e) {
-            if ("object" == typeof window) return window
-        }
-    }(), o.r = e => {
+    o.r = e => {
         "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
             value: "Module"
         }), Object.defineProperty(e, "__esModule", {
@@ -1576,7 +934,6 @@
                     ModalManager: e => e.get("rcp-fe-lol-uikit").getModalManager(),
                     Postgame: e => e.get("rcp-fe-lol-postgame"),
                     SharedEmberComponents: e => e.get("rcp-fe-lol-shared-components").getSharedEmberComponents(),
-                    Social: e => e.get("rcp-fe-lol-social"),
                     Telemetry: e => e.get("rcp-fe-common-libs").getTelemetry("1"),
                     ToastCelebrationManager: e => e.get("rcp-fe-lol-uikit").getToastCelebrationManager(),
                     ToastManager: e => e.get("rcp-fe-lol-uikit").getToastManager(),

@@ -246,14 +246,14 @@
     {
       "affinity": null,
       "as": [],
-      "lazy": true,
-      "name": "rcp-fe-lol-pft"
+      "lazy": false,
+      "name": "rcp-be-lol-champ-select"
     },
     {
       "affinity": null,
       "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-champ-select"
+      "lazy": true,
+      "name": "rcp-fe-lol-pft"
     },
     {
       "affinity": [
@@ -279,13 +279,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-lol-champion-statistics"
+      "name": "rcp-be-lol-pre-end-of-game"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-pre-end-of-game"
+      "name": "rcp-fe-lol-champion-statistics"
     },
     {
       "affinity": null,
@@ -298,12 +298,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-ranked"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-fe-lol-skins-picker"
     },
     {
       "affinity": null,
@@ -324,18 +318,24 @@
       "name": "rcp-be-sanitizer"
     },
     {
-      "affinity": [
-        "home"
-      ],
+      "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-lol-profiles"
+      "name": "rcp-fe-lol-skins-picker"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-chat"
+    },
+    {
+      "affinity": [
+        "home"
+      ],
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-profiles"
     },
     {
       "affinity": [
