@@ -2574,7 +2574,7 @@
     "shortName": "",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
-    "spectatorEnabled": false,
+    "spectatorEnabled": true,
     "type": "LNY24_TFT"
   },
   {
