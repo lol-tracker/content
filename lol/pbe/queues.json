@@ -2521,8 +2521,8 @@
     "assetMutator": "TFT_Set3",
     "category": "PvP",
     "championsRequiredToPlay": 22,
-    "description": "",
-    "detailedDescription": "",
+    "description": "Set 3.5 Revival: Galaxies",
+    "detailedDescription": "Teamfight Tactics (Set 3.5 Revival: Galaxies)",
     "gameMode": "TFT",
     "gameTypeConfig": {
       "advancedLearningQuests": false,
@@ -2560,7 +2560,7 @@
     "maximumParticipantListSize": 8,
     "minLevel": 0,
     "minimumParticipantListSize": 1,
-    "name": "",
+    "name": "Teamfight Tactics (Set 3.5 Revival: Galaxies)",
     "numPlayersPerTeam": 8,
     "queueAvailability": "PlatformDisabled",
     "queueRewards": {
@@ -2571,7 +2571,7 @@
     },
     "removalFromGameAllowed": true,
     "removalFromGameDelayMinutes": 10,
-    "shortName": "",
+    "shortName": "Teamfight Tactics (Set 3.5 Revival: Galaxies)",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
     "spectatorEnabled": true,

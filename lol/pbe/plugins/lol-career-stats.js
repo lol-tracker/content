@@ -45,8 +45,8 @@
             var s = i(a(3)),
                 n = i(a(60)),
                 o = a(1),
-                l = a(11),
-                r = a(12);
+                r = a(11),
+                l = a(12);
 
             function i(e) {
                 return e && e.__esModule ? e : {
@@ -79,34 +79,34 @@
                     this._profileRegistered || !this._entitlementsEnabled && !this._jmxConfigEnabled || (this._profileRegistered = !0, this._entitlementsEndpoint.unobserve(this), this._platformConfigEndpoint.unobserve(this), (0, n.default)(this._tra))
                 }
                 filterGames(e, t) {
-                    return (0, l.filterGames)(e, t)
+                    return (0, r.filterGames)(e, t)
                 }
                 inferPosition(e) {
-                    return (0, l.inferPosition)(e)
+                    return (0, r.inferPosition)(e)
                 }
                 getMinGamesToUnlockStats() {
-                    return r.MIN_GAMES_TO_UNLOCK_STATS
+                    return l.MIN_GAMES_TO_UNLOCK_STATS
                 }
                 getCareerStatsQueueType(e) {
-                    return e in r.RANKED_QUEUE_TYPE_MAPPINGS ? r.RANKED_QUEUE_TYPE_MAPPINGS[e] : e
+                    return e in l.RANKED_QUEUE_TYPE_MAPPINGS ? l.RANKED_QUEUE_TYPE_MAPPINGS[e] : e
                 }
                 getGradesForChampion(e, t, a, s) {
-                    const n = (0, l.calculateStatsTrends)(e),
-                        r = o.Lodash.get(s, a + "." + t),
-                        i = (0, l.calculateCategoryPercentilesWithStatsTrends)(n, r);
-                    return (0, l.calculateGradesAndBestPlaystyle)(i).categoryGrades
+                    const n = (0, r.calculateStatsTrends)(e),
+                        l = o.Lodash.get(s, a + "." + t),
+                        i = (0, r.calculateCategoryPercentilesWithStatsTrends)(n, l);
+                    return (0, r.calculateGradesAndBestPlaystyle)(i).categoryGrades
                 }
                 getWinrate(e) {
-                    return (0, l.getWinrate)(e)
+                    return (0, r.getWinrate)(e)
                 }
                 getCareerStatsService() {
                     return a(33).default
                 }
                 getNormalGamesQueueTypes() {
-                    return r.NORMAL_GAMES_QUEUE_TYPES
+                    return l.NORMAL_GAMES_QUEUE_TYPES
                 }
                 getAllRanks() {
-                    return r.ALL_RANKS
+                    return l.ALL_RANKS
                 }
             }
         }, (e, t, a) => {
@@ -114,14 +114,14 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = function(e) {
-                void 0 === r && (r = new l(e));
-                return r
+                void 0 === l && (l = new r(e));
+                return l
             };
             var s, n = a(1),
                 o = (s = a(35)) && s.__esModule ? s : {
                     default: s
                 };
-            class l {
+            class r {
                 constructor(e) {
                     const t = (0, o.default)(n.Ember, e);
                     this._tra = e, this._traService = t, this._registerComponents(t)
@@ -169,7 +169,7 @@
                     })
                 }
             }
-            let r
+            let l
         }, (e, t, a) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -178,7 +178,7 @@
             var s = a(1);
             const n = (0, s.dataBinding)("/lol-gameflow", (0, s.getProvider)().getSocket()),
                 o = new CustomEvent("screenBumped"),
-                l = new CustomEvent("screenReleased");
+                r = new CustomEvent("screenReleased");
             t.default = class {
                 constructor(e) {
                     this._init(e)
@@ -197,7 +197,7 @@
                     else {
                         const e = this._componentParams.get("beforeHide");
                         (e instanceof Function ? e() : Promise.resolve()).then((() => {
-                            this._screenRoot.release(), this._component.domNode.dispatchEvent(l)
+                            this._screenRoot.release(), this._component.domNode.dispatchEvent(r)
                         })).catch((e => {
                             s.logger.warning("Error in before hide promise for career stats modal", e), this._screenRoot.release()
                         }))
@@ -243,8 +243,8 @@
             var s = a(1),
                 n = a(6),
                 o = a(7),
-                l = m(a(8)),
-                r = m(a(9));
+                r = m(a(8)),
+                l = m(a(9));
             a(10);
             var i = a(11),
                 c = a(12);
@@ -273,7 +273,7 @@
             var d = s.Ember.Component.extend({
                 classNames: ["career-stats-modal-root-component"],
                 classNameBindings: ["fullReload", "isSeasonSettingLoaded"],
-                layout: r.default,
+                layout: l.default,
                 careerStatsService: s.Ember.inject.service("careerStats"),
                 earliestSeason: s.Ember.computed.readOnly("careerStatsService.earliestSeason"),
                 currentSeason: s.Ember.computed.readOnly("careerStatsService.currentSeason"),
@@ -479,14 +479,14 @@
                             championId: a
                         } = t, n = (0, i.inferPosition)(t), {
                             queueType: o
-                        } = t, l = `${o}.${n}`;
-                        s.Lodash.get(e, l) || s.Lodash.set(e, l, []);
-                        const r = s.Lodash.get(e, l);
-                        let c = r.find((e => e.championId === a));
+                        } = t, r = `${o}.${n}`;
+                        s.Lodash.get(e, r) || s.Lodash.set(e, r, []);
+                        const l = s.Lodash.get(e, r);
+                        let c = l.find((e => e.championId === a));
                         return c || (c = {
                             championId: a,
                             gameCount: 0
-                        }, r.push(c)), c.gameCount++, e
+                        }, l.push(c)), c.gameCount++, e
                     }), {})
                 })),
                 mostPlayedChampions: s.Ember.computed("tra", "indexedGameCounts", "currentSelectedPosition", "queueFilter.queueTypes.0", (function() {
@@ -510,17 +510,17 @@
                         a = this.get("queueFilter"),
                         n = this.get("timeFilter"),
                         o = this.get("currentSelectedPosition"),
-                        l = this.get("showingChampionDetails"),
-                        r = this.get("rollingAverageWindowSize"),
+                        r = this.get("showingChampionDetails"),
+                        l = this.get("rollingAverageWindowSize"),
                         c = this.get("smootheningRequiredSize"),
                         m = this.get("maxDataPoints"),
                         p = (0, i.filterGames)(e, {
-                            championId: l && t,
+                            championId: r && t,
                             position: o,
                             queueFilter: a,
                             timeFilter: n
                         }).reverse(),
-                        d = (0, i.getRollingAverageWindowSize)(p, r, c, m),
+                        d = (0, i.getRollingAverageWindowSize)(p, l, c, m),
                         u = (0, i.calculateRollingAverage)(p, d);
                     return s.Ember.run.next((() => {
                         !this || this.isDestroyed || this.isDestroying || (this.set("pinnedGame.index", null), this.set("currentRollingWindowSize", d), this.set("relevantGames", p))
@@ -551,25 +551,25 @@
                         t = this.get("statsTrends"),
                         a = this.get("statsAverages");
                     return s.Lodash.reduce(t, ((t, n, o) => {
-                        const l = {
+                        const r = {
                             self: [],
                             other: []
                         };
                         return s.Lodash.each(n, ((t, n) => {
                             const o = e[n];
-                            l.self.push({
+                            r.self.push({
                                 axis: n,
                                 value: s.Lodash.sortedIndex(o, t.average)
-                            }), a && l.other.push({
+                            }), a && r.other.push({
                                 axis: n,
                                 value: s.Lodash.sortedIndex(o, a[n])
                             })
                         })), t[o] = [{
                             owner: "other",
-                            axes: l.other
+                            axes: r.other
                         }, {
                             owner: "self",
-                            axes: l.self
+                            axes: r.self
                         }], t
                     }), {})
                 })),
@@ -647,7 +647,7 @@
                     const s = this.get("data.games"),
                         n = this.get("queueFilter"),
                         o = this.get("timeFilter"),
-                        l = (0, i.filterGames)(s, {
+                        r = (0, i.filterGames)(s, {
                             championId: e,
                             position: t,
                             queueFilter: n,
@@ -657,7 +657,7 @@
                         type: "ownChampion",
                         traKey: "career_stats_compare_own_champion",
                         name: a[e].name,
-                        averages: this._calculateAveragesOnly(l)
+                        averages: this._calculateAveragesOnly(r)
                     })
                 },
                 compareWithSummonerGames(e, t) {
@@ -688,19 +688,19 @@
                     const {
                         summonerName: s,
                         displayName: o,
-                        gameName: r,
+                        gameName: l,
                         tagLine: i,
                         summonerId: c,
                         statsSummary: m
                     } = e;
-                    return l.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
+                    return r.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
                         summonerName: s,
                         championId: t,
                         position: a
                     }), this.set("currentCompareTarget", {
                         type: "expert",
                         summonerName: o,
-                        gameName: r,
+                        gameName: l,
                         tagLine: i,
                         summonerId: c,
                         championId: t,
@@ -714,18 +714,18 @@
                         summonerName: a,
                         displayName: s,
                         gameName: o,
-                        tagLine: r,
+                        tagLine: l,
                         summonerId: i,
                         statsSummary: c
                     } = e;
-                    return l.default.sendEvent(n.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
+                    return r.default.sendEvent(n.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
                         expert: a,
                         position: t
                     }), this.set("currentCompareTarget", {
                         type: "expert",
                         summonerName: s,
                         gameName: o,
-                        tagLine: r,
+                        tagLine: l,
                         summonerId: i,
                         position: t,
                         stats: c
@@ -737,7 +737,7 @@
                         summonerName: t,
                         summonerId: a
                     } = e;
-                    return l.default.sendEvent(n.TELEMETRY_EVENT_ID.SHOW_EXPERT_PROFILE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
+                    return r.default.sendEvent(n.TELEMETRY_EVENT_ID.SHOW_EXPERT_PROFILE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
                         expert: t
                     }), s.ProfilesApi.showOverlay({
                         summonerId: a
@@ -759,14 +759,14 @@
                         a = this.get("currentSelectedPosition"),
                         n = this.get("data.championId"),
                         o = this.get("queueFilter.queueTypes.0"),
-                        l = this.get("careerStatsService"),
-                        r = this.get("currentSelectedSeason");
+                        r = this.get("careerStatsService"),
+                        l = this.get("currentSelectedSeason");
                     if (t && !n || !a) return Promise.resolve();
                     let m;
                     switch (this.set("isLoadingAverages", !0), e.type) {
                         case "playerGroup": {
                             const s = this.get("queueFilter.isRanked") ? o : c.EXPERT_GAME_QUEUE;
-                            m = t ? l.getChampionAverages(n, a, e.rank, s, r) : l.getPositionAverages(a, e.rank, s, r);
+                            m = t ? r.getChampionAverages(n, a, e.rank, s, l) : r.getPositionAverages(a, e.rank, s, l);
                             break
                         }
                         case "summoner":
@@ -775,10 +775,10 @@
                             m = Promise.resolve(e.averages);
                             break;
                         case "expert":
-                            m = l.loadStatsSummaryFromSummonerId(e.summonerId, r, c.EXPERT_GAME_QUEUE, e.position, e.championId).then((e => null === e ? null : (0, i.calculateCareerStatsFromRawTotals)(e)));
+                            m = r.loadStatsSummaryFromSummonerId(e.summonerId, l, c.EXPERT_GAME_QUEUE, e.position, e.championId).then((e => null === e ? null : (0, i.calculateCareerStatsFromRawTotals)(e)));
                             break;
                         case "otherChampion":
-                            m = l.getChampionAverages(e.championId, a, c.ALL_RANKS, o, r);
+                            m = r.getChampionAverages(e.championId, a, c.ALL_RANKS, o, l);
                             break;
                         default:
                             s.logger.warning("unknown compare target type: " + e.type), m = Promise.resolve()
@@ -793,10 +793,10 @@
                         summonerName: s,
                         gameName: n,
                         tagLine: o,
-                        type: l,
-                        traKey: r
+                        type: r,
+                        traKey: l
                     } = e;
-                    if (["summoner", "expert"].includes(l)) {
+                    if (["summoner", "expert"].includes(r)) {
                         const {
                             playerNameFull: e
                         } = this.get("_playerNames").formatPlayerName({
@@ -806,18 +806,18 @@
                         });
                         return e
                     }
-                    if ("playerGroup" === l) {
+                    if ("playerGroup" === r) {
                         const e = this.get("currentSelectedPosition"),
                             a = t.get(`career_stats_position_name_${e}`),
                             s = this.get("showingChampionDetails"),
                             n = this.get("champion.name"),
                             o = s ? n : "";
-                        return t.formatString(`career_stats_compare_option_${r}`, {
+                        return t.formatString(`career_stats_compare_option_${l}`, {
                             position: a,
                             champion: o
                         })
                     }
-                    return "season" === l ? a : t.formatString(r, {
+                    return "season" === r ? a : t.formatString(l, {
                         name: a
                     })
                 },
@@ -828,27 +828,27 @@
                     a && a.set("selected", !1), t && t.set("selected", !0), this.set(e, t)
                 },
                 _retrievePositionPercentiles(e, t, a, n, o) {
-                    const l = s.Lodash.reduce(e.season.queues, ((e, o, l) => (s.Lodash.each(o.positions, ((s, o) => {
+                    const r = s.Lodash.reduce(e.season.queues, ((e, o, r) => (s.Lodash.each(o.positions, ((s, o) => {
                         if (o === a) {
-                            const a = (0, i.getValidRank)(t[l]);
+                            const a = (0, i.getValidRank)(t[r]);
                             e.push({
                                 position: o,
-                                queueType: l,
+                                queueType: r,
                                 rankTier: a,
                                 season: n
                             })
                         }
                     })), e)), []);
-                    return l.length > 0 ? o.getPositionStatPercentiles(l) : Promise.resolve()
+                    return r.length > 0 ? o.getPositionStatPercentiles(r) : Promise.resolve()
                 },
                 _retrieveChampionPercentiles(e, t, a, n) {
                     const o = this.get("currentSelectedSeason"),
-                        l = [];
+                        r = [];
                     return s.Lodash.each(t, ((e, t) => {
                         s.Lodash.each(e, ((e, s) => {
                             if (e >= c.MIN_GAMES_TO_UNLOCK_STATS) {
                                 const e = (0, i.getValidRank)(a[t]);
-                                l.push({
+                                r.push({
                                     position: s,
                                     queueType: t,
                                     rankTier: e,
@@ -856,7 +856,7 @@
                                 })
                             }
                         }))
-                    })), l.length > 0 ? n.getChampionStatPercentiles(e, l) : Promise.resolve()
+                    })), r.length > 0 ? n.getChampionStatPercentiles(e, r) : Promise.resolve()
                 },
                 _openComparisonSelectorModal() {
                     const e = s.Ember.Object.create({
@@ -908,15 +908,15 @@
                         this.set("data.summoner", t), e = t.puuid
                     }))).then((() => Promise.all([t === n ? a.loadCurrentSeasonStatsGames(e) : a.loadPreviousSeasonStatsGames(e, t), a.loadSummonerRankedTiers(e)]))).then((e => {
                         const o = e[0],
-                            l = t === n ? e[1] : {};
+                            r = t === n ? e[1] : {};
                         if (s.Lodash.get(o, "error")) return this.set("serverError", !0), Promise.resolve();
                         this.set("serverError", !1), this.set("data.games", o.games), this.set("data.championOverview", o.season.champions), this.set("data.positionQueuesMap", s.Lodash.reduce(o.season.queues, ((e, t, a) => (s.Lodash.each(t.positions, ((t, n) => {
                             const o = `${n}.${a}`;
                             s.Lodash.set(e, o, s.Lodash.add(s.Lodash.get(e, o), t.gamePlayed))
-                        })), e)), {})), this.set("data.rankedTiers", l);
-                        const r = this.get("currentSelectedPosition"),
+                        })), e)), {})), this.set("data.rankedTiers", r);
+                        const l = this.get("currentSelectedPosition"),
                             i = this.get("data.championId");
-                        return this.get("showingPositionDetails") ? this._retrievePositionPercentiles(o, l, r, t, a) : this._retrieveChampionPercentiles(i, o.season.champions[i], l, a)
+                        return this.get("showingPositionDetails") ? this._retrievePositionPercentiles(o, r, l, t, a) : this._retrieveChampionPercentiles(i, o.season.champions[i], r, a)
                     })).then((e => {
                         this.set("percentileMap", e), this.set("loadedSeason", t)
                     }))
@@ -962,25 +962,25 @@
                         this.get("showingPositionDetails") && e.unlocked && (this.set("data.championId", e.championId), this.set("screen", "champion"))
                     },
                     selectCategory: function(e) {
-                        l.default.addUserBehavior(n.USER_ACTIVITIES.CATEGORY_CHANGE, e), this.set("currentCategory", e)
+                        r.default.addUserBehavior(n.USER_ACTIVITIES.CATEGORY_CHANGE, e), this.set("currentCategory", e)
                     },
                     selectQueueFilter: function(e) {
-                        l.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]")), this._selectDropdownOption("queueFilter", e)
+                        r.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]")), this._selectDropdownOption("queueFilter", e)
                     },
                     selectTimeFilter: function(e) {
                         const t = s.Lodash.get(e, "season"),
                             a = this.get("loadedSeason");
-                        l.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), this._selectDropdownOption("timeFilter", e), t !== a && this.set("fullReload", !0)
+                        r.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), this._selectDropdownOption("timeFilter", e), t !== a && this.set("fullReload", !0)
                     },
                     selectPositionFilter: function(e) {
-                        l.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "name")), this._selectDropdownOption("positionFilter", e)
+                        r.default.addUserBehavior(n.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "name")), this._selectDropdownOption("positionFilter", e)
                     },
                     selectCompareOption: function(e, t) {
-                        if (t && o.SFX.gridClick.play(), l.default.addUserBehavior(n.USER_ACTIVITIES.COMPARE_OPTION_CHANGE, s.Lodash.get(e, "rank")), s.Lodash.get(e, "openDialog")) return this._openComparisonSelectorModal();
+                        if (t && o.SFX.gridClick.play(), r.default.addUserBehavior(n.USER_ACTIVITIES.COMPARE_OPTION_CHANGE, s.Lodash.get(e, "rank")), s.Lodash.get(e, "openDialog")) return this._openComparisonSelectorModal();
                         e.selected || this.set("currentCompareTarget", e)
                     },
                     compareAgainstWinRateBasedChampion(e) {
-                        l.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_WINRATE_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
+                        r.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_WINRATE_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
                             championId: e
                         });
                         const t = this.get("careerStatsService");
@@ -1046,9 +1046,9 @@
                 COMPARISON_SELECTOR: "comparison_selector"
             };
             t.TELEMETRY_EVENT_SOURCE = o;
-            const l = a(o);
-            t.TELEMETRY_EVENT_SOURCE_SET = l;
-            const r = {
+            const r = a(o);
+            t.TELEMETRY_EVENT_SOURCE_SET = r;
+            const l = {
                 CHAMPION_ICON_HOVER: "champion_icon_hover",
                 CHAMPION_ICON_CLICK: "champion_icon_click",
                 POSITION_COLLAPSE_STATE_TOGGLE: "position_collapse_state_toggle",
@@ -1063,8 +1063,8 @@
                 CATEGORY_CHANGE: "category_change",
                 TAB_CHANGE: "tab_change"
             };
-            t.USER_ACTIVITIES = r;
-            const i = a(r);
+            t.USER_ACTIVITIES = l;
+            const i = a(l);
             t.USER_ACTIVITIES_SET = i
         }, (e, t, a) => {
             "use strict";
@@ -1088,7 +1088,7 @@
             var s = a(1),
                 n = a(6);
             const o = `/v1/events/${n.TELEMETRY_EVENT_NAME}`;
-            const l = new class {
+            const r = new class {
                 constructor() {
                     this._sessionStartTimes = [], this._userActivities = {}
                 }
@@ -1139,12 +1139,12 @@
                     return Date.now() - e
                 }
             };
-            e.exports = l
+            e.exports = r
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "76zuynT+",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-modal-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["career-stats-details-backdrop ",["helper",["if"],[["get",["showingChampionDetails"]],"dark"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["uikit-background-switcher"],null,[["src"],[["get",["backdropImgSrc"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-details-main"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-details-top"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-details-identity"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","stats-details-icon"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-icon ",["helper",["if"],[["get",["showingPositionDetails"]],"hidden"],null]]]],["flush-element"],["text","\\n          "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["champion","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-icon ",["unknown",["data","position"]]," ",["helper",["if"],[["get",["showingChampionDetails"]],"hidden"],null]]]],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","stats-detail-titles"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-detail-title primary"],["flush-element"],["text","\\n          "],["append",["helper",["player-name"],null,[["format","puuid","gameName","tagLine","summonerName"],["short",["get",["puuid"]],["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-detail-title secondary"],["flush-element"],["text","\\n          "],["append",["unknown",["secondaryTitleDisplay"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary season"],["flush-element"],["append",["unknown",["currentSeasonName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary games-played"],["flush-element"],["append",["unknown",["gamesPlayedDisplay"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary win-rate"],["flush-element"],["append",["unknown",["winrateDisplay"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["overall-grade-display grade-",["unknown",["letterOnlyGrade"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","grade-badge"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],22],["text","      "],["open-element","div",[]],["static-attr","class","grade"],["flush-element"],["append",["unknown",["overallGradeDisplay"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-detail-filters"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter queue-filter"],["static-attr","direction","downward"],["dynamic-attr","disabled",["unknown",["hasNotEnoughGames"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["queueFilters"]]],null,21],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter time-filter"],["static-attr","direction","downward"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timeFilters"]]],null,18],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["dynamic-attr","class",["concat",["dropdown-filter position-filter ",["helper",["if"],[["get",["showingPositionDetails"]],"hidden"],null]]]],["static-attr","direction","downward"],["dynamic-attr","disabled",["unknown",["hasNotEnoughGames"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["positionFilters"]]],null,17],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["category-grade-headers ",["helper",["unless"],[["get",["hasEnoughGames"]],"hidden"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","category-grade-tabs"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","category-grade-displays"],["static-attr","type","tabbed"],["static-attr","direction","right"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoryGradeDisplays"]]],null,16],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","compare-option-buttons"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","current-compare-display"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","label"],["flush-element"],["append",["unknown",["tra","career_stats_compare_current_target_label"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["target ",["helper",["if"],[["get",["isLoadingAverages"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["currentCompareTargetDisplay"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loading-spinner ",["helper",["unless"],[["get",["isLoadingAverages"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["no-data-warning ",["helper",["if"],[["get",["isLoadingAverages"]],"hidden"],null]," ",["helper",["if"],[["get",["statsAverages"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],14],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["each"],[["get",["compareOptions"]]],null,13],["text","      "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","compare"],["static-attr","class","choose-comparison-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCompareOption",["get",["chooseComparisonOption"]],false],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],11],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-details-container ",["helper",["unless"],[["get",["hasEnoughGames"]],"hidden"],null]," ",["helper",["if"],[["get",["showCategoryStatIcons"]],"show-category-stat-icons"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","category-trend-graphs"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","grid-frames"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame vertical left"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame vertical right"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame horizontal"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["helper",["stats-category-summary-graph"],null,[["data"],[["get",["percentilesForCurrentCategory"]]]]],false],["text","\\n"],["block",["each"],[["get",["currentStatsTrendDisplays"]]],null,10],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","sidebar-frame"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","pinned-match-display"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["title ",["helper",["unless"],[["get",["pinnedMatchSummary"]],"transparent"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_title"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["errorLoadingMatchSummary"]]],null,9,8],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-empty-message ",["helper",["if"],[["get",["hasEnoughGames"]],"hidden"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-empty-icon"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-empty-msgs"],["flush-element"],["text","\\n      "],["append",["unknown",["tra","career_stats_details_not_enough_games"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","instructions"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","instruction line-1"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_instruction_line_1"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","instruction line-2"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_instruction_line_2"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_defeat"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_victory"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_defeat"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_victory"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","match-summary player"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-display champion-",["unknown",["pinnedMatchSummary","player","championId"]]," player"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-icon"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","icon"],["dynamic-attr","src",["concat",[["unknown",["pinnedMatchSummary","player","championIconPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-level"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","level"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","match-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["match-result ",["helper",["if"],[["get",["pinnedMatchSummary","player","victory"]],"victory"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["pinnedMatchSummary","player","victory"]]],null,4,3],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","kda player"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","kda"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","gold-comparison"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","gold player"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","gold"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","vs"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_gold_versus"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","gold opponent"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","gold"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","match-summary opponent"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-display champion-",["unknown",["pinnedMatchSummary","opponent","championId"]]," opponent"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-icon"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","icon"],["dynamic-attr","src",["concat",[["unknown",["pinnedMatchSummary","opponent","championIconPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-level"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","level"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","match-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["match-result ",["helper",["if"],[["get",["pinnedMatchSummary","opponent","victory"]],"victory"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["pinnedMatchSummary","opponent","victory"]]],null,2,1],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","kda opponent"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","kda"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showMatchHistory",["get",["pinnedMatchSummary","gameId"]],["get",["pinnedMatchSummary","playerSummonerId"]]],null],null],["static-attr","class","show-full-history-button"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","career_stats_pin_match_check_full_match_history"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["pinnedMatchSummary"]]],null,5,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLoadingMatchSummary"]]],null,7,6]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","error"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_load_error"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["stats-trend-graph"],null,[["data","pinnedGame","summonerSelfAveragesTooltip","comparedAgainstAveragesTooltip"],[["get",["display"]],["get",["pinnedGame"]],["get",["summonerSelfAveragesTooltip"]],["get",["comparedAgainstAveragesTooltip"]]]]],false],["text","\\n"]],"locals":["display"]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_compare_option_choose_comparison"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["option","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["option-button ",["helper",["if"],[["get",["option","selected"]],"selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCompareOption",["get",["option"]],true],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],12],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["option-icon ",["unknown",["option","traKey"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","option-shadow"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","option-selected"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_compare_against_no_data"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n                  "],["open-element","p",[]],["flush-element"],["append",["unknown",["display","tooltip"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["category-grade-display ",["unknown",["display","category"]]]]],["dynamic-attr","active",["unknown",["display","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCategory",["get",["display","category"]]],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],15],["text","            "],["open-element","div",[]],["static-attr","class","grade"],["flush-element"],["append",["unknown",["display","grade"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","description"],["flush-element"],["append",["unknown",["display","description"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["display"]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectPositionFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["dropdown-filter-text position-",["unknown",["filter","name"]]]]],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTimeFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_queue_locked"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],19]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectQueueFilter",["get",["filter"]]],null],null],["dynamic-attr","disabled",["unknown",["filter","disabled"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["filter","disabled"]]],null,20],["text","        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["overallGradeTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "qksq6P0u",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-modal-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-modal-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["career-stats-details-backdrop ",["helper",["if"],[["get",["showingChampionDetails"]],"dark"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["uikit-background-switcher"],null,[["src"],[["get",["backdropImgSrc"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-details-main"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-details-top"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-details-identity"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","stats-details-icon"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-icon ",["helper",["if"],[["get",["showingPositionDetails"]],"hidden"],null]]]],["flush-element"],["text","\\n          "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["champion","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-icon ",["unknown",["data","position"]]," ",["helper",["if"],[["get",["showingChampionDetails"]],"hidden"],null]]]],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","stats-detail-titles"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-detail-title primary"],["flush-element"],["text","\\n          "],["append",["helper",["player-name"],null,[["format","puuid","gameName","tagLine","summonerName"],["short",["get",["puuid"]],["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-detail-title secondary"],["flush-element"],["text","\\n          "],["append",["unknown",["secondaryTitleDisplay"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary season"],["flush-element"],["append",["unknown",["currentSeasonName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary games-played"],["flush-element"],["append",["unknown",["gamesPlayedDisplay"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","summary win-rate"],["flush-element"],["append",["unknown",["winrateDisplay"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["overall-grade-display grade-",["unknown",["letterOnlyGrade"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","grade-badge"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],22],["text","      "],["open-element","div",[]],["static-attr","class","grade"],["flush-element"],["append",["unknown",["overallGradeDisplay"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-detail-filters"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter queue-filter"],["static-attr","direction","downward"],["dynamic-attr","disabled",["unknown",["hasNotEnoughGames"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["queueFilters"]]],null,21],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter time-filter"],["static-attr","direction","downward"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timeFilters"]]],null,18],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["dynamic-attr","class",["concat",["dropdown-filter position-filter ",["helper",["if"],[["get",["showingPositionDetails"]],"hidden"],null]]]],["static-attr","direction","downward"],["dynamic-attr","disabled",["unknown",["hasNotEnoughGames"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["positionFilters"]]],null,17],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["category-grade-headers ",["helper",["unless"],[["get",["hasEnoughGames"]],"hidden"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","category-grade-tabs"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","category-grade-displays"],["static-attr","type","tabbed"],["static-attr","direction","right"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoryGradeDisplays"]]],null,16],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","compare-option-buttons"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","current-compare-display"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","label"],["flush-element"],["append",["unknown",["tra","career_stats_compare_current_target_label"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["target ",["helper",["if"],[["get",["isLoadingAverages"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["currentCompareTargetDisplay"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loading-spinner ",["helper",["unless"],[["get",["isLoadingAverages"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["no-data-warning ",["helper",["if"],[["get",["isLoadingAverages"]],"hidden"],null]," ",["helper",["if"],[["get",["statsAverages"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],14],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["each"],[["get",["compareOptions"]]],null,13],["text","      "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","compare"],["static-attr","class","choose-comparison-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCompareOption",["get",["chooseComparisonOption"]],false],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],11],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-details-container ",["helper",["unless"],[["get",["hasEnoughGames"]],"hidden"],null]," ",["helper",["if"],[["get",["showCategoryStatIcons"]],"show-category-stat-icons"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","category-trend-graphs"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","grid-frames"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame vertical left"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame vertical right"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","grid-frame horizontal"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["helper",["stats-category-summary-graph"],null,[["data"],[["get",["percentilesForCurrentCategory"]]]]],false],["text","\\n"],["block",["each"],[["get",["currentStatsTrendDisplays"]]],null,10],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","sidebar-frame"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","pinned-match-display"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["title ",["helper",["unless"],[["get",["pinnedMatchSummary"]],"transparent"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_title"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["errorLoadingMatchSummary"]]],null,9,8],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-empty-message ",["helper",["if"],[["get",["hasEnoughGames"]],"hidden"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-empty-icon"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-empty-msgs"],["flush-element"],["text","\\n      "],["append",["unknown",["tra","career_stats_details_not_enough_games"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","instructions"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","instruction line-1"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_instruction_line_1"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","instruction line-2"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_instruction_line_2"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_defeat"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_victory"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_defeat"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["unknown",["tra","career_stats_pin_match_result_victory"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","match-summary player"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-display champion-",["unknown",["pinnedMatchSummary","player","championId"]]," player"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-icon"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","icon"],["dynamic-attr","src",["concat",[["unknown",["pinnedMatchSummary","player","championIconPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-level"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","level"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","match-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["match-result ",["helper",["if"],[["get",["pinnedMatchSummary","player","victory"]],"victory"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["pinnedMatchSummary","player","victory"]]],null,4,3],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","kda player"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","kda"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","gold-comparison"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","gold player"],["flush-element"],["append",["unknown",["pinnedMatchSummary","player","gold"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","vs"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_gold_versus"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","gold opponent"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","gold"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","match-summary opponent"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-display champion-",["unknown",["pinnedMatchSummary","opponent","championId"]]," opponent"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-icon"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","icon"],["dynamic-attr","src",["concat",[["unknown",["pinnedMatchSummary","opponent","championIconPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","champion-level"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","level"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","match-info"],["flush-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["match-result ",["helper",["if"],[["get",["pinnedMatchSummary","opponent","victory"]],"victory"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["pinnedMatchSummary","opponent","victory"]]],null,2,1],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","kda opponent"],["flush-element"],["append",["unknown",["pinnedMatchSummary","opponent","kda"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showMatchHistory",["get",["pinnedMatchSummary","gameId"]],["get",["pinnedMatchSummary","playerSummonerId"]]],null],null],["static-attr","class","show-full-history-button"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","career_stats_pin_match_check_full_match_history"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["pinnedMatchSummary"]]],null,5,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLoadingMatchSummary"]]],null,7,6]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","error"],["flush-element"],["append",["unknown",["tra","career_stats_pin_match_load_error"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["stats-trend-graph"],null,[["data","pinnedGame","summonerSelfAveragesTooltip","comparedAgainstAveragesTooltip"],[["get",["display"]],["get",["pinnedGame"]],["get",["summonerSelfAveragesTooltip"]],["get",["comparedAgainstAveragesTooltip"]]]]],false],["text","\\n"]],"locals":["display"]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_compare_option_choose_comparison"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["option","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["option-button ",["helper",["if"],[["get",["option","selected"]],"selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCompareOption",["get",["option"]],true],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],12],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["option-icon ",["unknown",["option","traKey"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","option-shadow"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","option-selected"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_compare_against_no_data"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n                  "],["open-element","p",[]],["flush-element"],["append",["unknown",["display","tooltip"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["category-grade-display ",["unknown",["display","category"]]]]],["dynamic-attr","active",["unknown",["display","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectCategory",["get",["display","category"]]],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],15],["text","            "],["open-element","div",[]],["static-attr","class","grade"],["flush-element"],["append",["unknown",["display","grade"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","description"],["flush-element"],["append",["unknown",["display","description"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["display"]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectPositionFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["dropdown-filter-text position-",["unknown",["filter","name"]]]]],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTimeFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_queue_locked"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],19]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectQueueFilter",["get",["filter"]]],null],null],["dynamic-attr","disabled",["unknown",["filter","disabled"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["filter","disabled"]]],null,20],["text","        "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["overallGradeTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -1158,31 +1158,31 @@
             var s = a(1),
                 n = a(12);
             const o = a(13),
-                l = ["", "kilo", "mega", "giga", "tera", "peta", "exa"];
+                r = ["", "kilo", "mega", "giga", "tera", "peta", "exa"];
             t.abvNumberWithSuffix = function(e) {
                 const t = Math.log10(e) / 3 | 0;
                 if (0 === t) return {
                     num: e
                 };
-                const a = l[t];
+                const a = r[t];
                 return {
                     num: (e / Math.pow(10, 3 * t)).toFixed(1),
                     suffix: a
                 }
             };
-            const r = function(e) {
+            const l = function(e) {
                 const t = e.stats[n.CAREER_STATS_KEY].position;
                 return s.Lodash.isNumber(t) ? n.POSITION_ID_MAP[t] : "DUO_SUPPORT" === e.role ? "SUPPORT" : e.lane
             };
-            t.inferPosition = r;
+            t.inferPosition = l;
             t.filterGames = function(e, t) {
                 let a, n = e;
-                return t.championName ? a = s.Lodash.filter(t.championSummary, (e => o.filter(t.championName, e.searchTerms).length > 0)).map((e => e.id)) : t.championId && (a = [t.championId]), n = s.Lodash.filter(n, (e => !(t.queueFilter && !t.queueFilter.queueTypes.includes(e.queueType)) && (!(a && !a.includes(e.championId)) && (!t.position || t.position === r(e))))), t.timeFilter && (t.timeFilter.includeAll || t.timeFilter.length && t.timeFilter.length >= 0) && (n = t.timeFilter.includeAll ? n : n.slice(0, t.timeFilter.length)), n
+                return t.championName ? a = s.Lodash.filter(t.championSummary, (e => o.filter(t.championName, e.searchTerms).length > 0)).map((e => e.id)) : t.championId && (a = [t.championId]), n = s.Lodash.filter(n, (e => !(t.queueFilter && !t.queueFilter.queueTypes.includes(e.queueType)) && (!(a && !a.includes(e.championId)) && (!t.position || t.position === l(e))))), t.timeFilter && (t.timeFilter.includeAll || t.timeFilter.length && t.timeFilter.length >= 0) && (n = t.timeFilter.includeAll ? n : n.slice(0, t.timeFilter.length)), n
             };
             const i = function(e, t) {
                 const a = e.timePlayed / 6e4,
                     o = a / 60,
-                    l = {
+                    r = {
                         kda: (e.kills + e.assists) / s.Lodash.max([1, e.deaths]),
                         killParticipation: (e.kills + e.assists) / s.Lodash.max([1, e.teamKills]),
                         utilityScore: e.ccScore / o / 1.5 + e.healsOnTeammates / a / 3 + e.damageShieldedOnTeammates / a / 1.5,
@@ -1197,11 +1197,11 @@
                         roamDominanceScore: e.roamDominanceScore / e.gamePlayed,
                         killConversionRatio: e.convertedKillAndAssists / s.Lodash.max([1, e.kills + e.assists])
                     };
-                if (!t) return l;
-                const r = {};
-                return s.Lodash.each(l, ((e, t) => {
-                    s.Lodash.set(r, `${n.STAT_TO_CATEGORY_MAP[t]}.${t}`, e)
-                })), r
+                if (!t) return r;
+                const l = {};
+                return s.Lodash.each(r, ((e, t) => {
+                    s.Lodash.set(l, `${n.STAT_TO_CATEGORY_MAP[t]}.${t}`, e)
+                })), l
             };
             t.calculateCareerStatsFromRawTotals = i;
             t.calculateStatsAveragesFromGames = function(e) {
@@ -1232,12 +1232,12 @@
             t.calculateGradesAndBestPlaystyle = function(e) {
                 let t, a = 0,
                     o = -1;
-                const l = {
+                const r = {
                     categoryGrades: {}
                 };
                 return s.Lodash.each(e, (e => {
-                    a += e.percentile, e.percentile > o && (o = e.percentile, t = e.category), l.categoryGrades[e.category] = c(e.percentile)
-                })), l.bestPlaystyle = t, l.overallGrade = e.length ? c(a / e.length) : n.UNAVAILABLE_GRADE, l
+                    a += e.percentile, e.percentile > o && (o = e.percentile, t = e.category), r.categoryGrades[e.category] = c(e.percentile)
+                })), r.bestPlaystyle = t, r.overallGrade = e.length ? c(a / e.length) : n.UNAVAILABLE_GRADE, r
             };
             t.convertPercentilesToQueuePositionMap = function(e) {
                 const t = {};
@@ -1263,32 +1263,32 @@
             const p = function(e, t) {
                 const a = {},
                     o = {};
-                for (let l = 0; l <= e.length - t; l++) {
-                    const r = {};
-                    for (let a = l; a < l + t; a++) s.Lodash.each(e[a].stats[n.CAREER_STATS_KEY], ((e, t) => {
-                        r[t] = s.Lodash.add(r[t], e)
+                for (let r = 0; r <= e.length - t; r++) {
+                    const l = {};
+                    for (let a = r; a < r + t; a++) s.Lodash.each(e[a].stats[n.CAREER_STATS_KEY], ((e, t) => {
+                        l[t] = s.Lodash.add(l[t], e)
                     }));
-                    s.Lodash.each(e[l].stats[n.CAREER_STATS_KEY], ((e, t) => {
+                    s.Lodash.each(e[r].stats[n.CAREER_STATS_KEY], ((e, t) => {
                         o[t] = s.Lodash.add(o[t], e)
                     }));
-                    const c = i(r, !0);
+                    const c = i(l, !0);
                     m(a, c)
                 }
                 for (let a = e.length - t + 1; a < e.length; a++) s.Lodash.each(e[a].stats[n.CAREER_STATS_KEY], ((e, t) => {
                     o[t] = s.Lodash.add(o[t], e)
                 }));
-                const l = i(o, !0);
+                const r = i(o, !0);
                 return s.Lodash.each(a, ((e, t) => {
                     s.Lodash.each(e, ((a, s) => {
-                        e[s].stats = a.stats, e[s].average = l[t][s]
+                        e[s].stats = a.stats, e[s].average = r[t][s]
                     }))
                 })), a
             };
             t.calculateRollingAverage = p;
             const d = function(e, t = n.ROLLING_AVERAGE_WINDOW_SIZE, a = n.SMOOTHENING_REQUIRED_SIZE, o = n.MAX_DATA_POINTS) {
-                let l = e.length > a ? t : 1;
-                const r = s.Lodash.max([0, e.length - o + 1]);
-                return r > l && (l = r), l
+                let r = e.length > a ? t : 1;
+                const l = s.Lodash.max([0, e.length - o + 1]);
+                return l > r && (r = l), r
             };
             t.getRollingAverageWindowSize = d;
             t.calculateStatsTrends = function(e) {
@@ -1304,7 +1304,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.UNAVAILABLE_GRADE = t.TIME_FILTERS = t.TIER_NAME_NONE = t.STAT_TO_CATEGORY_MAP = t.STATS_FORMAT_MAPPING = t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = t.SORT_OPTIONS = t.SMOOTHENING_REQUIRED_SIZE = t.SEASON_2018_NUM = t.ROLLING_AVERAGE_WINDOW_SIZE = t.RANKED_QUEUE_TYPE_MAPPINGS = t.QUEUE_FILTER_RANKED_SOLO = t.QUEUE_FILTER_RANKED_FLEX = t.QUEUE_FILTER_QUICKPLAY_5V5 = t.QUEUE_FILTER_DRAFT_5V5 = t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = t.POSITION_ID_MAP = t.POSITIONS = t.PLAY_STYLES = t.PERFORMANCE_GRADES = t.OVERVIEW_CHAMPIONS_PER_ROW = t.NUM_OF_MATCH_UPS = t.NO_DIVISION_TIERS = t.NORMAL_STAT_RANGE_MIN_PERCENTILE = t.NORMAL_STAT_RANGE_MAX_PERCENTILE = t.NORMAL_GAMES_QUEUE_TYPES = t.MOST_PLAYED_SHOW_LIMIT = t.MIN_GAMES_TO_UNLOCK_STATS = t.MILLIS_IN_A_DAY = t.MILLIS_IN_AN_HOUR = t.MAX_RECENTLY_PLAYED_WITH_SUMMONERS = t.MAX_RECENTLY_COMPARED_SUMMONERS = t.MAX_GRADE_VALUE = t.MAX_DATA_POINTS = t.LEAGUES_QUEUE_TYPE_MAP = t.INVALID_EARLIEST_SEASON = t.INVALID_CURRENT_SEASON = t.GRADE_MIN_PERCENTILES = t.EXPERT_GAME_QUEUE = t.DEFAULT_STATS_RANGES = t.DEFAULT_STATS_PERCENTILES = t.DEFAULT_PREV_SEASON_YEAR_COUNT = t.COMPARE_OPTION_OPEN_DIALOG = t.COMPARABLE_RANK_TIER_FORWARD = t.CHAMPION_ID_FOR_POSITION_STATS = t.CATEGORY_TO_STATS_MAP = t.CAREER_STATS_KEY = t.ALL_RANKS = void 0, t.getQueueFilters = function(e) {
-                return i.has(e) ? i.get(e) : [n, s, o, l]
+                return i.has(e) ? i.get(e) : [n, s, o, r]
             };
             t.MILLIS_IN_A_DAY = 864e5;
             t.MILLIS_IN_AN_HOUR = 36e5;
@@ -1328,21 +1328,21 @@
                 isRanked: !1
             };
             t.QUEUE_FILTER_QUICKPLAY_5V5 = o;
-            const l = {
+            const r = {
                 queueTypes: [a[1]],
                 traKey: a[1],
                 isRanked: !1
             };
-            t.QUEUE_FILTER_DRAFT_5V5 = l;
-            const r = {
+            t.QUEUE_FILTER_DRAFT_5V5 = r;
+            const l = {
                 queueTypes: [a[2]],
                 traKey: a[2],
                 isRanked: !1
             };
-            t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = r;
+            t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = l;
             const i = new Map([
-                [12, [s, n, r, l]],
-                [13, [s, n, r, l]]
+                [12, [s, n, l, r]],
+                [13, [s, n, l, r]]
             ]);
             t.TIME_FILTERS = [{
                 key: "this_season",
@@ -1615,23 +1615,23 @@
                 a = a || {};
                 var s, n = 0,
                     o = [],
-                    l = t.length,
-                    r = 0,
+                    r = t.length,
+                    l = 0,
                     i = 0,
                     c = a.pre || "",
                     m = a.post || "",
                     p = a.caseSensitive && t || t.toLowerCase();
                 e = a.caseSensitive && e || e.toLowerCase();
-                for (var d = 0; d < l; d++) s = t[d], p[d] === e[n] ? (s = c + s + m, n += 1, i += 1 + i) : i = 0, r += i, o[o.length] = s;
-                return n === e.length ? (r = p === e ? 1 / 0 : r, {
+                for (var d = 0; d < r; d++) s = t[d], p[d] === e[n] ? (s = c + s + m, n += 1, i += 1 + i) : i = 0, l += i, o[o.length] = s;
+                return n === e.length ? (l = p === e ? 1 / 0 : l, {
                     rendered: o.join(""),
-                    score: r
+                    score: l
                 }) : null
             }, t.filter = function(e, a, s) {
-                return a && 0 !== a.length ? "string" != typeof e ? a : (s = s || {}, a.reduce((function(a, n, o, l) {
-                    var r = n;
-                    s.extract && (r = s.extract(n));
-                    var i = t.match(e, r, s);
+                return a && 0 !== a.length ? "string" != typeof e ? a : (s = s || {}, a.reduce((function(a, n, o, r) {
+                    var l = n;
+                    s.extract && (l = s.extract(n));
+                    var i = t.match(e, l, s);
                     return null != i && (a[a.length] = {
                         string: i.rendered,
                         score: i.score,
@@ -1698,15 +1698,15 @@
                         const a = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "category-summary-graph").append("g").attr("transform", `translate(${t.positionOffset.x},${t.positionOffset.y})`),
                             n = s.d3.scale.linear().range([0, Math.min(t.width / 2, t.height / 2)]).domain([0, t.maxValue]),
                             o = 2 * Math.PI / t.numOfAxis,
-                            l = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => n(e.value))).angle(((e, a) => a * o + t.angleOffSet));
-                        this._drawAxes(e, t, a, l, n, o);
-                        const r = a.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", (e => "radar-wrapper " + e.owner));
-                        r.append("path").attr("class", "radar-area").attr("d", (e => l(e.axes))), r.append("path").attr("class", "radar-stroke").attr("d", (e => l(e.axes)))
+                            r = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => n(e.value))).angle(((e, a) => a * o + t.angleOffSet));
+                        this._drawAxes(e, t, a, r, n, o);
+                        const l = a.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", (e => "radar-wrapper " + e.owner));
+                        l.append("path").attr("class", "radar-area").attr("d", (e => r(e.axes))), l.append("path").attr("class", "radar-stroke").attr("d", (e => r(e.axes)))
                     },
                     _drawAxes(e, t, a, s, n, o) {
-                        const l = e[0].axes.map((e => e.axis)),
-                            r = a.selectAll(".axis").data(l).enter().append("g").attr("class", "axis");
-                        r.append("line").attr("class", "axis-line").attr("x1", 0).attr("y1", 0).attr("x2", ((e, a) => n(t.maxValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet))).attr("y2", ((e, a) => n(t.maxValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet))), r.append("g").attr("transform", ((e, a) => "translate(" + (n(t.labelValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + "," + (n(t.labelValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + ")")).call(this._assignTooltips.bind(this)).append("svg:foreignObject").attr("x", 0).attr("y", 0).attr("class", "stats-icon-container").append("xhtml:div").attr("class", (e => "category-stats-icon stats-icon " + e))
+                        const r = e[0].axes.map((e => e.axis)),
+                            l = a.selectAll(".axis").data(r).enter().append("g").attr("class", "axis");
+                        l.append("line").attr("class", "axis-line").attr("x1", 0).attr("y1", 0).attr("x2", ((e, a) => n(t.maxValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet))).attr("y2", ((e, a) => n(t.maxValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet))), l.append("g").attr("transform", ((e, a) => "translate(" + (n(t.labelValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + "," + (n(t.labelValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + ")")).call(this._assignTooltips.bind(this)).append("svg:foreignObject").attr("x", 0).attr("y", 0).attr("class", "stats-icon-container").append("xhtml:div").attr("class", (e => "category-stats-icon stats-icon " + e))
                     },
                     _assignTooltips(e) {
                         const t = this.get("tra");
@@ -1749,8 +1749,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "T88G/IIv",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\index.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "I25G0mDo",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-category-summary-graph-component\\\\index.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -1762,8 +1762,8 @@
             a(21);
             var n = a(12),
                 o = i(a(22)),
-                l = a(6),
-                r = i(a(8));
+                r = a(6),
+                l = i(a(8));
 
             function i(e) {
                 return e && e.__esModule ? e : {
@@ -1801,8 +1801,8 @@
                             stat: e
                         }))),
                         o = e.compareValue,
-                        l = this.get("careerStatsService"),
-                        r = n.STATS_FORMAT_MAPPING[e.name] || n.STATS_FORMAT_MAPPING.default;
+                        r = this.get("careerStatsService"),
+                        l = n.STATS_FORMAT_MAPPING[e.name] || n.STATS_FORMAT_MAPPING.default;
                     s.d3.select(this.element).select("svg.stats-trend-graph").remove();
                     const i = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "stats-trend-graph"),
                         c = i.append("g").attr("transform", `translate(${t.margin.left},${t.margin.top})`),
@@ -1811,7 +1811,7 @@
                             x: s.d3.scale.linear().range([0, t.width]).domain([0, e.stats.length - 1]),
                             y: s.d3.scale.linear().range([t.height, 0]).domain([m.min, m.max])
                         };
-                    this._drawAxes(i, t, p, m, l, r), this._drawStatsLine(i, c, t, p, m, a, l, r), this._drawAverageBar(i, t, "self", e.average, p), this._drawAverageBar(i, t, "selfHover", e.average, p), void 0 !== o && this._drawAverageBar(i, t, "other", o, p), this._drawAverageTag(i, t, "self", e.average, this.get("selfStatsAverageDisplay"), p), this._drawAverageTag(i, t, "selfHover", e.average, this.get("selfStatsAverageDisplay"), p), void 0 !== o && this._drawAverageTag(i, t, "other", o, this.get("againstStatsAverageDisplay"), p), this._setUpMouseOverEffects(i, t, p), this._updatePinnedLabel(this.get("pinnedGame.index"))
+                    this._drawAxes(i, t, p, m, r, l), this._drawStatsLine(i, c, t, p, m, a, r, l), this._drawAverageBar(i, t, "self", e.average, p), this._drawAverageBar(i, t, "selfHover", e.average, p), void 0 !== o && this._drawAverageBar(i, t, "other", o, p), this._drawAverageTag(i, t, "self", e.average, this.get("selfStatsAverageDisplay"), p), this._drawAverageTag(i, t, "selfHover", e.average, this.get("selfStatsAverageDisplay"), p), void 0 !== o && this._drawAverageTag(i, t, "other", o, this.get("againstStatsAverageDisplay"), p), this._setUpMouseOverEffects(i, t, p), this._updatePinnedLabel(this.get("pinnedGame.index"))
                 },
                 pinnedGameChanged: s.Ember.on("init", s.Ember.observer("pinnedGame.index", (function() {
                     this._updatePinnedLabel(this.get("pinnedGame.index"))
@@ -1824,18 +1824,18 @@
                 },
                 _calculateYRange(e, t, a, n) {
                     let o = s.Lodash.min([e[0], a || n, n]),
-                        l = s.Lodash.max([e[1], a || n, n]);
+                        r = s.Lodash.max([e[1], a || n, n]);
                     return s.Lodash.each(t, (e => {
-                        e < o ? o = e : e > l && (l = e)
+                        e < o ? o = e : e > r && (r = e)
                     })), {
                         min: o,
-                        max: l
+                        max: r
                     }
                 },
-                _drawAxes(e, t, a, n, o, l) {
-                    const r = s.d3.svg.axis().scale(a.x).tickValues(a.x.domain()).tickSize(t.axis.x.tickSize).orient("top").tickFormat((() => ""));
-                    e.append("svg:g").attr("class", "axis-x").attr("transform", `translate(${t.margin.left+t.axis.x.padding.x},${t.height+t.margin.top+t.axis.x.padding.y})`).call(r);
-                    const i = s.d3.svg.axis().scale(a.y).tickValues(a.y.domain()).tickSize(t.axis.y.tickSize).orient("left").tickFormat((e => o.formatNumber(e, l.tickFixedPoint, l.isPercentage, l.byThousand).replace("-", "–")));
+                _drawAxes(e, t, a, n, o, r) {
+                    const l = s.d3.svg.axis().scale(a.x).tickValues(a.x.domain()).tickSize(t.axis.x.tickSize).orient("top").tickFormat((() => ""));
+                    e.append("svg:g").attr("class", "axis-x").attr("transform", `translate(${t.margin.left+t.axis.x.padding.x},${t.height+t.margin.top+t.axis.x.padding.y})`).call(l);
+                    const i = s.d3.svg.axis().scale(a.y).tickValues(a.y.domain()).tickSize(t.axis.y.tickSize).orient("left").tickFormat((e => o.formatNumber(e, r.tickFixedPoint, r.isPercentage, r.byThousand).replace("-", "–")));
                     e.append("svg:g").attr("class", "axis-y").attr("transform", `translate(${t.margin.left+t.axis.y.padding.x},${t.margin.top+t.axis.y.padding.y})`).call(i);
                     const c = (n.max - n.min) / t.axis.y.gridLines,
                         m = [];
@@ -1843,24 +1843,24 @@
                     const p = s.d3.svg.axis().scale(a.y).tickValues(m).innerTickSize(-t.width).outerTickSize(0).orient("left").tickFormat((() => ""));
                     e.append("svg:g").attr("class", "axis-grid").attr("transform", `translate(${t.margin.left+t.axis.y.padding.x},${t.margin.top+t.axis.y.padding.y})`).call(p)
                 },
-                _drawStatsLine(e, t, a, n, o, l, r, i) {
+                _drawStatsLine(e, t, a, n, o, r, l, i) {
                     const c = s.d3.svg.line().x((e => n.x(e.index))).y((e => n.y(e.stat))).interpolate("monotone");
-                    t.selectAll(".data-line").data([l]).enter().append("svg:path").attr("class", "data-line").attr("d", c(l)), e.append("linearGradient").attr("id", "area-gradient").attr("gradientUnits", "userSpaceOnUse").attr("x1", 0).attr("y1", n.y(o.min)).attr("x2", 0).attr("y2", n.y(o.max)).selectAll("stop").data(a.areaGradientStops).enter().append("stop").attr("offset", (e => e.offset)).attr("stop-color", (e => e.color)).attr("stop-opacity", (e => e.opacity));
+                    t.selectAll(".data-line").data([r]).enter().append("svg:path").attr("class", "data-line").attr("d", c(r)), e.append("linearGradient").attr("id", "area-gradient").attr("gradientUnits", "userSpaceOnUse").attr("x1", 0).attr("y1", n.y(o.min)).attr("x2", 0).attr("y2", n.y(o.max)).selectAll("stop").data(a.areaGradientStops).enter().append("stop").attr("offset", (e => e.offset)).attr("stop-color", (e => e.color)).attr("stop-opacity", (e => e.opacity));
                     const m = s.d3.svg.area().interpolate("monotone").x((e => n.x(e.index))).y0(a.height).y1((e => n.y(e.stat)));
-                    t.selectAll(".area-under-line").data([l]).enter().append("svg:path").attr("class", "area-under-line").attr("d", m).style("fill", "url(#area-gradient)");
-                    const p = t.selectAll(".data-label").data(l).enter().append("svg:g").attr("class", (e => `data-label x-${e.index}`)).attr("transform", (e => `translate(${n.x(e.index)},${n.y(e.stat)})`));
-                    p.append("circle").attr("class", "data-dot").attr("r", a.label.dotSize), p.append("text").attr("class", "data-dot-text shadow").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => r.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–"))), p.append("text").attr("class", "data-dot-text").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => r.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–")))
+                    t.selectAll(".area-under-line").data([r]).enter().append("svg:path").attr("class", "area-under-line").attr("d", m).style("fill", "url(#area-gradient)");
+                    const p = t.selectAll(".data-label").data(r).enter().append("svg:g").attr("class", (e => `data-label x-${e.index}`)).attr("transform", (e => `translate(${n.x(e.index)},${n.y(e.stat)})`));
+                    p.append("circle").attr("class", "data-dot").attr("r", a.label.dotSize), p.append("text").attr("class", "data-dot-text shadow").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => l.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–"))), p.append("text").attr("class", "data-dot-text").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => l.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–")))
                 },
                 _drawAverageBar(e, t, a, s, n) {
                     const o = t.averageBars[a];
                     e.selectAll(`.average-bar.${a}`).data([s]).enter().append("svg:image").attr("xlink:href", (() => o.image)).attr("x", (() => t.margin.left + o.offset.x)).attr("y", (e => n.y(e) + t.margin.top + o.offset.y)).attr("width", o.width).attr("height", o.height).attr("class", (() => `average-bar ${a}`))
                 },
                 _drawAverageTag(e, t, a, s, n, o) {
-                    const l = n.replace("-", "–");
-                    let r = l.length;
-                    l.includes(".") && (r -= .5);
+                    const r = n.replace("-", "–");
+                    let l = r.length;
+                    r.includes(".") && (l -= .5);
                     const i = t.averageTags[a],
-                        c = r * t.averageTags.textWidth,
+                        c = l * t.averageTags.textWidth,
                         m = "right" === i.offset.from ? t.width - i.offset.x - c : i.offset.x,
                         p = e.append("svg:g").attr("class", `average-tag ${a}`).attr("transform", `translate(${m},${o.y(s)+t.margin.top+i.offset.y})`),
                         d = i.images.left;
@@ -1868,13 +1868,13 @@
                     const u = i.images.middle;
                     p.append("svg:rect").attr("x", (() => u.offset.x)).attr("y", (() => u.offset.y)).attr("class", "tag-mid").attr("width", c).attr("height", u.height).attr("fill", `url(#avg-tag-mid-${a})`);
                     const h = i.images.right;
-                    p.append("svg:image").attr("class", "tag-right").attr("xlink:href", (() => h.src)).attr("x", (() => c + h.offset.x)).attr("y", (() => h.offset.y)).attr("width", h.width).attr("height", h.height), p.append("svg:text").attr("class", `tag-text ${a}`).attr("text-anchor", "middle").attr("x", (c + h.offset.x + h.width) / 2).attr("y", i.textOffset.y).text(l)
+                    p.append("svg:image").attr("class", "tag-right").attr("xlink:href", (() => h.src)).attr("x", (() => c + h.offset.x)).attr("y", (() => h.offset.y)).attr("width", h.width).attr("height", h.height), p.append("svg:text").attr("class", `tag-text ${a}`).attr("text-anchor", "middle").attr("x", (c + h.offset.x + h.width) / 2).attr("y", i.textOffset.y).text(r)
                 },
                 _setUpMouseOverEffects(e, t, a) {
                     const n = this.get("pinnedGame"),
                         o = e.append("svg:g").attr("class", "mouse-overs").attr("transform", `translate(${t.margin.left},${t.margin.top})`);
                     o.append("path").attr("class", "mouse-line").style("opacity", "0"), o.append("svg:rect").attr("class", "overlay-mask").attr("width", t.width).attr("height", t.height).on("mouseenter", (function() {
-                        s.d3.selectAll(".average-bar.self, .average-bar.other").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), e.selectAll(".average-bar.selfHover").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), s.d3.selectAll(".average-tag").transition().duration(t.transitionTime).style("opacity", t.averageTags.fadeToOpacity), s.d3.selectAll(".mouse-line").style("opacity", 1), r.default.addUserBehavior(l.USER_ACTIVITIES.GRAPH_MOUSE_ENTER)
+                        s.d3.selectAll(".average-bar.self, .average-bar.other").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), e.selectAll(".average-bar.selfHover").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), s.d3.selectAll(".average-tag").transition().duration(t.transitionTime).style("opacity", t.averageTags.fadeToOpacity), s.d3.selectAll(".mouse-line").style("opacity", 1), l.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_ENTER)
                     })).on("mouseout", (function() {
                         s.d3.selectAll(".average-bar, .average-tag").transition().duration(t.transitionTime).style("opacity", null), s.d3.selectAll(".mouse-line").style("opacity", 0);
                         const e = s.d3.selectAll(".data-label.show");
@@ -1888,7 +1888,7 @@
                     })).on("click", (function() {
                         const e = s.d3.mouse(this),
                             t = s.Lodash.round(a.x.invert(e[0]));
-                        n.set("index", n.get("index") === t ? null : t), r.default.addUserBehavior(l.USER_ACTIVITIES.GRAPH_MOUSE_CLICK)
+                        n.set("index", n.get("index") === t ? null : t), l.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_CLICK)
                     }))
                 },
                 _updatePinnedLabel(e) {
@@ -2129,8 +2129,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "RKs1L5TU",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-title"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-icon ",["unknown",["data","name"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","stats-name"],["flush-element"],["append",["unknown",["statsNameDisplay"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],3],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-average-compare"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-average self"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["text","    "],["append",["unknown",["selfStatsAverageDisplay"]],false],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCompareValueAvailable"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["comparedAgainstAveragesTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","compare-vs"],["flush-element"],["append",["unknown",["tra","career_stats_trend_graph_title_compare"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-average against"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],0],["text","      "],["append",["unknown",["againstStatsAverageDisplay"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["summonerSelfAveragesTooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["statsDescriptionTooltipContent"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "YCmjVow4",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-trend-graph-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-title"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-icon ",["unknown",["data","name"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","stats-name"],["flush-element"],["append",["unknown",["statsNameDisplay"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],3],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-average-compare"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","stats-average self"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["text","    "],["append",["unknown",["selfStatsAverageDisplay"]],false],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCompareValueAvailable"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["comparedAgainstAveragesTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","compare-vs"],["flush-element"],["append",["unknown",["tra","career_stats_trend_graph_title_compare"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","stats-average against"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],0],["text","      "],["append",["unknown",["againstStatsAverageDisplay"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["summonerSelfAveragesTooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["statsDescriptionTooltipContent"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -2141,8 +2141,8 @@
             var s = a(1),
                 n = a(12),
                 o = a(11),
-                l = a(34);
-            const r = (0, s.emberDataBinding)({
+                r = a(34);
+            const l = (0, s.emberDataBinding)({
                 Ember: s.Ember,
                 websocket: (0, s.getProvider)().getSocket(),
                 basePaths: {
@@ -2169,7 +2169,7 @@
                     }
                 }
             });
-            var i = s.Ember.Service.extend(r, {
+            var i = s.Ember.Service.extend(l, {
                 earliestSeason: n.INVALID_EARLIEST_SEASON,
                 currentSeason: n.INVALID_CURRENT_SEASON,
                 isGameDataLoaded: !1,
@@ -2205,13 +2205,13 @@
                 formatNumber(e, t = 0, a = !1, s = !1) {
                     const n = this.get("currentLocale").full.replace("_", "-"),
                         o = s ? e / 1e3 : e,
-                        l = s ? this.get("careerStatsTra").get("career_stats_thousand_suffix") : "",
-                        r = {
+                        r = s ? this.get("careerStatsTra").get("career_stats_thousand_suffix") : "",
+                        l = {
                             minimumFractionDigits: t,
                             maximumFractionDigits: t
                         };
-                    a && (r.style = "percent");
-                    return o.toLocaleString(n, r) + l
+                    a && (l.style = "percent");
+                    return o.toLocaleString(n, l) + r
                 },
                 loadCurrentSeasonStatsGames(e) {
                     return this.get("api.careerStats").get(`/v1/summoner-games/${e}`, {
@@ -2246,15 +2246,15 @@
                 },
                 getPositionAverages(e, t, a, n) {
                     const o = this.get("api.careerStats"),
-                        l = this.get("currentSeason"),
-                        r = n && n !== l ? `/season/${n}` : "";
-                    return o.get(`/v1/position-averages${r}/${e}/${t}/${a}`).then((e => s.Lodash.get(e, "stats")))
+                        r = this.get("currentSeason"),
+                        l = n && n !== r ? `/season/${n}` : "";
+                    return o.get(`/v1/position-averages${l}/${e}/${t}/${a}`).then((e => s.Lodash.get(e, "stats")))
                 },
                 getChampionAverages(e, t, a, n, o) {
-                    const l = this.get("api.careerStats"),
-                        r = this.get("currentSeason"),
-                        i = o && o !== r ? `/season/${o}` : "";
-                    return l.get(`/v1/champion-averages${i}/${e}/${t}/${a}/${n}`).then((e => s.Lodash.get(e, "stats")))
+                    const r = this.get("api.careerStats"),
+                        l = this.get("currentSeason"),
+                        i = o && o !== l ? `/season/${o}` : "";
+                    return r.get(`/v1/champion-averages${i}/${e}/${t}/${a}/${n}`).then((e => s.Lodash.get(e, "stats")))
                 },
                 getChampionMatchups(e, t) {
                     return this.get("api.careerStats").get(`/v1/champion-matchups/${e}/${t}`).then((a => {
@@ -2272,11 +2272,11 @@
                 loadCurrentSeasonStatsSummary(e, t, a, s) {
                     return this.loadStatsSummary(e, this.get("currentSeason"), t, a, s)
                 },
-                loadStatsSummary(e, t, a, o, l) {
-                    return this.get("api.careerStats").get(`/v1/summoner-stats/${e}/${t}/${a}/${o}` + (l ? `?championId=${l}` : "")).then((e => {
-                        const r = `seasonSummary.${t}.${a}.positionSummaries.${o}.` + (l ? `championSummary.${l}` : "positionSummary");
-                        return s.Lodash.get(e, r).stats[n.CAREER_STATS_KEY]
-                    })).catch((n => (s.logger.warning(`cannot load career stats summary of season for ${e}(season ${t}, queue ${a}, position ${o}, champId ${l}): ${n}`), null)))
+                loadStatsSummary(e, t, a, o, r) {
+                    return this.get("api.careerStats").get(`/v1/summoner-stats/${e}/${t}/${a}/${o}` + (r ? `?championId=${r}` : "")).then((e => {
+                        const l = `seasonSummary.${t}.${a}.positionSummaries.${o}.` + (r ? `championSummary.${r}` : "positionSummary");
+                        return s.Lodash.get(e, l).stats[n.CAREER_STATS_KEY]
+                    })).catch((n => (s.logger.warning(`cannot load career stats summary of season for ${e}(season ${t}, queue ${a}, position ${o}, champId ${r}): ${n}`), null)))
                 },
                 getChampionExperts(e, t, a) {
                     return this._loadExperts(t, e, a)
@@ -2347,19 +2347,19 @@
                         n = this.get("api.matchHistory");
                     return Promise.all([n.get(`/v1/games/${e}`).catch((e => (s.logger.warning("Error loading match history", e), null))), n.get(`/v1/game-timelines/${e}`).catch((e => (s.logger.warning("Error loading game timelines", e), null)))]).then((n => {
                         const o = n[0],
-                            l = n[1];
-                        if (!o || !l) return s.logger.warning(`Error loading match history gameId ${e}`), null;
-                        const r = s.Lodash.find(o.participants, (e => e.participantId === t)),
-                            i = this._findOpponentParticipantId(o, l, t),
+                            r = n[1];
+                        if (!o || !r) return s.logger.warning(`Error loading match history gameId ${e}`), null;
+                        const l = s.Lodash.find(o.participants, (e => e.participantId === t)),
+                            i = this._findOpponentParticipantId(o, r, t),
                             c = s.Lodash.find(o.participants, (e => e.participantId === i));
                         let m, p;
                         return s.Lodash.each(o.participantIdentities, (e => {
-                            e.participantId === r.participantId && (m = e.player.summonerId), e.participantId === c.participantId && (p = e.player.summonerId)
+                            e.participantId === l.participantId && (m = e.player.summonerId), e.participantId === c.participantId && (p = e.player.summonerId)
                         })), {
                             gameId: e,
                             playerSummonerId: m,
                             opponentSummonerId: p,
-                            player: this._getPlayerMatchSummary(r, a),
+                            player: this._getPlayerMatchSummary(l, a),
                             opponent: this._getPlayerMatchSummary(c, a)
                         }
                     }))
@@ -2405,8 +2405,8 @@
                             const t = `champion_local_search_colloq_${e.id}`,
                                 n = a.exists(t) ? a.get(t) : "",
                                 o = (0, s.Lodash)(n.split(";")).filter((e => e.length > 0)).map((e => e.toLocaleLowerCase())).value(),
-                                l = e.name.toLocaleLowerCase();
-                            s.Lodash.includes(o, l) || o.push(l), s.Lodash.assign(e, {
+                                r = e.name.toLocaleLowerCase();
+                            s.Lodash.includes(o, r) || o.push(r), s.Lodash.assign(e, {
                                 searchTerms: o
                             })
                         })), this.set("championSummary", t), this.set("indexedChampions", s.Lodash.reduce(t, ((e, t) => (e[t.id] = t, e)), {}))
@@ -2439,11 +2439,11 @@
                 },
                 _loadExperts(e, t, a) {
                     const o = this.get("api.careerStats"),
-                        l = this.get("currentSeason"),
-                        r = a && a !== l ? `/season/${a}` : "",
+                        r = this.get("currentSeason"),
+                        l = a && a !== r ? `/season/${a}` : "",
                         i = (t ? "champion" : "position") + "-experts",
                         c = `${t?t+"/":""}${e}`;
-                    return o.get(`/v1/${i}${r}/${c}`).then((e => {
+                    return o.get(`/v1/${i}${l}/${c}`).then((e => {
                         if (!s.Lodash.get(e, "length")) return Promise.resolve([]);
                         const t = s.Lodash.map(e, "summonerId");
                         return Promise.all([this._loadSummonerIcons(t), this._loadSummonersRankedInfo(t, n.EXPERT_GAME_QUEUE), this._loadSummoners(t)]).then((t => {
@@ -2464,14 +2464,14 @@
                     }, e.achievedTiers[0]))), "summonerId")))
                 },
                 _enrichExperts(e, t, a, n) {
-                    const l = this.get("careerStatsTra");
+                    const r = this.get("careerStatsTra");
                     return s.Lodash.sortBy(s.Lodash.map(t, (t => {
-                        const r = t.summonerId,
-                            i = s.Lodash.get(a, r),
+                        const l = t.summonerId,
+                            i = s.Lodash.get(a, l),
                             c = s.Lodash.get(i, "tier"),
                             m = s.Lodash.get(i, "division"),
                             p = s.LeagueTierNames.getFullTierDivisionName(c, m),
-                            d = n[r],
+                            d = n[l],
                             {
                                 gameName: u,
                                 tagLine: h,
@@ -2480,14 +2480,14 @@
                         return s.Lodash.assign(t, {
                             rank: i,
                             rankDisplay: p,
-                            summonerId: r,
+                            summonerId: l,
                             puuid: g,
                             displayName: t.summonerName,
                             gameName: u,
                             tagLine: h,
-                            profileIconId: s.Lodash.get(e, `${r}.profileIconId`),
+                            profileIconId: s.Lodash.get(e, `${l}.profileIconId`),
                             subtitles: {
-                                numOfGamesDisplay: l.formatString("career_stats_expert_subtitle_games_played", {
+                                numOfGamesDisplay: r.formatString("career_stats_expert_subtitle_games_played", {
                                     number: t.numOfGames
                                 }),
                                 winRateDisplay: this.get("careerStatsTra").formatString("career_stats_win_rate_percent", {
@@ -2514,8 +2514,8 @@
                 _addSeasonStats(e, t) {
                     const {
                         queueType: a,
-                        championId: l
-                    } = t, r = (0, o.inferPosition)(t), i = t.stats[n.CAREER_STATS_KEY];
+                        championId: r
+                    } = t, l = (0, o.inferPosition)(t), i = t.stats[n.CAREER_STATS_KEY];
                     s.Lodash.each(i, ((t, a) => {
                         e[a] = s.Lodash.add(e[a], t)
                     })), e.queues[a] || (e.queues[a] = {
@@ -2525,16 +2525,16 @@
                         }
                     });
                     const c = e.queues[a];
-                    c.timePlayed = s.Lodash.add(c.timePlayed, i.timePlayed), c.wins = s.Lodash.add(c.wins, i.victory), c.losses = s.Lodash.add(c.losses, i.defeat), c.positions[r] || (c.positions[r] = {});
-                    const m = c.positions[r];
+                    c.timePlayed = s.Lodash.add(c.timePlayed, i.timePlayed), c.wins = s.Lodash.add(c.wins, i.victory), c.losses = s.Lodash.add(c.losses, i.defeat), c.positions[l] || (c.positions[l] = {});
+                    const m = c.positions[l];
                     s.Lodash.each(i, ((e, t) => {
                         m[t] = s.Lodash.add(m[t], e), c.positions.ALL[t] = s.Lodash.add(c.positions.ALL[t], e)
-                    })), this._addToChampionOverviews(e.champions, l, a, r)
+                    })), this._addToChampionOverviews(e.champions, r, a, l)
                 },
                 _addToChampionOverviews(e, t, a, n) {
                     e[t] || (e[t] = {}), e[t][a] || (e[t][a] = {}), e[t][a][n] = s.Lodash.add(e[t][a][n], 1)
                 },
-                _findOpponentParticipantId: (e, t, a) => (0, l.findOpponentParticipants)(e, t)[a],
+                _findOpponentParticipantId: (e, t, a) => (0, r.findOpponentParticipants)(e, t)[a],
                 _getPlayerMatchSummary(e, t) {
                     return {
                         championId: e.championId,
@@ -2706,22 +2706,22 @@
                         }
                     }
                 },
-                l = function(e, t, a, s) {
+                r = function(e, t, a, s) {
                     return Math.abs(e - t) / (a * s * 4 + .01)
                 };
             t.findOpponentParticipants = function(e, t) {
                 const a = s.Lodash.keyBy(e.participants, "participantId"),
-                    r = function(e, t) {
+                    l = function(e, t) {
                         const a = s.Lodash.reduce(e, ((t, a) => (t[a.participantId] = {
                             participantId: a.participantId,
                             teamId: e[a.participantId].teamId
                         }, s.Lodash.each(n, (e => {
                             t[a.participantId][e] = 0
                         })), t)), {});
-                        return s.Lodash.each(t.frames, ((t, r) => {
-                            r >= 2 && r <= 9 && s.Lodash.each(t.participantFrames, (t => {
+                        return s.Lodash.each(t.frames, ((t, l) => {
+                            l >= 2 && l <= 9 && s.Lodash.each(t.participantFrames, (t => {
                                 if (!t.position) return;
-                                const i = r - 2,
+                                const i = l - 2,
                                     {
                                         teamId: c
                                     } = e[t.participantId],
@@ -2734,7 +2734,7 @@
                                     _ = t.jungleMinionsKilled;
                                 s.Lodash.each(n, (e => {
                                     const s = o[e][c];
-                                    a[t.participantId][e] += l(s.distanceP50[i], u, s.distanceStd[i], r) + l(s.minionsP50[i], g, s.minionsStd[i], r) + l(s.monstersP50[i], _, s.monstersStd[i], r) + l(s.angleP25[i], h, s.angleStd[i], r) + l(s.angleP75[i], h, s.angleStd[i], r)
+                                    a[t.participantId][e] += r(s.distanceP50[i], u, s.distanceStd[i], l) + r(s.minionsP50[i], g, s.minionsStd[i], l) + r(s.monstersP50[i], _, s.monstersStd[i], l) + r(s.angleP25[i], h, s.angleStd[i], l) + r(s.angleP75[i], h, s.angleStd[i], l)
                                 }))
                             }))
                         })), a
@@ -2753,18 +2753,18 @@
                                 200: {},
                                 participants: {}
                             },
-                            l = [];
-                        let r = 0;
-                        for (; l.length < s.Lodash.keys(e).length && r < a.length;) {
+                            r = [];
+                        let l = 0;
+                        for (; r.length < s.Lodash.keys(e).length && l < a.length;) {
                             const {
                                 teamId: e,
                                 participantId: t,
                                 position: n
-                            } = a[r];
-                            o[e][n] || s.Lodash.includes(l, t) || (o[e][n] = t, o.participants[t] = n, l.push(t)), r++
+                            } = a[l];
+                            o[e][n] || s.Lodash.includes(r, t) || (o[e][n] = t, o.participants[t] = n, r.push(t)), l++
                         }
                         return o
-                    }(a, r),
+                    }(a, l),
                     c = {};
                 return s.Lodash.each(i.participants, ((e, t) => {
                     const s = 300 - a[t].teamId;
@@ -2794,14 +2794,14 @@
             }
             e.exports = function(e, s, n) {
                 let o;
-                const l = {
+                const r = {
                     metadata: !0,
                     moment: !0
                 };
                 return s = s.observe((() => {
                     if (o) {
                         const e = t(s.metadata());
-                        o.set("metadata", e), o.beginPropertyChanges(), Object.keys(l).forEach((e => {
+                        o.set("metadata", e), o.beginPropertyChanges(), Object.keys(r).forEach((e => {
                             o.propertyWillChange(e), o.propertyDidChange(e)
                         })), o.endPropertyChanges()
                     }
@@ -2814,7 +2814,7 @@
                         e && (this._tra = e, this.set("metadata", t(this._tra.metadata())), this.setLocale = this._tra.setLocale.bind(this._tra), this.formatString = this._tra.formatString.bind(this._tra), this.moment = this._tra.moment.bind(this._tra), this.ready = this._tra.ready.bind(this._tra), this.exists = this._tra.exists.bind(this._tra), this.getAsync = this._tra.getAsync.bind(this._tra), this.existsAsync = this._tra.existsAsync.bind(this._tra), this.numeral = this._tra.numeral.bind(this._tra))
                     },
                     unknownProperty(e) {
-                        return l[e] = !0, this._tra.get(e)
+                        return r[e] = !0, this._tra.get(e)
                     },
                     willDestroy: () => this._tra.unregister(),
                     addOverlays: function(e) {
@@ -2841,7 +2841,7 @@
                     summoner: "/lol-summoner"
                 }
             });
-            var l = s.Ember.Component.extend(o, {
+            var r = s.Ember.Component.extend(o, {
                 layout: a(38),
                 classNames: ["career-stats-root-component"],
                 classNameBindings: ["isThirdPersonView"],
@@ -2883,15 +2883,15 @@
                     const a = e === t,
                         n = this.get("careerStatsService"),
                         o = this.get("tra"),
-                        l = s.componentFactory.create("CareerStatsWelcomeModalComponent", {
+                        r = s.componentFactory.create("CareerStatsWelcomeModalComponent", {
                             season: e,
                             isEarliestSeason: a,
                             careerStatsService: n
                         }),
-                        r = s.ModalManager.add({
+                        l = s.ModalManager.add({
                             type: "DialogAlert",
                             data: {
-                                contents: l.domNode,
+                                contents: r.domNode,
                                 dismissible: !1,
                                 enterEnabled: !1,
                                 okText: a ? o.get("career_stats_welcome_modal_ok_text") : o.formatString("career_stats_welcome_modal_ok_text_new_season", {
@@ -2899,24 +2899,24 @@
                                 })
                             }
                         });
-                    r.okPromise.then((() => {
-                        s.ModalManager.remove(r), s.Telemetry.invokeWithLowProbability((function() {
+                    l.okPromise.then((() => {
+                        s.ModalManager.remove(l), s.Telemetry.invokeWithLowProbability((function() {
                             s.Telemetry.recordNonTimingTracingEvent("career-stats-seen", 1, "click")
-                        })), l && l.componentPromise && l.componentPromise.then((e => s.Ember.run((() => {
+                        })), r && r.componentPromise && r.componentPromise.then((e => s.Ember.run((() => {
                             e.app.destroy()
                         }))))
                     })).catch((() => {}))
                 }
             });
-            t.default = l
+            t.default = r
         }, (e, t, a) => {
             "use strict";
             a.r(t)
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "ayO8WiLh",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-backdrop"],["flush-element"],["close-element"],["text","\\n"],["append",["helper",["career-stats-overview"],null,[["summoner","isThirdPersonView","profileReenterred"],[["get",["summoner"]],["get",["isThirdPersonView"]],["get",["profileReenterred"]]]]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "cL45vLnI",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-backdrop"],["flush-element"],["close-element"],["text","\\n"],["append",["helper",["career-stats-overview"],null,[["summoner","isThirdPersonView","profileReenterred"],[["get",["summoner"]],["get",["isThirdPersonView"]],["get",["profileReenterred"]]]]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -2927,8 +2927,8 @@
             var s = a(1);
             a(40);
             var n, o = a(12),
-                l = a(6),
-                r = (n = a(8)) && n.__esModule ? n : {
+                r = a(6),
+                l = (n = a(8)) && n.__esModule ? n : {
                     default: n
                 },
                 i = a(11);
@@ -2980,10 +2980,10 @@
                         selected: !1,
                         includeAll: !0
                     }));
-                    const l = s.Ember.A(n);
+                    const r = s.Ember.A(n);
                     return s.Ember.run.next((() => {
-                        this.send("selectTimeFilter", l[0])
-                    })), l
+                        this.send("selectTimeFilter", r[0])
+                    })), r
                 })),
                 currentSeasonName: s.Ember.computed("currentTimeFilter.season", "tra", (function() {
                     const e = this.get("currentTimeFilter.season");
@@ -3037,11 +3037,11 @@
                     if (!(e && t && t[e] && a)) return null;
                     const n = {};
                     return s.Lodash.each(a, ((a, o) => {
-                        const l = this.calculateCareerStatsFromRawTotals(a),
-                            r = this.calculateCategoryPercentiles(l, t[e][o]);
+                        const r = this.calculateCareerStatsFromRawTotals(a),
+                            l = this.calculateCategoryPercentiles(r, t[e][o]);
                         n[o] = s.Lodash.assign({
                             winRate: a.victory / a.gamePlayed
-                        }, this.calculateGradesAndBestPlaystyle(r))
+                        }, this.calculateGradesAndBestPlaystyle(l))
                     })), n
                 })),
                 seasonTimePlayedDisplay: s.Ember.computed("statsOverview.season.timePlayed", (function() {
@@ -3085,13 +3085,13 @@
                         const n = this.get("currentSeason");
                         Promise.all([t === n ? a.loadCurrentSeasonStatsGames(e) : a.loadPreviousSeasonStatsGames(e, t), a.loadSummonerRankedTiers(e)]).then((e => {
                             const o = e[0],
-                                l = t === n ? e[1] : {};
+                                r = t === n ? e[1] : {};
                             if (!s.Lodash.get(o, "games.length")) return this.set("isStatsEmpty", !0), s.Lodash.get(o, "error") && this.set("serverError", !0), Promise.resolve();
-                            this.set("isStatsEmpty", !1), this.set("serverError", !1), this.set("statsOverview", o), this.set("rankedTiers", l);
-                            const r = this._getPositionPercentileRequests(o, l, t);
-                            return a.getPositionStatPercentiles(r)
+                            this.set("isStatsEmpty", !1), this.set("serverError", !1), this.set("statsOverview", o), this.set("rankedTiers", r);
+                            const l = this._getPositionPercentileRequests(o, r, t);
+                            return a.getPositionStatPercentiles(l)
                         })).then((e => {
-                            this.get("isStatsEmpty") || (this.set("queuePositionPercentiles", e), this._selectDefaultQueueFilter()), this.set("isStatsLoaded", !0), r.default.sendEvent(l.TELEMETRY_EVENT_ID.DATA_LOADED, l.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, this._summarizeOverviewForTelemetry(this.get("statsOverview")))
+                            this.get("isStatsEmpty") || (this.set("queuePositionPercentiles", e), this._selectDefaultQueueFilter()), this.set("isStatsLoaded", !0), l.default.sendEvent(r.TELEMETRY_EVENT_ID.DATA_LOADED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, this._summarizeOverviewForTelemetry(this.get("statsOverview")))
                         }))
                     }
                 },
@@ -3104,7 +3104,7 @@
                     };
                     a.gradeSummary = s.Lodash.mapValues(e, (function(e) {
                         return e.overallGrade
-                    })), r.default.sendEvent(l.TELEMETRY_EVENT_ID.POSITION_GRADES_CALCULATED, l.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, a)
+                    })), l.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_GRADES_CALCULATED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, a)
                 },
                 _summarizeOverviewForTelemetry: function(e) {
                     let t = 0;
@@ -3131,11 +3131,11 @@
                     const n = [];
                     return s.Lodash.each(e.season.queues, ((e, o) => {
                         s.Lodash.each(e.positions, ((e, s) => {
-                            const l = (0, i.getValidRank)(t[o]);
+                            const r = (0, i.getValidRank)(t[o]);
                             n.push({
                                 position: s,
                                 queueType: o,
-                                rankTier: l,
+                                rankTier: r,
                                 season: a
                             })
                         }))
@@ -3150,15 +3150,15 @@
                 },
                 actions: {
                     selectQueueFilter: function(e) {
-                        this._selectDropdownOption("currentQueueFilter", e), r.default.addUserBehavior(l.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]"))
+                        this._selectDropdownOption("currentQueueFilter", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]"))
                     },
                     selectTimeFilter: function(e) {
                         const t = s.Lodash.get(e, "season"),
                             a = this.get("currentTimeFilter.season");
-                        this._selectDropdownOption("currentTimeFilter", e), r.default.addUserBehavior(l.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), t !== a && this._loadSummonerStats()
+                        this._selectDropdownOption("currentTimeFilter", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), t !== a && this._loadSummonerStats()
                     },
                     selectSortOption: function(e) {
-                        this._selectDropdownOption("currentSortOption", e), r.default.addUserBehavior(l.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "field"))
+                        this._selectDropdownOption("currentSortOption", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "field"))
                     }
                 }
             });
@@ -3169,8 +3169,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "+Lv6cbwJ",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-overview-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","overview-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","overview-display-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["display-left ",["helper",["if"],[["get",["isStatsEmpty"]],"stats-empty"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","playstyle-graph-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","play-style-graph-text"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","line1"],["flush-element"],["append",["unknown",["tra","career_stats_overview_playstyle_summary_line_1"]],false],["close-element"],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","line2"],["flush-element"],["append",["unknown",["tra","career_stats_overview_playstyle_summary_line_2"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["append",["helper",["playstyle-summary-graph"],null,[["playStyleSummary"],[["get",["playStyleSummary"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","legacy-data-displays"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","season-num"],["flush-element"],["append",["unknown",["currentSeasonName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","legacy-data-display primary games-played"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,26],["text","          "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["block",["if"],[["get",["isStatsEmpty"]]],null,23,22],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_legacy_games_played_label"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","secondary-legacy-data"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","legacy-data-display secondary time-played"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,21],["text","            "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,18,17],["text","            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","career_stats_overview_legacy_time_played_label"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","separator"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","legacy-data-display secondary kda-ratio"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,16],["text","            "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["append",["unknown",["seasonKdaRatioDisplay"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_legacy_kda_ratio_label"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","overview-filters"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","text-filter champion-filter"],["flush-element"],["text","\\n          "],["append",["helper",["input"],null,[["type","class","value","disabled","placeholder","maxlength"],["search","filter-input",["get",["champFilter"]],["get",["isStatsEmpty"]],["get",["tra","career_stats_overview_filter_champion_placeholder"]],30]]],false],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter queue-filter"],["static-attr","direction","upward"],["dynamic-attr","disabled",["unknown",["isStatsEmpty"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,14,13],["text","        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter time-filter"],["static-attr","direction","upward"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timeFilters"]]],null,9],["text","        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter sort-options"],["static-attr","direction","upward"],["dynamic-attr","disabled",["unknown",["isStatsEmpty"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["sortOptions"]]],null,8],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","display-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,7,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["overview-breakdown"],null,[["summoner","games","positionGrades","queuePositionPercentiles","rankedTiers","seasonOverview","champFilter","queueFilter","timeFilter","sortOption","isThirdPersonView","isCurrentSeason"],[["get",["summoner"]],["get",["statsOverview","games"]],["get",["positionGrades"]],["get",["queuePositionPercentiles"]],["get",["rankedTiers"]],["get",["statsOverview","season"]],["get",["champFilter"]],["get",["currentQueueFilter"]],["get",["currentTimeFilter"]],["get",["currentSortOption"]],["get",["isThirdPersonView"]],["get",["isCurrentSeason"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_empty_stats_message_line_2"]],false]],"locals":[]},{"statements":[["text","              "],["block",["if"],[["get",["isCurrentSeason"]]],null,1],["text","\\n            "]],"locals":[]},{"statements":[["block",["unless"],[["get",["isThirdPersonView"]]],null,2]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_server_error_message_line_2"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["emptyStatsMessage"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_server_error_message_line_1"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","stats-empty-icon"],["flush-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-empty-msgs"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","stats-empty-msg line-1"],["flush-element"],["text","\\n"],["block",["if"],[["get",["serverError"]]],null,6,5],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","stats-empty-msg line-2"],["flush-element"],["text","\\n"],["block",["if"],[["get",["serverError"]]],null,4,3],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["option","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectSortOption",["get",["option"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["option","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","            "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTimeFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","                    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_queue_locked"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],10]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectQueueFilter",["get",["filter"]]],null],null],["dynamic-attr","disabled",["unknown",["filter","disabled"]],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["filter","disabled"]]],null,11],["text","              "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["block",["each"],[["get",["queueFilters"]]],null,12]],"locals":[]},{"statements":[["text","             "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["flush-element"],["append",["unknown",["tra","career_stats_queues_missing"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip multi-kills"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","multiKills"]],false],["close-element"],["text","\\n                    "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","doubleKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_double"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","tripleKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_triple"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","quadraKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_quadra"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","pentaKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_penta"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],15]],"locals":[]},{"statements":[["text","                "],["append",["unknown",["seasonTimePlayedDisplay"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["append",["unknown",["tra","career_stats_stats_unavailable_number"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                          "],["open-element","td",[]],["static-attr","class","primary align-right"],["flush-element"],["append",["unknown",["queue","primary"]],false],["close-element"],["text","\\n                          "],["open-element","td",[]],["static-attr","class","secondary"],["flush-element"],["append",["unknown",["queue","secondary"]],false],["close-element"],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":["queue"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip time-played"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","timePlayed"]],false],["close-element"],["text","\\n                    "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timePlayedBreakdown"]]],null,19],["text","                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],20]],"locals":[]},{"statements":[["append",["unknown",["statsOverview","season","gamePlayed"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_stats_unavailable_number"]],false]],"locals":[]},{"statements":[["text","                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary"],["flush-element"],["append",["unknown",["queue","primary"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary"],["flush-element"],["append",["unknown",["queue","secondary"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n"]],"locals":["queue"]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip games-played"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","gamesPlayed"]],false],["close-element"],["text","\\n                  "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gamesPlayedBreakdown"]]],null,24],["text","                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type","offsetX","offsetY"],["right","system",-55,-10]],25]],"locals":[]}],"hasPartials":false}',
+                id: "VWb8e1BX",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-overview-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","stats-overview-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","overview-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","overview-display-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["display-left ",["helper",["if"],[["get",["isStatsEmpty"]],"stats-empty"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","playstyle-graph-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","play-style-graph-text"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","line1"],["flush-element"],["append",["unknown",["tra","career_stats_overview_playstyle_summary_line_1"]],false],["close-element"],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","line2"],["flush-element"],["append",["unknown",["tra","career_stats_overview_playstyle_summary_line_2"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["append",["helper",["playstyle-summary-graph"],null,[["playStyleSummary"],[["get",["playStyleSummary"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","legacy-data-displays"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","season-num"],["flush-element"],["append",["unknown",["currentSeasonName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","legacy-data-display primary games-played"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,26],["text","          "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["block",["if"],[["get",["isStatsEmpty"]]],null,23,22],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_legacy_games_played_label"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","secondary-legacy-data"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","legacy-data-display secondary time-played"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,21],["text","            "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,18,17],["text","            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","career_stats_overview_legacy_time_played_label"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","separator"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","legacy-data-display secondary kda-ratio"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isStatsEmpty"]]],null,16],["text","            "],["open-element","div",[]],["static-attr","class","display-number"],["flush-element"],["append",["unknown",["seasonKdaRatioDisplay"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","display-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_legacy_kda_ratio_label"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","overview-filters"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","text-filter champion-filter"],["flush-element"],["text","\\n          "],["append",["helper",["input"],null,[["type","class","value","disabled","placeholder","maxlength"],["search","filter-input",["get",["champFilter"]],["get",["isStatsEmpty"]],["get",["tra","career_stats_overview_filter_champion_placeholder"]],30]]],false],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter queue-filter"],["static-attr","direction","upward"],["dynamic-attr","disabled",["unknown",["isStatsEmpty"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,14,13],["text","        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter time-filter"],["static-attr","direction","upward"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timeFilters"]]],null,9],["text","        "],["close-element"],["text","\\n\\n        "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","dropdown-filter sort-options"],["static-attr","direction","upward"],["dynamic-attr","disabled",["unknown",["isStatsEmpty"]],null],["flush-element"],["text","\\n"],["block",["each"],[["get",["sortOptions"]]],null,8],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","display-right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isStatsEmpty"]]],null,7,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["overview-breakdown"],null,[["summoner","games","positionGrades","queuePositionPercentiles","rankedTiers","seasonOverview","champFilter","queueFilter","timeFilter","sortOption","isThirdPersonView","isCurrentSeason"],[["get",["summoner"]],["get",["statsOverview","games"]],["get",["positionGrades"]],["get",["queuePositionPercentiles"]],["get",["rankedTiers"]],["get",["statsOverview","season"]],["get",["champFilter"]],["get",["currentQueueFilter"]],["get",["currentTimeFilter"]],["get",["currentSortOption"]],["get",["isThirdPersonView"]],["get",["isCurrentSeason"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_empty_stats_message_line_2"]],false]],"locals":[]},{"statements":[["text","              "],["block",["if"],[["get",["isCurrentSeason"]]],null,1],["text","\\n            "]],"locals":[]},{"statements":[["block",["unless"],[["get",["isThirdPersonView"]]],null,2]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_server_error_message_line_2"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["emptyStatsMessage"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_server_error_message_line_1"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","stats-empty-icon"],["flush-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","stats-empty-msgs"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","stats-empty-msg line-1"],["flush-element"],["text","\\n"],["block",["if"],[["get",["serverError"]]],null,6,5],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","stats-empty-msg line-2"],["flush-element"],["text","\\n"],["block",["if"],[["get",["serverError"]]],null,4,3],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["option","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectSortOption",["get",["option"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["option","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","            "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTimeFilter",["get",["filter"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["text","                    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_tooltip_queue_locked"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],10]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["filter","selected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectQueueFilter",["get",["filter"]]],null],null],["dynamic-attr","disabled",["unknown",["filter","disabled"]],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","dropdown-filter-text"],["flush-element"],["append",["unknown",["filter","displayName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["filter","disabled"]]],null,11],["text","              "],["close-element"],["text","\\n"]],"locals":["filter"]},{"statements":[["block",["each"],[["get",["queueFilters"]]],null,12]],"locals":[]},{"statements":[["text","             "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["flush-element"],["append",["unknown",["tra","career_stats_queues_missing"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip multi-kills"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","multiKills"]],false],["close-element"],["text","\\n                    "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","doubleKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_double"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","tripleKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_triple"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","quadraKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_quadra"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary align-right digit-only"],["flush-element"],["append",["unknown",["statsOverview","season","pentaKills"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary align-vertical-bottom"],["flush-element"],["append",["unknown",["tra","career_stats_multi_kills_name_penta"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],15]],"locals":[]},{"statements":[["text","                "],["append",["unknown",["seasonTimePlayedDisplay"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["append",["unknown",["tra","career_stats_stats_unavailable_number"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                          "],["open-element","td",[]],["static-attr","class","primary align-right"],["flush-element"],["append",["unknown",["queue","primary"]],false],["close-element"],["text","\\n                          "],["open-element","td",[]],["static-attr","class","secondary"],["flush-element"],["append",["unknown",["queue","secondary"]],false],["close-element"],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":["queue"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip time-played"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","timePlayed"]],false],["close-element"],["text","\\n                    "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n"],["block",["each"],[["get",["timePlayedBreakdown"]]],null,19],["text","                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],20]],"locals":[]},{"statements":[["append",["unknown",["statsOverview","season","gamePlayed"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_stats_unavailable_number"]],false]],"locals":[]},{"statements":[["text","                      "],["open-element","tr",[]],["static-attr","class","tooltip-row"],["flush-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","primary"],["flush-element"],["append",["unknown",["queue","primary"]],false],["close-element"],["text","\\n                        "],["open-element","td",[]],["static-attr","class","secondary"],["flush-element"],["append",["unknown",["queue","secondary"]],false],["close-element"],["text","\\n                      "],["close-element"],["text","\\n"]],"locals":["queue"]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","career-stats-legacy-tooltip games-played"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","tooltip-title"],["flush-element"],["append",["unknown",["legacyTooltipDisplays","gamesPlayed"]],false],["close-element"],["text","\\n                  "],["open-element","table",[]],["static-attr","class","tooltip-table"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gamesPlayedBreakdown"]]],null,24],["text","                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type","offsetX","offsetY"],["right","system",-55,-10]],25]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3212,10 +3212,10 @@
                         s.d3.select(this.element).select("svg").remove();
                         const n = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "play-style-summary-graph").append("g").attr("transform", `translate(${t.positionOffset.x},${t.positionOffset.y})`),
                             o = s.d3.scale.linear().range([0, Math.min(t.width / 2, t.height / 2)]).domain([0, t.maxValue]),
-                            l = 2 * Math.PI / a,
-                            r = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => o(e.value))).angle(((e, a) => a * l + t.angleOffSet)),
+                            r = 2 * Math.PI / a,
+                            l = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => o(e.value))).angle(((e, a) => a * r + t.angleOffSet)),
                             i = n.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", "radar-wrapper");
-                        i.append("path").attr("class", "radar-area").attr("d", (e => r(e))), i.append("path").attr("class", "radar-stroke").attr("d", (e => r(e))).style("fill", "none")
+                        i.append("path").attr("class", "radar-area").attr("d", (e => l(e))), i.append("path").attr("class", "radar-stroke").attr("d", (e => l(e))).style("fill", "none")
                     }
                 });
             t.default = o
@@ -3225,8 +3225,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "q4nzuM+G",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon combat"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon income"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon macro"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_macro"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_macro"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_income"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_income"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_combat"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_combat"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "e14cuoBr",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\playstyle-summary-graph-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon combat"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon income"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","playstyle-icon macro"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_macro"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_macro"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_income"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_income"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","career-stats-stat-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_combat"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","playstyle-content"],["flush-element"],["append",["unknown",["tra","career_stats_play_style_category_description_combat"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3237,8 +3237,8 @@
             var s = a(1);
             a(46);
             var n, o = a(12),
-                l = a(11),
-                r = a(7),
+                r = a(11),
+                l = a(7),
                 i = a(6),
                 c = (n = a(8)) && n.__esModule ? n : {
                     default: n
@@ -3266,23 +3266,23 @@
                         a = this.get("champFilter"),
                         n = this.get("queueFilter"),
                         o = this.get("timeFilter"),
-                        r = this.get("sortOption"),
+                        l = this.get("sortOption"),
                         i = this.get("expandedPositions"),
                         c = this.get("minGamesToUnlockStats"),
                         m = this.get("championsPerRow"),
                         p = this.get("positionGrades"),
                         d = this.get("isCurrentSeason");
                     if (!e || !p) return s.Ember.A();
-                    const u = this._getLockedChampionsAndPositions((0, l.filterGames)(t, {
+                    const u = this._getLockedChampionsAndPositions((0, r.filterGames)(t, {
                             queueFilter: n
                         }), c),
-                        h = (0, l.filterGames)(t, {
+                        h = (0, r.filterGames)(t, {
                             championName: a,
                             queueFilter: n,
                             timeFilter: o,
                             championSummary: this.get("careerStatsService.championSummary")
                         });
-                    return this._createDisplays(h, r, e, i, u, m, p, d)
+                    return this._createDisplays(h, l, e, i, u, m, p, d)
                 })),
                 positionQueuesMap: s.Ember.computed("seasonOverview.queues", (function() {
                     const e = this.get("seasonOverview.queues"),
@@ -3297,23 +3297,23 @@
                 _getLockedChampionsAndPositions(e, t) {
                     const a = {};
                     return s.Lodash.each(e, (e => {
-                        const t = (0, l.inferPosition)(e),
+                        const t = (0, r.inferPosition)(e),
                             n = `${t}-${e.championId}`;
                         a[n] = s.Lodash.add(a[n], 1), a[t] = s.Lodash.add(a[t], 1)
                     })), s.Lodash.each(a, ((e, n) => {
                         a[n] = s.Lodash.max([0, t - e])
                     })), a
                 },
-                _createDisplays(e, t, a, n, o, r, i, c) {
+                _createDisplays(e, t, a, n, o, l, i, c) {
                     const m = {},
                         p = this.get("careerStatsService.indexedChampions"),
                         d = this.get("tra");
                     e.forEach((e => {
-                        const t = (0, l.inferPosition)(e),
+                        const t = (0, r.inferPosition)(e),
                             {
                                 championId: n
                             } = e,
-                            r = p[n],
+                            l = p[n],
                             i = s.Lodash.find(a, (e => e.championId === n)) || {
                                 lastPlayTime: 0,
                                 championPoints: 0
@@ -3329,8 +3329,8 @@
                         const u = m[t];
                         u.lastPlayTime = s.Lodash.max([u.lastPlayTime, i.lastPlayTime]), u.gamesPlayed += 1, u.champions[n] || (u.championPoints += i.championPoints, u.champions[n] = {
                             championId: n,
-                            displayName: r.name,
-                            iconPath: r.squarePortraitPath,
+                            displayName: l.name,
+                            iconPath: l.squarePortraitPath,
                             championPoints: i.championPoints,
                             lastPlayTime: i.lastPlayTime,
                             gamesPlayed: 0,
@@ -3348,17 +3348,17 @@
                     })), s.Lodash.each(m, (e => {
                         const t = i[e.name];
                         e.gradeDisplay = t.overallGrade, e.gradeClass = t.overallGrade[0], e.winRateDisplay = this.get("tra").formatString("career_stats_win_rate_percent", {
-                            number: (0, l.getWinRateDisplay)(t.winRate, 0)
+                            number: (0, r.getWinRateDisplay)(t.winRate, 0)
                         }), e.playStyle = t.bestPlaystyle, e.expanded = n.includes(e.name);
                         const a = o[e.name];
                         e.locked = a > 0;
                         const s = e.locked ? c ? "career_stats_tooltip_position_locked" : "career_stats_tooltip_stats_locked_previous_season" : "career_stats_overview_champion_games_played",
-                            r = e.locked ? a : e.gamesPlayed;
+                            l = e.locked ? a : e.gamesPlayed;
                         e.tooltip = d.formatString(s, {
-                            number: r
+                            number: l
                         })
                     }));
-                    const u = s.Lodash.map(m, (e => (e.champions = this._sortPositionOrChampion(s.Lodash.values(e.champions), t), e.championsToExpand = s.Lodash.max([0, e.champions.length - r]), e.expandable = e.champions.length > r, e))),
+                    const u = s.Lodash.map(m, (e => (e.champions = this._sortPositionOrChampion(s.Lodash.values(e.champions), t), e.championsToExpand = s.Lodash.max([0, e.champions.length - l]), e.expandable = e.champions.length > l, e))),
                         h = this._sortPositionOrChampion(u, t);
                     return s.Ember.A(h)
                 },
@@ -3368,7 +3368,7 @@
                 },
                 actions: {
                     showPositionDetail: function(e) {
-                        e.locked || (r.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_DETAIL_BUTTON_CLICK, s.Lodash.get(e, "name")), s.CareerStatsApi.showCareerStatsModal({
+                        e.locked || (l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_DETAIL_BUTTON_CLICK, s.Lodash.get(e, "name")), s.CareerStatsApi.showCareerStatsModal({
                             screen: "position",
                             data: {
                                 position: e.name,
@@ -3385,7 +3385,7 @@
                         }, !1))
                     },
                     showChampionDetail: function(e, t) {
-                        e.locked || (r.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_CLICK, s.Lodash.get(e, "championId")), s.CareerStatsApi.showCareerStatsModal({
+                        e.locked || (l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_CLICK, s.Lodash.get(e, "championId")), s.CareerStatsApi.showCareerStatsModal({
                             screen: "champion",
                             data: s.Ember.Object.create({
                                 championId: e.championId,
@@ -3401,10 +3401,10 @@
                         }, !1))
                     },
                     hoverChampionOrPositionDetail: function() {
-                        r.SFX.gridHover.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_HOVER)
+                        l.SFX.gridHover.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_HOVER)
                     },
                     togglePositionCollapseState(e) {
-                        r.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_COLLAPSE_STATE_TOGGLE, e);
+                        l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_COLLAPSE_STATE_TOGGLE, e);
                         const t = this.get("expandedPositions");
                         t.includes(e) ? t.removeObject(e) : t.addObject(e)
                     }
@@ -3417,8 +3417,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "Uy1czBj9",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","overview-breakdown-container"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["positionOverviewDisplays"]]],null,8],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["champ","tooltip"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-champion-thumbnail",[]],["dynamic-attr","name",["unknown",["champ","displayName"]],null],["dynamic-attr","class",["concat",["position-champ champ-",["unknown",["champ","championId"]]," ",["helper",["if"],[["get",["champ","locked"]],"locked"],null]," games-played-",["unknown",["champ","gamesPlayed"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showChampionDetail",["get",["champ"]],["get",["position","name"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","lol-uikit-thumbnail"],["static-attr","slot","lol-uikit-thumbnail"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["unknown",["champ","iconPath"]],null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],0],["text","        "],["close-element"],["text","\\n"]],"locals":["champ"]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_overview_position_button_show_more_champions"]],false],["text"," +"],["append",["unknown",["position","championsToExpand"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_overview_position_button_show_less_champions"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["append",["unknown",["tra","career_stats_tooltip_overview_expand"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["append",["unknown",["tra","career_stats_tooltip_overview_collapse"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["position","expanded"]]],null,5,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["dynamic-attr","class",["concat",["career-stats-overview-position-button-tooltip ",["helper",["if"],[["get",["position","locked"]],"locked"],null]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","position-name"],["flush-element"],["append",["unknown",["position","displayName"]],false],["close-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["position","tooltip"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-header header-",["get",["positionIndex"]]]]],["static-attr","sticky",""],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","position-title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","diamond"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","title-frame left"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","position-name"],["flush-element"],["append",["unknown",["position","displayName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","title-frame right"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","diamond"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","position-controls"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-summary ",["helper",["if"],[["get",["position","locked"]],"locked"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["grade-banner grade-",["unknown",["position","gradeClass"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-button grade-",["unknown",["position","gradeClass"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPositionDetail",["get",["position"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],7],["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-icon ",["unknown",["position","name"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","grade-display"],["flush-element"],["append",["unknown",["position","gradeDisplay"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","win-rate-display"],["flush-element"],["append",["unknown",["position","winRateDisplay"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","win-rate-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_position_detial_win_rate"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["expand-toggle ",["helper",["unless"],[["get",["position","expandable"]],"hidden"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["toggle-btn ",["helper",["if"],[["get",["position","expanded"]],"reverse"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"togglePositionCollapseState",["get",["position","name"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],6],["text","          "],["close-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","more-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["position","expanded"]]],null,3,2],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-champions ",["helper",["unless"],[["get",["position","expanded"]],"collapsed"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["position","champions"]]],null,1],["text","    "],["close-element"],["text","\\n"]],"locals":["position","positionIndex"]}],"hasPartials":false}',
+                id: "uJAoUFm1",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\overview-breakdown-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","overview-breakdown-container"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["positionOverviewDisplays"]]],null,8],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["champ","tooltip"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-champion-thumbnail",[]],["dynamic-attr","name",["unknown",["champ","displayName"]],null],["dynamic-attr","class",["concat",["position-champ champ-",["unknown",["champ","championId"]]," ",["helper",["if"],[["get",["champ","locked"]],"locked"],null]," games-played-",["unknown",["champ","gamesPlayed"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showChampionDetail",["get",["champ"]],["get",["position","name"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","lol-uikit-thumbnail"],["static-attr","slot","lol-uikit-thumbnail"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["unknown",["champ","iconPath"]],null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],0],["text","        "],["close-element"],["text","\\n"]],"locals":["champ"]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_overview_position_button_show_more_champions"]],false],["text"," +"],["append",["unknown",["position","championsToExpand"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["tra","career_stats_overview_position_button_show_less_champions"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["append",["unknown",["tra","career_stats_tooltip_overview_expand"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["append",["unknown",["tra","career_stats_tooltip_overview_collapse"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["position","expanded"]]],null,5,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["dynamic-attr","class",["concat",["career-stats-overview-position-button-tooltip ",["helper",["if"],[["get",["position","locked"]],"locked"],null]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","position-name"],["flush-element"],["append",["unknown",["position","displayName"]],false],["close-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["position","tooltip"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-header header-",["get",["positionIndex"]]]]],["static-attr","sticky",""],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","position-title"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","diamond"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","title-frame left"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","position-name"],["flush-element"],["append",["unknown",["position","displayName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","title-frame right"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","diamond"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","position-controls"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-summary ",["helper",["if"],[["get",["position","locked"]],"locked"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["grade-banner grade-",["unknown",["position","gradeClass"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-button grade-",["unknown",["position","gradeClass"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPositionDetail",["get",["position"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],7],["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-icon ",["unknown",["position","name"]]]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","grade-display"],["flush-element"],["append",["unknown",["position","gradeDisplay"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","win-rate-display"],["flush-element"],["append",["unknown",["position","winRateDisplay"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","win-rate-label"],["flush-element"],["append",["unknown",["tra","career_stats_overview_position_detial_win_rate"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["expand-toggle ",["helper",["unless"],[["get",["position","expandable"]],"hidden"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["toggle-btn ",["helper",["if"],[["get",["position","expanded"]],"reverse"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"togglePositionCollapseState",["get",["position","name"]]],null],null],["dynamic-attr","onmouseover",["helper",["action"],[["get",[null]],"hoverChampionOrPositionDetail"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],6],["text","          "],["close-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","more-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["position","expanded"]]],null,3,2],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["position-champions ",["helper",["unless"],[["get",["position","expanded"]],"collapsed"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["position","champions"]]],null,1],["text","    "],["close-element"],["text","\\n"]],"locals":["position","positionIndex"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3429,8 +3429,8 @@
             var s = a(1);
             a(49);
             var n, o = a(12),
-                l = a(6),
-                r = (n = a(8)) && n.__esModule ? n : {
+                r = a(6),
+                l = (n = a(8)) && n.__esModule ? n : {
                     default: n
                 };
             const i = a(13);
@@ -3477,12 +3477,12 @@
                         n = this.get("careerStatsService.indexedChampions"),
                         o = this.get("queueFilter.queueTypes.0");
                     if (this.get("fromChampionDetails") && !e || !t || !a || !n || !o) return;
-                    const l = this._getChampionCompareDisplays(a?.[o]?.[t], e, t, n);
-                    this.set("championCompareDisplays", l);
-                    const r = this.get("careerStatsService"),
-                        i = r.loadRecentlyComparedSummoners().then((e => (this.set("recentlyComparedSummoners", s.Ember.A(e)), e))),
-                        c = r.loadRecentlyPlayedWithSummoners().then((e => (this.set("recentlyPlayedWithSummoners", s.Ember.A(e)), e))),
-                        m = r.loadFriendList().then((e => {
+                    const r = this._getChampionCompareDisplays(a?.[o]?.[t], e, t, n);
+                    this.set("championCompareDisplays", r);
+                    const l = this.get("careerStatsService"),
+                        i = l.loadRecentlyComparedSummoners().then((e => (this.set("recentlyComparedSummoners", s.Ember.A(e)), e))),
+                        c = l.loadRecentlyPlayedWithSummoners().then((e => (this.set("recentlyPlayedWithSummoners", s.Ember.A(e)), e))),
+                        m = l.loadFriendList().then((e => {
                             const t = e.filter((e => e && e.summonerId > 0));
                             return this.set("friends", s.Ember.A(t)), t
                         }));
@@ -3495,10 +3495,10 @@
                     e = e.map((e => Array.isArray(e) ? e : []));
                     const [t, a, n] = e, o = new Set([...t, ...a, ...n].map((({
                         puuid: e
-                    }) => e))), l = await this.get("_playerNames").getDisplayNamesByPUUIDs([...o]), r = e => {
-                        e.gameNameAndTagLine = l[e.puuid].playerNameFull
+                    }) => e))), r = await this.get("_playerNames").getDisplayNamesByPUUIDs([...o]), l = e => {
+                        e.gameNameAndTagLine = r[e.puuid].playerNameFull
                     };
-                    t.forEach(r), a.forEach(r), n.forEach(r), this.set("recentlyComparedSummoners", s.Ember.A(t)), this.set("recentlyPlayedWithSummoners", s.Ember.A(a)), this.set("friends", s.Ember.A(n))
+                    t.forEach(l), a.forEach(l), n.forEach(l), this.set("recentlyComparedSummoners", s.Ember.A(t)), this.set("recentlyPlayedWithSummoners", s.Ember.A(a)), this.set("friends", s.Ember.A(n))
                 },
                 filteredRecentlyComparedSummoners: s.Ember.computed("playerNameToSearch", "recentlyComparedSummoners", (function() {
                     return this._filterBySearchValueHelper("recentlyComparedSummoners")
@@ -3519,8 +3519,8 @@
                 },
                 _getChampionCompareDisplays(e, t, a, n) {
                     const o = this.get("minGamesToUnlockStats"),
-                        l = e.filter((e => e.championId !== t && e.gameCount >= o)).sort(((e, t) => t.gameCount - e.gameCount));
-                    return s.Ember.A(l.map((e => s.Ember.Object.create({
+                        r = e.filter((e => e.championId !== t && e.gameCount >= o)).sort(((e, t) => t.gameCount - e.gameCount));
+                    return s.Ember.A(r.map((e => s.Ember.Object.create({
                         id: e.championId,
                         name: n[e.championId].name,
                         iconPath: n[e.championId].squarePortraitPath,
@@ -3564,14 +3564,14 @@
                         a = this.get("position"),
                         n = this.get("fromChampionDetails"),
                         o = this.get("minGamesToUnlockStats"),
-                        l = this.get("queueFilter.queueTypes.0"),
-                        r = this.get("season"),
+                        r = this.get("queueFilter.queueTypes.0"),
+                        l = this.get("season"),
                         {
                             summonerId: i
                         } = e;
                     let c;
                     try {
-                        c = await this.get("careerStatsService").loadStatsSummaryFromSummonerId(i, r, l, a, t)
+                        c = await this.get("careerStatsService").loadStatsSummaryFromSummonerId(i, l, r, a, t)
                     } catch (e) {
                         throw s.logger.error("Failed to load stats summary from summonerId", e), e
                     }
@@ -3602,14 +3602,14 @@
                 },
                 actions: {
                     selectTab: function(e) {
-                        r.default.addUserBehavior(l.USER_ACTIVITIES.TAB_CHANGE, e), this.set("currentTab", e)
+                        l.default.addUserBehavior(r.USER_ACTIVITIES.TAB_CHANGE, e), this.set("currentTab", e)
                     },
                     compareWithSummonerByName: async function(e) {
                         if (this.get("isSearchingSummoner")) return;
                         this.set("isSearchingSummoner", !0);
                         const t = "string" == typeof e ? e : this.get("playerNameToSearch");
                         let a;
-                        r.default.sendEvent(l.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, l.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                        l.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
                             summonerName: t
                         });
                         try {
@@ -3625,7 +3625,7 @@
                     compareWithSummonerByPuuid: async function(e) {
                         if (this.get("isSearchingSummoner")) return;
                         let t;
-                        this.set("isSearchingSummoner", !0), r.default.sendEvent(l.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, l.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                        this.set("isSearchingSummoner", !0), l.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
                             puuid: e
                         });
                         try {
@@ -3639,7 +3639,7 @@
                         this.set("isSearchingSummoner", !1)
                     },
                     compareWithChampion: function(e) {
-                        r.default.sendEvent(l.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, l.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                        l.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
                             championId: e
                         }), this.get("parentComponent").compareWithChampionAverage(e, this.get("position"))
                     },
@@ -3664,8 +3664,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "sDugTP9I",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-title"],["flush-element"],["text","\\n  "],["append",["unknown",["tra","career_stats_compare_stats_modal_title"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-subtitle"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text"," ♦ "],["append",["unknown",["seasonName"]],false],["text"," ♦ "],["append",["unknown",["compareChampionOrPositionDisplay"]],false],["text"," ♦ "],["append",["unknown",["queueFilter","displayName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","compare-tab-navs"],["static-attr","type","tabbed"],["static-attr","direction","right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasPreviousSeasons"]]],null,15],["block",["if"],[["get",["fromChampionDetails"]]],null,14],["text","  "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav other-players ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingPlayers"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","players"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_other_players"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav experts ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingExperts"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","experts"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_experts"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-details"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showingPlayers"]]],null,13,7],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list seasons"],["flush-element"],["text","\\n      "],["append",["helper",["season-compare-list"],null,[["championId","position","season","queueFilter","summoner","earliestSeason","currentSeason","compareWithSeason"],[["get",["championId"]],["get",["position"]],["get",["season"]],["get",["queueFilter"]],["get",["summoner"]],["get",["earliestSeason"]],["get",["currentSeason"]],"compareWithSeason"]]],false],["text","\\n    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showingSeasons"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","compare-list experts"],["flush-element"],["text","\\n      "],["append",["helper",["expert-list"],null,[["isChampionScreen","championId","position","season","isCurrentSeason","isSeasonSettingLoaded","compareWithChampionExpert","compareWithPositionExpert","showExpertProfile"],[["get",["fromChampionDetails"]],["get",["championId"]],["get",["position"]],["get",["season"]],["get",["isCurrentSeason"]],["get",["isSeasonSettingLoaded"]],"compareWithChampionExpert","compareWithPositionExpert","showExpertProfile"]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showingExperts"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","no-other-champ-msg"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_no_other_champions_on_position"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","compare-display champion-compare"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["champion","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","name-display champion-name"],["flush-element"],["append",["unknown",["champion","name"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","games-played"],["flush-element"],["append",["unknown",["champion","gamesPlayedDisplay"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["champion"]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list my-champions"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["championCompareDisplays"]]],null,5],["block",["unless"],[["get",["championCompareDisplays","length"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showingChampions"]]],null,6,3]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["friend","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["friend","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["friend","gameName"]],["get",["friend","tagLine"]],["get",["friend","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["friend"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["recentlyPlayedWith","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["recentlyPlayedWith","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["recentlyPlayedWith","gameName"]],["get",["recentlyPlayedWith","tagLine"]],["get",["recentlyPlayedWith","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["recentlyPlayedWith"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["recentlyCompared","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["recentlyCompared","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["recentlyCompared","gameName"]],["get",["recentlyCompared","tagLine"]],["get",["recentlyCompared","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["recentlyCompared"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_feature_disabled"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],11]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","search-and-compare"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isCompareDisabled"]]],null,12],["text","      "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","summoner-search"],["flush-element"],["text","\\n        "],["append",["helper",["input"],null,[["type","class","enter","value","placeholder","maxlength","disabled"],["search","search-input","compareWithSummonerByName",["get",["summonerNameToSearch"]],["get",["tra","career_stats_overview_compare_stats_modal_placeholder_summoner_search"]],20,["get",["isCompareDisabled"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["isCompareDisabled"]],null],["dynamic-attr","onclick",["helper",["unless"],[["get",["isCompareDisabled"]],["get",["action"]],"compareWithSummonerByName"],null],null],["static-attr","class","compare-btn"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list summoner-list"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group recently-compared"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["recentlyComparedSummoners","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_recently_compared"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredRecentlyComparedSummoners"]]],null,10],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group recently-played-with"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["recentlyPlayedWithSummoners","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_recently_played_with"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredRecentlyPlayedWithSummoners"]]],null,9],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group friend-compare"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["friends","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_friends"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredFriends"]]],null,8],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav my-champions champ-view ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingChampions"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","champions"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_other_champions"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav my-seasons ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," has-prev-seasons"]]],["dynamic-attr","active",["unknown",["showingSeasons"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","seasons"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_seasons"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "EU1Y6pcQ",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\stats-comparison-selector-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-title"],["flush-element"],["text","\\n  "],["append",["unknown",["tra","career_stats_compare_stats_modal_title"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-subtitle"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text"," ♦ "],["append",["unknown",["seasonName"]],false],["text"," ♦ "],["append",["unknown",["compareChampionOrPositionDisplay"]],false],["text"," ♦ "],["append",["unknown",["queueFilter","displayName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-navigation-bar",[]],["static-attr","class","compare-tab-navs"],["static-attr","type","tabbed"],["static-attr","direction","right"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasPreviousSeasons"]]],null,15],["block",["if"],[["get",["fromChampionDetails"]]],null,14],["text","  "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav other-players ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingPlayers"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","players"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_other_players"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav experts ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingExperts"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","experts"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_experts"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","compare-details"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showingPlayers"]]],null,13,7],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list seasons"],["flush-element"],["text","\\n      "],["append",["helper",["season-compare-list"],null,[["championId","position","season","queueFilter","summoner","earliestSeason","currentSeason","compareWithSeason"],[["get",["championId"]],["get",["position"]],["get",["season"]],["get",["queueFilter"]],["get",["summoner"]],["get",["earliestSeason"]],["get",["currentSeason"]],"compareWithSeason"]]],false],["text","\\n    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showingSeasons"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","compare-list experts"],["flush-element"],["text","\\n      "],["append",["helper",["expert-list"],null,[["isChampionScreen","championId","position","season","isCurrentSeason","isSeasonSettingLoaded","compareWithChampionExpert","compareWithPositionExpert","showExpertProfile"],[["get",["fromChampionDetails"]],["get",["championId"]],["get",["position"]],["get",["season"]],["get",["isCurrentSeason"]],["get",["isSeasonSettingLoaded"]],"compareWithChampionExpert","compareWithPositionExpert","showExpertProfile"]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showingExperts"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","no-other-champ-msg"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_no_other_champions_on_position"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","compare-display champion-compare"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithChampion",["get",["champion","id"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["champion","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","name-display champion-name"],["flush-element"],["append",["unknown",["champion","name"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","games-played"],["flush-element"],["append",["unknown",["champion","gamesPlayedDisplay"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["champion"]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list my-champions"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["championCompareDisplays"]]],null,5],["block",["unless"],[["get",["championCompareDisplays","length"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showingChampions"]]],null,6,3]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["friend","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["friend","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["friend","gameName"]],["get",["friend","tagLine"]],["get",["friend","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["friend"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["recentlyPlayedWith","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["recentlyPlayedWith","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["recentlyPlayedWith","gameName"]],["get",["recentlyPlayedWith","tagLine"]],["get",["recentlyPlayedWith","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["recentlyPlayedWith"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","compare-display"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSummonerByPuuid",["get",["recentlyCompared","puuid"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","avatar-icon"],["flush-element"],["text","\\n              "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["unknown",["recentlyCompared","profileIconId"]],".jpg"]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","row-details"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","name-display summoner-name"],["flush-element"],["text","\\n                "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["recentlyCompared","gameName"]],["get",["recentlyCompared","tagLine"]],["get",["recentlyCompared","displayName"]]]]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["recentlyCompared"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_feature_disabled"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],11]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","search-and-compare"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isCompareDisabled"]]],null,12],["text","      "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","summoner-search"],["flush-element"],["text","\\n        "],["append",["helper",["input"],null,[["type","class","enter","value","placeholder","maxlength","disabled"],["search","search-input","compareWithSummonerByName",["get",["summonerNameToSearch"]],["get",["tra","career_stats_overview_compare_stats_modal_placeholder_summoner_search"]],20,["get",["isCompareDisabled"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["isCompareDisabled"]],null],["dynamic-attr","onclick",["helper",["unless"],[["get",["isCompareDisabled"]],["get",["action"]],"compareWithSummonerByName"],null],null],["static-attr","class","compare-btn"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","compare-list summoner-list"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group recently-compared"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["recentlyComparedSummoners","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_recently_compared"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredRecentlyComparedSummoners"]]],null,10],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group recently-played-with"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["recentlyPlayedWithSummoners","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_recently_played_with"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredRecentlyPlayedWithSummoners"]]],null,9],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","summoner-group friend-compare"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["group-title ",["helper",["unless"],[["get",["friends","length"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["tra","career_stats_compare_summoner_group_friends"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["filteredFriends"]]],null,8],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav my-champions champ-view ",["helper",["if"],[["get",["hasPreviousSeasons"]],"has-prev-seasons"],null]]]],["dynamic-attr","active",["unknown",["showingChampions"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","champions"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_other_champions"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","class",["concat",["compare-tab-nav my-seasons ",["helper",["if"],[["get",["fromChampionDetails"]],"champ-view"],null]," has-prev-seasons"]]],["dynamic-attr","active",["unknown",["showingSeasons"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectTab","seasons"],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tab-text"],["flush-element"],["append",["unknown",["tra","career_stats_compare_stats_modal_tab_seasons"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3717,8 +3717,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "vSOvJkS4",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","expert-summoner-list"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-experts-loading-spinner ",["helper",["if"],[["get",["isExpertListLoaded"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["expert-summoner-items ",["helper",["unless"],[["get",["isExpertListLoaded"]],"transparent"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["expertSummoners","length"]]],null,6,2],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["tra","career_stats_expert_explanations_previous_season"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_champion_no_expert_yet"]],false]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","not-enough-summoner-msg"],["flush-element"],["text","\\n        "],["block",["if"],[["get",["isCurrentSeason"]]],null,1,0],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                      "],["open-element","p",[]],["flush-element"],["append",["unknown",["summoner","rankDisplay"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_tooltip_expert_profile"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","tr",[]],["static-attr","class","expert-table-row"],["flush-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell profile-info"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showExpertProfile",["get",["summoner"]]],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["left","whole-window"]],4],["text","                "],["open-element","div",[]],["static-attr","class","stats-avatar"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["helper",["if"],[["get",["summoner","profileIconId"]],["get",["summoner","profileIconId"]],"1"],null],".jpg"]]],["flush-element"],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","summoner-info"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n                    "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["summoner","gameName"]],["get",["summoner","tagLine"]],["get",["summoner","displayName"]]]]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","subtitle"],["flush-element"],["append",["unknown",["summoner","subtitles","numOfGamesDisplay"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell win-rate"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","win-rate"],["flush-element"],["append",["unknown",["summoner","subtitles","winRateDisplay"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell rank"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["solo-duo-rank ranked-crest-image ",["unknown",["summoner","rank","tier"]],"_players"]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type","offsetY"],["top","system",5]],3],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell action-buttons"],["flush-element"],["text","\\n                "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithExpert",["get",["summoner"]]],null],null],["static-attr","class","action-button compare"],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","expert-explanation"],["flush-element"],["append",["unknown",["tra","career_stats_expert_explanations"]],false],["close-element"],["text","\\n      "],["open-element","table",[]],["static-attr","class","expert-summoner-table"],["flush-element"],["text","\\n        "],["open-element","thead",[]],["static-attr","class","expert-table-header"],["flush-element"],["text","\\n          "],["open-element","tr",[]],["flush-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header profile"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_name"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_win_rate"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_solo_duo_rank"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_action"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","tbody",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["expertSummoners"]]],null,5],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+                id: "RR+oRLCk",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\expert-list-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","expert-summoner-list"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["stats-experts-loading-spinner ",["helper",["if"],[["get",["isExpertListLoaded"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["expert-summoner-items ",["helper",["unless"],[["get",["isExpertListLoaded"]],"transparent"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["expertSummoners","length"]]],null,6,2],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["tra","career_stats_expert_explanations_previous_season"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_champion_no_expert_yet"]],false]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","not-enough-summoner-msg"],["flush-element"],["text","\\n        "],["block",["if"],[["get",["isCurrentSeason"]]],null,1,0],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                      "],["open-element","p",[]],["flush-element"],["append",["unknown",["summoner","rankDisplay"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_tooltip_expert_profile"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","tr",[]],["static-attr","class","expert-table-row"],["flush-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell profile-info"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showExpertProfile",["get",["summoner"]]],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["left","whole-window"]],4],["text","                "],["open-element","div",[]],["static-attr","class","stats-avatar"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["dynamic-attr","src",["concat",["/lol-game-data/assets/v1/profile-icons/",["helper",["if"],[["get",["summoner","profileIconId"]],["get",["summoner","profileIconId"]],"1"],null],".jpg"]]],["flush-element"],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","icon-ring-s"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","summoner-info"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n                    "],["append",["helper",["player-name"],null,[["format","gameName","tagLine","summonerName"],["full",["get",["summoner","gameName"]],["get",["summoner","tagLine"]],["get",["summoner","displayName"]]]]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","subtitle"],["flush-element"],["append",["unknown",["summoner","subtitles","numOfGamesDisplay"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell win-rate"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","win-rate"],["flush-element"],["append",["unknown",["summoner","subtitles","winRateDisplay"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell rank"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["solo-duo-rank ranked-crest-image ",["unknown",["summoner","rank","tier"]],"_players"]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type","offsetY"],["top","system",5]],3],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","td",[]],["static-attr","class","expert-table-cell action-buttons"],["flush-element"],["text","\\n                "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithExpert",["get",["summoner"]]],null],null],["static-attr","class","action-button compare"],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","expert-explanation"],["flush-element"],["append",["unknown",["tra","career_stats_expert_explanations"]],false],["close-element"],["text","\\n      "],["open-element","table",[]],["static-attr","class","expert-summoner-table"],["flush-element"],["text","\\n        "],["open-element","thead",[]],["static-attr","class","expert-table-header"],["flush-element"],["text","\\n          "],["open-element","tr",[]],["flush-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header profile"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_name"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_win_rate"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_solo_duo_rank"]],false],["close-element"],["text","\\n            "],["open-element","th",[]],["static-attr","class","expert-table-cell header"],["flush-element"],["append",["unknown",["tra","career_stats_expert_table_header_expert_action"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","tbody",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["expertSummoners"]]],null,5],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3730,7 +3730,7 @@
                 n = a(12),
                 o = a(11);
             a(55);
-            var l = s.Ember.Component.extend({
+            var r = s.Ember.Component.extend({
                 layout: a(56),
                 classNames: ["season-compare-list-component"],
                 careerStatsService: s.Ember.inject.service("careerStats"),
@@ -3743,8 +3743,8 @@
                     const e = this.get("season"),
                         t = this.get("currentSeason"),
                         a = this.get("earliestSeason"),
-                        l = this.get("careerStatsService"),
-                        r = this.get("championId"),
+                        r = this.get("careerStatsService"),
+                        l = this.get("championId"),
                         i = this.get("position"),
                         c = this.get("queueFilter.queueTypes.0"),
                         m = this.get("summoner.puuid"),
@@ -3752,7 +3752,7 @@
                         d = this.get("tra"),
                         u = [];
                     for (let e = a; e <= t; e++) {
-                        (0, n.getQueueFilters)(e).some((e => e.queueTypes.includes(c))) ? u.push(l.loadStatsSummary(m, e, c, i, r).then((t => ({
+                        (0, n.getQueueFilters)(e).some((e => e.queueTypes.includes(c))) ? u.push(r.loadStatsSummary(m, e, c, i, l).then((t => ({
                             season: e,
                             stats: t
                         })))) : u.push(Promise.resolve({
@@ -3780,15 +3780,15 @@
                     }
                 }
             });
-            t.default = l
+            t.default = r
         }, (e, t, a) => {
             "use strict";
             a.r(t)
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "0RTaBSK1",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\index.js\\" "],["text","\\n"],["open-element","table",[]],["static-attr","class","season-compare-option-table"],["flush-element"],["text","\\n  "],["open-element","thead",[]],["flush-element"],["text","\\n    "],["open-element","tr",[]],["flush-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_season"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_games"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_win_rate"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_action"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","tbody",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["seasonCompareOptions"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["season","buttonTooltip"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","tr",[]],["flush-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","seasonName"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","gamesPlayed"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","winRate"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSeason",["get",["season"]]],null],null],["static-attr","class","compare-button"],["dynamic-attr","disabled",["unknown",["season","disabled"]],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],0],["text","          "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["season"]}],"hasPartials":false}',
+                id: "7CqZ6asn",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\season-compare-list-component\\\\index.js\\" "],["text","\\n"],["open-element","table",[]],["static-attr","class","season-compare-option-table"],["flush-element"],["text","\\n  "],["open-element","thead",[]],["flush-element"],["text","\\n    "],["open-element","tr",[]],["flush-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_season"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_games"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_win_rate"]],false],["close-element"],["text","\\n      "],["open-element","th",[]],["flush-element"],["append",["unknown",["tra","career_stats_previous_season_table_header_action"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","tbody",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["seasonCompareOptions"]]],null,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["season","buttonTooltip"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","tr",[]],["flush-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","seasonName"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","gamesPlayed"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["append",["unknown",["season","winRate"]],false],["close-element"],["text","\\n      "],["open-element","td",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"compareWithSeason",["get",["season"]]],null],null],["static-attr","class","compare-button"],["dynamic-attr","disabled",["unknown",["season","disabled"]],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],0],["text","          "],["append",["unknown",["tra","career_stats_compare_stats_modal_compare_button"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["season"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3836,8 +3836,8 @@
         }, (e, t, a) => {
             const s = a(1).Ember;
             e.exports = s.HTMLBars.template({
-                id: "PG08Mtek",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["welcomeTitle"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","subtitle"],["flush-element"],["block",["if"],[["get",["isEarliestSeason"]]],null,4,3],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","sections"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","section click"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image click"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_click_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_click_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isEarliestSeason"]]],null,2,1],["text","  "],["open-element","div",[]],["static-attr","class","section compare"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image compare"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_compare_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_compare_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","img",[]],["static-attr","class","button-glow"],["static-attr","src","/fe/lol-career-stats/images/glow-01.png"],["flush-element"],["close-element"],["text","\\n"],["open-element","img",[]],["static-attr","class","button-glow delayed"],["static-attr","src","/fe/lol-career-stats/images/glow-02.png"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loc-text filter-option index-",["get",["index"]]]]],["flush-element"],["append",["get",["option"]],false],["close-element"],["text","\\n"]],"locals":["option","index"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","section prev-season"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image prev-season"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_prev_season_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_prev_season_description"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["dropdownOptions"]]],null,0],["text","    "],["open-element","div",[]],["static-attr","class","loc-text prev-season"],["flush-element"],["append",["unknown",["previousSeasonName"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","section analyze"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image analyze"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_analyze_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_analyze_description"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text stat-name"],["flush-element"],["append",["unknown",["tra","career_stats_detail_stat_name_kda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text vs"],["flush-element"],["append",["unknown",["tra","career_stats_trend_graph_title_compare"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-title self"],["flush-element"],["append",["unknown",["numberDisplays","selfKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-title other"],["flush-element"],["append",["unknown",["numberDisplays","otherKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-bar self"],["flush-element"],["append",["unknown",["numberDisplays","selfKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-bar other"],["flush-element"],["append",["unknown",["numberDisplays","otherKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text axis-label min"],["flush-element"],["append",["unknown",["numberDisplays","axisMin"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text axis-label max"],["flush-element"],["append",["unknown",["numberDisplays","axismax"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_welcome_modal_subtitle_new_season"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_welcome_modal_subtitle"]],false]],"locals":[]}],"hasPartials":false}',
+                id: "ZENvMkVg",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-career-stats\\\\src\\\\app\\\\components\\\\career-stats-welcome-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["welcomeTitle"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","subtitle"],["flush-element"],["block",["if"],[["get",["isEarliestSeason"]]],null,4,3],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","sections"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","section click"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image click"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_click_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_click_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isEarliestSeason"]]],null,2,1],["text","  "],["open-element","div",[]],["static-attr","class","section compare"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image compare"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_compare_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_compare_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","img",[]],["static-attr","class","button-glow"],["static-attr","src","/fe/lol-career-stats/images/glow-01.png"],["flush-element"],["close-element"],["text","\\n"],["open-element","img",[]],["static-attr","class","button-glow delayed"],["static-attr","src","/fe/lol-career-stats/images/glow-02.png"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loc-text filter-option index-",["get",["index"]]]]],["flush-element"],["append",["get",["option"]],false],["close-element"],["text","\\n"]],"locals":["option","index"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","section prev-season"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image prev-season"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_prev_season_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_prev_season_description"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["dropdownOptions"]]],null,0],["text","    "],["open-element","div",[]],["static-attr","class","loc-text prev-season"],["flush-element"],["append",["unknown",["previousSeasonName"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","section analyze"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","image analyze"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-title"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_analyze_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","section-description"],["flush-element"],["append",["unknown",["tra","career_stats_welcome_modal_section_analyze_description"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text stat-name"],["flush-element"],["append",["unknown",["tra","career_stats_detail_stat_name_kda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text vs"],["flush-element"],["append",["unknown",["tra","career_stats_trend_graph_title_compare"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-title self"],["flush-element"],["append",["unknown",["numberDisplays","selfKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-title other"],["flush-element"],["append",["unknown",["numberDisplays","otherKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-bar self"],["flush-element"],["append",["unknown",["numberDisplays","selfKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text avg-bar other"],["flush-element"],["append",["unknown",["numberDisplays","otherKda"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text axis-label min"],["flush-element"],["append",["unknown",["numberDisplays","axisMin"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loc-text axis-label max"],["flush-element"],["append",["unknown",["numberDisplays","axismax"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_welcome_modal_subtitle_new_season"]],false]],"locals":[]},{"statements":[["append",["unknown",["tra","career_stats_welcome_modal_subtitle"]],false]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, a) => {
@@ -3869,8 +3869,8 @@
                             }))
                         }(p, s);
                         let t = null;
-                        if (!e || !e.summonerId) return r ? i && (r.domNode.dispatchEvent(l), i = !1) : r = n.componentFactory.create("CareerStatsRootComponent"), r.componentPromise.then((() => {
-                            m.appendChild(r.domNode)
+                        if (!e || !e.summonerId) return l ? i && (l.domNode.dispatchEvent(r), i = !1) : l = n.componentFactory.create("CareerStatsRootComponent"), l.componentPromise.then((() => {
+                            m.appendChild(l.domNode)
                         })), void o.default.startTelemetrySession(!1);
                         t = e.summonerId;
                         const a = n.componentFactory.create("CareerStatsRootComponent", e ? n.Ember.Object.create({
@@ -3909,8 +3909,8 @@
                 o = (s = a(8)) && s.__esModule ? s : {
                     default: s
                 };
-            const l = new CustomEvent("profileReentered");
-            let r = null,
+            const r = new CustomEvent("profileReentered");
+            let l = null,
                 i = !1,
                 c = !1
         }],

@@ -297,8 +297,8 @@
         }, (e, t, n) => {
             const i = n(1).Ember;
             e.exports = i.HTMLBars.template({
-                id: "u6Tsck61",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","flyout-title"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","flyout-title-label"],["flush-element"],["append",["unknown",["tra","flyout_title_label"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","flyout-title-close"],["modifier",["action"],[["get",[null]],"closeFlyout"]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","flyout-control-panel"],["flush-element"],["text","\\n  "],["append",["helper",["control-panel"],null,[["groupingSortingState","setNameFilter","setGroupingAndSorting"],[["get",["groupingSortingState"]],["helper",["action"],[["get",[null]],"setNameFilter"],null],["helper",["action"],[["get",[null]],"setGroupingAndSorting"],null]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","skins-grid"],["flush-element"],["text","\\n  "],["append",["helper",["skins-grid"],null,[["selectedSkinId","filteredSkins","onSkinSelected"],[["get",["model","selectedSkinId"]],["get",["skinsStore","filteredSkins"]],["helper",["action"],[["get",[null]],"updateSelectedSkinId"],null]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "OA3bnU8q",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\flyout-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","flyout-title"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","flyout-title-label"],["flush-element"],["append",["unknown",["tra","flyout_title_label"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","flyout-title-close"],["modifier",["action"],[["get",[null]],"closeFlyout"]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","flyout-control-panel"],["flush-element"],["text","\\n  "],["append",["helper",["control-panel"],null,[["groupingSortingState","setNameFilter","setGroupingAndSorting"],[["get",["groupingSortingState"]],["helper",["action"],[["get",[null]],"setNameFilter"],null],["helper",["action"],[["get",[null]],"setGroupingAndSorting"],null]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","skins-grid"],["flush-element"],["text","\\n  "],["append",["helper",["skins-grid"],null,[["selectedSkinId","filteredSkins","onSkinSelected"],[["get",["model","selectedSkinId"]],["get",["skinsStore","filteredSkins"]],["helper",["action"],[["get",[null]],"updateSelectedSkinId"],null]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -322,8 +322,8 @@
                 get: u,
                 run: p,
                 set: d
-            } = o.Ember, g = o.Ember.A;
-            class E {}
+            } = o.Ember, E = o.Ember.A;
+            class g {}
             var S = _.extend({
                 classNames: ["control-panel-component"],
                 layout: n(18),
@@ -334,7 +334,7 @@
                     u(this, "setNameFilter")(e)
                 })),
                 init() {
-                    this._super(...arguments), d(this, "tracker", new E)
+                    this._super(...arguments), d(this, "tracker", new g)
                 },
                 availableGroups: l("groupingSortingState.grouping", (function() {
                     const e = u(this, "groupingSortingState.grouping"),
@@ -363,7 +363,7 @@
                             }
                         }))
                     }
-                    return g()
+                    return E()
                 })),
                 actions: {
                     setSortOrder(e) {
@@ -1055,7 +1055,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.UNOWNED_SKIN_FILTER = t.ULTIMATE_SKIN_RARITIES = t.THUMBNAIL_PER_ROW = t.TENCENT_REGION_NAME = t.SPLASH_VIDEO_CONFIG = t.SORT_ORDER = t.SKIN_WITH_SKINLINE_FILTER = t.SKIN_UNLOCK_TRANSACTION_TYPE = t.SKIN_RARITIES = t.SKIN_BORDER_RARITIES = t.SKINS_VIEWER_PAW_SOURCE = t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS = t.SKINS_VIEWER_ASSET_BASE_PATH = t.SHOWCASE_VIEW_VIDEO_BASE_PATH = t.PARSEINT_DEFAULT_RADIX = t.OWNED_SKIN_FILTER = t.NO_SKINLINE_ID = t.GEM_BASE_PATH = t.DEFAULT_LOCALE = t.COUNTING_STEPS = t.COUNTING_INTERVAL = t.COLLECTION_VIEW_VIDEO_BASE_PATH = t.COLLECTION_GRID_WIDTH = t.COLLECTION_GRID_SEPARATOR_ROW_HEIGHTS = t.COLLECTION_GRID_ROW_TYPES = t.COLLECTION_GRID_OWNERSHIP_FILTERS = t.COLLECTION_GRID_LAST_PURCHASES_GROUP_ID = t.COLLECTION_GRID_HEIGHT = t.COLLECTION_GRID = t.CN_SKIN_RARITIES = t.CN_RARITY_TRA_KEY_PREFIX = t.CLIENT_RECT_PROPERTY = t.CANNOT_PURCHASE_REASONS = t.ALL_SKINLINE_ID = void 0, t.generateCNSkinRarityObject = d, t.generateSkinRarityObject = a, t.getCNGemIcon = c, t.getCNRarityTooltipTraKey = p, t.getCNRarityTraKey = u, t.getGemIcon = o, t.getRarityTooltipTraKey = s, t.getRarityTraKey = r;
+            }), t.UNOWNED_SKIN_FILTER = t.ULTIMATE_SKIN_RARITIES = t.TIERED_SKIN_PRODUCT_TYPE = t.THUMBNAIL_PER_ROW = t.TENCENT_REGION_NAME = t.SPLASH_VIDEO_CONFIG = t.SORT_ORDER = t.SKIN_WITH_SKINLINE_FILTER = t.SKIN_UNLOCK_TRANSACTION_TYPE = t.SKIN_RARITIES = t.SKIN_BORDER_RARITIES = t.SKINS_VIEWER_PAW_SOURCE = t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS = t.SKINS_VIEWER_ASSET_BASE_PATH = t.SHOWCASE_VIEW_VIDEO_BASE_PATH = t.QUEST_SKIN_PRODUCT_TYPE = t.PARSEINT_DEFAULT_RADIX = t.OWNED_SKIN_FILTER = t.NO_SKINLINE_ID = t.GEM_BASE_PATH = t.DEFAULT_LOCALE = t.COUNTING_STEPS = t.COUNTING_INTERVAL = t.COLLECTION_VIEW_VIDEO_BASE_PATH = t.COLLECTION_GRID_WIDTH = t.COLLECTION_GRID_SEPARATOR_ROW_HEIGHTS = t.COLLECTION_GRID_ROW_TYPES = t.COLLECTION_GRID_OWNERSHIP_FILTERS = t.COLLECTION_GRID_LAST_PURCHASES_GROUP_ID = t.COLLECTION_GRID_HEIGHT = t.COLLECTION_GRID = t.CN_SKIN_RARITIES = t.CN_RARITY_TRA_KEY_PREFIX = t.CLIENT_RECT_PROPERTY = t.CANNOT_PURCHASE_REASONS = t.ALL_SKINLINE_ID = void 0, t.generateCNSkinRarityObject = d, t.generateSkinRarityObject = a, t.getCNGemIcon = c, t.getCNRarityTooltipTraKey = p, t.getCNRarityTraKey = u, t.getGemIcon = o, t.getRarityTooltipTraKey = s, t.getRarityTraKey = r;
             t.DEFAULT_LOCALE = "en";
             t.THUMBNAIL_PER_ROW = 4;
             t.NO_SKINLINE_ID = 0;
@@ -1138,7 +1138,7 @@
                 }
             }
             t.CN_RARITY_TRA_KEY_PREFIX = _;
-            const g = {
+            const E = {
                 0: d(0, "other", !1),
                 1: d(1, "epic"),
                 2: d(2, "epic"),
@@ -1149,9 +1149,9 @@
                 8: d(8, "mythic"),
                 9: d(9, "ultimate")
             };
-            t.CN_SKIN_RARITIES = g;
-            const E = [l.kUltimate, g[9]];
-            t.ULTIMATE_SKIN_RARITIES = E;
+            t.CN_SKIN_RARITIES = E;
+            const g = [l.kUltimate, E[9]];
+            t.ULTIMATE_SKIN_RARITIES = g;
             t.COUNTING_STEPS = 35;
             t.COUNTING_INTERVAL = 20;
             t.PARSEINT_DEFAULT_RADIX = 10;
@@ -1277,12 +1277,14 @@
             t.SPLASH_VIDEO_CONFIG = h;
             t.TENCENT_REGION_NAME = "TENCENT";
             t.SKINS_VIEWER_PAW_SOURCE = "skinsViewer";
-            t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS = "collections_sub_nav_skins_viewer"
+            t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS = "collections_sub_nav_skins_viewer";
+            t.QUEST_SKIN_PRODUCT_TYPE = "kQuestSkin";
+            t.TIERED_SKIN_PRODUCT_TYPE = "kTieredSkin"
         }, (e, t, n) => {
             const i = n(1).Ember;
             e.exports = i.HTMLBars.template({
-                id: "0HijjDWQ",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","control-panel-text-filter"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n    "],["append",["helper",["input"],null,[["type","maxlength","class","value","placeholder"],["search","50","control-panel-search-text",["get",["nameFilter"]],["get",["tra","control_panel_search_placeholder"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","control-panel-grouping-options"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableGroups"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","control-panel-sort-options"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableSorts"]]],[["key"],["name"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["sort","selected"]],null],["dynamic-attr","value",["unknown",["sort","name"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder",["get",["sort"]]],null],null],["flush-element"],["append",["unknown",["sort","label"]],false],["close-element"],["text","\\n"]],"locals":["sort"]},{"statements":[["text","    "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupingKey",["get",["group","groupKey"]]],null],null],["dynamic-attr","selected",["unknown",["group","isSelected"]],null],["flush-element"],["append",["unknown",["group","name"]],false],["close-element"],["text","\\n"]],"locals":["group"]}],"hasPartials":false}',
+                id: "MQcRIaiP",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\control-panel-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","control-panel-text-filter"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n    "],["append",["helper",["input"],null,[["type","maxlength","class","value","placeholder"],["search","50","control-panel-search-text",["get",["nameFilter"]],["get",["tra","control_panel_search_placeholder"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","control-panel-grouping-options"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableGroups"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","control-panel-sort-options"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableSorts"]]],[["key"],["name"]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["sort","selected"]],null],["dynamic-attr","value",["unknown",["sort","name"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder",["get",["sort"]]],null],null],["flush-element"],["append",["unknown",["sort","label"]],false],["close-element"],["text","\\n"]],"locals":["sort"]},{"statements":[["text","    "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupingKey",["get",["group","groupKey"]]],null],null],["dynamic-attr","selected",["unknown",["group","isSelected"]],null],["flush-element"],["append",["unknown",["group","name"]],false],["close-element"],["text","\\n"]],"locals":["group"]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -1310,26 +1312,26 @@
             }
             const {
                 Component: d,
-                get: g,
-                observer: E,
+                get: E,
+                observer: g,
                 set: S
             } = i.Ember, I = "lol-collectibles-libs-virtual-list";
             var N = d.extend({
                 classNames: ["skins-grid-component"],
                 layout: n(30),
                 style: n(31),
-                onFilteredSkinsChange: E("filteredSkins", (function() {
-                    const e = g(this, "filteredSkins");
+                onFilteredSkinsChange: g("filteredSkins", (function() {
+                    const e = E(this, "filteredSkins");
                     this._refreshSkinsGroupingResult(e)
                 })),
-                onSkinsDataChange: E("groupsAndSkinsRows", (function() {
+                onSkinsDataChange: g("groupsAndSkinsRows", (function() {
                     this._refreshSkinRows()
                 })),
                 init() {
                     this._super(...arguments), S(this, "rowRendererMap", new Map), S(this, "skinTileClickCallback", this._skinTileClickCallback.bind(this))
                 },
                 didInsertElement() {
-                    const e = g(this, "element");
+                    const e = E(this, "element");
                     if (e) {
                         const t = e.querySelector(".skins-grid-content");
                         S(this, "skinGridScrollElement", t);
@@ -1338,28 +1340,28 @@
                     }
                 },
                 willDestroy() {
-                    const e = g(this, "virtualList");
+                    const e = E(this, "virtualList");
                     e && (S(this, "virtualList", null), e.destroy())
                 },
                 _skinTileClickCallback(e) {
-                    const t = g(this, "selectedSkinId"),
-                        n = g(this, "virtualList");
+                    const t = E(this, "selectedSkinId"),
+                        n = E(this, "virtualList");
                     if (e && e !== t) {
-                        const t = g(this, "onSkinSelected");
+                        const t = E(this, "onSkinSelected");
                         t && (t(e), S(this, "selectedSkinId", e), n.refresh()), c.default.addUserBehaviorValue(u.USER_ACTIVITIES.PREVIEW_SKIN, e), c.default.setUserBehaviorValue(u.USER_ACTIVITIES.SET_BACKGROUND_SKIN_ID, e)
                     }
                 },
                 _refreshSkinsGroupingResult(e) {
-                    const t = (0, o.generateRowDataFromGroupingResult)(e, g(this, "tra"));
+                    const t = (0, o.generateRowDataFromGroupingResult)(e, E(this, "tra"));
                     S(this, "groupsAndSkinsRows", t)
                 },
                 _refreshSkinRows() {
-                    const e = g(this, "groupsAndSkinsRows"),
-                        t = g(this, "virtualList");
+                    const e = E(this, "groupsAndSkinsRows"),
+                        t = E(this, "virtualList");
                     e && t && (this._scrollToTop(), t.data = e)
                 },
                 _scrollToTop() {
-                    const e = g(this, "skinGridScrollElement");
+                    const e = E(this, "skinGridScrollElement");
                     e && (e.scrollTop = 0)
                 },
                 _initialiseVirtualList(e) {
@@ -1379,7 +1381,7 @@
                     this._getRowRenderer(t).deleteRow(e)
                 },
                 _getRowRenderer(e) {
-                    const t = g(this, "rowRendererMap");
+                    const t = E(this, "rowRendererMap");
                     if (!t.has(e)) {
                         const n = this._createRowRenderer(e);
                         t.set(e, n)
@@ -1406,7 +1408,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t._generateGroupTitleObject = p, t._generateGroupTitleRowData = d, t._generateSkinThumbnailRows = g, t.generateRowDataFromGroupingResult = I;
+            }), t._generateGroupTitleObject = p, t._generateGroupTitleRowData = d, t._generateSkinThumbnailRows = E, t.generateRowDataFromGroupingResult = I;
             var i, o = n(14),
                 r = n(17),
                 s = n(22),
@@ -1450,7 +1452,7 @@
             function d(e, t, n) {
                 if (!e) throw new Error(`groupTitleObject is null for group node ${t}`);
                 let i = [];
-                if (t.subGroups.length > 0 ? t.subGroups.forEach((e => i = i.concat(I(e, n)))) : i = i.concat(g(t.filteredGroupMembers)), i.length > 0) {
+                if (t.subGroups.length > 0 ? t.subGroups.forEach((e => i = i.concat(I(e, n)))) : i = i.concat(E(t.filteredGroupMembers)), i.length > 0) {
                     const n = new a.default({
                         type: r.COLLECTION_GRID_ROW_TYPES.GROUP.id,
                         height: r.COLLECTION_GRID_ROW_TYPES.GROUP.height,
@@ -1463,7 +1465,7 @@
                 return i
             }
 
-            function g(e) {
+            function E(e) {
                 const t = [],
                     n = Array.from(e);
                 for (; n.length;) t.push(new a.default({
@@ -1476,7 +1478,7 @@
                 return t
             }
 
-            function E(e, t) {
+            function g(e, t) {
                 let n = [];
                 return e.subGroups.forEach((e => {
                     n = n.concat(I(e, t))
@@ -1497,7 +1499,7 @@
                     }
                 })), n
             }
-            S.set(s.EMPTY_GROUPING_TYPE, E), S.set(o.GROUPING_TYPES.GROUP_BY_OWNERSHIP_OWNED_ONLY, E), S.set(o.GROUPING_TYPES.GROUP_BY_RECENT_ACQUIRE, (function(e, t) {
+            S.set(s.EMPTY_GROUPING_TYPE, g), S.set(o.GROUPING_TYPES.GROUP_BY_OWNERSHIP_OWNED_ONLY, g), S.set(o.GROUPING_TYPES.GROUP_BY_RECENT_ACQUIRE, (function(e, t) {
                 const n = p({
                     groupTitle: t.get("skin_grid_purchase_year_most_recent")
                 });
@@ -1568,7 +1570,7 @@
                 if (e.subGroups.forEach((t => {
                         t.groupNodes.forEach((t => {
                             if (t.filteredGroupMembers.length > 0) {
-                                const o = g(t.filteredGroupMembers),
+                                const o = E(t.filteredGroupMembers),
                                     s = t.groupMetaData,
                                     l = p({
                                         groupTitle: s.skinLine.name,
@@ -1964,8 +1966,8 @@
         }, (e, t, n) => {
             const i = n(1).Ember;
             e.exports = i.HTMLBars.template({
-                id: "8yIQVQPp",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_1\\\\LeagueClientContent_Release\\\\15693\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","skins-grid-content"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "xT6PD3vT",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-skins-picker\\\\src\\\\components\\\\skins-grid-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","skins-grid-content"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -2015,39 +2017,39 @@
                 }
             }
             const d = i.DataBinding.bindTo((0, i.getProvider)().getSocket()),
-                g = i.Ember.A,
+                E = i.Ember.A,
                 {
-                    computed: E,
+                    computed: g,
                     Service: S,
                     isArray: I,
                     get: N,
                     set: h,
-                    run: R
+                    run: T
                 } = i.Ember;
-            var T = S.extend(s.default, {
+            var R = S.extend(s.default, {
                 isLoading: !0,
                 groupingSortingState: l.default.create(),
                 allStoreSkins: null,
-                isPotatoModeEnabled: E.bool("userExperience.data.potatoModeEnabled"),
-                disableAllTelemetry: E.bool("jmxSettings.SkinsViewer.DisableAllTelemetry"),
-                showLegacyInfo: E.not("isTencentRegion"),
-                currentRegion: E.alias("locale.region"),
-                isTencentRegion: E("currentRegion", (function() {
+                isPotatoModeEnabled: g.bool("userExperience.data.potatoModeEnabled"),
+                disableAllTelemetry: g.bool("jmxSettings.SkinsViewer.DisableAllTelemetry"),
+                showLegacyInfo: g.not("isTencentRegion"),
+                currentRegion: g.alias("locale.region"),
+                isTencentRegion: g("currentRegion", (function() {
                     const e = N(this, "currentRegion");
                     return !!e && e.toUpperCase() === o.TENCENT_REGION_NAME
                 })),
-                skinRarities: E("isTencentRegion", (function() {
+                skinRarities: g("isTencentRegion", (function() {
                     return N(this, "isTencentRegion") ? o.CN_SKIN_RARITIES : o.SKIN_RARITIES
                 })),
-                platformSettings: E("disableAllTelemetry", (function() {
+                platformSettings: g("disableAllTelemetry", (function() {
                     return {
                         disableAllTelemetry: N(this, "disableAllTelemetry")
                     }
                 })),
                 init() {
-                    this._super(...arguments), this._initFilters(), this._setDefaultGrouping(), h(this, "purchasedSkins", g()), h(this, "champions", g()), this._initSkinSearch(), d.addObserver("/lol-game-data/assets/v1/champion-summary.json", this, this._updateChampionsData)
+                    this._super(...arguments), this._initFilters(), this._setDefaultGrouping(), h(this, "purchasedSkins", E()), h(this, "champions", E()), this._initSkinSearch(), d.addObserver("/lol-game-data/assets/v1/champion-summary.json", this, this._updateChampionsData)
                 },
-                skinFilter: E("nameFilter", "unownedFilter", "groupingConfig", (function() {
+                skinFilter: g("nameFilter", "unownedFilter", "groupingConfig", (function() {
                     const e = [],
                         t = N(this, "nameFilter");
                     if (t && t.length > 0) {
@@ -2058,7 +2060,7 @@
                         i = N(this, "unownedFilter");
                     return i === o.COLLECTION_GRID_OWNERSHIP_FILTERS.OWNED ? e.push(o.OWNED_SKIN_FILTER) : i === o.COLLECTION_GRID_OWNERSHIP_FILTERS.UNOWNED && e.push(o.UNOWNED_SKIN_FILTER), n.filters && e.push(...n.filters), new a.SkinFilter(e)
                 })),
-                currentLocale: E("tra.metadata.locale.id", (function() {
+                currentLocale: g("tra.metadata.locale.id", (function() {
                     const e = this.get("tra.metadata.locale.id"),
                         t = e ? e.substr(0, 2).toLowerCase() : "en",
                         n = "cs" === t ? "en" : t;
@@ -2066,18 +2068,24 @@
                     const i = this.get("skinSearchTermManager");
                     return i && i.setLocale(n), n
                 })),
-                playerSkinInfo: E("playerChampionFullInfo", (function() {
+                playerSkinInfo: g("playerChampionFullInfo", (function() {
                     const e = [],
                         t = this.get("playerChampionFullInfo");
                     return t && t.forEach((t => {
                         t.skins.forEach((n => {
-                            n.champOwnership = t.ownership, n.championId = t.id, n.questSkinInfo && n.questSkinInfo.tiers.forEach((i => {
-                                n.id !== i.id && (i.champOwnership = t.ownership, i.championId = t.id, e.push(i))
-                            })), e.push(n)
+                            const i = [],
+                                r = n.questSkinInfo;
+                            if (r && r.tiers.length > 0) {
+                                for (let e = r.tiers.length - 1; e >= 0; e--) {
+                                    const n = r.tiers[e];
+                                    if (n.champOwnership = t.ownership, n.championId = t.id, i.push(n), n.ownership.owned && r.productType === o.TIERED_SKIN_PRODUCT_TYPE) break
+                                }
+                                e.push(...i.reverse())
+                            } else n.champOwnership = t.ownership, n.championId = t.id, e.push(n)
                         }))
                     })), e
                 })),
-                skinData: E("playerSkinInfo", "playerChampionInfo", "skinsGameData", "championsById", "allStoreSkins", (function() {
+                skinData: g("playerSkinInfo", "playerChampionInfo", "skinsGameData", "championsById", "allStoreSkins", (function() {
                     const e = this.get("playerSkinInfo"),
                         t = this.get("playerChampionInfo"),
                         n = this.get("championsById"),
@@ -2100,7 +2108,7 @@
                     }
                     return o
                 })),
-                championsById: E("champions", "playerChampionMastery", (function() {
+                championsById: g("champions", "playerChampionMastery", (function() {
                     const e = this.get("champions"),
                         t = this.get("playerChampionMastery");
                     if (I(e) && I(t)) {
@@ -2112,14 +2120,14 @@
                     }
                     return {}
                 })),
-                skinsById: E("skinData", (function() {
+                skinsById: g("skinData", (function() {
                     const e = this.get("skinData");
                     if (I(e)) {
                         return i.lodash.keyBy(e, "id")
                     }
                     return {}
                 })),
-                skinlines: E("skinData", "skinlinesInfo", (function() {
+                skinlines: g("skinData", "skinlinesInfo", (function() {
                     const e = this.get("skinData"),
                         t = this.get("skinlinesInfo");
                     if (!e || !t) return null;
@@ -2127,11 +2135,11 @@
                     const n = t.filter((e => e.id !== o.NO_SKINLINE_ID));
                     return n.sort(((e, t) => e.name.localeCompare(t.name))), n
                 })),
-                skinLinesById: E("skinlines", (function() {
+                skinLinesById: g("skinlines", (function() {
                     const e = this.get("skinlines");
                     return i.lodash.keyBy(e, "id")
                 })),
-                universeBySkinlineId: E("skinUniverseInfo", (function() {
+                universeBySkinlineId: g("skinUniverseInfo", (function() {
                     const e = N(this, "skinUniverseInfo"),
                         t = new Map;
                     return e && e.forEach((e => {
@@ -2140,7 +2148,7 @@
                         }))
                     })), t
                 })),
-                groupedSkins: E("groupingConfig", "skinData", "championsById", "skinLinesById", "currentLocale", (function() {
+                groupedSkins: g("groupingConfig", "skinData", "championsById", "skinLinesById", "currentLocale", (function() {
                     const e = N(this, "groupingConfig"),
                         t = N(this, "skinData"),
                         n = N(this, "championsById"),
@@ -2154,7 +2162,7 @@
                         universeBySkinlineId: r
                     })
                 })),
-                sortedSkins: E("sortingConfig", "groupedSkins", (function() {
+                sortedSkins: g("sortingConfig", "groupedSkins", (function() {
                     const e = N(this, "sortingConfig"),
                         t = N(this, "groupedSkins"),
                         n = N(this, "currentLocale");
@@ -2162,7 +2170,7 @@
                         locale: n
                     }), t
                 })),
-                filteredSkins: E("skinFilter", "sortedSkins", (function() {
+                filteredSkins: g("skinFilter", "sortedSkins", (function() {
                     const e = N(this, "sortedSkins"),
                         t = N(this, "skinFilter");
                     return this._filterGroupingResult(e, t), i.Ember.Object.create(e)
@@ -2241,7 +2249,7 @@
                     h(this, "champions", e)
                 }
             });
-            t.default = T
+            t.default = R
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {

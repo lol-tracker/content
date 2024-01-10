@@ -3733,6 +3733,7 @@
                     return r("delete", this.absolutePath(t), void 0, this.options)
                 }
                 addObserver(t, e, n) {
+                    if (!this.socket) throw new Error(`Cannot observe ${t}: ScopedDataBinding was not initialized with a socket.`);
                     return this.cache.addResourceObserver(this.options, this.absolutePath(t), e, n)
                 }
                 observe() {
@@ -7730,6 +7731,7 @@
             const e = /^\/(?:[^\/])*/;
             t.exports = class {
                 constructor(t, e) {
+                    if (!e) throw new Error("BoundDataBinding constructor was not passed a socket.");
                     this.dataBinding = t, this.socket = e
                 }
                 splitPath(t) {
