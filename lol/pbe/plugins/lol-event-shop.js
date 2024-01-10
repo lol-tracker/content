@@ -115,7 +115,6 @@
                 value: !0
             }), t.APP_NAME = void 0, t.default = function() {
                 const e = {
-                    name: Y,
                     ComponentFactory: s.ComponentFactory,
                     Router: a.default,
                     ApplicationRoute: o.default,
@@ -162,7 +161,9 @@
                         "components/event-shop-xp": F.default
                     }
                 };
-                s.emberApplicationFactory.setFactoryDefinition(e)
+                s.emberApplicationFactory.setFactoryDefinition(Y, e, {
+                    EMBER_CLI_COMPAT: !0
+                })
             };
             var s = n(1),
                 a = V(n(5)),
@@ -2482,7 +2483,7 @@
                 socket: e => e.getSocket(),
                 Viewport: e => e.get("rcp-fe-lol-shared-components").getApi_Viewport()
             }).then((() => {
-                const n = e.get("rcp-fe-lol-l10n").tra().overlay("/fe/lol-l10n/trans.json").overlay("/fe/lol-loot/trans.json").overlay("/fe/lol-event-shop/trans.json").overlay("/fe/lol-l10n/trans.json").overlay("/fe/ember-libs/trans-loot-table.json"),
+                const n = e.get("rcp-fe-lol-l10n").tra().overlay("/fe/lol-l10n/trans.json").overlay("/fe/lol-loot/trans.json").overlay("/fe/lol-event-shop/trans.json").overlay("/fe/lol-l10n/trans.json"),
                     s = t.default.emberL10n(t.default.Ember, n),
                     a = t.default.Ember.Object.create({
                         isVisible: !1

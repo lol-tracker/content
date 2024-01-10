@@ -828,6 +828,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-vanguard"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-yourshop"
     },
     {

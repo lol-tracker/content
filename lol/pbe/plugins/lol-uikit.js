@@ -11315,7 +11315,7 @@
                     t && t.onClick && t.onClick(), this._removeCurrentToastCelebration("dismissed")
                 }
                 _handleDialogDismissEvent() {
-                    this._removeCurrentToastCelebration("dismissed")
+                    this._endCelebrationCeremony()
                 }
                 _removeToastCelebration(t, e) {
                     const n = {

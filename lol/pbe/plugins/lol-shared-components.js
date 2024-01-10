@@ -16399,7 +16399,7 @@
                     if (e && t && this.get("enabled")) return 1 !== e.length && e[1] ? "linear-gradient(135deg, " + e[0] + " 0%, " + e[0] + " 50%, " + e[1] + " 50%, " + e[1] + " 100%)" : e[0]
                 })),
                 sortedChromas: s.Ember.computed("chromas.[]", (function() {
-                    return this.get("chromas").filter((e => e.purchaseEnabled)).sort(((e, t) => e.unlocked === t.unlocked ? e.id < t.id ? -1 : 1 : e.unlocked ? -1 : 1))
+                    return this.get("chromas").filter((e => e.purchaseEnabled || e.unlocked)).sort(((e, t) => e.unlocked === t.unlocked ? e.id < t.id ? -1 : 1 : e.unlocked ? -1 : 1))
                 })),
                 init() {
                     this._super(...arguments), this._uxSettingsObserver = e => {
@@ -16869,7 +16869,7 @@
             var r = s.Ember.Component.extend({
                 layout: i.default,
                 classNames: ["reward-tracker-bonus-track"],
-                startIndex: 0,
+                startIndex: 1,
                 isDisabled: !1,
                 firstBonusMilestoneCompleted: s.Ember.computed("rewardTrackBonusProgress.level", (function() {
                     return this.get("rewardTrackBonusProgress.level") >= 0

@@ -20500,8 +20500,8 @@
     "LolEventShopTokenUpsellLockedType": {
       "enum": [
         "UNASSIGNED",
-        "LOCKED",
-        "UNLOCKED"
+        "UNLOCKED",
+        "LOCKED"
       ],
       "type": "string"
     },
@@ -48355,6 +48355,9 @@
           },
           "type": "array"
         },
+        "headerButtonsOverrideUrl": {
+          "type": "string"
+        },
         "overrideUrl": {
           "type": "string"
         },
@@ -49164,6 +49167,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "headerButtonsOverrideUrl": {
+          "type": "string"
         },
         "overrideUrl": {
           "type": "string"
@@ -51843,6 +51849,83 @@
       "properties": {
         "phase": {
           "$ref": "#/definitions/LolUserExperienceGameflowPhase"
+        }
+      },
+      "type": "object"
+    },
+    "LolVanguardGameflowPhase": {
+      "enum": [
+        "None",
+        "Lobby",
+        "Matchmaking",
+        "CheckedIntoTournament",
+        "ReadyCheck",
+        "ChampSelect",
+        "GameStart",
+        "FailedToLaunch",
+        "InProgress",
+        "Reconnect",
+        "WaitingForStats",
+        "PreEndOfGame",
+        "EndOfGame",
+        "TerminatedInError"
+      ],
+      "type": "string"
+    },
+    "LolVanguardGameflowSession": {
+      "properties": {
+        "phase": {
+          "$ref": "#/definitions/LolVanguardGameflowPhase"
+        }
+      },
+      "type": "object"
+    },
+    "LolVanguardLoginSession": {
+      "properties": {
+        "accountId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/LolVanguardLoginSessionState"
+        },
+        "summonerId": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "LolVanguardLoginSessionState": {
+      "enum": [
+        "IN_PROGRESS",
+        "SUCCEEDED",
+        "LOGGING_OUT",
+        "ERROR"
+      ],
+      "type": "string"
+    },
+    "LolVanguardVanguardMachineSpecs": {
+      "properties": {
+        "secureBootEnabled": {
+          "type": "boolean"
+        },
+        "tpm2Enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "LolVanguardVanguardSystemCheckTelemetryEvent": {
+      "properties": {
+        "passedOsCheck": {
+          "type": "boolean"
+        },
+        "passedSecureFeaturesCheck": {
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -55149,10 +55232,10 @@
           "type": "boolean"
         },
         "implements": {
-          "additionalProperties": {
+          "items": {
             "type": "string"
           },
-          "type": "object"
+          "type": "array"
         },
         "mock": {
           "type": "string"
@@ -83545,6 +83628,71 @@
         ]
       }
     },
+    "/lol-vanguard/v1/config/days-to-reshow-modal": {
+      "get": {
+        "operationId": "GetLolVanguardV1ConfigDaysToReshowModal",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "format": "float",
+              "type": "number"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-vanguard"
+        ]
+      }
+    },
+    "/lol-vanguard/v1/machine-specs": {
+      "get": {
+        "operationId": "GetLolVanguardV1MachineSpecs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/LolVanguardVanguardMachineSpecs"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-vanguard"
+        ]
+      }
+    },
+    "/lol-vanguard/v1/telemetry/system-check": {
+      "post": {
+        "operationId": "PostLolVanguardV1TelemetrySystemCheck",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "event",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolVanguardVanguardSystemCheckTelemetryEvent"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-vanguard"
+        ]
+      }
+    },
     "/lol-yourshop/v1/has-permissions": {
       "get": {
         "operationId": "GetLolYourshopV1HasPermissions",
@@ -85939,7 +86087,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",

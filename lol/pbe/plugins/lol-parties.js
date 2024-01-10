@@ -3623,8 +3623,8 @@
             }
             const v = "/lol-summoner/v1/current-summoner",
                 S = i.default.getProvider().getSocket(),
-                x = i.Navigation.getFullPageModalManager(),
-                E = i.UIKit.getModalManager();
+                E = i.Navigation.getFullPageModalManager(),
+                x = i.UIKit.getModalManager();
             e.exports = class {
                 constructor() {
                     this._currentParty = null, this._currentPlayer = null, this._selected = null, this._application = null, this._lastGameflowPhase = null, this._factoryRegistered = !1, this._restoreNavigationState = null, this._applicationRegisteredPromise = null, this._partyCreatedCallback = null, this._lobbiesObserver = !1, this._gameflowObserver = !1, this._queues = m.default, this._platformConfigSingleton = d.default, this._showingState = r.default.create();
@@ -3874,7 +3874,7 @@
                         u = i.ComponentFactory.getDOMNode(m);
                     let d;
                     if (r) {
-                        d = E.add({
+                        d = x.add({
                             type: "DialogAlert",
                             data: {
                                 contents: u,
@@ -3884,7 +3884,7 @@
                             }
                         }).okPromise
                     } else {
-                        x.open({
+                        E.open({
                             data: {
                                 contents: u
                             }
@@ -5122,8 +5122,8 @@
                         SkinQuestFormModalComponent: S
                     } = s.SharedComponents.getSharedEmberComponents(),
                     {
-                        ChallengeBannerTitleComponent: x,
-                        ChallengeBannerTokenComponent: E,
+                        ChallengeBannerTitleComponent: E,
+                        ChallengeBannerTokenComponent: x,
                         ChallengeBannerTokenContainerComponent: k,
                         ChallengeItemTooltipComponent: C,
                         ChallengeItemFooterComponent: P,
@@ -5231,8 +5231,8 @@
                     GenericButtonComponent: n(369),
                     AnimatedFindMatchButtonComponent: n(373),
                     CherryRatingComponent: n(376),
-                    ChallengeBannerTitleComponent: x,
-                    ChallengeBannerTokenComponent: E,
+                    ChallengeBannerTitleComponent: E,
+                    ChallengeBannerTokenComponent: x,
                     ChallengeBannerTokenContainerComponent: k,
                     ChallengeItemTooltipComponent: C,
                     ChallengeItemFooterComponent: P,
@@ -12792,24 +12792,24 @@
                             }
                 }, s.prototype._analyze = function(e, t, i, s) {
                     var a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S = this.options,
-                        x = !1;
+                        E = !1;
                     if (null != t) {
                         r = [];
-                        var E = 0;
+                        var x = 0;
                         if ("string" == typeof t) {
                             if (a = t.split(S.tokenSeparator), S.verbose && n("---------\nKey:", e), this.options.tokenize) {
                                 for (y = 0; y < this.tokenSearchers.length; y++) {
                                     for (p = this.tokenSearchers[y], S.verbose && n("Pattern:", p.pattern), h = [], f = !1, v = 0; v < a.length; v++) {
                                         g = a[v];
                                         var k = {};
-                                        (b = p.search(g)).isMatch ? (k[g] = b.score, x = !0, f = !0, r.push(b.score)) : (k[g] = 1, this.options.matchAllTokens || r.push(1)), h.push(k)
+                                        (b = p.search(g)).isMatch ? (k[g] = b.score, E = !0, f = !0, r.push(b.score)) : (k[g] = 1, this.options.matchAllTokens || r.push(1)), h.push(k)
                                     }
-                                    f && E++, S.verbose && n("Token scores:", h)
+                                    f && x++, S.verbose && n("Token scores:", h)
                                 }
                                 for (c = r[0], u = r.length, y = 1; y < u; y++) c += r[y];
                                 c /= u, S.verbose && n("Token score average:", c)
                             }
-                            d = this.fullSeacher.search(t), S.verbose && n("Full text score:", d.score), m = d.score, void 0 !== c && (m = (m + c) / 2), S.verbose && n("Score average:", m), _ = !this.options.tokenize || !this.options.matchAllTokens || E >= this.tokenSearchers.length, S.verbose && n("Check Matches", _), (x || d.isMatch) && _ && ((l = this.resultMap[s]) ? l.output.push({
+                            d = this.fullSeacher.search(t), S.verbose && n("Full text score:", d.score), m = d.score, void 0 !== c && (m = (m + c) / 2), S.verbose && n("Score average:", m), _ = !this.options.tokenize || !this.options.matchAllTokens || x >= this.tokenSearchers.length, S.verbose && n("Check Matches", _), (E || d.isMatch) && _ && ((l = this.resultMap[s]) ? l.output.push({
                                 key: e,
                                 score: m,
                                 matchedIndices: d.matchedIndices
@@ -12871,7 +12871,7 @@
                         i = Math.abs(this.options.location - t);
                     return this.options.distance ? n + i / this.options.distance : i ? 1 : n
                 }, a.prototype.search = function(e) {
-                    var t, n, i, s, o, a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S, x, E, k = this.options;
+                    var t, n, i, s, o, a, r, l, c, m, u, d, p, h, g, b, f, _, y, v, S, E, x, k = this.options;
                     if (e = k.caseSensitive ? e : e.toLowerCase(), this.pattern === e) return {
                         isMatch: !0,
                         score: 0,
@@ -12881,7 +12881,7 @@
                     };
                     if (this.patternLen > k.maxPatternLength) {
                         if (y = !!(_ = e.match(new RegExp(this.pattern.replace(k.tokenSeparator, "|")))))
-                            for (S = [], t = 0, x = _.length; t < x; t++) E = _[t], S.push([e.indexOf(E), E.length - 1]);
+                            for (S = [], t = 0, E = _.length; t < E; t++) x = _[t], S.push([e.indexOf(x), x.length - 1]);
                         return {
                             isMatch: y,
                             score: y ? .5 : 1,
@@ -17459,6 +17459,10 @@
             e.exports = i.Ember.Component.extend({
                 layout: n(402),
                 classNames: ["quick-play-perks-selector-component"],
+                matchmakingService: i.Ember.inject.service("matchmaking"),
+                isPerkSelectionDisabled: i.Ember.computed("matchmakingService.isNotSearching", (function() {
+                    return !(this.get("matchmakingService.isNotSearching") || !1)
+                })),
                 hidePerksModal(e) {
                     return new Promise(((e, t) => {
                         (0, s.usePerksApi)((e => e.hide())), e()
@@ -17551,8 +17555,8 @@
         }, (e, t, n) => {
             const i = n(1).Ember;
             e.exports = i.HTMLBars.template({
-                id: "OSbZzJte",
-                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\index.js\\" "],["text","\\n"],["append",["helper",["framed-icon-button"],null,[["disabled","disabledTooltipText","iconPath","clickSfxPath","hoverSfxPath","onButtonClick"],[["get",["isDisabled"]],["get",["disabledTooltipText"]],"/fe/lol-champ-select/images/perks/rune-recommender-icon.png","/fe/lol-champ-select/sounds/sfx-uikit-edit-click.ogg","/fe/lol-champ-select/sounds/sfx-uikit-grid-hover.ogg",["helper",["action"],[["get",[null]],"showRuneRecommenderModal"],null]]]],false],["text","\\n\\n"],["append",["helper",["framed-icon-button"],null,[["disabled","iconPath","clickSfxPath","hoverSfxPath","onButtonClick"],[["get",["isPerkSelectionDisabled"]],"/fe/lol-champ-select/images/config/edit-perks-button.png","/fe/lol-champ-select/sounds/sfx-uikit-edit-click.ogg","/fe/lol-champ-select/sounds/sfx-uikit-grid-hover.ogg",["helper",["action"],[["get",[null]],"showPerksModal"],null]]]],false],["text","\\n\\n"],["append",["helper",["quick-play-perks-page-dropdown"],null,[["perksPages","selectingPerksPage","playerSlots","selectingSlotIndex","handleDropdownOptionSelected"],[["get",["perksPages"]],["get",["selectingPerksPage"]],["get",["playerSlots"]],["get",["selectingSlotIndex"]],"selectPerksPage"]]],false],["text","\\n "]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                id: "D6MEVQ6Z",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\quick-play-perks-selector\\\\index.js\\" "],["text","\\n"],["append",["helper",["framed-icon-button"],null,[["disabled","disabledTooltipText","iconPath","clickSfxPath","hoverSfxPath","onButtonClick"],[["get",["isPerkSelectionDisabled"]],["get",["disabledTooltipText"]],"/fe/lol-champ-select/images/perks/rune-recommender-icon.png","/fe/lol-champ-select/sounds/sfx-uikit-edit-click.ogg","/fe/lol-champ-select/sounds/sfx-uikit-grid-hover.ogg",["helper",["action"],[["get",[null]],"showRuneRecommenderModal"],null]]]],false],["text","\\n\\n"],["append",["helper",["framed-icon-button"],null,[["disabled","iconPath","clickSfxPath","hoverSfxPath","onButtonClick"],[["get",["isPerkSelectionDisabled"]],"/fe/lol-champ-select/images/config/edit-perks-button.png","/fe/lol-champ-select/sounds/sfx-uikit-edit-click.ogg","/fe/lol-champ-select/sounds/sfx-uikit-grid-hover.ogg",["helper",["action"],[["get",[null]],"showPerksModal"],null]]]],false],["text","\\n\\n"],["append",["helper",["quick-play-perks-page-dropdown"],null,[["perksPages","selectingPerksPage","playerSlots","selectingSlotIndex","handleDropdownOptionSelected"],[["get",["perksPages"]],["get",["selectingPerksPage"]],["get",["playerSlots"]],["get",["selectingSlotIndex"]],"selectPerksPage"]]],false],["text","\\n "]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -17573,6 +17577,10 @@
                     },
                     showDelay: 175
                 },
+                matchmakingService: i.Ember.inject.service("matchmaking"),
+                disabled: i.Ember.computed("matchmakingService.isNotSearching", (function() {
+                    return !(this.get("matchmakingService.isNotSearching") || !1)
+                })),
                 actions: {
                     selectPerksPage(e, t) {
                         this.sendAction("handleDropdownOptionSelected", e, t)

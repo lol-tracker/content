@@ -24092,7 +24092,7 @@
                         } i.default = e, n && n.set(e, i);
                     return i
                 }(n(313)),
-                s = (i = n(385)) && i.__esModule ? i : {
+                s = (i = n(386)) && i.__esModule ? i : {
                     default: i
                 };
 
@@ -24124,27 +24124,32 @@
                         name: "HonorLateRecognitionComponent",
                         tra: o.traService,
                         ComponentFactory: o.ComponentFactory,
-                        HonorLateRecognitionComponent: n(389).default,
-                        HonorLateRecognitionIconComponent: n(392).default
+                        HonorLateRecognitionComponent: n(390).default,
+                        HonorLateRecognitionIconComponent: n(393).default
                     }), o.EmberApplicationFactory.setFactoryDefinition({
                         name: "HonorLevelupVignetteComponent",
                         tra: o.traService,
                         ComponentFactory: o.ComponentFactory,
-                        HonorLevelupVignetteComponent: n(395).default
+                        HonorLevelupVignetteComponent: n(396).default
                     }), o.EmberApplicationFactory.setFactoryDefinition({
                         name: "HonorSeasonRewardComponent",
                         tra: o.traService,
                         ComponentFactory: o.ComponentFactory,
-                        HonorSeasonRewardComponent: n(399).default,
+                        HonorSeasonRewardComponent: n(400).default,
                         MissionCelebrationRewardComponent: n(238)
                     }), o.EmberApplicationFactory.setFactoryDefinition({
                         name: "ChallengesLevelUpVignetteComponent",
                         tra: o.traService,
                         ComponentFactory: o.ComponentFactory,
-                        ChallengesLevelUpVignetteComponent: n(402).default
+                        ChallengesLevelUpVignetteComponent: n(403).default
                     }), o.EmberApplicationFactory.setFactoryDefinition({
                         name: "SnrdTransitionModalComponent",
-                        SnrdTransitionModalRootComponent: n(405).default,
+                        SnrdTransitionModalRootComponent: n(406).default,
+                        tra: o.traService,
+                        ComponentFactory: o.ComponentFactory
+                    }), o.EmberApplicationFactory.setFactoryDefinition({
+                        name: "VanguardIsComingModalComponent",
+                        VanguardIsComingModalRootComponent: n(409).default,
                         tra: o.traService,
                         ComponentFactory: o.ComponentFactory
                     })
@@ -24205,32 +24210,33 @@
                         EsportsSpectateService: n(358).default,
                         PlayerFeedbackService: n(359).default,
                         SnrdTransitionModalService: n(360),
+                        VanguardIsComingModalService: n(362),
                         SummonerService: n(361).default,
-                        TftService: n(362).default,
-                        DeepLinksService: n(363).default,
-                        IndexRoute: n(364),
+                        TftService: n(363).default,
+                        DeepLinksService: n(364).default,
+                        IndexRoute: n(365),
                         TEMPLATES: {
-                            application: n(365),
-                            index: n(366),
-                            loading: n(367),
-                            "components/blue-essence-currency": n(368),
-                            "components/currency-container": n(369),
-                            "components/deep-links-promo": n(370),
-                            "components/menu-item": n(371),
-                            "components/nav-bar": n(372),
-                            "components/navigation-root": n(373),
-                            "components/status-ticker": n(374),
+                            application: n(366),
+                            index: n(367),
+                            loading: n(368),
+                            "components/blue-essence-currency": n(369),
+                            "components/currency-container": n(370),
+                            "components/deep-links-promo": n(371),
+                            "components/menu-item": n(372),
+                            "components/nav-bar": n(373),
+                            "components/navigation-root": n(374),
+                            "components/status-ticker": n(375),
                             "components/status-ticker-incident": n(324),
-                            "components/ready-check-button-accept": n(375),
-                            "components/ready-check-button-decline": n(376),
-                            "components/ready-check-icon": n(377),
-                            "components/ready-check-map-background": n(378),
-                            "components/ready-check-root": n(379),
-                            "components/ready-check-status-text": n(380),
-                            "components/ready-check-timer": n(381),
-                            "components/loyalty-badge": n(382),
-                            "components/legal-rating-screen": n(383),
-                            "components/loading-tab": n(384)
+                            "components/ready-check-button-accept": n(376),
+                            "components/ready-check-button-decline": n(377),
+                            "components/ready-check-icon": n(378),
+                            "components/ready-check-map-background": n(379),
+                            "components/ready-check-root": n(380),
+                            "components/ready-check-status-text": n(381),
+                            "components/ready-check-timer": n(382),
+                            "components/loyalty-badge": n(383),
+                            "components/legal-rating-screen": n(384),
+                            "components/loading-tab": n(385)
                         }
                     };
                     return t
@@ -27315,6 +27321,130 @@
             t.default = r
         }, (e, t, n) => {
             "use strict";
+            var i = n(1);
+            const o = "/lol-settings/v1/local/lol-vanguard",
+                r = "systemCheckLastSeen",
+                s = "systemCheckPassed",
+                a = "/riotclient/system-info/v1/basic-info",
+                l = "/lol-vanguard/v1/config/days-to-reshow-modal",
+                c = "/lol-vanguard/v1/machine-specs",
+                u = "/lol-loyalty/v1/status-notification",
+                d = "Windows",
+                p = Date.parse("2024-02-26T00:00:00.000Z");
+            e.exports = i.Ember.Service.extend({
+                _modal: null,
+                tra: i.tra,
+                localSettings: null,
+                systemInfo: null,
+                daysToReshowModal: null,
+                vanguardMachineSpecs: null,
+                loyaltyData: null,
+                init() {
+                    this._super(...arguments), this.initLocalSettingsObserver(), this.initSystemInfoObserver(), this.initDaysToReshowModalObserver(), this.initVanguardMachineSpecsObserver(), this.initLoyaltyObserver()
+                },
+                willDestroy() {
+                    this._super(...arguments), this.removeObservers()
+                },
+                initLocalSettingsObserver() {
+                    i.db.observe(o, this, (e => {
+                        e && (this.set("localSettings", e), this.tryShowModal())
+                    }))
+                },
+                initSystemInfoObserver() {
+                    i.db.observe(a, this, (e => {
+                        e && (this.set("systemInfo", e), this.tryShowModal())
+                    }))
+                },
+                initDaysToReshowModalObserver() {
+                    i.db.observe(l, this, (e => {
+                        e && (this.set("daysToReshowModal", e), this.tryShowModal())
+                    }))
+                },
+                initVanguardMachineSpecsObserver() {
+                    i.db.observe(c, this, (e => {
+                        e && (this.set("vanguardMachineSpecs", e), this.tryShowModal())
+                    }))
+                },
+                initLoyaltyObserver() {
+                    i.db.observe(u, this, (e => {
+                        e && (this.set("loyaltyData", e), this.tryShowModal())
+                    }))
+                },
+                shouldCheckSecureFeatures: i.Ember.computed("systemInfo.operatingSystem.platform", "systemInfo.operatingSystem.versionMajor", (function() {
+                    if (this.get("systemInfo.operatingSystem.platform") !== d) return !1;
+                    const e = this.get("systemInfo.operatingSystem.versionMajor");
+                    return !((parseInt(e) || 0) < 11)
+                })),
+                hasMinOsForVanguard: i.Ember.computed("systemInfo.operatingSystem.platform", "systemInfo.operatingSystem.versionMajor", (function() {
+                    if (this.get("systemInfo.operatingSystem.platform") !== d) return !0;
+                    const e = this.get("systemInfo.operatingSystem.versionMajor");
+                    return !((parseInt(e) || 0) < 10)
+                })),
+                systemCheck: i.Ember.computed("shouldCheckSecureFeatures", "hasMinOsForVanguard", "vanguardMachineSpecs.tpm2Enabled", "vanguardMachineSpecs.secureBootEnabled", (function() {
+                    const e = {
+                        operatingSystemPassed: this.get("hasMinOsForVanguard"),
+                        secureFeaturesPassed: !0
+                    };
+                    if (this.get("shouldCheckSecureFeatures")) {
+                        const t = this.get("vanguardMachineSpecs.tpm2Enabled"),
+                            n = this.get("vanguardMachineSpecs.secureBootEnabled");
+                        t && n || (e.secureFeaturesPassed = !1)
+                    }
+                    return e
+                })),
+                passedAllChecks: i.Ember.computed("systemCheck.operatingSystemPassed", "systemCheck.secureFeaturesPassed", (function() {
+                    return !(!this.get("systemCheck.operatingSystemPassed") || !this.get("systemCheck.secureFeaturesPassed"))
+                })),
+                shouldShowModal: i.Ember.computed(`localSettings.data.${s}`, `localSettings.data.${r}`, "vanguardMachineSpecs", "systemInfo.operatingSystemPassed", "systemInfo.secureFeaturesPassed", "daysToReshowModal", "loyaltyData.status", (function() {
+                    if (!(this.get("vanguardMachineSpecs") && this.get("systemInfo") && this.get("daysToReshowModal") && this.get("loyaltyData.status"))) return !1;
+                    if (Date.now() > p) return !1;
+                    const e = this.get("loyaltyData.status");
+                    if ("LEGACY" === e || "REWARDS_GRANT" === e) return i.logger.info(`Vanguard Modal not displayed: loyalty program detected (${e})`), !1;
+                    if (this.get(`localSettings.data.${s}`)) return i.logger.info("Vanguard Modal not displayed: computer previously passed system checks"), !1;
+                    const t = this.get(`localSettings.data.${r}`);
+                    if (!t) return !0;
+                    return Date.now() - t > 864e5 * this.get("daysToReshowModal")
+                })),
+                tryShowModal() {
+                    if (!this.get("shouldShowModal")) return;
+                    const e = this.get("passedAllChecks"),
+                        t = this.get("systemCheck.operatingSystemPassed"),
+                        n = this.get("systemCheck.secureFeaturesPassed"),
+                        o = i.ComponentFactory.create("VanguardIsComingModalComponent", {
+                            passedAllChecks: e,
+                            shouldCheckSecureFeatures: this.get("shouldCheckSecureFeatures"),
+                            passedOsCheck: t,
+                            passedSecureFeaturesCheck: n
+                        }),
+                        r = e ? "vanguard_is_coming_modal_confirmation_pass" : "vanguard_is_coming_modal_confirmation_fail";
+                    this._modal = i.lolUikit.getModalManager().add({
+                        type: "DialogAlert",
+                        data: {
+                            contents: o.domNode,
+                            okText: i.tra.get(r),
+                            onClose: this.hideModal.bind(this)
+                        }
+                    }), this.sendTelemetryEvent(t, n)
+                },
+                sendTelemetryEvent: (e, t) => i.db.post("/lol-vanguard/v1/telemetry/system-check", {
+                    passedOsCheck: e,
+                    passedSecureFeaturesCheck: t
+                }),
+                hideModal() {
+                    i.db.patch(o, {
+                        data: {
+                            [r]: Date.now(),
+                            [s]: this.get("passedAllChecks")
+                        },
+                        schemaVersion: 1
+                    }), i.lolUikit.getModalManager().remove(this._modal), this._modal = null
+                },
+                removeObservers() {
+                    i.db.unobserve(o, this), i.db.unobserve(a, this), i.db.unobserve(l, this), i.db.unobserve(c, this), i.db.unobserve(u, this)
+                }
+            })
+        }, (e, t, n) => {
+            "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
@@ -27625,8 +27755,8 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1),
-                o = s(n(386)),
-                r = s(n(388));
+                o = s(n(387)),
+                r = s(n(389));
 
             function s(e) {
                 return e && e.__esModule ? e : {
@@ -27677,7 +27807,7 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(387);
+            n(388);
             var o = class {
                 constructor() {}
                 showNotification(e, t, n) {
@@ -27738,8 +27868,8 @@
             }), t.default = void 0;
             var i = n(1),
                 o = n(355);
-            n(390);
-            var r, s = (r = n(391)) && r.__esModule ? r : {
+            n(391);
+            var r, s = (r = n(392)) && r.__esModule ? r : {
                 default: r
             };
             var a = i.Ember.Component.extend({
@@ -27779,8 +27909,8 @@
             }), t.default = void 0;
             var i = n(1),
                 o = n(355);
-            n(393);
-            var r, s = (r = n(394)) && r.__esModule ? r : {
+            n(394);
+            var r, s = (r = n(395)) && r.__esModule ? r : {
                 default: r
             };
             var a = i.Ember.Component.extend({
@@ -27822,9 +27952,9 @@
             var i = n(1),
                 o = n(355),
                 r = n(356),
-                s = l(n(396));
-            n(397);
-            var a = l(n(398));
+                s = l(n(397));
+            n(398);
+            var a = l(n(399));
 
             function l(e) {
                 return e && e.__esModule ? e : {
@@ -28161,8 +28291,8 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(400);
-            var o, r = (o = n(401)) && o.__esModule ? o : {
+            n(401);
+            var o, r = (o = n(402)) && o.__esModule ? o : {
                     default: o
                 },
                 s = n(356),
@@ -28226,9 +28356,9 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(403);
-            var o = s(n(404)),
-                r = s(n(396));
+            n(404);
+            var o = s(n(405)),
+                r = s(n(397));
 
             function s(e) {
                 return e && e.__esModule ? e : {
@@ -28418,10 +28548,10 @@
             }), t.default = void 0;
             var i, o = n(1),
                 r = n(308),
-                s = (i = n(406)) && i.__esModule ? i : {
+                s = (i = n(407)) && i.__esModule ? i : {
                     default: i
                 };
-            n(407);
+            n(408);
             var a = o.Ember.Component.extend({
                 classNames: ["snrd-transition-modal-root-element"],
                 layout: s.default,
@@ -28462,6 +28592,35 @@
             e.exports = i.HTMLBars.template({
                 id: "tQw5HP++",
                 block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\snrd-transition-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\components\\\\snrd-transition-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","snrd-transition-modal__main"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__header"],["flush-element"],["text","\\n    "],["open-element","h1",[]],["static-attr","class","snrd-transition-modal__title"],["flush-element"],["append",["unknown",["titleText"]],false],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["bodyText"]]],null],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__content"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__generic"],["flush-element"],["text","\\n      "],["append",["unknown",["gameName"]],false],["text"," #"],["append",["unknown",["tagLine"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__examples"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__social-panel"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__social-panel-player"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","snrd-transition-modal__social-panel--inline"],["flush-element"],["text","\\n            "],["append",["unknown",["gameName"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","snrd-transition-modal__social-panel-status"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","snrd_transition_modal_social_online"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__in-game"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","snrd-transition-modal__in-game--inline"],["flush-element"],["text","\\n          "],["append",["unknown",["gameName"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__footer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__footer-left"],["flush-element"],["text","\\n      "],["open-element","a",[]],["dynamic-attr","href",["unknown",["faqUrl"]],null],["static-attr","target","_blank"],["flush-element"],["append",["unknown",["tra","snrd_transition_modal_learn_more"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","snrd-transition-modal__footer-right"],["flush-element"],["text","\\n      "],["open-element","a",[]],["dynamic-attr","href",["unknown",["riotIdChangeUrl"]],null],["static-attr","target","_blank"],["flush-element"],["append",["unknown",["tra","snrd_transition_modal_change_riot_id"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+                meta: {}
+            })
+        }, (e, t, n) => {
+            "use strict";
+            n.r(t)
+        }, (e, t, n) => {
+            "use strict";
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            }), t.default = void 0;
+            var i, o = n(1),
+                r = (i = n(410)) && i.__esModule ? i : {
+                    default: i
+                };
+            n(411);
+            var s = o.Ember.Component.extend({
+                classNames: ["vanguard-is-coming-modal-root-element"],
+                layout: r.default,
+                tra: o.tra,
+                init() {
+                    this._super(...arguments)
+                }
+            });
+            t.default = s
+        }, (e, t, n) => {
+            const i = n(1).Ember;
+            e.exports = i.HTMLBars.template({
+                id: "2ws9M3Gf",
+                block: '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\vanguard-is-coming-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\components\\\\vanguard-is-coming-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__main"],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__metal left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__header-title"],["flush-element"],["append",["unknown",["tra","vanguard_is_coming_modal_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__metal right"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__content"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__explanation"],["flush-element"],["text","\\n      "],["append",["unknown",["tra","vanguard_is_coming_modal_explanation"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["vanguard-is-coming-modal__checks ",["helper",["if"],[["get",["passedAllChecks"]],"overall-pass","overall-fail"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check-text check-pass"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_system_specs"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["vanguard-is-coming-modal__check-text ",["helper",["if"],[["get",["passedOsCheck"]],"check-pass","check-fail"],null]]]],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_operating_system"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldCheckSecureFeatures"]]],null,2],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check-result"],["flush-element"],["text","\\n"],["block",["if"],[["get",["passedAllChecks"]]],null,1,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check-result-description fail"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_check_fail"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","ul",[]],["static-attr","class","vanguard-is-coming-modal__check-actions"],["flush-element"],["text","\\n          "],["open-element","li",[]],["static-attr","class","vanguard-is-coming-modal__check-action"],["flush-element"],["text","\\n            "],["open-element","a",[]],["dynamic-attr","href",["unknown",["tra","vanguard_is_coming_modal_faq_url"]],null],["static-attr","target","_blank"],["flush-element"],["append",["unknown",["tra","vanguard_is_coming_modal_action_faq"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","li",[]],["static-attr","class","vanguard-is-coming-modal__check-action"],["flush-element"],["text","\\n            "],["open-element","a",[]],["dynamic-attr","href",["unknown",["tra","vanguard_is_coming_modal_support_url"]],null],["static-attr","target","_blank"],["flush-element"],["append",["unknown",["tra","vanguard_is_coming_modal_action_ticket"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__manual-check"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_manual_check"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check-result-description pass"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_check_pass"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","vanguard-is-coming-modal__check"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["vanguard-is-coming-modal__check-text ",["helper",["if"],[["get",["passedSecureFeaturesCheck"]],"check-pass","check-fail"],null]]]],["flush-element"],["text","\\n          "],["append",["unknown",["tra","vanguard_is_coming_modal_other_checks"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
                 meta: {}
             })
         }, (e, t, n) => {
@@ -28569,10 +28728,10 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1),
-                o = l(n(410)),
-                r = l(n(412)),
-                s = l(n(411)),
-                a = l(n(413));
+                o = l(n(414)),
+                r = l(n(416)),
+                s = l(n(415)),
+                a = l(n(417));
 
             function l(e) {
                 return e && e.__esModule ? e : {
@@ -28617,7 +28776,7 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(411)) && i.__esModule ? i : {
+                r = (i = n(415)) && i.__esModule ? i : {
                     default: i
                 };
             t.default = class {
@@ -28704,7 +28863,7 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(411)) && i.__esModule ? i : {
+                r = (i = n(415)) && i.__esModule ? i : {
                     default: i
                 };
             t.default = class {
@@ -28727,10 +28886,10 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(414);
-            const o = n(415),
-                r = n(416),
-                s = n(417),
+            n(418);
+            const o = n(419),
+                r = n(420),
+                s = n(421),
                 a = "dismiss-me-pls",
                 l = {
                     celebration: {
@@ -29020,9 +29179,9 @@
         }, (e, t, n) => {
             "use strict";
             var i = n(1),
-                o = a(n(419)),
-                r = a(n(420)),
-                s = a(n(421));
+                o = a(n(423)),
+                r = a(n(424)),
+                s = a(n(425));
 
             function a(e) {
                 return e && e.__esModule ? e : {
@@ -29282,10 +29441,10 @@
             t.default = r
         }, (e, t, n) => {
             "use strict";
-            var i, o = (i = n(423)) && i.__esModule ? i : {
+            var i, o = (i = n(427)) && i.__esModule ? i : {
                 default: i
             };
-            n(425), e.exports = function() {
+            n(429), e.exports = function() {
                 return new o.default
             }
         }, (e, t, n) => {
@@ -29294,7 +29453,7 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(424)) && i.__esModule ? i : {
+                r = (i = n(428)) && i.__esModule ? i : {
                     default: i
                 };
             const s = "lol-loading-screen-gameflow-state",
@@ -29477,7 +29636,7 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(427);
+            n(431);
             const o = "CHAMPION",
                 r = "CHAMPION_SKIN",
                 s = "WARD_SKIN",
@@ -29536,7 +29695,7 @@
                 }
                 _getCelebrationStaticContent(e, t) {
                     const i = document.createElement("img");
-                    return i.classList.add("lol-store-gift-celebration-image"), t.image ? (i.src = t.image, i.classList.add("lol-store-gift-celebration-image-item"), e.data.inventoryType && i.classList.add(`lol-store-gift-celebration-image-${e.data.inventoryType}`)) : (i.src = n(428), i.classList.add("lol-store-gift-celebration-image-generic")), i
+                    return i.classList.add("lol-store-gift-celebration-image"), t.image ? (i.src = t.image, i.classList.add("lol-store-gift-celebration-image-item"), e.data.inventoryType && i.classList.add(`lol-store-gift-celebration-image-${e.data.inventoryType}`)) : (i.src = n(432), i.classList.add("lol-store-gift-celebration-image-generic")), i
                 }
                 _getCelebrationContent(e, t) {
                     const n = e.type === h,
@@ -29688,7 +29847,7 @@
                         } i.default = e, n && n.set(e, i);
                     return i
                 }(n(1)),
-                r = (i = n(430)) && i.__esModule ? i : {
+                r = (i = n(434)) && i.__esModule ? i : {
                     default: i
                 };
 
@@ -29700,12 +29859,12 @@
                     return e ? n : t
                 })(e)
             }
-            n(435);
+            n(439);
             var a = function() {
                 const e = o.default.getProvider().get("rcp-fe-lol-l10n").tra(),
-                    t = n(443).default,
+                    t = n(447).default,
                     i = function(e) {
-                        const t = n(436).default,
+                        const t = n(440).default,
                             i = "rcp-fe-lol-reconnect",
                             r = o.default.Viewport.main().getScreenRoot(i);
                         r.getElement().className = i;
@@ -29713,7 +29872,7 @@
                         return s.initBackendCommunication(e), s
                     }(e),
                     s = function(e) {
-                        const t = n(438).default,
+                        const t = n(442).default,
                             i = "rcp-fe-lol-game-in-progress",
                             r = o.default.Viewport.main().getScreenRoot(i);
                         r.getElement().className = i;
@@ -29721,7 +29880,7 @@
                         return s.initBackendCommunication(e), s
                     }(e),
                     a = function(e) {
-                        const t = n(440).default,
+                        const t = n(444).default,
                             i = "rcp-fe-lol-repair-while-in-game",
                             r = o.default.Viewport.main().getScreenRoot(i);
                         r.getElement().className = i;
@@ -29752,7 +29911,7 @@
                         } i.default = e, n && n.set(e, i);
                     return i
                 }(n(1)),
-                o = s(n(431)),
+                o = s(n(435)),
                 r = s(n(53));
 
             function s(e) {
@@ -29866,8 +30025,8 @@
                 t.innerHTML = n, !1 !== e.showSpinner ? t.querySelector(".spinner").setAttribute("src", o.default) : t.querySelector(".spinner").style.display = "none";
                 return u(t, e), s = window.setInterval(c, 1e3, t, e), t
             };
-            var i = r(n(432)),
-                o = r(n(433));
+            var i = r(n(436)),
+                o = r(n(437));
 
             function r(e) {
                 return e && e.__esModule ? e : {
@@ -29899,7 +30058,7 @@
                 const r = t.lockoutText.replace(/\{\{lockoutTimeRemaining\}\}/, i);
                 a > 0 && (o += ` ${r}`), n.textContent = o
             }
-            n(434)
+            n(438)
         }, e => {
             "use strict";
             e.exports = '<lol-uikit-dialog-frame class="dialog-frame" data-type="reconnect-notification">\r\n  <div class="dialog-content">\r\n    <lol-uikit-content-block type=\'dialog-medium\'>\r\n      <h4>{{TITLE}}</h4>\r\n      <hr class="heading-spacer" />\r\n      <p>{{BODY}}</p>\r\n\r\n      <img class=\'spinner\'/>\r\n    </lol-uikit-content-block>\r\n\r\n    <lol-uikit-flat-button-group type="dialog-frame">\r\n\r\n      <lol-uikit-flat-button class="button-shutdown" disabled>\r\n      </lol-uikit-flat-button>\r\n\r\n    </lol-uikit-flat-button-group>\r\n  </div>\r\n</lol-uikit-dialog-frame>\r\n'
@@ -29918,7 +30077,7 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(437)) && i.__esModule ? i : {
+                r = (i = n(441)) && i.__esModule ? i : {
                     default: i
                 };
             t.default = class {
@@ -30019,7 +30178,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var i, o = (i = n(439)) && i.__esModule ? i : {
+            var i, o = (i = n(443)) && i.__esModule ? i : {
                 default: i
             };
             t.default = class {
@@ -30082,7 +30241,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var i, o = (i = n(441)) && i.__esModule ? i : {
+            var i, o = (i = n(445)) && i.__esModule ? i : {
                 default: i
             };
             t.default = class {
@@ -30136,7 +30295,7 @@
                     this._element.querySelector(".repair-body .header").innerText = e.get("game_in_progress_client_repair"), this._element.querySelector(".repair-body .body").innerText = e.get("game_in_progress_client_repair_explanation"), this._element.querySelector(".repair-body .link").innerHTML = e.get("game_in_progress_client_repair_learn")
                 }
                 _buildElement() {
-                    const e = n(442);
+                    const e = n(446);
                     return this._element = document.createElement("DIV"), this._element.innerHTML = e, this._element
                 }
             }
@@ -30240,7 +30399,7 @@
             var o = function() {
                 const {
                     routeToExperience: e
-                } = n(445);
+                } = n(449);
                 e()
             };
             t.default = o
@@ -30250,11 +30409,11 @@
                 value: !0
             }), t.routeToExperience = d;
             var i, o = n(1),
-                r = n(446),
-                s = (i = n(449)) && i.__esModule ? i : {
+                r = n(450),
+                s = (i = n(453)) && i.__esModule ? i : {
                     default: i
                 },
-                a = n(447);
+                a = n(451);
             n(308);
             const l = "rcp-fe-lol-npe-first-touch",
                 c = !0;
@@ -30346,8 +30505,8 @@
                 return !1
             }, t.getIsUnderMaxNPELevel = g, t.getNPESettings = h, t.isInGameflow = b, t.isInTutorialModule = E, t.updateSettings = S, t.waitForConfigReady = l, t.waitForLogin = a, t.waitForSettingsReady = c, t.waitForSummonerReady = u;
             var i, o = n(1),
-                r = n(447),
-                s = (i = n(448)) && i.__esModule ? i : {
+                r = n(451),
+                s = (i = n(452)) && i.__esModule ? i : {
                     default: i
                 };
 
@@ -30498,22 +30657,22 @@
                     name: "rcp-fe-lol-npe-first-touch",
                     tra: i.traService,
                     ComponentFactory: i.ComponentFactory,
-                    FirstTouchComponent: n(450).default,
-                    IntroVideoComponent: n(453).default,
-                    AliasCreateComponent: n(456).default,
-                    SummonerNameCreateComponent: n(462).default,
-                    PatchingExperienceComponent: n(465).default,
-                    ChampionCarouselComponent: n(468).default,
-                    ChampionCarouselItemComponent: n(471).default,
-                    ChampionInformationComponent: n(474).default,
-                    GameModeSelectComponent: n(477).default,
+                    FirstTouchComponent: n(454).default,
+                    IntroVideoComponent: n(457).default,
+                    AliasCreateComponent: n(460).default,
+                    SummonerNameCreateComponent: n(466).default,
+                    PatchingExperienceComponent: n(469).default,
+                    ChampionCarouselComponent: n(472).default,
+                    ChampionCarouselItemComponent: n(475).default,
+                    ChampionInformationComponent: n(478).default,
+                    GameModeSelectComponent: n(481).default,
                     ArrowFooterComponent: s,
                     PlayerNameComponent: a,
-                    FirstTouchService: n(480).default,
-                    LanguageFilterService: n(481).default,
-                    PlayerNameStateService: n(484).default,
-                    WaitForResolvedStringHelper: n(485).default,
-                    IsEqualHelper: n(486).default
+                    FirstTouchService: n(484).default,
+                    LanguageFilterService: n(485).default,
+                    PlayerNameStateService: n(488).default,
+                    WaitForResolvedStringHelper: n(489).default,
+                    IsEqualHelper: n(490).default
                 };
                 i.EmberApplicationFactory.setFactoryDefinition(l);
                 const c = i.ComponentFactory.create(l.name, {
@@ -30535,7 +30694,7 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(451);
+            n(455);
             const o = "patching-experience",
                 r = "summoner-name-create",
                 s = "game-mode-select",
@@ -30545,7 +30704,7 @@
                 u = [s, a];
             var d = i.Ember.Component.extend({
                 classNames: ["rcp-fe-lol-npe-first-touch"],
-                layout: n(452),
+                layout: n(456),
                 firstTouchService: i.Ember.inject.service("first-touch"),
                 currentScreen: null,
                 patchingExperienceShouldShow: i.Ember.computed.equal("currentScreen", o),
@@ -30600,13 +30759,13 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(454);
+            n(458);
             const {
                 RunMixin: o
             } = i.EmberAddons.EmberLifeline;
             var r = i.Ember.Component.extend(o, {
                 classNames: ["intro-video-component"],
-                layout: n(455),
+                layout: n(459),
                 isSkipDisabled: !0,
                 init() {
                     this._super(...arguments), i.Navigation.hide(), this.handleVideoEnded = this.handleVideoEnded.bind(this)
@@ -30648,10 +30807,10 @@
                 value: !0
             }), t.errorStrings = t.dom = t.default = t.classNames = t.TAG_LINE_MAX = t.NAME_MIN = t.GAME_NAME_MAX = void 0, t.isPossiblyValid = S;
             var i = n(1),
-                o = n(457);
-            n(458);
-            var r, s = n(447),
-                a = (r = n(459)) && r.__esModule ? r : {
+                o = n(461);
+            n(462);
+            var r, s = n(451),
+                a = (r = n(463)) && r.__esModule ? r : {
                     default: r
                 };
             const l = {
@@ -30815,8 +30974,8 @@
                 messageClass: i.Ember.computed("message", (function() {
                     return b.get(this.get("message"))?.message
                 })),
-                startButtonSoundHover: n(460),
-                startButtonSoundClick: n(461),
+                startButtonSoundHover: n(464),
+                startButtonSoundClick: n(465),
                 disableRegisterButton: i.Ember.computed("isLoading", "validityVerified", (function() {
                     return this.get("isLoading") || !this.get("isValidityVerified")
                 })),
@@ -30921,7 +31080,7 @@
                 i.Telemetry.sendCustomData(t, n)
             };
             var i = n(1),
-                o = n(447)
+                o = n(451)
         }, (e, t, n) => {
             "use strict";
             n.r(t)
@@ -30944,15 +31103,15 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1),
-                o = n(457);
-            n(463);
-            var r = n(447);
+                o = n(461);
+            n(467);
+            var r = n(451);
             const {
                 RunMixin: s
             } = i.EmberAddons.EmberLifeline;
             var a = i.Ember.Component.extend(s, {
                 classNames: ["summoner-name-create-component"],
-                layout: n(464),
+                layout: n(468),
                 firstTouchService: i.Ember.inject.service("first-touch"),
                 languageFilterService: i.Ember.inject.service("language-filter"),
                 username: i.Ember.computed.alias("firstTouchService.session.username"),
@@ -30966,8 +31125,8 @@
                 isNameAvailabilityRequestError: !1,
                 isFormSubmitRequestErrorMessage: !1,
                 startNowButtonSound: {
-                    onHover: n(460),
-                    onClick: n(461)
+                    onHover: n(464),
+                    onClick: n(465)
                 },
                 init() {
                     this._super(...arguments);
@@ -31117,12 +31276,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(466);
-            var o = n(457),
-                r = n(447),
+            n(470);
+            var o = n(461),
+                r = n(451),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-patching-experience-component"],
-                    layout: n(467),
+                    layout: n(471),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     champions: i.Ember.computed.alias("firstTouchService.champions"),
                     didSendEvent: !1,
@@ -31154,16 +31313,16 @@
                 value: !0
             }), t.default = t.SFX_PIP_FORWARD = t.SFX_PIP_BACKWARD = void 0;
             var i = n(1);
-            n(469);
-            var o = n(457),
-                r = n(447);
+            n(473);
+            var o = n(461),
+                r = n(451);
             const s = "/fe/lol-static-assets/sounds/npe-ft-sfx-pip-backward-click.ogg";
             t.SFX_PIP_BACKWARD = s;
             const a = "/fe/lol-static-assets/sounds/npe-ft-sfx-pip-forward-click.ogg";
             t.SFX_PIP_FORWARD = a;
             var l = i.Ember.Component.extend({
                 classNames: ["npe-first-touch-champion-carousel-component"],
-                layout: n(470),
+                layout: n(474),
                 champions: null,
                 currentChampionIdx: 0,
                 lastChampionIdx: i.Ember.computed("champions", (function() {
@@ -31216,10 +31375,10 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(472);
+            n(476);
             var o = i.Ember.Component.extend({
                 classNames: ["npe-first-touch-champion-carousel-item-component"],
-                layout: n(473),
+                layout: n(477),
                 champion: null,
                 uncenteredSplashPath: i.Ember.computed("champion", (function() {
                     const e = this.get("champion");
@@ -31243,12 +31402,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(475);
-            var o = n(447),
-                r = n(457),
+            n(479);
+            var o = n(451),
+                r = n(461),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-champion-information-component"],
-                    layout: n(476),
+                    layout: n(480),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     locale: i.Ember.computed.alias("firstTouchService.locale"),
                     primaryRole: i.Ember.computed("champion.roles", (function() {
@@ -31291,12 +31450,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(478);
-            var o = n(457),
-                r = n(447),
+            n(482);
+            var o = n(461),
+                r = n(451),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-game-mode-select-component"],
-                    layout: n(479),
+                    layout: n(483),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     tftMapAssets: i.Ember.computed.alias("firstTouchService.tftMapAssets"),
                     summonersRiftMapAssets: i.Ember.computed.alias("firstTouchService.summonersRiftMapAssets"),
@@ -31343,7 +31502,7 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1),
-                o = n(447);
+                o = n(451);
             const r = "/lol-maps/v2/map/22/tft",
                 s = "/lol-maps/v2/map/11/classic",
                 a = "/lol-npe-tutorial-path/v1/settings",
@@ -31406,10 +31565,10 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(482)) && i.__esModule ? i : {
+                r = (i = n(486)) && i.__esModule ? i : {
                     default: i
                 },
-                s = n(483);
+                s = n(487);
             var a = o.Ember.Service.extend({
                 ready: !1,
                 init() {
@@ -31439,7 +31598,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var i = n(483);
+            var i = n(487);
             t.default = class {
                 build(e) {
                     this._allowedCharactersMap = {};
@@ -31630,12 +31789,12 @@
                 })).then((function() {
                     const i = n(52).default,
                         r = n(312).default,
-                        s = n(408).default,
-                        a = n(409).default;
+                        s = n(412).default,
+                        a = n(413).default;
                     t.default.SimpleDialogMessages = new a;
-                    n(418)();
                     n(422)();
-                    new(0, n(426).default);
+                    n(426)();
+                    new(0, n(430).default);
                     const l = t.default.Viewport,
                         c = l.getApiKey("rcp-fe-lol-navigation key"),
                         u = l.overlay().getScreenRoot(c, "rcp-fe-lol-navigation-screen");
@@ -31652,14 +31811,15 @@
                                 playButton: r.__container__.lookup("service:play-button"),
                                 readyCheck: r.__container__.lookup("service:ready-check"),
                                 snrdTransitionModal: r.__container__.lookup("service:snrdTransitionModal"),
+                                vanguardIsComingModal: r.__container__.lookup("service:vanguardIsComingModal"),
                                 statusTicker: r.__container__.lookup("service:status-ticker"),
                                 lootOdds: r.__container__.lookup("service:loot-odds")
                             }, s);
                         a.initLinks(), a._initHomeAPI(e, t.default, o), a._initMissionsAPI(), a._initRewardsAPI(), a._initAppControlsAPI(t.default), a._initEmailVerificationAPI(t.default), a.showHome(), t.default.add({
                             Navigation: a
                         });
-                        (0, n(429).default)();
-                        return (0, n(444).default)(), t.default.Telemetry.invokeWithLowProbability((function() {
+                        (0, n(433).default)();
+                        return (0, n(448).default)(), t.default.Telemetry.invokeWithLowProbability((function() {
                             const e = t.default.db;
                             e.observe("/lol-settings/v2/ready", this, (function n(i) {
                                 if (!i) return;
