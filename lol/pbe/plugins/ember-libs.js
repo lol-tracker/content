@@ -46092,7 +46092,8 @@
                         }
                         if (this.get("playButton.isShowingTournaments")) return this.get("tra.patcher_player_in_tournament");
                         if (!this.get("playButton.isPlayGameflowEnabled")) return this.get("tra.patcher_gameflow_disabled");
-                        if (!this.get("playButton.isAtLeastOneQueueEnabled")) return this.get("tra.patcher_no_queues")
+                        if (!this.get("playButton.isAtLeastOneQueueEnabled")) return this.get("tra.patcher_no_queues");
+                        if (!this.get("playButton.vanguardSessionActive")) return this.get("tra.patcher_vanguard_session")
                     }
                     return this.get("tra.patcher_disconnected")
                 })),
@@ -46492,7 +46493,8 @@
                     clash: "/lol-clash",
                     login: "/lol-login",
                     krShutdown: "/lol-kr-shutdown-law",
-                    playerBehavior: "/lol-player-behavior"
+                    playerBehavior: "/lol-player-behavior",
+                    vanguard: "/lol-vanguard"
                 },
                 boundProperties: {
                     gameflowRest: {
@@ -46530,6 +46532,14 @@
                     reformCard: {
                         api: "playerBehavior",
                         path: "/v1/reform-card"
+                    },
+                    vanguardEnabled: {
+                        api: "vanguard",
+                        path: "/v1/config/enabled"
+                    },
+                    vanguardSession: {
+                        api: "vanguard",
+                        path: "/v1/session"
                     }
                 }
             });
@@ -46574,6 +46584,9 @@
                     const t = this.get("gameflowSession.phase");
                     return !!t && -1 !== l.indexOf(t)
                 })),
+                vanguardSessionActive: i.computed("vanguardEnabled", "vanguardSession.state", (function() {
+                    return !this.get("vanguardEnabled") || "CONNECTED" === this.get("vanguardSession.state")
+                })),
                 hasLoggedIn: i.computed("isLoggedIn", (function() {
                     return !!this.get("isLoggedIn") && (this.hasLoggedIn = !0, !0)
                 })),
@@ -46582,8 +46595,8 @@
                     return !!t && (t.get("state") && "SUCCEEDED" === t.get("state"))
                 })),
                 isAtLeastOneQueueEnabled: i.computed.not("krStatus.isAllQueuesDisabled"),
-                isEnabled: i.computed.and("gameflow.isAvailable", "isAtLeastOneQueueEnabled", "isNotShowingLobby", "isNotShowingTournaments", "patcherService.connectedToPatchServer", "isNotRepairing"),
-                isPlayEnabled: i.computed.and("isPlayGameflowEnabled", "isAtLeastOneQueueEnabled", "isNotShowingLobby", "isNotShowingTournaments", "patcherService.connectedToPatchServer", "isNotRepairing"),
+                isEnabled: i.computed.and("gameflow.isAvailable", "isAtLeastOneQueueEnabled", "isNotShowingLobby", "isNotShowingTournaments", "patcherService.connectedToPatchServer", "isNotRepairing", "vanguardSessionActive"),
+                isPlayEnabled: i.computed.and("isPlayGameflowEnabled", "isAtLeastOneQueueEnabled", "isNotShowingLobby", "isNotShowingTournaments", "patcherService.connectedToPatchServer", "isNotRepairing", "vanguardSessionActive"),
                 isButtonEnabled: i.computed.or("isEnabled", "isPlayEnabled"),
                 updateIsButtonEnabled: i.observer("isButtonEnabled", (function() {
                     a.trigger("isButtonEnabled", this.get("isButtonEnabled"))
