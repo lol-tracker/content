@@ -30459,41 +30459,9 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.routeToExperience = d;
-            var i, o = n(1),
-                r = n(451),
-                s = (i = n(454)) && i.__esModule ? i : {
-                    default: i
-                },
-                a = n(452);
-            n(308);
-            const l = "rcp-fe-lol-npe-first-touch",
-                c = !0;
-
-            function u(e) {
-                const t = o.Viewport.fullScreen().getScreenRoot(l),
-                    n = t.getElement(),
-                    i = (0, s.default)({
-                        isNameChange: e === a.SHOW_NAME_CHANGE,
-                        isGameModeSelect: e === a.SHOW_GAME_MODE_SELECT,
-                        gameModeSelectEnabled: e === a.SHOW_FIRST_TOUCH_WITH_GAME_SELECT,
-                        onFirstTouchCompleted: t => function(e, t) {
-                            const n = o.Viewport.fullScreen().getScreenRoot(l);
-                            return n.release().then((() => {
-                                if (e !== a.SHOW_NAME_CHANGE) return (0, r.getIsNPEFlowEnabled)().then((e => {
-                                    e && !t.shouldSkipTutorial ? (0, o.getProvider)().getOptional("rcp-fe-lol-new-player-experience").then((e => e.show()), (e => o.logger.error("Provider getOptional failure", e))) : t.shouldSkipTutorial ? o.Router.navigateTo("rcp-fe-lol-tft") : o.Navigation.showHome()
-                                }));
-                                o.Navigation.showHome()
-                            }))
-                        }(e, t)
-                    });
-                return t.bump().then((() => {
-                    n.appendChild(i.domNode)
-                }))
-            }
-            async function d(e = !1) {
-                const t = await (0, r.getAction)(e);
-                switch (o.logger.trace("routeToExperience for action", t), t) {
+            }), t.routeToExperience = async function() {
+                const e = await (0, r.getAction)();
+                switch (o.logger.trace("routeToExperience for action", e), e) {
                     case a.SHOW_HOME:
                         o.Navigation.showHome();
                         break;
@@ -30507,64 +30475,77 @@
                     case a.SHOW_FIRST_TOUCH_WITH_GAME_SELECT:
                     case a.SHOW_NAME_CHANGE:
                     case a.SHOW_GAME_MODE_SELECT:
-                        u(t);
-                        break;
-                    case a.SHOW_HF_ACCOUNT_CREATION:
-                        !async function() {
-                            try {
-                                (await (0, o.getProvider)().getOptional(a.HF_CLAIMING_LIB)).show()
-                            } catch (e) {
-                                o.logger.info("Provider getOptional failure", e), d(c)
-                            }
-                        }()
+                    default:
+                        ! function(e) {
+                            const t = o.Viewport.fullScreen().getScreenRoot(l),
+                                n = t.getElement(),
+                                i = (0, s.default)({
+                                    isNameChange: e === a.SHOW_NAME_CHANGE,
+                                    isGameModeSelect: e === a.SHOW_GAME_MODE_SELECT,
+                                    gameModeSelectEnabled: e === a.SHOW_FIRST_TOUCH_WITH_GAME_SELECT,
+                                    onFirstTouchCompleted: t => function(e, t) {
+                                        const n = o.Viewport.fullScreen().getScreenRoot(l);
+                                        return n.release().then((() => {
+                                            if (e !== a.SHOW_NAME_CHANGE) return (0, r.getIsNPEFlowEnabled)().then((e => {
+                                                e && !t.shouldSkipTutorial ? (0, o.getProvider)().getOptional("rcp-fe-lol-new-player-experience").then((e => e.show()), (e => o.logger.error("Provider getOptional failure", e))) : t.shouldSkipTutorial ? o.Router.navigateTo("rcp-fe-lol-tft") : o.Navigation.showHome()
+                                            }));
+                                            o.Navigation.showHome()
+                                        }))
+                                    }(e, t)
+                                });
+                            t.bump().then((() => {
+                                n.appendChild(i.domNode)
+                            }))
+                        }(e)
                 }
-            }
+            };
+            var i, o = n(1),
+                r = n(451),
+                s = (i = n(453)) && i.__esModule ? i : {
+                    default: i
+                },
+                a = n(452);
+            const l = "rcp-fe-lol-npe-first-touch"
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.getAction = async function(e = !1) {
-                await a();
-                const t = await f();
-                if (b(t)) return o.logger.trace("Client re-launched and player is in gameflow"), E(t) ? (o.logger.trace("Player is in tutorial gameflow, showing tutorial modules..."), r.SHOW_TUTORIAL_MODULES) : r.DO_NOTHING;
-                if (!e) {
-                    if ((0, s.default)()) return o.logger.trace("Player's account matches requirements to need to view honeyfruit account creation UI"), r.SHOW_HF_ACCOUNT_CREATION
+            }), t.getAction = async function() {
+                await r();
+                const e = await h();
+                if (v(e)) return i.logger.trace("Client re-launched and player is in gameflow"), y(e) ? (i.logger.trace("Player is in tutorial gameflow, showing tutorial modules..."), o.SHOW_TUTORIAL_MODULES) : o.DO_NOTHING;
+                const t = await p();
+                if (t.nameChangeFlag) return i.logger.trace("Name change flag is set, showing first touch"), o.SHOW_NAME_CHANGE;
+                const n = _();
+                if (t.unnamed) {
+                    b();
+                    const e = n ? o.SHOW_FIRST_TOUCH_WITH_GAME_SELECT : o.SHOW_FIRST_TOUCH;
+                    return i.logger.trace(`Player is brand new, performing action ${e}`), e
                 }
-                const n = await m();
-                if (n.nameChangeFlag) return o.logger.trace("Name change flag is set, showing first touch"), r.SHOW_NAME_CHANGE;
-                const i = y();
-                if (n.unnamed) {
-                    S();
-                    const e = i ? r.SHOW_FIRST_TOUCH_WITH_GAME_SELECT : r.SHOW_FIRST_TOUCH;
-                    return o.logger.trace(`Player is brand new, performing action ${e}`), e
-                }
-                o.logger.trace("Not a new player");
-                const [l, u, h, w, T] = await Promise.all([d(), _(), v(), g(), p()]), x = n && !!n.puuid && n.summonerLevel < 2, C = !T && !h && i;
-                if (x && C) return r.SHOW_GAME_MODE_SELECT;
-                if (l && w && !u) return o.logger.trace("Still in tutorial flow"), r.SHOW_TUTORIAL_MODULES;
+                i.logger.trace("Not a new player");
+                const [s, l, d, E, S] = await Promise.all([c(), f(), g(), m(), u()]), w = t && !!t.puuid && t.summonerLevel < 2, T = !S && !d && n;
+                if (w && T) return o.SHOW_GAME_MODE_SELECT;
+                if (s && E && !l) return i.logger.trace("Still in tutorial flow"), o.SHOW_TUTORIAL_MODULES;
                 if (await async function() {
-                        if (await (0, o.dataBinding)("/lol-tft").get("/v1/tft/directToHub")) {
-                            await c();
-                            const e = await (0, o.dataBinding)("/lol-settings").get("/v2/local/lol-home");
+                        if (await (0, i.dataBinding)("/lol-tft").get("/v1/tft/directToHub")) {
+                            await a();
+                            const e = await (0, i.dataBinding)("/lol-settings").get("/v2/local/lol-home");
                             return e && e.data && e.data.useTFTOverride
                         }
                         return !1
-                    }()) return r.SHOW_TFT;
-                return r.SHOW_HOME
-            }, t.getCurrentSummoner = m, t.getGameflowSession = f, t.getHasSeenTutorialPath = v, t.getHasSelectedGameMode = p, t.getHasSkippedTutorialPath = _, t.getIsGameSelectScreenEnabled = y, t.getIsNPEFlowEnabled = d, t.getIsNameChange = async function() {
-                const e = await (0, o.dataBinding)("/lol-login").get("/v1/login-data-packet");
+                    }()) return o.SHOW_TFT;
+                return o.SHOW_HOME
+            }, t.getCurrentSummoner = p, t.getGameflowSession = h, t.getHasSeenTutorialPath = g, t.getHasSelectedGameMode = u, t.getHasSkippedTutorialPath = f, t.getIsGameSelectScreenEnabled = _, t.getIsNPEFlowEnabled = c, t.getIsNameChange = async function() {
+                const e = await (0, i.dataBinding)("/lol-login").get("/v1/login-data-packet");
                 if (e && e.allSummonerData && e.allSummonerData.summoner) return !!e.allSummonerData.summoner.nameChangeFlag;
                 return !1
-            }, t.getIsUnderMaxNPELevel = g, t.getNPESettings = h, t.isInGameflow = b, t.isInTutorialModule = E, t.updateSettings = S, t.waitForConfigReady = l, t.waitForLogin = a, t.waitForSettingsReady = c, t.waitForSummonerReady = u;
-            var i, o = n(1),
-                r = n(452),
-                s = (i = n(453)) && i.__esModule ? i : {
-                    default: i
-                };
+            }, t.getIsUnderMaxNPELevel = m, t.getNPESettings = d, t.isInGameflow = v, t.isInTutorialModule = y, t.updateSettings = b, t.waitForConfigReady = s, t.waitForLogin = r, t.waitForSettingsReady = a, t.waitForSummonerReady = l;
+            var i = n(1),
+                o = n(452);
 
-            function a() {
+            function r() {
                 return new Promise((e => {
-                    const t = (0, o.dataBinding)("/lol-login", o.websocket),
+                    const t = (0, i.dataBinding)("/lol-login", i.websocket),
                         n = i => {
                             i && "SUCCEEDED" === i.state && (t.unobserve("/v1/session", n), e())
                         };
@@ -30572,9 +30553,9 @@
                 }))
             }
 
-            function l() {
+            function s() {
                 return new Promise((e => {
-                    const t = (0, o.dataBinding)("/lol-platform-config", o.websocket),
+                    const t = (0, i.dataBinding)("/lol-platform-config", i.websocket),
                         n = i => {
                             i && (t.unobserve("/v1/initial-configuration-complete", n), e())
                         };
@@ -30582,9 +30563,9 @@
                 }))
             }
 
-            function c() {
+            function a() {
                 return new Promise((e => {
-                    const t = (0, o.dataBinding)("/lol-settings", o.websocket),
+                    const t = (0, i.dataBinding)("/lol-settings", i.websocket),
                         n = i => {
                             i && (t.unobserve("/v2/ready", n), e())
                         };
@@ -30592,67 +30573,67 @@
                 }))
             }
 
-            function u() {
+            function l() {
                 return new Promise((e => {
-                    const t = (0, o.dataBinding)("/lol-summoner", o.websocket),
+                    const t = (0, i.dataBinding)("/lol-summoner", i.websocket),
                         n = i => {
                             i && (t.unobserve("/v1/summoner-requests-ready", n), e())
                         };
                     t.observe("/v1/summoner-requests-ready", n)
                 }))
             }
-            async function d() {
-                await l();
-                const e = await (0, o.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
+            async function c() {
+                await s();
+                const e = await (0, i.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
                 return !!e && !0 === e.NewPlayerExperienceEnabled
             }
-            async function p() {
-                await c();
-                const e = await (0, o.dataBinding)("/lol-settings").get("/v2/account/LCUPreferences/lol-npe-first-touch");
+            async function u() {
+                await a();
+                const e = await (0, i.dataBinding)("/lol-settings").get("/v2/account/LCUPreferences/lol-npe-first-touch");
                 return !!e && !!e.data && !!e.data.modeSelected
             }
-            async function h() {
-                return await c(), (0, o.dataBinding)("/lol-npe-tutorial-path").get("/v1/settings")
+            async function d() {
+                return await a(), (0, i.dataBinding)("/lol-npe-tutorial-path").get("/v1/settings")
             }
-            async function m() {
-                return await u(), (0, o.dataBinding)("/lol-summoner").get("/v1/current-summoner")
+            async function p() {
+                return await l(), (0, i.dataBinding)("/lol-summoner").get("/v1/current-summoner")
             }
 
-            function f() {
-                return (0, o.dataBinding)("/lol-gameflow").get("/v1/session")
+            function h() {
+                return (0, i.dataBinding)("/lol-gameflow").get("/v1/session")
             }
-            async function g() {
-                await l();
-                const e = await (0, o.dataBinding)("/lol-summoner").get("/v1/current-summoner"),
-                    t = await (0, o.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
-                let n = r.MAX_NPE_SUMMONER_LEVEL,
-                    i = 1;
-                return t && (n = t.SkipTutorialAfterLevel), e && (i = e.summonerLevel), i <= n
+            async function m() {
+                await s();
+                const e = await (0, i.dataBinding)("/lol-summoner").get("/v1/current-summoner"),
+                    t = await (0, i.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
+                let n = o.MAX_NPE_SUMMONER_LEVEL,
+                    r = 1;
+                return t && (n = t.SkipTutorialAfterLevel), e && (r = e.summonerLevel), r <= n
             }
-            async function _() {
-                const e = await h();
+            async function f() {
+                const e = await d();
                 return !!e && e.hasSkippedTutorialPath
             }
-            async function v() {
-                const e = await h();
+            async function g() {
+                const e = await d();
                 return !!e && e.hasSeenTutorialPath
             }
-            async function y() {
-                await l();
-                const e = await (0, o.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
+            async function _() {
+                await s();
+                const e = await (0, i.dataBinding)("/lol-platform-config").get("/v1/namespaces/LcuTutorial");
                 return !!e && !!e.GameModeSelectEnabled
             }
 
-            function b(e) {
+            function v(e) {
                 return !!e && ["InProgress", "Reconnect", "WaitingForStats", "PreEndOfGame", "EndOfGame"].includes(e.phase)
             }
 
-            function E(e) {
+            function y(e) {
                 return !!(e && e.gameData && e.gameData.queue && e.gameData.queue.gameMode) && e.gameData.queue.gameMode.includes("TUTORIAL_MODULE")
             }
 
-            function S() {
-                return (0, o.dataBinding)("/lol-npe-tutorial-path").put("/v1/settings", {
+            function b() {
+                return (0, i.dataBinding)("/lol-npe-tutorial-path").put("/v1/settings", {
                     shouldSeeNewPlayerExperience: !0
                 })
             }
@@ -30660,7 +30641,7 @@
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
-            }), t.TABLE_NPE = t.SHOW_TUTORIAL_MODULES = t.SHOW_TFT = t.SHOW_NAME_CHANGE = t.SHOW_HOME = t.SHOW_HF_ACCOUNT_CREATION = t.SHOW_GAME_MODE_SELECT = t.SHOW_FIRST_TOUCH_WITH_GAME_SELECT = t.SHOW_FIRST_TOUCH = t.MAX_NPE_SUMMONER_LEVEL = t.HF_CLAIMING_LIB = t.EVENT_SUMMONER_NAME_CREATE_NAME_CHECK = t.EVENT_SHOW_SCREEN_SECTION = t.EVENT_SHOW_SCREEN = t.EVENT_MODE_SELECTED = t.EVENT_LINK_CLICK = t.EVENT_BUTTON_CLICK = t.EVENT_ABTEST_ACCOUNT_PERCENTAGE = t.DO_NOTHING = t.DEFAULT_CHAMPION_IDS = void 0;
+            }), t.TABLE_NPE = t.SHOW_TUTORIAL_MODULES = t.SHOW_TFT = t.SHOW_NAME_CHANGE = t.SHOW_HOME = t.SHOW_HF_ACCOUNT_CREATION = t.SHOW_GAME_MODE_SELECT = t.SHOW_FIRST_TOUCH_WITH_GAME_SELECT = t.SHOW_FIRST_TOUCH = t.MAX_NPE_SUMMONER_LEVEL = t.EVENT_SUMMONER_NAME_CREATE_NAME_CHECK = t.EVENT_SHOW_SCREEN_SECTION = t.EVENT_SHOW_SCREEN = t.EVENT_MODE_SELECTED = t.EVENT_LINK_CLICK = t.EVENT_BUTTON_CLICK = t.EVENT_ABTEST_ACCOUNT_PERCENTAGE = t.DO_NOTHING = t.DEFAULT_CHAMPION_IDS = void 0;
             t.DO_NOTHING = "DO_NOTHING";
             t.SHOW_FIRST_TOUCH = "SHOW_FIRST_TOUCH";
             t.SHOW_FIRST_TOUCH_WITH_GAME_SELECT = "SHOW_FIRST_TOUCH_WITH_GAME_SELECT";
@@ -30679,19 +30660,7 @@
             t.EVENT_ABTEST_ACCOUNT_PERCENTAGE = "abtest-account-percentage";
             t.EVENT_MODE_SELECTED = "mode-selected";
             t.MAX_NPE_SUMMONER_LEVEL = 10;
-            t.DEFAULT_CHAMPION_IDS = [22, 86, 21, 103, 141];
-            t.HF_CLAIMING_LIB = "rcp-fe-lol-honeyfruit-account-claiming"
-        }, (e, t, n) => {
-            "use strict";
-            Object.defineProperty(t, "__esModule", {
-                value: !0
-            }), t.default = function() {
-                return i.logger.trace("!isAppropriateRegion() is true :: returning FALSE from shouldShow()"), !1;
-                return i.logger.trace("[hasPlayerCompletedTheFlow() || isPlayerInAGame()] == [true || false] :: returning FALSE from shouldShow()"), !1;
-                0;
-                return i.logger.trace("shouldShow reached the end...returning TRUE"), !0
-            };
-            var i = n(1)
+            t.DEFAULT_CHAMPION_IDS = [22, 86, 21, 103, 141]
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -30709,22 +30678,22 @@
                     name: "rcp-fe-lol-npe-first-touch",
                     tra: i.traService,
                     ComponentFactory: i.ComponentFactory,
-                    FirstTouchComponent: n(455).default,
-                    IntroVideoComponent: n(458).default,
-                    AliasCreateComponent: n(461).default,
-                    SummonerNameCreateComponent: n(467).default,
-                    PatchingExperienceComponent: n(470).default,
-                    ChampionCarouselComponent: n(473).default,
-                    ChampionCarouselItemComponent: n(476).default,
-                    ChampionInformationComponent: n(479).default,
-                    GameModeSelectComponent: n(482).default,
+                    FirstTouchComponent: n(454).default,
+                    IntroVideoComponent: n(457).default,
+                    AliasCreateComponent: n(460).default,
+                    SummonerNameCreateComponent: n(466).default,
+                    PatchingExperienceComponent: n(469).default,
+                    ChampionCarouselComponent: n(472).default,
+                    ChampionCarouselItemComponent: n(475).default,
+                    ChampionInformationComponent: n(478).default,
+                    GameModeSelectComponent: n(481).default,
                     ArrowFooterComponent: s,
                     PlayerNameComponent: a,
-                    FirstTouchService: n(485).default,
-                    LanguageFilterService: n(486).default,
-                    PlayerNameStateService: n(489).default,
-                    WaitForResolvedStringHelper: n(490).default,
-                    IsEqualHelper: n(491).default
+                    FirstTouchService: n(484).default,
+                    LanguageFilterService: n(485).default,
+                    PlayerNameStateService: n(488).default,
+                    WaitForResolvedStringHelper: n(489).default,
+                    IsEqualHelper: n(490).default
                 };
                 i.EmberApplicationFactory.setFactoryDefinition(l);
                 const c = i.ComponentFactory.create(l.name, {
@@ -30746,7 +30715,7 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(456);
+            n(455);
             const o = "patching-experience",
                 r = "summoner-name-create",
                 s = "game-mode-select",
@@ -30756,7 +30725,7 @@
                 u = [s, a];
             var d = i.Ember.Component.extend({
                 classNames: ["rcp-fe-lol-npe-first-touch"],
-                layout: n(457),
+                layout: n(456),
                 firstTouchService: i.Ember.inject.service("first-touch"),
                 currentScreen: null,
                 patchingExperienceShouldShow: i.Ember.computed.equal("currentScreen", o),
@@ -30811,13 +30780,13 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(459);
+            n(458);
             const {
                 RunMixin: o
             } = i.EmberAddons.EmberLifeline;
             var r = i.Ember.Component.extend(o, {
                 classNames: ["intro-video-component"],
-                layout: n(460),
+                layout: n(459),
                 isSkipDisabled: !0,
                 init() {
                     this._super(...arguments), i.Navigation.hide(), this.handleVideoEnded = this.handleVideoEnded.bind(this)
@@ -30859,10 +30828,10 @@
                 value: !0
             }), t.errorStrings = t.dom = t.default = t.classNames = t.TAG_LINE_MAX = t.NAME_MIN = t.GAME_NAME_MAX = void 0, t.isPossiblyValid = S;
             var i = n(1),
-                o = n(462);
-            n(463);
+                o = n(461);
+            n(462);
             var r, s = n(452),
-                a = (r = n(464)) && r.__esModule ? r : {
+                a = (r = n(463)) && r.__esModule ? r : {
                     default: r
                 };
             const l = {
@@ -31026,8 +30995,8 @@
                 messageClass: i.Ember.computed("message", (function() {
                     return b.get(this.get("message"))?.message
                 })),
-                startButtonSoundHover: n(465),
-                startButtonSoundClick: n(466),
+                startButtonSoundHover: n(464),
+                startButtonSoundClick: n(465),
                 disableRegisterButton: i.Ember.computed("isLoading", "validityVerified", (function() {
                     return this.get("isLoading") || !this.get("isValidityVerified")
                 })),
@@ -31155,15 +31124,15 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1),
-                o = n(462);
-            n(468);
+                o = n(461);
+            n(467);
             var r = n(452);
             const {
                 RunMixin: s
             } = i.EmberAddons.EmberLifeline;
             var a = i.Ember.Component.extend(s, {
                 classNames: ["summoner-name-create-component"],
-                layout: n(469),
+                layout: n(468),
                 firstTouchService: i.Ember.inject.service("first-touch"),
                 languageFilterService: i.Ember.inject.service("language-filter"),
                 username: i.Ember.computed.alias("firstTouchService.session.username"),
@@ -31177,8 +31146,8 @@
                 isNameAvailabilityRequestError: !1,
                 isFormSubmitRequestErrorMessage: !1,
                 startNowButtonSound: {
-                    onHover: n(465),
-                    onClick: n(466)
+                    onHover: n(464),
+                    onClick: n(465)
                 },
                 init() {
                     this._super(...arguments);
@@ -31328,12 +31297,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(471);
-            var o = n(462),
+            n(470);
+            var o = n(461),
                 r = n(452),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-patching-experience-component"],
-                    layout: n(472),
+                    layout: n(471),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     champions: i.Ember.computed.alias("firstTouchService.champions"),
                     didSendEvent: !1,
@@ -31365,8 +31334,8 @@
                 value: !0
             }), t.default = t.SFX_PIP_FORWARD = t.SFX_PIP_BACKWARD = void 0;
             var i = n(1);
-            n(474);
-            var o = n(462),
+            n(473);
+            var o = n(461),
                 r = n(452);
             const s = "/fe/lol-static-assets/sounds/npe-ft-sfx-pip-backward-click.ogg";
             t.SFX_PIP_BACKWARD = s;
@@ -31374,7 +31343,7 @@
             t.SFX_PIP_FORWARD = a;
             var l = i.Ember.Component.extend({
                 classNames: ["npe-first-touch-champion-carousel-component"],
-                layout: n(475),
+                layout: n(474),
                 champions: null,
                 currentChampionIdx: 0,
                 lastChampionIdx: i.Ember.computed("champions", (function() {
@@ -31427,10 +31396,10 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(477);
+            n(476);
             var o = i.Ember.Component.extend({
                 classNames: ["npe-first-touch-champion-carousel-item-component"],
-                layout: n(478),
+                layout: n(477),
                 champion: null,
                 uncenteredSplashPath: i.Ember.computed("champion", (function() {
                     const e = this.get("champion");
@@ -31454,12 +31423,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(480);
+            n(479);
             var o = n(452),
-                r = n(462),
+                r = n(461),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-champion-information-component"],
-                    layout: n(481),
+                    layout: n(480),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     locale: i.Ember.computed.alias("firstTouchService.locale"),
                     primaryRole: i.Ember.computed("champion.roles", (function() {
@@ -31502,12 +31471,12 @@
                 value: !0
             }), t.default = void 0;
             var i = n(1);
-            n(483);
-            var o = n(462),
+            n(482);
+            var o = n(461),
                 r = n(452),
                 s = i.Ember.Component.extend({
                     classNames: ["npe-first-touch-game-mode-select-component"],
-                    layout: n(484),
+                    layout: n(483),
                     firstTouchService: i.Ember.inject.service("first-touch"),
                     tftMapAssets: i.Ember.computed.alias("firstTouchService.tftMapAssets"),
                     summonersRiftMapAssets: i.Ember.computed.alias("firstTouchService.summonersRiftMapAssets"),
@@ -31617,10 +31586,10 @@
                 value: !0
             }), t.default = void 0;
             var i, o = n(1),
-                r = (i = n(487)) && i.__esModule ? i : {
+                r = (i = n(486)) && i.__esModule ? i : {
                     default: i
                 },
-                s = n(488);
+                s = n(487);
             var a = o.Ember.Service.extend({
                 ready: !1,
                 init() {
@@ -31650,7 +31619,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var i = n(488);
+            var i = n(487);
             t.default = class {
                 build(e) {
                     this._allowedCharactersMap = {};

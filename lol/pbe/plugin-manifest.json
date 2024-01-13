@@ -886,12 +886,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-lol-honeyfruit-account-claiming"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-fe-lol-honor"
     },
     {

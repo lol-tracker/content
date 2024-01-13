@@ -14594,14 +14594,17 @@
                         this.getRankedStats(t, e)
                     })), r.get("/v1/namespaces/LeagueConfig/RankedRewardConfig").then((e => {
                         this.getRewardConfig(e)
-                    })), r.get("/v1/namespaces/LeagueConfig/CurrentYear").then((e => {
-                        this.set("currentYear", e)
                     })), d.get("/v1/season/product/LOL").then((e => {
-                        e && e.metadata && this.set("currentSplit", e.metadata.currentSplit)
+                        e && e.metadata && this.set("currentSeason", e.metadata)
                     })), l.get("/v2/ready").then((e => {
                         this.updateSettingsReady(e)
                     }))
                 },
+                currentYear: a.Ember.computed("currentSeason.seasonStart", (function() {
+                    const e = this.get("currentSeason.seasonStart");
+                    return e ? new Date(e).getFullYear() : (new Date).getFullYear()
+                })),
+                currentSplit: a.Ember.computed.alias("currentSeason.currentSplit"),
                 titleText: a.Ember.computed("currentYear", "currentSplit", (function() {
                     const e = this.get("currentYear"),
                         t = this.get("currentSplit");

@@ -3612,7 +3612,7 @@
                 _getSplitStartModalTitlesInfo: function(e, t) {
                     return {
                         seasonTitle: this.get("tra").formatString("SPLIT_START_TAKEOVER_SEASON_TITLE", {
-                            seasonYear: (0, l.convertDateMillisToString)(e.endTimeMillis, t, {
+                            seasonYear: (0, l.convertDateMillisToString)(e.startTimeMillis, t, {
                                 year: "numeric"
                             })
                         }),
@@ -4297,17 +4297,17 @@
                         t = this.get("previousSplit") || {};
                     if (t) return {
                         seasonTitle: this.get("tra").formatString("SPLIT_START_TAKEOVER_SEASON_TITLE", {
-                            seasonYear: (0, l.convertDateMillisToString)(t.endTimeMillis, e, {
+                            seasonYear: (0, l.convertDateMillisToString)(t.startTimeMillis, e, {
                                 year: "numeric"
                             })
                         }),
-                        splitTitle: `${this.get("tra").formatString("SPLIT_START_TAKEOVER_SEASON_TITLE",{seasonYear:(0,l.convertDateMillisToString)(t.endTimeMillis,e,{year:"numeric"})})} - ${this.get("tra").formatString("SEASON_MEMORIAL_TAKEOVER_SPLIT_NAME",{splitNumber:t.splitId})}`,
+                        splitTitle: `${this.get("tra").formatString("SPLIT_START_TAKEOVER_SEASON_TITLE",{seasonYear:(0,l.convertDateMillisToString)(t.startTimeMillis,e,{year:"numeric"})})} - ${this.get("tra").formatString("SEASON_MEMORIAL_TAKEOVER_SPLIT_NAME",{splitNumber:t.splitId})}`,
                         splitDurationTitle: this.get("tra").formatString("SPLIT_START_TAKEOVER_SPLIT_DURATION_TITLE", {
                             splitStartString: (0, l.convertDateMillisToString)(t.startTimeMillis, e),
                             splitEndString: (0, l.convertDateMillisToString)(t.endTimeMillis - 1, e)
                         }),
                         rewardsTitle: this.get("tra").formatString("SEASON_MEMORIAL_TAKEOVER_REWARDS_TITLE", {
-                            seasonYear: (0, l.convertDateMillisToString)(t.endTimeMillis, e, {
+                            seasonYear: (0, l.convertDateMillisToString)(t.startTimeMillis, e, {
                                 year: "numeric"
                             })
                         })

@@ -2553,7 +2553,7 @@
     "isTeamBuilderManaged": true,
     "isVisible": false,
     "lastToggledOffTime": 0,
-    "lastToggledOnTime": 0,
+    "lastToggledOnTime": 1705021715439,
     "mapId": 22,
     "maxDivisionForPremadeSize2": "",
     "maxTierForPremadeSize2": "",
@@ -2562,7 +2562,7 @@
     "minimumParticipantListSize": 1,
     "name": "Teamfight Tactics (Set 3.5 Revival: Galaxies)",
     "numPlayersPerTeam": 8,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": false,
       "isIpEnabled": true,
