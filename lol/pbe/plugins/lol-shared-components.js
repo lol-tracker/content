@@ -15998,12 +15998,13 @@
                 hasVerbalAbuseReport: s.Ember.computed("categoriesSelected.[]", (function() {
                     return this.get("categoriesSelected").some((e => e.categoryId === i.VERBAL_ABUSE_REPORT_CATEGORY))
                 })),
-                couldShowRemedyVerbalAbuseModal: s.Ember.computed("reportModalDataService.gameIdsWithVerbalAbuseReports.[]", "reportModalDataService.couldShowRemedyVerbalAbuseModalPreference", "reportedPlayer.gameId", "hasVerbalAbuseReport", (function() {
-                    const e = this.get("reportedPlayer.gameId"),
-                        t = this.get("reportModalDataService.gameIdsWithVerbalAbuseReports"),
-                        n = this.get("reportModalDataService.couldShowRemedyVerbalAbuseModalPreference"),
-                        a = this.get("hasVerbalAbuseReport");
-                    return n && !t.includes(e) && a
+                couldShowRemedyVerbalAbuseModal: s.Ember.computed("reportModalDataService.isVerbalAbuseRemedyEnabled", "reportModalDataService.gameIdsWithVerbalAbuseReports.[]", "reportModalDataService.couldShowRemedyVerbalAbuseModalPreference", "reportedPlayer.gameId", "hasVerbalAbuseReport", (function() {
+                    const e = this.get("reportModalDataService.isVerbalAbuseRemedyEnabled"),
+                        t = this.get("reportedPlayer.gameId"),
+                        n = this.get("reportModalDataService.gameIdsWithVerbalAbuseReports"),
+                        a = this.get("reportModalDataService.couldShowRemedyVerbalAbuseModalPreference"),
+                        s = this.get("hasVerbalAbuseReport");
+                    return e && a && !n.includes(t) && s
                 })),
                 hasNocategorySelectedObserver: s.Ember.on("didInsertElement", s.Ember.observer("categories.@each.isChecked", (function() {
                     const e = 0 === this.get("categories").rejectBy("isChecked", !1).length ? "disableacceptbutton" : "enableacceptbutton";
@@ -17147,7 +17148,7 @@
                 })),
                 unlockedDetailText: s.Ember.computed((function() {
                     return this.get("isInstantReward") ? s.tra.get("reward_tracker_reward_item_instant") : s.tra.formatString("reward_tracker_reward_option_tooltip_level", {
-                        levelNumber: this.get("milestoneLevel")
+                        levelNumber: this.get("reward.threshold")
                     })
                 })),
                 imagePath: s.Ember.computed("optionItem.thumbIconPath", (function() {
@@ -22353,8 +22354,11 @@
                 inGameReportData: [],
                 gameIdsWithVerbalAbuseReports: [],
                 couldShowRemedyVerbalAbuseModalPreference: !0,
+                isVerbalAbuseRemedyEnabled: !1,
+                isVerbalAbuseRemedyEnabledPath: "/v1/config/is-verbal-abuse-remedy-modal-enabled",
                 endOfGameReportPath: "/v1/end-of-game-reports",
                 matchHistoryReportPath: "/v1/match-history-reports",
+                remedyBasePath: "/lol-remedy",
                 settingsBasePath: "/lol-settings",
                 playerReportSenderBasePath: "/lol-player-report-sender",
                 navigationPreferencesPath: "/v2/account/LCUPreferences/lol-navigation",
@@ -22366,7 +22370,7 @@
                     this.removeObservers(), this.removeDataBindings()
                 },
                 initDataBindings() {
-                    this.playerReportSenderBinding = (0, a.dataBinding)(this.get("playerReportSenderBasePath"), a.socket), this.settingsBinding = (0, a.dataBinding)(this.get("settingsBasePath"), a.socket)
+                    this.remedyBinding = (0, a.dataBinding)(this.get("remedyBasePath"), a.socket), this.playerReportSenderBinding = (0, a.dataBinding)(this.get("playerReportSenderBasePath"), a.socket), this.settingsBinding = (0, a.dataBinding)(this.get("settingsBasePath"), a.socket)
                 },
                 getRequisiteModalData() {
                     this.settingsBinding.get(this.get("navigationPreferencesPath")).then((e => {
@@ -22374,7 +22378,7 @@
                     }))
                 },
                 initObservers() {
-                    this.playerReportSenderBinding.observe("/v1/in-game-reports", this, this._handleInGameReportsUpdate), this.playerReportSenderBinding.observe(this.get("gameIdsWithVerbalAbuseReportPath"), this, (e => {
+                    this.remedyBinding.observe(this.get("isVerbalAbuseRemedyEnabledPath"), this, this._handleIsVerbalAbuseRemedyEnabledUpdate), this.playerReportSenderBinding.observe("/v1/in-game-reports", this, this._handleInGameReportsUpdate), this.playerReportSenderBinding.observe(this.get("gameIdsWithVerbalAbuseReportPath"), this, (e => {
                         this.set("gameIdsWithVerbalAbuseReports", e || [])
                     }))
                 },
@@ -22392,6 +22396,9 @@
                     e.forEach((e => {
                         e && e.offenderPuuid && (t[e.offenderPuuid] = e)
                     })), this.set("inGameReportData", t)
+                },
+                _handleIsVerbalAbuseRemedyEnabledUpdate(e) {
+                    this.set("isVerbalAbuseRemedyEnabled", e)
                 }
             })
         }, (e, t, n) => {

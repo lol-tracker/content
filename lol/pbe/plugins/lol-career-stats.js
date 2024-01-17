@@ -42,13 +42,13 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var s = i(a(3)),
-                n = i(a(60)),
+            var s = l(a(3)),
+                n = l(a(60)),
                 o = a(1),
                 r = a(11),
-                l = a(12);
+                i = a(12);
 
-            function i(e) {
+            function l(e) {
                 return e && e.__esModule ? e : {
                     default: e
                 }
@@ -85,16 +85,16 @@
                     return (0, r.inferPosition)(e)
                 }
                 getMinGamesToUnlockStats() {
-                    return l.MIN_GAMES_TO_UNLOCK_STATS
+                    return i.MIN_GAMES_TO_UNLOCK_STATS
                 }
                 getCareerStatsQueueType(e) {
-                    return e in l.RANKED_QUEUE_TYPE_MAPPINGS ? l.RANKED_QUEUE_TYPE_MAPPINGS[e] : e
+                    return e in i.RANKED_QUEUE_TYPE_MAPPINGS ? i.RANKED_QUEUE_TYPE_MAPPINGS[e] : e
                 }
                 getGradesForChampion(e, t, a, s) {
                     const n = (0, r.calculateStatsTrends)(e),
-                        l = o.Lodash.get(s, a + "." + t),
-                        i = (0, r.calculateCategoryPercentilesWithStatsTrends)(n, l);
-                    return (0, r.calculateGradesAndBestPlaystyle)(i).categoryGrades
+                        i = o.Lodash.get(s, a + "." + t),
+                        l = (0, r.calculateCategoryPercentilesWithStatsTrends)(n, i);
+                    return (0, r.calculateGradesAndBestPlaystyle)(l).categoryGrades
                 }
                 getWinrate(e) {
                     return (0, r.getWinrate)(e)
@@ -103,10 +103,10 @@
                     return a(33).default
                 }
                 getNormalGamesQueueTypes() {
-                    return l.NORMAL_GAMES_QUEUE_TYPES
+                    return i.NORMAL_GAMES_QUEUE_TYPES
                 }
                 getAllRanks() {
-                    return l.ALL_RANKS
+                    return i.ALL_RANKS
                 }
             }
         }, (e, t, a) => {
@@ -114,8 +114,8 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = function(e) {
-                void 0 === l && (l = new r(e));
-                return l
+                void 0 === i && (i = new r(e));
+                return i
             };
             var s, n = a(1),
                 o = (s = a(35)) && s.__esModule ? s : {
@@ -169,7 +169,7 @@
                     })
                 }
             }
-            let l
+            let i
         }, (e, t, a) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -244,9 +244,9 @@
                 n = a(6),
                 o = a(7),
                 r = m(a(8)),
-                l = m(a(9));
+                i = m(a(9));
             a(10);
-            var i = a(11),
+            var l = a(11),
                 c = a(12);
 
             function m(e) {
@@ -273,7 +273,7 @@
             var d = s.Ember.Component.extend({
                 classNames: ["career-stats-modal-root-component"],
                 classNameBindings: ["fullReload", "isSeasonSettingLoaded"],
-                layout: l.default,
+                layout: i.default,
                 careerStatsService: s.Ember.inject.service("careerStats"),
                 earliestSeason: s.Ember.computed.readOnly("careerStatsService.earliestSeason"),
                 currentSeason: s.Ember.computed.readOnly("careerStatsService.currentSeason"),
@@ -302,7 +302,7 @@
                         }))
                     } else this.set("pinnedMatchSummary", null)
                 }))),
-                calculateGradesAndBestPlaystyle: i.calculateGradesAndBestPlaystyle,
+                calculateGradesAndBestPlaystyle: l.calculateGradesAndBestPlaystyle,
                 currentSelectedPosition: s.Ember.computed("showingChampionDetails", "data.position", "positionFilter", (function() {
                     if (this.get("showingChampionDetails")) {
                         const e = this.get("positionFilter");
@@ -426,7 +426,7 @@
                     const e = this.get("statsTrends"),
                         t = this.get("currentPercentiles");
                     if (t) {
-                        const a = (0, i.calculateCategoryPercentilesWithStatsTrends)(e, t);
+                        const a = (0, l.calculateCategoryPercentilesWithStatsTrends)(e, t);
                         return this.calculateGradesAndBestPlaystyle(a)
                     }
                     return null
@@ -477,16 +477,16 @@
                     return s.Lodash.reduce(this.get("data.games"), ((e, t) => {
                         const {
                             championId: a
-                        } = t, n = (0, i.inferPosition)(t), {
+                        } = t, n = (0, l.inferPosition)(t), {
                             queueType: o
                         } = t, r = `${o}.${n}`;
                         s.Lodash.get(e, r) || s.Lodash.set(e, r, []);
-                        const l = s.Lodash.get(e, r);
-                        let c = l.find((e => e.championId === a));
+                        const i = s.Lodash.get(e, r);
+                        let c = i.find((e => e.championId === a));
                         return c || (c = {
                             championId: a,
                             gameCount: 0
-                        }, l.push(c)), c.gameCount++, e
+                        }, i.push(c)), c.gameCount++, e
                     }), {})
                 })),
                 mostPlayedChampions: s.Ember.computed("tra", "indexedGameCounts", "currentSelectedPosition", "queueFilter.queueTypes.0", (function() {
@@ -502,7 +502,7 @@
                 })),
                 currentCategory: "combat",
                 summonerRankTier: s.Ember.computed("data.rankedTiers", "queueFilter", (function() {
-                    return (0, i.getValidRank)(s.Lodash.get(this.get("data.rankedTiers"), this.get("queueFilter.queueTypes.0")))
+                    return (0, l.getValidRank)(s.Lodash.get(this.get("data.rankedTiers"), this.get("queueFilter.queueTypes.0")))
                 })),
                 statsTrends: s.Ember.computed("data.championId", "showingChampionDetails", "queueFilter", "timeFilter", "currentSelectedPosition", "data.games", (function() {
                     const e = this.get("data.games"),
@@ -511,17 +511,17 @@
                         n = this.get("timeFilter"),
                         o = this.get("currentSelectedPosition"),
                         r = this.get("showingChampionDetails"),
-                        l = this.get("rollingAverageWindowSize"),
+                        i = this.get("rollingAverageWindowSize"),
                         c = this.get("smootheningRequiredSize"),
                         m = this.get("maxDataPoints"),
-                        p = (0, i.filterGames)(e, {
+                        p = (0, l.filterGames)(e, {
                             championId: r && t,
                             position: o,
                             queueFilter: a,
                             timeFilter: n
                         }).reverse(),
-                        d = (0, i.getRollingAverageWindowSize)(p, l, c, m),
-                        u = (0, i.calculateRollingAverage)(p, d);
+                        d = (0, l.getRollingAverageWindowSize)(p, i, c, m),
+                        u = (0, l.calculateRollingAverage)(p, d);
                     return s.Ember.run.next((() => {
                         !this || this.isDestroyed || this.isDestroying || (this.set("pinnedGame.index", null), this.set("currentRollingWindowSize", d), this.set("relevantGames", p))
                     })), u
@@ -541,7 +541,7 @@
                 })),
                 winrateDisplay: s.Ember.computed("relevantGames", (function() {
                     const e = this.get("relevantGames"),
-                        t = (0, i.getWinRateDisplay)(e && e.length > 0 ? (0, i.getWinrate)(e) : 0, 0);
+                        t = (0, l.getWinRateDisplay)(e && e.length > 0 ? (0, l.getWinrate)(e) : 0, 0);
                     return this.get("tra").formatString("career_stats_details_summary_win_rate", {
                         number: t
                     })
@@ -647,7 +647,7 @@
                     const s = this.get("data.games"),
                         n = this.get("queueFilter"),
                         o = this.get("timeFilter"),
-                        r = (0, i.filterGames)(s, {
+                        r = (0, l.filterGames)(s, {
                             championId: e,
                             position: t,
                             queueFilter: n,
@@ -673,74 +673,79 @@
                         summonerName: a,
                         gameName: s,
                         tagLine: n,
-                        averages: (0, i.calculateCareerStatsFromRawTotals)(t)
+                        averages: (0, l.calculateCareerStatsFromRawTotals)(t)
                     }), this.get("careerStatsService").setRecentlyComparedSummoner(o)
                 },
                 compareWithSeason(e) {
                     this._closeComparisonSelectorModal(), this.set("currentCompareTarget", {
                         type: "season",
                         name: s.Lodash.get(e, "seasonName"),
-                        averages: (0, i.calculateCareerStatsFromRawTotals)(e.stats)
+                        averages: (0, l.calculateCareerStatsFromRawTotals)(e.stats)
                     })
                 },
                 compareWithChampionExpert(e, t, a) {
                     this._closeComparisonSelectorModal();
                     const {
-                        summonerName: s,
-                        displayName: o,
-                        gameName: l,
+                        displayName: s,
+                        gameName: o,
                         tagLine: i,
-                        summonerId: c,
-                        statsSummary: m
+                        summonerId: l,
+                        statsSummary: c,
+                        puuid: m
                     } = e;
                     return r.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        summonerName: s,
+                        expertRiotId: `${o} #${i}`,
+                        expertPuuid: m,
                         championId: t,
                         position: a
                     }), this.set("currentCompareTarget", {
                         type: "expert",
-                        summonerName: o,
-                        gameName: l,
+                        summonerName: s,
+                        gameName: o,
                         tagLine: i,
-                        summonerId: c,
+                        summonerId: l,
                         championId: t,
                         position: a,
-                        stats: m
-                    }), this.get("careerStatsService").setRecentlyComparedSummoner(c)
+                        stats: c
+                    }), this.get("careerStatsService").setRecentlyComparedSummoner(l)
                 },
                 compareWithPositionExpert(e, t) {
                     this._closeComparisonSelectorModal();
                     const {
-                        summonerName: a,
+                        puuid: a,
                         displayName: s,
                         gameName: o,
-                        tagLine: l,
-                        summonerId: i,
+                        tagLine: i,
+                        summonerId: l,
                         statsSummary: c
                     } = e;
                     return r.default.sendEvent(n.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        expert: a,
+                        expertRiotId: `${o} #${i}`,
+                        expertPuuid: a,
                         position: t
                     }), this.set("currentCompareTarget", {
                         type: "expert",
                         summonerName: s,
                         gameName: o,
-                        tagLine: l,
-                        summonerId: i,
+                        tagLine: i,
+                        summonerId: l,
                         position: t,
                         stats: c
-                    }), this.get("careerStatsService").setRecentlyComparedSummoner(i)
+                    }), this.get("careerStatsService").setRecentlyComparedSummoner(l)
                 },
                 showExpertProfile(e) {
                     this._closeComparisonSelectorModal(), s.CareerStatsApi.hideCareerStatsModal({});
                     const {
-                        summonerName: t,
-                        summonerId: a
+                        summonerId: t,
+                        gameName: a,
+                        tagLine: o,
+                        puuid: i
                     } = e;
                     return r.default.sendEvent(n.TELEMETRY_EVENT_ID.SHOW_EXPERT_PROFILE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        expert: t
+                        expertRiotId: `${a} #${o}`,
+                        expertPuuid: i
                     }), s.ProfilesApi.showOverlay({
-                        summonerId: a
+                        summonerId: t
                     })
                 },
                 statsIconStatusChanged: s.Ember.on("init", s.Ember.observer("fullReload", "isSeasonSettingLoaded", (function() {
@@ -760,13 +765,13 @@
                         n = this.get("data.championId"),
                         o = this.get("queueFilter.queueTypes.0"),
                         r = this.get("careerStatsService"),
-                        l = this.get("currentSelectedSeason");
+                        i = this.get("currentSelectedSeason");
                     if (t && !n || !a) return Promise.resolve();
                     let m;
                     switch (this.set("isLoadingAverages", !0), e.type) {
                         case "playerGroup": {
                             const s = this.get("queueFilter.isRanked") ? o : c.EXPERT_GAME_QUEUE;
-                            m = t ? r.getChampionAverages(n, a, e.rank, s, l) : r.getPositionAverages(a, e.rank, s, l);
+                            m = t ? r.getChampionAverages(n, a, e.rank, s, i) : r.getPositionAverages(a, e.rank, s, i);
                             break
                         }
                         case "summoner":
@@ -775,10 +780,10 @@
                             m = Promise.resolve(e.averages);
                             break;
                         case "expert":
-                            m = r.loadStatsSummaryFromSummonerId(e.summonerId, l, c.EXPERT_GAME_QUEUE, e.position, e.championId).then((e => null === e ? null : (0, i.calculateCareerStatsFromRawTotals)(e)));
+                            m = r.loadStatsSummaryFromSummonerId(e.summonerId, i, c.EXPERT_GAME_QUEUE, e.position, e.championId).then((e => null === e ? null : (0, l.calculateCareerStatsFromRawTotals)(e)));
                             break;
                         case "otherChampion":
-                            m = r.getChampionAverages(e.championId, a, c.ALL_RANKS, o, l);
+                            m = r.getChampionAverages(e.championId, a, c.ALL_RANKS, o, i);
                             break;
                         default:
                             s.logger.warning("unknown compare target type: " + e.type), m = Promise.resolve()
@@ -794,7 +799,7 @@
                         gameName: n,
                         tagLine: o,
                         type: r,
-                        traKey: l
+                        traKey: i
                     } = e;
                     if (["summoner", "expert"].includes(r)) {
                         const {
@@ -812,16 +817,16 @@
                             s = this.get("showingChampionDetails"),
                             n = this.get("champion.name"),
                             o = s ? n : "";
-                        return t.formatString(`career_stats_compare_option_${l}`, {
+                        return t.formatString(`career_stats_compare_option_${i}`, {
                             position: a,
                             champion: o
                         })
                     }
-                    return "season" === r ? a : t.formatString(l, {
+                    return "season" === r ? a : t.formatString(i, {
                         name: a
                     })
                 },
-                _calculateAveragesOnly: i.calculateStatsAveragesFromGames,
+                _calculateAveragesOnly: l.calculateStatsAveragesFromGames,
                 _selectDropdownOption: function(e, t) {
                     if (!t || t.get("disabled")) return;
                     const a = this.get(e);
@@ -830,7 +835,7 @@
                 _retrievePositionPercentiles(e, t, a, n, o) {
                     const r = s.Lodash.reduce(e.season.queues, ((e, o, r) => (s.Lodash.each(o.positions, ((s, o) => {
                         if (o === a) {
-                            const a = (0, i.getValidRank)(t[r]);
+                            const a = (0, l.getValidRank)(t[r]);
                             e.push({
                                 position: o,
                                 queueType: r,
@@ -847,7 +852,7 @@
                     return s.Lodash.each(t, ((e, t) => {
                         s.Lodash.each(e, ((e, s) => {
                             if (e >= c.MIN_GAMES_TO_UNLOCK_STATS) {
-                                const e = (0, i.getValidRank)(a[t]);
+                                const e = (0, l.getValidRank)(a[t]);
                                 r.push({
                                     position: s,
                                     queueType: t,
@@ -914,9 +919,9 @@
                             const o = `${n}.${a}`;
                             s.Lodash.set(e, o, s.Lodash.add(s.Lodash.get(e, o), t.gamePlayed))
                         })), e)), {})), this.set("data.rankedTiers", r);
-                        const l = this.get("currentSelectedPosition"),
-                            i = this.get("data.championId");
-                        return this.get("showingPositionDetails") ? this._retrievePositionPercentiles(o, r, l, t, a) : this._retrieveChampionPercentiles(i, o.season.champions[i], r, a)
+                        const i = this.get("currentSelectedPosition"),
+                            l = this.get("data.championId");
+                        return this.get("showingPositionDetails") ? this._retrievePositionPercentiles(o, r, i, t, a) : this._retrieveChampionPercentiles(l, o.season.champions[l], r, a)
                     })).then((e => {
                         this.set("percentileMap", e), this.set("loadedSeason", t)
                     }))
@@ -1048,7 +1053,7 @@
             t.TELEMETRY_EVENT_SOURCE = o;
             const r = a(o);
             t.TELEMETRY_EVENT_SOURCE_SET = r;
-            const l = {
+            const i = {
                 CHAMPION_ICON_HOVER: "champion_icon_hover",
                 CHAMPION_ICON_CLICK: "champion_icon_click",
                 POSITION_COLLAPSE_STATE_TOGGLE: "position_collapse_state_toggle",
@@ -1063,9 +1068,9 @@
                 CATEGORY_CHANGE: "category_change",
                 TAB_CHANGE: "tab_change"
             };
-            t.USER_ACTIVITIES = l;
-            const i = a(l);
-            t.USER_ACTIVITIES_SET = i
+            t.USER_ACTIVITIES = i;
+            const l = a(i);
+            t.USER_ACTIVITIES_SET = l
         }, (e, t, a) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -1170,16 +1175,16 @@
                     suffix: a
                 }
             };
-            const l = function(e) {
+            const i = function(e) {
                 const t = e.stats[n.CAREER_STATS_KEY].position;
                 return s.Lodash.isNumber(t) ? n.POSITION_ID_MAP[t] : "DUO_SUPPORT" === e.role ? "SUPPORT" : e.lane
             };
-            t.inferPosition = l;
+            t.inferPosition = i;
             t.filterGames = function(e, t) {
                 let a, n = e;
-                return t.championName ? a = s.Lodash.filter(t.championSummary, (e => o.filter(t.championName, e.searchTerms).length > 0)).map((e => e.id)) : t.championId && (a = [t.championId]), n = s.Lodash.filter(n, (e => !(t.queueFilter && !t.queueFilter.queueTypes.includes(e.queueType)) && (!(a && !a.includes(e.championId)) && (!t.position || t.position === l(e))))), t.timeFilter && (t.timeFilter.includeAll || t.timeFilter.length && t.timeFilter.length >= 0) && (n = t.timeFilter.includeAll ? n : n.slice(0, t.timeFilter.length)), n
+                return t.championName ? a = s.Lodash.filter(t.championSummary, (e => o.filter(t.championName, e.searchTerms).length > 0)).map((e => e.id)) : t.championId && (a = [t.championId]), n = s.Lodash.filter(n, (e => !(t.queueFilter && !t.queueFilter.queueTypes.includes(e.queueType)) && (!(a && !a.includes(e.championId)) && (!t.position || t.position === i(e))))), t.timeFilter && (t.timeFilter.includeAll || t.timeFilter.length && t.timeFilter.length >= 0) && (n = t.timeFilter.includeAll ? n : n.slice(0, t.timeFilter.length)), n
             };
-            const i = function(e, t) {
+            const l = function(e, t) {
                 const a = e.timePlayed / 6e4,
                     o = a / 60,
                     r = {
@@ -1198,17 +1203,17 @@
                         killConversionRatio: e.convertedKillAndAssists / s.Lodash.max([1, e.kills + e.assists])
                     };
                 if (!t) return r;
-                const l = {};
+                const i = {};
                 return s.Lodash.each(r, ((e, t) => {
-                    s.Lodash.set(l, `${n.STAT_TO_CATEGORY_MAP[t]}.${t}`, e)
-                })), l
+                    s.Lodash.set(i, `${n.STAT_TO_CATEGORY_MAP[t]}.${t}`, e)
+                })), i
             };
-            t.calculateCareerStatsFromRawTotals = i;
+            t.calculateCareerStatsFromRawTotals = l;
             t.calculateStatsAveragesFromGames = function(e) {
                 const t = e.reduce(((e, t) => (s.Lodash.each(t.stats[n.CAREER_STATS_KEY], ((t, a) => {
                     e[a] = s.Lodash.add(e[a], t)
                 })), e)), {});
-                return i(t, !1)
+                return l(t, !1)
             };
             t.calculateCategoryPercentiles = function(e, t) {
                 const a = {};
@@ -1264,20 +1269,20 @@
                 const a = {},
                     o = {};
                 for (let r = 0; r <= e.length - t; r++) {
-                    const l = {};
+                    const i = {};
                     for (let a = r; a < r + t; a++) s.Lodash.each(e[a].stats[n.CAREER_STATS_KEY], ((e, t) => {
-                        l[t] = s.Lodash.add(l[t], e)
+                        i[t] = s.Lodash.add(i[t], e)
                     }));
                     s.Lodash.each(e[r].stats[n.CAREER_STATS_KEY], ((e, t) => {
                         o[t] = s.Lodash.add(o[t], e)
                     }));
-                    const c = i(l, !0);
+                    const c = l(i, !0);
                     m(a, c)
                 }
                 for (let a = e.length - t + 1; a < e.length; a++) s.Lodash.each(e[a].stats[n.CAREER_STATS_KEY], ((e, t) => {
                     o[t] = s.Lodash.add(o[t], e)
                 }));
-                const r = i(o, !0);
+                const r = l(o, !0);
                 return s.Lodash.each(a, ((e, t) => {
                     s.Lodash.each(e, ((a, s) => {
                         e[s].stats = a.stats, e[s].average = r[t][s]
@@ -1287,8 +1292,8 @@
             t.calculateRollingAverage = p;
             const d = function(e, t = n.ROLLING_AVERAGE_WINDOW_SIZE, a = n.SMOOTHENING_REQUIRED_SIZE, o = n.MAX_DATA_POINTS) {
                 let r = e.length > a ? t : 1;
-                const l = s.Lodash.max([0, e.length - o + 1]);
-                return l > r && (r = l), r
+                const i = s.Lodash.max([0, e.length - o + 1]);
+                return i > r && (r = i), r
             };
             t.getRollingAverageWindowSize = d;
             t.calculateStatsTrends = function(e) {
@@ -1304,7 +1309,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.UNAVAILABLE_GRADE = t.TIME_FILTERS = t.TIER_NAME_NONE = t.STAT_TO_CATEGORY_MAP = t.STATS_FORMAT_MAPPING = t.STATS_COMPARE_PLAYER_GROUP_OPTIONS = t.SORT_OPTIONS = t.SMOOTHENING_REQUIRED_SIZE = t.SEASON_2018_NUM = t.ROLLING_AVERAGE_WINDOW_SIZE = t.RANKED_QUEUE_TYPE_MAPPINGS = t.QUEUE_FILTER_RANKED_SOLO = t.QUEUE_FILTER_RANKED_FLEX = t.QUEUE_FILTER_QUICKPLAY_5V5 = t.QUEUE_FILTER_DRAFT_5V5 = t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = t.POSITION_ID_MAP = t.POSITIONS = t.PLAY_STYLES = t.PERFORMANCE_GRADES = t.OVERVIEW_CHAMPIONS_PER_ROW = t.NUM_OF_MATCH_UPS = t.NO_DIVISION_TIERS = t.NORMAL_STAT_RANGE_MIN_PERCENTILE = t.NORMAL_STAT_RANGE_MAX_PERCENTILE = t.NORMAL_GAMES_QUEUE_TYPES = t.MOST_PLAYED_SHOW_LIMIT = t.MIN_GAMES_TO_UNLOCK_STATS = t.MILLIS_IN_A_DAY = t.MILLIS_IN_AN_HOUR = t.MAX_RECENTLY_PLAYED_WITH_SUMMONERS = t.MAX_RECENTLY_COMPARED_SUMMONERS = t.MAX_GRADE_VALUE = t.MAX_DATA_POINTS = t.LEAGUES_QUEUE_TYPE_MAP = t.INVALID_EARLIEST_SEASON = t.INVALID_CURRENT_SEASON = t.GRADE_MIN_PERCENTILES = t.EXPERT_GAME_QUEUE = t.DEFAULT_STATS_RANGES = t.DEFAULT_STATS_PERCENTILES = t.DEFAULT_PREV_SEASON_YEAR_COUNT = t.COMPARE_OPTION_OPEN_DIALOG = t.COMPARABLE_RANK_TIER_FORWARD = t.CHAMPION_ID_FOR_POSITION_STATS = t.CATEGORY_TO_STATS_MAP = t.CAREER_STATS_KEY = t.ALL_RANKS = void 0, t.getQueueFilters = function(e) {
-                return i.has(e) ? i.get(e) : [n, s, o, r]
+                return l.has(e) ? l.get(e) : [n, s, o, r]
             };
             t.MILLIS_IN_A_DAY = 864e5;
             t.MILLIS_IN_AN_HOUR = 36e5;
@@ -1334,15 +1339,15 @@
                 isRanked: !1
             };
             t.QUEUE_FILTER_DRAFT_5V5 = r;
-            const l = {
+            const i = {
                 queueTypes: [a[2]],
                 traKey: a[2],
                 isRanked: !1
             };
-            t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = l;
-            const i = new Map([
-                [12, [s, n, l, r]],
-                [13, [s, n, l, r]]
+            t.QUEUE_FILTER_DEPRECATED_BLIND_5V5 = i;
+            const l = new Map([
+                [12, [s, n, i, r]],
+                [13, [s, n, i, r]]
             ]);
             t.TIME_FILTERS = [{
                 key: "this_season",
@@ -1616,25 +1621,25 @@
                 var s, n = 0,
                     o = [],
                     r = t.length,
-                    l = 0,
                     i = 0,
+                    l = 0,
                     c = a.pre || "",
                     m = a.post || "",
                     p = a.caseSensitive && t || t.toLowerCase();
                 e = a.caseSensitive && e || e.toLowerCase();
-                for (var d = 0; d < r; d++) s = t[d], p[d] === e[n] ? (s = c + s + m, n += 1, i += 1 + i) : i = 0, l += i, o[o.length] = s;
-                return n === e.length ? (l = p === e ? 1 / 0 : l, {
+                for (var d = 0; d < r; d++) s = t[d], p[d] === e[n] ? (s = c + s + m, n += 1, l += 1 + l) : l = 0, i += l, o[o.length] = s;
+                return n === e.length ? (i = p === e ? 1 / 0 : i, {
                     rendered: o.join(""),
-                    score: l
+                    score: i
                 }) : null
             }, t.filter = function(e, a, s) {
                 return a && 0 !== a.length ? "string" != typeof e ? a : (s = s || {}, a.reduce((function(a, n, o, r) {
-                    var l = n;
-                    s.extract && (l = s.extract(n));
-                    var i = t.match(e, l, s);
-                    return null != i && (a[a.length] = {
-                        string: i.rendered,
-                        score: i.score,
+                    var i = n;
+                    s.extract && (i = s.extract(n));
+                    var l = t.match(e, i, s);
+                    return null != l && (a[a.length] = {
+                        string: l.rendered,
+                        score: l.score,
                         index: o,
                         original: n
                     }), a
@@ -1700,13 +1705,13 @@
                             o = 2 * Math.PI / t.numOfAxis,
                             r = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => n(e.value))).angle(((e, a) => a * o + t.angleOffSet));
                         this._drawAxes(e, t, a, r, n, o);
-                        const l = a.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", (e => "radar-wrapper " + e.owner));
-                        l.append("path").attr("class", "radar-area").attr("d", (e => r(e.axes))), l.append("path").attr("class", "radar-stroke").attr("d", (e => r(e.axes)))
+                        const i = a.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", (e => "radar-wrapper " + e.owner));
+                        i.append("path").attr("class", "radar-area").attr("d", (e => r(e.axes))), i.append("path").attr("class", "radar-stroke").attr("d", (e => r(e.axes)))
                     },
                     _drawAxes(e, t, a, s, n, o) {
                         const r = e[0].axes.map((e => e.axis)),
-                            l = a.selectAll(".axis").data(r).enter().append("g").attr("class", "axis");
-                        l.append("line").attr("class", "axis-line").attr("x1", 0).attr("y1", 0).attr("x2", ((e, a) => n(t.maxValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet))).attr("y2", ((e, a) => n(t.maxValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet))), l.append("g").attr("transform", ((e, a) => "translate(" + (n(t.labelValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + "," + (n(t.labelValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + ")")).call(this._assignTooltips.bind(this)).append("svg:foreignObject").attr("x", 0).attr("y", 0).attr("class", "stats-icon-container").append("xhtml:div").attr("class", (e => "category-stats-icon stats-icon " + e))
+                            i = a.selectAll(".axis").data(r).enter().append("g").attr("class", "axis");
+                        i.append("line").attr("class", "axis-line").attr("x1", 0).attr("y1", 0).attr("x2", ((e, a) => n(t.maxValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet))).attr("y2", ((e, a) => n(t.maxValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet))), i.append("g").attr("transform", ((e, a) => "translate(" + (n(t.labelValue) * Math.cos(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + "," + (n(t.labelValue) * Math.sin(o * a - Math.PI / 2 + t.angleOffSet) - t.iconSize / 2) + ")")).call(this._assignTooltips.bind(this)).append("svg:foreignObject").attr("x", 0).attr("y", 0).attr("class", "stats-icon-container").append("xhtml:div").attr("class", (e => "category-stats-icon stats-icon " + e))
                     },
                     _assignTooltips(e) {
                         const t = this.get("tra");
@@ -1761,11 +1766,11 @@
             var s = a(1);
             a(21);
             var n = a(12),
-                o = i(a(22)),
+                o = l(a(22)),
                 r = a(6),
-                l = i(a(8));
+                i = l(a(8));
 
-            function i(e) {
+            function l(e) {
                 return e && e.__esModule ? e : {
                     default: e
                 }
@@ -1802,16 +1807,16 @@
                         }))),
                         o = e.compareValue,
                         r = this.get("careerStatsService"),
-                        l = n.STATS_FORMAT_MAPPING[e.name] || n.STATS_FORMAT_MAPPING.default;
+                        i = n.STATS_FORMAT_MAPPING[e.name] || n.STATS_FORMAT_MAPPING.default;
                     s.d3.select(this.element).select("svg.stats-trend-graph").remove();
-                    const i = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "stats-trend-graph"),
-                        c = i.append("g").attr("transform", `translate(${t.margin.left},${t.margin.top})`),
+                    const l = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "stats-trend-graph"),
+                        c = l.append("g").attr("transform", `translate(${t.margin.left},${t.margin.top})`),
                         m = this._calculateYRange(e.normalRange, e.stats, o, e.average),
                         p = {
                             x: s.d3.scale.linear().range([0, t.width]).domain([0, e.stats.length - 1]),
                             y: s.d3.scale.linear().range([t.height, 0]).domain([m.min, m.max])
                         };
-                    this._drawAxes(i, t, p, m, r, l), this._drawStatsLine(i, c, t, p, m, a, r, l), this._drawAverageBar(i, t, "self", e.average, p), this._drawAverageBar(i, t, "selfHover", e.average, p), void 0 !== o && this._drawAverageBar(i, t, "other", o, p), this._drawAverageTag(i, t, "self", e.average, this.get("selfStatsAverageDisplay"), p), this._drawAverageTag(i, t, "selfHover", e.average, this.get("selfStatsAverageDisplay"), p), void 0 !== o && this._drawAverageTag(i, t, "other", o, this.get("againstStatsAverageDisplay"), p), this._setUpMouseOverEffects(i, t, p), this._updatePinnedLabel(this.get("pinnedGame.index"))
+                    this._drawAxes(l, t, p, m, r, i), this._drawStatsLine(l, c, t, p, m, a, r, i), this._drawAverageBar(l, t, "self", e.average, p), this._drawAverageBar(l, t, "selfHover", e.average, p), void 0 !== o && this._drawAverageBar(l, t, "other", o, p), this._drawAverageTag(l, t, "self", e.average, this.get("selfStatsAverageDisplay"), p), this._drawAverageTag(l, t, "selfHover", e.average, this.get("selfStatsAverageDisplay"), p), void 0 !== o && this._drawAverageTag(l, t, "other", o, this.get("againstStatsAverageDisplay"), p), this._setUpMouseOverEffects(l, t, p), this._updatePinnedLabel(this.get("pinnedGame.index"))
                 },
                 pinnedGameChanged: s.Ember.on("init", s.Ember.observer("pinnedGame.index", (function() {
                     this._updatePinnedLabel(this.get("pinnedGame.index"))
@@ -1833,23 +1838,23 @@
                     }
                 },
                 _drawAxes(e, t, a, n, o, r) {
-                    const l = s.d3.svg.axis().scale(a.x).tickValues(a.x.domain()).tickSize(t.axis.x.tickSize).orient("top").tickFormat((() => ""));
-                    e.append("svg:g").attr("class", "axis-x").attr("transform", `translate(${t.margin.left+t.axis.x.padding.x},${t.height+t.margin.top+t.axis.x.padding.y})`).call(l);
-                    const i = s.d3.svg.axis().scale(a.y).tickValues(a.y.domain()).tickSize(t.axis.y.tickSize).orient("left").tickFormat((e => o.formatNumber(e, r.tickFixedPoint, r.isPercentage, r.byThousand).replace("-", "–")));
-                    e.append("svg:g").attr("class", "axis-y").attr("transform", `translate(${t.margin.left+t.axis.y.padding.x},${t.margin.top+t.axis.y.padding.y})`).call(i);
+                    const i = s.d3.svg.axis().scale(a.x).tickValues(a.x.domain()).tickSize(t.axis.x.tickSize).orient("top").tickFormat((() => ""));
+                    e.append("svg:g").attr("class", "axis-x").attr("transform", `translate(${t.margin.left+t.axis.x.padding.x},${t.height+t.margin.top+t.axis.x.padding.y})`).call(i);
+                    const l = s.d3.svg.axis().scale(a.y).tickValues(a.y.domain()).tickSize(t.axis.y.tickSize).orient("left").tickFormat((e => o.formatNumber(e, r.tickFixedPoint, r.isPercentage, r.byThousand).replace("-", "–")));
+                    e.append("svg:g").attr("class", "axis-y").attr("transform", `translate(${t.margin.left+t.axis.y.padding.x},${t.margin.top+t.axis.y.padding.y})`).call(l);
                     const c = (n.max - n.min) / t.axis.y.gridLines,
                         m = [];
                     for (let e = 1; e <= t.axis.y.gridLines; e++) m.push(n.min + c * e);
                     const p = s.d3.svg.axis().scale(a.y).tickValues(m).innerTickSize(-t.width).outerTickSize(0).orient("left").tickFormat((() => ""));
                     e.append("svg:g").attr("class", "axis-grid").attr("transform", `translate(${t.margin.left+t.axis.y.padding.x},${t.margin.top+t.axis.y.padding.y})`).call(p)
                 },
-                _drawStatsLine(e, t, a, n, o, r, l, i) {
+                _drawStatsLine(e, t, a, n, o, r, i, l) {
                     const c = s.d3.svg.line().x((e => n.x(e.index))).y((e => n.y(e.stat))).interpolate("monotone");
                     t.selectAll(".data-line").data([r]).enter().append("svg:path").attr("class", "data-line").attr("d", c(r)), e.append("linearGradient").attr("id", "area-gradient").attr("gradientUnits", "userSpaceOnUse").attr("x1", 0).attr("y1", n.y(o.min)).attr("x2", 0).attr("y2", n.y(o.max)).selectAll("stop").data(a.areaGradientStops).enter().append("stop").attr("offset", (e => e.offset)).attr("stop-color", (e => e.color)).attr("stop-opacity", (e => e.opacity));
                     const m = s.d3.svg.area().interpolate("monotone").x((e => n.x(e.index))).y0(a.height).y1((e => n.y(e.stat)));
                     t.selectAll(".area-under-line").data([r]).enter().append("svg:path").attr("class", "area-under-line").attr("d", m).style("fill", "url(#area-gradient)");
                     const p = t.selectAll(".data-label").data(r).enter().append("svg:g").attr("class", (e => `data-label x-${e.index}`)).attr("transform", (e => `translate(${n.x(e.index)},${n.y(e.stat)})`));
-                    p.append("circle").attr("class", "data-dot").attr("r", a.label.dotSize), p.append("text").attr("class", "data-dot-text shadow").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => l.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–"))), p.append("text").attr("class", "data-dot-text").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => l.formatNumber(e.stat, i.fixedPoints, i.isPercentage).replace("-", "–")))
+                    p.append("circle").attr("class", "data-dot").attr("r", a.label.dotSize), p.append("text").attr("class", "data-dot-text shadow").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => i.formatNumber(e.stat, l.fixedPoints, l.isPercentage).replace("-", "–"))), p.append("text").attr("class", "data-dot-text").attr("x", a.label.textOffset.x).attr("y", a.label.textOffset.y).text((e => i.formatNumber(e.stat, l.fixedPoints, l.isPercentage).replace("-", "–")))
                 },
                 _drawAverageBar(e, t, a, s, n) {
                     const o = t.averageBars[a];
@@ -1857,24 +1862,24 @@
                 },
                 _drawAverageTag(e, t, a, s, n, o) {
                     const r = n.replace("-", "–");
-                    let l = r.length;
-                    r.includes(".") && (l -= .5);
-                    const i = t.averageTags[a],
-                        c = l * t.averageTags.textWidth,
-                        m = "right" === i.offset.from ? t.width - i.offset.x - c : i.offset.x,
-                        p = e.append("svg:g").attr("class", `average-tag ${a}`).attr("transform", `translate(${m},${o.y(s)+t.margin.top+i.offset.y})`),
-                        d = i.images.left;
+                    let i = r.length;
+                    r.includes(".") && (i -= .5);
+                    const l = t.averageTags[a],
+                        c = i * t.averageTags.textWidth,
+                        m = "right" === l.offset.from ? t.width - l.offset.x - c : l.offset.x,
+                        p = e.append("svg:g").attr("class", `average-tag ${a}`).attr("transform", `translate(${m},${o.y(s)+t.margin.top+l.offset.y})`),
+                        d = l.images.left;
                     p.append("svg:image").attr("class", "tag-left").attr("xlink:href", (() => d.src)).attr("x", (() => d.offset.x)).attr("y", (() => d.offset.y)).attr("width", d.width).attr("height", d.height);
-                    const u = i.images.middle;
+                    const u = l.images.middle;
                     p.append("svg:rect").attr("x", (() => u.offset.x)).attr("y", (() => u.offset.y)).attr("class", "tag-mid").attr("width", c).attr("height", u.height).attr("fill", `url(#avg-tag-mid-${a})`);
-                    const h = i.images.right;
-                    p.append("svg:image").attr("class", "tag-right").attr("xlink:href", (() => h.src)).attr("x", (() => c + h.offset.x)).attr("y", (() => h.offset.y)).attr("width", h.width).attr("height", h.height), p.append("svg:text").attr("class", `tag-text ${a}`).attr("text-anchor", "middle").attr("x", (c + h.offset.x + h.width) / 2).attr("y", i.textOffset.y).text(r)
+                    const h = l.images.right;
+                    p.append("svg:image").attr("class", "tag-right").attr("xlink:href", (() => h.src)).attr("x", (() => c + h.offset.x)).attr("y", (() => h.offset.y)).attr("width", h.width).attr("height", h.height), p.append("svg:text").attr("class", `tag-text ${a}`).attr("text-anchor", "middle").attr("x", (c + h.offset.x + h.width) / 2).attr("y", l.textOffset.y).text(r)
                 },
                 _setUpMouseOverEffects(e, t, a) {
                     const n = this.get("pinnedGame"),
                         o = e.append("svg:g").attr("class", "mouse-overs").attr("transform", `translate(${t.margin.left},${t.margin.top})`);
                     o.append("path").attr("class", "mouse-line").style("opacity", "0"), o.append("svg:rect").attr("class", "overlay-mask").attr("width", t.width).attr("height", t.height).on("mouseenter", (function() {
-                        s.d3.selectAll(".average-bar.self, .average-bar.other").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), e.selectAll(".average-bar.selfHover").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), s.d3.selectAll(".average-tag").transition().duration(t.transitionTime).style("opacity", t.averageTags.fadeToOpacity), s.d3.selectAll(".mouse-line").style("opacity", 1), l.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_ENTER)
+                        s.d3.selectAll(".average-bar.self, .average-bar.other").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), e.selectAll(".average-bar.selfHover").transition().duration(t.transitionTime).style("opacity", t.averageBars.fadeToOpacity), s.d3.selectAll(".average-tag").transition().duration(t.transitionTime).style("opacity", t.averageTags.fadeToOpacity), s.d3.selectAll(".mouse-line").style("opacity", 1), i.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_ENTER)
                     })).on("mouseout", (function() {
                         s.d3.selectAll(".average-bar, .average-tag").transition().duration(t.transitionTime).style("opacity", null), s.d3.selectAll(".mouse-line").style("opacity", 0);
                         const e = s.d3.selectAll(".data-label.show");
@@ -1888,7 +1893,7 @@
                     })).on("click", (function() {
                         const e = s.d3.mouse(this),
                             t = s.Lodash.round(a.x.invert(e[0]));
-                        n.set("index", n.get("index") === t ? null : t), l.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_CLICK)
+                        n.set("index", n.get("index") === t ? null : t), i.default.addUserBehavior(r.USER_ACTIVITIES.GRAPH_MOUSE_CLICK)
                     }))
                 },
                 _updatePinnedLabel(e) {
@@ -2142,7 +2147,7 @@
                 n = a(12),
                 o = a(11),
                 r = a(34);
-            const l = (0, s.emberDataBinding)({
+            const i = (0, s.emberDataBinding)({
                 Ember: s.Ember,
                 websocket: (0, s.getProvider)().getSocket(),
                 basePaths: {
@@ -2169,7 +2174,7 @@
                     }
                 }
             });
-            var i = s.Ember.Service.extend(l, {
+            var l = s.Ember.Service.extend(i, {
                 earliestSeason: n.INVALID_EARLIEST_SEASON,
                 currentSeason: n.INVALID_CURRENT_SEASON,
                 isGameDataLoaded: !1,
@@ -2206,12 +2211,12 @@
                     const n = this.get("currentLocale").full.replace("_", "-"),
                         o = s ? e / 1e3 : e,
                         r = s ? this.get("careerStatsTra").get("career_stats_thousand_suffix") : "",
-                        l = {
+                        i = {
                             minimumFractionDigits: t,
                             maximumFractionDigits: t
                         };
-                    a && (l.style = "percent");
-                    return o.toLocaleString(n, l) + r
+                    a && (i.style = "percent");
+                    return o.toLocaleString(n, i) + r
                 },
                 loadCurrentSeasonStatsGames(e) {
                     return this.get("api.careerStats").get(`/v1/summoner-games/${e}`, {
@@ -2247,14 +2252,14 @@
                 getPositionAverages(e, t, a, n) {
                     const o = this.get("api.careerStats"),
                         r = this.get("currentSeason"),
-                        l = n && n !== r ? `/season/${n}` : "";
-                    return o.get(`/v1/position-averages${l}/${e}/${t}/${a}`).then((e => s.Lodash.get(e, "stats")))
+                        i = n && n !== r ? `/season/${n}` : "";
+                    return o.get(`/v1/position-averages${i}/${e}/${t}/${a}`).then((e => s.Lodash.get(e, "stats")))
                 },
                 getChampionAverages(e, t, a, n, o) {
                     const r = this.get("api.careerStats"),
-                        l = this.get("currentSeason"),
-                        i = o && o !== l ? `/season/${o}` : "";
-                    return r.get(`/v1/champion-averages${i}/${e}/${t}/${a}/${n}`).then((e => s.Lodash.get(e, "stats")))
+                        i = this.get("currentSeason"),
+                        l = o && o !== i ? `/season/${o}` : "";
+                    return r.get(`/v1/champion-averages${l}/${e}/${t}/${a}/${n}`).then((e => s.Lodash.get(e, "stats")))
                 },
                 getChampionMatchups(e, t) {
                     return this.get("api.careerStats").get(`/v1/champion-matchups/${e}/${t}`).then((a => {
@@ -2274,8 +2279,8 @@
                 },
                 loadStatsSummary(e, t, a, o, r) {
                     return this.get("api.careerStats").get(`/v1/summoner-stats/${e}/${t}/${a}/${o}` + (r ? `?championId=${r}` : "")).then((e => {
-                        const l = `seasonSummary.${t}.${a}.positionSummaries.${o}.` + (r ? `championSummary.${r}` : "positionSummary");
-                        return s.Lodash.get(e, l).stats[n.CAREER_STATS_KEY]
+                        const i = `seasonSummary.${t}.${a}.positionSummaries.${o}.` + (r ? `championSummary.${r}` : "positionSummary");
+                        return s.Lodash.get(e, i).stats[n.CAREER_STATS_KEY]
                     })).catch((n => (s.logger.warning(`cannot load career stats summary of season for ${e}(season ${t}, queue ${a}, position ${o}, champId ${r}): ${n}`), null)))
                 },
                 getChampionExperts(e, t, a) {
@@ -2349,17 +2354,17 @@
                         const o = n[0],
                             r = n[1];
                         if (!o || !r) return s.logger.warning(`Error loading match history gameId ${e}`), null;
-                        const l = s.Lodash.find(o.participants, (e => e.participantId === t)),
-                            i = this._findOpponentParticipantId(o, r, t),
-                            c = s.Lodash.find(o.participants, (e => e.participantId === i));
+                        const i = s.Lodash.find(o.participants, (e => e.participantId === t)),
+                            l = this._findOpponentParticipantId(o, r, t),
+                            c = s.Lodash.find(o.participants, (e => e.participantId === l));
                         let m, p;
                         return s.Lodash.each(o.participantIdentities, (e => {
-                            e.participantId === l.participantId && (m = e.player.summonerId), e.participantId === c.participantId && (p = e.player.summonerId)
+                            e.participantId === i.participantId && (m = e.player.summonerId), e.participantId === c.participantId && (p = e.player.summonerId)
                         })), {
                             gameId: e,
                             playerSummonerId: m,
                             opponentSummonerId: p,
-                            player: this._getPlayerMatchSummary(l, a),
+                            player: this._getPlayerMatchSummary(i, a),
                             opponent: this._getPlayerMatchSummary(c, a)
                         }
                     }))
@@ -2440,10 +2445,10 @@
                 _loadExperts(e, t, a) {
                     const o = this.get("api.careerStats"),
                         r = this.get("currentSeason"),
-                        l = a && a !== r ? `/season/${a}` : "",
-                        i = (t ? "champion" : "position") + "-experts",
+                        i = a && a !== r ? `/season/${a}` : "",
+                        l = (t ? "champion" : "position") + "-experts",
                         c = `${t?t+"/":""}${e}`;
-                    return o.get(`/v1/${i}${l}/${c}`).then((e => {
+                    return o.get(`/v1/${l}${i}/${c}`).then((e => {
                         if (!s.Lodash.get(e, "length")) return Promise.resolve([]);
                         const t = s.Lodash.map(e, "summonerId");
                         return Promise.all([this._loadSummonerIcons(t), this._loadSummonersRankedInfo(t, n.EXPERT_GAME_QUEUE), this._loadSummoners(t)]).then((t => {
@@ -2466,26 +2471,26 @@
                 _enrichExperts(e, t, a, n) {
                     const r = this.get("careerStatsTra");
                     return s.Lodash.sortBy(s.Lodash.map(t, (t => {
-                        const l = t.summonerId,
-                            i = s.Lodash.get(a, l),
-                            c = s.Lodash.get(i, "tier"),
-                            m = s.Lodash.get(i, "division"),
+                        const i = t.summonerId,
+                            l = s.Lodash.get(a, i),
+                            c = s.Lodash.get(l, "tier"),
+                            m = s.Lodash.get(l, "division"),
                             p = s.LeagueTierNames.getFullTierDivisionName(c, m),
-                            d = n[l],
+                            d = n[i],
                             {
                                 gameName: u,
                                 tagLine: h,
                                 puuid: g
                             } = d;
                         return s.Lodash.assign(t, {
-                            rank: i,
+                            rank: l,
                             rankDisplay: p,
-                            summonerId: l,
+                            summonerId: i,
                             puuid: g,
                             displayName: t.summonerName,
                             gameName: u,
                             tagLine: h,
-                            profileIconId: s.Lodash.get(e, `${l}.profileIconId`),
+                            profileIconId: s.Lodash.get(e, `${i}.profileIconId`),
                             subtitles: {
                                 numOfGamesDisplay: r.formatString("career_stats_expert_subtitle_games_played", {
                                     number: t.numOfGames
@@ -2515,8 +2520,8 @@
                     const {
                         queueType: a,
                         championId: r
-                    } = t, l = (0, o.inferPosition)(t), i = t.stats[n.CAREER_STATS_KEY];
-                    s.Lodash.each(i, ((t, a) => {
+                    } = t, i = (0, o.inferPosition)(t), l = t.stats[n.CAREER_STATS_KEY];
+                    s.Lodash.each(l, ((t, a) => {
                         e[a] = s.Lodash.add(e[a], t)
                     })), e.queues[a] || (e.queues[a] = {
                         queue: a,
@@ -2525,11 +2530,11 @@
                         }
                     });
                     const c = e.queues[a];
-                    c.timePlayed = s.Lodash.add(c.timePlayed, i.timePlayed), c.wins = s.Lodash.add(c.wins, i.victory), c.losses = s.Lodash.add(c.losses, i.defeat), c.positions[l] || (c.positions[l] = {});
-                    const m = c.positions[l];
-                    s.Lodash.each(i, ((e, t) => {
+                    c.timePlayed = s.Lodash.add(c.timePlayed, l.timePlayed), c.wins = s.Lodash.add(c.wins, l.victory), c.losses = s.Lodash.add(c.losses, l.defeat), c.positions[i] || (c.positions[i] = {});
+                    const m = c.positions[i];
+                    s.Lodash.each(l, ((e, t) => {
                         m[t] = s.Lodash.add(m[t], e), c.positions.ALL[t] = s.Lodash.add(c.positions.ALL[t], e)
-                    })), this._addToChampionOverviews(e.champions, r, a, l)
+                    })), this._addToChampionOverviews(e.champions, r, a, i)
                 },
                 _addToChampionOverviews(e, t, a, n) {
                     e[t] || (e[t] = {}), e[t][a] || (e[t][a] = {}), e[t][a][n] = s.Lodash.add(e[t][a][n], 1)
@@ -2576,7 +2581,7 @@
                     }
                 }
             });
-            t.default = i
+            t.default = l
         }, (e, t, a) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -2711,17 +2716,17 @@
                 };
             t.findOpponentParticipants = function(e, t) {
                 const a = s.Lodash.keyBy(e.participants, "participantId"),
-                    l = function(e, t) {
+                    i = function(e, t) {
                         const a = s.Lodash.reduce(e, ((t, a) => (t[a.participantId] = {
                             participantId: a.participantId,
                             teamId: e[a.participantId].teamId
                         }, s.Lodash.each(n, (e => {
                             t[a.participantId][e] = 0
                         })), t)), {});
-                        return s.Lodash.each(t.frames, ((t, l) => {
-                            l >= 2 && l <= 9 && s.Lodash.each(t.participantFrames, (t => {
+                        return s.Lodash.each(t.frames, ((t, i) => {
+                            i >= 2 && i <= 9 && s.Lodash.each(t.participantFrames, (t => {
                                 if (!t.position) return;
-                                const i = l - 2,
+                                const l = i - 2,
                                     {
                                         teamId: c
                                     } = e[t.participantId],
@@ -2734,12 +2739,12 @@
                                     _ = t.jungleMinionsKilled;
                                 s.Lodash.each(n, (e => {
                                     const s = o[e][c];
-                                    a[t.participantId][e] += r(s.distanceP50[i], u, s.distanceStd[i], l) + r(s.minionsP50[i], g, s.minionsStd[i], l) + r(s.monstersP50[i], _, s.monstersStd[i], l) + r(s.angleP25[i], h, s.angleStd[i], l) + r(s.angleP75[i], h, s.angleStd[i], l)
+                                    a[t.participantId][e] += r(s.distanceP50[l], u, s.distanceStd[l], i) + r(s.minionsP50[l], g, s.minionsStd[l], i) + r(s.monstersP50[l], _, s.monstersStd[l], i) + r(s.angleP25[l], h, s.angleStd[l], i) + r(s.angleP75[l], h, s.angleStd[l], i)
                                 }))
                             }))
                         })), a
                     }(a, t),
-                    i = function(e, t) {
+                    l = function(e, t) {
                         const a = s.Lodash.sortBy(s.Lodash.reduce(t, ((e, t) => (s.Lodash.each(n, (a => {
                                 e.push({
                                     participantId: t.participantId,
@@ -2754,21 +2759,21 @@
                                 participants: {}
                             },
                             r = [];
-                        let l = 0;
-                        for (; r.length < s.Lodash.keys(e).length && l < a.length;) {
+                        let i = 0;
+                        for (; r.length < s.Lodash.keys(e).length && i < a.length;) {
                             const {
                                 teamId: e,
                                 participantId: t,
                                 position: n
-                            } = a[l];
-                            o[e][n] || s.Lodash.includes(r, t) || (o[e][n] = t, o.participants[t] = n, r.push(t)), l++
+                            } = a[i];
+                            o[e][n] || s.Lodash.includes(r, t) || (o[e][n] = t, o.participants[t] = n, r.push(t)), i++
                         }
                         return o
-                    }(a, l),
+                    }(a, i),
                     c = {};
-                return s.Lodash.each(i.participants, ((e, t) => {
+                return s.Lodash.each(l.participants, ((e, t) => {
                     const s = 300 - a[t].teamId;
-                    c[t] = i[s][e]
+                    c[t] = l[s][e]
                 })), c
             }
         }, e => {
@@ -2888,7 +2893,7 @@
                             isEarliestSeason: a,
                             careerStatsService: n
                         }),
-                        l = s.ModalManager.add({
+                        i = s.ModalManager.add({
                             type: "DialogAlert",
                             data: {
                                 contents: r.domNode,
@@ -2899,8 +2904,8 @@
                                 })
                             }
                         });
-                    l.okPromise.then((() => {
-                        s.ModalManager.remove(l), s.Telemetry.invokeWithLowProbability((function() {
+                    i.okPromise.then((() => {
+                        s.ModalManager.remove(i), s.Telemetry.invokeWithLowProbability((function() {
                             s.Telemetry.recordNonTimingTracingEvent("career-stats-seen", 1, "click")
                         })), r && r.componentPromise && r.componentPromise.then((e => s.Ember.run((() => {
                             e.app.destroy()
@@ -2928,10 +2933,10 @@
             a(40);
             var n, o = a(12),
                 r = a(6),
-                l = (n = a(8)) && n.__esModule ? n : {
+                i = (n = a(8)) && n.__esModule ? n : {
                     default: n
                 },
-                i = a(11);
+                l = a(11);
             var c = s.Ember.Component.extend({
                 layout: a(41),
                 classNames: ["career-stats-overview-component"],
@@ -2946,9 +2951,9 @@
                 isCurrentSeason2018: s.Ember.computed("currentTimeFilter.season", (function() {
                     return this.get("currentTimeFilter.season") === o.SEASON_2018_NUM
                 })),
-                calculateCareerStatsFromRawTotals: i.calculateCareerStatsFromRawTotals,
-                calculateCategoryPercentiles: i.calculateCategoryPercentiles,
-                calculateGradesAndBestPlaystyle: i.calculateGradesAndBestPlaystyle,
+                calculateCareerStatsFromRawTotals: l.calculateCareerStatsFromRawTotals,
+                calculateCategoryPercentiles: l.calculateCategoryPercentiles,
+                calculateGradesAndBestPlaystyle: l.calculateGradesAndBestPlaystyle,
                 isStatsEmpty: !0,
                 isStatsLoaded: !0,
                 serverError: !1,
@@ -3038,10 +3043,10 @@
                     const n = {};
                     return s.Lodash.each(a, ((a, o) => {
                         const r = this.calculateCareerStatsFromRawTotals(a),
-                            l = this.calculateCategoryPercentiles(r, t[e][o]);
+                            i = this.calculateCategoryPercentiles(r, t[e][o]);
                         n[o] = s.Lodash.assign({
                             winRate: a.victory / a.gamePlayed
-                        }, this.calculateGradesAndBestPlaystyle(l))
+                        }, this.calculateGradesAndBestPlaystyle(i))
                     })), n
                 })),
                 seasonTimePlayedDisplay: s.Ember.computed("statsOverview.season.timePlayed", (function() {
@@ -3088,10 +3093,10 @@
                                 r = t === n ? e[1] : {};
                             if (!s.Lodash.get(o, "games.length")) return this.set("isStatsEmpty", !0), s.Lodash.get(o, "error") && this.set("serverError", !0), Promise.resolve();
                             this.set("isStatsEmpty", !1), this.set("serverError", !1), this.set("statsOverview", o), this.set("rankedTiers", r);
-                            const l = this._getPositionPercentileRequests(o, r, t);
-                            return a.getPositionStatPercentiles(l)
+                            const i = this._getPositionPercentileRequests(o, r, t);
+                            return a.getPositionStatPercentiles(i)
                         })).then((e => {
-                            this.get("isStatsEmpty") || (this.set("queuePositionPercentiles", e), this._selectDefaultQueueFilter()), this.set("isStatsLoaded", !0), l.default.sendEvent(r.TELEMETRY_EVENT_ID.DATA_LOADED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, this._summarizeOverviewForTelemetry(this.get("statsOverview")))
+                            this.get("isStatsEmpty") || (this.set("queuePositionPercentiles", e), this._selectDefaultQueueFilter()), this.set("isStatsLoaded", !0), i.default.sendEvent(r.TELEMETRY_EVENT_ID.DATA_LOADED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, this._summarizeOverviewForTelemetry(this.get("statsOverview")))
                         }))
                     }
                 },
@@ -3104,7 +3109,7 @@
                     };
                     a.gradeSummary = s.Lodash.mapValues(e, (function(e) {
                         return e.overallGrade
-                    })), l.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_GRADES_CALCULATED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, a)
+                    })), i.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_GRADES_CALCULATED, r.TELEMETRY_EVENT_SOURCE.STATS_OVERVIEW, a)
                 },
                 _summarizeOverviewForTelemetry: function(e) {
                     let t = 0;
@@ -3131,7 +3136,7 @@
                     const n = [];
                     return s.Lodash.each(e.season.queues, ((e, o) => {
                         s.Lodash.each(e.positions, ((e, s) => {
-                            const r = (0, i.getValidRank)(t[o]);
+                            const r = (0, l.getValidRank)(t[o]);
                             n.push({
                                 position: s,
                                 queueType: o,
@@ -3150,15 +3155,15 @@
                 },
                 actions: {
                     selectQueueFilter: function(e) {
-                        this._selectDropdownOption("currentQueueFilter", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]"))
+                        this._selectDropdownOption("currentQueueFilter", e), i.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_QUEUE_CHANGE, s.Lodash.get(e, "queueTypes[0]"))
                     },
                     selectTimeFilter: function(e) {
                         const t = s.Lodash.get(e, "season"),
                             a = this.get("currentTimeFilter.season");
-                        this._selectDropdownOption("currentTimeFilter", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), t !== a && this._loadSummonerStats()
+                        this._selectDropdownOption("currentTimeFilter", e), i.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_TIME_CHANGE, s.Lodash.get(e, "key")), t !== a && this._loadSummonerStats()
                     },
                     selectSortOption: function(e) {
-                        this._selectDropdownOption("currentSortOption", e), l.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "field"))
+                        this._selectDropdownOption("currentSortOption", e), i.default.addUserBehavior(r.USER_ACTIVITIES.FILTER_BY_POSITION_CHANGE, s.Lodash.get(e, "field"))
                     }
                 }
             });
@@ -3213,9 +3218,9 @@
                         const n = s.d3.select(this.element).append("svg:svg").attr("width", t.width + t.margin.left + t.margin.right).attr("height", t.height + t.margin.top + t.margin.bottom).attr("class", "play-style-summary-graph").append("g").attr("transform", `translate(${t.positionOffset.x},${t.positionOffset.y})`),
                             o = s.d3.scale.linear().range([0, Math.min(t.width / 2, t.height / 2)]).domain([0, t.maxValue]),
                             r = 2 * Math.PI / a,
-                            l = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => o(e.value))).angle(((e, a) => a * r + t.angleOffSet)),
-                            i = n.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", "radar-wrapper");
-                        i.append("path").attr("class", "radar-area").attr("d", (e => l(e))), i.append("path").attr("class", "radar-stroke").attr("d", (e => l(e))).style("fill", "none")
+                            i = s.d3.svg.line.radial().interpolate("linear-closed").radius((e => o(e.value))).angle(((e, a) => a * r + t.angleOffSet)),
+                            l = n.selectAll(".radar-wrapper").data(e).enter().append("g").attr("class", "radar-wrapper");
+                        l.append("path").attr("class", "radar-area").attr("d", (e => i(e))), l.append("path").attr("class", "radar-stroke").attr("d", (e => i(e))).style("fill", "none")
                     }
                 });
             t.default = o
@@ -3238,8 +3243,8 @@
             a(46);
             var n, o = a(12),
                 r = a(11),
-                l = a(7),
-                i = a(6),
+                i = a(7),
+                l = a(6),
                 c = (n = a(8)) && n.__esModule ? n : {
                     default: n
                 };
@@ -3266,8 +3271,8 @@
                         a = this.get("champFilter"),
                         n = this.get("queueFilter"),
                         o = this.get("timeFilter"),
-                        l = this.get("sortOption"),
-                        i = this.get("expandedPositions"),
+                        i = this.get("sortOption"),
+                        l = this.get("expandedPositions"),
                         c = this.get("minGamesToUnlockStats"),
                         m = this.get("championsPerRow"),
                         p = this.get("positionGrades"),
@@ -3282,7 +3287,7 @@
                             timeFilter: o,
                             championSummary: this.get("careerStatsService.championSummary")
                         });
-                    return this._createDisplays(h, l, e, i, u, m, p, d)
+                    return this._createDisplays(h, i, e, l, u, m, p, d)
                 })),
                 positionQueuesMap: s.Ember.computed("seasonOverview.queues", (function() {
                     const e = this.get("seasonOverview.queues"),
@@ -3304,7 +3309,7 @@
                         a[n] = s.Lodash.max([0, t - e])
                     })), a
                 },
-                _createDisplays(e, t, a, n, o, l, i, c) {
+                _createDisplays(e, t, a, n, o, i, l, c) {
                     const m = {},
                         p = this.get("careerStatsService.indexedChampions"),
                         d = this.get("tra");
@@ -3313,8 +3318,8 @@
                             {
                                 championId: n
                             } = e,
-                            l = p[n],
-                            i = s.Lodash.find(a, (e => e.championId === n)) || {
+                            i = p[n],
+                            l = s.Lodash.find(a, (e => e.championId === n)) || {
                                 lastPlayTime: 0,
                                 championPoints: 0
                             };
@@ -3327,12 +3332,12 @@
                             champions: {}
                         });
                         const u = m[t];
-                        u.lastPlayTime = s.Lodash.max([u.lastPlayTime, i.lastPlayTime]), u.gamesPlayed += 1, u.champions[n] || (u.championPoints += i.championPoints, u.champions[n] = {
+                        u.lastPlayTime = s.Lodash.max([u.lastPlayTime, l.lastPlayTime]), u.gamesPlayed += 1, u.champions[n] || (u.championPoints += l.championPoints, u.champions[n] = {
                             championId: n,
-                            displayName: l.name,
-                            iconPath: l.squarePortraitPath,
-                            championPoints: i.championPoints,
-                            lastPlayTime: i.lastPlayTime,
+                            displayName: i.name,
+                            iconPath: i.squarePortraitPath,
+                            championPoints: l.championPoints,
+                            lastPlayTime: l.lastPlayTime,
                             gamesPlayed: 0,
                             locked: !0
                         });
@@ -3346,19 +3351,19 @@
                             number: f
                         })
                     })), s.Lodash.each(m, (e => {
-                        const t = i[e.name];
+                        const t = l[e.name];
                         e.gradeDisplay = t.overallGrade, e.gradeClass = t.overallGrade[0], e.winRateDisplay = this.get("tra").formatString("career_stats_win_rate_percent", {
                             number: (0, r.getWinRateDisplay)(t.winRate, 0)
                         }), e.playStyle = t.bestPlaystyle, e.expanded = n.includes(e.name);
                         const a = o[e.name];
                         e.locked = a > 0;
                         const s = e.locked ? c ? "career_stats_tooltip_position_locked" : "career_stats_tooltip_stats_locked_previous_season" : "career_stats_overview_champion_games_played",
-                            l = e.locked ? a : e.gamesPlayed;
+                            i = e.locked ? a : e.gamesPlayed;
                         e.tooltip = d.formatString(s, {
-                            number: l
+                            number: i
                         })
                     }));
-                    const u = s.Lodash.map(m, (e => (e.champions = this._sortPositionOrChampion(s.Lodash.values(e.champions), t), e.championsToExpand = s.Lodash.max([0, e.champions.length - l]), e.expandable = e.champions.length > l, e))),
+                    const u = s.Lodash.map(m, (e => (e.champions = this._sortPositionOrChampion(s.Lodash.values(e.champions), t), e.championsToExpand = s.Lodash.max([0, e.champions.length - i]), e.expandable = e.champions.length > i, e))),
                         h = this._sortPositionOrChampion(u, t);
                     return s.Ember.A(h)
                 },
@@ -3368,7 +3373,7 @@
                 },
                 actions: {
                     showPositionDetail: function(e) {
-                        e.locked || (l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_DETAIL_BUTTON_CLICK, s.Lodash.get(e, "name")), s.CareerStatsApi.showCareerStatsModal({
+                        e.locked || (i.SFX.gridClick.play(), c.default.addUserBehavior(l.USER_ACTIVITIES.POSITION_DETAIL_BUTTON_CLICK, s.Lodash.get(e, "name")), s.CareerStatsApi.showCareerStatsModal({
                             screen: "position",
                             data: {
                                 position: e.name,
@@ -3385,7 +3390,7 @@
                         }, !1))
                     },
                     showChampionDetail: function(e, t) {
-                        e.locked || (l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_CLICK, s.Lodash.get(e, "championId")), s.CareerStatsApi.showCareerStatsModal({
+                        e.locked || (i.SFX.gridClick.play(), c.default.addUserBehavior(l.USER_ACTIVITIES.CHAMPION_ICON_CLICK, s.Lodash.get(e, "championId")), s.CareerStatsApi.showCareerStatsModal({
                             screen: "champion",
                             data: s.Ember.Object.create({
                                 championId: e.championId,
@@ -3401,10 +3406,10 @@
                         }, !1))
                     },
                     hoverChampionOrPositionDetail: function() {
-                        l.SFX.gridHover.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.CHAMPION_ICON_HOVER)
+                        i.SFX.gridHover.play(), c.default.addUserBehavior(l.USER_ACTIVITIES.CHAMPION_ICON_HOVER)
                     },
                     togglePositionCollapseState(e) {
-                        l.SFX.gridClick.play(), c.default.addUserBehavior(i.USER_ACTIVITIES.POSITION_COLLAPSE_STATE_TOGGLE, e);
+                        i.SFX.gridClick.play(), c.default.addUserBehavior(l.USER_ACTIVITIES.POSITION_COLLAPSE_STATE_TOGGLE, e);
                         const t = this.get("expandedPositions");
                         t.includes(e) ? t.removeObject(e) : t.addObject(e)
                     }
@@ -3430,10 +3435,10 @@
             a(49);
             var n, o = a(12),
                 r = a(6),
-                l = (n = a(8)) && n.__esModule ? n : {
+                i = (n = a(8)) && n.__esModule ? n : {
                     default: n
                 };
-            const i = a(13);
+            const l = a(13);
             var c = s.Ember.Component.extend({
                 layout: a(50),
                 classNames: ["stats-comparison-selector-modal-component"],
@@ -3479,14 +3484,14 @@
                     if (this.get("fromChampionDetails") && !e || !t || !a || !n || !o) return;
                     const r = this._getChampionCompareDisplays(a?.[o]?.[t], e, t, n);
                     this.set("championCompareDisplays", r);
-                    const l = this.get("careerStatsService"),
-                        i = l.loadRecentlyComparedSummoners().then((e => (this.set("recentlyComparedSummoners", s.Ember.A(e)), e))),
-                        c = l.loadRecentlyPlayedWithSummoners().then((e => (this.set("recentlyPlayedWithSummoners", s.Ember.A(e)), e))),
-                        m = l.loadFriendList().then((e => {
+                    const i = this.get("careerStatsService"),
+                        l = i.loadRecentlyComparedSummoners().then((e => (this.set("recentlyComparedSummoners", s.Ember.A(e)), e))),
+                        c = i.loadRecentlyPlayedWithSummoners().then((e => (this.set("recentlyPlayedWithSummoners", s.Ember.A(e)), e))),
+                        m = i.loadFriendList().then((e => {
                             const t = e.filter((e => e && e.summonerId > 0));
                             return this.set("friends", s.Ember.A(t)), t
                         }));
-                    Promise.all([i, c, m]).then((e => {
+                    Promise.all([l, c, m]).then((e => {
                         this.fillFilterableEntitiesWithPlayerNames(e)
                     }))
                 }))),
@@ -3495,10 +3500,10 @@
                     e = e.map((e => Array.isArray(e) ? e : []));
                     const [t, a, n] = e, o = new Set([...t, ...a, ...n].map((({
                         puuid: e
-                    }) => e))), r = await this.get("_playerNames").getDisplayNamesByPUUIDs([...o]), l = e => {
+                    }) => e))), r = await this.get("_playerNames").getDisplayNamesByPUUIDs([...o]), i = e => {
                         e.gameNameAndTagLine = r[e.puuid].playerNameFull
                     };
-                    t.forEach(l), a.forEach(l), n.forEach(l), this.set("recentlyComparedSummoners", s.Ember.A(t)), this.set("recentlyPlayedWithSummoners", s.Ember.A(a)), this.set("friends", s.Ember.A(n))
+                    t.forEach(i), a.forEach(i), n.forEach(i), this.set("recentlyComparedSummoners", s.Ember.A(t)), this.set("recentlyPlayedWithSummoners", s.Ember.A(a)), this.set("friends", s.Ember.A(n))
                 },
                 filteredRecentlyComparedSummoners: s.Ember.computed("playerNameToSearch", "recentlyComparedSummoners", (function() {
                     return this._filterBySearchValueHelper("recentlyComparedSummoners")
@@ -3513,7 +3518,7 @@
                     const t = this.get("playerNameToSearch"),
                         a = this.get(e),
                         s = this.get("_playerNames").isUsingAlias;
-                    return t ? i.filter(t, a, {
+                    return t ? l.filter(t, a, {
                         extract: e => s ? e.gameNameAndTagLine : e.displayName
                     }).map((e => e.original)) : a
                 },
@@ -3565,13 +3570,13 @@
                         n = this.get("fromChampionDetails"),
                         o = this.get("minGamesToUnlockStats"),
                         r = this.get("queueFilter.queueTypes.0"),
-                        l = this.get("season"),
+                        i = this.get("season"),
                         {
-                            summonerId: i
+                            summonerId: l
                         } = e;
                     let c;
                     try {
-                        c = await this.get("careerStatsService").loadStatsSummaryFromSummonerId(i, l, r, a, t)
+                        c = await this.get("careerStatsService").loadStatsSummaryFromSummonerId(l, i, r, a, t)
                     } catch (e) {
                         throw s.logger.error("Failed to load stats summary from summonerId", e), e
                     }
@@ -3602,15 +3607,15 @@
                 },
                 actions: {
                     selectTab: function(e) {
-                        l.default.addUserBehavior(r.USER_ACTIVITIES.TAB_CHANGE, e), this.set("currentTab", e)
+                        i.default.addUserBehavior(r.USER_ACTIVITIES.TAB_CHANGE, e), this.set("currentTab", e)
                     },
                     compareWithSummonerByName: async function(e) {
                         if (this.get("isSearchingSummoner")) return;
                         this.set("isSearchingSummoner", !0);
                         const t = "string" == typeof e ? e : this.get("playerNameToSearch");
                         let a;
-                        l.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
-                            summonerName: t
+                        i.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                            playerName: t
                         });
                         try {
                             a = this.get("_playerNames").isUsingAlias ? await this.handleSearchSummonerByAlias(t) : await this.get("careerStatsService").searchSummonerBySummonerName(t)
@@ -3625,7 +3630,7 @@
                     compareWithSummonerByPuuid: async function(e) {
                         if (this.get("isSearchingSummoner")) return;
                         let t;
-                        this.set("isSearchingSummoner", !0), l.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                        this.set("isSearchingSummoner", !0), i.default.sendEvent(r.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
                             puuid: e
                         });
                         try {
@@ -3639,7 +3644,7 @@
                         this.set("isSearchingSummoner", !1)
                     },
                     compareWithChampion: function(e) {
-                        l.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
+                        i.default.sendEvent(r.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, r.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
                             championId: e
                         }), this.get("parentComponent").compareWithChampionAverage(e, this.get("position"))
                     },
@@ -3744,15 +3749,15 @@
                         t = this.get("currentSeason"),
                         a = this.get("earliestSeason"),
                         r = this.get("careerStatsService"),
-                        l = this.get("championId"),
-                        i = this.get("position"),
+                        i = this.get("championId"),
+                        l = this.get("position"),
                         c = this.get("queueFilter.queueTypes.0"),
                         m = this.get("summoner.puuid"),
                         p = this.get("minGamesToUnlockStats"),
                         d = this.get("tra"),
                         u = [];
                     for (let e = a; e <= t; e++) {
-                        (0, n.getQueueFilters)(e).some((e => e.queueTypes.includes(c))) ? u.push(r.loadStatsSummary(m, e, c, i, l).then((t => ({
+                        (0, n.getQueueFilters)(e).some((e => e.queueTypes.includes(c))) ? u.push(r.loadStatsSummary(m, e, c, l, i).then((t => ({
                             season: e,
                             stats: t
                         })))) : u.push(Promise.resolve({
@@ -3869,8 +3874,8 @@
                             }))
                         }(p, s);
                         let t = null;
-                        if (!e || !e.summonerId) return l ? i && (l.domNode.dispatchEvent(r), i = !1) : l = n.componentFactory.create("CareerStatsRootComponent"), l.componentPromise.then((() => {
-                            m.appendChild(l.domNode)
+                        if (!e || !e.summonerId) return i ? l && (i.domNode.dispatchEvent(r), l = !1) : i = n.componentFactory.create("CareerStatsRootComponent"), i.componentPromise.then((() => {
+                            m.appendChild(i.domNode)
                         })), void o.default.startTelemetrySession(!1);
                         t = e.summonerId;
                         const a = n.componentFactory.create("CareerStatsRootComponent", e ? n.Ember.Object.create({
@@ -3892,7 +3897,7 @@
                         t = !e || !1 !== e.StatsEnabled, a.setEnabled(t)
                     }));
                     (0, n.dataBinding)("/lol-end-of-game", (0, n.getProvider)().getSocket()).observe("/v1/state", (() => {
-                            i = !0
+                            l = !0
                         })),
                         function(e) {
                             const t = (0, n.dataBinding)("/lol-settings", (0, n.getProvider)().getSocket()),
@@ -3910,8 +3915,8 @@
                     default: s
                 };
             const r = new CustomEvent("profileReentered");
-            let l = null,
-                i = !1,
+            let i = null,
+                l = !1,
                 c = !1
         }],
         t = {};

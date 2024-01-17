@@ -4593,10 +4593,11 @@
                 a = n(5),
                 i = n(50);
             n(131);
-            var o;
-            (o = n(116)) && o.__esModule;
-            const l = n(132),
-                r = (0, s.emberDataBinding)({
+            var o, l = (o = n(116)) && o.__esModule ? o : {
+                default: o
+            };
+            const r = n(132),
+                c = (0, s.emberDataBinding)({
                     Ember: s.Ember,
                     websocket: (0, s.getProvider)().getSocket(),
                     basePaths: {
@@ -4617,41 +4618,41 @@
                         uxSettings: "/lol-settings/v2/local/lol-user-experience"
                     }
                 }),
-                c = "COMPLETED_PROVISIONALS",
-                u = "LEAGUE_REWARD",
-                d = "LEAGUE_PROMOTED",
-                p = "LEAGUE_DEMOTED",
-                m = "INACTIVITY",
-                g = "FIRST_CHALLENGER_OF_SEASON",
-                h = "FINAL_RANK_ONE_OF_SEASON",
-                f = "RATED_SEEDED",
-                _ = "RATED_TIER_PROMOTED",
-                E = "CHERRY_RATED_TIER_PROMOTED",
-                S = {
-                    [c]: "LeaguesPromotionVignetteV2Component",
-                    [u]: "LeaguesRewardVignetteComponent",
-                    [d]: "LeaguesPromotionVignetteV2Component",
-                    [f]: "RatedPromotionVignetteComponent",
-                    [_]: "RatedPromotionVignetteComponent",
-                    [E]: "CherryRatedPromotionVignetteComponent"
-                },
+                u = "COMPLETED_PROVISIONALS",
+                d = "LEAGUE_REWARD",
+                p = "LEAGUE_PROMOTED",
+                m = "LEAGUE_DEMOTED",
+                g = "INACTIVITY",
+                h = "FIRST_CHALLENGER_OF_SEASON",
+                f = "FINAL_RANK_ONE_OF_SEASON",
+                _ = "RATED_SEEDED",
+                E = "RATED_TIER_PROMOTED",
+                S = "CHERRY_RATED_TIER_PROMOTED",
                 T = {
-                    [c]: 500,
-                    [u]: 1e3,
-                    [d]: 500,
-                    [f]: 1e3,
-                    [_]: 1e3,
-                    [E]: 1e3
+                    [u]: "LeaguesPromotionVignetteV2Component",
+                    [d]: "LeaguesRewardVignetteComponent",
+                    [p]: "LeaguesPromotionVignetteV2Component",
+                    [_]: "RatedPromotionVignetteComponent",
+                    [E]: "RatedPromotionVignetteComponent",
+                    [S]: "CherryRatedPromotionVignetteComponent"
                 },
                 v = {
-                    [c]: "LARGE",
-                    [u]: "SMALL",
-                    [d]: "LARGE",
-                    [f]: "LARGE",
+                    [u]: 500,
+                    [d]: 1e3,
+                    [p]: 500,
+                    [_]: 1e3,
+                    [E]: 1e3,
+                    [S]: 1e3
+                },
+                R = {
+                    [u]: "LARGE",
+                    [d]: "SMALL",
+                    [p]: "LARGE",
                     [_]: "LARGE",
-                    [E]: "LARGE"
+                    [E]: "LARGE",
+                    [S]: "LARGE"
                 };
-            e.exports = s.Ember.Component.extend(r, {
+            e.exports = s.Ember.Component.extend(c, {
                 displayedNotificationsIds: new Set,
                 displayedGlobalNotifications: new Set,
                 classNames: ["leagues-dialogs-spawner"],
@@ -4693,7 +4694,7 @@
                             i = this._getSeasonId(a.queueType);
                         if (!i || !a.notifyReason || !a.queueType) continue;
                         const o = `${a.notifyReason}-${a.queueType}`;
-                        n.has(o) || t[o] && !(t[o] < i) || (n.add(o), this._waitForUnlock(this._showGlobalNotification, a)), this.set("displayedGlobalNotifications", n)
+                        n.has(o) || t[o] && !(t[o] < i) || (n.add(o), l.default.saveAccountSetting(o, i), this._waitForUnlock(this._showGlobalNotification, a)), this.set("displayedGlobalNotifications", n)
                     }
                 },
                 _showGlobalNotification: function(e) {
@@ -4725,12 +4726,12 @@
                         s = "";
                     const i = this.get("tra"),
                         o = e.queueType || a.QUEUES.RANKED_SOLO_5x5_QUEUE_TYPE;
-                    return e.notifyReason === g ? (n = i.formatString("TOAST_FIRST_CHALLENGER_HEADER", {
+                    return e.notifyReason === h ? (n = i.formatString("TOAST_FIRST_CHALLENGER_HEADER", {
                         name: t
                     }), s = i.formatString("TOAST_FIRST_CHALLENGER_BODY", {
                         queue: i.get(`QUEUE_NAME_${o}`),
                         name: t
-                    })) : e.notifyReason === h && (n = i.formatString("TOAST_FINAL_RANK_ONE_HEADER", {
+                    })) : e.notifyReason === f && (n = i.formatString("TOAST_FINAL_RANK_ONE_HEADER", {
                         seasonYear: this._getSeasonYear(o)
                     }), s = i.formatString("TOAST_FINAL_RANK_ONE_BODY", {
                         queue: i.get(`QUEUE_NAME_${o}`),
@@ -4738,13 +4739,13 @@
                     })), [n, s]
                 },
                 _handleGlobalNotificationClicked(e) {
-                    e.notifyReason === g ? s.Telemetry.sendEvent("leagues-first-challenger-toast-clicked") : e.notifyReason === h && s.Telemetry.sendEvent("leagues-final-rank-one-toast-clicked")
+                    e.notifyReason === h ? s.Telemetry.sendEvent("leagues-first-challenger-toast-clicked") : e.notifyReason === f && s.Telemetry.sendEvent("leagues-final-rank-one-toast-clicked")
                 },
                 _sendGlobalNotificationShownTelemetry(e) {
-                    e.notifyReason === g ? s.Telemetry.sendEvent("leagues-first-challenger-toast-shown") : e.notifyReason === h && s.Telemetry.sendEvent("leagues-final-rank-one-toast-shown")
+                    e.notifyReason === h ? s.Telemetry.sendEvent("leagues-first-challenger-toast-shown") : e.notifyReason === f && s.Telemetry.sendEvent("leagues-final-rank-one-toast-shown")
                 },
                 _showNotification: function(e) {
-                    "TOAST" === e.displayType ? this._showToastNotification(e) : "VIGNETTE" === e.displayType ? e.notifyReason === u && e.rewardEarnedId ? this._showVignetteNotificationAfterLoadingRewardAssets(e) : this._showVignetteNotification(e) : "MODAL" === e.displayType && this._showModalNotification(e)
+                    "TOAST" === e.displayType ? this._showToastNotification(e) : "VIGNETTE" === e.displayType ? e.notifyReason === d && e.rewardEarnedId ? this._showVignetteNotificationAfterLoadingRewardAssets(e) : this._showVignetteNotification(e) : "MODAL" === e.displayType && this._showModalNotification(e)
                 },
                 _showVignetteNotificationAfterLoadingRewardAssets: function(e) {
                     const t = e.rewardEarnedId;
@@ -4761,7 +4762,7 @@
                         n = JSON.parse(JSON.stringify(e)),
                         i = n.notifyReason,
                         o = this._acknowledgeNotification.bind(this),
-                        l = v[i];
+                        l = R[i];
                     return s.LeagueTierNames.getTiersForQueue(e.queueType).then((r => {
                         const c = s.Ember.Object.create({
                                 notification: n,
@@ -4771,9 +4772,9 @@
                                 rankedStats: this.get("rankedStats"),
                                 tiers: r
                             }),
-                            u = e.notifyReason === _ && e.queueType === a.QUEUES.RANKED_CHERRY_QUEUE_TYPE;
-                        if (e.notifyReason === f && e.queueType === a.QUEUES.RANKED_CHERRY_QUEUE_TYPE) return void o(e);
-                        const d = u ? S.CHERRY_RATED_TIER_PROMOTED : S[i],
+                            u = e.notifyReason === E && e.queueType === a.QUEUES.RANKED_CHERRY_QUEUE_TYPE;
+                        if (e.notifyReason === _ && e.queueType === a.QUEUES.RANKED_CHERRY_QUEUE_TYPE) return void o(e);
+                        const d = u ? T.CHERRY_RATED_TIER_PROMOTED : T[i],
                             p = s.componentFactory.create({
                                 type: d,
                                 data: c
@@ -4799,7 +4800,7 @@
                                 onShow: function() {
                                     s.Ember.run.later((() => {
                                         c.set("isShowing", !0)
-                                    }), T[i])
+                                    }), v[i])
                                 }
                             };
                         s.VignetteCelebrationManager.add(m)
@@ -4808,7 +4809,7 @@
                 _showModalNotification: function(e) {
                     const [t, n, s] = this._getModalNotificationText(e);
                     if (!t && !n) return void this._acknowledgeNotification(e);
-                    const a = l({
+                    const a = r({
                             header: t,
                             body: n
                         }),
@@ -4833,7 +4834,7 @@
                     const o = e.notifyReason,
                         l = e.changeReason,
                         r = this._getQueueLoc(e);
-                    if (o === p) l === m ? (n = t.get("LEAGUES_SYSTEM_DECAY_DEMOTION_TITLE"), s = t.formatString("LEAGUES_SYSTEM_DECAY_DEMOTION", {
+                    if (o === m) l === g ? (n = t.get("LEAGUES_SYSTEM_DECAY_DEMOTION_TITLE"), s = t.formatString("LEAGUES_SYSTEM_DECAY_DEMOTION", {
                         tierDivisionLoc: this._getTierDivisionLoc(e),
                         queueType: r
                     })) : !0 === e.eligibleForPromoHelper ? (n = t.get("LEAGUES_GENERAL_LEAGUE_UPDATE_TITLE"), s = t.formatString("LEAGUES_MESSAGE_PROMOHELPER_LEAGUE_DEMOTED", {
@@ -4852,7 +4853,7 @@
                     })) : (n = t.get("LEAGUES_GENERAL_LEAGUE_MINISERIES_TITLE"), s = t.formatString("LEAGUES_MESSAGE_MINISERIES_LOST", {
                         queueType: r
                     }));
-                    else if ("MINISERIES_CANCEL" === o) l === m ? (n = t.get("LEAGUES_SYSTEM_SERIES_ENDED_TITLE"), s = t.formatString("LEAGUES_SYSTEM_SERIES_ENDED_DECAY", {
+                    else if ("MINISERIES_CANCEL" === o) l === g ? (n = t.get("LEAGUES_SYSTEM_SERIES_ENDED_TITLE"), s = t.formatString("LEAGUES_SYSTEM_SERIES_ENDED_DECAY", {
                         queueType: r
                     })) : (n = t.get("LEAGUES_SYSTEM_SERIES_ENDED_TITLE"), s = t.formatString("LEAGUES_SYSTEM_SERIES_ENDED", {
                         queueType: r
@@ -4865,7 +4866,7 @@
                         timeUntilInactivityStatusChangesDays: (0, i.timeInMillisToDays)(e.timeUntilInactivityStatusChanges),
                         queueType: r
                     });
-                    else if (l === m) n = t.get("LEAGUES_SYSTEM_DECAY_TITLE"), s = t.formatString("LEAGUES_SYSTEM_DECAY", {
+                    else if (l === g) n = t.get("LEAGUES_SYSTEM_DECAY_TITLE"), s = t.formatString("LEAGUES_SYSTEM_DECAY", {
                         queueType: r
                     });
                     else {
@@ -4901,11 +4902,11 @@
                         i = this._getQueueLoc(e);
                     return "LEAGUE_SEEDED" === a ? (t = this._getTierDivisionLpLoc(e), n = s.formatString("TOAST_PROVISIONAL_START_BODY", {
                         queueType: i
-                    })) : a === d ? (t = s.formatString("TOAST_DIVISION_PROMOTION_HEADER", {
+                    })) : a === p ? (t = s.formatString("TOAST_DIVISION_PROMOTION_HEADER", {
                         tierDivisionLoc: this._getTierDivisionLoc(e)
                     }), n = s.formatString("TOAST_DIVISION_PROMOTION_BODY", {
                         queueType: i
-                    })) : a === p && (t = s.formatString("TOAST_DEMOTION_HEADER", {
+                    })) : a === m && (t = s.formatString("TOAST_DEMOTION_HEADER", {
                         tierDivisionLoc: this._getTierDivisionLoc(e)
                     }), n = s.formatString("TOAST_DEMOTION_BODY", {
                         queueType: i,
@@ -4913,7 +4914,7 @@
                     })), [t, n]
                 },
                 _isToastMuted: function(e) {
-                    return e && e.notifyReason === p
+                    return e && e.notifyReason === m
                 },
                 _acknowledgeNotification: function(e) {
                     this.get("rankedService").post(`/v1/notifications/${e.id}/acknowledge`);

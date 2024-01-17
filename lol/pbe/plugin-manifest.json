@@ -744,6 +744,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-remedy"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-replays"
     },
     {

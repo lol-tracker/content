@@ -15135,13 +15135,18 @@
                                 if (e.includes("#")) {
                                     t = !e.split("#", 2)[1].trim()
                                 } else t = !0;
-                                if (t) return void this._showTooltipNoTagline()
+                                if (t) {
+                                    const e = {
+                                        event: "search-for-summoner-missing-tooltip"
+                                    };
+                                    return a.Telemetry.sendCustomData("profile-overview-events", e), void this._showTooltipNoTagline()
+                                }
                             }
                             this.get("api.summoner").get("/v1/summoners?name=" + encodeURIComponent(e)).then((t => {
                                 const n = {
                                     event: "search-for-summoner"
                                 };
-                                t ? this.privateApi.showOverlayForSummoner(t) : this._showAlertSummonerNotFound(e), e && (n.summonerName = e), t && t.summonerId && (n.summonerId = t.summonerId), a.Telemetry.sendCustomData("profile-overview-events", n)
+                                t ? this.privateApi.showOverlayForSummoner(t) : this._showAlertSummonerNotFound(e), e && (n.playerName = e), t && t.summonerId && (n.summonerId = t.summonerId), t && t.puuid && (n.puuid = t.puuid), a.Telemetry.sendCustomData("profile-overview-events", n)
                             }))
                         }
                     }

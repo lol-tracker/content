@@ -11219,7 +11219,7 @@
             "use strict";
             Object.defineProperty(e, "__esModule", {
                 value: !0
-            }), e.default = void 0;
+            }), e.default = e.MAX_PIPS_PER_PAGE = void 0;
             var i = a(n(167)),
                 o = n(1),
                 r = a(n(20)),
@@ -11231,12 +11231,14 @@
                 }
             }
             const l = {
-                SLOW: 7e3,
-                NORMAL: 4e3,
-                FAST: 2e3,
-                INFINITE: -1
-            };
-            class d {
+                    SLOW: 7e3,
+                    NORMAL: 4e3,
+                    FAST: 2e3,
+                    INFINITE: -1
+                },
+                d = 20;
+            e.MAX_PIPS_PER_PAGE = d;
+            class c {
                 constructor() {
                     this.currentIndex = -1, this.toastStack = [], this.BASE_LAYER_CLASS = "lol-uikit-toast-celebration-layer", this.layer = this._createLayer(this.BASE_LAYER_CLASS), this.type = "Toast", this.fadeOutDuration = 400, this._boundOnClickEvent = this._handleClickEvent.bind(this), this._boundOnDialogDismissEvent = this._handleDialogDismissEvent.bind(this)
                 }
@@ -11286,7 +11288,7 @@
                     this.toastStack.push(t), this._updateToastStack()
                 }
                 _updateToastStack() {
-                    this.toastStack.length > 1 ? (this._showPips(), this._addPip()) : 1 === this.toastStack.length && (this.toastStack[0].position && this._setLayerPosition(this.toastStack[0].position), this._displayNextToastCelebration())
+                    this.toastStack.length > 1 ? (this._showPips(), this.toastStack.length <= d && this._addPip()) : 1 === this.toastStack.length && (this.toastStack[0].position && this._setLayerPosition(this.toastStack[0].position), this._displayNextToastCelebration())
                 }
                 _endCelebrationCeremony() {
                     this.currentIndex = -1, this.toastStack = [], this._hideLayer()
@@ -11337,8 +11339,14 @@
                     e && this._removeToastCelebration(e, t)
                 }
                 _updatePips() {
-                    for (let t = 0; t < this.toastStack.length; t++) this._addPip(), t < this.currentIndex && this._markPipAsViewed(t);
-                    this._markPipAsSelected(this.currentIndex), this.toastStack.length > 1 && this._showPips()
+                    const t = this.currentIndex % d,
+                        e = this._getNumberOfPipsToDisplay(this.currentIndex);
+                    for (let n = 0; n < e; n++) this._addPip(), n < t && this._markPipAsViewed(n);
+                    this._markPipAsSelected(t), e > 1 && this._showPips()
+                }
+                _getNumberOfPipsToDisplay(t) {
+                    const e = Math.floor(t / d);
+                    return Math.min(d, this.toastStack.length - e * d)
                 }
                 _displayNextToastCelebration() {
                     this._showLayer(), this.currentIndex += 1;
@@ -11347,7 +11355,7 @@
                     const e = t.ComponentFactory.getDOMNode(t);
                     this.layer.appendChild(e), this._updatePips();
                     const n = e.querySelector(".toast-celebration-body").offsetHeight;
-                    e.querySelector(".toast-celebration-background").style.height = n + "px", t.data && (t.data.isMuted || d.playSound(r.default.rewardToast), e.addEventListener("click", this._boundOnClickEvent), e.addEventListener("dialogFrameDismissed", this._boundOnDialogDismissEvent), this._getTime(t) !== l.INFINITE && (this.currentToastTimeout = window.setTimeout((() => {
+                    e.querySelector(".toast-celebration-background").style.height = n + "px", t.data && (t.data.isMuted || c.playSound(r.default.rewardToast), e.addEventListener("click", this._boundOnClickEvent), e.addEventListener("dialogFrameDismissed", this._boundOnDialogDismissEvent), this._getTime(t) !== l.INFINITE && (this.currentToastTimeout = window.setTimeout((() => {
                         this._removeToastCelebration(t, "timeout")
                     }), this._getTime(t))))
                 }
@@ -11359,8 +11367,8 @@
                     t.x && t.y && (this.layer.style.left = t.x + "px", this.layer.style.top = t.y + "px")
                 }
             }
-            var c = new d;
-            e.default = c
+            var u = new c;
+            e.default = u
         }, (t, e, n) => {
             "use strict";
             Object.defineProperty(e, "__esModule", {
