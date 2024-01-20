@@ -2901,7 +2901,7 @@
                 isFriendRequestDisabled: s.Ember.computed.or("hasSentFriendRequest", "hasFriendData", "isNotInteractable"),
                 augmentContainer: s.Ember.computed("postgame.tftSets.LCTFTModeData.mActiveSets", "player.customAugmentContainer", "player.setCoreName", "tra", (function() {
                     const e = {},
-                        t = this.get("postgame.tftSets.LCTFTModeData.mActiveSets"),
+                        t = this.get("postgame.tftSets.LCTFTModeData.mActiveSets") || [],
                         n = this.get("player.setCoreName"),
                         a = t.find((e => e.SetCoreName === n)) || {};
                     e.name = a.SetAugmentName || "", e.icon = a.SetAugmentContainer || "", e.hasPortal = !1;
