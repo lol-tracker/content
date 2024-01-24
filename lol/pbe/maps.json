@@ -414,19 +414,19 @@
         "description": "Time to live large! Start the match with a powerful Tier 4 or Tier 5 champion to form the core of your team.",
         "footer": "",
         "header": "STRONG START",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_1.TFT_Event_FF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_1.png"
       },
       {
         "description": "Choncc to the rescue! When your health gets low, Choncc will arrive with a care package to give you a boost!",
         "footer": "",
         "header": "CHONCC'S AID",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_2.TFT_Event_FF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_2.png"
       },
       {
         "description": "Items galore! After every carousel round, Choncc will visit to share an ever increasing amount of treasure!",
         "footer": "",
         "header": "MORE TREASURE",
-        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_3.TFT_Event_FF.png"
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_CT_Modal_3.png"
       }
     ]
   },

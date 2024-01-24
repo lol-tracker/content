@@ -374,6 +374,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-catalog"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-loadouts"
     },
     {
@@ -404,12 +410,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-catalog"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-entitlements"
     },
     {
@@ -433,6 +433,12 @@
     {
       "affinity": null,
       "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-purchase-widget"
+    },
+    {
+      "affinity": null,
+      "as": [],
       "lazy": true,
       "name": "rcp-fe-lol-loot"
     },
@@ -447,12 +453,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-clash"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-purchase-widget"
     },
     {
       "affinity": null,
@@ -595,6 +595,12 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-esport-stream-notifications"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-event-hub"
     },
     {
       "affinity": null,
@@ -875,6 +881,12 @@
       "as": [],
       "lazy": true,
       "name": "rcp-fe-lol-esports-spectate"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": true,
+      "name": "rcp-fe-lol-event-hub"
     },
     {
       "affinity": null,
