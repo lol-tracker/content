@@ -368,25 +368,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-loadouts"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-tastes"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-lol-champion-details"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-catalog"
+      "name": "rcp-be-lol-loadouts"
     },
     {
       "affinity": null,
@@ -404,13 +392,25 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-entitlements"
+      "name": "rcp-be-lol-tft"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-tft"
+      "name": "rcp-fe-lol-champion-details"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-catalog"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-entitlements"
     },
     {
       "affinity": null,
@@ -744,6 +744,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-remedy"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-replays"
     },
     {
@@ -792,6 +798,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-tft-event"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-tft-pass"
     },
     {
@@ -817,6 +829,12 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-user-experience"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-vanguard"
     },
     {
       "affinity": null,
@@ -869,12 +887,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-fe-lol-highlights"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-fe-lol-honeyfruit-account-claiming"
     },
     {
       "affinity": null,
