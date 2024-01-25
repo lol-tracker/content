@@ -29301,7 +29301,7 @@
                     }))
                 }
                 _updateDisplayName(e) {
-                    e && (this._summonerName = e.displayName || "", this._gameName = e.gameName || this._summonerName, i.logger.trace("summonerName updated", this._summonerName), i.logger.trace("gameName updated", this._gameName))
+                    e && (this._summonerName = e.displayName || "", this._gameName = e.gameName || this._summonerName, i.logger.trace("summonerName updated", this._summonerName))
                 }
                 _initMasteryRequirements() {
                     return this._masteryRequirements = o, i.logger.trace("mastery requirements set to: ", this._masteryRequirements), this._binding.get("/lol-platform-config/v1/namespaces/ChampionMasteryConfig/RequirementPerLevel").then((e => {

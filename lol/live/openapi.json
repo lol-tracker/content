@@ -57926,7 +57926,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -62662,6 +62662,64 @@
         ]
       }
     },
+    "/lol-chat/v1/conversations/{id}/closed": {
+      "post": {
+        "operationId": "PostLolChatV1ConversationsByIdClosed",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      },
+      "put": {
+        "operationId": "PutLolChatV1ConversationsByIdClosed",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      }
+    },
     "/lol-chat/v1/conversations/{id}/messages": {
       "delete": {
         "operationId": "DeleteLolChatV1ConversationsByIdMessages",
@@ -62778,6 +62836,43 @@
                     "$ref": "#/components/schemas/LolChatUserResource"
                   },
                   "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      },
+      "post": {
+        "operationId": "PostLolChatV1ConversationsByIdParticipants",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LolChatUserResource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
                 }
               }
             },
@@ -63117,6 +63212,39 @@
         ]
       }
     },
+    "/lol-chat/v1/friend-groups/{id}/friends": {
+      "get": {
+        "operationId": "GetLolChatV1FriendGroupsByIdFriends",
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LolChatFriendResource"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      }
+    },
     "/lol-chat/v1/friends": {
       "get": {
         "operationId": "GetLolChatV1Friends",
@@ -63363,6 +63491,28 @@
         ]
       }
     },
+    "/lol-chat/v1/proxy-mode-enabled": {
+      "get": {
+        "operationId": "GetLolChatV1ProxyModeEnabled",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      }
+    },
     "/lol-chat/v1/resources": {
       "get": {
         "operationId": "GetLolChatV1Resources",
@@ -63386,9 +63536,61 @@
       }
     },
     "/lol-chat/v1/session": {
+      "delete": {
+        "operationId": "DeleteLolChatV1Session",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      },
       "get": {
         "operationId": "GetLolChatV1Session",
         "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LolChatSessionResource"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      }
+    },
+    "/lol-chat/v1/session/rso": {
+      "post": {
+        "operationId": "PostLolChatV1SessionRso",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LolChatAuthResourceRsoAccessToken"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -63432,6 +63634,114 @@
       "put": {
         "operationId": "PutLolChatV1Settings",
         "parameters": [
+          {
+            "in": "query",
+            "name": "doAsync",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      }
+    },
+    "/lol-chat/v1/settings/{key}": {
+      "delete": {
+        "operationId": "DeleteLolChatV1SettingsByKey",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "doAsync",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      },
+      "get": {
+        "operationId": "GetLolChatV1SettingsByKey",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-chat"
+        ]
+      },
+      "put": {
+        "operationId": "PutLolChatV1SettingsByKey",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "query",
             "name": "doAsync",
@@ -90020,7 +90330,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -90043,7 +90353,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",

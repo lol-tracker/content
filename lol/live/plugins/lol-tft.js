@@ -2946,7 +2946,10 @@
                         t = this.get("tencentTroveAssetId");
                     if (e && t) return e[t]
                 })),
-                isLoading: s.Ember.computed.alias("trovesService.isLoading"),
+                isLoading: s.Ember.computed("trovesService.trovesEnabled", "trovesService.isLoading", (function() {
+                    const e = this.get("trovesService.isLoading");
+                    return this.get("trovesService.trovesEnabled") && e
+                })),
                 hasBannerError: s.Ember.computed.alias("trovesService.hasBannerError"),
                 trovesPromoAssets: s.Ember.computed.alias("trovesService.trovesPromoAssets"),
                 activeBanners: s.Ember.computed.alias("trovesService.troveActiveBanners"),

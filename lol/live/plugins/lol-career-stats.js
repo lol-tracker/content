@@ -686,33 +686,32 @@
                 compareWithChampionExpert(e, t, a) {
                     this._closeComparisonSelectorModal();
                     const {
-                        displayName: s,
-                        gameName: o,
-                        tagLine: r,
-                        summonerId: i,
-                        statsSummary: c,
-                        puuid: m
+                        summonerName: s,
+                        displayName: o,
+                        gameName: r,
+                        tagLine: i,
+                        summonerId: c,
+                        statsSummary: m
                     } = e;
                     return l.default.sendEvent(n.TELEMETRY_EVENT_ID.CHAMPION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        expertRiotId: `${o} #${r}`,
-                        expertPuuid: m,
+                        summonerName: s,
                         championId: t,
                         position: a
                     }), this.set("currentCompareTarget", {
                         type: "expert",
-                        summonerName: s,
-                        gameName: o,
-                        tagLine: r,
-                        summonerId: i,
+                        summonerName: o,
+                        gameName: r,
+                        tagLine: i,
+                        summonerId: c,
                         championId: t,
                         position: a,
-                        stats: c
-                    }), this.get("careerStatsService").setRecentlyComparedSummoner(i)
+                        stats: m
+                    }), this.get("careerStatsService").setRecentlyComparedSummoner(c)
                 },
                 compareWithPositionExpert(e, t) {
                     this._closeComparisonSelectorModal();
                     const {
-                        puuid: a,
+                        summonerName: a,
                         displayName: s,
                         gameName: o,
                         tagLine: r,
@@ -720,8 +719,7 @@
                         statsSummary: c
                     } = e;
                     return l.default.sendEvent(n.TELEMETRY_EVENT_ID.POSITION_EXPERT_COMPARE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        expertRiotId: `${o} #${r}`,
-                        expertPuuid: a,
+                        expert: a,
                         position: t
                     }), this.set("currentCompareTarget", {
                         type: "expert",
@@ -736,16 +734,13 @@
                 showExpertProfile(e) {
                     this._closeComparisonSelectorModal(), s.CareerStatsApi.hideCareerStatsModal({});
                     const {
-                        summonerId: t,
-                        gameName: a,
-                        tagLine: o,
-                        puuid: r
+                        summonerName: t,
+                        summonerId: a
                     } = e;
                     return l.default.sendEvent(n.TELEMETRY_EVENT_ID.SHOW_EXPERT_PROFILE, n.TELEMETRY_EVENT_SOURCE.STATS_MODAL, {
-                        expertRiotId: `${a} #${o}`,
-                        expertPuuid: r
+                        expert: t
                     }), s.ProfilesApi.showOverlay({
-                        summonerId: t
+                        summonerId: a
                     })
                 },
                 statsIconStatusChanged: s.Ember.on("init", s.Ember.observer("fullReload", "isSeasonSettingLoaded", (function() {
@@ -3615,7 +3610,7 @@
                         const t = "string" == typeof e ? e : this.get("playerNameToSearch");
                         let a;
                         r.default.sendEvent(l.TELEMETRY_EVENT_ID.SUMMONER_COMPARE, l.TELEMETRY_EVENT_SOURCE.COMPARISON_SELECTOR, {
-                            playerName: t
+                            summonerName: t
                         });
                         try {
                             a = this.get("_playerNames").isUsingAlias ? await this.handleSearchSummonerByAlias(t) : await this.get("careerStatsService").searchSummonerBySummonerName(t)
