@@ -63,8 +63,8 @@
                 }
                 _createComponents() {
                     const e = n(25),
-                        t = n(265),
-                        a = n(283);
+                        t = n(266),
+                        a = n(284);
                     e(), this._modalProfile = t(), this._mainProfile = a(this), this._initializeModalObservers()
                 }
                 _initializeModalObservers() {
@@ -839,29 +839,29 @@
                     ComponentFactory: a.ComponentFactory,
                     name: "ClashBannerPickerComponent",
                     tra: a.traService,
-                    ClashBannerPickerComponent: n(248).default
+                    ClashBannerPickerComponent: n(249).default
                 }), a.EmberApplicationFactory.setFactoryDefinition({
                     ComponentFactory: a.ComponentFactory,
                     name: "rcp-fe-lol-profiles-backdrop",
                     tra: a.traService,
-                    ProfileBackdropComponent: n(251),
+                    ProfileBackdropComponent: n(252),
                     ProfileService: n(239)
                 }), a.EmberApplicationFactory.setFactoryDefinition({
                     ComponentFactory: a.ComponentFactory,
                     name: "rcp-fe-lol-profiles-backdrop-picker",
                     tra: a.traService,
-                    ProfileBackdropPickerComponent: n(254)
+                    ProfileBackdropPickerComponent: n(255)
                 }), a.EmberApplicationFactory.setFactoryDefinition({
                     ComponentFactory: a.ComponentFactory,
                     name: "rcp-fe-lol-profiles-search-input",
                     tra: a.traService,
-                    ProfileSearchInputComponent: n(257),
-                    PlayerNameSearchTooltipComponent: n(260).default
+                    ProfileSearchInputComponent: n(258),
+                    PlayerNameSearchTooltipComponent: n(261).default
                 }), a.EmberApplicationFactory.setFactoryDefinition({
                     ComponentFactory: a.ComponentFactory,
                     name: "rcp-fe-lol-profiles-search-trail",
                     tra: a.traService,
-                    ProfileSearchTrailComponent: n(262),
+                    ProfileSearchTrailComponent: n(263),
                     ProfileService: n(239),
                     PlayerNameComponent: a.SharedEmberComponents.PlayerNameComponent
                 })
@@ -14571,16 +14571,17 @@
             var a = n(1),
                 s = n(7);
             n(245);
-            const o = 628,
-                i = (0, a.DataBinding)("/lol-ranked", (0, a.getProvider)().getSocket()),
-                r = (0, a.DataBinding)("/lol-platform-config", (0, a.getProvider)().getSocket()),
-                l = (0, a.DataBinding)("/lol-settings", (0, a.getProvider)().getSocket()),
-                d = (0, a.DataBinding)("/lol-seasons", (0, a.getProvider)().getSocket()),
-                m = "/v1/account/lol-profiles",
-                u = s.QUEUES.RANKED_SOLO_5x5_QUEUE_TYPE;
+            var o = n(246);
+            const i = 628,
+                r = (0, a.DataBinding)("/lol-ranked", (0, a.getProvider)().getSocket()),
+                l = (0, a.DataBinding)("/lol-platform-config", (0, a.getProvider)().getSocket()),
+                d = (0, a.DataBinding)("/lol-settings", (0, a.getProvider)().getSocket()),
+                m = (0, a.DataBinding)("/riotclient", (0, a.getProvider)().getSocket()),
+                u = "/v1/account/lol-profiles",
+                _ = s.QUEUES.RANKED_SOLO_5x5_QUEUE_TYPE;
             e.exports = a.Ember.Component.extend({
                 classNames: ["ranked-reference-modal-component"],
-                layout: n(246),
+                layout: n(247),
                 pageIndex: 0,
                 numPages: 0,
                 isScrolling: !1,
@@ -14588,26 +14589,29 @@
                 rankedStatsEntry: void 0,
                 rankedRewardConfig: void 0,
                 init() {
-                    this._super(...arguments), this.set("pageIndex", 0), this.set("numPages", Math.ceil(this.get("tiers").length / 3)), this.set("isScrolling", !1), this.set("rankedRewardConfig", n(247).SR_REWARDS);
-                    const e = this.get("queueType") ? this.get("queueType") : u;
-                    i.get("/v1/current-ranked-stats").then((t => {
+                    this._super(...arguments), this.set("pageIndex", 0), this.set("numPages", Math.ceil(this.get("tiers").length / 3)), this.set("isScrolling", !1), this.set("rankedRewardConfig", n(248).SR_REWARDS);
+                    const e = this.get("queueType") ? this.get("queueType") : _;
+                    r.get("/v1/current-ranked-stats").then((t => {
                         this.getRankedStats(t, e)
-                    })), r.get("/v1/namespaces/LeagueConfig/RankedRewardConfig").then((e => {
+                    })), r.get("/v1/splits-config").then((e => {
+                        Boolean(e) && this.set("splitsConfig", e)
+                    })), l.get("/v1/namespaces/LeagueConfig/RankedRewardConfig").then((e => {
                         this.getRewardConfig(e)
-                    })), d.get("/v1/season/product/LOL").then((e => {
-                        e && e.metadata && this.set("currentSeason", e.metadata)
-                    })), l.get("/v2/ready").then((e => {
+                    })), d.get("/v2/ready").then((e => {
                         this.updateSettingsReady(e)
+                    })), m.get("/region-locale").then((e => {
+                        this.set("regionLocale", e)
                     }))
                 },
-                currentYear: a.Ember.computed("currentSeason.seasonStart", (function() {
-                    const e = this.get("currentSeason.seasonStart");
-                    return e ? new Date(e).getFullYear() : (new Date).getFullYear()
+                currentYear: a.Ember.computed("splitsConfig", "splitsConfig.currentSplit.startTimeMillis", (function() {
+                    const e = this.get("splitsConfig.currentSplit.startTimeMillis");
+                    return Boolean(e) ? (0, o.convertDateMillisToString)(e, this.get("regionLocale"), {
+                        year: "numeric"
+                    }) : (new Date).getFullYear()
                 })),
-                currentSplit: a.Ember.computed.alias("currentSeason.currentSplit"),
-                titleText: a.Ember.computed("currentYear", "currentSplit", (function() {
+                titleText: a.Ember.computed("currentYear", "splitsConfig", "splitsConfig.currentSplitId", (function() {
                     const e = this.get("currentYear"),
-                        t = this.get("currentSplit");
+                        t = this.get("splitsConfig.currentSplitId");
                     return this.get("tra").formatString("ranked_reference_modal_title", {
                         year: e || "",
                         split: t || ""
@@ -14672,7 +14676,7 @@
                     for (let t = 0; t < n.length; t++) {
                         if (t > 0 && t % 3 == 0 && a++, e === n[t]) break
                     }
-                    let s = o * a;
+                    let s = i * a;
                     this.get("numPages") - 1 === a && (s -= 20), t.style.transform = `translateX(-${s}px)`, this.set("pageIndex", a)
                 },
                 getDivisionContentArray: function(e, t, n) {
@@ -14708,7 +14712,7 @@
                     navigatePage: function(e) {
                         if (this.get("isScrolling")) return;
                         const t = this.get("pageIndex");
-                        let n, s = o * t; - 1 === e ? (n = o * (t - 1), this.set("pageIndex", t - 1)) : 1 === e && (n = o * (t + 1), this.set("pageIndex", t + 1)), 1 === e && t + 1 === this.get("numPages") - 1 ? n -= 20 : -1 === e && t === this.get("numPages") - 1 && (s -= 20), this.set("isScrolling", !0);
+                        let n, s = i * t; - 1 === e ? (n = i * (t - 1), this.set("pageIndex", t - 1)) : 1 === e && (n = i * (t + 1), this.set("pageIndex", t + 1)), 1 === e && t + 1 === this.get("numPages") - 1 ? n -= 20 : -1 === e && t === this.get("numPages") - 1 && (s -= 20), this.set("isScrolling", !0);
                         document.getElementById("carousel-body").animate([{
                             transform: `translateX(-${s}px)`
                         }, {
@@ -14728,26 +14732,40 @@
                 },
                 _markSettingsSeen(e, t) {
                     const n = e && void 0 !== e.schemaVersion ? e.schemaVersion : 0,
-                        s = {},
-                        o = t || 10;
-                    return s["ranked-reference-modal-login-seen-for-season"] = o, a.Telemetry.sendCustomData("ranked-reference-modal-events", {
+                        s = {};
+                    return s["ranked-reference-modal-login-seen-for-season"] = t, a.Telemetry.sendCustomData("ranked-reference-modal-events", {
                         event: "show-modal"
-                    }), l.patch(m, {
+                    }), d.patch(u, {
                         data: s,
                         schemaVersion: n
                     }).then((() => a.logger.trace("ranked-reference-modal -- updated settings successfully")), (() => a.logger.trace("ranked-reference-modal -- failed to update settings")))
                 },
                 updateSettingsReady: function(e) {
-                    (e = Boolean(e)) && r.get("/v1/namespaces/ClientSystemStates/currentSeason").then((e => {
-                        e && l.get(m).then((t => {
-                            this._markSettingsSeen(t, e)
+                    if (e = Boolean(e)) {
+                        const e = this.get("splitsConfig");
+                        if (!Boolean(e)) return;
+                        d.get(u).then((t => {
+                            const n = `${e.currentSeasonId}.${e.currentSplitId}`;
+                            this._markSettingsSeen(t, n)
                         }))
-                    }))
+                    }
                 }
             })
         }, (e, t, n) => {
             "use strict";
             n.r(t)
+        }, (e, t) => {
+            "use strict";
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            }), t.convertDateMillisToString = function(e, t, n = {
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+            }) {
+                const a = (t && t.locale || "en_US").replace("_", "-");
+                return new Date(e).toLocaleString(a, n)
+            }
         }, (e, t, n) => {
             const a = n(1).Ember;
             e.exports = a.HTMLBars.template({
@@ -14765,7 +14783,7 @@
             }), t._makeBannerDataFlagKey = d, t.default = void 0;
             var a = n(1),
                 s = n(76);
-            n(249);
+            n(250);
             var o = n(78);
             const i = (0, a.EmberDataBinding)({
                 Ember: a.Ember,
@@ -14778,7 +14796,7 @@
                 }
             });
             var r = a.Ember.Component.extend(i, {
-                layout: n(250),
+                layout: n(251),
                 classNames: ["style-profile-clash-banner-picker-component"],
                 isInitialized: !1,
                 init: function() {
@@ -14939,9 +14957,9 @@
                 o = (a = n(27)) && a.__esModule ? a : {
                     default: a
                 };
-            n(252), e.exports = s.Ember.Component.extend(o.default, {
+            n(253), e.exports = s.Ember.Component.extend(o.default, {
                 classNames: ["style-profile-backdrop-component"],
-                layout: n(253),
+                layout: n(254),
                 profileService: s.Ember.inject.service("profile"),
                 backdrop: s.Ember.computed.alias("profileService.backdrop"),
                 potatoModeSettings: s.Ember.computed.alias("profileService.potatoModeSettings"),
@@ -14983,7 +15001,7 @@
         }, (e, t, n) => {
             "use strict";
             var a = n(1);
-            n(255);
+            n(256);
             const s = (0, a.EmberDataBinding)({
                 Ember: a.Ember,
                 websocket: (0, a.getProvider)().getSocket(),
@@ -15010,7 +15028,7 @@
             });
             e.exports = a.Ember.Component.extend(s, {
                 classNames: ["style-profile-backdrop-picker-component"],
-                layout: n(256),
+                layout: n(257),
                 isOnOverviewPage: a.Ember.computed("subnavigationState.shownSectionId", "overviewSectionId", (function() {
                     return this.get("overviewSectionId") === this.get("subnavigationState.shownSectionId")
                 })),
@@ -15082,7 +15100,7 @@
             "use strict";
             var a = n(1),
                 s = n(37);
-            n(258);
+            n(259);
             const o = (0, a.EmberDataBinding)({
                 Ember: a.Ember,
                 websocket: (0, a.getProvider)().getSocket(),
@@ -15092,7 +15110,7 @@
             });
             e.exports = a.Ember.Component.extend(o, {
                 classNames: ["style-profile-search-input-component"],
-                layout: n(259),
+                layout: n(260),
                 disabled: !1,
                 messagePacket: null,
                 isOnOverviewPage: a.Ember.computed("subnavigationState.shownSectionId", "overviewSectionId", (function() {
@@ -15183,7 +15201,7 @@
                 transitionSpeed: 150
             };
             var i = a.Ember.Component.extend(s, {
-                layout: n(261),
+                layout: n(262),
                 width: "200px",
                 position: "",
                 styleContent: a.Ember.computed("width", (function() {
@@ -15227,9 +15245,9 @@
                 o = (a = n(27)) && a.__esModule ? a : {
                     default: a
                 };
-            n(263), e.exports = s.Ember.Component.extend(o.default, {
+            n(264), e.exports = s.Ember.Component.extend(o.default, {
                 classNames: ["style-profile-search-trail-component"],
-                layout: n(264),
+                layout: n(265),
                 profileService: s.Ember.inject.service("profile"),
                 bannerEnabled: s.Ember.computed.alias("profileService.bannerEnabled"),
                 friend: s.Ember.computed.alias("profileService.friend"),
@@ -15253,12 +15271,12 @@
         }, (e, t, n) => {
             "use strict";
             var a, s = n(1),
-                o = n(266),
-                i = n(280),
-                r = (a = n(281)) && a.__esModule ? a : {
+                o = n(267),
+                i = n(281),
+                r = (a = n(282)) && a.__esModule ? a : {
                     default: a
                 };
-            n(282), e.exports = function() {
+            n(283), e.exports = function() {
                 const e = new o.FullPageModalMediator({
                         Navigation: s.Navigation
                     }),
@@ -15289,12 +15307,12 @@
             }
         }, (e, t, n) => {
             "use strict";
-            var a = d(n(267)),
-                s = d(n(273)),
-                o = d(n(274)),
-                i = d(n(277)),
-                r = d(n(278)),
-                l = d(n(279));
+            var a = d(n(268)),
+                s = d(n(274)),
+                o = d(n(275)),
+                i = d(n(278)),
+                r = d(n(279)),
+                l = d(n(280));
 
             function d(e) {
                 return e && e.__esModule ? e : {
@@ -15325,11 +15343,11 @@
                         return n && e(t.prototype, n), a && e(t, a), t
                     }
                 }(),
-                s = d(n(268)),
-                o = d(n(269)),
-                i = d(n(271)),
-                r = n(272),
-                l = n(270);
+                s = d(n(269)),
+                o = d(n(270)),
+                i = d(n(272)),
+                r = n(273),
+                l = n(271);
 
             function d(e) {
                 return e && e.__esModule ? e : {
@@ -15524,11 +15542,11 @@
                         return n && e(t.prototype, n), a && e(t, a), t
                     }
                 }(),
-                o = n(268),
+                o = n(269),
                 i = (a = o) && a.__esModule ? a : {
                     default: a
                 },
-                r = n(270);
+                r = n(271);
             var l = function() {
                 function e(t) {
                     if (function(e, t) {
@@ -15614,9 +15632,9 @@
                         return n && e(t.prototype, n), a && e(t, a), t
                     }
                 }(),
-                s = r(n(268)),
-                o = r(n(267)),
-                i = n(270);
+                s = r(n(269)),
+                o = r(n(268)),
+                i = n(271);
 
             function r(e) {
                 return e && e.__esModule ? e : {
@@ -15767,12 +15785,12 @@
                     var i = s.get;
                     return void 0 !== i ? i.call(a) : void 0
                 },
-                i = n(269),
+                i = n(270),
                 r = (a = i) && a.__esModule ? a : {
                     default: a
                 },
-                l = n(270),
-                d = n(272);
+                l = n(271),
+                d = n(273);
             var m = t.EVENT_NAVIGATION_CLICKED = "lol-uikit-navigation-item-click-event",
                 u = t.NAVIGATION_ITEM_ATTR_ID = "item-id",
                 _ = t.NAVIGATION_ITEM_ATTR_PRIORITY = "priority",
@@ -15930,9 +15948,9 @@
                     var i = s.get;
                     return void 0 !== i ? i.call(a) : void 0
                 },
-                o = l(n(269)),
-                i = l(n(275)),
-                r = n(270);
+                o = l(n(270)),
+                i = l(n(276)),
+                r = n(271);
 
             function l(e) {
                 return e && e.__esModule ? e : {
@@ -16038,7 +16056,7 @@
             t.default = f
         }, (e, t, n) => {
             "use strict";
-            const a = n(276);
+            const a = n(277);
             e.exports = new a
         }, e => {
             "use strict";
@@ -16141,11 +16159,11 @@
                     var i = s.get;
                     return void 0 !== i ? i.call(a) : void 0
                 },
-                i = n(269),
+                i = n(270),
                 r = (a = i) && a.__esModule ? a : {
                     default: a
                 },
-                l = n(270);
+                l = n(271);
             var d = ["Navigation"],
                 m = function(e) {
                     function t() {
@@ -16229,11 +16247,11 @@
                     var i = s.get;
                     return void 0 !== i ? i.call(a) : void 0
                 },
-                i = n(269),
+                i = n(270),
                 r = (a = i) && a.__esModule ? a : {
                     default: a
                 },
-                l = n(270);
+                l = n(271);
             var d = ["UIKit"],
                 m = function(e) {
                     function t() {
@@ -16316,11 +16334,11 @@
                     var i = s.get;
                     return void 0 !== i ? i.call(a) : void 0
                 },
-                i = n(269),
+                i = n(270),
                 r = (a = i) && a.__esModule ? a : {
                     default: a
                 },
-                l = n(270);
+                l = n(271);
             var d = ["screenName", "displayPriority", "displayNameLocKey", "Viewport", "Navigation"],
                 m = function(e) {
                     function t() {
@@ -16404,7 +16422,7 @@
         }, (e, t, n) => {
             "use strict";
             var a = n(1),
-                s = n(266);
+                s = n(267);
             const o = "profile_overview_subsection";
             e.exports = {
                 overviewSectionId: o,
@@ -16506,12 +16524,12 @@
         }, (e, t, n) => {
             "use strict";
             var a, s = n(1),
-                o = n(266),
-                i = n(280),
-                r = (a = n(281)) && a.__esModule ? a : {
+                o = n(267),
+                i = n(281),
+                r = (a = n(282)) && a.__esModule ? a : {
                     default: a
                 };
-            n(282), e.exports = function(e) {
+            n(283), e.exports = function(e) {
                 const t = new o.MainNavigationMediator({
                         Navigation: s.Navigation,
                         Viewport: s.Viewport,
@@ -16832,11 +16850,11 @@
                     t.default.add({
                         PrivateAPI: () => new e
                     });
-                    const a = n(284).default,
-                        s = n(285).default,
-                        o = n(286).default,
-                        i = n(287).default,
-                        r = n(288).default,
+                    const a = n(285).default,
+                        s = n(286).default,
+                        o = n(287).default,
+                        i = n(288).default,
+                        r = n(289).default,
                         l = new a,
                         d = new s,
                         m = new o,
@@ -16849,10 +16867,10 @@
                         GameDataProfileIcons: u,
                         GameDataSkins: _
                     });
-                    const c = new(0, n(289).default);
+                    const c = new(0, n(290).default);
                     return t.default.Regalia.registerProfilesApi && t.default.Regalia.registerProfilesApi(c), c
                 })).catch((e => {
-                    const a = n(290).default,
+                    const a = n(291).default,
                         s = e && e.message ? e.message : "unknown";
                     return t.default.logger.error(`init API creation error: ${s}`), t.default.add({
                         PrivateAPI: () => new a

@@ -5360,7 +5360,7 @@
                     ComponentFactory: s.ComponentFactory,
                     SocialLeaderboardFeatureFlyoutComponent: n(497),
                     SocialLeaderboardHeaderComponent: n(500),
-                    SocialLeaderboardCountdownTimerComponent: n(504),
+                    SocialLeaderboardCountdownTimerComponent: n(503),
                     SocialLeaderboardTableComponent: n(507),
                     SocialLeaderboardRowComponent: n(510),
                     SocialLeaderboardFriendFilterComponent: n(513),
@@ -17164,15 +17164,10 @@
                     const t = this.get("selectingSlotIndex"),
                         n = this.getPlayerSlotsSetRequestBase(),
                         i = n.map((e => e.championId)).includes(e),
-                        s = n[t],
-                        o = 0 === t;
+                        s = n[t];
                     if (s.championId !== e) {
-                        if (i) {
-                            const e = s.championId;
-                            n[o ? 0 : 1].championId = n[o ? 1 : 0].championId, n[o ? 1 : 0].championId = e;
-                            const t = s.skinId;
-                            n[o ? 0 : 1].skinId = n[o ? 1 : 0].skinId, n[o ? 1 : 0].skinId = t
-                        } else {
+                        if (i) return this._handleSwapSlots();
+                        {
                             const t = this.get("quickPlayService");
                             s.championId = e, s.skinId = t.getDefaultSkinForChampion(e)
                         }
@@ -17203,6 +17198,10 @@
                     const e = this.get("localPlayer.playerSlots") || [];
                     return (0, a.copyArrayOfObjects)(e)
                 },
+                _handleSwapSlots() {
+                    const e = this.getPlayerSlotsSetRequestBase();
+                    return this.putQuickPlaySlots(e.reverse())
+                },
                 actions: {
                     openPositionSelector(e) {
                         this.set("positionSelectorOpenIndex", e)
@@ -17231,8 +17230,7 @@
                         return t[n].spell1 = e[0], t[n].spell2 = e[1], this.putQuickPlaySlots(t)
                     },
                     handleSwapSlots() {
-                        const e = this.getPlayerSlotsSetRequestBase();
-                        return this.putQuickPlaySlots(e.reverse())
+                        this._handleSwapSlots()
                     },
                     setPositionPreferences(e, t) {
                         this._setPositionPreferences(t)
@@ -19719,10 +19717,10 @@
                 o = (i = n(292)) && i.__esModule ? i : {
                     default: i
                 },
-                a = (n(501), n(15));
-            n(502), e.exports = s.Ember.Component.extend(o.default, {
+                a = n(15);
+            n(501), e.exports = s.Ember.Component.extend(o.default, {
                 classNames: ["social-leaderboard-header"],
-                layout: n(503),
+                layout: n(502),
                 countdownLabel: s.Ember.computed.alias("tra.social_leaderboard_next_ladder_update_countdown_label"),
                 socialLeaderboardQueueText: s.Ember.computed("tra", "selected.queue.name", (function() {
                     const e = this.get("selected.queue.type"),
@@ -19731,20 +19729,6 @@
                 })),
                 actions: {}
             })
-        }, (e, t) => {
-            "use strict";
-            Object.defineProperty(t, "__esModule", {
-                value: !0
-            }), t.SOCIAL_LEADERBOARD_ROW_HEIGHT = t.SEASON_YEAR_BASE = t.OTHER_TIERS = t.NUM_OF_ROWS_TO_CENTER = t.LEAGUE_DIVISION_NA = t.COUNTDOWN_INTERVAL_MS = void 0;
-            t.SEASON_YEAR_BASE = 2010;
-            t.COUNTDOWN_INTERVAL_MS = 1e3;
-            t.SOCIAL_LEADERBOARD_ROW_HEIGHT = 36.8;
-            t.NUM_OF_ROWS_TO_CENTER = 3.4;
-            t.OTHER_TIERS = {
-                UNRANKED: "UNRANKED",
-                NONE: "NONE"
-            };
-            t.LEAGUE_DIVISION_NA = "NA"
         }, (e, t, n) => {
             "use strict";
             n.r(t)
@@ -19758,7 +19742,7 @@
         }, (e, t, n) => {
             "use strict";
             var i = n(1),
-                s = n(501);
+                s = n(504);
 
             function o(e) {
                 return e < 10 ? "0" + e : e
@@ -19811,6 +19795,19 @@
                     this.set("elapsedTime", t + (n - e)), this.set("currentTime", n), this.set("timer", i.Ember.run.later(this, this.tick, s.COUNTDOWN_INTERVAL_MS))
                 }
             })
+        }, (e, t) => {
+            "use strict";
+            Object.defineProperty(t, "__esModule", {
+                value: !0
+            }), t.SOCIAL_LEADERBOARD_ROW_HEIGHT = t.OTHER_TIERS = t.NUM_OF_ROWS_TO_CENTER = t.LEAGUE_DIVISION_NA = t.COUNTDOWN_INTERVAL_MS = void 0;
+            t.COUNTDOWN_INTERVAL_MS = 1e3;
+            t.SOCIAL_LEADERBOARD_ROW_HEIGHT = 36.8;
+            t.NUM_OF_ROWS_TO_CENTER = 3.4;
+            t.OTHER_TIERS = {
+                UNRANKED: "UNRANKED",
+                NONE: "NONE"
+            };
+            t.LEAGUE_DIVISION_NA = "NA"
         }, (e, t, n) => {
             "use strict";
             n.r(t)
@@ -19842,7 +19839,7 @@
         }, (e, t, n) => {
             "use strict";
             var i = n(1),
-                s = n(501);
+                s = n(504);
             n(511), e.exports = i.Ember.Component.extend({
                 classNames: ["social-leaderboard-row"],
                 classNameBindings: ["isPlayerRow"],
