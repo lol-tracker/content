@@ -404,55 +404,55 @@
                     PostgameScoreboardProgressionRankedComponent: k.default,
                     PostgameScoreboardProgressionRatedComponent: C.default,
                     PostgameScoreboardReplayButtonComponent: A.default,
-                    TftHeaderComponent: I.default,
-                    TftPartnerGroupPlacementComponent: M.default,
+                    TftHeaderComponent: M.default,
+                    TftPartnerGroupPlacementComponent: I.default,
                     TftPlayerComponent: R.default,
                     TftTooltipComponent: N.default,
                     PostgameSecondaryProgressionComponent: w.default,
                     PostgamePartyStatusComponent: L.default,
-                    ArrowFooterComponent: At,
-                    HextechLoadingAnimationComponent: wt,
-                    GenericButtonComponent: Te.default,
-                    RenderTimerComponent: ve.default,
-                    EternalsTokenComponent: xe.default,
-                    PostgameRootComponent: Se.default,
-                    PostgameSubNavigationComponent: Pe.default,
-                    PostgameProgressionComponent: Ce.default,
-                    PrestigeProgressionComponent: Ae.default,
-                    PrestigeProgressionTooltipComponent: we.default,
-                    MasteryProgressionComponent: Le.default,
+                    ArrowFooterComponent: wt,
+                    HextechLoadingAnimationComponent: Lt,
+                    GenericButtonComponent: ke.default,
+                    RenderTimerComponent: xe.default,
+                    EternalsTokenComponent: Se.default,
+                    PostgameRootComponent: Pe.default,
+                    PostgameSubNavigationComponent: Te.default,
+                    PostgameProgressionComponent: Ae.default,
+                    PrestigeProgressionComponent: we.default,
+                    PrestigeProgressionTooltipComponent: Le.default,
+                    MasteryProgressionComponent: Me.default,
                     CherryProgressionComponent: Ie.default,
-                    RankedProgressionComponent: Re.default,
-                    RatingChangeComponent: Me.default,
-                    RankedRewardProgressionComponent: Ne.default,
-                    MiniseriesProgressComponent: Oe.default,
-                    ChallengeUpdateContainerComponent: De.default,
-                    ChallengeUpdatesTooltipComponent: Be.default,
-                    EternalsUpdatesTooltipComponent: Ge.default,
-                    PostgamePartyStatusV2Component: Ue.default,
-                    ProgressionModalComponent: He.default,
-                    CherryScoreboardHeaderComponent: Fe.default,
-                    ScoreboardHeaderComponent: je.default,
-                    ScoreboardHonorFlairComponent: Ve.default,
-                    ScoreboardRootComponent: qe.default,
-                    CherryScoreboardRowComponent: We.default,
-                    ScoreboardRowComponent: Ye.default,
-                    ScoreboardRowActionsMenuComponent: Ke.default,
-                    ScoreboardRowStatDisplayComponent: Xe.default,
-                    ScoreboardStatSwitcherComponent: $e.default,
-                    AnimatedPlayButtonComponent: ke.default,
-                    ScoreboardSpellComponent: Qe.default,
-                    PostgameReportModal: Mt,
-                    GameIdClipboardCopyComponent: Lt,
+                    RankedProgressionComponent: Ne.default,
+                    RatingChangeComponent: Re.default,
+                    RankedRewardProgressionComponent: Oe.default,
+                    MiniseriesProgressComponent: De.default,
+                    ChallengeUpdateContainerComponent: Be.default,
+                    ChallengeUpdatesTooltipComponent: Ge.default,
+                    EternalsUpdatesTooltipComponent: Ue.default,
+                    PostgamePartyStatusV2Component: He.default,
+                    ProgressionModalComponent: Fe.default,
+                    CherryScoreboardHeaderComponent: je.default,
+                    ScoreboardHeaderComponent: Ve.default,
+                    ScoreboardHonorFlairComponent: qe.default,
+                    ScoreboardRootComponent: We.default,
+                    CherryScoreboardRowComponent: Ye.default,
+                    ScoreboardRowComponent: Ke.default,
+                    ScoreboardRowActionsMenuComponent: Xe.default,
+                    ScoreboardRowStatDisplayComponent: $e.default,
+                    ScoreboardStatSwitcherComponent: Qe.default,
+                    AnimatedPlayButtonComponent: Ce.default,
+                    ScoreboardSpellComponent: ze.default,
+                    PostgameReportModal: Rt,
+                    GameIdClipboardCopyComponent: Mt,
                     PlayerNameComponent: It,
-                    ChallengeCardHeaderComponent: Rt,
-                    ChallengeCardComponent: Nt,
-                    ChallengeItemFooterComponent: Ot,
-                    ChallengeItemTooltipComponent: Dt,
-                    ChallengeItemComponent: Bt,
-                    EternalsItemTooltipComponent: Gt,
-                    EternalsItemComponent: Ut,
-                    IdentityCustomizerTokenComponent: Vt,
+                    ChallengeCardHeaderComponent: Nt,
+                    ChallengeCardComponent: Ot,
+                    ChallengeItemFooterComponent: Dt,
+                    ChallengeItemTooltipComponent: Bt,
+                    ChallengeItemComponent: Gt,
+                    EternalsItemTooltipComponent: Ut,
+                    EternalsItemComponent: Ht,
+                    IdentityCustomizerTokenComponent: qt,
                     PostgameScoreboardPlayerHonorFlairComponent: S.default,
                     PostgameScoreboardProgressionHonorNotificationComponent: P.default,
                     PostgameScoreboardProgressionHonorCategoryIconComponent: T.default,
@@ -464,72 +464,73 @@
                     GameflowService: U.default,
                     ChatMessagesService: H.default,
                     EternalsService: F.default,
-                    EndOfGameService: W.default,
+                    EndOfGameService: Y.default,
                     HonorService: j.default,
                     ChallengesService: V.default,
                     PerksService: q.default,
-                    GameDataService: Ht,
-                    RiotclientService: Ft,
-                    SummonerService: jt,
-                    PlayerActionsService: Y.default,
+                    GameDataService: Ft,
+                    RiotclientService: jt,
+                    SummonerService: Vt,
+                    PlayerActionsService: K.default,
+                    RemedyService: W.default,
                     RenderTelemetrySenderComponent: a.default.SharedEmberComponents.RenderTelemetrySenderComponent,
                     TEMPLATES: {
-                        application: K.default,
-                        postgame: X.default,
-                        "components/postgame-common": $.default,
-                        "components/postgame-header": Q.default,
-                        "components/postgame-game-info": z.default,
-                        "components/postgame-game-info-icons": Z.default,
-                        "components/postgame-game-result": J.default,
-                        "components/postgame-game-result-icon": ee.default,
-                        "components/postgame-scoreboard": te.default,
-                        "components/postgame-scoreboard-player-augment": ne.default,
-                        "components/postgame-scoreboard-player-keystone-icon": ae.default,
-                        "components/postgame-scoreboard-player-buttons": se.default,
-                        "components/postgame-scoreboard-player-item": oe.default,
-                        "components/postgame-scoreboard-progression": le.default,
-                        "components/postgame-scoreboard-progression-number-reels": ie.default,
-                        "components/postgame-scoreboard-breakdown": re.default,
-                        "components/postgame-scoreboard-progression-ranked": ce.default,
-                        "components/postgame-scoreboard-progression-rated": me.default,
-                        "components/postgame-secondary-progression": pe.default,
-                        "components/postgame-party-status": de.default,
-                        "components/postgame-scoreboard-player-honor-flair": ue.default,
-                        "components/postgame-scoreboard-progression-honor-notification": ge.default,
-                        "components/postgame-scoreboard-progression-honor-category-icon": he.default,
-                        "components/render-timer": ze.default,
-                        "components/eternals-token": Ze.default,
-                        "components/postgame-root": Je.default,
-                        "components/postgame-sub-navigation": et.default,
-                        "components/postgame-progression": tt.default,
-                        "components/prestige-progression": nt.default,
-                        "components/prestige-progression-tooltip": at.default,
-                        "components/mastery-progression": st.default,
-                        "components/cherry-progression": ot.default,
-                        "components/ranked-progression": lt.default,
-                        "components/rating-change": it.default,
-                        "components/ranked-reward-progression": rt.default,
-                        "components/miniseries-progress": ct.default,
-                        "components/challenge-update-container": mt.default,
-                        "components/challenge-updates-tooltip": pt.default,
-                        "components/eternals-updates-tooltip": dt.default,
-                        "components/progression-modal": gt.default,
-                        "components/cherry-scoreboard-header": ht.default,
-                        "components/scoreboard-header": ft.default,
-                        "components/scoreboard-honor-flair": bt.default,
-                        "components/scoreboard-root": yt.default,
-                        "components/cherry-scoreboard-row": _t.default,
-                        "components/scoreboard-row": Et.default,
-                        "components/scoreboard-row-actions-menu": vt.default,
-                        "components/scoreboard-row-stat-display": xt.default,
-                        "components/scoreboard-stat-switcher": St.default,
-                        "components/postgame-party-status-v2": ut.default,
-                        "components/animated-play-button": Pt.default,
-                        "components/scoreboard-spell": Tt.default,
-                        "components/tft-header": fe.default,
-                        "components/tft-partner-group-placement": be.default,
-                        "components/tft-player": ye.default,
-                        "components/tft-tooltip": _e.default
+                        application: X.default,
+                        postgame: $.default,
+                        "components/postgame-common": Q.default,
+                        "components/postgame-header": z.default,
+                        "components/postgame-game-info": Z.default,
+                        "components/postgame-game-info-icons": J.default,
+                        "components/postgame-game-result": ee.default,
+                        "components/postgame-game-result-icon": te.default,
+                        "components/postgame-scoreboard": ne.default,
+                        "components/postgame-scoreboard-player-augment": ae.default,
+                        "components/postgame-scoreboard-player-keystone-icon": se.default,
+                        "components/postgame-scoreboard-player-buttons": oe.default,
+                        "components/postgame-scoreboard-player-item": le.default,
+                        "components/postgame-scoreboard-progression": ie.default,
+                        "components/postgame-scoreboard-progression-number-reels": re.default,
+                        "components/postgame-scoreboard-breakdown": ce.default,
+                        "components/postgame-scoreboard-progression-ranked": me.default,
+                        "components/postgame-scoreboard-progression-rated": pe.default,
+                        "components/postgame-secondary-progression": de.default,
+                        "components/postgame-party-status": ue.default,
+                        "components/postgame-scoreboard-player-honor-flair": ge.default,
+                        "components/postgame-scoreboard-progression-honor-notification": he.default,
+                        "components/postgame-scoreboard-progression-honor-category-icon": fe.default,
+                        "components/render-timer": Ze.default,
+                        "components/eternals-token": Je.default,
+                        "components/postgame-root": et.default,
+                        "components/postgame-sub-navigation": tt.default,
+                        "components/postgame-progression": nt.default,
+                        "components/prestige-progression": at.default,
+                        "components/prestige-progression-tooltip": st.default,
+                        "components/mastery-progression": ot.default,
+                        "components/cherry-progression": lt.default,
+                        "components/ranked-progression": it.default,
+                        "components/rating-change": rt.default,
+                        "components/ranked-reward-progression": ct.default,
+                        "components/miniseries-progress": mt.default,
+                        "components/challenge-update-container": pt.default,
+                        "components/challenge-updates-tooltip": dt.default,
+                        "components/eternals-updates-tooltip": ut.default,
+                        "components/progression-modal": ht.default,
+                        "components/cherry-scoreboard-header": ft.default,
+                        "components/scoreboard-header": bt.default,
+                        "components/scoreboard-honor-flair": yt.default,
+                        "components/scoreboard-root": _t.default,
+                        "components/cherry-scoreboard-row": Et.default,
+                        "components/scoreboard-row": vt.default,
+                        "components/scoreboard-row-actions-menu": xt.default,
+                        "components/scoreboard-row-stat-display": St.default,
+                        "components/scoreboard-stat-switcher": Pt.default,
+                        "components/postgame-party-status-v2": gt.default,
+                        "components/animated-play-button": Tt.default,
+                        "components/scoreboard-spell": kt.default,
+                        "components/tft-header": be.default,
+                        "components/tft-partner-group-placement": ye.default,
+                        "components/tft-player": _e.default,
+                        "components/tft-tooltip": Ee.default
                     }
                 };
                 a.ApplicationInjector.setFactoryDefinition(e), a.emberApplicationFactory.setFactoryDefinition(s.POSTGAME_EMBER_APP_NAME, e, {
@@ -538,7 +539,7 @@
                     name: s.REWARD_CELEBRATION_NAME,
                     ComponentFactory: a.ComponentFactory,
                     tra: a.traService,
-                    RewardCelebrationComponent: Ee.default
+                    RewardCelebrationComponent: ve.default
                 })
             };
             var a = function(e, t) {
@@ -546,7 +547,7 @@
                     if (null === e || "object" != typeof e && "function" != typeof e) return {
                         default: e
                     };
-                    var n = Ct(t);
+                    var n = At(t);
                     if (n && n.has(e)) return n.get(e);
                     var a = {},
                         s = Object.defineProperty && Object.getOwnPropertyDescriptor;
@@ -558,168 +559,169 @@
                     return a
                 }(n(1)),
                 s = n(3),
-                o = kt(n(8)),
-                l = kt(n(9)),
-                i = kt(n(11)),
-                r = kt(n(12)),
-                c = kt(n(13)),
-                m = kt(n(16)),
-                p = kt(n(17)),
-                d = kt(n(36)),
-                u = kt(n(37)),
-                g = kt(n(38)),
-                h = kt(n(39)),
-                f = kt(n(40)),
-                b = kt(n(41)),
-                y = kt(n(42)),
-                _ = kt(n(43)),
-                E = kt(n(44)),
-                v = kt(n(45)),
-                x = kt(n(46)),
-                S = kt(n(47)),
-                P = kt(n(48)),
-                T = kt(n(49)),
-                k = kt(n(50)),
-                C = kt(n(51)),
-                A = kt(n(52)),
-                w = kt(n(53)),
-                L = kt(n(54)),
-                I = kt(n(55)),
-                M = kt(n(56)),
-                R = kt(n(57)),
-                N = kt(n(58)),
-                O = kt(n(59)),
-                D = kt(n(60)),
-                B = kt(n(61)),
-                G = kt(n(62)),
-                U = kt(n(63)),
-                H = kt(n(64)),
-                F = kt(n(65)),
-                j = kt(n(66)),
-                V = kt(n(67)),
-                q = kt(n(68)),
-                W = kt(n(69)),
-                Y = kt(n(70)),
-                K = kt(n(71)),
-                X = kt(n(72)),
-                $ = kt(n(73)),
-                Q = kt(n(74)),
-                z = kt(n(75)),
-                Z = kt(n(76)),
-                J = kt(n(77)),
-                ee = kt(n(78)),
-                te = kt(n(79)),
-                ne = kt(n(80)),
-                ae = kt(n(81)),
-                se = kt(n(82)),
-                oe = kt(n(83)),
-                le = kt(n(84)),
-                ie = kt(n(85)),
-                re = kt(n(86)),
-                ce = kt(n(87)),
-                me = kt(n(88)),
-                pe = kt(n(89)),
-                de = kt(n(90)),
-                ue = kt(n(91)),
-                ge = kt(n(92)),
-                he = kt(n(93)),
-                fe = kt(n(94)),
-                be = kt(n(95)),
-                ye = kt(n(96)),
-                _e = kt(n(97)),
-                Ee = kt(n(98)),
-                ve = kt(n(101)),
-                xe = kt(n(102)),
-                Se = kt(n(103)),
-                Pe = kt(n(104)),
-                Te = kt(n(105)),
-                ke = kt(n(109)),
-                Ce = kt(n(110)),
-                Ae = kt(n(113)),
-                we = kt(n(114)),
-                Le = kt(n(115)),
-                Ie = kt(n(116)),
-                Me = kt(n(117)),
-                Re = kt(n(118)),
-                Ne = kt(n(119)),
-                Oe = kt(n(120)),
-                De = kt(n(121)),
-                Be = kt(n(122)),
-                Ge = kt(n(123)),
-                Ue = kt(n(124)),
-                He = kt(n(125)),
-                Fe = kt(n(127)),
-                je = kt(n(129)),
-                Ve = kt(n(130)),
-                qe = kt(n(131)),
-                We = kt(n(132)),
-                Ye = kt(n(134)),
-                Ke = kt(n(135)),
-                Xe = kt(n(136)),
-                $e = kt(n(137)),
-                Qe = kt(n(138)),
-                ze = kt(n(139)),
-                Ze = kt(n(140)),
-                Je = kt(n(141)),
-                et = kt(n(142)),
-                tt = kt(n(143)),
-                nt = kt(n(144)),
-                at = kt(n(145)),
-                st = kt(n(146)),
-                ot = kt(n(147)),
-                lt = kt(n(148)),
-                it = kt(n(149)),
-                rt = kt(n(150)),
-                ct = kt(n(151)),
-                mt = kt(n(152)),
-                pt = kt(n(153)),
-                dt = kt(n(154)),
-                ut = kt(n(155)),
-                gt = kt(n(156)),
-                ht = kt(n(157)),
-                ft = kt(n(158)),
-                bt = kt(n(159)),
-                yt = kt(n(160)),
-                _t = kt(n(161)),
-                Et = kt(n(162)),
-                vt = kt(n(163)),
-                xt = kt(n(164)),
-                St = kt(n(165)),
-                Pt = kt(n(166)),
-                Tt = kt(n(167));
+                o = Ct(n(8)),
+                l = Ct(n(9)),
+                i = Ct(n(11)),
+                r = Ct(n(12)),
+                c = Ct(n(13)),
+                m = Ct(n(16)),
+                p = Ct(n(17)),
+                d = Ct(n(36)),
+                u = Ct(n(37)),
+                g = Ct(n(38)),
+                h = Ct(n(39)),
+                f = Ct(n(40)),
+                b = Ct(n(41)),
+                y = Ct(n(42)),
+                _ = Ct(n(43)),
+                E = Ct(n(44)),
+                v = Ct(n(45)),
+                x = Ct(n(46)),
+                S = Ct(n(47)),
+                P = Ct(n(48)),
+                T = Ct(n(49)),
+                k = Ct(n(50)),
+                C = Ct(n(51)),
+                A = Ct(n(52)),
+                w = Ct(n(53)),
+                L = Ct(n(54)),
+                M = Ct(n(55)),
+                I = Ct(n(56)),
+                R = Ct(n(57)),
+                N = Ct(n(58)),
+                O = Ct(n(59)),
+                D = Ct(n(60)),
+                B = Ct(n(61)),
+                G = Ct(n(62)),
+                U = Ct(n(63)),
+                H = Ct(n(64)),
+                F = Ct(n(65)),
+                j = Ct(n(66)),
+                V = Ct(n(67)),
+                q = Ct(n(68)),
+                W = Ct(n(69)),
+                Y = Ct(n(70)),
+                K = Ct(n(71)),
+                X = Ct(n(72)),
+                $ = Ct(n(73)),
+                Q = Ct(n(74)),
+                z = Ct(n(75)),
+                Z = Ct(n(76)),
+                J = Ct(n(77)),
+                ee = Ct(n(78)),
+                te = Ct(n(79)),
+                ne = Ct(n(80)),
+                ae = Ct(n(81)),
+                se = Ct(n(82)),
+                oe = Ct(n(83)),
+                le = Ct(n(84)),
+                ie = Ct(n(85)),
+                re = Ct(n(86)),
+                ce = Ct(n(87)),
+                me = Ct(n(88)),
+                pe = Ct(n(89)),
+                de = Ct(n(90)),
+                ue = Ct(n(91)),
+                ge = Ct(n(92)),
+                he = Ct(n(93)),
+                fe = Ct(n(94)),
+                be = Ct(n(95)),
+                ye = Ct(n(96)),
+                _e = Ct(n(97)),
+                Ee = Ct(n(98)),
+                ve = Ct(n(99)),
+                xe = Ct(n(102)),
+                Se = Ct(n(103)),
+                Pe = Ct(n(104)),
+                Te = Ct(n(105)),
+                ke = Ct(n(106)),
+                Ce = Ct(n(110)),
+                Ae = Ct(n(111)),
+                we = Ct(n(114)),
+                Le = Ct(n(115)),
+                Me = Ct(n(116)),
+                Ie = Ct(n(117)),
+                Re = Ct(n(118)),
+                Ne = Ct(n(119)),
+                Oe = Ct(n(120)),
+                De = Ct(n(121)),
+                Be = Ct(n(122)),
+                Ge = Ct(n(123)),
+                Ue = Ct(n(124)),
+                He = Ct(n(125)),
+                Fe = Ct(n(126)),
+                je = Ct(n(128)),
+                Ve = Ct(n(130)),
+                qe = Ct(n(131)),
+                We = Ct(n(132)),
+                Ye = Ct(n(133)),
+                Ke = Ct(n(135)),
+                Xe = Ct(n(136)),
+                $e = Ct(n(137)),
+                Qe = Ct(n(138)),
+                ze = Ct(n(139)),
+                Ze = Ct(n(140)),
+                Je = Ct(n(141)),
+                et = Ct(n(142)),
+                tt = Ct(n(143)),
+                nt = Ct(n(144)),
+                at = Ct(n(145)),
+                st = Ct(n(146)),
+                ot = Ct(n(147)),
+                lt = Ct(n(148)),
+                it = Ct(n(149)),
+                rt = Ct(n(150)),
+                ct = Ct(n(151)),
+                mt = Ct(n(152)),
+                pt = Ct(n(153)),
+                dt = Ct(n(154)),
+                ut = Ct(n(155)),
+                gt = Ct(n(156)),
+                ht = Ct(n(157)),
+                ft = Ct(n(158)),
+                bt = Ct(n(159)),
+                yt = Ct(n(160)),
+                _t = Ct(n(161)),
+                Et = Ct(n(162)),
+                vt = Ct(n(163)),
+                xt = Ct(n(164)),
+                St = Ct(n(165)),
+                Pt = Ct(n(166)),
+                Tt = Ct(n(167)),
+                kt = Ct(n(168));
 
-            function kt(e) {
+            function Ct(e) {
                 return e && e.__esModule ? e : {
                     default: e
                 }
             }
 
-            function Ct(e) {
+            function At(e) {
                 if ("function" != typeof WeakMap) return null;
                 var t = new WeakMap,
                     n = new WeakMap;
-                return (Ct = function(e) {
+                return (At = function(e) {
                     return e ? n : t
                 })(e)
             }
             const {
-                ArrowFooterComponent: At,
-                HextechLoadingAnimationComponent: wt,
-                GameIdClipboardCopyComponent: Lt,
+                ArrowFooterComponent: wt,
+                HextechLoadingAnimationComponent: Lt,
+                GameIdClipboardCopyComponent: Mt,
                 PlayerNameComponent: It,
-                PostgameReportModal: Mt
+                PostgameReportModal: Rt
             } = a.SharedComponents.getSharedEmberComponents(), {
-                ChallengeCardHeaderComponent: Rt,
-                ChallengeCardComponent: Nt,
-                ChallengeItemFooterComponent: Ot,
-                ChallengeItemTooltipComponent: Dt,
-                ChallengeItemComponent: Bt,
-                EternalsItemTooltipComponent: Gt,
-                EternalsItemComponent: Ut,
-                GameDataService: Ht,
-                RiotclientService: Ft,
-                SummonerService: jt,
-                IdentityCustomizerTokenComponent: Vt
+                ChallengeCardHeaderComponent: Nt,
+                ChallengeCardComponent: Ot,
+                ChallengeItemFooterComponent: Dt,
+                ChallengeItemTooltipComponent: Bt,
+                ChallengeItemComponent: Gt,
+                EternalsItemTooltipComponent: Ut,
+                EternalsItemComponent: Ht,
+                GameDataService: Ft,
+                RiotclientService: jt,
+                SummonerService: Vt,
+                IdentityCustomizerTokenComponent: qt
             } = a.SharedComponents.getApi_SharedChallengesComponents()
         }, (e, t, n) => {
             "use strict";
@@ -3694,6 +3696,41 @@
             t.default = s
         }, (e, t, n) => {
             "use strict";
+            var a = n(1);
+            const s = "couldShowRemedyVerbalAbuseModal",
+                o = "/lol-remedy/v1/config/is-verbal-abuse-remedy-modal-enabled",
+                l = "/lol-player-report-sender/v1/game-ids-with-verbal-abuse-report";
+            e.exports = a.Ember.Service.extend({
+                isVerbalAbuseRemedyEnabled: !1,
+                gameIdsWithVerbalAbuseReports: [],
+                couldShowVerbalAbuseModalPreference: !0,
+                init() {
+                    this._super(...arguments), this.db = a.dataBinding.bindTo(a.socket), this.initObservers(), this.db.get("/lol-settings/v2/account/LCUPreferences/lol-navigation").then((e => {
+                        e && e.data && void 0 !== e.data[s] ? this.set("couldShowVerbalAbuseModalPreference", e.data[s]) : this.set("couldShowVerbalAbuseModalPreference", !0)
+                    }))
+                },
+                willDestroy() {
+                    this._super(...arguments), this.removeObservers()
+                },
+                initObservers() {
+                    this.db.observe(o, this, (e => {
+                        this.set("isVerbalAbuseRemedyEnabled", e)
+                    })), this.db.observe(l, this, (e => {
+                        this.set("gameIdsWithVerbalAbuseReports", e || [])
+                    }))
+                },
+                removeObservers() {
+                    this.db.removeObserver(o, this), this.db.removeObserver(l, this)
+                },
+                couldShowRemedyVerbalAbuseModal: function(e) {
+                    const t = this.get("isVerbalAbuseRemedyEnabled"),
+                        n = this.get("gameIdsWithVerbalAbuseReports"),
+                        a = this.get("couldShowVerbalAbuseModalPreference");
+                    return t && a && n.includes(e)
+                }
+            })
+        }, (e, t, n) => {
+            "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
@@ -4093,10 +4130,10 @@
             }), t.default = void 0;
             var a, s = n(1),
                 o = n(6),
-                l = (a = n(99)) && a.__esModule ? a : {
+                l = (a = n(100)) && a.__esModule ? a : {
                     default: a
                 };
-            n(100);
+            n(101);
             const i = s.UIKit.getVignetteCelebrationManager();
             var r = s.Ember.Component.extend({
                 classNames: [`${o.PLUGIN_NAME}-reward-celebration`],
@@ -4189,12 +4226,14 @@
                 postgame: a.Ember.inject.service(),
                 gameflow: a.Ember.inject.service(),
                 eternals: a.Ember.inject.service(),
+                remedy: a.Ember.inject.service(),
                 gameclientPostgame: a.Ember.inject.service(),
                 gameDataService: a.Ember.inject.service("game-data"),
                 perks: a.Ember.inject.service(),
                 hasScoreboardAnimationPlayed: !1,
                 hasCelebratedHonor: !1,
                 isContinueButtonClicked: !1,
+                hasShownVerbalAbuseRemedyModal: !1,
                 eogStats: a.Ember.computed.alias("postgame.eogStatsBlock"),
                 isCustomGame: a.Ember.computed.alias("postgame.isCustomGame"),
                 shouldShowGameClientStats: a.Ember.computed("gameclientPostgame.lolGameClientStats", "postgame.eogStatsBlock", (function() {
@@ -4252,7 +4291,7 @@
                 forwardHoverSound: "/fe/lol-postgame/sfx-nav-button-play-hover.ogg",
                 forwardClickSound: "/fe/lol-postgame/sfx-nav-button-play-click.ogg",
                 init() {
-                    this._super(...arguments), this.binding = a.dataBinding.bindTo(a.socket), this.binding.observe(l, this, this._handleCurrentSummoner), this.binding.observe(i, this, this._handlePartyStatus), this.set("extEmberModel", a.extEmberModel)
+                    this._super(...arguments), this.binding = a.dataBinding.bindTo(a.socket), this.binding.observe(l, this, this._handleCurrentSummoner), this.binding.observe(i, this, this._handlePartyStatus), this.set("extEmberModel", a.extEmberModel), this.get("remedy")
                 },
                 didInsertElement() {
                     this._super(...arguments), this._startCountdown(), a.Telemetry.startTracingEvent(s.TELEMETRY_EVENT_NAMES.TIME_ON_EOG)
@@ -4363,12 +4402,16 @@
                 _leavePostgame() {
                     (0, a.dataBinding)("/lol-end-of-game", a.socket).post("/v1/state/dismiss-stats")
                 },
+                _showVerbalAbuseRemedyModal() {
+                    this.set("hasShownVerbalAbuseRemedyModal", !0), a.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal()
+                },
                 actions: {
                     exitPostgame() {
-                        this._leavePostgame()
+                        this.get("remedy").couldShowRemedyVerbalAbuseModal(this.get("gameId")) && !this.get("hasShownVerbalAbuseRemedyModal") ? this._showVerbalAbuseRemedyModal() : this._leavePostgame()
                     },
                     onButtonClick() {
-                        this.get("isProgressionTabSelected") ? (this.set("isContinueButtonClicked", !0), this._selectTab(c), this._stopCountdown()) : this._playAgain().catch((() => {
+                        const e = this.get("remedy");
+                        this.get("isProgressionTabSelected") ? (this.set("isContinueButtonClicked", !0), this._selectTab(c), this._stopCountdown()) : e.couldShowRemedyVerbalAbuseModal(this.get("gameId")) && !this.get("hasShownVerbalAbuseRemedyModal") ? this._showVerbalAbuseRemedyModal() : this._playAgain().catch((() => {
                             this._leavePostgame()
                         }))
                     },
@@ -4426,13 +4469,13 @@
         }, (e, t, n) => {
             "use strict";
             var a = n(1),
-                s = n(106);
-            n(107);
+                s = n(107);
+            n(108);
             const o = "sfx-ui",
                 l = a.Ember.Component.extend({
                     classNames: ["clash-generic-button"],
                     classNameBindings: ["matchHeight:match-h", "matchWidth:match-w", "isImgFlippedX:flip-x", "isImgFlippedY:flip-y"],
-                    layout: n(108),
+                    layout: n(109),
                     canBeSelected: !1,
                     triggerSelected: !1,
                     selectionGroup: null,
@@ -4593,7 +4636,7 @@
         }, (e, t, n) => {
             "use strict";
             var a = n(1),
-                s = n(106),
+                s = n(107),
                 o = n(6);
             const {
                 RunMixin: l
@@ -4680,9 +4723,9 @@
                 value: !0
             }), t.default = void 0;
             var a, s = n(1),
-                o = n(111),
+                o = n(112),
                 l = n(15),
-                i = n(112),
+                i = n(113),
                 r = n(3),
                 c = (a = n(14)) && a.__esModule ? a : {
                     default: a
@@ -5934,7 +5977,7 @@
                 value: !0
             }), t.default = void 0;
             var a = n(1);
-            n(126);
+            n(127);
             var s = a.Ember.Component.extend({
                 classNames: ["progression-modal-root-component"],
                 challenges: [],
@@ -5957,7 +6000,7 @@
                 value: !0
             }), t.default = void 0;
             var a = n(1),
-                s = n(128),
+                s = n(129),
                 o = n(3),
                 l = a.Ember.Component.extend({
                     classNames: ["scoreboard-header-component"],
@@ -6034,7 +6077,7 @@
                 value: !0
             }), t.default = void 0;
             var a = n(1),
-                s = n(128),
+                s = n(129),
                 o = a.Ember.Component.extend({
                     classNames: ["scoreboard-header-component"],
                     classNameBindings: ["team.isPlayerTeam"],
@@ -6264,8 +6307,8 @@
                 value: !0
             }), t.default = void 0;
             var a, s = n(1),
-                o = n(111),
-                l = n(133),
+                o = n(112),
+                l = n(134),
                 i = (a = n(14)) && a.__esModule ? a : {
                     default: a
                 },
@@ -6515,8 +6558,8 @@
                 value: !0
             }), t.default = void 0;
             var a, s = n(1),
-                o = n(111),
-                l = n(133),
+                o = n(112),
+                l = n(134),
                 i = (a = n(14)) && a.__esModule ? a : {
                     default: a
                 };
@@ -6799,7 +6842,7 @@
             }), t.default = void 0;
             var a = n(1),
                 s = n(3),
-                o = n(128);
+                o = n(129);
             const l = [s.STAT_SWITCHER_STATS.DAMAGE_DEALT, s.STAT_SWITCHER_STATS.DAMAGE_TAKEN, s.STAT_SWITCHER_STATS.CC_SCORE],
                 i = [s.STAT_SWITCHER_STATS.GOLD, s.STAT_SWITCHER_STATS.CREEP_SCORE, s.STAT_SWITCHER_STATS.VISION_SCORE],
                 r = [s.STAT_SWITCHER_STATS.GOLD, s.STAT_SWITCHER_STATS.DAMAGE_DEALT],

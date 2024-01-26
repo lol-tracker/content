@@ -15999,17 +15999,6 @@
                 categoriesSelected: s.Ember.computed("categories.[]", (function() {
                     return this.get("categories").rejectBy("isChecked", !1)
                 })),
-                hasVerbalAbuseReport: s.Ember.computed("categoriesSelected.[]", (function() {
-                    return this.get("categoriesSelected").some((e => e.categoryId === i.VERBAL_ABUSE_REPORT_CATEGORY))
-                })),
-                couldShowRemedyVerbalAbuseModal: s.Ember.computed("reportModalDataService.isVerbalAbuseRemedyEnabled", "reportModalDataService.gameIdsWithVerbalAbuseReports.[]", "reportModalDataService.couldShowRemedyVerbalAbuseModalPreference", "reportedPlayer.gameId", "hasVerbalAbuseReport", (function() {
-                    const e = this.get("reportModalDataService.isVerbalAbuseRemedyEnabled"),
-                        t = this.get("reportedPlayer.gameId"),
-                        n = this.get("reportModalDataService.gameIdsWithVerbalAbuseReports"),
-                        a = this.get("reportModalDataService.couldShowRemedyVerbalAbuseModalPreference"),
-                        s = this.get("hasVerbalAbuseReport");
-                    return e && a && !n.includes(t) && s
-                })),
                 hasNocategorySelectedObserver: s.Ember.on("didInsertElement", s.Ember.observer("categories.@each.isChecked", (function() {
                     const e = 0 === this.get("categories").rejectBy("isChecked", !1).length ? "disableacceptbutton" : "enableacceptbutton";
                     this.element.dispatchEvent(new Event(e, {
@@ -16017,8 +16006,8 @@
                     }))
                 }))),
                 onDidInsertElement: s.Ember.on("didInsertElement", (function() {
-                    this.element.addEventListener("reportPlayerClicked", (() => {
-                        this.send("reportPlayerClicked")
+                    this.element.addEventListener("reportPlayer", (() => {
+                        this.send("reportPlayer")
                     })), this.element.addEventListener("closeModalClicked", (() => {
                         this.send("destroyApplication")
                     }))
@@ -16047,19 +16036,16 @@
                         timing: "normal"
                     })
                 },
-                reportPlayer: function() {
-                    const e = {
-                        comment: this.get("comment"),
-                        gameId: this.get("reportedPlayer.gameId"),
-                        categories: this.get("categoriesSelected").map((e => e.categoryId)),
-                        offenderSummonerId: this.get("reportedPlayer.summonerId"),
-                        offenderPuuid: this.get("reportedPlayer.puuid")
-                    };
-                    this._sendPlayerReport(e)
-                },
                 actions: {
-                    reportPlayerClicked: function() {
-                        this.reportPlayer(), this.get("couldShowRemedyVerbalAbuseModal") && s.SharedComponentsApi.getApi_SharedPlayerBehaviorApps().showVerbalAbuseRemedyModal()
+                    reportPlayer: function() {
+                        const e = {
+                            comment: this.get("comment"),
+                            gameId: this.get("reportedPlayer.gameId"),
+                            categories: this.get("categoriesSelected").map((e => e.categoryId)),
+                            offenderSummonerId: this.get("reportedPlayer.summonerId"),
+                            offenderPuuid: this.get("reportedPlayer.puuid")
+                        };
+                        this._sendPlayerReport(e)
                     }
                 }
             });
@@ -22341,7 +22327,7 @@
                     })), i.addEventListener("enableacceptbutton", (e => {
                         r.enableAcceptButton(), e.stopPropagation()
                     })), r.acceptPromise.then((() => {
-                        i.querySelector(".report-modal").dispatchEvent(new Event("reportPlayerClicked"))
+                        i.querySelector(".report-modal").dispatchEvent(new Event("reportPlayer"))
                     }), (() => {
                         i.querySelector(".report-modal").dispatchEvent(new Event("closeModalClicked"))
                     })).catch((() => {})), r
@@ -22414,38 +22400,22 @@
             "use strict";
             var a = n(1),
                 s = n(389);
-            const i = "couldShowRemedyVerbalAbuseModal";
             e.exports = a.Ember.Service.extend({
                 inGameReportData: [],
-                gameIdsWithVerbalAbuseReports: [],
-                couldShowRemedyVerbalAbuseModalPreference: !0,
-                isVerbalAbuseRemedyEnabled: !1,
-                isVerbalAbuseRemedyEnabledPath: "/v1/config/is-verbal-abuse-remedy-modal-enabled",
                 endOfGameReportPath: "/v1/end-of-game-reports",
                 matchHistoryReportPath: "/v1/match-history-reports",
-                remedyBasePath: "/lol-remedy",
-                settingsBasePath: "/lol-settings",
                 playerReportSenderBasePath: "/lol-player-report-sender",
-                navigationPreferencesPath: "/v2/account/LCUPreferences/lol-navigation",
-                gameIdsWithVerbalAbuseReportPath: "/v1/game-ids-with-verbal-abuse-report",
                 init() {
-                    this._super(...arguments), this.initDataBindings(), this.getRequisiteModalData(), this.initObservers()
+                    this._super(...arguments), this.initDataBindings(), this.initObservers()
                 },
                 willDestroy() {
                     this.removeObservers(), this.removeDataBindings()
                 },
                 initDataBindings() {
-                    this.remedyBinding = (0, a.dataBinding)(this.get("remedyBasePath"), a.socket), this.playerReportSenderBinding = (0, a.dataBinding)(this.get("playerReportSenderBasePath"), a.socket), this.settingsBinding = (0, a.dataBinding)(this.get("settingsBasePath"), a.socket)
-                },
-                getRequisiteModalData() {
-                    this.settingsBinding.get(this.get("navigationPreferencesPath")).then((e => {
-                        e && e.data && void 0 !== !e.data[i] ? this.set("couldShowRemedyVerbalAbuseModalPreference", e.data[i]) : this.set("couldShowRemedyVerbalAbuseModalPreference", !0)
-                    }))
+                    this.playerReportSenderBinding = (0, a.dataBinding)(this.get("playerReportSenderBasePath"), a.socket)
                 },
                 initObservers() {
-                    this.remedyBinding.observe(this.get("isVerbalAbuseRemedyEnabledPath"), this, this._handleIsVerbalAbuseRemedyEnabledUpdate), this.playerReportSenderBinding.observe("/v1/in-game-reports", this, this._handleInGameReportsUpdate), this.playerReportSenderBinding.observe(this.get("gameIdsWithVerbalAbuseReportPath"), this, (e => {
-                        this.set("gameIdsWithVerbalAbuseReports", e || [])
-                    }))
+                    this.playerReportSenderBinding.observe("/v1/in-game-reports", this, this._handleInGameReportsUpdate)
                 },
                 removeObservers() {
                     this.playerReportSenderBinding.removeObserver(this.get("playerReportSenderBasePath"), this)
@@ -22461,9 +22431,6 @@
                     e.forEach((e => {
                         e && e.offenderPuuid && (t[e.offenderPuuid] = e)
                     })), this.set("inGameReportData", t)
-                },
-                _handleIsVerbalAbuseRemedyEnabledUpdate(e) {
-                    this.set("isVerbalAbuseRemedyEnabled", e)
                 }
             })
         }, (e, t, n) => {
@@ -22535,21 +22502,15 @@
             "use strict";
             var a = n(1);
             const s = "HUD",
-                i = "ChatChannelVisibility";
+                i = "ChatChannelVisibility",
+                r = "/lol-chat/v1/blocked-players",
+                l = "/lol-game-settings/v1/game-settings";
             e.exports = a.Ember.Service.extend({
                 chatChannelOnLoad: null,
                 blockedPuuidsOnLoad: null,
                 selectedChatChannel: "0",
                 blockedPuuids: [],
                 eogStatsBlock: {},
-                chatBasePath: "/lol-chat",
-                lolGameSettingsBasePath: "/lol-game-settings",
-                eogBasePath: "/lol-end-of-game",
-                settingsBasePath: "/lol-settings",
-                blockedPlayersPath: "/v1/blocked-players",
-                gameSettingsPath: "/v1/game-settings",
-                eogStatsBlockPath: "/v1/eog-stats-block",
-                navigationPreferencesPath: "/v2/account/LCUPreferences/lol-navigation",
                 localPuuid: a.Ember.computed.alias("eogStatsBlock.localPlayer.puuid"),
                 playerTeam: a.Ember.computed("eogStatsBlock.teams.[]", (function() {
                     const e = this.get("eogStatsBlock.teams");
@@ -22570,40 +22531,34 @@
                     return this.get("enemyTeams").flatMap((e => e.players))
                 })),
                 init() {
-                    this._super(...arguments), this.initDataBindings(), this.getRequisiteModalData(), this.initObservers()
+                    this._super(...arguments), this.db = a.dataBinding.bindTo(a.socket), this.initObservers(), this.getRequisiteModalData()
                 },
                 willDestroy() {
-                    this.removeObservers(), this.removeDataBindings()
+                    this.removeObservers()
                 },
-                initDataBindings() {
-                    this.chatBinding = (0, a.dataBinding)(this.get("chatBasePath"), a.socket), this.lolGamesettingsBinding = (0, a.dataBinding)(this.get("lolGameSettingsBasePath"), a.socket), this.eogBinding = (0, a.dataBinding)(this.get("eogBasePath"), a.socket), this.settingsBinding = (0, a.dataBinding)(this.get("settingsBasePath"), a.socket)
+                initObservers() {
+                    this.db.observe(r, this, this._handleBlockedPlayersUpdate), this.db.observe(l, this, this._handleGameSettingsUpdate)
                 },
                 getRequisiteModalData() {
-                    this.eogBinding.get(this.get("eogStatsBlockPath")).then((e => {
+                    this.db.get("/lol-end-of-game/v1/eog-stats-block").then((e => {
                         this.set("eogStatsBlock", e)
                     }))
                 },
-                initObservers() {
-                    this.chatBinding.observe(this.get("blockedPlayersPath"), this, this._handleBlockedPlayersUpdate), this.lolGamesettingsBinding.observe(this.get("gameSettingsPath"), this, this._handleGameSettingsUpdate)
-                },
                 removeObservers() {
-                    this.chatBinding.removeObserver(this.get("playerReportSenderBasePath"), this), this.lolGamesettingsBinding.removeObserver(this.get("lolGameSettingsBasePath"), this)
-                },
-                removeDataBindings() {
-                    this.chatBinding = null, this.lolGamesettingsBinding = null, this.eogBinding = null
+                    this.db.removeObserver(l, this), this.db.removeObserver(l, this)
                 },
                 togglePlayerBlock(e) {
-                    return this.get("blockedPuuids").includes(e) ? this.chatBinding.delete(`${this.get("blockedPlayersPath")}/${e}`) : this.chatBinding.post(this.get("blockedPlayersPath"), {
+                    return this.get("blockedPuuids").includes(e) ? this.db.delete(`${r}/${e}`) : this.db.post(r, {
                         puuid: e
                     })
                 },
                 setSelectedChatChannel(e) {
-                    this.lolGamesettingsBinding.get(this.get("gameSettingsPath")).then((t => {
-                        t && t[s] && (t[s][i] = e, this.lolGamesettingsBinding.patch(this.get("gameSettingsPath"), t))
+                    this.db.get(l).then((t => {
+                        t && t[s] && (t[s][i] = e, this.db.patch(l, t))
                     }))
                 },
                 setCouldShowModalPreference(e) {
-                    this.settingsBinding.patch(this.get("navigationPreferencesPath"), {
+                    this.db.patch("/lol-settings/v2/account/LCUPreferences/lol-navigation", {
                         data: {
                             couldShowRemedyVerbalAbuseModal: e
                         }
@@ -22614,7 +22569,9 @@
                     null === this.get("blockedPuuidsOnLoad") && this.set("blockedPuuidsOnLoad", t), this.set("blockedPuuids", t)
                 },
                 _handleGameSettingsUpdate(e) {
-                    e && e[s] && e[s][i] && (null === this.get("chatChannelOnLoad") && this.set("chatChannelOnLoad", e[s][i]), this.set("selectedChatChannel", e[s][i]))
+                    if (!e || !e[s] || !e[s][i]) return;
+                    const t = `${e[s][i]}`;
+                    null === this.get("chatChannelOnLoad") && this.set("chatChannelOnLoad", t), this.set("selectedChatChannel", t)
                 }
             })
         }, (e, t, n) => {
