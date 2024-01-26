@@ -92,7 +92,7 @@
                 return n.sync = t.sync, n.syncNow = t.syncNow, n.afterSync = t.afterSync, n.onSync = t.onSync, n.offSync = t.offSync, n
             }
         }, (e, t, n) => {
-            e.exports = p, n(5);
+            e.exports = A, n(5);
             var o = n(6),
                 i = n(7),
                 a = n(8),
@@ -104,7 +104,7 @@
                 d = /(^|[^\\])\*/,
                 m = /(^|[^\\])\\\*/;
 
-            function p(e) {
+            function A(e) {
                 if (!e || !e.observations) throw new TypeError("Must provide an observations instance to Fragments in options.");
                 this.compiling = !1, this.observations = e.observations, this.globals = e.observations.globals, this.formatters = e.observations.formatters, this.animations = {}, this.animateAttribute = "animate", this.binders = {
                     element: {
@@ -128,7 +128,7 @@
                 })), this.addOptions(e)
             }
 
-            function A(e) {
+            function p(e) {
                 return e.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")
             }
 
@@ -137,7 +137,7 @@
                     t[n](o, e[o])
                 }))
             }
-            o.extend(p, {
+            o.extend(A, {
                 addOptions: function(e) {
                     e && (h(e.binders, this, "registerAttribute"), h(e.formatters, this, "registerFormatter"), h(e.animations, this, "registerAnimation"))
                 },
@@ -186,7 +186,7 @@
                     }
                     return "function" == typeof n && (n.prototype instanceof l ? (a = n, n = {}) : n = {
                         updated: n
-                    }), "__default__" !== t || n.hasOwnProperty("priority") || (n.priority = -100), i[t] && this.unregisterBinder(e, t), a.extend(r, n), t instanceof RegExp ? o = t : d.test(t) && (o = new RegExp("^" + A(t).replace(m, "$1(.*)") + "$")), o && (r.expression = o, i._wildcards.push(r), i._wildcards.sort(this.bindingSort)), r.name = "" + t, i[t] = r, r
+                    }), "__default__" !== t || n.hasOwnProperty("priority") || (n.priority = -100), i[t] && this.unregisterBinder(e, t), a.extend(r, n), t instanceof RegExp ? o = t : d.test(t) && (o = new RegExp("^" + p(t).replace(m, "$1(.*)") + "$")), o && (r.expression = o, i._wildcards.push(r), i._wildcards.sort(this.bindingSort)), r.name = "" + t, i[t] = r, r
                 },
                 unregisterElement: function(e) {
                     return this.unregisterBinder("element", e)
@@ -256,7 +256,7 @@
                 makeElementAnimatable: a.makeElementAnimatable,
                 setExpressionDelimiters: function(e, t, n, o) {
                     if ("attribute" !== e && "text" !== e) throw new TypeError('Expression delimiters must be of type "attribute" or "text"');
-                    this.binders[e]._expr = new RegExp(A(t) + "(.*?)" + A(n), "g"), "attribute" === e && (this.binders[e]._delimitersOnlyInDefault = !!o)
+                    this.binders[e]._expr = new RegExp(p(t) + "(.*?)" + p(n), "g"), "attribute" === e && (this.binders[e]._delimitersOnlyInDefault = !!o)
                 },
                 isBound: function(e, t) {
                     if ("attribute" !== e && "text" !== e) throw new TypeError('isBound must provide type "attribute" or "text"');
@@ -886,8 +886,8 @@
                     d = e + "|" + u.join(","),
                     m = l[d];
                 if (m) return m;
-                var p = e,
-                    A = u[0] === s;
+                var A = e,
+                    p = u[0] === s;
                 if (e = i.pullOutStrings(e), e = a.parseFormatters(e), e = r.parseExpression(e, function(e, n) {
                         var o = {};
                         Object.keys(t.globals).forEach((function(e) {
@@ -898,7 +898,7 @@
                         return n.forEach((function(e) {
                             o[e] = null
                         })), o
-                    }(n, u)), !A) {
+                    }(n, u)), !p) {
                     var h = e.split("\n");
                     h[h.length - 1] = "return " + h[h.length - 1], e = h.join("\n")
                 }
@@ -916,7 +916,7 @@
                         var n = o.call(arguments, 1);
                         return t
                     }(r, n, i)
-                }(p, e = i.putInStrings(e), n, c, u), m.expr = e, l[d] = m, m
+                }(A, e = i.putInStrings(e), n, c, u), m.expr = e, l[d] = m, m
             }, t.parseSetter = function(e, n, i, a) {
                 a = o.call(arguments, 3);
                 return e = "!" === e.charAt(0) ? e.slice(1).replace(/(\s*\||$)/, " = !_value_$1") : e.replace(/(\s*\||$)/, " = _value_$1"), t.parse.apply(t, [e, n, i, s].concat(a))
@@ -1002,15 +1002,15 @@
                     " === ": / is /g
                 };
 
-            function p(e) {
+            function A(e) {
                 var t, n = "",
                     o = i,
                     a = c.lastIndex;
-                for (i = 0, c.lastIndex = 0; !1 !== (t = A(e));) n += t;
+                for (i = 0, c.lastIndex = 0; !1 !== (t = p(e));) n += t;
                 return i = o, c.lastIndex = a, n
             }
 
-            function A(e) {
+            function p(e) {
                 if (a) return a = !1;
                 var t = c.exec(e);
                 if (!t) return a = !0, e.slice(i);
@@ -1018,10 +1018,10 @@
                     l = t[2],
                     d = t[3],
                     m = t[4],
-                    A = t[5];
+                    p = t[5];
                 t = t[0];
                 var C = e.slice(i, c.lastIndex - t.length);
-                return i = c.lastIndex, l && ":" === A ? C + t : C + function(e, t, i, a, s) {
+                return i = c.lastIndex, l && ":" === p ? C + t : C + function(e, t, i, a, s) {
                     r = "." === e, r && (t = "." + t, e = "");
                     var l = function(e) {
                             var t = 0,
@@ -1041,7 +1041,7 @@
                                 e = "(" + (l = "_ref" + (o = ++n)) + " = (" + e + ")) == null ? void 0 : "
                             }
                             var l = o;
-                            return e = e.replace("~~insideParens~~", p(s)), o = l, e
+                            return e = e.replace("~~insideParens~~", A(s)), o = l, e
                         }(e, t, s) : function(e, t, n) {
                             var i = f(n),
                                 a = i.slice(1, -1),
@@ -1049,11 +1049,11 @@
                             t += 1, e = "[~~insideBrackets~~]", e = "." === n.charAt(c.lastIndex) ? b(e, t) : "_ref" + o + e;
                             e = r + e;
                             var s = o;
-                            return e = e.replace("~~insideBrackets~~", p(a)), o = s, e
+                            return e = e.replace("~~insideBrackets~~", A(a)), o = s, e
                         }(e, t, s)) : d += "_ref" + o + e
                     })), "." !== s.charAt(c.lastIndex) && (d += ")")) : (link = l[0], d = h(link));
                     return e + d + i
-                }(s, d, m, A, e)
+                }(s, d, m, p, e)
             }
 
             function h(e) {
@@ -1069,8 +1069,8 @@
                     var l = e.split(" = "),
                         c = l[0],
                         u = l[1];
-                    e = (c = p(c).replace(/^\(|\)$/g, "")) + " = " + (u = p(u))
-                } else e = p(e);
+                    e = (c = A(c).replace(/^\(|\)$/g, "")) + " = " + (u = A(u))
+                } else e = A(e);
                 return e = function(e) {
                     if (n) {
                         for (var t = [], o = 1; o <= n; o++) t.push("_ref" + o);
@@ -1165,19 +1165,19 @@
                         u = 0,
                         d = n.length,
                         m = Math.min(c, d),
-                        p = function(e, t, n) {
+                        A = function(e, t, n) {
                             for (var i = 0; i < n; i++)
                                 if (o(e[i], t[i])) return i;
                             return n
                         }(e, n, m),
-                        A = function(e, t, n) {
+                        p = function(e, t, n) {
                             var i = e.length,
                                 a = t.length,
                                 r = 0;
                             for (; r < n && !o(e[--i], t[--a]);) r++;
                             return r
-                        }(e, n, m - p);
-                    if (u += p, d -= A, (c -= A) - (i += p) == 0 && d - u == 0) return [];
+                        }(e, n, m - A);
+                    if (u += A, d -= p, (c -= p) - (i += A) == 0 && d - u == 0) return [];
                     if (i === c) return [new t(e, i, n.slice(u, d), 0)];
                     if (u === d) return [new t(e, i, [], c - i)];
                     for (var h = function(e, t, n, i, a, r) {
@@ -1190,8 +1190,8 @@
                                 for (l = 1; l < u; l++)
                                     if (o(e[t + l - 1], i[a + s - 1])) {
                                         var m = d[s - 1][l] + 1,
-                                            p = d[s][l - 1] + 1;
-                                        d[s][l] = m < p ? m : p
+                                            A = d[s][l - 1] + 1;
+                                        d[s][l] = m < A ? m : A
                                     } else d[s][l] = d[s - 1][l - 1];
                             return d
                         }(e, i, c, n, u, d), g = function(e) {
@@ -1487,7 +1487,7 @@
                     e.firstViewNode && (e = e.firstViewNode), this.animateNode("in", e, t, this)
                 },
                 animateNode: function(e, t, n) {
-                    var i, a, r, s, l, c, u, d, m, p, g = this;
+                    var i, a, r, s, l, c, u, d, m, A, g = this;
                     if (this.fragments.disableAnimations) return n.call(g);
                     if ((i = this.animateExpression ? this.get(this.animateExpression) : this.animateObject) && "object" == typeof i) i.fragments = this.fragments;
                     else if (this.animateClassName) a = this.animateClassName;
@@ -1495,9 +1495,9 @@
                         if (!1 === this.animateObject) return n.call(g);
                         "string" == typeof this.animateObject && ("." === this.animateObject[0] ? a = this.animateObject.slice(1) : this.animateObject && "function" == typeof(i = this.fragments.getAnimation(this.animateObject)) && (i = new i(this)))
                     }
-                    r = "animate-" + e, s = "will-animate-" + e, u = "animate" + (p = "in" === e ? "In" : "Out"), d = "willAnimate" + p, m = "didAnimate" + p, l = function() {
+                    r = "animate-" + e, s = "will-animate-" + e, u = "animate" + (A = "in" === e ? "In" : "Out"), d = "willAnimate" + A, m = "didAnimate" + A, l = function() {
                         i && i[m] && i[m](t), t.classList.remove(r), a && t.classList.remove(a), n && n.call(g), t.dispatchEvent(new Event("animateend" + e))
-                    }, a && t.classList.add(a), t.dispatchEvent(new Event("animatestart" + e)), i ? (o.makeElementAnimatable(t), "function" == typeof i[d] && (t.classList.add(s), i[d](t), t.offsetWidth = t.offsetWidth, t.classList.remove(s)), "function" == typeof i[u] && (t.classList.add(r), (c = A.call(g, t, e)) ? h(t, c, l) : requestAnimationFrame(l), i[u](t, l))) : (t.classList.add(s), t.offsetWidth = t.offsetWidth, t.classList.remove(s), t.classList.add(r), (c = A.call(g, t, e)) ? h(t, c, l) : requestAnimationFrame(l))
+                    }, a && t.classList.add(a), t.dispatchEvent(new Event("animatestart" + e)), i ? (o.makeElementAnimatable(t), "function" == typeof i[d] && (t.classList.add(s), i[d](t), t.offsetWidth = t.offsetWidth, t.classList.remove(s)), "function" == typeof i[u] && (t.classList.add(r), (c = p.call(g, t, e)) ? h(t, c, l) : requestAnimationFrame(l), i[u](t, l))) : (t.classList.add(s), t.offsetWidth = t.offsetWidth, t.classList.remove(s), t.classList.add(r), (c = p.call(g, t, e)) ? h(t, c, l) : requestAnimationFrame(l))
                 }
             });
             var s = "transitionDuration",
@@ -1506,9 +1506,9 @@
                 u = "animationDelay",
                 d = "transitionend",
                 m = "animationend",
-                p = document.documentElement.style;
+                A = document.documentElement.style;
 
-            function A(e, t) {
+            function p(e, t) {
                 var n = this.clonedFrom["__animationDuration" + t];
                 if (!n) {
                     var o = window.getComputedStyle(e),
@@ -1523,9 +1523,9 @@
                     }
                     var m = o[c];
                     if (m) {
-                        var p = o[u].split(",");
+                        var A = o[u].split(",");
                         a = Math.max.apply(Math, m.split(",").map((function(e, t) {
-                            return (parseFloat(e) || 0) + (parseFloat(p[t]) || 0)
+                            return (parseFloat(e) || 0) + (parseFloat(A[t]) || 0)
                         })))
                     }
                     n = 1e3 * Math.max(i, a) || 0, this.clonedFrom["__animationDuration" + t] = n
@@ -1540,13 +1540,13 @@
                     i = setTimeout(o, t);
                 e.addEventListener(d, o), e.addEventListener(m, o)
             } ["webkit", "moz", "ms", "o"].forEach((function(e) {
-                void 0 === p.transitionDuration && p[e + "TransitionDuration"] && (s = e + "TransitionDuration", l = e + "TransitionDelay", d = e + "transitionend"), void 0 === p.animationDuration && p[e + "AnimationDuration"] && (c = e + "AnimationDuration", u = e + "AnimationDelay", m = e + "animationend")
+                void 0 === A.transitionDuration && A[e + "TransitionDuration"] && (s = e + "TransitionDuration", l = e + "TransitionDelay", d = e + "transitionend"), void 0 === A.animationDuration && A[e + "AnimationDuration"] && (c = e + "AnimationDuration", u = e + "AnimationDelay", m = e + "animationend")
             }))
         }, e => {
             var t = Array.prototype.slice;
 
             function n(e, n, a) {
-                var r, s, l, c, u, d, m, p, A = [];
+                var r, s, l, c, u, d, m, A, p = [];
                 if (n.nodeType === Node.TEXT_NODE) ! function(e, t) {
                     if (!t.processed) {
                         t.processed = !0;
@@ -1567,13 +1567,13 @@
                     view: a,
                     expression: l,
                     fragments: e
-                })).compiled() && A.push(s));
+                })).compiled() && p.push(s));
                 else {
                     var h = n.parentNode,
                         g = e.getAttributeBinder("__default__");
                     c = [], (r = e.findBinder("element", n.tagName.toLowerCase())) && c.push([r]);
                     var f = t.call(n.attributes);
-                    for (m = 0, p = f.length; m < p; m++) d = f[m], (r = e.findBinder("attribute", d.name, d.value)) && c.push([r, d]);
+                    for (m = 0, A = f.length; m < A; m++) d = f[m], (r = e.findBinder("attribute", d.name, d.value)) && c.push([r, d]);
                     for (c.sort(o), m = 0; m < c.length; m++) {
                         if (r = c[m][0], d = c[m][1]) {
                             if (!n.hasAttribute(d.name)) continue;
@@ -1592,10 +1592,10 @@
                             view: a,
                             fragments: e
                         });
-                        if (!1 !== s.compiled() ? A.push(s) : d && r !== g && e.isBound("attribute", C) ? c.push([g, d]) : d && n.setAttributeNode(d), n.parentNode !== h) break
+                        if (!1 !== s.compiled() ? p.push(s) : d && r !== g && e.isBound("attribute", C) ? c.push([g, d]) : d && n.setAttributeNode(d), n.parentNode !== h) break
                     }
                 }
-                return A
+                return p
             }
 
             function o(e, t) {
@@ -2103,11 +2103,11 @@
                                 if (!o.test(a[2])) {
                                     var d = t.parentNode,
                                         m = t.nextSibling,
-                                        p = n.lastIndex - c.length,
-                                        A = n.lastIndex;
-                                    t.nodeValue = l.slice(0, p);
+                                        A = n.lastIndex - c.length,
+                                        p = n.lastIndex;
+                                    t.nodeValue = l.slice(0, A);
                                     var h = r.createElement("a");
-                                    h.target = "_blank", h.href = ("www." === u ? "http://" : "") + c, h.appendChild(r.createTextNode(c)), d.insertBefore(h, m), A < l.length && d.insertBefore(r.createTextNode(l.slice(A))), n.lastIndex = 0;
+                                    h.target = "_blank", h.href = ("www." === u ? "http://" : "") + c, h.appendChild(r.createTextNode(c)), d.insertBefore(h, m), p < l.length && d.insertBefore(r.createTextNode(l.slice(p))), n.lastIndex = 0;
                                     break
                                 }
                             }
@@ -2526,9 +2526,9 @@
                                     n.push(d), o.appendChild(d)
                                 }
                                 var m = this.views.splice.apply(this.views, [r, l].concat(n)),
-                                    p = this.views[r - 1],
-                                    A = p ? p.lastViewNode.nextSibling : this.element.nextSibling;
-                                this.element.parentNode.insertBefore(o, A), this.view.inDOM && this.attached(), i = i.concat(n), a = a.concat(m)
+                                    A = this.views[r - 1],
+                                    p = A ? A.lastViewNode.nextSibling : this.element.nextSibling;
+                                this.element.parentNode.insertBefore(o, p), this.view.inDOM && this.attached(), i = i.concat(n), a = a.concat(m)
                             }), this), i.forEach((function(e) {
                                 r++, this.animateIn(e, s)
                             }), this), a.forEach((function(e) {
@@ -3152,12 +3152,12 @@
                     }, e.afterLogin((function() {
                         ["keydown", "click", "dblclick", "contextmenu"].forEach((e => {
                                 try {
-                                    document.addEventListener(e, p, !1)
+                                    document.addEventListener(e, A, !1)
                                 } catch (e) {}
                             })),
                             function() {
                                 function e() {
-                                    p(), document.removeEventListener("mousemove", e), setTimeout(t, c), A()
+                                    A(), document.removeEventListener("mousemove", e), setTimeout(t, c), p()
                                 }
 
                                 function t() {
@@ -3166,7 +3166,7 @@
                                     } catch (e) {}
                                 }
                                 t()
-                            }(), A()
+                            }(), p()
                     }));
                     const l = 6e5,
                         c = 1e3;
@@ -3174,11 +3174,11 @@
                     const d = [];
                     let m;
 
-                    function p() {
+                    function A() {
                         u && (u = !1, e.dispatchOnIdleChange(u))
                     }
 
-                    function A() {
+                    function p() {
                         m && clearTimeout(m), m = setTimeout((() => {
                             u || (u = !0, e.dispatchOnIdleChange(u))
                         }), l)
@@ -3465,11 +3465,11 @@
                 }))
             }
 
-            function p(e) {
+            function A(e) {
                 this.room = e, r.gameRooms[this.name] = e, i.sync()
             }
 
-            function A(e) {
+            function p(e) {
                 r.gameRoomHistory.push(e)
             }
 
@@ -3507,11 +3507,11 @@
                 mucJwtDto: "stats.mucJwtDto",
                 conversationType: '"postGame"',
                 room: null
-            }), s.lobby.name = c, s.championSelect.name = l, s.postGame.name = u, s.lobby.watch("readyToCreate && multiUserChatId", m), s.championSelect.watch("multiUserChatId", m), s.postGame.watch("multiUserChatId", m), s.lobby.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", p), s.championSelect.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", p), s.postGame.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", p), s.lobby.watch("room", (() => {
+            }), s.lobby.name = c, s.championSelect.name = l, s.postGame.name = u, s.lobby.watch("readyToCreate && multiUserChatId", m), s.championSelect.watch("multiUserChatId", m), s.postGame.watch("multiUserChatId", m), s.lobby.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", A), s.championSelect.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", A), s.postGame.watch("roomData.find(data.conversations, multiUserChatId, conversationType)", A), s.lobby.watch("room", (() => {
                 r.gameRoomHistory = []
             })), s.championSelect.watch("room", (() => {
                 s.lobby.room || (r.gameRoomHistory = [])
-            })), s.lobby.track("data.messages[room.id]", A, h), s.championSelect.track("data.messages[room.id]", (function(e) {
+            })), s.lobby.track("data.messages[room.id]", p, h), s.championSelect.track("data.messages[room.id]", (function(e) {
                 t = e,
                     function(e) {
                         return Boolean("system" === e.type && ["joined_room", "left_room"].includes(e.body))
@@ -3520,7 +3520,7 @@
                             n = s.lobby.room,
                             o = n && r.participants[n.id] || [];
                         return Boolean(o && o.some((e => t.includes(e.id))))
-                    }(t) || A(e);
+                    }(t) || p(e);
                 var t
             }), h)
         }, (e, t, n) => {
@@ -3661,7 +3661,7 @@
                         return n > o ? n : o
                     }
 
-                    function p(n) {
+                    function A(n) {
                         const o = e.getConversation(n.id);
                         if (o) return Promise.resolve(o);
                         if (l[n.id]) return l[n.id];
@@ -3815,12 +3815,12 @@
                         }
                         return !1
                     }, e.createConversation = function(e) {
-                        if (e) return p({
+                        if (e) return A({
                             id: String(e.id),
                             type: "chat"
                         })
                     }, e.createChatRoom = function(e) {
-                        return p(e)
+                        return A(e)
                     }, e.sendMessage = function(n, o, a) {
                         if (e.shouldFilterAndShowSystemMuteMessage(n)) e.sendSystemMessage(e.tra.get("system_mute_reminder_message"), n);
                         else if (e.getConversation(n)) {
@@ -4136,8 +4136,8 @@
                         u = 64,
                         d = 128,
                         m = 256,
-                        p = 1 / 0,
-                        A = 9007199254740991,
+                        A = 1 / 0,
+                        p = 9007199254740991,
                         h = NaN,
                         g = 4294967295,
                         f = [
@@ -4200,8 +4200,8 @@
                         ue = /\{\n\/\* \[wrapped with (.+)\] \*/,
                         de = /,? & /,
                         me = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,
-                        pe = /\\(\\)?/g,
-                        Ae = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,
+                        Ae = /\\(\\)?/g,
+                        pe = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,
                         he = /\w*$/,
                         ge = /^[-+]0x[0-9a-f]+$/i,
                         fe = /^0b[01]+$/i,
@@ -4263,13 +4263,13 @@
                         },
                         dt = parseFloat,
                         mt = parseInt,
-                        pt = "object" == typeof n.g && n.g && n.g.Object === Object && n.g,
-                        At = "object" == typeof self && self && self.Object === Object && self,
-                        ht = pt || At || Function("return this")(),
+                        At = "object" == typeof n.g && n.g && n.g.Object === Object && n.g,
+                        pt = "object" == typeof self && self && self.Object === Object && self,
+                        ht = At || pt || Function("return this")(),
                         gt = t && !t.nodeType && t,
                         ft = gt && e && !e.nodeType && e,
                         bt = ft && ft.exports === gt,
-                        Ct = bt && pt.process,
+                        Ct = bt && At.process,
                         vt = function() {
                             try {
                                 var e = ft && ft.require && ft.require("util").types;
@@ -4705,7 +4705,7 @@
                         })), n
                     }
 
-                    function pn(e) {
+                    function An(e) {
                         var t = -1,
                             n = Array(e.size);
                         return e.forEach((function(e) {
@@ -4713,7 +4713,7 @@
                         })), n
                     }
 
-                    function An(e) {
+                    function pn(e) {
                         return sn(e) ? function(e) {
                             var t = nt.lastIndex = 0;
                             for (; nt.test(e);) ++t;
@@ -4770,13 +4770,13 @@
                             nt = He ? He.toStringTag : i,
                             it = function() {
                                 try {
-                                    var e = pa(Se, "defineProperty");
+                                    var e = Aa(Se, "defineProperty");
                                     return e({}, "", {}), e
                                 } catch (e) {}
                             }(),
                             ut = t.clearTimeout !== ht.clearTimeout && t.clearTimeout,
-                            pt = Be && Be.now !== ht.Date.now && Be.now,
-                            At = t.setTimeout !== ht.setTimeout && t.setTimeout,
+                            At = Be && Be.now !== ht.Date.now && Be.now,
+                            pt = t.setTimeout !== ht.setTimeout && t.setTimeout,
                             gt = _e.ceil,
                             ft = _e.floor,
                             Ct = Se.getOwnPropertySymbols,
@@ -4790,12 +4790,12 @@
                             En = t.parseInt,
                             xn = _e.random,
                             Bn = Re.reverse,
-                            wn = pa(t, "DataView"),
-                            kn = pa(t, "Map"),
-                            _n = pa(t, "Promise"),
-                            Sn = pa(t, "Set"),
-                            In = pa(t, "WeakMap"),
-                            Tn = pa(Se, "create"),
+                            wn = Aa(t, "DataView"),
+                            kn = Aa(t, "Map"),
+                            _n = Aa(t, "Promise"),
+                            Sn = Aa(t, "Set"),
+                            In = Aa(t, "WeakMap"),
+                            Tn = Aa(Se, "create"),
                             Mn = In && new In,
                             Rn = {},
                             jn = Da(wn),
@@ -4914,7 +4914,7 @@
                         }
 
                         function io(e, t, n, o) {
-                            return Ao(e, (function(e, i, a) {
+                            return po(e, (function(e, i, a) {
                                 t(o, e, n(e), a)
                             })), o
                         }
@@ -4957,15 +4957,15 @@
                                     }(e), !l) return Mi(e, s)
                             } else {
                                 var m = ga(e),
-                                    p = m == x || m == B;
+                                    A = m == x || m == B;
                                 if (Zr(e)) return wi(e, l);
-                                if (m == _ || m == b || p && !a) {
-                                    if (s = c || p ? {} : ba(e), !l) return c ? function(e, t) {
+                                if (m == _ || m == b || A && !a) {
+                                    if (s = c || A ? {} : ba(e), !l) return c ? function(e, t) {
                                         return Ri(e, ha(e), t)
                                     }(e, function(e, t) {
                                         return e && Ri(t, Rs(t), e)
                                     }(s, e)) : function(e, t) {
-                                        return Ri(e, Aa(e), t)
+                                        return Ri(e, pa(e), t)
                                     }(e, ao(s, e))
                                 } else {
                                     if (!ct[m]) return a ? e : {};
@@ -5012,8 +5012,8 @@
                                 }
                             }
                             r || (r = new Xn);
-                            var A = r.get(e);
-                            if (A) return A;
+                            var p = r.get(e);
+                            if (p) return p;
                             if (r.set(e, s), rs(e)) return e.forEach((function(o) {
                                 s.add(co(o, t, n, o, e, r))
                             })), s;
@@ -5045,7 +5045,7 @@
                             }), t)
                         }
 
-                        function po(e, t, n, o) {
+                        function Ao(e, t, n, o) {
                             var i = -1,
                                 a = jt,
                                 r = !0,
@@ -5147,12 +5147,12 @@
                             }
                             return n.set(e, t), this.size = n.size, this
                         };
-                        var Ao = Ni(Eo),
+                        var po = Ni(Eo),
                             ho = Ni(xo, !0);
 
                         function go(e, t) {
                             var n = !0;
-                            return Ao(e, (function(e, o, i) {
+                            return po(e, (function(e, o, i) {
                                 return n = !!t(e, o, i)
                             })), n
                         }
@@ -5169,7 +5169,7 @@
 
                         function bo(e, t) {
                             var n = [];
-                            return Ao(e, (function(e, o, i) {
+                            return po(e, (function(e, o, i) {
                                 t(e, o, i) && n.push(e)
                             })), n
                         }
@@ -5244,17 +5244,17 @@
                                 l && t && (m = Nt(m, Kt(t))), u = vn(m.length, u), c[l] = !n && (t || r >= 120 && m.length >= 120) ? new $n(l && m) : i
                             }
                             m = e[0];
-                            var p = -1,
-                                A = c[0];
-                            e: for (; ++p < r && d.length < u;) {
-                                var h = m[p],
+                            var A = -1,
+                                p = c[0];
+                            e: for (; ++A < r && d.length < u;) {
+                                var h = m[A],
                                     g = t ? t(h) : h;
-                                if (h = n || 0 !== h ? h : 0, !(A ? en(A, g) : a(d, g, n))) {
+                                if (h = n || 0 !== h ? h : 0, !(p ? en(p, g) : a(d, g, n))) {
                                     for (l = s; --l;) {
                                         var f = c[l];
                                         if (!(f ? en(f, g) : a(e[l], g, n))) continue e
                                     }
-                                    A && A.push(g), d.push(h)
+                                    p && p.push(g), d.push(h)
                                 }
                             }
                             return d
@@ -5277,12 +5277,12 @@
                                     u = l ? C : ga(t),
                                     d = (c = c == b ? _ : c) == _,
                                     m = (u = u == b ? _ : u) == _,
-                                    p = c == u;
-                                if (p && Zr(e)) {
+                                    A = c == u;
+                                if (A && Zr(e)) {
                                     if (!Zr(t)) return !1;
                                     s = !0, d = !1
                                 }
-                                if (p && !d) return r || (r = new Xn), s || cs(e) ? oa(e, t, n, o, a, r) : function(e, t, n, o, i, a, r) {
+                                if (A && !d) return r || (r = new Xn), s || cs(e) ? oa(e, t, n, o, a, r) : function(e, t, n, o, i, a, r) {
                                     switch (n) {
                                         case N:
                                             if (e.byteLength != t.byteLength || e.byteOffset != t.byteOffset) return !1;
@@ -5314,15 +5314,15 @@
                                     return !1
                                 }(e, t, c, n, o, a, r);
                                 if (!(1 & n)) {
-                                    var A = d && qe.call(e, "__wrapped__"),
+                                    var p = d && qe.call(e, "__wrapped__"),
                                         h = m && qe.call(t, "__wrapped__");
-                                    if (A || h) {
-                                        var g = A ? e.value() : e,
+                                    if (p || h) {
+                                        var g = p ? e.value() : e,
                                             f = h ? t.value() : t;
                                         return r || (r = new Xn), a(g, f, n, o, r)
                                     }
                                 }
-                                if (!p) return !1;
+                                if (!A) return !1;
                                 return r || (r = new Xn),
                                     function(e, t, n, o, a, r) {
                                         var s = 1 & n,
@@ -5333,23 +5333,23 @@
                                         if (c != d && !s) return !1;
                                         var m = c;
                                         for (; m--;) {
-                                            var p = l[m];
-                                            if (!(s ? p in t : qe.call(t, p))) return !1
+                                            var A = l[m];
+                                            if (!(s ? A in t : qe.call(t, A))) return !1
                                         }
-                                        var A = r.get(e);
-                                        if (A && r.get(t)) return A == t;
+                                        var p = r.get(e);
+                                        if (p && r.get(t)) return p == t;
                                         var h = !0;
                                         r.set(e, t), r.set(t, e);
                                         var g = s;
                                         for (; ++m < c;) {
-                                            var f = e[p = l[m]],
-                                                b = t[p];
-                                            if (o) var C = s ? o(b, f, p, t, e, r) : o(f, b, p, e, t, r);
+                                            var f = e[A = l[m]],
+                                                b = t[A];
+                                            if (o) var C = s ? o(b, f, A, t, e, r) : o(f, b, A, e, t, r);
                                             if (!(C === i ? f === b || a(f, b, n, o, r) : C)) {
                                                 h = !1;
                                                 break
                                             }
-                                            g || (g = "constructor" == p)
+                                            g || (g = "constructor" == A)
                                         }
                                         if (h && !g) {
                                             var v = e.constructor,
@@ -5378,8 +5378,8 @@
                                     if (u === i && !(c in e)) return !1
                                 } else {
                                     var m = new Xn;
-                                    if (o) var p = o(u, d, c, e, t, m);
-                                    if (!(p === i ? Oo(d, u, 3, o, m) : p)) return !1
+                                    if (o) var A = o(u, d, c, e, t, m);
+                                    if (!(A === i ? Oo(d, u, 3, o, m) : A)) return !1
                                 }
                             }
                             return !0
@@ -5421,7 +5421,7 @@
                         function Fo(e, t) {
                             var n = -1,
                                 i = Vr(e) ? o(e.length) : [];
-                            return Ao(e, (function(e, o, a) {
+                            return po(e, (function(e, o, a) {
                                 i[++n] = t(e, o, a)
                             })), i
                         }
@@ -5451,10 +5451,10 @@
                                         var d = r ? r(l, c, n + "", e, t, s) : i,
                                             m = d === i;
                                         if (m) {
-                                            var p = Gr(c),
-                                                A = !p && Zr(c),
-                                                h = !p && !A && cs(c);
-                                            d = c, p || A || h ? Gr(l) ? d = l : Yr(l) ? d = Mi(l) : A ? (m = !1, d = wi(c, !0)) : h ? (m = !1, d = _i(c, !0)) : d = [] : is(c) || Wr(c) ? (d = l, Wr(l) ? d = fs(l) : (!es(l) || o && Qr(l)) && (d = ba(c))) : m = !1
+                                            var A = Gr(c),
+                                                p = !A && Zr(c),
+                                                h = !A && !p && cs(c);
+                                            d = c, A || p || h ? Gr(l) ? d = l : Yr(l) ? d = Mi(l) : p ? (m = !1, d = wi(c, !0)) : h ? (m = !1, d = _i(c, !0)) : d = [] : is(c) || Wr(c) ? (d = l, Wr(l) ? d = fs(l) : (!es(l) || o && Qr(l)) && (d = ba(c))) : m = !1
                                         }
                                         m && (s.set(c, d), a(d, c, o, r, s), s.delete(c));
                                         to(e, n, d)
@@ -5529,7 +5529,7 @@
                                 var i = t[n];
                                 if (n == o || i !== a) {
                                     var a = i;
-                                    va(i) ? Qe.call(e, i, 1) : pi(e, i)
+                                    va(i) ? Qe.call(e, i, 1) : Ai(e, i)
                                 }
                             }
                             return e
@@ -5541,7 +5541,7 @@
 
                         function Qo(e, t) {
                             var n = "";
-                            if (!e || t < 1 || t > A) return n;
+                            if (!e || t < 1 || t > p) return n;
                             do {
                                 t % 2 && (n += e), (t = ft(t / 2)) && (e += e)
                             } while (t);
@@ -5600,7 +5600,7 @@
 
                         function ri(e, t) {
                             var n;
-                            return Ao(e, (function(e, o, i) {
+                            return po(e, (function(e, o, i) {
                                 return !(n = t(e, o, i))
                             })), !!n
                         }
@@ -5624,12 +5624,12 @@
                             for (var a = 0, r = null == e ? 0 : e.length, s = t != t, l = null === t, c = ls(t), u = t === i; a < r;) {
                                 var d = ft((a + r) / 2),
                                     m = n(e[d]),
-                                    p = m !== i,
-                                    A = null === m,
+                                    A = m !== i,
+                                    p = null === m,
                                     h = m == m,
                                     g = ls(m);
                                 if (s) var f = o || h;
-                                else f = u ? h && (o || p) : l ? h && p && (o || !A) : c ? h && p && !A && (o || !g) : !A && !g && (o ? m <= t : m < t);
+                                else f = u ? h && (o || A) : l ? h && A && (o || !p) : c ? h && A && !p && (o || !g) : !p && !g && (o ? m <= t : m < t);
                                 f ? a = d + 1 : r = d
                             }
                             return vn(r, 4294967294)
@@ -5684,11 +5684,11 @@
                             return s
                         }
 
-                        function pi(e, t) {
+                        function Ai(e, t) {
                             return null == (e = Ia(e, t = yi(t, e))) || delete e[qa(Xa(t))]
                         }
 
-                        function Ai(e, t, n, o) {
+                        function pi(e, t, n, o) {
                             return ti(e, t, n(wo(e, t)), o)
                         }
 
@@ -5709,7 +5709,7 @@
                             var i = e.length;
                             if (i < 2) return i ? mi(e[0]) : [];
                             for (var a = -1, r = o(i); ++a < i;)
-                                for (var s = e[a], l = -1; ++l < i;) l != a && (r[a] = po(r[a] || s, e[l], t, n));
+                                for (var s = e[a], l = -1; ++l < i;) l != a && (r[a] = Ao(r[a] || s, e[l], t, n));
                             return mi(Co(r, 1), t, n)
                         }
 
@@ -5783,9 +5783,9 @@
                         }
 
                         function Ti(e, t, n, i) {
-                            for (var a = -1, r = e.length, s = -1, l = n.length, c = -1, u = t.length, d = Cn(r - l, 0), m = o(d + u), p = !i; ++a < d;) m[a] = e[a];
-                            for (var A = a; ++c < u;) m[A + c] = t[c];
-                            for (; ++s < l;)(p || a < r) && (m[A + n[s]] = e[a++]);
+                            for (var a = -1, r = e.length, s = -1, l = n.length, c = -1, u = t.length, d = Cn(r - l, 0), m = o(d + u), A = !i; ++a < d;) m[a] = e[a];
+                            for (var p = a; ++c < u;) m[p + c] = t[c];
+                            for (; ++s < l;)(A || a < r) && (m[p + n[s]] = e[a++]);
                             return m
                         }
 
@@ -5931,8 +5931,8 @@
                         }
 
                         function Ui(e, t, n, a, r, s, l, c, u, m) {
-                            var p = t & d,
-                                A = 1 & t,
+                            var A = t & d,
+                                p = 1 & t,
                                 h = 2 & t,
                                 g = 24 & t,
                                 f = 512 & t,
@@ -5948,7 +5948,7 @@
                                     var B = un(v, E);
                                     return $i(e, t, Ui, d.placeholder, n, v, B, c, u, m - C)
                                 }
-                                var w = A ? n : this,
+                                var w = p ? n : this,
                                     k = h ? w[e] : e;
                                 return C = v.length, c ? v = function(e, t) {
                                     var n = e.length,
@@ -5959,7 +5959,7 @@
                                         e[o] = va(r, n) ? a[r] : i
                                     }
                                     return e
-                                }(v, c) : f && C > 1 && v.reverse(), p && u < C && (v.length = u), this && this !== ht && this instanceof d && (k = b || Pi(k)), k.apply(w, v)
+                                }(v, c) : f && C > 1 && v.reverse(), A && u < C && (v.length = u), this && this !== ht && this instanceof d && (k = b || Pi(k)), k.apply(w, v)
                             }
                         }
 
@@ -5999,17 +5999,17 @@
                         function Vi(e, t) {
                             var n = (t = t === i ? " " : di(t)).length;
                             if (n < 2) return n ? Qo(t, e) : t;
-                            var o = Qo(t, gt(e / An(t)));
+                            var o = Qo(t, gt(e / pn(t)));
                             return sn(t) ? xi(hn(o), 0, e).join("") : o.slice(0, e)
                         }
 
                         function Yi(e) {
                             return function(t, n, a) {
-                                return a && "number" != typeof a && ya(t, n, a) && (n = a = i), t = ps(t), n === i ? (n = t, t = 0) : n = ps(n),
+                                return a && "number" != typeof a && ya(t, n, a) && (n = a = i), t = As(t), n === i ? (n = t, t = 0) : n = As(n),
                                     function(e, t, n, i) {
                                         for (var a = -1, r = Cn(gt((t - e) / (n || 1)), 0), s = o(r); r--;) s[i ? r : ++a] = e, e += n;
                                         return s
-                                    }(t, n, a = a === i ? t < n ? 1 : -1 : ps(a), e)
+                                    }(t, n, a = a === i ? t < n ? 1 : -1 : As(a), e)
                             }
                         }
 
@@ -6020,31 +6020,31 @@
                         }
 
                         function $i(e, t, n, o, a, r, s, l, d, m) {
-                            var p = 8 & t;
-                            t |= p ? c : u, 4 & (t &= ~(p ? u : c)) || (t &= -4);
-                            var A = [e, t, a, p ? r : i, p ? s : i, p ? i : r, p ? i : s, l, d, m],
-                                h = n.apply(i, A);
-                            return xa(e) && Ta(h, A), h.placeholder = o, ja(h, e, t)
+                            var A = 8 & t;
+                            t |= A ? c : u, 4 & (t &= ~(A ? u : c)) || (t &= -4);
+                            var p = [e, t, a, A ? r : i, A ? s : i, A ? i : r, A ? i : s, l, d, m],
+                                h = n.apply(i, p);
+                            return xa(e) && Ta(h, p), h.placeholder = o, ja(h, e, t)
                         }
 
                         function Xi(e) {
                             var t = _e[e];
                             return function(e, n) {
-                                if (e = gs(e), n = null == n ? 0 : vn(As(n), 292)) {
+                                if (e = gs(e), n = null == n ? 0 : vn(ps(n), 292)) {
                                     var o = (bs(e) + "e").split("e");
                                     return +((o = (bs(t(o[0] + "e" + (+o[1] + n))) + "e").split("e"))[0] + "e" + (+o[1] - n))
                                 }
                                 return t(e)
                             }
                         }
-                        var Qi = Sn && 1 / mn(new Sn([, -0]))[1] == p ? function(e) {
+                        var Qi = Sn && 1 / mn(new Sn([, -0]))[1] == A ? function(e) {
                             return new Sn(e)
                         } : ll;
 
                         function Ki(e) {
                             return function(t) {
                                 var n = ga(t);
-                                return n == w ? ln(t) : n == T ? pn(t) : function(e, t) {
+                                return n == w ? ln(t) : n == T ? An(t) : function(e, t) {
                                     return Nt(t, (function(t) {
                                         return [t, e[t]]
                                     }))
@@ -6052,17 +6052,17 @@
                             }
                         }
 
-                        function Ji(e, t, n, r, p, A, h, g) {
+                        function Ji(e, t, n, r, A, p, h, g) {
                             var f = 2 & t;
                             if (!f && "function" != typeof e) throw new Me(a);
                             var b = r ? r.length : 0;
-                            if (b || (t &= -97, r = p = i), h = h === i ? h : Cn(As(h), 0), g = g === i ? g : As(g), b -= p ? p.length : 0, t & u) {
+                            if (b || (t &= -97, r = A = i), h = h === i ? h : Cn(ps(h), 0), g = g === i ? g : ps(g), b -= A ? A.length : 0, t & u) {
                                 var C = r,
-                                    v = p;
-                                r = p = i
+                                    v = A;
+                                r = A = i
                             }
                             var y = f ? i : sa(e),
-                                E = [e, t, n, r, p, C, v, A, h, g];
+                                E = [e, t, n, r, A, C, v, p, h, g];
                             if (y && function(e, t) {
                                     var n = e[1],
                                         o = t[1],
@@ -6080,14 +6080,14 @@
                                     o & d && (e[8] = null == e[8] ? t[8] : vn(e[8], t[8]));
                                     null == e[9] && (e[9] = t[9]);
                                     e[0] = t[0], e[1] = i
-                                }(E, y), e = E[0], t = E[1], n = E[2], r = E[3], p = E[4], !(g = E[9] = E[9] === i ? f ? 0 : e.length : Cn(E[9] - b, 0)) && 24 & t && (t &= -25), t && 1 != t) x = 8 == t || t == l ? function(e, t, n) {
+                                }(E, y), e = E[0], t = E[1], n = E[2], r = E[3], A = E[4], !(g = E[9] = E[9] === i ? f ? 0 : e.length : Cn(E[9] - b, 0)) && 24 & t && (t &= -25), t && 1 != t) x = 8 == t || t == l ? function(e, t, n) {
                                 var a = Pi(e);
                                 return function r() {
                                     for (var s = arguments.length, l = o(s), c = s, u = ca(r); c--;) l[c] = arguments[c];
                                     var d = s < 3 && l[0] !== u && l[s - 1] !== u ? [] : un(l, u);
                                     return (s -= d.length) < n ? $i(e, t, Ui, r.placeholder, i, l, d, i, i, n - s) : _t(this && this !== ht && this instanceof r ? a : e, this, l)
                                 }
-                            }(e, t, g) : t != c && 33 != t || p.length ? Ui.apply(i, E) : function(e, t, n, i) {
+                            }(e, t, g) : t != c && 33 != t || A.length ? Ui.apply(i, E) : function(e, t, n, i) {
                                 var a = 1 & t,
                                     r = Pi(e);
                                 return function t() {
@@ -6127,24 +6127,24 @@
                             if (u && r.get(t)) return u == t;
                             var d = -1,
                                 m = !0,
-                                p = 2 & n ? new $n : i;
+                                A = 2 & n ? new $n : i;
                             for (r.set(e, t), r.set(t, e); ++d < l;) {
-                                var A = e[d],
+                                var p = e[d],
                                     h = t[d];
-                                if (o) var g = s ? o(h, A, d, t, e, r) : o(A, h, d, e, t, r);
+                                if (o) var g = s ? o(h, p, d, t, e, r) : o(p, h, d, e, t, r);
                                 if (g !== i) {
                                     if (g) continue;
                                     m = !1;
                                     break
                                 }
-                                if (p) {
+                                if (A) {
                                     if (!Pt(t, (function(e, t) {
-                                            if (!en(p, t) && (A === e || a(A, e, n, o, r))) return p.push(t)
+                                            if (!en(A, t) && (p === e || a(p, e, n, o, r))) return A.push(t)
                                         }))) {
                                         m = !1;
                                         break
                                     }
-                                } else if (A !== h && !a(A, h, n, o, r)) {
+                                } else if (p !== h && !a(p, h, n, o, r)) {
                                     m = !1;
                                     break
                                 }
@@ -6157,7 +6157,7 @@
                         }
 
                         function aa(e) {
-                            return ko(e, Ms, Aa)
+                            return ko(e, Ms, pa)
                         }
 
                         function ra(e) {
@@ -6202,19 +6202,19 @@
                             return t
                         }
 
-                        function pa(e, t) {
+                        function Aa(e, t) {
                             var n = function(e, t) {
                                 return null == e ? i : e[t]
                             }(e, t);
                             return Lo(n) ? n : i
                         }
-                        var Aa = Ct ? function(e) {
+                        var pa = Ct ? function(e) {
                                 return null == e ? [] : (e = Se(e), Rt(Ct(e), (function(t) {
                                     return Xe.call(e, t)
                                 })))
                             } : hl,
                             ha = Ct ? function(e) {
-                                for (var t = []; e;) Lt(t, Aa(e)), e = Ze(e);
+                                for (var t = []; e;) Lt(t, pa(e)), e = Ze(e);
                                 return t
                             } : hl,
                             ga = _o;
@@ -6238,7 +6238,7 @@
 
                         function va(e, t) {
                             var n = typeof e;
-                            return !!(t = null == t ? A : t) && ("number" == n || "symbol" != n && ve.test(e)) && e > -1 && e % 1 == 0 && e < t
+                            return !!(t = null == t ? p : t) && ("number" == n || "symbol" != n && ve.test(e)) && e > -1 && e % 1 == 0 && e < t
                         }
 
                         function ya(e, t, n) {
@@ -6309,7 +6309,7 @@
                             return t.length < 2 ? e : wo(e, ai(t, 0, -1))
                         }
                         var Ta = Oa(ni),
-                            Ma = At || function(e, t) {
+                            Ma = pt || function(e, t) {
                                 return ht.setTimeout(e, t)
                             },
                             Ra = Oa(oi);
@@ -6365,7 +6365,7 @@
                         }((function(e) {
                             var t = [];
                             return 46 === e.charCodeAt(0) && t.push(""), e.replace(oe, (function(e, n, o, i) {
-                                t.push(o ? i.replace(pe, "$1") : n || e)
+                                t.push(o ? i.replace(Ae, "$1") : n || e)
                             })), t
                         }));
 
@@ -6393,21 +6393,21 @@
                             return t.__actions__ = Mi(e.__actions__), t.__index__ = e.__index__, t.__values__ = e.__values__, t
                         }
                         var za = Ko((function(e, t) {
-                                return Yr(e) ? po(e, Co(t, 1, Yr, !0)) : []
+                                return Yr(e) ? Ao(e, Co(t, 1, Yr, !0)) : []
                             })),
                             Fa = Ko((function(e, t) {
                                 var n = Xa(t);
-                                return Yr(n) && (n = i), Yr(e) ? po(e, Co(t, 1, Yr, !0), ua(n, 2)) : []
+                                return Yr(n) && (n = i), Yr(e) ? Ao(e, Co(t, 1, Yr, !0), ua(n, 2)) : []
                             })),
                             Ua = Ko((function(e, t) {
                                 var n = Xa(t);
-                                return Yr(n) && (n = i), Yr(e) ? po(e, Co(t, 1, Yr, !0), i, n) : []
+                                return Yr(n) && (n = i), Yr(e) ? Ao(e, Co(t, 1, Yr, !0), i, n) : []
                             }));
 
                         function Wa(e, t, n) {
                             var o = null == e ? 0 : e.length;
                             if (!o) return -1;
-                            var i = null == n ? 0 : As(n);
+                            var i = null == n ? 0 : ps(n);
                             return i < 0 && (i = Cn(o + i, 0)), Ut(e, ua(t, 3), i)
                         }
 
@@ -6415,7 +6415,7 @@
                             var o = null == e ? 0 : e.length;
                             if (!o) return -1;
                             var a = o - 1;
-                            return n !== i && (a = As(n), a = n < 0 ? Cn(o + a, 0) : vn(a, o - 1)), Ut(e, ua(t, 3), a, !0)
+                            return n !== i && (a = ps(n), a = n < 0 ? Cn(o + a, 0) : vn(a, o - 1)), Ut(e, ua(t, 3), a, !0)
                         }
 
                         function Ha(e) {
@@ -6490,7 +6490,7 @@
                             }))
                         }
                         var rr = Ko((function(e, t) {
-                                return Yr(e) ? po(e, t) : []
+                                return Yr(e) ? Ao(e, t) : []
                             })),
                             sr = Ko((function(e) {
                                 return fi(Rt(e, Yr))
@@ -6515,10 +6515,10 @@
                             return t.__chain__ = !0, t
                         }
 
-                        function pr(e, t) {
+                        function Ar(e, t) {
                             return t(e)
                         }
-                        var Ar = ia((function(e) {
+                        var pr = ia((function(e) {
                             var t = e.length,
                                 n = t ? e[0] : 0,
                                 o = this.__wrapped__,
@@ -6526,7 +6526,7 @@
                                     return so(t, e)
                                 };
                             return !(t > 1 || this.__actions__.length) && o instanceof Hn && va(n) ? ((o = o.slice(n, +n + (t ? 1 : 0))).__actions__.push({
-                                func: pr,
+                                func: Ar,
                                 args: [a],
                                 thisArg: i
                             }), new Gn(o, this.__chain__).thru((function(e) {
@@ -6540,7 +6540,7 @@
                             fr = zi(Ga);
 
                         function br(e, t) {
-                            return (Gr(e) ? It : Ao)(e, ua(t, 3))
+                            return (Gr(e) ? It : po)(e, ua(t, 3))
                         }
 
                         function Cr(e, t) {
@@ -6553,7 +6553,7 @@
                                 var i = -1,
                                     a = "function" == typeof t,
                                     r = Vr(e) ? o(e.length) : [];
-                                return Ao(e, (function(e) {
+                                return po(e, (function(e) {
                                     r[++i] = a ? _t(t, e, n) : Ro(e, t, n)
                                 })), r
                             })),
@@ -6577,7 +6577,7 @@
                                 var n = t.length;
                                 return n > 1 && ya(e, t[0], t[1]) ? t = [] : n > 2 && ya(t[0], t[1], t[2]) && (t = [t[0]]), Vo(e, Co(t, 1), [])
                             })),
-                            kr = pt || function() {
+                            kr = At || function() {
                                 return ht.Date.now()
                             };
 
@@ -6588,7 +6588,7 @@
                         function Sr(e, t) {
                             var n;
                             if ("function" != typeof t) throw new Me(a);
-                            return e = As(e),
+                            return e = ps(e),
                                 function() {
                                     return --e > 0 && (n = t.apply(this, arguments)), e <= 1 && (t = i), n
                                 }
@@ -6613,8 +6613,8 @@
                         function Mr(e, t, n) {
                             var o, r, s, l, c, u, d = 0,
                                 m = !1,
-                                p = !1,
-                                A = !0;
+                                A = !1,
+                                p = !0;
                             if ("function" != typeof e) throw new Me(a);
 
                             function h(t) {
@@ -6625,7 +6625,7 @@
 
                             function g(e) {
                                 var n = e - u;
-                                return u === i || n >= t || n < 0 || p && e - d >= s
+                                return u === i || n >= t || n < 0 || A && e - d >= s
                             }
 
                             function f() {
@@ -6633,12 +6633,12 @@
                                 if (g(e)) return b(e);
                                 c = Ma(f, function(e) {
                                     var n = t - (e - u);
-                                    return p ? vn(n, s - (e - d)) : n
+                                    return A ? vn(n, s - (e - d)) : n
                                 }(e))
                             }
 
                             function b(e) {
-                                return c = i, A && o ? h(e) : (o = r = i, l)
+                                return c = i, p && o ? h(e) : (o = r = i, l)
                             }
 
                             function C() {
@@ -6648,11 +6648,11 @@
                                     if (c === i) return function(e) {
                                         return d = e, c = Ma(f, t), m ? h(e) : l
                                     }(u);
-                                    if (p) return c = Ma(f, t), h(u)
+                                    if (A) return c = Ma(f, t), h(u)
                                 }
                                 return c === i && (c = Ma(f, t)), l
                             }
-                            return t = gs(t) || 0, es(n) && (m = !!n.leading, s = (p = "maxWait" in n) ? Cn(gs(n.maxWait) || 0, t) : s, A = "trailing" in n ? !!n.trailing : A), C.cancel = function() {
+                            return t = gs(t) || 0, es(n) && (m = !!n.leading, s = (A = "maxWait" in n) ? Cn(gs(n.maxWait) || 0, t) : s, p = "trailing" in n ? !!n.trailing : p), C.cancel = function() {
                                 c !== i && Bi(c), d = 0, o = u = r = c = i
                             }, C.flush = function() {
                                 return c === i ? l : b(kr())
@@ -6757,11 +6757,11 @@
                         }
 
                         function Kr(e) {
-                            return "number" == typeof e && e == As(e)
+                            return "number" == typeof e && e == ps(e)
                         }
 
                         function Jr(e) {
-                            return "number" == typeof e && e > -1 && e % 1 == 0 && e <= A
+                            return "number" == typeof e && e > -1 && e % 1 == 0 && e <= p
                         }
 
                         function es(e) {
@@ -6820,18 +6820,18 @@
                             return (t == w ? ln : t == T ? mn : zs)(e)
                         }
 
-                        function ps(e) {
-                            return e ? (e = gs(e)) === p || e === -1 / 0 ? 17976931348623157e292 * (e < 0 ? -1 : 1) : e == e ? e : 0 : 0 === e ? e : 0
+                        function As(e) {
+                            return e ? (e = gs(e)) === A || e === -1 / 0 ? 17976931348623157e292 * (e < 0 ? -1 : 1) : e == e ? e : 0 : 0 === e ? e : 0
                         }
 
-                        function As(e) {
-                            var t = ps(e),
+                        function ps(e) {
+                            var t = As(e),
                                 n = t % 1;
                             return t == t ? n ? t - n : t : 0
                         }
 
                         function hs(e) {
-                            return e ? lo(As(e), 0, g) : 0
+                            return e ? lo(ps(e), 0, g) : 0
                         }
 
                         function gs(e) {
@@ -6922,7 +6922,7 @@
                                 t = Nt(t, (function(t) {
                                     return t = yi(t, e), o || (o = t.length > 1), t
                                 })), Ri(e, ra(e), n), o && (n = co(n, 7, na));
-                                for (var i = t.length; i--;) pi(n, t[i]);
+                                for (var i = t.length; i--;) Ai(n, t[i]);
                                 return n
                             }));
                         var Ls = ia((function(e, t) {
@@ -7060,8 +7060,8 @@
                                 }
                             }(e)
                         }
-                        var pl = Yi(),
-                            Al = Yi(!0);
+                        var Al = Yi(),
+                            pl = Yi(!0);
 
                         function hl() {
                             return []
@@ -7087,7 +7087,7 @@
                             }), 0);
                         return Fn.after = function(e, t) {
                             if ("function" != typeof t) throw new Me(a);
-                            return e = As(e),
+                            return e = ps(e),
                                 function() {
                                     if (--e < 1) return t.apply(this, arguments)
                                 }
@@ -7096,7 +7096,7 @@
                             var e = arguments[0];
                             return Gr(e) ? e : [e]
                         }, Fn.chain = mr, Fn.chunk = function(e, t, n) {
-                            t = (n ? ya(e, t, n) : t === i) ? 1 : Cn(As(t), 0);
+                            t = (n ? ya(e, t, n) : t === i) ? 1 : Cn(ps(t), 0);
                             var a = null == e ? 0 : e.length;
                             if (!a || t < 1) return [];
                             for (var r = 0, s = 0, l = o(gt(a / t)); r < a;) l[s++] = ai(e, r, r += t);
@@ -7142,10 +7142,10 @@
                             return a.placeholder = e.placeholder, a
                         }, Fn.debounce = Mr, Fn.defaults = Bs, Fn.defaultsDeep = ws, Fn.defer = Rr, Fn.delay = jr, Fn.difference = za, Fn.differenceBy = Fa, Fn.differenceWith = Ua, Fn.drop = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
-                            return o ? ai(e, (t = n || t === i ? 1 : As(t)) < 0 ? 0 : t, o) : []
+                            return o ? ai(e, (t = n || t === i ? 1 : ps(t)) < 0 ? 0 : t, o) : []
                         }, Fn.dropRight = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
-                            return o ? ai(e, 0, (t = o - (t = n || t === i ? 1 : As(t))) < 0 ? 0 : t) : []
+                            return o ? ai(e, 0, (t = o - (t = n || t === i ? 1 : ps(t))) < 0 ? 0 : t) : []
                         }, Fn.dropRightWhile = function(e, t) {
                             return e && e.length ? hi(e, ua(t, 3), !0, !0) : []
                         }, Fn.dropWhile = function(e, t) {
@@ -7154,7 +7154,7 @@
                             var a = null == e ? 0 : e.length;
                             return a ? (n && "number" != typeof n && ya(e, t, n) && (n = 0, o = a), function(e, t, n, o) {
                                 var a = e.length;
-                                for ((n = As(n)) < 0 && (n = -n > a ? 0 : a + n), (o = o === i || o > a ? a : As(o)) < 0 && (o += a), o = n > o ? 0 : hs(o); n < o;) e[n++] = t;
+                                for ((n = ps(n)) < 0 && (n = -n > a ? 0 : a + n), (o = o === i || o > a ? a : ps(o)) < 0 && (o += a), o = n > o ? 0 : hs(o); n < o;) e[n++] = t;
                                 return e
                             }(e, t, n, o)) : []
                         }, Fn.filter = function(e, t) {
@@ -7162,13 +7162,13 @@
                         }, Fn.flatMap = function(e, t) {
                             return Co(xr(e, t), 1)
                         }, Fn.flatMapDeep = function(e, t) {
-                            return Co(xr(e, t), p)
+                            return Co(xr(e, t), A)
                         }, Fn.flatMapDepth = function(e, t, n) {
-                            return n = n === i ? 1 : As(n), Co(xr(e, t), n)
+                            return n = n === i ? 1 : ps(n), Co(xr(e, t), n)
                         }, Fn.flatten = Ha, Fn.flattenDeep = function(e) {
-                            return (null == e ? 0 : e.length) ? Co(e, p) : []
+                            return (null == e ? 0 : e.length) ? Co(e, A) : []
                         }, Fn.flattenDepth = function(e, t) {
-                            return (null == e ? 0 : e.length) ? Co(e, t = t === i ? 1 : As(t)) : []
+                            return (null == e ? 0 : e.length) ? Co(e, t = t === i ? 1 : ps(t)) : []
                         }, Fn.flip = function(e) {
                             return Ji(e, 512)
                         }, Fn.flow = tl, Fn.flowRight = nl, Fn.fromPairs = function(e) {
@@ -7198,7 +7198,7 @@
                         }, Fn.matchesProperty = function(e, t) {
                             return Wo(e, co(t, 1))
                         }, Fn.memoize = Or, Fn.merge = js, Fn.mergeWith = Os, Fn.method = al, Fn.methodOf = rl, Fn.mixin = sl, Fn.negate = Nr, Fn.nthArg = function(e) {
-                            return e = As(e), Ko((function(t) {
+                            return e = ps(e), Ko((function(t) {
                                 return Ho(t, e)
                             }))
                         }, Fn.omit = Ns, Fn.omitBy = function(e, t) {
@@ -7215,7 +7215,7 @@
                             return e && e.length && t && t.length ? Zo(e, t, ua(n, 2)) : e
                         }, Fn.pullAllWith = function(e, t, n) {
                             return e && e.length && t && t.length ? Zo(e, t, i, n) : e
-                        }, Fn.pullAt = Ja, Fn.range = pl, Fn.rangeRight = Al, Fn.rearg = Pr, Fn.reject = function(e, t) {
+                        }, Fn.pullAt = Ja, Fn.range = Al, Fn.rangeRight = pl, Fn.rearg = Pr, Fn.reject = function(e, t) {
                             return (Gr(e) ? Rt : bo)(e, Nr(ua(t, 3)))
                         }, Fn.remove = function(e, t) {
                             var n = [];
@@ -7230,9 +7230,9 @@
                             return $o(e, i), n
                         }, Fn.rest = function(e, t) {
                             if ("function" != typeof e) throw new Me(a);
-                            return Ko(e, t = t === i ? t : As(t))
+                            return Ko(e, t = t === i ? t : ps(t))
                         }, Fn.reverse = er, Fn.sampleSize = function(e, t, n) {
-                            return t = (n ? ya(e, t, n) : t === i) ? 1 : As(t), (Gr(e) ? Jn : ei)(e, t)
+                            return t = (n ? ya(e, t, n) : t === i) ? 1 : ps(t), (Gr(e) ? Jn : ei)(e, t)
                         }, Fn.set = function(e, t, n) {
                             return null == e ? e : ti(e, t, n)
                         }, Fn.setWith = function(e, t, n, o) {
@@ -7241,7 +7241,7 @@
                             return (Gr(e) ? eo : ii)(e)
                         }, Fn.slice = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
-                            return o ? (n && "number" != typeof n && ya(e, t, n) ? (t = 0, n = o) : (t = null == t ? 0 : As(t), n = n === i ? o : As(n)), ai(e, t, n)) : []
+                            return o ? (n && "number" != typeof n && ya(e, t, n) ? (t = 0, n = o) : (t = null == t ? 0 : ps(t), n = n === i ? o : ps(n)), ai(e, t, n)) : []
                         }, Fn.sortBy = wr, Fn.sortedUniq = function(e) {
                             return e && e.length ? ci(e) : []
                         }, Fn.sortedUniqBy = function(e, t) {
@@ -7250,7 +7250,7 @@
                             return n && "number" != typeof n && ya(e, t, n) && (t = n = i), (n = n === i ? g : n >>> 0) ? (e = bs(e)) && ("string" == typeof t || null != t && !as(t)) && !(t = di(t)) && sn(e) ? xi(hn(e), 0, n) : e.split(t, n) : []
                         }, Fn.spread = function(e, t) {
                             if ("function" != typeof e) throw new Me(a);
-                            return t = null == t ? 0 : Cn(As(t), 0), Ko((function(n) {
+                            return t = null == t ? 0 : Cn(ps(t), 0), Ko((function(n) {
                                 var o = n[t],
                                     i = xi(n, 0, t);
                                 return o && Lt(i, o), _t(e, this, i)
@@ -7259,10 +7259,10 @@
                             var t = null == e ? 0 : e.length;
                             return t ? ai(e, 1, t) : []
                         }, Fn.take = function(e, t, n) {
-                            return e && e.length ? ai(e, 0, (t = n || t === i ? 1 : As(t)) < 0 ? 0 : t) : []
+                            return e && e.length ? ai(e, 0, (t = n || t === i ? 1 : ps(t)) < 0 ? 0 : t) : []
                         }, Fn.takeRight = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
-                            return o ? ai(e, (t = o - (t = n || t === i ? 1 : As(t))) < 0 ? 0 : t, o) : []
+                            return o ? ai(e, (t = o - (t = n || t === i ? 1 : ps(t))) < 0 ? 0 : t, o) : []
                         }, Fn.takeRightWhile = function(e, t) {
                             return e && e.length ? hi(e, ua(t, 3), !1, !0) : []
                         }, Fn.takeWhile = function(e, t) {
@@ -7278,7 +7278,7 @@
                                 maxWait: t,
                                 trailing: i
                             })
-                        }, Fn.thru = pr, Fn.toArray = ms, Fn.toPairs = Ds, Fn.toPairsIn = Ps, Fn.toPath = function(e) {
+                        }, Fn.thru = Ar, Fn.toArray = ms, Fn.toPairs = Ds, Fn.toPairsIn = Ps, Fn.toPath = function(e) {
                             return Gr(e) ? Nt(e, qa) : ls(e) ? [e] : Mi(La(bs(e)))
                         }, Fn.toPlainObject = fs, Fn.transform = function(e, t, n) {
                             var o = Gr(e),
@@ -7299,11 +7299,11 @@
                         }, Fn.uniqWith = function(e, t) {
                             return t = "function" == typeof t ? t : i, e && e.length ? mi(e, i, t) : []
                         }, Fn.unset = function(e, t) {
-                            return null == e || pi(e, t)
+                            return null == e || Ai(e, t)
                         }, Fn.unzip = ir, Fn.unzipWith = ar, Fn.update = function(e, t, n) {
-                            return null == e ? e : Ai(e, t, vi(n))
+                            return null == e ? e : pi(e, t, vi(n))
                         }, Fn.updateWith = function(e, t, n, o) {
-                            return o = "function" == typeof o ? o : i, null == e ? e : Ai(e, t, vi(n), o)
+                            return o = "function" == typeof o ? o : i, null == e ? e : pi(e, t, vi(n), o)
                         }, Fn.values = zs, Fn.valuesIn = function(e) {
                             return null == e ? [] : Jt(e, Rs(e))
                         }, Fn.without = rr, Fn.words = Qs, Fn.wrap = function(e, t) {
@@ -7329,7 +7329,7 @@
                         }, Fn.divide = Cl, Fn.endsWith = function(e, t, n) {
                             e = bs(e), t = di(t);
                             var o = e.length,
-                                a = n = n === i ? o : lo(As(n), 0, o);
+                                a = n = n === i ? o : lo(ps(n), 0, o);
                             return (n -= t.length) >= 0 && e.slice(n, a) == t
                         }, Fn.eq = zr, Fn.escape = function(e) {
                             return (e = bs(e)) && Q.test(e) ? e.replace($, an) : e
@@ -7353,16 +7353,16 @@
                         }, Fn.get = ks, Fn.gt = Fr, Fn.gte = Ur, Fn.has = function(e, t) {
                             return null != e && fa(e, t, Io)
                         }, Fn.hasIn = _s, Fn.head = Va, Fn.identity = ol, Fn.includes = function(e, t, n, o) {
-                            e = Vr(e) ? e : zs(e), n = n && !o ? As(n) : 0;
+                            e = Vr(e) ? e : zs(e), n = n && !o ? ps(n) : 0;
                             var i = e.length;
                             return n < 0 && (n = Cn(i + n, 0)), ss(e) ? n <= i && e.indexOf(t, n) > -1 : !!i && Wt(e, t, n) > -1
                         }, Fn.indexOf = function(e, t, n) {
                             var o = null == e ? 0 : e.length;
                             if (!o) return -1;
-                            var i = null == n ? 0 : As(n);
+                            var i = null == n ? 0 : ps(n);
                             return i < 0 && (i = Cn(o + i, 0)), Wt(e, t, i)
                         }, Fn.inRange = function(e, t, n) {
-                            return t = ps(t), n === i ? (n = t, t = 0) : n = ps(n),
+                            return t = As(t), n === i ? (n = t, t = 0) : n = As(n),
                                 function(e, t, n) {
                                     return e >= vn(t, n) && e < Cn(t, n)
                                 }(e = gs(e), t, n)
@@ -7400,7 +7400,7 @@
                         }, Fn.isNull = function(e) {
                             return null === e
                         }, Fn.isNumber = os, Fn.isObject = es, Fn.isObjectLike = ts, Fn.isPlainObject = is, Fn.isRegExp = as, Fn.isSafeInteger = function(e) {
-                            return Kr(e) && e >= -9007199254740991 && e <= A
+                            return Kr(e) && e >= -9007199254740991 && e <= p
                         }, Fn.isSet = rs, Fn.isString = ss, Fn.isSymbol = ls, Fn.isTypedArray = cs, Fn.isUndefined = function(e) {
                             return e === i
                         }, Fn.isWeakMap = function(e) {
@@ -7413,7 +7413,7 @@
                             var o = null == e ? 0 : e.length;
                             if (!o) return -1;
                             var a = o;
-                            return n !== i && (a = (a = As(n)) < 0 ? Cn(o + a, 0) : vn(a, o - 1)), t == t ? function(e, t, n) {
+                            return n !== i && (a = (a = ps(n)) < 0 ? Cn(o + a, 0) : vn(a, o - 1)), t == t ? function(e, t, n) {
                                 for (var o = n + 1; o--;)
                                     if (e[o] === t) return o;
                                 return o
@@ -7437,27 +7437,27 @@
                         }, Fn.stubTrue = function() {
                             return !0
                         }, Fn.multiply = El, Fn.nth = function(e, t) {
-                            return e && e.length ? Ho(e, As(t)) : i
+                            return e && e.length ? Ho(e, ps(t)) : i
                         }, Fn.noConflict = function() {
                             return ht._ === this && (ht._ = Ue), this
                         }, Fn.noop = ll, Fn.now = kr, Fn.pad = function(e, t, n) {
                             e = bs(e);
-                            var o = (t = As(t)) ? An(e) : 0;
+                            var o = (t = ps(t)) ? pn(e) : 0;
                             if (!t || o >= t) return e;
                             var i = (t - o) / 2;
                             return Vi(ft(i), n) + e + Vi(gt(i), n)
                         }, Fn.padEnd = function(e, t, n) {
                             e = bs(e);
-                            var o = (t = As(t)) ? An(e) : 0;
+                            var o = (t = ps(t)) ? pn(e) : 0;
                             return t && o < t ? e + Vi(t - o, n) : e
                         }, Fn.padStart = function(e, t, n) {
                             e = bs(e);
-                            var o = (t = As(t)) ? An(e) : 0;
+                            var o = (t = ps(t)) ? pn(e) : 0;
                             return t && o < t ? Vi(t - o, n) + e : e
                         }, Fn.parseInt = function(e, t, n) {
                             return n || null == t ? t = 0 : t && (t = +t), En(bs(e).replace(se, ""), t || 0)
                         }, Fn.random = function(e, t, n) {
-                            if (n && "boolean" != typeof n && ya(e, t, n) && (t = n = i), n === i && ("boolean" == typeof t ? (n = t, t = i) : "boolean" == typeof e && (n = e, e = i)), e === i && t === i ? (e = 0, t = 1) : (e = ps(e), t === i ? (t = e, e = 0) : t = ps(t)), e > t) {
+                            if (n && "boolean" != typeof n && ya(e, t, n) && (t = n = i), n === i && ("boolean" == typeof t ? (n = t, t = i) : "boolean" == typeof e && (n = e, e = i)), e === i && t === i ? (e = 0, t = 1) : (e = As(e), t === i ? (t = e, e = 0) : t = As(t)), e > t) {
                                 var o = e;
                                 e = t, t = o
                             }
@@ -7469,13 +7469,13 @@
                         }, Fn.reduce = function(e, t, n) {
                             var o = Gr(e) ? qt : $t,
                                 i = arguments.length < 3;
-                            return o(e, ua(t, 4), n, i, Ao)
+                            return o(e, ua(t, 4), n, i, po)
                         }, Fn.reduceRight = function(e, t, n) {
                             var o = Gr(e) ? Dt : $t,
                                 i = arguments.length < 3;
                             return o(e, ua(t, 4), n, i, ho)
                         }, Fn.repeat = function(e, t, n) {
-                            return t = (n ? ya(e, t, n) : t === i) ? 1 : As(t), Qo(bs(e), t)
+                            return t = (n ? ya(e, t, n) : t === i) ? 1 : ps(t), Qo(bs(e), t)
                         }, Fn.replace = function() {
                             var e = arguments,
                                 t = bs(e[0]);
@@ -7492,7 +7492,7 @@
                             return (Gr(e) ? Kn : Jo)(e)
                         }, Fn.size = function(e) {
                             if (null == e) return 0;
-                            if (Vr(e)) return ss(e) ? An(e) : e.length;
+                            if (Vr(e)) return ss(e) ? pn(e) : e.length;
                             var t = ga(e);
                             return t == w || t == T ? e.size : Do(e).length
                         }, Fn.snakeCase = Ys, Fn.some = function(e, t, n) {
@@ -7520,7 +7520,7 @@
                             }
                             return -1
                         }, Fn.startCase = Zs, Fn.startsWith = function(e, t, n) {
-                            return e = bs(e), n = null == n ? 0 : lo(As(n), 0, e.length), t = di(t), e.slice(n, n + t.length) == t
+                            return e = bs(e), n = null == n ? 0 : lo(ps(n), 0, e.length), t = di(t), e.slice(n, n + t.length) == t
                         }, Fn.subtract = Bl, Fn.sum = function(e) {
                             return e && e.length ? Xt(e, ol) : 0
                         }, Fn.sumBy = function(e, t) {
@@ -7534,29 +7534,29 @@
                                 u = 0,
                                 d = t.interpolate || Ee,
                                 m = "__p += '",
-                                p = Ie((t.escape || Ee).source + "|" + d.source + "|" + (d === ee ? Ae : Ee).source + "|" + (t.evaluate || Ee).source + "|$", "g"),
-                                A = "//# sourceURL=" + ("sourceURL" in t ? t.sourceURL : "lodash.templateSources[" + ++st + "]") + "\n";
-                            e.replace(p, (function(t, n, o, i, s, l) {
+                                A = Ie((t.escape || Ee).source + "|" + d.source + "|" + (d === ee ? pe : Ee).source + "|" + (t.evaluate || Ee).source + "|$", "g"),
+                                p = "//# sourceURL=" + ("sourceURL" in t ? t.sourceURL : "lodash.templateSources[" + ++st + "]") + "\n";
+                            e.replace(A, (function(t, n, o, i, s, l) {
                                 return o || (o = i), m += e.slice(u, l).replace(xe, rn), n && (a = !0, m += "' +\n__e(" + n + ") +\n'"), s && (r = !0, m += "';\n" + s + ";\n__p += '"), o && (m += "' +\n((__t = (" + o + ")) == null ? '' : __t) +\n'"), u = l + t.length, t
                             })), m += "';\n";
                             var h = t.variable;
                             h || (m = "with (obj) {\n" + m + "\n}\n"), m = (r ? m.replace(H, "") : m).replace(V, "$1").replace(Y, "$1;"), m = "function(" + (h || "obj") + ") {\n" + (h ? "" : "obj || (obj = {});\n") + "var __t, __p = ''" + (a ? ", __e = _.escape" : "") + (r ? ", __j = Array.prototype.join;\nfunction print() { __p += __j.call(arguments, '') }\n" : ";\n") + m + "return __p\n}";
                             var g = Ks((function() {
-                                return ke(l, A + "return " + m).apply(i, c)
+                                return ke(l, p + "return " + m).apply(i, c)
                             }));
                             if (g.source = m, Xr(g)) throw g;
                             return g
                         }, Fn.times = function(e, t) {
-                            if ((e = As(e)) < 1 || e > A) return [];
+                            if ((e = ps(e)) < 1 || e > p) return [];
                             var n = g,
                                 o = vn(e, g);
                             t = ua(t), e -= g;
                             for (var i = Qt(o, t); ++n < e;) t(n);
                             return i
-                        }, Fn.toFinite = ps, Fn.toInteger = As, Fn.toLength = hs, Fn.toLower = function(e) {
+                        }, Fn.toFinite = As, Fn.toInteger = ps, Fn.toLength = hs, Fn.toLower = function(e) {
                             return bs(e).toLowerCase()
                         }, Fn.toNumber = gs, Fn.toSafeInteger = function(e) {
-                            return e ? lo(As(e), -9007199254740991, A) : 0 === e ? e : 0
+                            return e ? lo(ps(e), -9007199254740991, p) : 0 === e ? e : 0
                         }, Fn.toString = bs, Fn.toUpper = function(e) {
                             return bs(e).toUpperCase()
                         }, Fn.trim = function(e, t, n) {
@@ -7580,7 +7580,7 @@
                                 o = "...";
                             if (es(t)) {
                                 var a = "separator" in t ? t.separator : a;
-                                n = "length" in t ? As(t.length) : n, o = "omission" in t ? di(t.omission) : o
+                                n = "length" in t ? ps(t.length) : n, o = "omission" in t ? di(t.omission) : o
                             }
                             var r = (e = bs(e)).length;
                             if (sn(e)) {
@@ -7588,7 +7588,7 @@
                                 r = s.length
                             }
                             if (n >= r) return e;
-                            var l = n - An(o);
+                            var l = n - pn(o);
                             if (l < 1) return o;
                             var c = s ? xi(s, 0, l).join("") : e.slice(0, l);
                             if (a === i) return c + o;
@@ -7599,8 +7599,8 @@
                                     c = c.slice(0, m === i ? l : m)
                                 }
                             } else if (e.indexOf(di(a), l) != l) {
-                                var p = c.lastIndexOf(a);
-                                p > -1 && (c = c.slice(0, p))
+                                var A = c.lastIndexOf(a);
+                                A > -1 && (c = c.slice(0, A))
                             }
                             return c + o
                         }, Fn.unescape = function(e) {
@@ -7616,7 +7616,7 @@
                             Fn[e].placeholder = Fn
                         })), It(["drop", "take"], (function(e, t) {
                             Hn.prototype[e] = function(n) {
-                                n = n === i ? 1 : Cn(As(n), 0);
+                                n = n === i ? 1 : Cn(ps(n), 0);
                                 var o = this.__filtered__ && !t ? new Hn(this) : this.clone();
                                 return o.__filtered__ ? o.__takeCount__ = vn(n, o.__takeCount__) : o.__views__.push({
                                     size: vn(n, g),
@@ -7658,9 +7658,9 @@
                         })), Hn.prototype.reject = function(e) {
                             return this.filter(Nr(ua(e)))
                         }, Hn.prototype.slice = function(e, t) {
-                            e = As(e);
+                            e = ps(e);
                             var n = this;
-                            return n.__filtered__ && (e > 0 || t < 0) ? new Hn(n) : (e < 0 ? n = n.takeRight(-e) : e && (n = n.drop(e)), t !== i && (n = (t = As(t)) < 0 ? n.dropRight(-t) : n.take(t - e)), n)
+                            return n.__filtered__ && (e > 0 || t < 0) ? new Hn(n) : (e < 0 ? n = n.takeRight(-e) : e && (n = n.drop(e)), t !== i && (n = (t = ps(t)) < 0 ? n.dropRight(-t) : n.take(t - e)), n)
                         }, Hn.prototype.takeRightWhile = function(e) {
                             return this.reverse().takeWhile(e).reverse()
                         }, Hn.prototype.toArray = function() {
@@ -7682,19 +7682,19 @@
                                     };
                                 u && n && "function" == typeof c && 1 != c.length && (l = u = !1);
                                 var m = this.__chain__,
-                                    p = !!this.__actions__.length,
-                                    A = r && !m,
-                                    h = l && !p;
+                                    A = !!this.__actions__.length,
+                                    p = r && !m,
+                                    h = l && !A;
                                 if (!r && u) {
                                     t = h ? t : new Hn(this);
                                     var g = e.apply(t, s);
                                     return g.__actions__.push({
-                                        func: pr,
+                                        func: Ar,
                                         args: [d],
                                         thisArg: i
                                     }), new Gn(g, m)
                                 }
-                                return A && h ? e.apply(this, s) : (g = this.thru(d), A ? o ? g.value()[0] : g.value() : g)
+                                return p && h ? e.apply(this, s) : (g = this.thru(d), p ? o ? g.value()[0] : g.value() : g)
                             })
                         })), It(["pop", "push", "shift", "sort", "splice", "unshift"], (function(e) {
                             var t = Re[e],
@@ -7769,10 +7769,10 @@
                                 u = this.__iteratees__,
                                 d = u.length,
                                 m = 0,
-                                p = vn(l, this.__takeCount__);
-                            if (!n || !o && i == l && p == l) return gi(e, this.__actions__);
-                            var A = [];
-                            e: for (; l-- && m < p;) {
+                                A = vn(l, this.__takeCount__);
+                            if (!n || !o && i == l && A == l) return gi(e, this.__actions__);
+                            var p = [];
+                            e: for (; l-- && m < A;) {
                                 for (var h = -1, g = e[c += t]; ++h < d;) {
                                     var f = u[h],
                                         b = f.iteratee,
@@ -7784,10 +7784,10 @@
                                         break e
                                     }
                                 }
-                                A[m++] = g
+                                p[m++] = g
                             }
-                            return A
-                        }, Fn.prototype.at = Ar, Fn.prototype.chain = function() {
+                            return p
+                        }, Fn.prototype.at = pr, Fn.prototype.chain = function() {
                             return mr(this)
                         }, Fn.prototype.commit = function() {
                             return new Gn(this.value(), this.__chain__)
@@ -7811,7 +7811,7 @@
                             if (e instanceof Hn) {
                                 var t = e;
                                 return this.__actions__.length && (t = new Hn(this)), (t = t.reverse()).__actions__.push({
-                                    func: pr,
+                                    func: Ar,
                                     args: [er],
                                     thisArg: i
                                 }), new Gn(t, this.__chain__)
@@ -8619,14 +8619,14 @@
                             icon: "profileIconId",
                             name: "displayName"
                         },
-                        p = 6e4;
+                        A = 6e4;
                     e.summonersInfo = {
                         icon: {},
                         name: {},
                         gameName: {},
                         gameTag: {}
                     };
-                    const A = {
+                    const p = {
                         name: "displayName",
                         gameName: "gameName",
                         gameTag: "tagLine"
@@ -8634,7 +8634,7 @@
 
                     function h(e, n) {
                         const o = t[e][n];
-                        o && "error" !== o || t.lastError[n] < Date.now() + p || (t[e][n] = "pending", t.queued[e] || function(e) {
+                        o && "error" !== o || t.lastError[n] < Date.now() + A || (t[e][n] = "pending", t.queued[e] || function(e) {
                             t.queued[e] = !0, setTimeout((function() {
                                 t.queued[e] = !1;
                                 const n = Object.keys(t[e]).filter((function(n) {
@@ -8680,7 +8680,7 @@
                         const s = new Set;
                         a && a.forEach((function(t) {
                             let n = !1;
-                            Object.entries(A).forEach((function([o, i]) {
+                            Object.entries(p).forEach((function([o, i]) {
                                 const a = t[i];
                                 d(a) ? (n = !0, C("name", t.summonerId)) : (n || v("name", t.summonerId), e.summonersInfo[o][t.summonerId] = a)
                             })), n || s.add(t.summonerId)
@@ -8777,7 +8777,7 @@
                                 const r = new Set;
                                 return i && i.forEach((function(t) {
                                     let n = !1;
-                                    Object.entries(A).forEach((function([o, i]) {
+                                    Object.entries(p).forEach((function([o, i]) {
                                         const a = t[i];
                                         d(a) ? (n = !0, C("name", t.summonerId)) : (n || v("name", t.summonerId), e.summonersInfo[o][t.summonerId] = a)
                                     })), n || r.add(t.summonerId)
@@ -9505,35 +9505,36 @@
                 "./availability-hitbox/availability-hitbox.js": 162,
                 "./avatar/avatar.js": 166,
                 "./chat-room/chat-room.js": 172,
-                "./chat-window/chat-input/chat-input.js": 177,
-                "./chat-window/chat-message/chat-message.js": 179,
-                "./chat-window/chat-messages/chat-messages.js": 180,
-                "./chat-window/chat-messages/virtualized-messages.js": 181,
-                "./chat-window/chat-window-controller.js": 185,
-                "./chat-window/chat-window/chat-window.js": 186,
-                "./clash-roster-panel-item/clash-roster-panel-item.js": 196,
-                "./clash-roster-panel/clash-roster-panel.js": 198,
-                "./friend-request-modal/friend-request-modal.js": 200,
-                "./friend-request/friend-request.js": 202,
-                "./friend-requests/friend-requests.js": 211,
-                "./game-invite/game-invite.js": 213,
-                "./game-invites/game-invites.js": 216,
-                "./game-panel/game-panel.js": 219,
-                "./game-queue/game-queue.js": 221,
-                "./input/input.js": 224,
-                "./link-warning-dialog/link-warning-dialog.js": 225,
-                "./link-warning/link-warning.js": 227,
-                "./menu-input/menu-input.js": 229,
-                "./menu-item/menu-item.js": 232,
-                "./menu/menu.js": 235,
-                "./panel/panel.js": 237,
-                "./roster-group-name/roster-group-name.js": 241,
-                "./roster-group/roster-group.js": 243,
-                "./roster-member/context-menu-items.js": 189,
-                "./roster-member/roster-member.js": 247,
-                "./roster/roster.js": 254,
-                "./roster/virtualize-roster-members.js": 255,
-                "./status/status.js": 258
+                "./chat-toggle-button/chat-toggle-button.js": 177,
+                "./chat-window/chat-input/chat-input.js": 180,
+                "./chat-window/chat-message/chat-message.js": 182,
+                "./chat-window/chat-messages/chat-messages.js": 183,
+                "./chat-window/chat-messages/virtualized-messages.js": 184,
+                "./chat-window/chat-window-controller.js": 188,
+                "./chat-window/chat-window/chat-window.js": 189,
+                "./clash-roster-panel-item/clash-roster-panel-item.js": 199,
+                "./clash-roster-panel/clash-roster-panel.js": 201,
+                "./friend-request-modal/friend-request-modal.js": 203,
+                "./friend-request/friend-request.js": 205,
+                "./friend-requests/friend-requests.js": 214,
+                "./game-invite/game-invite.js": 216,
+                "./game-invites/game-invites.js": 219,
+                "./game-panel/game-panel.js": 222,
+                "./game-queue/game-queue.js": 224,
+                "./input/input.js": 227,
+                "./link-warning-dialog/link-warning-dialog.js": 228,
+                "./link-warning/link-warning.js": 230,
+                "./menu-input/menu-input.js": 232,
+                "./menu-item/menu-item.js": 235,
+                "./menu/menu.js": 238,
+                "./panel/panel.js": 240,
+                "./roster-group-name/roster-group-name.js": 244,
+                "./roster-group/roster-group.js": 246,
+                "./roster-member/context-menu-items.js": 192,
+                "./roster-member/roster-member.js": 250,
+                "./roster/roster.js": 257,
+                "./roster/virtualize-roster-members.js": 258,
+                "./status/status.js": 261
             };
 
             function i(e) {
@@ -9712,9 +9713,9 @@
                 u = i(o),
                 d = a(r),
                 m = a(s),
-                p = a(l),
-                A = a(c);
-            u.push([e.id, 'lol-social-avatar .summoner-level {\n  font-family: var(--font-display);\n}\nlol-social-avatar .summoner-level {\n  -webkit-user-select: none;\n}\nlol-social-avatar .summoner-level {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-avatar .summoner-level {\n  text-transform: uppercase;\n}\nlol-social-avatar .summoner-level:lang(ko-kr),\nlol-social-avatar .summoner-level:lang(ja-jp),\nlol-social-avatar .summoner-level:lang(tr-tr),\nlol-social-avatar .summoner-level:lang(el-gr),\nlol-social-avatar .summoner-level:lang(th-th),\nlol-social-avatar .summoner-level:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-avatar .summoner-level {\n  color: #f0e6d2;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 18px;\n  letter-spacing: 0.075em;\n}\nlol-social-avatar .summoner-level:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-avatar .summoner-level {\n  color: #a09b8c;\n}\nlol-social-avatar {\n  display: flex;\n  position: relative;\n  box-sizing: border-box;\n  width: 32px;\n  height: 32px;\n  pointer-events: none;\n}\nlol-social-avatar[me] {\n  pointer-events: all;\n}\nlol-social-avatar[large] {\n  width: 50px;\n  height: 50px;\n}\nlol-social-avatar lol-social-availability-hitbox {\n  position: absolute;\n  padding: 2px;\n  bottom: 3px;\n  right: -3px;\n}\nlol-social-avatar[large] lol-social-availability-hitbox {\n  bottom: 6px;\n}\nlol-social-avatar .icon-ring {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: url(' + d + ") no-repeat top;\n  background-size: cover;\n}\nlol-social-avatar .icon-ring:not(.has-icon) {\n  background-position-y: -128px;\n}\nlol-social-avatar .icon-ring.remote {\n  background-image: url(" + m + ");\n}\nlol-social-avatar[large] .icon-ring {\n  background: url(" + p + ") no-repeat top;\n  background-size: cover;\n}\nlol-social-avatar[large] .icon-ring:not(.has-icon) {\n  background-position-y: -200px;\n}\nlol-social-avatar .icon-image {\n  position: absolute;\n  overflow: hidden;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%;\n  background-color: #010a13;\n}\nlol-social-avatar .icon-image:not(.has-icon) {\n  display: none;\n}\nlol-social-avatar .icon-image.remote {\n  border-radius: 3px;\n}\nlol-social-avatar .summoner-level-icon {\n  margin-top: -7px;\n}\nlol-social-avatar .summoner-level-icon .icon-image {\n  background-color: inherit;\n}\nlol-social-avatar .xp-ring {\n  border-radius: 50%;\n  width: 56px;\n  height: 56px;\n  position: absolute;\n  left: -3px;\n  top: -3px;\n}\nlol-social-avatar .unfilled.xp-ring {\n  background-color: #0a323c;\n}\nlol-social-avatar .filled.xp-ring {\n  background-color: #0596aa;\n}\nlol-social-avatar .center.xp-ring {\n  background-color: #010a13;\n  width: 48px;\n  height: 48px;\n  left: 1px;\n  top: 1px;\n}\nlol-social-avatar .summoner-level-ring {\n  background-image: url(" + A + ");\n  background-position: center;\n  background-size: 76px 76px;\n  position: absolute;\n  width: 70px;\n  height: 70px;\n  top: -10px;\n  left: -10px;\n}\nlol-social-avatar .summoner-level {\n  width: 32px;\n  font-size: 11px;\n  position: absolute;\n  bottom: -10px;\n  left: 9px;\n  text-align: center;\n}\nlol-social-avatar .summoner-level.has-long-summoner-level {\n  font-size: 10px;\n  bottom: -8px;\n}\nlol-social-avatar:not([disabled]):hover .icon-ring.has-icon,\n.social-avatar-hit:hover lol-social-avatar:not([disabled]) .icon-ring.has-icon,\n.context-menu-open lol-social-avatar .icon-ring.has-icon {\n  background-position-y: -32px;\n}\nlol-social-avatar:not([disabled]):active .icon-ring.has-icon,\n.social-avatar-hit:active lol-social-avatar:not([disabled]) .icon-ring.has-icon {\n  background-position-y: -64px;\n}\nlol-social-avatar[large]:not([disabled]):hover .icon-ring.has-icon,\n.social-avatar-hit:hover lol-social-avatar[large]:not([disabled]) .icon-ring.has-icon,\n.context-menu-open lol-social-avatar[large] .icon-ring.has-icon {\n  background-position-y: -50px;\n}\nlol-social-avatar[large]:not([disabled]):active .icon-ring.has-icon,\n.social-avatar-hit:active lol-social-avatar[large]:not([disabled]) .icon-ring.has-icon {\n  background-position-y: -100px;\n}\nlol-social-avatar:not([disabled]):hover .summoner-level-ring {\n  -webkit-filter: brightness(1.5);\n}\nlol-social-avatar:not([disabled]):active img.icon-image,\n.social-avatar-hit:active lol-social-avatar:not([disabled]) img.icon-image {\n  opacity: 0.5;\n}\n", "", {
+                A = a(l),
+                p = a(c);
+            u.push([e.id, 'lol-social-avatar .summoner-level {\n  font-family: var(--font-display);\n}\nlol-social-avatar .summoner-level {\n  -webkit-user-select: none;\n}\nlol-social-avatar .summoner-level {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-avatar .summoner-level {\n  text-transform: uppercase;\n}\nlol-social-avatar .summoner-level:lang(ko-kr),\nlol-social-avatar .summoner-level:lang(ja-jp),\nlol-social-avatar .summoner-level:lang(tr-tr),\nlol-social-avatar .summoner-level:lang(el-gr),\nlol-social-avatar .summoner-level:lang(th-th),\nlol-social-avatar .summoner-level:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-avatar .summoner-level {\n  color: #f0e6d2;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 18px;\n  letter-spacing: 0.075em;\n}\nlol-social-avatar .summoner-level:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-avatar .summoner-level {\n  color: #a09b8c;\n}\nlol-social-avatar {\n  display: flex;\n  position: relative;\n  box-sizing: border-box;\n  width: 32px;\n  height: 32px;\n  pointer-events: none;\n}\nlol-social-avatar[me] {\n  pointer-events: all;\n}\nlol-social-avatar[large] {\n  width: 50px;\n  height: 50px;\n}\nlol-social-avatar lol-social-availability-hitbox {\n  position: absolute;\n  padding: 2px;\n  bottom: 3px;\n  right: -3px;\n}\nlol-social-avatar[large] lol-social-availability-hitbox {\n  bottom: 6px;\n}\nlol-social-avatar .icon-ring {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: url(' + d + ") no-repeat top;\n  background-size: cover;\n}\nlol-social-avatar .icon-ring:not(.has-icon) {\n  background-position-y: -128px;\n}\nlol-social-avatar .icon-ring.remote {\n  background-image: url(" + m + ");\n}\nlol-social-avatar[large] .icon-ring {\n  background: url(" + A + ") no-repeat top;\n  background-size: cover;\n}\nlol-social-avatar[large] .icon-ring:not(.has-icon) {\n  background-position-y: -200px;\n}\nlol-social-avatar .icon-image {\n  position: absolute;\n  overflow: hidden;\n  border-radius: 50%;\n  border: 2px solid transparent;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%;\n  background-color: #010a13;\n}\nlol-social-avatar .icon-image:not(.has-icon) {\n  display: none;\n}\nlol-social-avatar .icon-image.remote {\n  border-radius: 3px;\n}\nlol-social-avatar .summoner-level-icon {\n  margin-top: -7px;\n}\nlol-social-avatar .summoner-level-icon .icon-image {\n  background-color: inherit;\n}\nlol-social-avatar .xp-ring {\n  border-radius: 50%;\n  width: 56px;\n  height: 56px;\n  position: absolute;\n  left: -3px;\n  top: -3px;\n}\nlol-social-avatar .unfilled.xp-ring {\n  background-color: #0a323c;\n}\nlol-social-avatar .filled.xp-ring {\n  background-color: #0596aa;\n}\nlol-social-avatar .center.xp-ring {\n  background-color: #010a13;\n  width: 48px;\n  height: 48px;\n  left: 1px;\n  top: 1px;\n}\nlol-social-avatar .summoner-level-ring {\n  background-image: url(" + p + ");\n  background-position: center;\n  background-size: 76px 76px;\n  position: absolute;\n  width: 70px;\n  height: 70px;\n  top: -10px;\n  left: -10px;\n}\nlol-social-avatar .summoner-level {\n  width: 32px;\n  font-size: 11px;\n  position: absolute;\n  bottom: -10px;\n  left: 9px;\n  text-align: center;\n}\nlol-social-avatar .summoner-level.has-long-summoner-level {\n  font-size: 10px;\n  bottom: -8px;\n}\nlol-social-avatar:not([disabled]):hover .icon-ring.has-icon,\n.social-avatar-hit:hover lol-social-avatar:not([disabled]) .icon-ring.has-icon,\n.context-menu-open lol-social-avatar .icon-ring.has-icon {\n  background-position-y: -32px;\n}\nlol-social-avatar:not([disabled]):active .icon-ring.has-icon,\n.social-avatar-hit:active lol-social-avatar:not([disabled]) .icon-ring.has-icon {\n  background-position-y: -64px;\n}\nlol-social-avatar[large]:not([disabled]):hover .icon-ring.has-icon,\n.social-avatar-hit:hover lol-social-avatar[large]:not([disabled]) .icon-ring.has-icon,\n.context-menu-open lol-social-avatar[large] .icon-ring.has-icon {\n  background-position-y: -50px;\n}\nlol-social-avatar[large]:not([disabled]):active .icon-ring.has-icon,\n.social-avatar-hit:active lol-social-avatar[large]:not([disabled]) .icon-ring.has-icon {\n  background-position-y: -100px;\n}\nlol-social-avatar:not([disabled]):hover .summoner-level-ring {\n  -webkit-filter: brightness(1.5);\n}\nlol-social-avatar:not([disabled]):active img.icon-image,\n.social-avatar-hit:active lol-social-avatar:not([disabled]) img.icon-image {\n  opacity: 0.5;\n}\n", "", {
                 version: 3,
                 sources: ["webpack://./fe/rcp-fe-lol-social/src/web-components/avatar/avatar.styl"],
                 names: [],
@@ -9965,6 +9966,48 @@
             const o = n(1),
                 {
                     components: i
+                } = o;
+            i.defineElement("lol-social-chat-toggle-button", {
+                styles: n(178),
+                attached: function() {
+                    const {
+                        chatWindow: e
+                    } = this.data;
+                    e.isOpen && this.data.chatWindow.closeImmediately()
+                },
+                detached: function() {
+                    const {
+                        chatWindow: e
+                    } = this.data;
+                    e.isOpen && this.data.chatWindow.closeImmediately()
+                },
+                toggleChatWindow: function() {
+                    this.data.chatWindow.toggle()
+                }
+            })
+        }, (e, t, n) => {
+            var o = n(160),
+                i = n(161),
+                a = n(164),
+                r = n(179),
+                s = i(o),
+                l = a(r);
+            s.push([e.id, ".social-count-badge {\n  font-family: var(--font-body);\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-chat-toggle-button .chat-button,\nlol-social-chat-toggle-button .chat-button.toggled {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-chat-toggle-button {\n  position: relative;\n  background-color: #010a13;\n  z-index: 0;\n}\nlol-social-chat-toggle-button .chat-button {\n  background-image: url(" + l + ");\n  background-size: cover;\n  background-position-y: 0px;\n  width: 38px;\n  height: 32px;\n}\nlol-social-chat-toggle-button .chat-button:hover {\n  background-position-y: -32px;\n}\nlol-social-chat-toggle-button .chat-button:active {\n  background-position-y: -64px;\n}\nlol-social-chat-toggle-button .chat-button:disabled,\nlol-social-chat-toggle-button .chat-button[disabled],\nlol-social-chat-toggle-button .chat-button.disabled {\n  cursor: default;\n  background-position-y: -96px;\n}\nlol-social-chat-toggle-button .chat-button:lang(ar-ae) {\n  transform: scaleX(-1);\n}\nlol-social-chat-toggle-button .chat-button.toggled {\n  background-image: url(" + l + ");\n  background-size: cover;\n  background-position-y: -96px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:hover {\n  background-position-y: -128px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:active {\n  background-position-y: -160px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:disabled,\nlol-social-chat-toggle-button .chat-button.toggled[disabled],\nlol-social-chat-toggle-button .chat-button.toggled.disabled {\n  cursor: default;\n  background-position-y: -192px;\n}\nlol-social-chat-toggle-button .chat-button.unread.use-animation {\n  animation: pulseChatButton 750ms infinite alternate ease-in-out;\n}\nlol-social-chat-toggle-button .chat-button.unread:not(.use-animation) {\n  -webkit-filter: brightness(1.5) saturate(1.5);\n}\nlol-social-chat-toggle-button .chat-button[disabled] {\n  background-position-y: 0;\n  opacity: 0.5;\n  cursor: default;\n}\nlol-social-chat-toggle-button .social-count-badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  transform: translate(50%, -50%);\n  box-shadow: 0 0 2px rgba(1,10,19,0.5);\n}\n@-moz-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@-webkit-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@-o-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n", "", {
+                version: 3,
+                sources: ["webpack://./fe/rcp-fe-lol-social/src/web-components/chat-toggle-button/chat-toggle-button.styl"],
+                names: [],
+                mappings: "AAAA;EACE,6BAA6B;AAC/B;AACA;EACE,iBAAiB;EACjB,kBAAkB;EAClB,yBAAyB;EACzB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,eAAe;EACf,aAAa;EACb,mBAAmB;AACrB;AACA;EACE,UAAU;AACZ;AACA;EACE,UAAU;EACV,oCAAoC;AACtC;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;;EAEE,aAAa;EACb,YAAY;EACZ,gBAAgB;EAChB,eAAe;EACf,UAAU;AACZ;AACA;EACE,kBAAkB;EAClB,yBAAyB;EACzB,UAAU;AACZ;AACA;EACE,yDAAqD;EACrD,sBAAsB;EACtB,0BAA0B;EAC1B,WAAW;EACX,YAAY;AACd;AACA;EACE,4BAA4B;AAC9B;AACA;EACE,4BAA4B;AAC9B;AACA;;;EAGE,eAAe;EACf,4BAA4B;AAC9B;AACA;EACE,qBAAqB;AACvB;AACA;EACE,yDAAqD;EACrD,sBAAsB;EACtB,4BAA4B;AAC9B;AACA;EACE,6BAA6B;AAC/B;AACA;EACE,6BAA6B;AAC/B;AACA;;;EAGE,eAAe;EACf,6BAA6B;AAC/B;AACA;EACE,+DAA+D;AACjE;AACA;EACE,6CAA6C;AAC/C;AACA;EACE,wBAAwB;EACxB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,QAAQ;EACR,+BAA+B;EAC/B,qCAAqC;AACvC;AACA;EACE;IACE,iCAAiC;EACnC;EACA;IACE,qCAAqC;EACvC;AACF;AACA;EACE;IACE,iCAAiC;EACnC;EACA;IACE,qCAAqC;EACvC;AACF;AACA;EACE;IACE,iCAAiC;EACnC;EACA;IACE,qCAAqC;EACvC;AACF;AACA;EACE;IACE,iCAAiC;EACnC;EACA;IACE,qCAAqC;EACvC;AACF",
+                sourcesContent: ['.social-count-badge {\n  font-family: var(--font-body);\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-chat-toggle-button .chat-button,\nlol-social-chat-toggle-button .chat-button.toggled {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-chat-toggle-button {\n  position: relative;\n  background-color: #010a13;\n  z-index: 0;\n}\nlol-social-chat-toggle-button .chat-button {\n  background-image: url("../../images/chat_button.png");\n  background-size: cover;\n  background-position-y: 0px;\n  width: 38px;\n  height: 32px;\n}\nlol-social-chat-toggle-button .chat-button:hover {\n  background-position-y: -32px;\n}\nlol-social-chat-toggle-button .chat-button:active {\n  background-position-y: -64px;\n}\nlol-social-chat-toggle-button .chat-button:disabled,\nlol-social-chat-toggle-button .chat-button[disabled],\nlol-social-chat-toggle-button .chat-button.disabled {\n  cursor: default;\n  background-position-y: -96px;\n}\nlol-social-chat-toggle-button .chat-button:lang(ar-ae) {\n  transform: scaleX(-1);\n}\nlol-social-chat-toggle-button .chat-button.toggled {\n  background-image: url("../../images/chat_button.png");\n  background-size: cover;\n  background-position-y: -96px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:hover {\n  background-position-y: -128px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:active {\n  background-position-y: -160px;\n}\nlol-social-chat-toggle-button .chat-button.toggled:disabled,\nlol-social-chat-toggle-button .chat-button.toggled[disabled],\nlol-social-chat-toggle-button .chat-button.toggled.disabled {\n  cursor: default;\n  background-position-y: -192px;\n}\nlol-social-chat-toggle-button .chat-button.unread.use-animation {\n  animation: pulseChatButton 750ms infinite alternate ease-in-out;\n}\nlol-social-chat-toggle-button .chat-button.unread:not(.use-animation) {\n  -webkit-filter: brightness(1.5) saturate(1.5);\n}\nlol-social-chat-toggle-button .chat-button[disabled] {\n  background-position-y: 0;\n  opacity: 0.5;\n  cursor: default;\n}\nlol-social-chat-toggle-button .social-count-badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  transform: translate(50%, -50%);\n  box-shadow: 0 0 2px rgba(1,10,19,0.5);\n}\n@-moz-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@-webkit-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@-o-keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n@keyframes pulseChatButton {\n  from {\n    filter: brightness(1) saturate(1);\n  }\n  to {\n    filter: brightness(1.5) saturate(1.5);\n  }\n}\n'],
+                sourceRoot: ""
+            }]), e.exports = s
+        }, (e, t, n) => {
+            "use strict";
+            e.exports = n.p + "chat_button.png"
+        }, (e, t, n) => {
+            "use strict";
+            const o = n(1),
+                {
+                    components: i
                 } = o,
                 a = n(173),
                 r = "lol-social-chat-room",
@@ -9972,7 +10015,7 @@
                 l = "championSelect",
                 c = "postGame";
             i.defineElement("lol-social-chat-input", a, {
-                styles: n(178),
+                styles: n(181),
                 isPlayerChatToggledOn: !0,
                 computed: {
                     canHidePlayerMessages: "hasAttribute('can-hide-player-messages')",
@@ -10191,10 +10234,10 @@
                     components: i
                 } = o,
                 a = n(173),
-                r = n(181);
+                r = n(184);
             i.defineElement("lol-social-chat-messages", a, r, {
-                styles: n(183),
-                frameStyles: n(184),
+                styles: n(186),
+                frameStyles: n(187),
                 computed: {
                     filteredMessages: "messages | filter(notJoinLeaveMessages)"
                 },
@@ -10235,7 +10278,7 @@
             })
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(182)) && o.__esModule ? o : {
+            var o, i = (o = n(185)) && o.__esModule ? o : {
                 default: o
             };
             const a = n(1),
@@ -10596,7 +10639,7 @@
             };
             let u, d, m = !1;
 
-            function p() {
+            function A() {
                 s.chatWindow.isOpen && l.focus()
             }
             s.addComputed({
@@ -10622,7 +10665,7 @@
                 e && i.addLayer(l)
             })), s.watch("chatWindow.isOpen", (function(e) {
                 e && function() {
-                    const e = document.querySelector(".lol-social-chat-toggle-button");
+                    const e = document.querySelector(".lol-social-chat-toggle-button, lol-social-chat-toggle-button");
                     if (!e) return;
                     let t = e.getAttribute("position");
                     if (t || (t = "default"), d || (d = window.innerWidth), u || (u = window.innerHeight), !c.hasOwnProperty(t)) {
@@ -10645,7 +10688,7 @@
                     }
                 }()
             })), s.afterLogin && s.afterLogin((() => {
-                s.chatWindow.focus = p
+                s.chatWindow.focus = A
             })), s.track("friends", null, (function(e) {
                 s.conversations && s.conversations.byId.hasOwnProperty(e.id) && s.closeConversation(e.id)
             }))
@@ -10654,9 +10697,9 @@
             var o = n(1);
             const {
                 computed: i
-            } = o.components, a = n(174), r = n(187), s = n(188), l = n(189);
+            } = o.components, a = n(174), r = n(190), s = n(191), l = n(192);
             o.components.defineElement("lol-social-chat-window", a, r, s, {
-                styles: n(190),
+                styles: n(193),
                 computed: {
                     disconnected: 'data.chatSession.sessionState === "disconnected"',
                     visible: "data.chatWindow.isOpen && !disconnected",
@@ -10981,7 +11024,7 @@
         }, (e, t, n) => {
             "use strict";
             const o = n(102),
-                i = n(187);
+                i = n(190);
             e.exports = {
                 inviteToGame: (e, t) => ({
                     action: "inviteToGame",
@@ -11055,18 +11098,18 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(191),
-                s = n(192),
-                l = n(193),
-                c = n(194),
-                u = n(195),
+                r = n(194),
+                s = n(195),
+                l = n(196),
+                c = n(197),
+                u = n(198),
                 d = i(o),
                 m = a(r),
-                p = a(s),
-                A = a(l),
+                A = a(s),
+                p = a(l),
                 h = a(c),
                 g = a(u);
-            d.push([e.id, "lol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  font-family: var(--font-display);\n}\n.social-count-badge,\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .more-unread .bar,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  font-family: var(--font-body);\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  -webkit-user-select: none;\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  font-kerning: normal;\n  -webkit-font-feature-settings: \"kern\" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-chat-window .more-unread .bar,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  text-transform: uppercase;\n}\nlol-social-chat-window .more-unread .bar:lang(ko-kr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ko-kr),\nlol-social-chat-window .more-unread .bar:lang(ja-jp),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ja-jp),\nlol-social-chat-window .more-unread .bar:lang(tr-tr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(tr-tr),\nlol-social-chat-window .more-unread .bar:lang(el-gr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(el-gr),\nlol-social-chat-window .more-unread .bar:lang(th-th),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(th-th),\nlol-social-chat-window .more-unread .bar:lang(zh-tw),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  color: #f0e6d2;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0.05em;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window .conversation-title:lang(ar-ae),\nlol-social-chat-window .chat-header:lang(ar-ae),\nlol-social-chat-window .participants:lang(ar-ae),\nlol-social-chat-window .chat-input:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .create-panel .create-panel-search-match {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window .conversation:lang(ja-jp),\nlol-social-chat-window .chat-name-info .chat-gnt:lang(ja-jp),\nlol-social-chat-window .create-panel .create-panel-search-match:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-chat-window .conversation:lang(ar-ae),\nlol-social-chat-window .chat-name-info .chat-gnt:lang(ar-ae),\nlol-social-chat-window .create-panel .create-panel-search-match:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window lol-social-menu-item {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.1em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window lol-social-menu-item:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-chat-window lol-social-menu-item:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation.unread .conversation-title,\nlol-social-chat-window .chat-header {\n  color: #f0e6d2;\n}\n.social-scroll {\n  overflow-y: auto;\n  overflow-x: hidden;\n}\n.social-scroll::-webkit-scrollbar {\n  width: 11px;\n  background: none;\n}\n.social-scroll::-webkit-scrollbar-thumb {\n  border: 3px solid transparent;\n  background-color: #1e2328;\n  border-radius: 6px;\n  background-clip: padding-box;\n}\n.social-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #785a28;\n}\n.social-scroll::-webkit-scrollbar-thumb:hover {\n  background-color: #cdbe91;\n}\n.social-scroll::-webkit-scrollbar-thumb:active {\n  background-color: #463714;\n}\n.social-blue-scroll {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.social-blue-scroll::-webkit-scrollbar {\n  width: 9px;\n  background: transparent;\n}\n.social-blue-scroll::-webkit-scrollbar-thumb {\n  background: transparent;\n  border-radius: 6px;\n  border: 2px solid transparent;\n  background-clip: padding-box;\n}\n.social-blue-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #0596aa;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-chat-window .conversation-close-button,\nlol-social-chat-window .conversation-cannot-close-button,\nlol-social-chat-window .close-window-button,\nlol-social-chat-window .conversation-settings-button {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-chat-window {\n  position: absolute;\n  width: 550px;\n  height: 366px;\n  min-height: 366px;\n  max-height: 640px;\n  pointer-events: none;\n  right: 0;\n  bottom: 0;\n  transform: translateZ(0);\n  will-change: transform;\n}\nlol-social-chat-window:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-chat-window .hidden {\n  display: none !important;\n}\nlol-social-chat-window #chat-window-wrapper {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(1,10,19,0.88);\n  border: thin solid #1e282d;\n  box-sizing: border-box;\n  pointer-events: auto;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  overflow: hidden;\n}\nlol-social-chat-window #chat-window-wrapper.use-animation {\n  transition: all 350ms cubic-bezier(0, 0, 0, 1);\n}\nlol-social-chat-window #chat-window-wrapper:not(.open) {\n  height: 0;\n  width: 0;\n}\nlol-social-chat-window #chat-window-wrapper.button-inside .chat-input {\n  margin-right: 41px;\n}\nlol-social-chat-window .conversations {\n  position: relative;\n  width: 199px;\n  height: auto;\n  border-right: thin solid #1e282d;\n  box-sizing: border-box;\n  flex-shrink: 0;\n}\nlol-social-chat-window .conversations:not(.scrolled-to-bottom) {\n  -webkit-mask-image: -webkit-gradient(linear, left bottom, left 87%, from(rgba(0,0,0,0.1)), to(#000));\n}\nlol-social-chat-window .conversations.has-button {\n  margin-bottom: 36px;\n}\nlol-social-chat-window .conversations:lang(ar-ae) {\n  border-right: none;\n  border-left: thin solid #1e282d;\n}\nlol-social-chat-window .conversation {\n  display: flex;\n  align-items: center;\n  height: 60px;\n  cursor: pointer;\n  padding: 0 0 0 10px;\n}\nlol-social-chat-window .conversation:lang(ar-ae) {\n  padding: 0 10px 0 0;\n}\nlol-social-chat-window .conversation.active .conversation-subtitle {\n  color: #a09b8c;\n}\nlol-social-chat-window .conversation:hover {\n  background-color: #1e2328;\n}\nlol-social-chat-window .conversation:hover .conversation-close-button {\n  display: block;\n}\nlol-social-chat-window .conversation:hover .conversation-cannot-close-button {\n  display: block;\n}\nlol-social-chat-window .conversation:hover .conversation-muted:not([permanent]) {\n  display: none;\n}\nlol-social-chat-window .conversation:hover .conversation-subtitle {\n  color: #f0e6d2;\n}\nlol-social-chat-window .conversation.active {\n  padding: 0;\n  background: rgba(240,230,210,0.18);\n}\nlol-social-chat-window .conversation.active::before {\n  content: '';\n  width: 6px;\n  height: 100%;\n  background-color: #c89b3c;\n  margin: 0 10px 0 0;\n}\nlol-social-chat-window .conversation.active:lang(ar-ae)::before {\n  margin: 0 0 0 10px;\n}\nlol-social-chat-window .conversation.animate-move {\n  background-color: #fff;\n  box-shadow: 0 0 8px rgba(0,0,0,0.7);\n}\nlol-social-chat-window .clash-seperator {\n  height: 1px;\n  max-width: 100%;\n  margin: 8px 10px;\n  background: rgba(240,230,210,0.3);\n}\nlol-social-chat-window .conversation-titles-container {\n  flex: 1;\n  overflow: hidden;\n  margin: 0 5px 0 0;\n}\nlol-social-chat-window .conversation-titles-container:lang(ar-ae) {\n  margin: 0 0 0 5px;\n}\nlol-social-chat-window .clash-icon {\n  width: 32px;\n  height: 32px;\n  margin: 0 6px 0 0;\n}\nlol-social-chat-window .clash-icon:lang(ar-ae) {\n  margin: 0 0 0 6px;\n}\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .conversation-subtitle {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  position: relative;\n}\nlol-social-chat-window .conversation-title {\n  color: #f0e6d2;\n}\nlol-social-chat-window .conversation-subtitle {\n  color: #5b5a56;\n}\nlol-social-chat-window .conversation.unread {\n  background: rgba(240,230,210,0.18);\n}\nlol-social-chat-window .conversation.unread.use-animation {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-chat-window .conversation.unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-chat-window .conversation.unread .conversation-title {\n  font-weight: bold;\n}\nlol-social-chat-window .conversation.unread .conversation-subtitle {\n  color: #c89b3c;\n  font-weight: bold;\n}\nlol-social-chat-window .conversation-close-button {\n  -webkit-mask: url(" + m + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  -webkit-mask-size: contain;\n  display: none;\n  width: 18px;\n  height: 18px;\n  margin: 0 3px 0 auto;\n}\nlol-social-chat-window .conversation-close-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .conversation-close-button:active {\n  background-color: #463714;\n}\nlol-social-chat-window .conversation-close-button:lang(ar-ae) {\n  margin: 0 auto 0 3px;\n}\nlol-social-chat-window .conversation-cannot-close-button {\n  -webkit-mask: url(" + p + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #5b5a56;\n  -webkit-mask-size: contain;\n  display: none;\n  width: 18px;\n  height: 18px;\n  margin: 0 3px 0 auto;\n}\nlol-social-chat-window .conversation-cannot-close-button:lang(ar-ae) {\n  margin: 0 auto 0 3px;\n}\nlol-social-chat-window .conversation-muted {\n  -webkit-mask: url(" + A + ") no-repeat center;\n  -webkit-mask-size: 16px;\n  background-color: #5b5a56;\n  width: 22px;\n  height: 22px;\n}\nlol-social-chat-window .social-count-badge {\n  margin: 0 3px;\n}\nlol-social-chat-window .conversations-list {\n  display: flex;\n  flex-direction: column;\n}\nlol-social-chat-window .more-unread {\n  position: absolute;\n  left: 0;\n  width: 179px;\n  padding: 0 4px;\n  box-sizing: border-box;\n  background-color: rgba(1,10,19,0.5);\n  cursor: pointer;\n}\nlol-social-chat-window .more-unread .bar {\n  background-color: #c89b3c;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 24px;\n  font-weight: 900;\n  color: #010a13;\n  font-size: 12px;\n}\nlol-social-chat-window .more-unread .arrow {\n  position: absolute;\n  left: 50%;\n  margin-left: -6px;\n  border: 4px solid transparent;\n}\nlol-social-chat-window .more-unread.below {\n  bottom: 0;\n  padding-bottom: 20px;\n}\nlol-social-chat-window .more-unread.below .arrow {\n  border-top: 6px solid #f0e6d2;\n  bottom: 4px;\n}\nlol-social-chat-window .more-unread.above {\n  top: 0;\n  padding-top: 20px;\n}\nlol-social-chat-window .more-unread.above .arrow {\n  border-bottom: 6px solid #f0e6d2;\n  top: 4px;\n}\nlol-social-chat-window .chat-area {\n  position: relative;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\nlol-social-chat-window .chat-area .chat-input .chat-toggle-button {\n  display: none;\n}\nlol-social-chat-window .chat-header {\n  color: #f0e6d2;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  height: 48px;\n  border-bottom: thin solid #785a28;\n  padding: 0 0 0 8px;\n  box-sizing: border-box;\n  flex-shrink: 0;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header:lang(ar-ae) {\n  padding: 0 8px 0 0;\n}\nlol-social-chat-window .chat-header .spacer {\n  flex: 1;\n}\nlol-social-chat-window .chat-header.room-header .chat-name {\n  cursor: pointer;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-container {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: nowrap;\n  align-items: flex-end;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  color: #c8aa6e;\n  flex-direction: row;\n  overflow: hidden;\n  margin: 0 7px 0 0;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ar-ae) {\n  margin: 0 0 0 7px;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-main {\n  text-overflow: ellipsis;\n  max-width: 150px;\n  flex-direction: row;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header .chat-header-title {\n  text-overflow: ellipsis;\n  max-width: 200px;\n  flex-direction: row;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header .chat-participants-count {\n  display: flex;\n  flex-direction: column;\n  margin: 0 0 0 5px;\n}\nlol-social-chat-window .chat-header .chat-participants-count:lang(ar-ae) {\n  margin: 0 5px 0 0;\n}\nlol-social-chat-window .toggle-btn {\n  margin: 2px 0 0 8px;\n}\nlol-social-chat-window .toggle-btn:lang(ar-ae) {\n  margin: 2px 8px 0 0;\n}\nlol-social-chat-window .status,\nlol-social-chat-window .avatar {\n  flex-shrink: 0;\n  margin: 0 8px 0 0;\n}\nlol-social-chat-window .status:lang(ar-ae),\nlol-social-chat-window .avatar:lang(ar-ae) {\n  margin: 0 0 0 8px;\n}\nlol-social-chat-window .chat-name {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  overflow: hidden;\n  justify-content: flex-start;\n  flex-direction: row;\n}\nlol-social-chat-window .chat-name-info {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  max-width: 250px;\n  word-break: keep-all;\n}\nlol-social-chat-window .chat-name-info > div {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  overflow: hidden;\n  justify-content: flex-start;\n  flex-direction: row;\n}\nlol-social-chat-window .chat-name-info .chat-name {\n  height: auto;\n}\nlol-social-chat-window .chat-name-info .chat-gnt {\n  color: #5b5a56;\n  margin-top: -2px;\n}\nlol-social-chat-window .chat-name-info .gameTag {\n  color: #5b5a56;\n}\nlol-social-chat-window .header-button {\n  height: 18px;\n  width: 18px;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-self: flex-start;\n  margin: 8px 5px 0 0;\n}\nlol-social-chat-window .header-button:lang(ar-ae) {\n  margin: 8px 0 0 5px;\n}\nlol-social-chat-window .close-window-button {\n  -webkit-mask: url(" + h + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #a09b8c;\n  -webkit-mask-size: contain;\n}\nlol-social-chat-window .close-window-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .close-window-button:active {\n  background-color: #3c3c41;\n}\nlol-social-chat-window .conversation-settings-button {\n  -webkit-mask: url(" + g + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #a09b8c;\n  -webkit-mask-size: contain;\n}\nlol-social-chat-window .conversation-settings-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .conversation-settings-button:active {\n  background-color: #3c3c41;\n}\nlol-social-chat-window .conversation-settings-button[disabled] {\n  background-color: #5c5b57;\n  cursor: default;\n  pointer-events: none;\n}\nlol-social-chat-window .participants {\n  color: #f0e6d2;\n  z-index: 1;\n  margin-top: -1px;\n  padding-bottom: 4px;\n  width: 100%;\n  max-height: calc(100% - 51px);\n  background: #010a13;\n  border-bottom: thin solid #785a28;\n}\nlol-social-chat-window .participants .participant {\n  display: flex;\n  align-items: center;\n  padding: 6px;\n}\nlol-social-chat-window .participants .participant .avatar {\n  margin: 0 8px 0 0;\n}\nlol-social-chat-window .participants .participant .avatar:lang(ar-ae) {\n  margin: 0 0 0 8px;\n}\nlol-social-chat-window .messages {\n  flex: 1;\n}\nlol-social-chat-window .chat-input {\n  color: #f0e6d2;\n  padding: 5px 8px;\n  flex-shrink: 0;\n}\nlol-social-chat-window .chat-input:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-chat-window .create-panel .create-panel-search-input {\n  margin-bottom: 5px;\n}\nlol-social-chat-window .create-panel .create-panel-gnt {\n  color: #5b5a56;\n}\nlol-social-chat-window .create-panel .create-panel-gnt .create-panel-game-name.only-name {\n  color: #a09b8c;\n}\nlol-social-chat-window .create-panel .create-panel-search-match {\n  color: #a09b8c;\n  display: flex;\n  align-items: center;\n  padding: 5px 10px;\n  letter-spacing: 0.05em;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover {\n  color: #f0e6d2;\n  cursor: pointer;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover .create-panel-gnt {\n  color: #a09b8c;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover .create-panel-gnt .create-panel-game-name.only-name {\n  color: #f0e6d2;\n}\nlol-social-chat-window .create-panel .create-chat-input {\n  height: 32px;\n  width: 349px;\n  position: absolute;\n  bottom: 0;\n}\nlol-social-chat-window .settings-menu {\n  position: absolute;\n  top: 47px;\n  right: 0;\n  min-width: 180px;\n  border: thin solid #785a28;\n  background-color: #010a13;\n}\nlol-social-chat-window .settings-menu:lang(ar-ae) {\n  right: auto;\n  left: 0;\n}\nlol-social-chat-window lol-social-menu-item {\n  color: #cdbe91;\n  padding: 0;\n}\nlol-social-chat-window lol-social-menu-item:lang(ar-ae) {\n  text-align: right;\n}\nlol-social-chat-window label.conversation-mute-label {\n  margin: 2px 0 0 10px;\n}\nlol-social-chat-window lol-uikit-flat-checkbox,\nlol-social-chat-window .clear-history {\n  padding: 8px 10px;\n}\nlol-social-chat-window lol-uikit-flat-checkbox .hide-offline-label {\n  color: #cdbe91;\n}\nlol-social-chat-window lol-uikit-flat-checkbox:hover .hide-offline-label {\n  color: #f0e6d2;\n}\nlol-social-chat-window .resizer {\n  position: absolute;\n  top: -5px;\n  left: 0;\n  height: 10px;\n  width: 100%;\n  cursor: n-resize;\n}\nlol-social-chat-window .new-chat-button {\n  height: 32px;\n  width: 191px;\n  padding: 4px 4px 0px 4px;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n}\nlol-social-chat-window .new-chat-button:lang(ar-ae) {\n  left: auto;\n  right: 0;\n}\n@-moz-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-o-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n", "", {
+            d.push([e.id, "lol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  font-family: var(--font-display);\n}\n.social-count-badge,\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .more-unread .bar,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  font-family: var(--font-body);\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  -webkit-user-select: none;\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input,\nlol-social-chat-window .create-panel .create-panel-search-match,\nlol-social-chat-window lol-social-menu-item {\n  font-kerning: normal;\n  -webkit-font-feature-settings: \"kern\" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-chat-window .more-unread .bar,\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  text-transform: uppercase;\n}\nlol-social-chat-window .more-unread .bar:lang(ko-kr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ko-kr),\nlol-social-chat-window .more-unread .bar:lang(ja-jp),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ja-jp),\nlol-social-chat-window .more-unread .bar:lang(tr-tr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(tr-tr),\nlol-social-chat-window .more-unread .bar:lang(el-gr),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(el-gr),\nlol-social-chat-window .more-unread .bar:lang(th-th),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(th-th),\nlol-social-chat-window .more-unread .bar:lang(zh-tw),\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  color: #f0e6d2;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0.05em;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .chat-header,\nlol-social-chat-window .participants,\nlol-social-chat-window .chat-input {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window .conversation-title:lang(ar-ae),\nlol-social-chat-window .chat-header:lang(ar-ae),\nlol-social-chat-window .participants:lang(ar-ae),\nlol-social-chat-window .chat-input:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation,\nlol-social-chat-window .chat-name-info .chat-gnt,\nlol-social-chat-window .create-panel .create-panel-search-match {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window .conversation:lang(ja-jp),\nlol-social-chat-window .chat-name-info .chat-gnt:lang(ja-jp),\nlol-social-chat-window .create-panel .create-panel-search-match:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-chat-window .conversation:lang(ar-ae),\nlol-social-chat-window .chat-name-info .chat-gnt:lang(ar-ae),\nlol-social-chat-window .create-panel .create-panel-search-match:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window lol-social-menu-item {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.1em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-chat-window lol-social-menu-item:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-chat-window lol-social-menu-item:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-chat-window .conversation.unread .conversation-title,\nlol-social-chat-window .chat-header {\n  color: #f0e6d2;\n}\n.social-scroll {\n  overflow-y: auto;\n  overflow-x: hidden;\n}\n.social-scroll::-webkit-scrollbar {\n  width: 11px;\n  background: none;\n}\n.social-scroll::-webkit-scrollbar-thumb {\n  border: 3px solid transparent;\n  background-color: #1e2328;\n  border-radius: 6px;\n  background-clip: padding-box;\n}\n.social-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #785a28;\n}\n.social-scroll::-webkit-scrollbar-thumb:hover {\n  background-color: #cdbe91;\n}\n.social-scroll::-webkit-scrollbar-thumb:active {\n  background-color: #463714;\n}\n.social-blue-scroll {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.social-blue-scroll::-webkit-scrollbar {\n  width: 9px;\n  background: transparent;\n}\n.social-blue-scroll::-webkit-scrollbar-thumb {\n  background: transparent;\n  border-radius: 6px;\n  border: 2px solid transparent;\n  background-clip: padding-box;\n}\n.social-blue-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #0596aa;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-chat-window .conversation-close-button,\nlol-social-chat-window .conversation-cannot-close-button,\nlol-social-chat-window .close-window-button,\nlol-social-chat-window .conversation-settings-button {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-chat-window {\n  position: absolute;\n  width: 550px;\n  height: 366px;\n  min-height: 366px;\n  max-height: 640px;\n  pointer-events: none;\n  right: 0;\n  bottom: 0;\n  transform: translateZ(0);\n  will-change: transform;\n}\nlol-social-chat-window:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-chat-window .hidden {\n  display: none !important;\n}\nlol-social-chat-window #chat-window-wrapper {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(1,10,19,0.88);\n  border: thin solid #1e282d;\n  box-sizing: border-box;\n  pointer-events: auto;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  overflow: hidden;\n}\nlol-social-chat-window #chat-window-wrapper.use-animation {\n  transition: all 350ms cubic-bezier(0, 0, 0, 1);\n}\nlol-social-chat-window #chat-window-wrapper:not(.open) {\n  height: 0;\n  width: 0;\n}\nlol-social-chat-window #chat-window-wrapper.button-inside .chat-input {\n  margin-right: 41px;\n}\nlol-social-chat-window .conversations {\n  position: relative;\n  width: 199px;\n  height: auto;\n  border-right: thin solid #1e282d;\n  box-sizing: border-box;\n  flex-shrink: 0;\n}\nlol-social-chat-window .conversations:not(.scrolled-to-bottom) {\n  -webkit-mask-image: -webkit-gradient(linear, left bottom, left 87%, from(rgba(0,0,0,0.1)), to(#000));\n}\nlol-social-chat-window .conversations.has-button {\n  margin-bottom: 36px;\n}\nlol-social-chat-window .conversations:lang(ar-ae) {\n  border-right: none;\n  border-left: thin solid #1e282d;\n}\nlol-social-chat-window .conversation {\n  display: flex;\n  align-items: center;\n  height: 60px;\n  cursor: pointer;\n  padding: 0 0 0 10px;\n}\nlol-social-chat-window .conversation:lang(ar-ae) {\n  padding: 0 10px 0 0;\n}\nlol-social-chat-window .conversation.active .conversation-subtitle {\n  color: #a09b8c;\n}\nlol-social-chat-window .conversation:hover {\n  background-color: #1e2328;\n}\nlol-social-chat-window .conversation:hover .conversation-close-button {\n  display: block;\n}\nlol-social-chat-window .conversation:hover .conversation-cannot-close-button {\n  display: block;\n}\nlol-social-chat-window .conversation:hover .conversation-muted:not([permanent]) {\n  display: none;\n}\nlol-social-chat-window .conversation:hover .conversation-subtitle {\n  color: #f0e6d2;\n}\nlol-social-chat-window .conversation.active {\n  padding: 0;\n  background: rgba(240,230,210,0.18);\n}\nlol-social-chat-window .conversation.active::before {\n  content: '';\n  width: 6px;\n  height: 100%;\n  background-color: #c89b3c;\n  margin: 0 10px 0 0;\n}\nlol-social-chat-window .conversation.active:lang(ar-ae)::before {\n  margin: 0 0 0 10px;\n}\nlol-social-chat-window .conversation.animate-move {\n  background-color: #fff;\n  box-shadow: 0 0 8px rgba(0,0,0,0.7);\n}\nlol-social-chat-window .clash-seperator {\n  height: 1px;\n  max-width: 100%;\n  margin: 8px 10px;\n  background: rgba(240,230,210,0.3);\n}\nlol-social-chat-window .conversation-titles-container {\n  flex: 1;\n  overflow: hidden;\n  margin: 0 5px 0 0;\n}\nlol-social-chat-window .conversation-titles-container:lang(ar-ae) {\n  margin: 0 0 0 5px;\n}\nlol-social-chat-window .clash-icon {\n  width: 32px;\n  height: 32px;\n  margin: 0 6px 0 0;\n}\nlol-social-chat-window .clash-icon:lang(ar-ae) {\n  margin: 0 0 0 6px;\n}\nlol-social-chat-window .conversation-title,\nlol-social-chat-window .conversation-subtitle {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  position: relative;\n}\nlol-social-chat-window .conversation-title {\n  color: #f0e6d2;\n}\nlol-social-chat-window .conversation-subtitle {\n  color: #5b5a56;\n}\nlol-social-chat-window .conversation.unread {\n  background: rgba(240,230,210,0.18);\n}\nlol-social-chat-window .conversation.unread.use-animation {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-chat-window .conversation.unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-chat-window .conversation.unread .conversation-title {\n  font-weight: bold;\n}\nlol-social-chat-window .conversation.unread .conversation-subtitle {\n  color: #c89b3c;\n  font-weight: bold;\n}\nlol-social-chat-window .conversation-close-button {\n  -webkit-mask: url(" + m + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  -webkit-mask-size: contain;\n  display: none;\n  width: 18px;\n  height: 18px;\n  margin: 0 3px 0 auto;\n}\nlol-social-chat-window .conversation-close-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .conversation-close-button:active {\n  background-color: #463714;\n}\nlol-social-chat-window .conversation-close-button:lang(ar-ae) {\n  margin: 0 auto 0 3px;\n}\nlol-social-chat-window .conversation-cannot-close-button {\n  -webkit-mask: url(" + A + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #5b5a56;\n  -webkit-mask-size: contain;\n  display: none;\n  width: 18px;\n  height: 18px;\n  margin: 0 3px 0 auto;\n}\nlol-social-chat-window .conversation-cannot-close-button:lang(ar-ae) {\n  margin: 0 auto 0 3px;\n}\nlol-social-chat-window .conversation-muted {\n  -webkit-mask: url(" + p + ") no-repeat center;\n  -webkit-mask-size: 16px;\n  background-color: #5b5a56;\n  width: 22px;\n  height: 22px;\n}\nlol-social-chat-window .social-count-badge {\n  margin: 0 3px;\n}\nlol-social-chat-window .conversations-list {\n  display: flex;\n  flex-direction: column;\n}\nlol-social-chat-window .more-unread {\n  position: absolute;\n  left: 0;\n  width: 179px;\n  padding: 0 4px;\n  box-sizing: border-box;\n  background-color: rgba(1,10,19,0.5);\n  cursor: pointer;\n}\nlol-social-chat-window .more-unread .bar {\n  background-color: #c89b3c;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 24px;\n  font-weight: 900;\n  color: #010a13;\n  font-size: 12px;\n}\nlol-social-chat-window .more-unread .arrow {\n  position: absolute;\n  left: 50%;\n  margin-left: -6px;\n  border: 4px solid transparent;\n}\nlol-social-chat-window .more-unread.below {\n  bottom: 0;\n  padding-bottom: 20px;\n}\nlol-social-chat-window .more-unread.below .arrow {\n  border-top: 6px solid #f0e6d2;\n  bottom: 4px;\n}\nlol-social-chat-window .more-unread.above {\n  top: 0;\n  padding-top: 20px;\n}\nlol-social-chat-window .more-unread.above .arrow {\n  border-bottom: 6px solid #f0e6d2;\n  top: 4px;\n}\nlol-social-chat-window .chat-area {\n  position: relative;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n}\nlol-social-chat-window .chat-area .chat-input .chat-toggle-button {\n  display: none;\n}\nlol-social-chat-window .chat-header {\n  color: #f0e6d2;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  height: 48px;\n  border-bottom: thin solid #785a28;\n  padding: 0 0 0 8px;\n  box-sizing: border-box;\n  flex-shrink: 0;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header:lang(ar-ae) {\n  padding: 0 8px 0 0;\n}\nlol-social-chat-window .chat-header .spacer {\n  flex: 1;\n}\nlol-social-chat-window .chat-header.room-header .chat-name {\n  cursor: pointer;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-container {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: nowrap;\n  align-items: flex-end;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix {\n  color: #c8aa6e;\n  flex-direction: row;\n  overflow: hidden;\n  margin: 0 7px 0 0;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-prefix:lang(ar-ae) {\n  margin: 0 0 0 7px;\n}\nlol-social-chat-window .chat-header .chat-header-clash-title-main {\n  text-overflow: ellipsis;\n  max-width: 150px;\n  flex-direction: row;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header .chat-header-title {\n  text-overflow: ellipsis;\n  max-width: 200px;\n  flex-direction: row;\n  overflow: hidden;\n}\nlol-social-chat-window .chat-header .chat-participants-count {\n  display: flex;\n  flex-direction: column;\n  margin: 0 0 0 5px;\n}\nlol-social-chat-window .chat-header .chat-participants-count:lang(ar-ae) {\n  margin: 0 5px 0 0;\n}\nlol-social-chat-window .toggle-btn {\n  margin: 2px 0 0 8px;\n}\nlol-social-chat-window .toggle-btn:lang(ar-ae) {\n  margin: 2px 8px 0 0;\n}\nlol-social-chat-window .status,\nlol-social-chat-window .avatar {\n  flex-shrink: 0;\n  margin: 0 8px 0 0;\n}\nlol-social-chat-window .status:lang(ar-ae),\nlol-social-chat-window .avatar:lang(ar-ae) {\n  margin: 0 0 0 8px;\n}\nlol-social-chat-window .chat-name {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  overflow: hidden;\n  justify-content: flex-start;\n  flex-direction: row;\n}\nlol-social-chat-window .chat-name-info {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  max-width: 250px;\n  word-break: keep-all;\n}\nlol-social-chat-window .chat-name-info > div {\n  display: flex;\n  height: 100%;\n  align-items: center;\n  overflow: hidden;\n  justify-content: flex-start;\n  flex-direction: row;\n}\nlol-social-chat-window .chat-name-info .chat-name {\n  height: auto;\n}\nlol-social-chat-window .chat-name-info .chat-gnt {\n  color: #5b5a56;\n  margin-top: -2px;\n}\nlol-social-chat-window .chat-name-info .gameTag {\n  color: #5b5a56;\n}\nlol-social-chat-window .header-button {\n  height: 18px;\n  width: 18px;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  align-self: flex-start;\n  margin: 8px 5px 0 0;\n}\nlol-social-chat-window .header-button:lang(ar-ae) {\n  margin: 8px 0 0 5px;\n}\nlol-social-chat-window .close-window-button {\n  -webkit-mask: url(" + h + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #a09b8c;\n  -webkit-mask-size: contain;\n}\nlol-social-chat-window .close-window-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .close-window-button:active {\n  background-color: #3c3c41;\n}\nlol-social-chat-window .conversation-settings-button {\n  -webkit-mask: url(" + g + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #a09b8c;\n  -webkit-mask-size: contain;\n}\nlol-social-chat-window .conversation-settings-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-chat-window .conversation-settings-button:active {\n  background-color: #3c3c41;\n}\nlol-social-chat-window .conversation-settings-button[disabled] {\n  background-color: #5c5b57;\n  cursor: default;\n  pointer-events: none;\n}\nlol-social-chat-window .participants {\n  color: #f0e6d2;\n  z-index: 1;\n  margin-top: -1px;\n  padding-bottom: 4px;\n  width: 100%;\n  max-height: calc(100% - 51px);\n  background: #010a13;\n  border-bottom: thin solid #785a28;\n}\nlol-social-chat-window .participants .participant {\n  display: flex;\n  align-items: center;\n  padding: 6px;\n}\nlol-social-chat-window .participants .participant .avatar {\n  margin: 0 8px 0 0;\n}\nlol-social-chat-window .participants .participant .avatar:lang(ar-ae) {\n  margin: 0 0 0 8px;\n}\nlol-social-chat-window .messages {\n  flex: 1;\n}\nlol-social-chat-window .chat-input {\n  color: #f0e6d2;\n  padding: 5px 8px;\n  flex-shrink: 0;\n}\nlol-social-chat-window .chat-input:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-chat-window .create-panel .create-panel-search-input {\n  margin-bottom: 5px;\n}\nlol-social-chat-window .create-panel .create-panel-gnt {\n  color: #5b5a56;\n}\nlol-social-chat-window .create-panel .create-panel-gnt .create-panel-game-name.only-name {\n  color: #a09b8c;\n}\nlol-social-chat-window .create-panel .create-panel-search-match {\n  color: #a09b8c;\n  display: flex;\n  align-items: center;\n  padding: 5px 10px;\n  letter-spacing: 0.05em;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover {\n  color: #f0e6d2;\n  cursor: pointer;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover .create-panel-gnt {\n  color: #a09b8c;\n}\nlol-social-chat-window .create-panel .create-panel-search-match:hover .create-panel-gnt .create-panel-game-name.only-name {\n  color: #f0e6d2;\n}\nlol-social-chat-window .create-panel .create-chat-input {\n  height: 32px;\n  width: 349px;\n  position: absolute;\n  bottom: 0;\n}\nlol-social-chat-window .settings-menu {\n  position: absolute;\n  top: 47px;\n  right: 0;\n  min-width: 180px;\n  border: thin solid #785a28;\n  background-color: #010a13;\n}\nlol-social-chat-window .settings-menu:lang(ar-ae) {\n  right: auto;\n  left: 0;\n}\nlol-social-chat-window lol-social-menu-item {\n  color: #cdbe91;\n  padding: 0;\n}\nlol-social-chat-window lol-social-menu-item:lang(ar-ae) {\n  text-align: right;\n}\nlol-social-chat-window label.conversation-mute-label {\n  margin: 2px 0 0 10px;\n}\nlol-social-chat-window lol-uikit-flat-checkbox,\nlol-social-chat-window .clear-history {\n  padding: 8px 10px;\n}\nlol-social-chat-window lol-uikit-flat-checkbox .hide-offline-label {\n  color: #cdbe91;\n}\nlol-social-chat-window lol-uikit-flat-checkbox:hover .hide-offline-label {\n  color: #f0e6d2;\n}\nlol-social-chat-window .resizer {\n  position: absolute;\n  top: -5px;\n  left: 0;\n  height: 10px;\n  width: 100%;\n  cursor: n-resize;\n}\nlol-social-chat-window .new-chat-button {\n  height: 32px;\n  width: 191px;\n  padding: 4px 4px 0px 4px;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n}\nlol-social-chat-window .new-chat-button:lang(ar-ae) {\n  left: auto;\n  right: 0;\n}\n@-moz-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-o-keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes fadein {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n", "", {
                 version: 3,
                 sources: ["webpack://./fe/rcp-fe-lol-social/src/web-components/chat-window/chat-window/chat-window.styl"],
                 names: [],
@@ -11096,7 +11139,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-clash-roster-panel-item", {
-                styles: n(197),
+                styles: n(200),
                 computed: {
                     conversation: "data.getClashConversation(roster.multiUserChatId)",
                     clashRosterParticipants: "data.participants[conversation.id]",
@@ -11124,7 +11167,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-clash-roster-panel", {
-                styles: n(199)
+                styles: n(202)
             })
         }, (e, t, n) => {
             var o = n(160),
@@ -11144,7 +11187,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-friend-request-modal", {
-                styles: n(201),
+                styles: n(204),
                 attached: function() {
                     this.honorRecognitionHistoryPuuids = new Set((this.data.honorRecognitionHistory || []).map((({
                         puuid: e
@@ -11171,14 +11214,14 @@
         }, (e, t, n) => {
             "use strict";
             var o = n(1),
-                i = n(203);
-            const a = n(204),
-                r = n(187),
+                i = n(206);
+            const a = n(207),
+                r = n(190),
                 {
                     computed: s
                 } = o.components;
             o.components.defineElement("lol-social-friend-request", a, r, {
-                styles: n(205),
+                styles: n(208),
                 computed: {
                     summonerInfo: s.resource("/lol-summoner/v2/summoner-icons?ids=[{{friend.summonerId}}]"),
                     icon: "summonerInfo[0].profileIconId"
@@ -11286,20 +11329,20 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(206),
-                s = n(207),
-                l = n(208),
-                c = n(209),
-                u = n(191),
-                d = n(210),
+                r = n(209),
+                s = n(210),
+                l = n(211),
+                c = n(212),
+                u = n(194),
+                d = n(213),
                 m = i(o),
-                p = a(r),
-                A = a(s),
+                A = a(r),
+                p = a(s),
                 h = a(l),
                 g = a(c),
                 f = a(u),
                 b = a(d);
-            m.push([e.id, "lol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  font-family: var(--font-body);\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  -webkit-user-select: none;\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  font-kerning: normal;\n  -webkit-font-feature-settings: \"kern\" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-friend-request .member-name:lang(ar-ae),\nlol-social-friend-request .member-tagline:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-friend-request .social-summoner-name {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-friend-request .social-summoner-name:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-friend-request .social-summoner-name:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-friend-request .friend-request-button.accept,\nlol-social-friend-request .friend-request-button.decline,\nlol-social-friend-request .friend-request-button.block {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-friend-request .friend-request {\n  position: relative;\n  height: 72px;\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n  cursor: default;\n}\nlol-social-friend-request .friend-request:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-friend-request .friend-request:hover {\n  background: #1e2328;\n}\nlol-social-friend-request .friend-request:hover .member-name {\n  color: #f0e6d2;\n}\nlol-social-friend-request .friend-request:hover .member-tagline,\nlol-social-friend-request .friend-request:hover .member-game-name-tagline {\n  color: #a09b8c;\n}\nlol-social-friend-request .friend-request.highlighted {\n  background: #1e2328;\n}\nlol-social-friend-request .friend-icon {\n  height: 32px;\n  width: 32px;\n  margin: 0 10px 0 18px;\n}\nlol-social-friend-request .friend-icon:lang(ar-ae) {\n  margin: 0 18px 0 10px;\n}\nlol-social-friend-request .member-name {\n  color: #a09b8c;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n}\nlol-social-friend-request .member-tagline {\n  color: #5b5a56;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n}\nlol-social-friend-request .member-game-name-tagline {\n  color: #5b5a56;\n  line-height: 1.4;\n}\nlol-social-friend-request .social-member-name {\n  font-size: 14px;\n  color: #a09b8c;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n  padding-left: 19px;\n  margin-bottom: 1px;\n}\nlol-social-friend-request .social-member-name::before {\n  content: '';\n  width: 13px;\n  height: 13px;\n  position: absolute;\n  left: 0;\n  bottom: 2px;\n  background-size: contain;\n}\nlol-social-friend-request .social-member-name.social-member-name-facebook::before {\n  background-image: url(" + p + ");\n}\nlol-social-friend-request .social-member-name.social-member-name-qq::before {\n  background-image: url(" + A + ");\n}\nlol-social-friend-request .social-member-name.social-member-name-vk::before {\n  background-image: url(" + h + ");\n}\nlol-social-friend-request .social-summoner-name {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\nlol-social-friend-request .friend-request-text {\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\nlol-social-friend-request .friend-request-info {\n  color: #c89b3c;\n  line-height: 1.4;\n}\nlol-social-friend-request .action-message {\n  color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-buttons {\n  display: flex;\n}\nlol-social-friend-request .friend-request-button {\n  width: 29px;\n  height: 29px;\n}\nlol-social-friend-request .friend-request-button.hidden {\n  visibility: hidden;\n}\nlol-social-friend-request .friend-request-button.accept {\n  -webkit-mask: url(" + g + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin-right: 0px;\n}\nlol-social-friend-request .friend-request-button.accept:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.accept:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.accept.accepted {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button.decline {\n  -webkit-mask: url(" + f + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin-right: 0px;\n}\nlol-social-friend-request .friend-request-button.decline:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.decline:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.decline.declined {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button.block {\n  -webkit-mask: url(" + b + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin: 0 18px 0 0;\n}\nlol-social-friend-request .friend-request-button.block:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.block:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.block.blocked {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button:lang(ar-ae) {\n  margin: 0 5px 0 18px;\n}\nlol-social-friend-request .social-icon {\n  border: thin solid #3c3c41;\n  width: 32px;\n  height: 32px;\n  padding: 1px;\n  box-sizing: border-box;\n  margin: 0 10px 0 18px;\n}\nlol-social-friend-request .recently-honored-icon {\n  vertical-align: middle;\n  margin-right: 3px;\n}\nlol-social-friend-request .recently-honored-description {\n  color: #c8aa6e;\n}\n", "", {
+            m.push([e.id, "lol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  font-family: var(--font-body);\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  -webkit-user-select: none;\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline,\nlol-social-friend-request .social-summoner-name {\n  font-kerning: normal;\n  -webkit-font-feature-settings: \"kern\" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-friend-request .member-name,\nlol-social-friend-request .member-tagline {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-friend-request .member-name:lang(ar-ae),\nlol-social-friend-request .member-tagline:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-friend-request .social-summoner-name {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-friend-request .social-summoner-name:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-friend-request .social-summoner-name:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-friend-request .friend-request-button.accept,\nlol-social-friend-request .friend-request-button.decline,\nlol-social-friend-request .friend-request-button.block {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-friend-request .friend-request {\n  position: relative;\n  height: 72px;\n  display: flex;\n  flex-flow: row nowrap;\n  align-items: center;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n  cursor: default;\n}\nlol-social-friend-request .friend-request:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-friend-request .friend-request:hover {\n  background: #1e2328;\n}\nlol-social-friend-request .friend-request:hover .member-name {\n  color: #f0e6d2;\n}\nlol-social-friend-request .friend-request:hover .member-tagline,\nlol-social-friend-request .friend-request:hover .member-game-name-tagline {\n  color: #a09b8c;\n}\nlol-social-friend-request .friend-request.highlighted {\n  background: #1e2328;\n}\nlol-social-friend-request .friend-icon {\n  height: 32px;\n  width: 32px;\n  margin: 0 10px 0 18px;\n}\nlol-social-friend-request .friend-icon:lang(ar-ae) {\n  margin: 0 18px 0 10px;\n}\nlol-social-friend-request .member-name {\n  color: #a09b8c;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n}\nlol-social-friend-request .member-tagline {\n  color: #5b5a56;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n}\nlol-social-friend-request .member-game-name-tagline {\n  color: #5b5a56;\n  line-height: 1.4;\n}\nlol-social-friend-request .social-member-name {\n  font-size: 14px;\n  color: #a09b8c;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  position: relative;\n  padding-left: 19px;\n  margin-bottom: 1px;\n}\nlol-social-friend-request .social-member-name::before {\n  content: '';\n  width: 13px;\n  height: 13px;\n  position: absolute;\n  left: 0;\n  bottom: 2px;\n  background-size: contain;\n}\nlol-social-friend-request .social-member-name.social-member-name-facebook::before {\n  background-image: url(" + A + ");\n}\nlol-social-friend-request .social-member-name.social-member-name-qq::before {\n  background-image: url(" + p + ");\n}\nlol-social-friend-request .social-member-name.social-member-name-vk::before {\n  background-image: url(" + h + ");\n}\nlol-social-friend-request .social-summoner-name {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\nlol-social-friend-request .friend-request-text {\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\nlol-social-friend-request .friend-request-info {\n  color: #c89b3c;\n  line-height: 1.4;\n}\nlol-social-friend-request .action-message {\n  color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-buttons {\n  display: flex;\n}\nlol-social-friend-request .friend-request-button {\n  width: 29px;\n  height: 29px;\n}\nlol-social-friend-request .friend-request-button.hidden {\n  visibility: hidden;\n}\nlol-social-friend-request .friend-request-button.accept {\n  -webkit-mask: url(" + g + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin-right: 0px;\n}\nlol-social-friend-request .friend-request-button.accept:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.accept:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.accept.accepted {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button.decline {\n  -webkit-mask: url(" + f + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin-right: 0px;\n}\nlol-social-friend-request .friend-request-button.decline:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.decline:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.decline.declined {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button.block {\n  -webkit-mask: url(" + b + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  margin: 0 18px 0 0;\n}\nlol-social-friend-request .friend-request-button.block:hover {\n  background-color: #f0e6d2;\n}\nlol-social-friend-request .friend-request-button.block:active {\n  background-color: #463714;\n}\nlol-social-friend-request .friend-request-button.block.blocked {\n  background-color: #f0e6d2;\n  pointer-events: none;\n}\nlol-social-friend-request .friend-request-button:lang(ar-ae) {\n  margin: 0 5px 0 18px;\n}\nlol-social-friend-request .social-icon {\n  border: thin solid #3c3c41;\n  width: 32px;\n  height: 32px;\n  padding: 1px;\n  box-sizing: border-box;\n  margin: 0 10px 0 18px;\n}\nlol-social-friend-request .recently-honored-icon {\n  vertical-align: middle;\n  margin-right: 3px;\n}\nlol-social-friend-request .recently-honored-description {\n  color: #c8aa6e;\n}\n", "", {
                 version: 3,
                 sources: ["webpack://./fe/rcp-fe-lol-social/src/web-components/friend-request/friend-request.styl"],
                 names: [],
@@ -11332,7 +11375,7 @@
                     computed: a
                 } = i;
             i.defineElement("lol-social-friend-requests", {
-                styles: n(212),
+                styles: n(215),
                 computed: {
                     gameflow: a.resource("/lol-gameflow/v1/session"),
                     inGame: "gameflow.gameClient.running"
@@ -11395,9 +11438,9 @@
         }, (e, t, n) => {
             "use strict";
             var o = n(1);
-            const i = n(204);
+            const i = n(207);
             o.components.defineElement("lol-social-game-invite", i, {
-                styles: n(214),
+                styles: n(217),
                 computed: {
                     inviterName: "data.getDisplayName(gameInvite)",
                     isAcceptable: "data.isGameInviteAcceptable(gameInvite)",
@@ -11481,8 +11524,8 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(215),
-                s = n(191),
+                r = n(218),
+                s = n(194),
                 l = i(o),
                 c = a(r),
                 u = a(s);
@@ -11504,7 +11547,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-game-invites", {
-                styles: n(217),
+                styles: n(220),
                 clearAll: function() {
                     this.sounds.play("click");
                     for (let e = this.data.gameInvites.length - 1; e >= 0; e--) this.data.declineGameInvite(this.data.gameInvites[e])
@@ -11517,7 +11560,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(218),
+                r = n(221),
                 s = i(o),
                 l = a(r);
             s.push([e.id, 'lol-social-game-invites .game-invite-heading {\n  font-family: var(--font-display);\n}\n.social-count-badge {\n  font-family: var(--font-body);\n}\nlol-social-game-invites .game-invite-heading {\n  -webkit-user-select: none;\n}\nlol-social-game-invites .game-invite-heading {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-game-invites .game-invite-heading {\n  text-transform: uppercase;\n}\nlol-social-game-invites .game-invite-heading:lang(ko-kr),\nlol-social-game-invites .game-invite-heading:lang(ja-jp),\nlol-social-game-invites .game-invite-heading:lang(tr-tr),\nlol-social-game-invites .game-invite-heading:lang(el-gr),\nlol-social-game-invites .game-invite-heading:lang(th-th),\nlol-social-game-invites .game-invite-heading:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-game-invites .game-invite-heading {\n  color: #f0e6d2;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 16px;\n  letter-spacing: 0.075em;\n}\nlol-social-game-invites .game-invite-heading:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-game-invites .game-invite-heading:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.social-scroll {\n  overflow-y: auto;\n  overflow-x: hidden;\n}\n.social-scroll::-webkit-scrollbar {\n  width: 11px;\n  background: none;\n}\n.social-scroll::-webkit-scrollbar-thumb {\n  border: 3px solid transparent;\n  background-color: #1e2328;\n  border-radius: 6px;\n  background-clip: padding-box;\n}\n.social-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #785a28;\n}\n.social-scroll::-webkit-scrollbar-thumb:hover {\n  background-color: #cdbe91;\n}\n.social-scroll::-webkit-scrollbar-thumb:active {\n  background-color: #463714;\n}\n.social-blue-scroll {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.social-blue-scroll::-webkit-scrollbar {\n  width: 9px;\n  background: transparent;\n}\n.social-blue-scroll::-webkit-scrollbar-thumb {\n  background: transparent;\n  border-radius: 6px;\n  border: 2px solid transparent;\n  background-clip: padding-box;\n}\n.social-blue-scroll:hover::-webkit-scrollbar-thumb {\n  background-color: #0596aa;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-game-invites .clear-all-button {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\nlol-social-game-invites .game-invite-heading {\n  display: flex;\n  align-items: center;\n  height: 32px;\n  color: #a09b8c;\n  padding: 0 5px 0 9px;\n  flex-shrink: 0;\n  pointer-events: none;\n  margin-top: 1px;\n}\nlol-social-game-invites .hover-highlight {\n  pointer-events: auto;\n}\nlol-social-game-invites .hover-highlight:hover {\n  background: linear-gradient(to right, rgba(10,203,230,0.2), rgba(10,203,230,0));\n  cursor: pointer;\n  color: #f0e6d2;\n}\nlol-social-game-invites .hover-highlight:active {\n  color: #cdbe91;\n}\nlol-social-game-invites .game-invite-heading-container {\n  flex: 1;\n  display: flex;\n  margin-right: 7px;\n  overflow: hidden;\n}\nlol-social-game-invites .game-invite-heading-text {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\nlol-social-game-invites .game-invite-count {\n  padding-left: 5px;\n}\nlol-social-game-invites .clear-all-button {\n  -webkit-mask: url(' + l + ") no-repeat center;\n  -webkit-mask-size: 18px;\n  background-color: #c8aa6e;\n  width: 18px;\n  height: 18px;\n  pointer-events: auto;\n}\nlol-social-game-invites .clear-all-button:hover {\n  background-color: #f0e6d2;\n}\nlol-social-game-invites .clear-all-button:active {\n  background-color: #463714;\n}\nlol-social-game-invites lol-social-arrow-toggle {\n  width: 18px;\n  height: 18px;\n}\nlol-social-game-invites lol-social-game-invite {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  flex-shrink: 0;\n}\nlol-social-game-invites .game-invite-scroll {\n  flex-grow: 1;\n}\n", "", {
@@ -11538,7 +11581,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-game-panel", {
-                styles: n(220),
+                styles: n(223),
                 created: function() {
                     this.listen("gameInviteAdded", this.playVideo), this.listen("partyInviteAdded", this.playVideo), this.listen("gameSearchStarted", this.playVideo), this.watch("data.gameInvites.length > 0 || data.gameSearch", (function(e, t) {
                         e ? this.sounds.delayedPlay("menuOpen", 150) : t && this.sounds.delayedPlay("menuClose", 150)
@@ -11566,7 +11609,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-game-queue", {
-                styles: n(222),
+                styles: n(225),
                 createLowPriorityTooltip: function(e, t) {
                     const n = document.createElement("lol-uikit-tooltip"),
                         o = t.templateHelper.contentBlockTooltip(t.t("tooltip_low_priority_queue_title"), t.t("tooltip_low_priority_queue_body"), "tooltip-large"),
@@ -11616,8 +11659,8 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(223),
-                s = n(191),
+                r = n(226),
+                s = n(194),
                 l = i(o),
                 c = a(r),
                 u = a(s);
@@ -11653,7 +11696,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-link-warning-dialog", {
-                styles: n(226),
+                styles: n(229),
                 dispatch: function(e) {
                     this.dispatchEvent(new Event(e))
                 }
@@ -11676,7 +11719,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-link-warning", {
-                styles: n(228),
+                styles: n(231),
                 doNotShowAgain: !1,
                 toggleChatLinkWarning: function() {
                     this.data.playerSettings.linkClickWarningEnabled = !this.doNotShowAgain
@@ -11700,7 +11743,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-menu-input", {
-                styles: n(230),
+                styles: n(233),
                 attached: function() {
                     this.saved = !1, this.saving = !1, this.closing = !1, this.afterSync((() => {
                         this.input && (this.input.focus(), this.input.select())
@@ -11736,7 +11779,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(231),
+                r = n(234),
                 s = i(o),
                 l = a(r);
             s.push([e.id, "lol-social-menu-input {\n  display: block;\n}\nlol-social-menu-input .wrapper {\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n}\nlol-social-menu-input .note,\nlol-social-menu-input .note-saving {\n  -webkit-mask: url(" + l + ") no-repeat center;\n  -webkit-mask-size: contain;\n  background-color: #c8aa6e;\n}\nlol-social-menu-input .note-saving {\n  background-color: #f0e6d2;\n}\nlol-social-menu-input .input-icon {\n  width: 18px;\n  height: 18px;\n  position: absolute;\n  left: 10px;\n  top: 5px;\n  cursor: default;\n}\nlol-social-menu-input .input-icon:lang(ar-ae) {\n  left: auto;\n  right: 10px;\n}\nlol-social-menu-input .input.has-icon {\n  padding: 0 6px 0 34px;\n}\nlol-social-menu-input .input.has-icon:lang(ar-ae) {\n  padding: 0 34px 0 6px;\n}\nlol-social-menu-input .input {\n  width: 100%;\n  padding: 0 30px 0 6px;\n  height: 34px;\n}\nlol-social-menu-input .input:lang(ar-ae) {\n  padding: 0 6px 0 30px;\n}\nlol-social-menu-input .input.saving {\n  display: block;\n  border-color: transparent;\n  border-image: none;\n  box-shadow: none;\n  background: none;\n}\nlol-social-menu-input .input.saving:not(.saved) {\n  visibility: hidden;\n}\nlol-social-menu-input .animation {\n  position: absolute;\n  background: #785a28;\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 100%;\n  transition: all 0.3s cubic-bezier(0, 0, 0, 1);\n  overflow: hidden;\n}\nlol-social-menu-input .animation .input-message {\n  position: absolute;\n  box-sizing: border-box;\n  font-size: 12px;\n  letter-spacing: 0.05em;\n  line-height: 16px;\n  color: #f0e6d2;\n  height: 30px;\n  padding: 7px;\n  width: 222px;\n}\nlol-social-menu-input .animation .input-message.has-icon {\n  padding-left: 34px;\n}\nlol-social-menu-input .animation.will-animate-in {\n  right: 100%;\n}\nlol-social-menu-input .animation.animate-in {\n  right: 0;\n}\nlol-social-menu-input .animation.animate-in .input-message {\n  left: 0;\n  right: auto;\n}\nlol-social-menu-input .animation.will-animate-out {\n  right: 0;\n  left: 0;\n}\nlol-social-menu-input .animation.animate-out {\n  transition-delay: 0.3s;\n  left: 100%;\n}\nlol-social-menu-item lol-social-menu-input {\n  margin: -10px -11px;\n}\nlol-social-menu-item:last-child lol-social-menu-input {\n  margin-bottom: -11px;\n}\n", "", {
@@ -11757,13 +11800,13 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-menu-item", {
-                styles: n(233)
+                styles: n(236)
             })
         }, (e, t, n) => {
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(234),
+                r = n(237),
                 s = i(o),
                 l = a(r);
             s.push([e.id, "lol-social-menu-item {\n  font-family: var(--font-body);\n}\nlol-social-menu-item {\n  display: block;\n  width: 100%;\n  box-sizing: border-box;\n  word-break: break-word;\n  color: #cdbe91;\n  font-size: 12px;\n  line-height: 16px;\n  text-align: left;\n  cursor: pointer;\n  padding: 8px 10px;\n  outline: none;\n  transition: padding 0.05s ease-in-out;\n}\nlol-social-menu-item:hover:not([has-input]) {\n  color: #f0e6d2;\n  background: rgba(240,230,210,0.1);\n}\n.context lol-social-menu-item:active,\n.context lol-social-menu-item.active,\n.context lol-social-menu-item:hover:active {\n  color: #cdbe91;\n  background: none;\n}\n.context lol-social-menu-item:active,\n.context lol-social-menu-item.active {\n  background: url(" + l + ") no-repeat top;\n  padding-left: 16px;\n  padding-right: 4px;\n}\n.context lol-social-menu-item:hover:active {\n  background-position-y: -18px;\n}\n", "", {
@@ -11784,7 +11827,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-menu", {
-                styles: n(236),
+                styles: n(239),
                 created: function() {
                     this.listen("focusout", this.handleFocusOut), this.listen("click", this.handleClick), this.hasAttribute("keep-open-on-scroll") || this.listen(window, "mousewheel", this.requestClose)
                 },
@@ -11823,7 +11866,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-panel", {
-                styles: n(238),
+                styles: n(241),
                 created: function() {
                     this.data.track("errors", (e => {
                         this.toastErrorMessage(e)
@@ -11841,8 +11884,8 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(239),
-                s = n(240),
+                r = n(242),
+                s = n(243),
                 l = i(o),
                 c = a(r),
                 u = a(s);
@@ -11866,7 +11909,7 @@
             const i = "offline",
                 a = "mobile";
             o.components.defineElement("lol-social-roster-group-name", {
-                styles: n(242),
+                styles: n(245),
                 computed: {
                     filterByName: 'group.isMetaGroup ? "displayGroupId" : "groupId"',
                     groupFriends: "data.friends | filter(filterByName, group.id)",
@@ -11944,12 +11987,12 @@
         }, (e, t, n) => {
             "use strict";
             var o = n(1);
-            const i = n(244);
+            const i = n(247);
             o.components.defineElement("lol-social-roster-group", i, {
                 FRIEND_HEIGHT: 48,
                 ARROW_CONTAIN_HEIGHT: 56,
                 GROUP_NAME_HEIGHT: 28,
-                styles: n(245),
+                styles: n(248),
                 acceptMimes: ["application/riot.roster-member+json"],
                 computed: {
                     groupFriendsLength: "data.friends.filter(friendFilter.bind(this)).length",
@@ -12101,7 +12144,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(246),
+                r = n(249),
                 s = i(o),
                 l = a(r);
             s.push([e.id, "lol-social-roster-group .group-header {\n  font-family: var(--font-display);\n}\n.social-count-badge {\n  font-family: var(--font-body);\n}\nlol-social-roster-group .group-header {\n  -webkit-user-select: none;\n}\nlol-social-roster-group .group-header {\n  font-kerning: normal;\n  -webkit-font-feature-settings: \"kern\" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-roster-group .group-header {\n  text-transform: uppercase;\n}\nlol-social-roster-group .group-header:lang(ko-kr),\nlol-social-roster-group .group-header:lang(ja-jp),\nlol-social-roster-group .group-header:lang(tr-tr),\nlol-social-roster-group .group-header:lang(el-gr),\nlol-social-roster-group .group-header:lang(th-th),\nlol-social-roster-group .group-header:lang(zh-tw) {\n  text-transform: none;\n}\nlol-social-roster-group .group-header {\n  color: #f0e6d2;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 16px;\n  letter-spacing: 0.075em;\n}\nlol-social-roster-group .group-header:lang(ja-jp) {\n  font-size: 13px;\n}\nlol-social-roster-group .group-header:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-roster-group .group-header {\n  color: #a09b8c;\n}\nlol-social-roster-group .group.unread .group-header {\n  color: #f0e6d2;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-roster-group {\n  display: block;\n}\nlol-social-roster-group:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-roster-group .hidden {\n  display: none !important;\n}\nlol-social-roster-group .group {\n  position: relative;\n}\nlol-social-roster-group .group.unread .group-header {\n  font-weight: bold;\n  background: rgba(240,230,210,0.18);\n}\nlol-social-roster-group .group.unread .unread-count {\n  margin-top: 4px;\n  margin-right: 10px;\n}\nlol-social-roster-group .group.unread.use-animation .group-header {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-roster-group .group.unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-roster-group .group .unread-dot {\n  height: 10px;\n  width: 10px;\n  border-radius: 5px;\n  background-color: #c89b3c;\n}\nlol-social-roster-group .group-header {\n  background: rgba(1,10,19,0.45);\n  height: 24px;\n  cursor: pointer;\n  display: flex;\n  margin-bottom: 4px;\n}\nlol-social-roster-group .group-header:hover {\n  background: rgba(240,230,210,0.1);\n  color: #f0e6d2;\n}\nlol-social-roster-group .group-header:active {\n  color: #cdbe91;\n}\nlol-social-roster-group .group-header.dragging {\n  opacity: 0.5;\n}\nlol-social-roster-group .group-header.drag-capture {\n  border: thin solid #785a28;\n  padding: 0 9px;\n  line-height: 20px;\n}\nlol-social-roster-group .group-header.drag-capture .arrow-container {\n  display: none;\n}\nlol-social-roster-group .group-name {\n  width: 100%;\n  height: 100%;\n  display: flex;\n}\nlol-social-roster-group.drop-available .drop-area {\n  overflow: hidden;\n  position: absolute;\n  margin-top: -28px;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%;\n  z-index: 2;\n}\nlol-social-roster-group.dropping .drop-area {\n  border: thin solid transparent;\n  border-image: linear-gradient(to bottom, #785a28 0%, #c89b3c 100%) 1 1;\n  background: linear-gradient(to bottom, transparent 28px, rgba(1,10,19,0.75) 28px);\n}\nlol-social-roster-group.dropping .drop-area .drop-area-arrow {\n  content: '';\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  margin: auto;\n  width: 32px;\n  height: 28px;\n  background-image: url(" + l + ");\n  background-position-y: -28px;\n  background-size: cover;\n  align-self: center;\n}\nlol-social-roster-group.dropping .group-header {\n  background-color: #3c3c41;\n  color: #f0e6d2;\n}\nlol-social-roster-group.dropping .arrow {\n  -webkit-filter: brightness(2);\n}\nlol-social-roster-group .arrow-container {\n  display: flex;\n  justify-content: flex-end;\n  width: 18px;\n  opacity: 1;\n}\nlol-social-roster-group .arrow-container.use-animation {\n  transition: width 250ms cubic-bezier(0, 0, 0, 1), opacity 250ms ease-out;\n}\nlol-social-roster-group .arrow-container.hide {\n  width: 0;\n  opacity: 0;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n", "", {
@@ -12118,12 +12161,12 @@
         }, (e, t, n) => {
             "use strict";
             var o = n(1),
-                i = n(203);
-            const a = n(189),
-                r = n(204),
-                s = n(187);
+                i = n(206);
+            const a = n(192),
+                r = n(207),
+                s = n(190);
             o.components.defineElement("lol-social-roster-member", r, s, {
-                styles: n(248),
+                styles: n(251),
                 computed: {
                     conversation: "member && data.getConversation(member.id)",
                     isInQueueOrGame: 'member.availability === "dnd"',
@@ -12354,29 +12397,29 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(249),
-                s = n(193),
-                l = n(250),
-                c = n(251),
-                u = n(252),
-                d = n(240),
-                m = n(253),
-                p = i(o),
-                A = a(r),
+                r = n(252),
+                s = n(196),
+                l = n(253),
+                c = n(254),
+                u = n(255),
+                d = n(243),
+                m = n(256),
+                A = i(o),
+                p = a(r),
                 h = a(s),
                 g = a(l),
                 f = a(c),
                 b = a(u),
                 C = a(d),
                 v = a(m);
-            p.push([e.id, '.social-count-badge,\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-family: var(--font-body);\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  -webkit-user-select: none;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-roster-member .member.has-unread .member-name,\nlol-social-roster-member .member.has-unread .member-status {\n  color: #f0e6d2;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-roster-member {\n  cursor: pointer;\n  position: relative;\n  display: flex;\n  align-items: flex-end;\n}\nlol-social-roster-member:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-roster-member.animate-in,\nlol-social-roster-member.animate-out {\n  pointer-events: none;\n}\nlol-social-roster-member .member {\n  padding: 0 10px 0 0;\n  transition: opacity 0.3s ease-out;\n}\nlol-social-roster-member .member:lang(ar-ae) {\n  padding: 0 0 0 10px;\n}\nlol-social-roster-member .member:hover,\nlol-social-roster-member .member.context-menu-open {\n  background: rgba(240,230,210,0.1);\n}\nlol-social-roster-member.animate-move .member {\n  box-shadow: 0 0 8px rgba(1,10,19,0.7);\n}\nlol-social-roster-member .member.drag-capture {\n  padding: 0 9px;\n  border: thin solid #785a28;\n}\nlol-social-roster-member .member.dragging {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .member.drag-capture:before,\nlol-social-roster-member .member.dragging:before,\nlol-social-roster-member .member.drag-capture:after,\nlol-social-roster-member .member.dragging:after {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .drag-grip {\n  width: 15px;\n  height: 100%;\n  background: url(' + A + ") no-repeat center;\n  background-size: 18px;\n}\nlol-social-roster-member .layout {\n  display: flex;\n  align-items: center;\n  height: 48px;\n  width: 100%;\n  box-sizing: border-box;\n}\nlol-social-roster-member .layout.float-right {\n  position: absolute;\n  right: 10px;\n  top: 2px;\n  height: 40px;\n  background-color: #010a13;\n}\nlol-social-roster-member .member-icon {\n  height: 32px;\n  width: 32px;\n  margin: 0 8px 0 2px;\n  flex-shrink: 0;\n}\nlol-social-roster-member .member-icon:lang(ar-ae) {\n  margin: 0 2px 0 8px;\n}\nlol-social-roster-member .details {\n  flex: 1 1 auto;\n  justify-content: center;\n}\nlol-social-roster-member .member-name-wrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  flex: 1;\n  margin-top: -1px;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\nlol-social-roster-member .member-name-wrapper .member-status {\n  color: #5b5a56;\n}\nlol-social-roster-member .member:hover .member-name,\nlol-social-roster-member .member.context-menu-open .member-name {\n  color: #f0e6d2;\n}\nlol-social-roster-member .member:hover .member-status,\nlol-social-roster-member .member.context-menu-open .member-status {\n  color: #a09b8c;\n}\nlol-social-roster-member .member.offline:hover .member-name,\nlol-social-roster-member .member.offline.context-menu-open .member-name {\n  color: #a09b8c;\n}\nlol-social-roster-member .member:active:not(.right-click) .member-name {\n  color: #3c3c41;\n}\nlol-social-roster-member .member.muted {\n  padding-right: 0;\n}\nlol-social-roster-member .muted-icon {\n  -webkit-mask: url(" + h + ") no-repeat center;\n  -webkit-mask-size: contain;\n  background-color: #3c3c41;\n  width: 16px;\n  height: 16px;\n  margin-left: 2px;\n}\nlol-social-roster-member .offline .member-icon {\n  opacity: 0.5;\n}\nlol-social-roster-member .offline .member-name {\n  color: #5b5a56;\n}\nlol-social-roster-member .member.has-unread {\n  background: rgba(240,230,210,0.18);\n}\nlol-social-roster-member .member.has-unread.use-animation {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread .member-name {\n  font-weight: bold;\n}\nlol-social-roster-member .social-count-badge {\n  margin-left: 4px;\n}\nlol-social-roster-member .edit-note-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 10;\n  left: 0;\n  width: 100%;\n  padding: 2px 0px 4px 0px;\n  margin-top: -3px;\n}\nlol-social-roster-member .open-party .open-party-indicator {\n  background-color: #1e825a;\n}\nlol-social-roster-member .open-party-indicator {\n  width: 4px;\n  height: 90%;\n  background-color: transparent;\n}\nlol-social-roster-member .party-join-button {\n  display: none;\n  width: 30px;\n  height: 30px;\n  background-image: url(" + g + ");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: contain;\n}\nlol-social-roster-member .party-join-button:hover {\n  background-image: url(" + f + ");\n}\nlol-social-roster-member .party-join-button:active {\n  background-image: url(" + b + ");\n}\nlol-social-roster-member .party-join-button.joining {\n  background-image: url(" + C + ");\n  animation: open-party-join-spin 3s linear infinite;\n}\nlol-social-roster-member .party-join-button[disabled] {\n  background-image: url(" + v + ");\n}\nlol-social-roster-member .open-party:hover .party-join-button {\n  display: inline;\n}\nlol-social-roster-member .open-party:hover .social-count-badge {\n  display: none;\n}\n.confirm-friend-actions {\n  width: 360px;\n}\n.confirm-friend-actions p {\n  text-align: left;\n}\n.confirm-friend-actions p:lang(ar-ae) {\n  text-align: right;\n}\n@-moz-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n", "", {
+            A.push([e.id, '.social-count-badge,\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-family: var(--font-body);\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  -webkit-user-select: none;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-roster-member .member.has-unread .member-name,\nlol-social-roster-member .member.has-unread .member-status {\n  color: #f0e6d2;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-roster-member {\n  cursor: pointer;\n  position: relative;\n  display: flex;\n  align-items: flex-end;\n}\nlol-social-roster-member:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-roster-member.animate-in,\nlol-social-roster-member.animate-out {\n  pointer-events: none;\n}\nlol-social-roster-member .member {\n  padding: 0 10px 0 0;\n  transition: opacity 0.3s ease-out;\n}\nlol-social-roster-member .member:lang(ar-ae) {\n  padding: 0 0 0 10px;\n}\nlol-social-roster-member .member:hover,\nlol-social-roster-member .member.context-menu-open {\n  background: rgba(240,230,210,0.1);\n}\nlol-social-roster-member.animate-move .member {\n  box-shadow: 0 0 8px rgba(1,10,19,0.7);\n}\nlol-social-roster-member .member.drag-capture {\n  padding: 0 9px;\n  border: thin solid #785a28;\n}\nlol-social-roster-member .member.dragging {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .member.drag-capture:before,\nlol-social-roster-member .member.dragging:before,\nlol-social-roster-member .member.drag-capture:after,\nlol-social-roster-member .member.dragging:after {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .drag-grip {\n  width: 15px;\n  height: 100%;\n  background: url(' + p + ") no-repeat center;\n  background-size: 18px;\n}\nlol-social-roster-member .layout {\n  display: flex;\n  align-items: center;\n  height: 48px;\n  width: 100%;\n  box-sizing: border-box;\n}\nlol-social-roster-member .layout.float-right {\n  position: absolute;\n  right: 10px;\n  top: 2px;\n  height: 40px;\n  background-color: #010a13;\n}\nlol-social-roster-member .member-icon {\n  height: 32px;\n  width: 32px;\n  margin: 0 8px 0 2px;\n  flex-shrink: 0;\n}\nlol-social-roster-member .member-icon:lang(ar-ae) {\n  margin: 0 2px 0 8px;\n}\nlol-social-roster-member .details {\n  flex: 1 1 auto;\n  justify-content: center;\n}\nlol-social-roster-member .member-name-wrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  flex: 1;\n  margin-top: -1px;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\nlol-social-roster-member .member-name-wrapper .member-status {\n  color: #5b5a56;\n}\nlol-social-roster-member .member:hover .member-name,\nlol-social-roster-member .member.context-menu-open .member-name {\n  color: #f0e6d2;\n}\nlol-social-roster-member .member:hover .member-status,\nlol-social-roster-member .member.context-menu-open .member-status {\n  color: #a09b8c;\n}\nlol-social-roster-member .member.offline:hover .member-name,\nlol-social-roster-member .member.offline.context-menu-open .member-name {\n  color: #a09b8c;\n}\nlol-social-roster-member .member:active:not(.right-click) .member-name {\n  color: #3c3c41;\n}\nlol-social-roster-member .member.muted {\n  padding-right: 0;\n}\nlol-social-roster-member .muted-icon {\n  -webkit-mask: url(" + h + ") no-repeat center;\n  -webkit-mask-size: contain;\n  background-color: #3c3c41;\n  width: 16px;\n  height: 16px;\n  margin-left: 2px;\n}\nlol-social-roster-member .offline .member-icon {\n  opacity: 0.5;\n}\nlol-social-roster-member .offline .member-name {\n  color: #5b5a56;\n}\nlol-social-roster-member .member.has-unread {\n  background: rgba(240,230,210,0.18);\n}\nlol-social-roster-member .member.has-unread.use-animation {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread .member-name {\n  font-weight: bold;\n}\nlol-social-roster-member .social-count-badge {\n  margin-left: 4px;\n}\nlol-social-roster-member .edit-note-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 10;\n  left: 0;\n  width: 100%;\n  padding: 2px 0px 4px 0px;\n  margin-top: -3px;\n}\nlol-social-roster-member .open-party .open-party-indicator {\n  background-color: #1e825a;\n}\nlol-social-roster-member .open-party-indicator {\n  width: 4px;\n  height: 90%;\n  background-color: transparent;\n}\nlol-social-roster-member .party-join-button {\n  display: none;\n  width: 30px;\n  height: 30px;\n  background-image: url(" + g + ");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: contain;\n}\nlol-social-roster-member .party-join-button:hover {\n  background-image: url(" + f + ");\n}\nlol-social-roster-member .party-join-button:active {\n  background-image: url(" + b + ");\n}\nlol-social-roster-member .party-join-button.joining {\n  background-image: url(" + C + ");\n  animation: open-party-join-spin 3s linear infinite;\n}\nlol-social-roster-member .party-join-button[disabled] {\n  background-image: url(" + v + ");\n}\nlol-social-roster-member .open-party:hover .party-join-button {\n  display: inline;\n}\nlol-social-roster-member .open-party:hover .social-count-badge {\n  display: none;\n}\n.confirm-friend-actions {\n  width: 360px;\n}\n.confirm-friend-actions p {\n  text-align: left;\n}\n.confirm-friend-actions p:lang(ar-ae) {\n  text-align: right;\n}\n@-moz-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n", "", {
                 version: 3,
                 sources: ["webpack://./fe/rcp-fe-lol-social/src/web-components/roster-member/roster-member.styl"],
                 names: [],
                 mappings: "AAAA;;EAEE,6BAA6B;AAC/B;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,oBAAoB;EACpB,uCAAuC;EACvC,mCAAmC;AACrC;AACA;EACE,cAAc;EACd,eAAe;EACf,mBAAmB;EACnB,iBAAiB;EACjB,uBAAuB;EACvB,4CAA4C;AAC9C;AACA;EACE,iBAAiB;AACnB;AACA;;EAEE,cAAc;AAChB;AACA;EACE,iBAAiB;EACjB,kBAAkB;EAClB,yBAAyB;EACzB,cAAc;EACd,cAAc;EACd,YAAY;EACZ,eAAe;EACf,aAAa;EACb,mBAAmB;AACrB;AACA;EACE,UAAU;AACZ;AACA;EACE,UAAU;EACV,oCAAoC;AACtC;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,kCAAkC;EACpC;EACA;IACE,iCAAiC;EACnC;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE;IACE,yCAAyC;EAC3C;EACA;IACE,+CAA+C;EACjD;AACF;AACA;EACE,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,qBAAqB;AACvB;AACA;EACE,cAAc;AAChB;AACA;;EAEE,oBAAoB;AACtB;AACA;EACE,mBAAmB;EACnB,iCAAiC;AACnC;AACA;EACE,mBAAmB;AACrB;AACA;;EAEE,iCAAiC;AACnC;AACA;EACE,qCAAqC;AACvC;AACA;EACE,cAAc;EACd,0BAA0B;AAC5B;AACA;EACE,UAAU;EACV,gBAAgB;AAClB;AACA;;;;EAIE,UAAU;EACV,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,YAAY;EACZ,oEAAiE;EACjE,qBAAqB;AACvB;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,sBAAsB;AACxB;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,QAAQ;EACR,YAAY;EACZ,yBAAyB;AAC3B;AACA;EACE,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,cAAc;AAChB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,uBAAuB;AACzB;AACA;EACE,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,OAAO;EACP,gBAAgB;AAClB;AACA;EACE,gBAAgB;EAChB,uBAAuB;EACvB,mBAAmB;AACrB;AACA;EACE,cAAc;AAChB;AACA;;EAEE,cAAc;AAChB;AACA;;EAEE,cAAc;AAChB;AACA;;EAEE,cAAc;AAChB;AACA;EACE,cAAc;AAChB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,sEAAgE;EAChE,0BAA0B;EAC1B,yBAAyB;EACzB,WAAW;EACX,YAAY;EACZ,gBAAgB;AAClB;AACA;EACE,YAAY;AACd;AACA;EACE,cAAc;AAChB;AACA;EACE,kCAAkC;AACpC;AACA;EACE,sCAAsC;AACxC;AACA;EACE,2CAA2C;AAC7C;AACA;EACE,iBAAiB;AACnB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,OAAO;EACP,WAAW;EACX,wBAAwB;EACxB,gBAAgB;AAClB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,UAAU;EACV,WAAW;EACX,6BAA6B;AAC/B;AACA;EACE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,yDAA8D;EAC9D,2BAA2B;EAC3B,4BAA4B;EAC5B,wBAAwB;AAC1B;AACA;EACE,yDAAoE;AACtE;AACA;EACE,yDAAoE;AACtE;AACA;EACE,yDAAiD;EACjD,kDAAkD;AACpD;AACA;EACE,yDAAuE;AACzE;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;AACf;AACA;EACE,YAAY;AACd;AACA;EACE,gBAAgB;AAClB;AACA;EACE,iBAAiB;AACnB;AACA;EACE;IACE,yBAAyB;EAC3B;AACF;AACA;EACE;IACE,yBAAyB;EAC3B;AACF;AACA;EACE;IACE,yBAAyB;EAC3B;AACF;AACA;EACE;IACE,yBAAyB;EAC3B;AACF",
                 sourcesContent: ['.social-count-badge,\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-family: var(--font-body);\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  -webkit-user-select: none;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  color: #a09b8c;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 20px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\nlol-social-roster-member .member-name-wrapper .member-name:lang(ar-ae) {\n  letter-spacing: 0;\n}\nlol-social-roster-member .member.has-unread .member-name,\nlol-social-roster-member .member.has-unread .member-status {\n  color: #f0e6d2;\n}\n.social-count-badge {\n  font-weight: bold;\n  border-radius: 3px;\n  background-color: #c89b3c;\n  color: #010a13;\n  padding: 0 6px;\n  height: 16px;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n}\n.social-count-badge.will-animate-in {\n  opacity: 0;\n}\n.social-count-badge.animate-in {\n  opacity: 1;\n  transition: opacity 0.3s ease-in-out;\n}\n@-moz-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-webkit-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-o-keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@keyframes highlight {\n  from {\n    background: rgba(240,230,210,0.18);\n  }\n  to {\n    background: rgba(240,230,210,0.4);\n  }\n}\n@-moz-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-webkit-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@-o-keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\n@keyframes highlightBadge {\n  from {\n    -webkit-filter: brightness(1) saturate(1);\n  }\n  to {\n    -webkit-filter: brightness(1.35) saturate(1.35);\n  }\n}\nlol-social-roster-member {\n  cursor: pointer;\n  position: relative;\n  display: flex;\n  align-items: flex-end;\n}\nlol-social-roster-member:lang(ar-ae) {\n  direction: rtl;\n}\nlol-social-roster-member.animate-in,\nlol-social-roster-member.animate-out {\n  pointer-events: none;\n}\nlol-social-roster-member .member {\n  padding: 0 10px 0 0;\n  transition: opacity 0.3s ease-out;\n}\nlol-social-roster-member .member:lang(ar-ae) {\n  padding: 0 0 0 10px;\n}\nlol-social-roster-member .member:hover,\nlol-social-roster-member .member.context-menu-open {\n  background: rgba(240,230,210,0.1);\n}\nlol-social-roster-member.animate-move .member {\n  box-shadow: 0 0 8px rgba(1,10,19,0.7);\n}\nlol-social-roster-member .member.drag-capture {\n  padding: 0 9px;\n  border: thin solid #785a28;\n}\nlol-social-roster-member .member.dragging {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .member.drag-capture:before,\nlol-social-roster-member .member.dragging:before,\nlol-social-roster-member .member.drag-capture:after,\nlol-social-roster-member .member.dragging:after {\n  opacity: 0;\n  transition: none;\n}\nlol-social-roster-member .drag-grip {\n  width: 15px;\n  height: 100%;\n  background: url("../../images/tooltip_grip.png") no-repeat center;\n  background-size: 18px;\n}\nlol-social-roster-member .layout {\n  display: flex;\n  align-items: center;\n  height: 48px;\n  width: 100%;\n  box-sizing: border-box;\n}\nlol-social-roster-member .layout.float-right {\n  position: absolute;\n  right: 10px;\n  top: 2px;\n  height: 40px;\n  background-color: #010a13;\n}\nlol-social-roster-member .member-icon {\n  height: 32px;\n  width: 32px;\n  margin: 0 8px 0 2px;\n  flex-shrink: 0;\n}\nlol-social-roster-member .member-icon:lang(ar-ae) {\n  margin: 0 2px 0 8px;\n}\nlol-social-roster-member .details {\n  flex: 1 1 auto;\n  justify-content: center;\n}\nlol-social-roster-member .member-name-wrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  flex: 1;\n  margin-top: -1px;\n}\nlol-social-roster-member .member-name-wrapper .member-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\nlol-social-roster-member .member-name-wrapper .member-status {\n  color: #5b5a56;\n}\nlol-social-roster-member .member:hover .member-name,\nlol-social-roster-member .member.context-menu-open .member-name {\n  color: #f0e6d2;\n}\nlol-social-roster-member .member:hover .member-status,\nlol-social-roster-member .member.context-menu-open .member-status {\n  color: #a09b8c;\n}\nlol-social-roster-member .member.offline:hover .member-name,\nlol-social-roster-member .member.offline.context-menu-open .member-name {\n  color: #a09b8c;\n}\nlol-social-roster-member .member:active:not(.right-click) .member-name {\n  color: #3c3c41;\n}\nlol-social-roster-member .member.muted {\n  padding-right: 0;\n}\nlol-social-roster-member .muted-icon {\n  -webkit-mask: url("../../images/mute_mask.png") no-repeat center;\n  -webkit-mask-size: contain;\n  background-color: #3c3c41;\n  width: 16px;\n  height: 16px;\n  margin-left: 2px;\n}\nlol-social-roster-member .offline .member-icon {\n  opacity: 0.5;\n}\nlol-social-roster-member .offline .member-name {\n  color: #5b5a56;\n}\nlol-social-roster-member .member.has-unread {\n  background: rgba(240,230,210,0.18);\n}\nlol-social-roster-member .member.has-unread.use-animation {\n  animation: highlight 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread.use-animation .social-count-badge {\n  animation: highlightBadge 825ms 4 alternate;\n}\nlol-social-roster-member .member.has-unread .member-name {\n  font-weight: bold;\n}\nlol-social-roster-member .social-count-badge {\n  margin-left: 4px;\n}\nlol-social-roster-member .edit-note-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 10;\n  left: 0;\n  width: 100%;\n  padding: 2px 0px 4px 0px;\n  margin-top: -3px;\n}\nlol-social-roster-member .open-party .open-party-indicator {\n  background-color: #1e825a;\n}\nlol-social-roster-member .open-party-indicator {\n  width: 4px;\n  height: 90%;\n  background-color: transparent;\n}\nlol-social-roster-member .party-join-button {\n  display: none;\n  width: 30px;\n  height: 30px;\n  background-image: url("../../images/icon_open_party_join.png");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: contain;\n}\nlol-social-roster-member .party-join-button:hover {\n  background-image: url("../../images/icon_open_party_join_hover.png");\n}\nlol-social-roster-member .party-join-button:active {\n  background-image: url("../../images/icon_open_party_join_click.png");\n}\nlol-social-roster-member .party-join-button.joining {\n  background-image: url("../../images/spinner.png");\n  animation: open-party-join-spin 3s linear infinite;\n}\nlol-social-roster-member .party-join-button[disabled] {\n  background-image: url("../../images/icon_open_party_join_disabled.png");\n}\nlol-social-roster-member .open-party:hover .party-join-button {\n  display: inline;\n}\nlol-social-roster-member .open-party:hover .social-count-badge {\n  display: none;\n}\n.confirm-friend-actions {\n  width: 360px;\n}\n.confirm-friend-actions p {\n  text-align: left;\n}\n.confirm-friend-actions p:lang(ar-ae) {\n  text-align: right;\n}\n@-moz-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@keyframes open-party-join-spin {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n'],
                 sourceRoot: ""
-            }]), e.exports = p
+            }]), e.exports = A
         }, (e, t, n) => {
             "use strict";
             e.exports = n.p + "tooltip_grip.png"
@@ -12399,11 +12442,11 @@
                     components: i,
                     SocialTelemetry: a
                 } = o,
-                r = n(255),
-                s = n(244),
-                l = n(188);
+                r = n(258),
+                s = n(247),
+                l = n(191);
             i.defineElement("lol-social-roster", s, l, r, {
-                styles: n(256),
+                styles: n(259),
                 acceptMimes: ["application/riot.roster-group+json"],
                 groupMime: "application/riot.roster-group+json",
                 created: function() {
@@ -12470,11 +12513,11 @@
             })
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(182)) && o.__esModule ? o : {
+            var o, i = (o = n(185)) && o.__esModule ? o : {
                 default: o
             };
             const a = n(102),
-                r = n(188),
+                r = n(191),
                 s = {
                     useUniquePool: !0,
                     minItemHeight: 28,
@@ -12570,8 +12613,8 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(249),
-                s = n(257),
+                r = n(252),
+                s = n(260),
                 l = i(o),
                 c = a(r),
                 u = a(s);
@@ -12593,7 +12636,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-social-status", {
-                styles: n(259),
+                styles: n(262),
                 computed: {
                     gameStatus: 'friend.lol.gameStatus || "outOfGame"',
                     tournamentStatus: 'friend.lol.clashTournamentState || "NONE"',
@@ -12643,88 +12686,88 @@
                     Router: o.Ember.Router.extend({
                         location: "none"
                     }),
-                    ApplicationController: n(261).default,
-                    ActionsBarComponent: n(262).default,
-                    ActionsFolderInputComponent: n(264).default,
-                    SocialTooltipComponent: n(265).default,
-                    SocialTextTooltipComponent: n(266).default,
-                    SidebarMainComponent: n(267).default,
-                    SocialButtonComponent: n(269).default,
-                    ChatToggleButtonComponent: n(270).default,
-                    VngAgeRatingComponent: n(271).default,
+                    ApplicationController: n(264).default,
+                    ActionsBarComponent: n(265).default,
+                    ActionsFolderInputComponent: n(267).default,
+                    SocialTooltipComponent: n(268).default,
+                    SocialTextTooltipComponent: n(269).default,
+                    SidebarMainComponent: n(270).default,
+                    SocialButtonComponent: n(272).default,
+                    ChatToggleButtonComponent: n(273).default,
+                    VngAgeRatingComponent: n(274).default,
                     CallToActionPipComponent: a,
                     PlayerNameComponent: r,
-                    SocialPanelComponent: n(273).default,
-                    HovercardComponentComponent: n(274).default,
-                    HovercardShellComponent: n(277).default,
-                    HovercardContentComponent: n(281).default,
-                    IdentityAndPartiesComponent: n(283).default,
-                    SocialIdentityComponent: n(284).default,
-                    SocialStatusWrapperComponent: n(285).default,
-                    SocialMenuInputComponent: n(286).default,
-                    UikitRadioComponent: n(287).default,
+                    SocialPanelComponent: n(276).default,
+                    HovercardComponentComponent: n(277).default,
+                    HovercardShellComponent: n(280).default,
+                    HovercardContentComponent: n(284).default,
+                    IdentityAndPartiesComponent: n(286).default,
+                    SocialIdentityComponent: n(287).default,
+                    SocialStatusWrapperComponent: n(288).default,
+                    SocialMenuInputComponent: n(289).default,
+                    UikitRadioComponent: n(290).default,
                     MissionsButtonComponent: l.MissionsButtonComponent,
-                    FriendFinderButtonComponent: n(288).default,
-                    FriendFinderModalComponent: n(289).default,
-                    FriendFinderRequestedPlayerComponent: n(290).default,
-                    FriendFinderRequestedPlayersComponent: n(294).default,
-                    FriendFinderRecentlyPlayedComponent: n(295).default,
-                    FriendFinderRecentSummonerComponent: n(296).default,
-                    FriendFinderAddSummonerByNameComponent: n(298).default,
-                    TooltipMessageComponent: n(299).default,
+                    FriendFinderButtonComponent: n(291).default,
+                    FriendFinderModalComponent: n(292).default,
+                    FriendFinderRequestedPlayerComponent: n(293).default,
+                    FriendFinderRequestedPlayersComponent: n(297).default,
+                    FriendFinderRecentlyPlayedComponent: n(298).default,
+                    FriendFinderRecentSummonerComponent: n(299).default,
+                    FriendFinderAddSummonerByNameComponent: n(301).default,
+                    TooltipMessageComponent: n(302).default,
                     SharedNotificationsService: s,
-                    SystemService: n(300).default,
-                    UxSettingsService: n(301).default,
-                    ChatWindowSettingsService: n(302).default,
-                    ConversationsService: n(303).default,
-                    SocialButtonsService: n(304).default,
-                    SocialSessionService: n(305).default,
-                    SocialPlatformConfigService: n(306).default,
-                    SocialSettingsService: n(307).default,
+                    SystemService: n(303).default,
+                    UxSettingsService: n(304).default,
+                    ChatWindowSettingsService: n(305).default,
+                    ConversationsService: n(306).default,
+                    SocialButtonsService: n(307).default,
+                    SocialSessionService: n(308).default,
+                    SocialPlatformConfigService: n(309).default,
+                    SocialSettingsService: n(310).default,
                     MissionsService: l.MissionsService,
-                    FriendHovercardsService: n(308).default,
-                    FriendsService: n(309).default,
-                    FriendFinderService: n(310).default,
-                    FriendRequestsService: n(311).default,
-                    ProfileChampionInfoService: n(312).default,
-                    NotificationsService: n(313).default,
-                    BanNotificationService: n(314).default,
-                    ChatRestrictionService: n(316).default,
-                    CodeOfConductService: n(317).default,
-                    LeaverBusterService: n(320).default,
-                    ReformCardService: n(324).default,
-                    ReporterFeedbackMessagesService: n(341).default,
-                    ReporterFeedbackService: n(342).default,
-                    HoneyfruitService: n(343).default,
+                    FriendHovercardsService: n(311).default,
+                    FriendsService: n(312).default,
+                    FriendFinderService: n(313).default,
+                    FriendRequestsService: n(314).default,
+                    ProfileChampionInfoService: n(315).default,
+                    NotificationsService: n(316).default,
+                    BanNotificationService: n(317).default,
+                    ChatRestrictionService: n(319).default,
+                    CodeOfConductService: n(320).default,
+                    LeaverBusterService: n(323).default,
+                    ReformCardService: n(327).default,
+                    ReporterFeedbackMessagesService: n(344).default,
+                    ReporterFeedbackService: n(345).default,
+                    HoneyfruitService: n(346).default,
                     TEMPLATES: {
-                        application: n(344),
-                        index: n(345),
-                        "components/actions-bar": n(346),
-                        "components/actions-folder-input": n(347),
-                        "components/chat-toggle-button": n(348),
-                        "components/hovercard-name-alias-mode": n(349),
-                        "components/hovercard-name-summoner-mode": n(350),
-                        "components/sidebar-main": n(351),
-                        "components/social-button": n(352),
-                        "components/social-text-tooltip": n(353),
-                        "components/social-tooltip": n(354),
-                        "components/social-panel": n(355),
-                        "components/identity-and-parties": n(356),
-                        "components/social-identity": n(357),
-                        "components/social-status-wrapper": n(358),
-                        "components/social-menu-input": n(359),
-                        "components/uikit-radio": n(360),
-                        "components/content-block-attention": n(361),
+                        application: n(347),
+                        index: n(348),
+                        "components/actions-bar": n(349),
+                        "components/actions-folder-input": n(350),
+                        "components/chat-toggle-button": n(351),
+                        "components/hovercard-name-alias-mode": n(352),
+                        "components/hovercard-name-summoner-mode": n(353),
+                        "components/sidebar-main": n(354),
+                        "components/social-button": n(355),
+                        "components/social-text-tooltip": n(356),
+                        "components/social-tooltip": n(357),
+                        "components/social-panel": n(358),
+                        "components/identity-and-parties": n(359),
+                        "components/social-identity": n(360),
+                        "components/social-status-wrapper": n(361),
+                        "components/social-menu-input": n(362),
+                        "components/uikit-radio": n(363),
+                        "components/content-block-attention": n(364),
                         "components/missions-button": l.MissionsButtonComponentTemplate,
-                        "components/friend-finder-button": n(362),
-                        "components/friend-finder-modal": n(363),
-                        "components/friend-finder-requested-player": n(364),
-                        "components/friend-finder-requested-players": n(365),
-                        "components/friend-finder-recently-played": n(366),
-                        "components/friend-finder-recent-summoner": n(367),
-                        "components/friend-finder-add-summoner-by-name": n(368),
-                        "components/tooltip-message": n(369),
-                        "components/vng-age-rating": n(370)
+                        "components/friend-finder-button": n(365),
+                        "components/friend-finder-modal": n(366),
+                        "components/friend-finder-requested-player": n(367),
+                        "components/friend-finder-requested-players": n(368),
+                        "components/friend-finder-recently-played": n(369),
+                        "components/friend-finder-recent-summoner": n(370),
+                        "components/friend-finder-add-summoner-by-name": n(371),
+                        "components/tooltip-message": n(372),
+                        "components/vng-age-rating": n(373)
                     }
                 };
                 o.emberApplicationFactory.setFactoryDefinition("rcp-fe-lol-social", c, i)
@@ -12761,7 +12804,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(263)) && o.__esModule ? o : {
+                a = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 };
             const {
@@ -12974,7 +13017,7 @@
                         } o.default = e, n && n.set(e, o);
                     return o
                 }(n(1)),
-                a = (o = n(263)) && o.__esModule ? o : {
+                a = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 };
 
@@ -13180,7 +13223,7 @@
             }), t.default = void 0;
             var o = n(1);
             const i = n(111),
-                a = n(268),
+                a = n(271),
                 r = (0, o.emberDataBinding)({
                     Ember: o.Ember,
                     websocket: (0, o.getProvider)().getSocket(),
@@ -13280,7 +13323,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(263)) && o.__esModule ? o : {
+                a = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Component.extend({
@@ -13310,7 +13353,7 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1);
-            n(272);
+            n(275);
             var i = o.Ember.Component.extend({
                 classNames: ["vng-age-rating"],
                 honeyfruit: o.Ember.inject.service("honeyfruit"),
@@ -13408,7 +13451,7 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1),
-                i = n(275);
+                i = n(278);
             const {
                 RunMixin: a
             } = o.EmberAddons.EmberLifeline, r = "show-hovercard", s = "hide-hovercard", l = {
@@ -13433,7 +13476,7 @@
             let c = !1;
             var u = o.Ember.Component.extend(a, {
                 tagName: "template",
-                layout: n(276),
+                layout: n(279),
                 direction: "",
                 directionRef: {
                     value: ""
@@ -13548,23 +13591,23 @@
                 let u = 1,
                     d = 1,
                     m = s.width + 3,
-                    p = s.height + 3;
-                const A = t,
+                    A = s.height + 3;
+                const p = t,
                     h = 11;
                 let g;
-                "right" === A ? m -= 12 : "left" === A ? u += 12 : "top" === A ? d += 12 : p -= 12;
+                "right" === p ? m -= 12 : "left" === p ? u += 12 : "top" === p ? d += 12 : A -= 12;
                 const f = u - 1 + l.x,
                     b = d - 1 + l.y,
                     C = m + 3 + l.x,
-                    v = p - 1 + l.y;
+                    v = A - 1 + l.y;
                 let y, E;
-                "left" === A || "right" === A ? (g = c.top + c.height / 2 - s.top + 1, g = Math.max(20, Math.min(s.height - 20, g)), y = g - 2 + l.y) : (g = c.left + c.width / 2 - s.left + 2, g = Math.max(20, Math.min(s.width - 20, g)), y = g + 3 + l.x);
+                "left" === p || "right" === p ? (g = c.top + c.height / 2 - s.top + 1, g = Math.max(20, Math.min(s.height - 20, g)), y = g - 2 + l.y) : (g = c.left + c.width / 2 - s.left + 2, g = Math.max(20, Math.min(s.width - 20, g)), y = g + 3 + l.x);
                 const x = [`M ${u} ${d}`],
                     B = [`${f}px ${b}px`];
-                "top" === A && (x.push("H " + (g - 11), "l 11 -11", "l 11 11"), B.push(`${y-h}px ${b}px`, `${y}px ${b-h}px`, `${y+h}px ${b}px`), E = [`M ${u+5.5} ${d-.5}`, "l 2 -3", "H " + (g - 2.5), "l 2 -2", "h 1", "l 2 2", `L ${m-7.5} ${d-3.5}`, "l 2 3", `H ${g+10.5}`, "l -10.5 -10.5", "l -10.5 10.5", "Z"]);
-                x.push(`L ${m} ${d}`), B.push(`${C}px ${b}px`), "right" === A && (x.push("V " + (g - 11), "l 11 11", "l -11 11"), B.push(`${C}px ${y-h}px`, `${C+h}px ${y}px`, `${C}px ${y+h}px`), E = [`M ${m+.5} ${d+5.5}`, "l 3 2", "V " + (g - 2.5), "l 2 2", "v 1", "l -2 2", `L ${m+3.5} ${p-7.5}`, "l -3 2", `V ${g+10.5}`, "l 10.5 -10.5", "l -10.5 -10.5", "Z"]);
-                x.push(`L ${m} ${p}`), B.push(`${C}px ${v}px`), "bottom" === A && (x.push(`H ${g+11}`, "l -11 11", "l -11 -11"), B.push(`${y+h}px ${v}px`, `${y}px ${v+h}px`, `${y-h}px ${v}px`), E = [`M ${m-5.5} ${p+.5}`, "l -2 3", `H ${g+2.5}`, "l -2 2", "h -1", "l -2 -2", `L ${u+7.5} ${p+3.5}`, "l -2 -3", "H " + (g - 10.5), "l 10.5 10.5", "l 10.5 -10.5", "Z"]);
-                x.push(`L ${u} ${p}`), B.push(`${f}px ${v}px`), "left" === A && (x.push(`V ${g+11}`, "l -11 -11", "l 11 -11"), B.push(`${f}px ${y+h}px`, `${f-h}px ${y}px`, `${f}px ${y-h}px`), E = [`M ${u-.5} ${d+5.5}`, "l -3 2", "V " + (g - 2.5), "l -2 2", "v 1", "l 2 2", `L ${u-3.5} ${p-7.5}`, "l 3 2", `V ${g+10.5}`, "l -10.5 -10.5", "l 10.5 -10.5", "Z"]);
+                "top" === p && (x.push("H " + (g - 11), "l 11 -11", "l 11 11"), B.push(`${y-h}px ${b}px`, `${y}px ${b-h}px`, `${y+h}px ${b}px`), E = [`M ${u+5.5} ${d-.5}`, "l 2 -3", "H " + (g - 2.5), "l 2 -2", "h 1", "l 2 2", `L ${m-7.5} ${d-3.5}`, "l 2 3", `H ${g+10.5}`, "l -10.5 -10.5", "l -10.5 10.5", "Z"]);
+                x.push(`L ${m} ${d}`), B.push(`${C}px ${b}px`), "right" === p && (x.push("V " + (g - 11), "l 11 11", "l -11 11"), B.push(`${C}px ${y-h}px`, `${C+h}px ${y}px`, `${C}px ${y+h}px`), E = [`M ${m+.5} ${d+5.5}`, "l 3 2", "V " + (g - 2.5), "l 2 2", "v 1", "l -2 2", `L ${m+3.5} ${A-7.5}`, "l -3 2", `V ${g+10.5}`, "l 10.5 -10.5", "l -10.5 -10.5", "Z"]);
+                x.push(`L ${m} ${A}`), B.push(`${C}px ${v}px`), "bottom" === p && (x.push(`H ${g+11}`, "l -11 11", "l -11 -11"), B.push(`${y+h}px ${v}px`, `${y}px ${v+h}px`, `${y-h}px ${v}px`), E = [`M ${m-5.5} ${A+.5}`, "l -2 3", `H ${g+2.5}`, "l -2 2", "h -1", "l -2 -2", `L ${u+7.5} ${A+3.5}`, "l -2 -3", "H " + (g - 10.5), "l 10.5 10.5", "l 10.5 -10.5", "Z"]);
+                x.push(`L ${u} ${A}`), B.push(`${f}px ${v}px`), "left" === p && (x.push(`V ${g+11}`, "l -11 -11", "l 11 -11"), B.push(`${f}px ${y+h}px`, `${f-h}px ${y}px`, `${f}px ${y-h}px`), E = [`M ${u-.5} ${d+5.5}`, "l -3 2", "V " + (g - 2.5), "l -2 2", "v 1", "l 2 2", `L ${u-3.5} ${A-7.5}`, "l 3 2", `V ${g+10.5}`, "l -10.5 -10.5", "l 10.5 -10.5", "Z"]);
                 x.push("Z"), B.push(`${f}px ${b}px`), i.setAttribute("d", x.join(" ")), a.setAttribute("d", E.join(" ")), r.style.webkitClipPath = `polygon(${B.join(", ")})`
             }
         }, (e, t, n) => {
@@ -13580,17 +13623,17 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = n(275),
-                r = n(278),
-                s = (o = n(263)) && o.__esModule ? o : {
+                a = n(278),
+                r = n(281),
+                s = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 },
-                l = n(279);
+                l = n(282);
             const c = i.dataBinding.bindTo(i.socket),
                 u = /\W+/g;
             var d = i.Ember.Component.extend({
                 tagName: "",
-                layout: n(280),
+                layout: n(283),
                 direction: "",
                 directionRef: {},
                 socialPlatformConfig: i.Ember.inject.service(),
@@ -13795,11 +13838,11 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1),
-                i = n(278),
-                a = n(279);
+                i = n(281),
+                a = n(282);
             var r = o.Ember.Component.extend({
                 tagName: "",
-                layout: n(282),
+                layout: n(285),
                 loggedIn: null,
                 isKnown: null,
                 me: null,
@@ -14122,7 +14165,7 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1),
-                i = r(n(263)),
+                i = r(n(266)),
                 a = r(n(111));
 
             function r(e) {
@@ -14314,7 +14357,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(263)) && o.__esModule ? o : {
+                a = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Component.extend({
@@ -14357,7 +14400,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1);
-            (o = n(263)) && o.__esModule;
+            (o = n(266)) && o.__esModule;
             var a = i.Ember.Component.extend({
                 tagName: "template",
                 isModalOpen: !1,
@@ -14388,12 +14431,12 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(263)) && o.__esModule ? o : {
+                a = (o = n(266)) && o.__esModule ? o : {
                     default: o
                 },
-                r = n(291),
-                s = n(292),
-                l = n(293);
+                r = n(294),
+                s = n(295),
+                l = n(296);
             var c = i.Ember.Component.extend({
                 classNames: ["lol-friend-finder-requested-player"],
                 tra: i.Ember.inject.service("tra"),
@@ -14520,7 +14563,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1);
-            (o = n(263)) && o.__esModule;
+            (o = n(266)) && o.__esModule;
             var a = i.Ember.Component.extend({
                 classNames: ["lol-friend-finder-requested-players", "requested-players-container"],
                 friendRequestsService: i.Ember.inject.service("friendRequests"),
@@ -14548,10 +14591,10 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1),
-                i = n(293),
-                a = n(291),
-                r = n(292),
-                s = n(297),
+                i = n(296),
+                a = n(294),
+                r = n(295),
+                s = n(300),
                 l = o.Ember.Component.extend({
                     classNames: ["lol-friend-finder-recent-summoner"],
                     summoner: {},
@@ -14649,9 +14692,9 @@
                 value: !0
             }), t.default = void 0;
             var o = n(1),
-                i = s(n(263)),
+                i = s(n(266)),
                 a = s(n(116)),
-                r = n(297);
+                r = n(300);
 
             function s(e) {
                 return e && e.__esModule ? e : {
@@ -15017,8 +15060,8 @@
                 u = "/lol-chat",
                 d = u + "/v1/session",
                 m = u + "/v1/me",
-                p = "/lol-login/v1/session",
-                A = "/lol-summoner/v1/current-summoner";
+                A = "/lol-login/v1/session",
+                p = "/lol-summoner/v1/current-summoner";
             var h = a.Service.extend({
                 binding: null,
                 login: !1,
@@ -15030,11 +15073,11 @@
                     this._super(...arguments), this._initObservers()
                 },
                 _initObservers() {
-                    c.observe(p, this, (e => {
+                    c.observe(A, this, (e => {
                         e && "SUCCEEDED" === e.state && (this.set("session", !0), this._checkRequirements())
                     })), c.observe(d, this, (e => {
                         e && this.set("chatSession", e), this._checkRequirements(), this.set("isLoaded", null !== e && ("loaded" === e.sessionState || e.isLoaded))
-                    })), c.observe(A, this, (e => {
+                    })), c.observe(p, this, (e => {
                         e && this.set("currentSummoner", e), !e || e.unnamed || e.nameChangeFlag || (this.set("isNamedSummoner", !0), this._checkRequirements())
                     })), c.observe(m, this, (e => {
                         e && this.set("me", e)
@@ -15048,7 +15091,7 @@
                     e && t && ("connected" === (o = t.sessionState) || "loaded" === o) && n && (this._clearBindings(), l.dispatchAfterMainLogin(), l.dispatchAfterLogin())
                 },
                 _clearBindings() {
-                    c.unobserve(p, this)
+                    c.unobserve(A, this)
                 },
                 saveMe(e) {
                     return c.put(m, e).then((e => {
@@ -15056,7 +15099,7 @@
                     }))
                 },
                 willDestroy() {
-                    this._super(...arguments), c.unobserve(p, this), c.unobserve(d, this), c.unobserve(A, this), c.unobserve(m, this)
+                    this._super(...arguments), c.unobserve(A, this), c.unobserve(d, this), c.unobserve(p, this), c.unobserve(m, this)
                 }
             });
             t.default = h
@@ -15077,7 +15120,7 @@
                 u = "/lol-platform-config/v1/namespaces/LcuSocial",
                 d = "/lol-platform-config/v1/namespaces/PlayerNotification",
                 m = "/lol-platform-config/v1/namespaces/LcuHovercard";
-            var p = a.Service.extend({
+            var A = a.Service.extend({
                 lcuHovercard: {},
                 showDelay: a.computed("lcuHovercard.ShowDelay", (function() {
                     return parseInt(this.get("lcuHovercard.ShowDelay"), 10)
@@ -15101,7 +15144,7 @@
                     this._super(...arguments), c.unobserve(u, this), c.unobserve(d, this), c.unobserve(m, this)
                 }
             });
-            t.default = p
+            t.default = A
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -15119,8 +15162,8 @@
                 u = i.bindTo(r),
                 d = "/lol-chat/v1/settings",
                 m = "/lol-chat/v1/config",
-                p = "/lol-settings/v2/account/LCUPreferences/lol-chat",
-                A = "/lol-regalia/v2/config";
+                A = "/lol-settings/v2/account/LCUPreferences/lol-chat",
+                p = "/lol-regalia/v2/config";
             var h = a.Service.extend({
                 chatSettings: {},
                 chatConfig: {},
@@ -15136,15 +15179,15 @@
                         l.chatSettings = e, c.sync(), e && this.set("chatSettings", e)
                     })), u.observe(m, this, (e => {
                         e && this.set("chatConfig", e)
-                    })), u.observe(p, this, (e => {
-                        e && this.set("accountChatSettings", e)
                     })), u.observe(A, this, (e => {
+                        e && this.set("accountChatSettings", e)
+                    })), u.observe(p, this, (e => {
                         e && this.set("regaliaConfig", e)
                     }))
                 },
                 updatePlayerSettings(e) {
                     const t = e(Object.assign({}, this.get("playerSettings")));
-                    u.patch(p, {
+                    u.patch(A, {
                         schemaVersion: 1,
                         data: t
                     }).then((() => u.post("/lol-settings/v1/account/save")))
@@ -15154,7 +15197,7 @@
                     u.put(d + "?doAsync=true", t)
                 },
                 willDestroy() {
-                    this._super(...arguments), u.unobserve(d, this), u.unobserve(m, this), u.unobserve(p, this), u.unobserve(A, this)
+                    this._super(...arguments), u.unobserve(d, this), u.unobserve(m, this), u.unobserve(A, this), u.unobserve(p, this)
                 }
             });
             t.default = h
@@ -15193,7 +15236,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var o = n(278);
+            var o = n(281);
             const i = n(1),
                 {
                     dataBinding: a,
@@ -15245,7 +15288,7 @@
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var o = n(278);
+            var o = n(281);
             const i = n(1),
                 {
                     dataBinding: a,
@@ -15262,8 +15305,8 @@
                         return this.get("summonerId") || this.get("id")
                     }))
                 }),
-                p = new Map([]);
-            var A = r.Service.extend({
+                A = new Map([]);
+            var p = r.Service.extend({
                 friendsService: r.inject.service("friends"),
                 friendRequests: [],
                 blockedPlayers: [],
@@ -15314,7 +15357,7 @@
                 },
                 async setFriendRequests(e) {
                     e.forEach((e => {
-                        const t = p.get(e.id);
+                        const t = A.get(e.id);
                         t && (e.iconValue = t)
                     })), this.set("friendRequests", e.map((e => m.create({
                         ...e
@@ -15325,7 +15368,7 @@
                             n = this.get("friendRequestPuuidLookup");
                         e.forEach((e => {
                             const t = n.get(e.puuid);
-                            t && (t.set("iconValue", e.profileIconId), p.set(t.id, e.profileIconId))
+                            t && (t.set("iconValue", e.profileIconId), A.set(t.id, e.profileIconId))
                         }))
                     }
                 },
@@ -15354,13 +15397,13 @@
                     this._super(...arguments), this.get("_binding").unobserve(u, this), this.get("_binding").unobserve(d, this)
                 }
             });
-            t.default = A
+            t.default = p
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
                 value: !0
             }), t.default = void 0;
-            var o = n(278);
+            var o = n(281);
             const i = n(1),
                 {
                     dataBinding: a,
@@ -15372,8 +15415,8 @@
                 u = a.bindTo(s),
                 d = "/lol-login/v1/session",
                 m = "/lol-chat/v1/session",
-                p = "/lol-summoner/v1/current-summoner",
-                A = "/lol-game-data/assets/v1/summoner-icons.json";
+                A = "/lol-summoner/v1/current-summoner",
+                p = "/lol-game-data/assets/v1/summoner-icons.json";
             var h = r.Service.extend({
                 loginSession: {},
                 chatSession: {},
@@ -15387,7 +15430,7 @@
                     this._super(...arguments), this._initObservers()
                 },
                 _initObservers() {
-                    u.observe(d, this, (e => e && this.setLoginInfo(e))), u.observe(m, this, (e => e && this.setChatSessionInfo(e))), u.observe(p, this, (e => e && this.setIsNamedSummoner(e)))
+                    u.observe(d, this, (e => e && this.setLoginInfo(e))), u.observe(m, this, (e => e && this.setChatSessionInfo(e))), u.observe(A, this, (e => e && this.setIsNamedSummoner(e)))
                 },
                 setChatSessionInfo(e) {
                     this.set("chatSession", e), this.syncSessionInfo()
@@ -15405,16 +15448,16 @@
                         n = this.get("isNamedSummoner");
                     if (!this.get("loggedIn")) {
                         "SUCCEEDED" === e.state && ("loaded" === t.sessionState || t.sessionState);
-                        this.set("loggedIn", !0), this._initLoggedInObservers(), u.unobserve(p, this)
+                        this.set("loggedIn", !0), this._initLoggedInObservers(), u.unobserve(A, this)
                     }
                 },
                 _initLoggedInObservers() {
-                    u.observe(A, this, (e => {
+                    u.observe(p, this, (e => {
                         e && this.set("profileIcons", e)
                     }))
                 },
                 willDestroy() {
-                    this._super(...arguments), u.unobserve(d, this), u.unobserve(m, this), u.unobserve(A, this)
+                    this._super(...arguments), u.unobserve(d, this), u.unobserve(m, this), u.unobserve(p, this)
                 }
             });
             t.default = h
@@ -15496,7 +15539,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             const r = "ForcedShutdown",
@@ -15506,8 +15549,8 @@
                 u = "INAPPROPRIATE_TEXT",
                 d = "VERBAL_ABUSE",
                 m = ["AC_BOTTING", l, "AC_SCRIPTING", c, u, d],
-                p = [l, u, c, d];
-            var A = i.Ember.Service.extend(a.default, {
+                A = [l, u, c, d];
+            var p = i.Ember.Service.extend(a.default, {
                 init: function() {
                     this._super(...arguments), this._playerBehaviorBinding = (0, i.dataBinding)("/lol-player-behavior", (0, i.getProvider)().getSocket()), this._playerBehaviorBinding.observe("/v1/ban", this.handleBanNotification.bind(this)), this._dataBinding = i.dataBinding
                 },
@@ -15533,7 +15576,7 @@
                         n = t ? "forced_shutdown" : "login",
                         o = e.isPermaBan;
                     let i = `player_behavior_${n}_ban_notification_body_${e.reason}`;
-                    o && m.includes(e.reason) && (i = `${i}_PERMANENT`), !o && p.includes(e.reason) && (i = `${i}_TEMPORARY`);
+                    o && m.includes(e.reason) && (i = `${i}_PERMANENT`), !o && A.includes(e.reason) && (i = `${i}_TEMPORARY`);
                     const a = this.formatDateByLocale(e.timeUntilBanExpires);
                     let s = this.get("tra").formatString(i, {
                         endDate: a
@@ -15561,7 +15604,7 @@
                     return t || n
                 }
             });
-            t.default = A
+            t.default = p
         }, (e, t, n) => {
             "use strict";
             Object.defineProperty(t, "__esModule", {
@@ -15625,7 +15668,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -15704,7 +15747,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Service.extend(a.default, {
@@ -15716,7 +15759,7 @@
                         name: "CodeOfConduct",
                         tra: i.traService,
                         ComponentFactory: i.ComponentFactory,
-                        CodeOfConductComponent: n(318).default
+                        CodeOfConductComponent: n(321).default
                     })
                 },
                 handleCodeOfConductNotification: function(e) {
@@ -15748,7 +15791,7 @@
                 s = (0, o.getProvider)().get("rcp-fe-lol-uikit").getTemplateHelper();
             var l = o.Ember.Component.extend({
                 classNames: ["code-of-conduct"],
-                layout: n(319),
+                layout: n(322),
                 didInsertElement: function() {
                     this._super(...arguments), this.unlockRule(1)
                 },
@@ -15830,7 +15873,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -15847,8 +15890,8 @@
                 u = "OnLockoutWarning",
                 d = "RankedRestrictedGames",
                 m = ["InProgress", "WaitingForStats", "PreEndOfGame"],
-                p = n(321),
-                A = i.Ember.get;
+                A = n(324),
+                p = i.Ember.get;
             var h = i.Ember.Service.extend(r, a.default, {
                 init() {
                     this._super(...arguments), this.defineComponentFactory()
@@ -15858,7 +15901,7 @@
                         name: "LeaverBusterWarning",
                         tra: i.traService,
                         ComponentFactory: i.ComponentFactory,
-                        LeaverBusterWarningComponent: n(322).default
+                        LeaverBusterWarningComponent: n(325).default
                     })
                 },
                 notificationObserver: i.Ember.on("init", i.Ember.observer("leaverBusterNotifications.[]", "gameflow.phase", (function() {
@@ -15871,19 +15914,19 @@
                     if (!t) return;
                     let n = this.get("_alertedNotifications");
                     n || (n = i.Ember.A(), this.set("_alertedNotifications", n)), t.forEach((e => {
-                        const t = A(e, "id");
+                        const t = p(e, "id");
                         if (n.contains(t)) return;
-                        const o = A(e, "type");
+                        const o = p(e, "type");
                         o === s || o === c || o === u ? (this.showLeaverBusterWarning(e), n.pushObject(t)) : o === l ? (this.showLeaverBusterPunishment(e), n.pushObject(t)) : o === d && (this.showRankedRestrictionPunishment(e), n.pushObject(t))
                     }))
                 },
                 showLeaverBusterWarning: function(e) {
                     const t = {},
-                        n = A(e, "id");
-                    if (A(e, "type") === s) t.header = this.get("tra.leaver_buster_warning_header"), t.body = this.get("tra.leaver_buster_warning_body");
-                    else if (A(e, "type") === c) t.header = this.get("tra.leaver_buster_level_warning_header"), t.body = this.get("tra.leaver_buster_prelockout_warning_body");
-                    else if (A(e, "type") === u) {
-                        const n = A(e, "queueLockoutTimerExpiryUtcMillisDiff"),
+                        n = p(e, "id");
+                    if (p(e, "type") === s) t.header = this.get("tra.leaver_buster_warning_header"), t.body = this.get("tra.leaver_buster_warning_body");
+                    else if (p(e, "type") === c) t.header = this.get("tra.leaver_buster_level_warning_header"), t.body = this.get("tra.leaver_buster_prelockout_warning_body");
+                    else if (p(e, "type") === u) {
+                        const n = p(e, "queueLockoutTimerExpiryUtcMillisDiff"),
                             o = 3e5,
                             a = i.moment.duration(n),
                             r = i.moment.duration(Math.ceil(+a / o) * o),
@@ -15895,23 +15938,23 @@
                     t.agreeText = this.get("tra.leaver_buster_warning_agree"), this.createLeaverBusterWarningComponent(t, n)
                 },
                 showLeaverBusterPunishment: function(e) {
-                    const t = A(e, "punishedGamesRemaining"),
+                    const t = p(e, "punishedGamesRemaining"),
                         n = this.get("templateHelper").contentBlockDialog(this.get("tra.leaver_buster_punishment_header"), this.get("tra").formatString("leaver_buster_punishment_body", {
                             punishedGamesRemaining: t
                         }), "dialog-large", "lol-leaver-buster-punishment-dialog");
                     this.showNotification(n, {
                         onOkFunction: () => {
-                            (0, i.dataBinding)("lol-leaver-buster").delete("/v1/notifications/" + A(e, "id"))
+                            (0, i.dataBinding)("lol-leaver-buster").delete("/v1/notifications/" + p(e, "id"))
                         }
                     })
                 },
                 showRankedRestrictionPunishment: function(e) {
-                    const t = A(e, "punishedGamesRemaining"),
-                        n = A(e, "id"),
+                    const t = p(e, "punishedGamesRemaining"),
+                        n = p(e, "id"),
                         o = {};
                     o.header = this.get("tra.ranked_restriction_punished_games_incurred_header"), o.body = this.get("tra").formatString("ranked_restriction_punished_games_incurred_body$html", {
                         punishedGamesRemaining: t,
-                        profileImage: `<img class="profile-icon" src="${p}" alt="profile-icon"/>`
+                        profileImage: `<img class="profile-icon" src="${A}" alt="profile-icon"/>`
                     }), o.agreeText = this.get("tra.ranked_restriction_punishment_agree"), this.createLeaverBusterWarningComponent(o, n)
                 },
                 createLeaverBusterWarningComponent: function(e, t) {
@@ -15979,7 +16022,7 @@
             var o = n(1),
                 i = o.Ember.Component.extend({
                     classNames: ["leaver-buster-dialog"],
-                    layout: n(323),
+                    layout: n(326),
                     agreeText: o.Ember.computed("tra.leaver_buster_warning_agree", "tra.leaver_buster_warning_agree_prompt$html", "notificationContext.agreeText", (function() {
                         return this.get("tra").formatString("leaver_buster_warning_agree_prompt$html", {
                             leaverBusterWarningAgree: this.get("notificationContext.agreeText")
@@ -16016,7 +16059,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             const r = "PERMA_BAN";
@@ -16029,22 +16072,22 @@
                         name: "ReformCard",
                         tra: i.traService,
                         ComponentFactory: i.ComponentFactory,
-                        ReformCardComponent: n(325).default,
-                        ReformCardChatLogComponent: n(327).default,
-                        ReformCardMatchHistoryComponent: n(329).default
+                        ReformCardComponent: n(328).default,
+                        ReformCardChatLogComponent: n(330).default,
+                        ReformCardMatchHistoryComponent: n(332).default
                     }), i.emberApplicationFactory.setFactoryDefinition({
                         name: "ReformCardV2",
                         tra: i.traService,
                         ComponentFactory: i.ComponentFactory,
-                        ReformCardV2Component: n(331).default,
-                        ReformCardV2ChatLogComponent: n(333).default,
-                        ReformCardV2MatchHistoryComponent: n(335).default
+                        ReformCardV2Component: n(334).default,
+                        ReformCardV2ChatLogComponent: n(336).default,
+                        ReformCardV2MatchHistoryComponent: n(338).default
                     }), i.emberApplicationFactory.setFactoryDefinition({
                         name: "ReformCardV3",
                         tra: i.traService,
                         ComponentFactory: i.ComponentFactory,
-                        ReformCardV3Component: n(337).default,
-                        ReformCardV3ChatLogComponent: n(339).default
+                        ReformCardV3Component: n(340).default,
+                        ReformCardV3ChatLogComponent: n(342).default
                     }))
                 },
                 initDataBindings() {
@@ -16127,7 +16170,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(326)) && o.__esModule ? o : {
+                a = (o = n(329)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -16271,7 +16314,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(328)) && o.__esModule ? o : {
+                a = (o = n(331)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Component.extend({
@@ -16345,7 +16388,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(330)) && o.__esModule ? o : {
+                a = (o = n(333)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -16383,7 +16426,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(332)) && o.__esModule ? o : {
+                a = (o = n(335)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -16400,53 +16443,53 @@
                 u = "TIME_BAN",
                 d = "PERMA_BAN",
                 m = "GAME",
-                p = "TIME";
-            var A = i.Ember.Component.extend(r, {
+                A = "TIME";
+            var p = i.Ember.Component.extend(r, {
                 classNames: ["player-behavior-reform-card-v2"],
                 layout: a.default,
                 reformCardHeaderTextMap: {
                     [c]: {
                         [m]: "player_behavior_reform_card_header_chat_restriction",
-                        [p]: "player_behavior_reform_card_header_chat_restriction_time"
+                        [A]: "player_behavior_reform_card_header_chat_restriction_time"
                     },
                     [u]: {
                         [m]: "player_behavior_reform_card_header_time_ban",
-                        [p]: "player_behavior_reform_card_header_time_ban"
+                        [A]: "player_behavior_reform_card_header_time_ban"
                     },
                     [d]: {
                         [m]: "player_behavior_reform_card_header_perma_ban",
-                        [p]: "player_behavior_reform_card_header_perma_ban"
+                        [A]: "player_behavior_reform_card_header_perma_ban"
                     }
                 },
                 reformCardDescriptionTextMap: {
                     [c]: {
                         [s]: {
                             [m]: "player_behavior_reform_card_description_chat_restriction_verbal$html",
-                            [p]: "player_behavior_reform_card_description_chat_restriction_verbal_time$html"
+                            [A]: "player_behavior_reform_card_description_chat_restriction_verbal_time$html"
                         },
                         [l]: {
                             [m]: "player_behavior_reform_card_description_chat_restriction_verbal$html",
-                            [p]: "player_behavior_reform_card_description_chat_restriction_verbal_time$html"
+                            [A]: "player_behavior_reform_card_description_chat_restriction_verbal_time$html"
                         }
                     },
                     [u]: {
                         [s]: {
                             [m]: "player_behavior_reform_card_description_time_ban_gameplay$html",
-                            [p]: "player_behavior_reform_card_description_time_ban_gameplay$html"
+                            [A]: "player_behavior_reform_card_description_time_ban_gameplay$html"
                         },
                         [l]: {
                             [m]: "player_behavior_reform_card_description_time_ban_verbal$html",
-                            [p]: "player_behavior_reform_card_description_time_ban_verbal$html"
+                            [A]: "player_behavior_reform_card_description_time_ban_verbal$html"
                         }
                     },
                     [d]: {
                         [s]: {
                             [m]: "player_behavior_reform_card_description_time_ban_gameplay$html",
-                            [p]: "player_behavior_reform_card_description_time_ban_gameplay$html"
+                            [A]: "player_behavior_reform_card_description_time_ban_gameplay$html"
                         },
                         [l]: {
                             [m]: "player_behavior_reform_card_description_perma_ban_verbal$html",
-                            [p]: "player_behavior_reform_card_description_perma_ban_verbal$html"
+                            [A]: "player_behavior_reform_card_description_perma_ban_verbal$html"
                         }
                     }
                 },
@@ -16501,7 +16544,7 @@
                     return e && e.length > 0
                 })),
                 durationType: i.Ember.computed("reformCard.punishmentLengthGames", (function() {
-                    return this.get("reformCard.punishmentLengthGames") > 0 ? m : p
+                    return this.get("reformCard.punishmentLengthGames") > 0 ? m : A
                 })),
                 headerText: i.Ember.computed("reformCard.punishmentType", "reformCard.punishmentLengthGames", "punishmentDaysRemaining", "durationType", (function() {
                     const e = this.get("reformCard.punishmentType"),
@@ -16547,7 +16590,7 @@
                     return e.toLocaleString(t, n)
                 }))
             });
-            t.default = A
+            t.default = p
         }, (e, t, n) => {
             const o = n(1).Ember;
             e.exports = o.HTMLBars.template({
@@ -16561,7 +16604,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(334)) && o.__esModule ? o : {
+                a = (o = n(337)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Component.extend({
@@ -16616,7 +16659,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(336)) && o.__esModule ? o : {
+                a = (o = n(339)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -16654,7 +16697,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(338)) && o.__esModule ? o : {
+                a = (o = n(341)) && o.__esModule ? o : {
                     default: o
                 };
             const r = i.Ember.Object.extend(i.Ember.PromiseProxyMixin);
@@ -16704,7 +16747,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(340)) && o.__esModule ? o : {
+                a = (o = n(343)) && o.__esModule ? o : {
                     default: o
                 };
             var r = i.Ember.Component.extend({
@@ -16765,7 +16808,7 @@
                 value: !0
             }), t.default = void 0;
             var o, i = n(1),
-                a = (o = n(315)) && o.__esModule ? o : {
+                a = (o = n(318)) && o.__esModule ? o : {
                     default: o
                 };
             const r = (0, i.emberDataBinding)({
@@ -17036,7 +17079,7 @@
             })
         }, (e, t, n) => {
             "use strict";
-            n(372), n(373), n(374), n(377), n(379), n(390), n(392), n(395), n(396), n(398), n(399), n(401), n(402), n(404), n(405), n(406), n(408), n(409), n(411), n(412)
+            n(375), n(376), n(377), n(380), n(382), n(393), n(395), n(398), n(399), n(401), n(402), n(404), n(405), n(407), n(408), n(409), n(411), n(412), n(414), n(415)
         }, (e, t, n) => {
             "use strict";
             const o = n(1);
@@ -17138,7 +17181,7 @@
                     computed: a
                 } = i;
             i.defineElement("lol-player-notifications-button", {
-                styles: n(375),
+                styles: n(378),
                 computed: {
                     notifications: a.resource("/player-notifications/v1/notifications"),
                     toastNotifications: "notifications.reduce(reduceToasts, [])",
@@ -17220,7 +17263,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(376),
+                r = n(379),
                 s = i(o),
                 l = a(r);
             s.push([e.id, "/* notifications button styles */\n.player-notifications-button {\n  position: relative;\n  cursor: pointer;\n  width: 18px;\n  height: 18px;\n}\n.player-notifications-button-icon {\n  outline: none;\n  border: none;\n  background: none;\n  padding: 0;\n  width: 18px;\n  height: 18px;\n  -webkit-mask: url(" + l + ") no-repeat center;\n  background-color: #c8aa6e;\n  -webkit-mask-size: contain;\n}\n.player-notifications-button-icon:hover {\n  background-color: #f0e6d2;\n}\n.player-notifications-button-icon:active,\n.player-notifications-button.open .player-notifications-button-icon {\n  background-color: #785a28;\n}\n.player-notifications-button.disabled .player-notifications-button-icon {\n  background-color: #5c5b57;\n}\n.player-notifications-button.disabled {\n  pointer-events: none;\n}\n.player-notifications-button-unread-pip {\n  position: absolute;\n  top: 1px;\n  right: -1px;\n  width: 8px;\n  height: 8px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  flex-shrink: 0;\n  background: #010a13;\n  box-shadow: 0 0 0 2px #010a13;\n  background-color: #c89b3c;\n}\n", "", {
@@ -17241,7 +17284,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-player-notifications-default-toast", {
-                styles: n(378)
+                styles: n(381)
             })
         }, (e, t, n) => {
             var o = n(160),
@@ -17256,7 +17299,7 @@
             }]), e.exports = i
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(380)) && o.__esModule ? o : {
+            var o, i = (o = n(383)) && o.__esModule ? o : {
                 default: o
             };
             const a = n(1),
@@ -17265,7 +17308,7 @@
                     tra: s
                 } = a;
             r.defineElement("lol-player-notifications-item", {
-                styles: n(388),
+                styles: n(391),
                 dismiss: function() {
                     this.notification.hasOwnProperty("dismissible") && !this.notification.dismissible || (this.notification.state = "dismissed", a.ajax.delete("/player-notifications/v1/notifications/" + this.notification.id).then((() => {
                         a.playerNotificationsPrivateApi.dispatch("remove", this.notification)
@@ -17297,13 +17340,13 @@
             }), t.default = function(e) {
                 return d.get(e) || e
             };
-            var o = u(n(381)),
-                i = u(n(382)),
-                a = u(n(383)),
-                r = u(n(384)),
-                s = u(n(385)),
-                l = u(n(386)),
-                c = u(n(387));
+            var o = u(n(384)),
+                i = u(n(385)),
+                a = u(n(386)),
+                r = u(n(387)),
+                s = u(n(388)),
+                l = u(n(389)),
+                c = u(n(390));
 
             function u(e) {
                 return e && e.__esModule ? e : {
@@ -17344,7 +17387,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(389),
+                r = n(392),
                 s = i(o),
                 l = a(r);
             s.push([e.id, ".player-notifications-item {\n  display: flex;\n  padding: 12px 18px 10px;\n  border-bottom: thin solid #1e282d;\n}\n.player-notifications-item:hover {\n  background: #1e2328;\n}\n.player-notifications-item:hover .text {\n  color: #f0e6d2;\n}\n.player-notifications-item:hover .time {\n  color: #a09b8c;\n}\n.player-notifications-item-image {\n  width: 56px;\n  height: 56px;\n  flex: 0 0 auto;\n  margin: 0 18px 0 0;\n}\n.player-notifications-item-image:lang(ar-ae) {\n  margin: 0 0 0 18px;\n}\n.player-notifications-item-text {\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n  overflow: hidden;\n}\n.player-notifications-item-dismiss-button {\n  outline: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n}\n.player-notifications-item-dismiss-button {\n  -webkit-mask: url(" + l + ") no-repeat center;\n  background-color: #cdbe91;\n  -webkit-mask-size: contain;\n  width: 18px;\n  height: 18px;\n  flex: 0 0 auto;\n}\n.player-notifications-item-dismiss-button:hover {\n  background-color: #f0e6d2;\n}\n.player-notifications-item-dismiss-button:active {\n  background-color: #463714;\n}\n.text {\n  color: #a09b8c;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\nh6.unread,\nh6.toast {\n  color: #c89b3c;\n}\n.text-unread,\n.text-toast {\n  color: #f0e6d2;\n}\n.time {\n  color: #3c3c41;\n}\n.time-unread,\n.time-toast {\n  color: #a09b8c;\n}\n", "", {
@@ -17366,7 +17409,7 @@
                 } = o,
                 a = /^(\/|https?:\/\/)/;
             i.defineElement("lol-player-notifications-toast", {
-                styles: n(391),
+                styles: n(394),
                 attached: function() {
                     const e = this.querySelector(".player-notifications-toast-container");
                     let t = this.notification.backgroundUrl;
@@ -17398,7 +17441,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-player-notifications-tray", {
-                styles: n(393),
+                styles: n(396),
                 dismissAll: function() {
                     o.modalManager.add({
                         type: "DialogConfirm",
@@ -17430,7 +17473,7 @@
             var o = n(160),
                 i = n(161),
                 a = n(164),
-                r = n(394),
+                r = n(397),
                 s = i(o),
                 l = a(r);
             s.push([e.id, "lol-player-notifications-tray {\n  display: block;\n  width: 414px;\n  height: 402px;\n}\n.notifications-tray {\n  display: flex;\n  flex-direction: column;\n}\n.notifications-tray-header {\n  display: flex;\n  align-items: center;\n  height: 46px;\n  padding: 0 18px;\n  border-bottom: thin solid #463714;\n}\n.notifications-tray-title {\n  flex-grow: 1;\n}\n.notifications-dismiss-all-btn {\n  width: 16px;\n  height: 16px;\n  -webkit-mask: url(" + l + ") no-repeat center;\n  background-color: #cdbe91;\n  -webkit-mask-size: contain;\n  cursor: pointer;\n}\n.notifications-dismiss-all-btn:hover {\n  background-color: #f0e6d2;\n}\n.notifications-dismiss-all-btn:active {\n  background-color: #463714;\n}\n.notifications-dismiss-all-btn:lang(ar-ae) {\n  transform: scaleX(-1);\n}\n.notifications-tray-body {\n  flex-grow: 1;\n  height: 355px;\n}\n", "", {
@@ -17460,7 +17503,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-player-notifications-esports-toast", {
-                styles: n(397)
+                styles: n(400)
             })
         }, (e, t, n) => {
             var o = n(160),
@@ -17484,14 +17527,14 @@
             }))
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(380)) && o.__esModule ? o : {
+            var o, i = (o = n(383)) && o.__esModule ? o : {
                 default: o
             };
             const {
                 components: a
             } = n(1);
             a.defineElement("lol-player-notifications-esports-tft-toast", {
-                styles: n(400),
+                styles: n(403),
                 getIcon() {
                     const {
                         iconUrl: e
@@ -17526,7 +17569,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-player-notifications-merch-toast", {
-                styles: n(403)
+                styles: n(406)
             })
         }, (e, t, n) => {
             var o = n(160),
@@ -17561,14 +17604,14 @@
             }))
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(380)) && o.__esModule ? o : {
+            var o, i = (o = n(383)) && o.__esModule ? o : {
                 default: o
             };
             const {
                 components: a
             } = n(1);
             a.defineElement("lol-player-notifications-rewards-program-toast", {
-                styles: n(407),
+                styles: n(410),
                 getIcon() {
                     const {
                         iconUrl: e
@@ -17626,7 +17669,7 @@
                     components: i
                 } = o;
             i.defineElement("lol-player-notifications-rgm-toast", {
-                styles: n(410)
+                styles: n(413)
             })
         }, (e, t, n) => {
             var o = n(160),
@@ -17650,14 +17693,14 @@
             }))
         }, (e, t, n) => {
             "use strict";
-            var o, i = (o = n(380)) && o.__esModule ? o : {
+            var o, i = (o = n(383)) && o.__esModule ? o : {
                 default: o
             };
             const {
                 components: a
             } = n(1);
             a.defineElement("lol-player-notifications-xbox-gamepass-toast", {
-                styles: n(413),
+                styles: n(416),
                 getIcon() {
                     const {
                         iconUrl: e
@@ -17716,21 +17759,21 @@
                         o.tournaments.persistentPanel = e || null, a.sync()
                     },
                     getHovercardTemplates: () => ({
-                        "components/hovercard-name-alias-mode": n(349),
-                        "components/hovercard-name-summoner-mode": n(350)
+                        "components/hovercard-name-alias-mode": n(352),
+                        "components/hovercard-name-summoner-mode": n(353)
                     }),
                     getHovercardComponent: () => {
                         const {
                             PlayerNameComponent: e
                         } = s;
                         return {
-                            HovercardComponentComponent: n(274).default,
-                            HovercardShellComponent: n(277).default,
-                            HovercardContentComponent: n(281).default,
-                            SocialSessionService: n(305).default,
-                            SocialPlatformConfigService: n(306).default,
-                            SocialSettingsService: n(307).default,
-                            ProfileChampionInfoService: n(312).default,
+                            HovercardComponentComponent: n(277).default,
+                            HovercardShellComponent: n(280).default,
+                            HovercardContentComponent: n(284).default,
+                            SocialSessionService: n(308).default,
+                            SocialPlatformConfigService: n(309).default,
+                            SocialSettingsService: n(310).default,
+                            ProfileChampionInfoService: n(315).default,
                             PlayerNameComponent: e
                         }
                     },
@@ -17843,34 +17886,34 @@
                 });
                 const {
                     components: m,
-                    SocialTelemetry: p
+                    SocialTelemetry: A
                 } = e.default;
                 e.default.add({
                     db: d,
                     ajax: d
-                }), p.startEvent_avatar(), p.startEvent_friends();
-                const A = n(102),
+                }), A.startEvent_avatar(), A.startEvent_friends();
+                const p = n(102),
                     h = n(111);
-                m.setBoundDataBinding(d), e.default.socket = u, e.default.rest = d, A.rest = d, A.profilePlugin = e.default.profilePlugin, A.init(u, s.baseURI, e.default.l10n), A.tooltipManager = e.default.tooltipManager, A.contextMenuManager = e.default.contextMenuManager, A.toastManager = e.default.toastManager, A.modalManager = e.default.modalManager, A.templateHelper = e.default.templateHelper, A.layerManager = e.default.layerManager, A.hovercard = e.default.hovercard, A.iconPicker = e.default.iconPicker, A.missionTracker = e.default.missionTracker, A.patcher = e.default.navigation, A.socialButtons = [], A.tournaments = {
+                m.setBoundDataBinding(d), e.default.socket = u, e.default.rest = d, p.rest = d, p.profilePlugin = e.default.profilePlugin, p.init(u, s.baseURI, e.default.l10n), p.tooltipManager = e.default.tooltipManager, p.contextMenuManager = e.default.contextMenuManager, p.toastManager = e.default.toastManager, p.modalManager = e.default.modalManager, p.templateHelper = e.default.templateHelper, p.layerManager = e.default.layerManager, p.hovercard = e.default.hovercard, p.iconPicker = e.default.iconPicker, p.missionTracker = e.default.missionTracker, p.patcher = e.default.navigation, p.socialButtons = [], p.tournaments = {
                     gameInfoPanel: null,
                     persistentPanel: null
                 }, n(144).init(), h.init(e.default.audioPlugin), await e.default.add({
-                    data: A,
+                    data: p,
                     sounds: h
                 });
                 const {
                     ComponentFactory: g
-                } = e.default, f = e.default.Viewport.sidebar().getScreenRoot("social"), b = n(260).default, C = document.createElement("div");
+                } = e.default, f = e.default.Viewport.sidebar().getScreenRoot("social"), b = n(263).default, C = document.createElement("div");
                 C.classList.add("social-plugin-home"), b(C, (e => {
                     const t = e.__container__.lookup("service:friend-hovercards");
-                    A.addHovercardForFriend = (e, n, o) => {
+                    p.addHovercardForFriend = (e, n, o) => {
                         t.addFriend(e, n, o)
-                    }, A.updateHovercardForFriend = (e, n) => {
+                    }, p.updateHovercardForFriend = (e, n) => {
                         t.updateFriend(e, n)
-                    }, A.removeHovercardForFriend = e => {
+                    }, p.removeHovercardForFriend = e => {
                         t.removeFriend(e)
                     }
-                })), e.default.playerNotificationsApi = new o.default, e.default.playerNotificationsPrivateApi = e.default.playerNotificationsApi._api, n(371);
+                })), e.default.playerNotificationsApi = new o.default, e.default.playerNotificationsPrivateApi = e.default.playerNotificationsApi._api, n(374);
                 const v = g.create("rcp-fe-lol-social");
                 f.bump().then((e => {
                     e.getElement().appendChild(C)
@@ -17880,7 +17923,7 @@
                         socialButtons: y.__container__.lookup("service:social-buttons"),
                         friendFinder: y.__container__.lookup("service:friend-finder")
                     };
-                return n(414)(E)
+                return n(417)(E)
             }))
         }), {
             once: !0
