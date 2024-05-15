@@ -423,10 +423,6 @@
         const c = [
           { propertyName: "info", propertyPath: a },
           {
-            propertyName: "backgroundData",
-            propertyPath: "/pass-background-data",
-          },
-          {
             propertyName: "eventShopProgressionData",
             propertyPath: "/progress-info-data",
           },
@@ -478,7 +474,15 @@
           },
         ];
         t.REWARD_TRACK_OBSERVERS = u;
-        const d = [...c, ...p, ...u];
+        const d = [
+          ...c,
+          ...p,
+          ...u,
+          {
+            propertyName: "backgroundData",
+            propertyPath: "/pass-background-data",
+          },
+        ];
         t.EVENT_SHOP_OBSERVERS = d;
         const m = [
           ...c,

@@ -3485,6 +3485,12 @@
               getMissionsCelebrateHandler: function () {
                 return e._getHandler("celebrateMissionRewards");
               },
+              resolveMissionsSelectRewardGroupHandler: function (t) {
+                e._resolveHandler("selectMissionRewardGroup", t);
+              },
+              getMissionsSelectRewardGroupHandler: function () {
+                return e._getHandler("selectMissionRewardGroup");
+              },
               resolveClashHandler: function (t) {
                 return e._resolveHandler("showClash", t);
               },
@@ -3528,6 +3534,7 @@
               this._registeredHandlers.set("showLoot", new n()),
               this._registeredHandlers.set("showMissions", new n()),
               this._registeredHandlers.set("celebrateMissionRewards", new n()),
+              this._registeredHandlers.set("selectMissionRewardGroup", new n()),
               this._registeredHandlers.set("showClash", new n()),
               this._registeredHandlers.set("showNPE", new n()),
               this._registeredHandlers.set("showChampionDetails", new n());
@@ -19044,6 +19051,46 @@
                   },
                 });
               })(e, t),
+              (function (e, t) {
+                t.addListener({
+                  messageType: s.missionsSelectRewards,
+                  validators: e,
+                  handlers: (e, n, i) => {
+                    a.SharedComponentsApi.getApi_HomeRegistry()
+                      .getMissionsSelectRewardGroupHandler()
+                      .then(function (e) {
+                        if (
+                          !(
+                            n &&
+                            n.internalName &&
+                            "string" == typeof n.internalName
+                          )
+                        )
+                          throw new Error("Internal name must be set");
+                        const t = { internalName: n.internalName },
+                          a = n.selectedRewardGroups;
+                        if (!a)
+                          throw new Error(
+                            "selectedRewardGroups name must be set",
+                          );
+                        return e(t, a);
+                      })
+                      .then(() => {
+                        t.sendMessage(i, {
+                          messageType: s.missionsSelectRewardsResponse,
+                          data: { success: !0 },
+                        });
+                      })
+                      .catch((e) => {
+                        a.logger.warning("Error handling message.", e),
+                          t.sendMessage(i, {
+                            messageType: s.missionsSelectRewardsResponse,
+                            data: { success: !1, error: e.message },
+                          });
+                      });
+                  },
+                });
+              })(e, t),
               (function (e, t, n) {
                 t.addListener({
                   messageType: s.missionsObserve,
@@ -19073,6 +19120,9 @@
             missionsCelebrate: "rcp-fe-lol-home-missions-celebrate",
             missionsCelebrateResponse:
               "rcp-fe-lol-home-missions-celebrate-response",
+            missionsSelectRewards: "rcp-fe-lol-home-missions-select-rewards",
+            missionsSelectRewardsResponse:
+              "rcp-fe-lol-home-missions-select-rewards-response",
             missionsObserve: "rcp-fe-lol-home-observe-missions",
             missionsChanged: "rcp-fe-lol-home-missions-changed",
           },

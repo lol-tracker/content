@@ -601,11 +601,11 @@
               PostgameScoreboardReplayButtonComponent: A.default,
               TftHeaderComponent: L.default,
               TftPartnerGroupPlacementComponent: I.default,
-              TftPlayerComponent: R.default,
-              TftTooltipComponent: N.default,
+              TftPlayerComponent: N.default,
+              TftTooltipComponent: R.default,
               PostgameSecondaryProgressionComponent: M.default,
               PostgamePartyStatusComponent: w.default,
-              ArrowFooterComponent: Nt,
+              ArrowFooterComponent: Rt,
               HextechLoadingAnimationComponent: Ot,
               GenericButtonComponent: Ae.default,
               StrawberryPostgameRootComponent: Se.default,
@@ -616,8 +616,8 @@
               PostgameProgressionComponent: we.default,
               PrestigeProgressionComponent: Le.default,
               PrestigeProgressionTooltipComponent: Ie.default,
-              MasteryProgressionComponent: Re.default,
-              LegendaryMasteryProgressionComponent: Ne.default,
+              MasteryProgressionComponent: Ne.default,
+              LegendaryMasteryProgressionComponent: Re.default,
               CherryProgressionComponent: Oe.default,
               RankedProgressionComponent: Be.default,
               RatingChangeComponent: De.default,
@@ -801,7 +801,7 @@
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
               return { default: e };
-            var n = Rt(t);
+            var n = Nt(t);
             if (n && n.has(e)) return n.get(e);
             var a = {},
               s = Object.defineProperty && Object.getOwnPropertyDescriptor;
@@ -847,8 +847,8 @@
           w = It(n(54)),
           L = It(n(55)),
           I = It(n(56)),
-          R = It(n(57)),
-          N = It(n(58)),
+          N = It(n(57)),
+          R = It(n(58)),
           O = It(n(59)),
           D = It(n(60)),
           B = It(n(61)),
@@ -901,8 +901,8 @@
           we = It(n(113)),
           Le = It(n(116)),
           Ie = It(n(117)),
-          Re = It(n(118)),
-          Ne = It(n(119)),
+          Ne = It(n(118)),
+          Re = It(n(119)),
           Oe = It(n(120)),
           De = It(n(121)),
           Be = It(n(122)),
@@ -957,16 +957,16 @@
         function It(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        function Rt(e) {
+        function Nt(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
             n = new WeakMap();
-          return (Rt = function (e) {
+          return (Nt = function (e) {
             return e ? n : t;
           })(e);
         }
         const {
-            ArrowFooterComponent: Nt,
+            ArrowFooterComponent: Rt,
             HextechLoadingAnimationComponent: Ot,
             GameIdClipboardCopyComponent: Dt,
             PlayerNameComponent: Bt,
@@ -10863,8 +10863,8 @@
             },
             sendFriendRequest: function (e) {
               this.get("playerActions").sendFriendRequest(
-                e.summonerName,
-                e.displayName.playerNameFull,
+                e.summonerName || "",
+                e.displayName ? e.displayName.playerNameFull : "",
                 e.puuid,
               ),
                 this.playSound("sfx-uikit-click-generic.ogg");
@@ -10881,7 +10881,7 @@
             },
             confirmBlockPlayer: function (e) {
               this.get("playerActions").confirmBlockPlayer(
-                e.displayName.playerNameFull,
+                e.displayName ? e.displayName.playerNameFull : "",
                 e.summonerId,
               );
             },
