@@ -113,13 +113,25 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-loyalty"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-player-preferences"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-loyalty"
+      "name": "rcp-be-lol-store"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-inventory"
     },
     {
       "affinity": null,
@@ -137,13 +149,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-store"
+      "name": "rcp-be-lol-game-settings"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-inventory"
+      "name": "rcp-be-lol-summoner"
     },
     {
       "affinity": [
@@ -157,13 +169,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-game-settings"
+      "name": "rcp-be-lol-game-queues"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-summoner"
+      "name": "rcp-be-lol-settings"
     },
     {
       "affinity": null,
@@ -176,18 +188,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-fe-lol-uikit"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-settings"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-game-queues"
     },
     {
       "affinity": null,
@@ -211,6 +211,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-match-history"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-fe-lol-shared-components"
     },
     {
@@ -223,12 +229,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-match-history"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-lobby-team-builder"
     },
     {
@@ -236,6 +236,12 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-collections"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-champion-mastery"
     },
     {
       "affinity": null,
@@ -303,12 +309,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-matchmaking"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-spectator"
     },
     {
@@ -321,13 +321,19 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-lol-skins-picker"
+      "name": "rcp-be-lol-chat"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-chat"
+      "name": "rcp-be-lol-matchmaking"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-fe-lol-skins-picker"
     },
     {
       "affinity": [
@@ -338,6 +344,12 @@
       "name": "rcp-fe-lol-profiles"
     },
     {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-loadouts"
+    },
+    {
       "affinity": [
         "postgame",
         "home"
@@ -345,6 +357,12 @@
       "as": [],
       "lazy": false,
       "name": "rcp-fe-lol-social"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-dx9-deprecation"
     },
     {
       "affinity": null,
@@ -362,6 +380,18 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-rewards"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-catalog"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-lobby"
     },
     {
@@ -374,25 +404,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-catalog"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-loadouts"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-publishing-content"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-rewards"
+      "name": "rcp-be-lol-progression"
     },
     {
       "affinity": null,
@@ -416,6 +434,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-cosmetics"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-honor-v2"
     },
     {
@@ -428,13 +452,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-progression"
+      "name": "rcp-be-lol-statstones"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-purchase-widget"
+      "name": "rcp-be-lol-loot"
     },
     {
       "affinity": null,
@@ -453,6 +477,12 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-clash"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-purchase-widget"
     },
     {
       "affinity": null,
@@ -484,12 +514,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-cosmetics"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-drops"
     },
     {
@@ -503,12 +527,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-kr-playtime-reminder"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-statstones"
     },
     {
       "affinity": null,
@@ -606,12 +624,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-event-shop"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-featured-modes"
     },
     {
@@ -666,13 +678,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-loot"
+      "name": "rcp-be-lol-marketing-preferences"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-marketing-preferences"
+      "name": "rcp-be-lol-marketplace"
     },
     {
       "affinity": null,
@@ -721,12 +733,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-player-messaging"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-player-name-transition"
     },
     {
       "affinity": null,
@@ -887,12 +893,6 @@
       "as": [],
       "lazy": true,
       "name": "rcp-fe-lol-event-hub"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": true,
-      "name": "rcp-fe-lol-event-shop"
     },
     {
       "affinity": null,

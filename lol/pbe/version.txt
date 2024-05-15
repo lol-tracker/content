@@ -1,4 +1,4 @@
 {
-  "game": "14.3.5565443+branch.main.code.public.content.beta",
-  "client": "14.3.556.5443"
+  "game": "14.11.5849250+branch.main.code.public.content.beta.anticheat.vanguard",
+  "client": "14.11.584.9250"
 }
