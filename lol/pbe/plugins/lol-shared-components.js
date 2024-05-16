@@ -10977,7 +10977,7 @@
             PhoneNumberSearch: () => O,
             PhoneNumberSearchCustom: () => h.PhoneNumberSearch,
             findNumbers: () => H,
-            findPhoneNumbers: () => $,
+            findPhoneNumbers: () => D,
             findPhoneNumbersCustom: () => p.default,
             format: () => I,
             formatCustom: () => l.default,
@@ -11007,7 +11007,7 @@
             parsePhoneNumberFromString: () => T,
             parseRFC3966: () => j,
             searchNumbers: () => U,
-            searchPhoneNumbers: () => D,
+            searchPhoneNumbers: () => $,
             searchPhoneNumbersCustom: () => p.searchPhoneNumbers,
           });
         var a = n(200),
@@ -11076,11 +11076,11 @@
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), m.default.apply(this, e);
         }
-        function $() {
+        function D() {
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), p.default.apply(this, e);
         }
-        function D() {
+        function $() {
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), p.searchPhoneNumbers.apply(this, e);
         }
@@ -20528,9 +20528,8 @@
         var s,
           i = (s = n(393)) && s.__esModule ? s : { default: s };
         const { RenderMode: r, PlayerNameComputer: l } =
-            a.playerNameComponentLogic,
-          o = "ar-AE" === document.documentElement.lang ? "‏" : "‎";
-        var c = a.Ember.Component.extend({
+          a.playerNameComponentLogic;
+        var o = a.Ember.Component.extend({
           classNames: ["player-name-component"],
           layout: i.default,
           tagName: "span",
@@ -20567,7 +20566,7 @@
                 : this.get("summonerNameComponent");
             },
           ),
-          directionCharacter: o,
+          directionCharacter: a.localeDirectionOverrides.localeDirectionMark,
           isRenderModeFullAlias: a.Ember.computed.equal(
             "playerName.renderMode",
             r.FULL_ALIAS,
@@ -20717,7 +20716,7 @@
             },
           },
         });
-        t.default = c;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -32293,7 +32292,7 @@
       },
       (e, t, n) => {
         "use strict";
-        e.exports = n.p + "hextech-chest-reward.svg";
+        e.exports = n.p + "hextech-chest-reward.png";
       },
       (e, t, n) => {
         "use strict";
@@ -33117,6 +33116,8 @@
                 HtmlSanitizer: (e) =>
                   e.get("rcp-fe-common-libs").getHtmlSanitizer(),
                 jquery: (e) => e.get("rcp-fe-common-libs").getJquery("2"),
+                localeDirectionOverrides: (e) =>
+                  e.get("rcp-fe-common-libs").localeDirectionOverrides,
                 LayerManager: (e) =>
                   e.get("rcp-fe-lol-uikit").getLayerManager(),
                 lodash: (e) => e.get("rcp-fe-common-libs").getLodash(4),

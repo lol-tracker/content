@@ -44737,9 +44737,9 @@
             return this._summonerName;
           }
           getDisplayName() {
-            return i.playerNames.getLocaleDirectionWrappedPlayerName({
+            return i.playerNames.formatPlayerName({
               gameName: this._gameName,
-              tagLine: void 0,
+              tagLine: "",
               summonerName: this._summonerName,
             }).playerName;
           }

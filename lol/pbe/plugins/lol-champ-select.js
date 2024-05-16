@@ -21685,13 +21685,11 @@
             ) {
               let t;
               if (e.summonerId) {
-                const n = await this.get(
-                  "_playerNames",
-                ).getDisplayNameBySummonerId(e.summonerId);
-                t =
-                  this.get("_playerNames").getLocaleDirectionWrappedPlayerName(
-                    n,
-                  ).playerNameFull;
+                t = (
+                  await this.get("_playerNames").getDisplayNameBySummonerId(
+                    e.summonerId,
+                  )
+                ).playerNameFull;
               }
               return t;
             }
@@ -21701,13 +21699,11 @@
               if (n === r.NAME_VISIBILITY_TYPE.UNHIDDEN) {
                 let t;
                 if (e.summonerId) {
-                  const n = await this.get(
-                    "_playerNames",
-                  ).getDisplayNameBySummonerId(e.summonerId);
-                  t =
-                    this.get(
-                      "_playerNames",
-                    ).getLocaleDirectionWrappedPlayerName(n).playerNameFull;
+                  t = (
+                    await this.get("_playerNames").getDisplayNameBySummonerId(
+                      e.summonerId,
+                    )
+                  ).playerNameFull;
                 }
                 return s.formatString("name_visibility_type_team_unhidden", {
                   summonerName: t,

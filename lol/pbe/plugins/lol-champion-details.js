@@ -10562,7 +10562,7 @@
             ),
             generateMilestoneText(e, t = "0") {
               const n = this.get("tra");
-              if (e) return n.get("cdp_bonus_milestone");
+              if (e) return n.get("cdp_info_modal_bonus_milestones");
               {
                 const e =
                   o.SharedChampionMasteryConstants.convertNumberToRoman(t);

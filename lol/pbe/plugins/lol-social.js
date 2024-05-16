@@ -6301,10 +6301,10 @@
               H = /\b__p \+= '';/g,
               V = /\b(__p \+=) '' \+/g,
               Y = /(__e\(.*?\)|\b__t\)) \+\n'';/g,
-              $ = /&(?:amp|lt|gt|quot|#39);/g,
-              Z = /[&<>"']/g,
-              X = RegExp($.source),
-              K = RegExp(Z.source),
+              Z = /&(?:amp|lt|gt|quot|#39);/g,
+              $ = /[&<>"']/g,
+              X = RegExp(Z.source),
+              K = RegExp($.source),
               Q = /<%-([\s\S]+?)%>/g,
               J = /<%([\s\S]+?)%>/g,
               ee = /<%=([\s\S]+?)%>/g,
@@ -6357,19 +6357,19 @@
               He = "(?:" + Pe + "|" + De + ")",
               Ve = "(?:" + We + "|" + De + ")",
               Ye = "(?:['’](?:d|ll|m|re|s|t|ve))?",
-              $e = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
-              Ze = "(?:" + Re + "|" + qe + ")" + "?",
+              Ze = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
+              $e = "(?:" + Re + "|" + qe + ")" + "?",
               Xe = "[" + Ie + "]?",
               Ke =
                 Xe +
-                Ze +
+                $e +
                 ("(?:" +
                   Ge +
                   "(?:" +
                   [Fe, ze, Ue].join("|") +
                   ")" +
                   Xe +
-                  Ze +
+                  $e +
                   ")*"),
               Qe = "(?:" + [Le, ze, Ue].join("|") + ")" + Ke,
               Je = "(?:" + [Fe + Re + "?", Re, ze, Ue, Oe].join("|") + ")",
@@ -6386,9 +6386,9 @@
                     "(?=" +
                     [Ne, We, "$"].join("|") +
                     ")",
-                  Ve + "+" + $e + "(?=" + [Ne, We + He, "$"].join("|") + ")",
+                  Ve + "+" + Ze + "(?=" + [Ne, We + He, "$"].join("|") + ")",
                   We + "?" + He + "+" + Ye,
-                  We + "+" + $e,
+                  We + "+" + Ze,
                   "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])",
                   "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])",
                   je,
@@ -6650,12 +6650,12 @@
                 return null == t ? i : t[e];
               };
             }
-            function $t(e) {
+            function Zt(e) {
               return function (t) {
                 return null == e ? i : e[t];
               };
             }
-            function Zt(e, t, n, o, i) {
+            function $t(e, t, n, o, i) {
               return (
                 i(e, function (e, i, a) {
                   n = o ? ((o = !1), e) : t(n, e, i, a);
@@ -6695,7 +6695,7 @@
               for (var n = e.length; n-- && Wt(t, e[n], 0) > -1; );
               return n;
             }
-            var on = $t({
+            var on = Zt({
                 À: "A",
                 Á: "A",
                 Â: "A",
@@ -6887,7 +6887,7 @@
                 ŉ: "'n",
                 ſ: "s",
               }),
-              an = $t({
+              an = Zt({
                 "&": "&amp;",
                 "<": "&lt;",
                 ">": "&gt;",
@@ -6963,7 +6963,7 @@
                     return e.split("");
                   })(e);
             }
-            var gn = $t({
+            var gn = Zt({
               "&amp;": "&",
               "&lt;": "<",
               "&gt;": ">",
@@ -7012,8 +7012,8 @@
                 He = t.Symbol,
                 Ve = t.Uint8Array,
                 Ye = Ge ? Ge.allocUnsafe : i,
-                $e = cn(Se.getPrototypeOf, Se),
-                Ze = Se.create,
+                Ze = cn(Se.getPrototypeOf, Se),
+                $e = Se.create,
                 Xe = Re.propertyIsEnumerable,
                 Ke = Oe.splice,
                 Qe = He ? He.isConcatSpreadable : i,
@@ -7033,7 +7033,7 @@
                 Ct = Se.getOwnPropertySymbols,
                 vt = Ge ? Ge.isBuffer : i,
                 Ft = t.isFinite,
-                $t = Oe.join,
+                Zt = Oe.join,
                 bn = cn(Se.keys, Se),
                 Cn = ke.max,
                 vn = ke.min,
@@ -7068,7 +7068,7 @@
                 function e() {}
                 return function (t) {
                   if (!es(t)) return {};
-                  if (Ze) return Ze(t);
+                  if ($e) return $e(t);
                   e.prototype = t;
                   var n = new e();
                   return (e.prototype = i), n;
@@ -7107,7 +7107,7 @@
                   this.set(o[0], o[1]);
                 }
               }
-              function $n(e) {
+              function Zn(e) {
                 var t = -1,
                   n = null == e ? 0 : e.length;
                 for (this.clear(); ++t < n; ) {
@@ -7115,10 +7115,10 @@
                   this.set(o[0], o[1]);
                 }
               }
-              function Zn(e) {
+              function $n(e) {
                 var t = -1,
                   n = null == e ? 0 : e.length;
-                for (this.__data__ = new $n(); ++t < n; ) this.add(e[t]);
+                for (this.__data__ = new Zn(); ++t < n; ) this.add(e[t]);
               }
               function Xn(e) {
                 var t = (this.__data__ = new Yn(e));
@@ -7127,7 +7127,7 @@
               function Kn(e, t) {
                 var n = Gr(e),
                   o = !n && Wr(e),
-                  i = !n && !o && $r(e),
+                  i = !n && !o && Zr(e),
                   a = !n && !o && !i && cs(e),
                   r = n || o || i || a,
                   s = r ? Kt(e.length, Te) : [],
@@ -7231,7 +7231,7 @@
                 } else {
                   var m = ga(e),
                     p = m == x || m == B;
-                  if ($r(e)) return wi(e, l);
+                  if (Zr(e)) return wi(e, l);
                   if (m == k || m == b || (p && !a)) {
                     if (((s = c || p ? {} : ba(e)), !l))
                       return c
@@ -7347,7 +7347,7 @@
                 n && (t = jt(t, Qt(n))),
                   o
                     ? ((a = Rt), (r = !1))
-                    : t.length >= 200 && ((a = en), (r = !1), (t = new Zn(t)));
+                    : t.length >= 200 && ((a = en), (r = !1), (t = new $n(t)));
                 e: for (; ++i < s; ) {
                   var d = e[i],
                     u = null == n ? d : n(d);
@@ -7426,7 +7426,7 @@
                     o < 0 ? (++this.size, n.push([e, t])) : (n[o][1] = t), this
                   );
                 }),
-                ($n.prototype.clear = function () {
+                (Zn.prototype.clear = function () {
                   (this.size = 0),
                     (this.__data__ = {
                       hash: new Vn(),
@@ -7434,26 +7434,26 @@
                       string: new Vn(),
                     });
                 }),
-                ($n.prototype.delete = function (e) {
+                (Zn.prototype.delete = function (e) {
                   var t = ua(this, e).delete(e);
                   return (this.size -= t ? 1 : 0), t;
                 }),
-                ($n.prototype.get = function (e) {
+                (Zn.prototype.get = function (e) {
                   return ua(this, e).get(e);
                 }),
-                ($n.prototype.has = function (e) {
+                (Zn.prototype.has = function (e) {
                   return ua(this, e).has(e);
                 }),
-                ($n.prototype.set = function (e, t) {
+                (Zn.prototype.set = function (e, t) {
                   var n = ua(this, e),
                     o = n.size;
                   return n.set(e, t), (this.size += n.size == o ? 0 : 1), this;
                 }),
-                (Zn.prototype.add = Zn.prototype.push =
+                ($n.prototype.add = $n.prototype.push =
                   function (e) {
                     return this.__data__.set(e, r), this;
                   }),
-                (Zn.prototype.has = function (e) {
+                ($n.prototype.has = function (e) {
                   return this.__data__.has(e);
                 }),
                 (Xn.prototype.clear = function () {
@@ -7476,7 +7476,7 @@
                     var o = n.__data__;
                     if (!_n || o.length < 199)
                       return o.push([e, t]), (this.size = ++n.size), this;
-                    n = this.__data__ = new $n(o);
+                    n = this.__data__ = new Zn(o);
                   }
                   return n.set(e, t), (this.size = n.size), this;
                 });
@@ -7592,7 +7592,7 @@
                     (d = vn(m.length, d)),
                     (c[l] =
                       !n && (t || (r >= 120 && m.length >= 120))
-                        ? new Zn(l && m)
+                        ? new $n(l && m)
                         : i);
                 }
                 m = e[0];
@@ -7633,8 +7633,8 @@
                           u = (c = c == b ? k : c) == k,
                           m = (d = d == b ? k : d) == k,
                           p = c == d;
-                        if (p && $r(e)) {
-                          if (!$r(t)) return !1;
+                        if (p && Zr(e)) {
+                          if (!Zr(t)) return !1;
                           (s = !0), (u = !1);
                         }
                         if (p && !u)
@@ -7855,7 +7855,7 @@
                               m = u === i;
                             if (m) {
                               var p = Gr(c),
-                                A = !p && $r(c),
+                                A = !p && Zr(c),
                                 h = !p && !A && cs(c);
                               (u = c),
                                 p || A || h
@@ -7927,7 +7927,7 @@
                 }
                 return a;
               }
-              function $o(e, t, n, o) {
+              function Zo(e, t, n, o) {
                 var i = o ? Gt : Wt,
                   a = -1,
                   r = t.length,
@@ -7941,7 +7941,7 @@
                     s !== e && Ke.call(s, l, 1), Ke.call(e, l, 1);
                 return e;
               }
-              function Zo(e, t) {
+              function $o(e, t) {
                 for (var n = e ? t.length : 0, o = n - 1; n--; ) {
                   var i = t[n];
                   if (n == o || i !== a) {
@@ -8105,7 +8105,7 @@
                 else if (a >= 200) {
                   var c = t ? null : Ki(e);
                   if (c) return mn(c);
-                  (r = !1), (i = en), (l = new Zn());
+                  (r = !1), (i = en), (l = new $n());
                 } else l = t ? [] : s;
                 e: for (; ++o < a; ) {
                   var d = e[o],
@@ -8435,7 +8435,7 @@
                     g && C < m)
                   ) {
                     var B = dn(v, E);
-                    return Zi(e, t, Ui, u.placeholder, n, v, B, c, d, m - C);
+                    return $i(e, t, Ui, u.placeholder, n, v, B, c, d, m - C);
                   }
                   var w = A ? n : this,
                     _ = h ? w[e] : e;
@@ -8525,7 +8525,7 @@
                   );
                 };
               }
-              function $i(e) {
+              function Zi(e) {
                 return function (t, n) {
                   return (
                     ("string" == typeof t && "string" == typeof n) ||
@@ -8534,7 +8534,7 @@
                   );
                 };
               }
-              function Zi(e, t, n, o, a, r, s, l, u, m) {
+              function $i(e, t, n, o, a, r, s, l, u, m) {
                 var p = 8 & t;
                 (t |= p ? c : d), 4 & (t &= ~(p ? d : c)) || (t &= -4);
                 var A = [
@@ -8663,7 +8663,7 @@
                                 ? []
                                 : dn(l, d);
                             return (s -= u.length) < n
-                              ? Zi(
+                              ? $i(
                                   e,
                                   t,
                                   Ui,
@@ -8743,7 +8743,7 @@
                 if (d && r.get(t)) return d == t;
                 var u = -1,
                   m = !0,
-                  p = 2 & n ? new Zn() : i;
+                  p = 2 & n ? new $n() : i;
                 for (r.set(e, t), r.set(t, e); ++u < l; ) {
                   var A = e[u],
                     h = t[u];
@@ -8848,7 +8848,7 @@
                   : hl,
                 ha = Ct
                   ? function (e) {
-                      for (var t = []; e; ) Lt(t, Aa(e)), (e = $e(e));
+                      for (var t = []; e; ) Lt(t, Aa(e)), (e = Ze(e));
                       return t;
                     }
                   : hl,
@@ -8869,7 +8869,7 @@
               function ba(e) {
                 return "function" != typeof e.constructor || wa(e)
                   ? {}
-                  : Un($e(e));
+                  : Un(Ze(e));
               }
               function Ca(e) {
                 return Gr(e) || Wr(e) || !!(Qe && e && e[Qe]);
@@ -9123,7 +9123,7 @@
                   var t = jt(e, Ci);
                   return t.length && t[0] === e[0] ? Mo(t) : [];
                 }),
-                $a = Qo(function (e) {
+                Za = Qo(function (e) {
                   var t = Xa(e),
                     n = jt(e, Ci);
                   return (
@@ -9131,7 +9131,7 @@
                     n.length && n[0] === e[0] ? Mo(n, da(t, 2)) : []
                   );
                 }),
-                Za = Qo(function (e) {
+                $a = Qo(function (e) {
                   var t = Xa(e),
                     n = jt(e, Ci);
                   return (
@@ -9145,13 +9145,13 @@
               }
               var Ka = Qo(Qa);
               function Qa(e, t) {
-                return e && e.length && t && t.length ? $o(e, t) : e;
+                return e && e.length && t && t.length ? Zo(e, t) : e;
               }
               var Ja = ia(function (e, t) {
                 var n = null == e ? 0 : e.length,
                   o = so(e, t);
                 return (
-                  Zo(
+                  $o(
                     e,
                     jt(t, function (e) {
                       return va(e, n) ? +e : e;
@@ -9422,7 +9422,7 @@
                   var r = e.apply(this, o);
                   return (n.cache = a.set(i, r) || a), r;
                 };
-                return (n.cache = new (Rr.Cache || $n)()), n;
+                return (n.cache = new (Rr.Cache || Zn)()), n;
               }
               function jr(e) {
                 if ("function" != typeof e) throw new Me(a);
@@ -9441,7 +9441,7 @@
                   return !e.apply(this, t);
                 };
               }
-              Rr.Cache = $n;
+              Rr.Cache = Zn;
               var Lr = Ei(function (e, t) {
                   var n = (t =
                     1 == t.length && Gr(t[0])
@@ -9467,8 +9467,8 @@
               function Fr(e, t) {
                 return e === t || (e != e && t != t);
               }
-              var zr = $i(So),
-                Ur = $i(function (e, t) {
+              var zr = Zi(So),
+                Ur = Zi(function (e, t) {
                   return e >= t;
                 }),
                 Wr = No(
@@ -9494,8 +9494,8 @@
               function Yr(e) {
                 return ts(e) && Vr(e);
               }
-              var $r = vt || gl,
-                Zr = Et
+              var Zr = vt || gl,
+                $r = Et
                   ? Qt(Et)
                   : function (e) {
                       return ts(e) && ko(e) == y;
@@ -9544,7 +9544,7 @@
               }
               function is(e) {
                 if (!ts(e) || ko(e) != k) return !1;
-                var t = $e(e);
+                var t = Ze(e);
                 if (null === t) return !0;
                 var n = Pe.call(t, "constructor") && t.constructor;
                 return (
@@ -9572,8 +9572,8 @@
                 : function (e) {
                     return ts(e) && Jr(e.length) && !!lt[ko(e)];
                   };
-              var ds = $i(Fo),
-                us = $i(function (e, t) {
+              var ds = Zi(Fo),
+                us = Zi(function (e, t) {
                   return e <= t;
                 });
               function ms(e) {
@@ -9752,10 +9752,10 @@
               var Ys = Di(function (e, t, n) {
                 return e + (n ? "_" : "") + t.toLowerCase();
               });
-              var $s = Di(function (e, t, n) {
+              var Zs = Di(function (e, t, n) {
                 return e + (n ? " " : "") + Xs(t);
               });
-              var Zs = Di(function (e, t, n) {
+              var $s = Di(function (e, t, n) {
                   return e + (n ? " " : "") + t.toUpperCase();
                 }),
                 Xs = Pi("toUpperCase");
@@ -10074,8 +10074,8 @@
                   return (null == e ? 0 : e.length) ? ai(e, 0, -1) : [];
                 }),
                 (zn.intersection = Ya),
-                (zn.intersectionBy = $a),
-                (zn.intersectionWith = Za),
+                (zn.intersectionBy = Za),
+                (zn.intersectionWith = $a),
                 (zn.invert = Ss),
                 (zn.invertBy = Is),
                 (zn.invokeMap = yr),
@@ -10158,11 +10158,11 @@
                 (zn.pullAll = Qa),
                 (zn.pullAllBy = function (e, t, n) {
                   return e && e.length && t && t.length
-                    ? $o(e, t, da(n, 2))
+                    ? Zo(e, t, da(n, 2))
                     : e;
                 }),
                 (zn.pullAllWith = function (e, t, n) {
-                  return e && e.length && t && t.length ? $o(e, t, i, n) : e;
+                  return e && e.length && t && t.length ? Zo(e, t, i, n) : e;
                 }),
                 (zn.pullAt = Ja),
                 (zn.range = pl),
@@ -10181,7 +10181,7 @@
                     var r = e[o];
                     t(r, o, e) && (n.push(r), i.push(o));
                   }
-                  return Zo(e, i), n;
+                  return $o(e, i), n;
                 }),
                 (zn.rest = function (e, t) {
                   if ("function" != typeof e) throw new Me(a);
@@ -10296,7 +10296,7 @@
                 (zn.toPlainObject = fs),
                 (zn.transform = function (e, t, n) {
                   var o = Gr(e),
-                    i = o || $r(e) || cs(e);
+                    i = o || Zr(e) || cs(e);
                   if (((t = da(t, 4)), null == n)) {
                     var a = e && e.constructor;
                     n = i
@@ -10304,7 +10304,7 @@
                         ? new a()
                         : []
                       : es(e) && Kr(a)
-                        ? Un($e(e))
+                        ? Un(Ze(e))
                         : {};
                   }
                   return (
@@ -10412,7 +10412,7 @@
                 }),
                 (zn.eq = Fr),
                 (zn.escape = function (e) {
-                  return (e = bs(e)) && K.test(e) ? e.replace(Z, an) : e;
+                  return (e = bs(e)) && K.test(e) ? e.replace($, an) : e;
                 }),
                 (zn.escapeRegExp = function (e) {
                   return (e = bs(e)) && ae.test(e) ? e.replace(ie, "\\$&") : e;
@@ -10489,8 +10489,8 @@
                 (zn.isBoolean = function (e) {
                   return !0 === e || !1 === e || (ts(e) && ko(e) == v);
                 }),
-                (zn.isBuffer = $r),
-                (zn.isDate = Zr),
+                (zn.isBuffer = Zr),
+                (zn.isDate = $r),
                 (zn.isElement = function (e) {
                   return ts(e) && 1 === e.nodeType && !is(e);
                 }),
@@ -10501,7 +10501,7 @@
                     (Gr(e) ||
                       "string" == typeof e ||
                       "function" == typeof e.splice ||
-                      $r(e) ||
+                      Zr(e) ||
                       cs(e) ||
                       Wr(e))
                   )
@@ -10573,7 +10573,7 @@
                   return ts(e) && "[object WeakSet]" == ko(e);
                 }),
                 (zn.join = function (e, t) {
-                  return null == e ? "" : $t.call(e, t);
+                  return null == e ? "" : Zt.call(e, t);
                 }),
                 (zn.kebabCase = Gs),
                 (zn.last = Xa),
@@ -10683,12 +10683,12 @@
                   return Xo(e, t);
                 }),
                 (zn.reduce = function (e, t, n) {
-                  var o = Gr(e) ? Pt : Zt,
+                  var o = Gr(e) ? Pt : $t,
                     i = arguments.length < 3;
                   return o(e, da(t, 4), n, i, Ao);
                 }),
                 (zn.reduceRight = function (e, t, n) {
-                  var o = Gr(e) ? Dt : Zt,
+                  var o = Gr(e) ? Dt : $t,
                     i = arguments.length < 3;
                   return o(e, da(t, 4), n, i, ho);
                 }),
@@ -10754,7 +10754,7 @@
                   }
                   return -1;
                 }),
-                (zn.startCase = $s),
+                (zn.startCase = Zs),
                 (zn.startsWith = function (e, t, n) {
                   return (
                     (e = bs(e)),
@@ -10916,13 +10916,13 @@
                   return c + o;
                 }),
                 (zn.unescape = function (e) {
-                  return (e = bs(e)) && X.test(e) ? e.replace($, gn) : e;
+                  return (e = bs(e)) && X.test(e) ? e.replace(Z, gn) : e;
                 }),
                 (zn.uniqueId = function (e) {
                   var t = ++De;
                   return bs(e) + t;
                 }),
-                (zn.upperCase = Zs),
+                (zn.upperCase = $s),
                 (zn.upperFirst = Xs),
                 (zn.each = br),
                 (zn.eachRight = Cr),
@@ -12402,7 +12402,7 @@
               }),
               (e.getLocaleDirectionWrappedDisplayName = function (e, t) {
                 const { playerName: n, playerNameFull: o } =
-                  a.getLocaleDirectionWrappedPlayerName(e);
+                  a.formatPlayerName(e);
                 return t ? n : o;
               }),
               (e.getFormattedDisplayName = function (t, n = !1) {
@@ -15299,7 +15299,8 @@
                 e || null !== this.savedMessage || this.cacheUnsentMessage();
               }),
               this.setupNewChatHandlers(),
-              (this.savedMessage = null);
+              (this.savedMessage = null),
+              (this.localeDirectionOverrides = o.localeDirectionOverrides);
           },
           setupNewChatHandlers: function () {
             (this.watch("visibleConversations.length", (e, t) => {
@@ -15579,12 +15580,13 @@
             }
           },
           getLocaleWrappedGameName: function (e) {
-            const { gameName: t } = e;
-            return `⁦${"ar-AE" === document.documentElement.lang ? "⁧" : "⁦"}${t}⁩`;
+            const { gameName: t } = e,
+              n = this.localeDirectionOverrides.wrapWithDirectionOverride(t);
+            return this.localeDirectionOverrides.LTRDirectionOverrideStart + n;
           },
           getLocaleWrappedTagLine: function (e) {
             const { gameTag: t } = e;
-            return ` #${"ar-AE" === document.documentElement.lang ? "⁧" : "⁦"}${t}⁩⁩`;
+            return ` #${this.localeDirectionOverrides.wrapWithDirectionOverride(t)}${this.localeDirectionOverrides.localeDirectionOverrideEnd}`;
           },
         });
       },
@@ -16204,25 +16206,41 @@
           },
         });
       },
-      (e, t) => {
+      (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.confirmBlockFriendHelper = function (e, t, n, o) {
+          (t.confirmBlockFriendHelper = function (e, t, n, i) {
             if (!t) return;
-            o || (o = "roster_confirm_block_text");
-            const i = t.gameTag || t.tagLine;
-            let a = t.name || `${t.gameName} #${i}`;
-            t.name && t.gameName && (a += ` (${t.gameName} #${i})`);
-            const r = e.templateHelper.contentBlockDialog(
+            i || (i = "roster_confirm_block_text");
+            const a = t.gameTag || t.tagLine,
+              { name: r, gameName: s } = t;
+            let l = o.playerNames.formatPlayerName({
+              gameName: s,
+              tagLine: a,
+              summonerName: r,
+            }).playerNameFull;
+            if (o.playerNames.isUsingAlias)
+              (s && a) ||
+                o.logger.error(
+                  "Error setting name for confirm block friend modal: missing gameName and tagLine",
+                );
+            else if (r && s) {
+              const e = o.localeDirectionOverrides.wrapWithDirectionOverride(s),
+                t = o.localeDirectionOverrides.wrapWithDirectionOverride(a);
+              l = o.localeDirectionOverrides.wrapWithLTRDirectionOverride(
+                `${l} (${e} #${t})`,
+              );
+            }
+            const c = e.templateHelper.contentBlockDialog(
               n("roster_confirm_block_title"),
-              n(o, { name: a }),
+              n(i, { name: l }),
               "dialog-medium",
               "confirm-friend-actions",
             );
             return e.modalManager.add({
               type: "DialogConfirm",
               data: {
-                contents: r,
+                contents: c,
                 acceptText: n("roster_confirm_block"),
                 declineText: n("roster_confirm_cancel"),
                 closeButton: !1,
@@ -16230,6 +16248,7 @@
               show: !0,
             }).acceptPromise;
           });
+        var o = n(1);
       },
       (e) => {
         "use strict";
@@ -17869,18 +17888,27 @@
           },
           confirmRemoveFriend: function () {
             if (!this.member) return;
-            let e;
-            const { gameName: t, gameTag: n, name: i } = this.member;
-            o.playerNames.isUsingAlias
-              ? ((t && n) ||
-                  o.logger.error(
-                    "Error setting name for confirm friend removal modal: missing gameName and tagLine",
-                  ),
-                (e = `${t} #${n}`))
-              : ((e = i || `${t} #${n}`), i && t && (e += ` (${t} #${n})`));
+            const { gameName: e, gameTag: t, name: n } = this.member;
+            let i = o.playerNames.formatPlayerName({
+              gameName: e,
+              tagLine: t,
+              summonerName: n,
+            }).playerNameFull;
+            if (o.playerNames.isUsingAlias)
+              (e && t) ||
+                o.logger.error(
+                  "Error setting name for confirm friend removal modal: missing gameName and tagLine",
+                );
+            else if (n && e) {
+              const n = o.localeDirectionOverrides.wrapWithDirectionOverride(e),
+                a = o.localeDirectionOverrides.wrapWithDirectionOverride(t);
+              i = o.localeDirectionOverrides.wrapWithLTRDirectionOverride(
+                `${i} (${n} #${a})`,
+              );
+            }
             const a = this.data.templateHelper.contentBlockDialog(
               this.t("roster_confirm_unfriend_title"),
-              this.t("roster_confirm_unfriend_text", { name: e }),
+              this.t("roster_confirm_unfriend_text", { name: i }),
               "dialog-medium",
               "confirm-friend-actions",
             );
@@ -21733,17 +21761,16 @@
               }, 300);
           },
           async addFriend(e) {
-            const { gameName: t, tagLine: n, summonerName: o } = e;
-            let i;
-            i = this.get("shouldUseGameNameAndTagline") ? `${t} #${n}` : o;
-            const a = this.blockedPlayerId(e);
-            if (!a) return await this.executeAddFriend(e, i);
-            const r = this.showAddBlockedFriendDialog(i, a, e);
-            return await r.acceptPromise
+            const t =
+                this.get("playerNames").formatPlayerName(e).playerNameFull,
+              n = this.blockedPlayerId(e);
+            if (!n) return await this.executeAddFriend(e, t);
+            const o = this.showAddBlockedFriendDialog(t, n, e);
+            return await o.acceptPromise
               .then(
                 async () => (
-                  await this.get("friendRequestsService").unBlockPlayer(a),
-                  await this.executeAddFriend(e, i)
+                  await this.get("friendRequestsService").unBlockPlayer(n),
+                  await this.executeAddFriend(e, t)
                 ),
               )
               .catch(() => null);
@@ -25022,9 +25049,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "qgsCFR38",
+          id: "e7nQMsPK",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-social\\\\src\\\\app\\\\templates\\\\components\\\\friend-finder-requested-player.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-social\\\\src\\\\app\\\\components\\\\friend-finder-requested-player.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["unknown",["playerIdentityClasses"]],null],["flush-element"],["text","\\n  "],["open-element","lol-social-avatar",[]],["dynamic-attr","icon",["unknown",["iconId"]],null],["static-attr","hideindicator",""],["static-attr","disabled",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","player-name-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["player-name"],null,[["format","puuid","gameNameClass","summonerNameClass","gameName","tagLine","summonerName"],["short",["get",["puuid"]],"player-name","player-name",["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text","\\n\\n"],["block",["if"],[["get",["hasGameNameAndTagLine"]]],null,5],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["working"]]],null,4,3],["text","\\n"],["block",["if"],[["get",["summonerId"]]],null,2,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["hovercard-component"],null,[["options","friendId"],[["get",["hovercardOptions"]],["get",["puuid"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["puuid"]]],null,0]],"locals":[]},{"statements":[["text","  "],["append",["helper",["hovercard-component"],null,[["options","summonerId"],[["get",["hovercardOptions"]],["get",["summonerId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","remove-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"removeFriendRequest"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["uikit-spinner"],null,[["width","height"],["16px","16px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","player-gnt"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","player-game-name"],["flush-element"],["append",["unknown",["gameName"]],false],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","player-game-tag"],["flush-element"],["text"," #"],["append",["unknown",["tagLine"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-social\\\\src\\\\app\\\\templates\\\\components\\\\friend-finder-requested-player.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-social\\\\src\\\\app\\\\components\\\\friend-finder-requested-player.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["unknown",["playerIdentityClasses"]],null],["flush-element"],["text","\\n  "],["open-element","lol-social-avatar",[]],["dynamic-attr","icon",["unknown",["iconId"]],null],["static-attr","hideindicator",""],["static-attr","disabled",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","player-name-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["player-name"],null,[["format","puuid","gameNameClass","summonerNameClass","gameName","tagLine","summonerName"],["short",["get",["puuid"]],"player-name","player-name",["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text","\\n\\n"],["block",["if"],[["get",["hasGameNameAndTagLine"]]],null,5],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["working"]]],null,4,3],["text","\\n"],["block",["if"],[["get",["summonerId"]]],null,2,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["hovercard-component"],null,[["options","friendId"],[["get",["hovercardOptions"]],["get",["puuid"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["puuid"]]],null,0]],"locals":[]},{"statements":[["text","  "],["append",["helper",["hovercard-component"],null,[["options","summonerId"],[["get",["hovercardOptions"]],["get",["summonerId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","remove-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"removeFriendRequest"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["uikit-spinner"],null,[["width","height"],["16px","16px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","player-gnt"],["flush-element"],["text","\\n        "],["append",["helper",["player-name"],null,[["format","puuid","gameNameClass","summonerNameClass","gameName","tagLine","summonerName"],["full",["get",["puuid"]],"player-game-name","player-game-tag",["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -26422,6 +26449,8 @@
               layerManager: (e) => e.get("rcp-fe-lol-uikit").getLayerManager(),
               LeagueTierNames: (e) =>
                 e.get("rcp-fe-lol-shared-components").getApi_LeagueTierNames(),
+              localeDirectionOverrides: (e) =>
+                e.get("rcp-fe-common-libs").localeDirectionOverrides,
               lockAndLoad: (e) => e.get("rcp-fe-lol-lock-and-load"),
               logger: (e) => e.get("rcp-fe-common-libs").logging.create(r),
               modalManager: (e) => e.get("rcp-fe-lol-uikit").getModalManager(),

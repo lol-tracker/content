@@ -19042,6 +19042,9 @@
               );
             },
           ),
+          init() {
+            this._super(...arguments), (this._playerNames = s.playerNames);
+          },
           _showAlertSummonerNotFound(e) {
             const t = this.$("<div>").text(e).html(),
               n = this.get("tra.profile_search_hint_text"),
@@ -19074,18 +19077,21 @@
               const t = this._getPlayerName(e);
               if (t) {
                 try {
-                  const e = await this.get("api.summoner").get(
+                  const n = await this.get("api.summoner").get(
                     "/v1/summoners?name=" + encodeURIComponent(t),
                   );
-                  e
-                    ? this.privateApi.showOverlayForSummoner(e)
-                    : this._showAlertSummonerNotFound(t);
-                  const n = {
+                  n
+                    ? this.privateApi.showOverlayForSummoner(n)
+                    : this._showAlertSummonerNotFound(
+                        this.get("_playerNames").formatPlayerName(e)
+                          .playerNameFull,
+                      );
+                  const a = {
                     event: "search-for-summoner",
                     summonerName: t,
-                    ...(e?.summonerId && { summonerId: e.summonerId }),
+                    ...(n?.summonerId && { summonerId: n.summonerId }),
                   };
-                  s.Telemetry.sendCustomData("profile-overview-events", n);
+                  s.Telemetry.sendCustomData("profile-overview-events", a);
                 } catch (e) {
                   s.logger.error("Error searching for summoner", e);
                 }

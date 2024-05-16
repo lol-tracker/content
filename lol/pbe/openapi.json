@@ -18123,6 +18123,9 @@
       },
       "LolEventHubBundledItemUIData": {
         "properties": {
+          "decoratorBadgeURL": {
+            "type": "string"
+          },
           "description": {
             "type": "string"
           },
@@ -60599,7 +60602,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "HttpAsyncResult",
+        "operationId": "Http2AsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -60677,7 +60680,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -78197,6 +78200,30 @@
         ]
       }
     },
+    "/lol-lobby/v2/lobby/strawberryMapId": {
+      "put": {
+        "operationId": "PutLolLobbyV2LobbyStrawberryMapId",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-lobby"
+        ]
+      }
+    },
     "/lol-lobby/v2/lobby/subteamData": {
       "put": {
         "operationId": "PutLolLobbyV2LobbySubteamData",
@@ -93947,7 +93974,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -94031,7 +94058,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {
