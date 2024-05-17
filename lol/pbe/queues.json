@@ -1433,7 +1433,7 @@
     "id": 1210,
     "isRanked": false,
     "isTeamBuilderManaged": true,
-    "isVisible": false,
+    "isVisible": true,
     "lastToggledOffTime": 0,
     "lastToggledOnTime": 0,
     "mapId": 22,
@@ -1444,7 +1444,7 @@
     "minimumParticipantListSize": 1,
     "name": "Teamfight Tactics (Choncc's Treasure)",
     "numPlayersPerTeam": 8,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": false,
       "isIpEnabled": true,

@@ -13928,23 +13928,6 @@
       },
       "type": "object"
     },
-    "LolCollectionsCollectionsChestEligibility": {
-      "properties": {
-        "earnableChests": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "maximumChests": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "nextChestRechargeTime": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "LolCollectionsCollectionsOwnership": {
       "properties": {
         "loyaltyReward": {
@@ -60557,7 +60540,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -68139,24 +68122,6 @@
         "tags": [
           "Plugins",
           "Plugin lol-client-config"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/chest-eligibility": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesChestEligibility",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolCollectionsCollectionsChestEligibility"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
         ]
       }
     },
@@ -89645,9 +89610,31 @@
         ]
       }
     },
+    "/services-api/session/v1/game-session/token": {
+      "put": {
+        "operationId": "PutServicesApiSessionV1GameSessionToken",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "Http2ApiDocsV1",
+        "operationId": "HttpApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -89700,7 +89687,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "HttpApiDocsV2",
+        "operationId": "Http2ApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {

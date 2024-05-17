@@ -615,7 +615,7 @@
             clearEventSpecificData() {
               this.eventSpecificObservers.forEach(
                 ({ path: e, propertyName: t }) => {
-                  this.eventHubDataBinding.unobserve(e),
+                  this.eventHubDataBinding.unobserve(e, this),
                     this.setProperties({ [t]: void 0 });
                 },
               ),

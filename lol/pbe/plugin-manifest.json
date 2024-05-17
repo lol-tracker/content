@@ -101,6 +101,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-services-api"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-league-session"
     },
     {

@@ -2993,42 +2993,28 @@
         }
         n(222);
         const { RunMixin: l } = a.EmberAddons.EmberLifeline;
-        function d(e) {
-          return `${e < 10 ? "0" : ""}${e}`;
-        }
-        const m = 864e5,
-          _ = (0, a.EmberDataBinding)({
-            Ember: a.Ember,
-            websocket: (0, a.getProvider)().getSocket(),
-            basePaths: {
-              honor: "/lol-honor-v2",
-              settings: "/lol-settings",
-              platformConfig: "/lol-platform-config",
-            },
-            boundProperties: {
-              honorConfig: { api: "honor", path: "/v1/config" },
-              honorProfile: { api: "honor", path: "/v1/profile" },
-              settingsReady: { api: "settings", path: "/v2/ready" },
-            },
-          });
-        e.exports = a.Ember.Component.extend(l, _, r.default, {
+        const d = (0, a.EmberDataBinding)({
+          Ember: a.Ember,
+          websocket: (0, a.getProvider)().getSocket(),
+          basePaths: {
+            honor: "/lol-honor-v2",
+            settings: "/lol-settings",
+            platformConfig: "/lol-platform-config",
+          },
+          boundProperties: {
+            honorConfig: { api: "honor", path: "/v1/config" },
+            honorProfile: { api: "honor", path: "/v1/profile" },
+            settingsReady: { api: "settings", path: "/v2/ready" },
+          },
+        });
+        e.exports = a.Ember.Component.extend(l, d, r.default, {
           classNames: ["style-profile-boosts-component"],
           layout: n(223),
           tooltipManager: a.TooltipManager,
           profileService: a.Ember.inject.service("profile"),
           boosts: a.Ember.computed.alias("profileService.boosts"),
-          chestEligibility: a.Ember.computed.alias(
-            "profileService.chestEligibility",
-          ),
-          isTencent: a.Ember.computed.equal(
-            "profileService.regionLocale.region",
-            "TENCENT",
-          ),
           honorEnabled: a.Ember.computed.bool("honorConfig.Enabled"),
           shouldShowHonor: a.Ember.computed.and("honorEnabled", "isMe"),
-          isLegendaryChampionMasteryEnabled: a.Ember.computed.alias(
-            "profileService.isLegendaryChampionMasteryEnabled",
-          ),
           boostActive: a.Ember.computed("xpBoostActive", "boosts", function () {
             if (this.get("boosts")) {
               if (this.get("xpBoostActive")) return !0;
@@ -3193,71 +3179,6 @@
                   },
                 );
               }
-            },
-          ),
-          chestEligibilityInfoAvailable:
-            a.Ember.computed.notEmpty("chestEligibility"),
-          updateChestRechargeCountdown: function () {
-            if (
-              this &&
-              !this.isDestroying &&
-              !this.isDestroyed &&
-              this.get("tra")
-            ) {
-              const e = this.get("chestEligibility.maximumChests"),
-                t = this.get("chestEligibility.earnableChests");
-              if (e <= t)
-                this.set(
-                  "chestTooltipTitle",
-                  this.get(
-                    "tra.profile_perks_chest_tooltip_all_chests_available",
-                  ),
-                );
-              else {
-                const e =
-                  this.get("chestEligibility.nextChestRechargeTime") -
-                  Date.now();
-                e <= 0
-                  ? (this.set(
-                      "chestTooltipTitle",
-                      this.get(
-                        "tra.profile_perks_chest_tooltip_all_chests_available",
-                      ),
-                    ),
-                    this.set("chestEligibility.earnableChests", t + 1))
-                  : e > m
-                    ? (this.set(
-                        "chestTooltipTitle",
-                        (0, s.translate)(
-                          this,
-                          "profile_perks_chest_tooltip_next_chests_available_days",
-                          { days: Math.round(e / m) },
-                        ),
-                      ),
-                      this.runTask(this.updateChestRechargeCountdown, e - m))
-                    : (this.set(
-                        "chestTooltipTitle",
-                        (0, s.translate)(
-                          this,
-                          "profile_perks_chest_tooltip_next_chests_available_hours",
-                          (function (e) {
-                            const t = i.default.duration(e);
-                            return {
-                              hours: d(t.get("hours")),
-                              minutes: d(t.get("minutes")),
-                              seconds: d(t.get("seconds")),
-                            };
-                          })(e),
-                        ),
-                      ),
-                      this.runTask(this.updateChestRechargeCountdown, 1e3));
-              }
-            }
-          },
-          chestEligibilityRechargeTimeChanged: a.Ember.observer(
-            "chestEligibility.nextChestRechargeTime",
-            function () {
-              this.updateChestRechargeCountdown();
             },
           ),
           actions: {},
@@ -17761,9 +17682,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "+h1sm4mm",
+          id: "MNFGkT80",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-chests\\n  ",["helper",["if"],[["get",["isTencent"]],"tencent"],null],"\\n  ",["helper",["unless"],[["get",["chestEligibilityInfoAvailable"]],"disabled"],null],"\\n  ",["helper",["if"],[["get",["isLegendaryChampionMasteryEnabled"]],"hidden"],null],"\\n"]]],["flush-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","style-profile-val"],["flush-element"],["append",["unknown",["chestEligibility","earnableChests"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],11],["close-element"],["text","\\n\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-boost ",["helper",["if"],[["get",["boostActive"]],"","disabled"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],8],["close-element"],["text","\\n\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-reroll ",["helper",["if"],[["get",["aramRerollCount"]],"","disabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","style-profile-val"],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_progress"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsProgressString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_full"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsMoreThanMaxString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-reroll-tooltip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","type","blue"],["dynamic-attr","percent",["unknown",["rerollsProgressPercentage"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-desc"],["flush-element"],["text","\\n"],["block",["if"],[["get",["rerollsMoreThanMax"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_message_none"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpBoostWinCountString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpExpireString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","tr",[]],["flush-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["static-attr","class","lol-typekit-value"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","profile_perks_boost_tooltip_message_xp_subtitle"]],false],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpExpireString"]]],null,5],["block",["if"],[["get",["xpBoostWinCountString"]]],null,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","table",[]],["static-attr","class","lol-uikit-list-table"],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpBoostActive"]]],null,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-profile-boosts-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["dynamic-attr","class",["concat",["style-profile-boosts-tooltip-title ",["helper",["if"],[["get",["boostActive"]],"left",""],null]]]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["boostActive"]]],null,7,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_chest_unavailable_info_tooltip_message"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","h6",[]],["flush-element"],["append",["unknown",["chestTooltipTitle"]],false],["close-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_chest_tooltip_message"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n"],["block",["if"],[["get",["chestEligibilityInfoAvailable"]]],null,10,9],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-boost ",["helper",["if"],[["get",["boostActive"]],"","disabled"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],8],["close-element"],["text","\\n\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-reroll ",["helper",["if"],[["get",["aramRerollCount"]],"","disabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","style-profile-val"],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_progress"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsProgressString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_full"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsMoreThanMaxString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-reroll-tooltip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","type","blue"],["dynamic-attr","percent",["unknown",["rerollsProgressPercentage"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-desc"],["flush-element"],["text","\\n"],["block",["if"],[["get",["rerollsMoreThanMax"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_message_none"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpBoostWinCountString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpExpireString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","tr",[]],["flush-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["static-attr","class","lol-typekit-value"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","profile_perks_boost_tooltip_message_xp_subtitle"]],false],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpExpireString"]]],null,5],["block",["if"],[["get",["xpBoostWinCountString"]]],null,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","table",[]],["static-attr","class","lol-uikit-list-table"],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpBoostActive"]]],null,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-profile-boosts-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["dynamic-attr","class",["concat",["style-profile-boosts-tooltip-title ",["helper",["if"],[["get",["boostActive"]],"left",""],null]]]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["boostActive"]]],null,7,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -17789,10 +17710,6 @@
             },
             boundProperties: {
               session: { api: "login", path: "/v1/session" },
-              chestEligibility: {
-                api: "collections",
-                path: "/v1/inventories/chest-eligibility",
-              },
               regionLocale: { api: "riotClient", path: "/region-locale" },
               championMasteryConfig: {
                 api: "platformConfig",
