@@ -23255,7 +23255,6 @@
           layout: r.default,
           classNames: ["reward-tracker"],
           classNameBindings: ["trackerSize"],
-          uxSettingsAnimationsEnabled: !1,
           rewardTrackItems: null,
           rewardTrackProgress: null,
           rewardTrackBonusItems: null,
@@ -23268,8 +23267,11 @@
           rewardItemTooltipClassName: "reward-option-tooltip-content",
           isDisabled: !1,
           shouldScrollToUnclaimedReward: !0,
-          UXSettings: s.default.SharedComponentsApi.getApi_UXSettings(),
           scrollingArrowsEnabled: null,
+          isBorderlessTrack: !1,
+          selectedItemThreshold: null,
+          rewardItemLevelIconComponent: null,
+          disableAnimations: !1,
           canScrollLeft: null,
           canScrollRight: null,
           displayLeftArrow: s.Ember.computed(
@@ -23299,17 +23301,16 @@
           isOverflowing: !1,
           scrollTimerId: null,
           scrollDelay: 500,
-          isBorderlessTrack: !1,
-          selectedItemThreshold: null,
-          rewardItemLevelIconComponent: null,
           init() {
             this._super(...arguments),
               this.UXSettings.addObserver(this.uxSettingsUpdated.bind(this)),
               (this.rewardObserverCallback =
                 this.rewardObserverCallback.bind(this)),
+              (this.setupIntersectionObserver =
+                this.setupIntersectionObserver.bind(this)),
               this.addObserver(
                 "rewardTrackItems",
-                this.setupIntersectionObserver.bind(this),
+                this.setupIntersectionObserver,
               ),
               this.addObserver("rewardTrackProgress", () => {
                 this.scrollToCurrentLevel();
@@ -23317,6 +23318,10 @@
               this.set(
                 "allInitialRewardOptions",
                 this.get("rewardTrackItems")?.map((e) => e.rewardOptions),
+              ),
+              this.addObserver(
+                "animationsEnabled",
+                this.setupIntersectionObserver,
               );
           },
           didInsertElement() {
@@ -23377,7 +23382,7 @@
               let s = "rewardTrackItems";
               e.target.closest(".reward-tracker-bonus-track") &&
                 (s = "rewardTrackBonusItems"),
-                e.isIntersecting && this.get("uxSettingsAnimationsEnabled")
+                e.isIntersecting && this.get("animationsEnabled")
                   ? this.set(`${s}.${n}.animationsEnabled`, !0)
                   : this.set(`${s}.${n}.animationsEnabled`, !1);
             }),
@@ -23448,6 +23453,8 @@
               );
             },
           ),
+          UXSettings: s.default.SharedComponentsApi.getApi_UXSettings(),
+          uxSettingsAnimationsEnabled: !1,
           uxSettingsUpdated(e) {
             this.set(
               "uxSettingsAnimationsEnabled",
@@ -23455,6 +23462,16 @@
             ),
               this.setupIntersectionObserver();
           },
+          animationsEnabled: s.Ember.computed(
+            "uxSettingsAnimationsEnabled",
+            "disableAnimations",
+            function () {
+              return (
+                this.get("uxSettingsAnimationsEnabled") &&
+                !this.get("disableAnimations")
+              );
+            },
+          ),
           scrollingAction(e, t) {
             const n = "left" === t ? -220 : 220;
             if (

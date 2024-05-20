@@ -256,12 +256,12 @@
         t.SETTINGS_PATH = "/lol-settings";
         t.TFT_BINDING_PATH = "/v2/account/TFT/";
         t.DATABINDING_CATEGORY = { FIRST_TIME: "VersionsSeen" };
-        const E = {
+        const b = {
           PRIME_GAMING: "primeGaming",
           TROVES: "troves",
           HEXTECH_CRAFTING: "HEXTECH_CRAFTING",
         };
-        t.INVENTORY_TYPES = E;
+        t.INVENTORY_TYPES = b;
       },
       (e, t, n) => {
         "use strict";
@@ -2528,51 +2528,59 @@
               }
             );
           },
-          storePromosData: s.Ember.computed(
-            "fallbackPromoData",
-            "storePromoOfferIds",
-            "storeCatalog",
-            "regionLocale",
-            "storePromoAssets",
+          firstStorePromoData: s.Ember.computed(
+            "tftService.battlePassOfferIds",
             function () {
               const e = this.get("storeCatalog"),
                 t = this.get("storePromoAssets");
               if (!e || !t) {
-                const e = this.get("fallbackPromoData");
-                return [e, e];
-              }
-              return this.get("storePromoOfferIds").map((n) => {
-                const s = e.find((e) => e.offerId === n),
-                  o = this.get("regionLocale"),
-                  l = this._isValidStorePromoItem(s, o);
-                if (l) {
-                  const e = `${n}-hover`,
-                    s = `${n}-active`,
-                    o = t[s] ? t[s] : t[m],
-                    i = t[e] ? t[e] : t[u],
-                    { inventoryType: r, itemId: c, priceRP: d, name: p } = l;
-                  return {
-                    clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
-                    hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
-                    imageActive: o,
-                    imageHover: i,
-                    inventoryType: r,
-                    itemId: c,
-                    priceRP: d.cost,
-                    name: p,
-                  };
-                }
                 return this.get("fallbackPromoData");
-              });
+              }
+              const n = this.get("tftService.battlePassOfferIds"),
+                s = n.length ? n[0] : null,
+                o = e.find((e) => e.offerId === s),
+                l = this.get("regionLocale"),
+                i = this._isValidStorePromoItem(o, l);
+              if (i) {
+                const e = `${s}-hover`,
+                  n = `${s}-active`,
+                  o = t[n] ? t[n] : t[m],
+                  l = t[e] ? t[e] : t[u],
+                  { inventoryType: r, itemId: c, priceRP: d, name: p } = i;
+                return {
+                  clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
+                  hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
+                  imageActive: o,
+                  imageHover: l,
+                  inventoryType: r,
+                  itemId: c,
+                  priceRP: d.cost,
+                  name: p,
+                };
+              }
+              return this.get("fallbackPromoData");
             },
           ),
-          firstStorePromoData: s.Ember.computed("storePromosData", function () {
-            return this.get("storePromosData")[0];
-          }),
           secondStorePromoData: s.Ember.computed(
-            "storePromosData",
+            "tftService.storePromoOfferIds",
             function () {
-              return this.get("storePromosData")[1];
+              const e = this.get("storeCatalog"),
+                t = this.get("storePromoAssets");
+              if (!e || !t) {
+                return this.get("fallbackPromoData");
+              }
+              const n = this.get("tftService.storePromoOfferIds"),
+                s = n.length ? n[0] : null,
+                o = `${s}-hover`,
+                l = `${s}-active`,
+                i = t[l] ? t[l] : t[m],
+                r = t[o] ? t[o] : t[u];
+              return {
+                clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
+                hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
+                imageActive: i,
+                imageHover: r,
+              };
             },
           ),
           tacticianPromoOfferId: s.Ember.computed(
@@ -2587,55 +2595,32 @@
           ),
           tacticianPromoData: s.Ember.computed(
             "tacticianPromoOfferId",
-            "storeCatalog",
-            "regionLocale",
             "storePromoAssets",
             "tacticianPromo",
             function () {
               const e = this.get("tacticianPromoOfferId"),
-                t = this.get("storeCatalog"),
-                n = this.get("storePromoAssets");
-              if (t) {
-                const s = t.find((t) => t.offerId === e),
-                  o = this.get("regionLocale"),
-                  l = this._isValidStorePromoItem(s, o);
-                if (l) {
-                  const t = e + "-hover",
-                    s = e + "-active",
-                    { inventoryType: o, itemId: i, priceRP: r, name: c } = l;
-                  return {
-                    clickSfxPath: a.TFT_BUTTON_CLICK_SFX_PATH,
-                    hoverSfxPath: a.TFT_TACTICIAN_HOVER_SFX_PATH,
-                    imageActive: n ? n[s] : "",
-                    imageHover: n ? n[t] : "",
-                    inventoryType: o,
-                    itemId: i,
-                    priceRP: r.cost,
-                    name: c,
-                  };
-                }
-              }
-              const s = this.get("tacticianPromo");
-              if (s) {
-                const t = s.find((t) => t.sourceId === e || t.id === e);
-                if (t) {
-                  const s = e + "-hover",
+                t = this.get("storePromoAssets"),
+                n = this.get("tacticianPromo");
+              if (n) {
+                const s = n.find((t) => t.sourceId === e || t.id === e);
+                if (s) {
+                  const n = e + "-hover",
                     o = e + "-active";
                   return {
                     clickSfxPath: a.TFT_BUTTON_CLICK_SFX_PATH,
                     hoverSfxPath: a.TFT_TACTICIAN_HOVER_SFX_PATH,
-                    imageActive: n ? n[o] : "",
-                    imageHover: n ? n[s] : "",
+                    imageActive: t ? t[o] : "",
+                    imageHover: t ? t[n] : "",
                     inventoryType: a.INVENTORY_TYPES.TROVES,
-                    itemId: t.id,
-                    name: t.name,
+                    itemId: s.id,
+                    name: s.name,
                   };
                 }
               }
               return {
                 clickSfxPath: a.TFT_BUTTON_CLICK_SFX_PATH,
-                imageActive: n ? n["tactician-promo-fallback-active"] : "",
-                imageHover: n ? n["tactician-promo-fallback-hover"] : "",
+                imageActive: t ? t["tactician-promo-fallback-active"] : "",
+                imageHover: t ? t["tactician-promo-fallback-hover"] : "",
                 hoverSfxPath: a.TFT_TACTICIAN_HOVER_SFX_PATH,
                 inventoryType: "COMPANION",
                 itemId: "FALLBACK_TACTICIAN_ID",
@@ -2671,12 +2656,13 @@
             },
           ),
           isLoading: s.Ember.computed(
-            "storePromosData",
+            "firstStorePromoData",
+            "secondStorePromoData",
             "tacticianPromoData",
             function () {
-              const e = this.get("storePromosData"),
-                t = this.get("tacticianPromoData");
-              return e.length < 2 || !t || !e[0];
+              const e = this.get("firstStorePromoData"),
+                t = this.get("secondStorePromoData");
+              return !(this.get("tacticianPromoData") && e && t);
             },
           ),
           didInsertElement() {
@@ -2815,9 +2801,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "xGo5o720",
+          id: "p85V1+vh",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["tftService","homeOverrideUrl"]]],null,7,6]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","tft-prime-promo-wrapper"],["flush-element"],["text","\\n      "],["append",["helper",["tft-prime-promo"],null,[["storePromoData"],[["get",["primeGamingPromoOfferData"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","lol-parties-series-button",[]],["static-attr","class","tft-missions-button"],["static-attr","series","TFTBattlepass_Weeklies_Series"],["static-attr","type","simple"],["static-attr","outerRadius","58px"],["static-attr","innerRadius","50px"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-missions-button"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","team-planner-button-container"],["modifier",["action"],[["get",[null]],"showTeamPlanner"]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","team-planner-button-container__button"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","team-planner-button-container__button-icon"],["dynamic-attr","style",["concat",["--team-planner-button-icon-default: url(\'",["unknown",["teamPlannerButtonAssets","team-planner-icon-home"]],"\');\\n                 --team-planner-button-icon-clicked: url(\'",["unknown",["teamPlannerButtonAssets","team-planner-icon-clicked"]],"\');"]]],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["tft-store-promo"],null,[["storePromoData"],[["get",["firstStorePromoData"]]]]],false],["text","\\n"],["text","      "],["append",["helper",["tft-store-promo"],null,[["storePromoData","redirectToRotationalShop"],[["get",["secondStorePromoData"]],true]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-store-promos-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["storePromosData"]]],null,3],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-tactician-promo-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["tft-tactician-promo"],null,[["storePromoData"],[["get",["tacticianPromoData"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-home-spinner"],["flush-element"],["text","\\n    "],["append",["unknown",["uikit-spinner"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","tft-home"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLoading"]]],null,5,4],["text","  "],["open-element","div",[]],["static-attr","class","tft-home-footer-bg"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["homeFooter"]],")"]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["teamPlannerEnabled"]]],null,2,1],["text","  "],["open-element","div",[]],["static-attr","class","tft-quick-play-wrapper"],["flush-element"],["text","\\n    "],["append",["unknown",["tft-quick-play"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-events-promo-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tft-event-promo"],["flush-element"],["text","\\n      "],["append",["unknown",["tft-event-promo"]],false],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["primeGamingPromoOfferData"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["managed-iframe"],null,[["url","isHidden","audioManager"],[["get",["tftService","homeOverrideUrl"]],["get",["isHidden"]],["get",["audioManager"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-home\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["tftService","homeOverrideUrl"]]],null,6,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","tft-prime-promo-wrapper"],["flush-element"],["text","\\n      "],["append",["helper",["tft-prime-promo"],null,[["storePromoData"],[["get",["primeGamingPromoOfferData"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","lol-parties-series-button",[]],["static-attr","class","tft-missions-button"],["static-attr","series","TFTBattlepass_Weeklies_Series"],["static-attr","type","simple"],["static-attr","outerRadius","58px"],["static-attr","innerRadius","50px"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-missions-button"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","team-planner-button-container"],["modifier",["action"],[["get",[null]],"showTeamPlanner"]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","team-planner-button-container__button"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","team-planner-button-container__button-icon"],["dynamic-attr","style",["concat",["--team-planner-button-icon-default: url(\'",["unknown",["teamPlannerButtonAssets","team-planner-icon-home"]],"\');\\n                 --team-planner-button-icon-clicked: url(\'",["unknown",["teamPlannerButtonAssets","team-planner-icon-clicked"]],"\');"]]],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-store-promos-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["tft-store-promo"],null,[["storePromoData"],[["get",["firstStorePromoData"]]]]],false],["text","\\n"],["text","    "],["append",["helper",["tft-store-promo"],null,[["storePromoData","redirectToRotationalShop"],[["get",["secondStorePromoData"]],true]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-tactician-promo-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["tft-tactician-promo"],null,[["storePromoData"],[["get",["tacticianPromoData"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","tft-home-spinner"],["flush-element"],["text","\\n    "],["append",["unknown",["uikit-spinner"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","tft-home"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLoading"]]],null,4,3],["text","  "],["open-element","div",[]],["static-attr","class","tft-home-footer-bg"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["homeFooter"]],")"]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["teamPlannerEnabled"]]],null,2,1],["text","  "],["open-element","div",[]],["static-attr","class","tft-quick-play-wrapper"],["flush-element"],["text","\\n    "],["append",["unknown",["tft-quick-play"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-events-promo-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tft-event-promo"],["flush-element"],["text","\\n      "],["append",["unknown",["tft-event-promo"]],false],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["primeGamingPromoOfferData"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["managed-iframe"],null,[["url","isHidden","audioManager"],[["get",["tftService","homeOverrideUrl"]],["get",["isHidden"]],["get",["audioManager"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3915,7 +3901,7 @@
         const o = "lny24-event-hub-logo-tft-name",
           l = "lny24-event-hub-logo-dragon-year",
           i = "lny24-event-hub-question-mark",
-          r = "lny24-event-hub-play-card",
+          r = "event-hub-play-card",
           c = "lny24-hub-card-base-default",
           m = "lny24-hub-card-base-hover",
           u = "lny24-hub-card-base-pressed";
@@ -4692,9 +4678,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "pZwMVDUx",
+          id: "9tsIc+kd",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","thumbnail"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","card"],["flush-element"],["text","\\n"],["block",["link-to"],["troves",["helper",["query-params"],null,[["displayedBannerId"],[["get",["displayedChasedContentId"]]]]]],[["disabledWhen"],[["get",["isLoading"]]]],6],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["bannerTexture"]]]]],["dynamic-attr","class",["helper",["if"],[["get",["hasEventBannerTexture"]],"event-banner-image","banner-image"],null],null],["modifier",["action"],[["get",[null]],"telemetryClickTreasureRealmsThumbnail"]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["troveTencentAssetPath"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openTencentTroveUrl"],null],null],["static-attr","class","event-banner-image"],["modifier",["action"],[["get",[null]],"telemetryClickTreasureRealmsThumbnail"]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","banner-image-container"],["modifier",["action"],[["get",[null]],"onClickAction"]],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasTencentConfigs"]]],null,1,0],["text","              "],["open-element","div",[]],["static-attr","class","banner-textfield"],["flush-element"],["text","\\n                "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["troveTextFieldBgPath"]]]]],["static-attr","class","banner-textfield-bg"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","banner-textfield-text"],["flush-element"],["append",["unknown",["tra","subnav_troves"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","banner-textfield-arrow"],["dynamic-attr","style",["concat",["--textfield-arrow-default: url(\'",["unknown",["troveArrowIconDefaultPath"]],"\'); --textfield-arrow-pressed: url(\'",["unknown",["troveArrowIconPressedPath"]],"\');"]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","standalone-title-text"],["flush-element"],["append",["unknown",["missingBannerTitle"]],false],["close-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["missingBannerImage"]]]]],["static-attr","class","banner-image"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","standalone-footer-text"],["flush-element"],["append",["unknown",["missingBannerFooter"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","banner-button"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMissingBannerImage"]]],null,3,2],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","id","event-trove_loading"],["flush-element"],["text","\\n          "],["append",["unknown",["uikit-spinner"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tr-card-background"],["dynamic-attr","style",["concat",["--tr-card-background-image: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\'); --tr-card-background-image-hover: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\'); --tr-card-background-image-pressed: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\');"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isLoading"]]],null,5,4]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-troves-thumbnail\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","thumbnail"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","card"],["flush-element"],["text","\\n"],["block",["link-to"],["troves",["helper",["query-params"],null,[["displayedBannerId"],[["get",["displayedChasedContentId"]]]]]],[["disabledWhen"],[["get",["isLoading"]]]],6],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","event-banner-image"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["bannerTexture"]],"\')"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","event-banner-image"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["troveTencentAssetPath"]],"\')"]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openTencentTroveUrl"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","banner-image-container"],["modifier",["action"],[["get",[null]],"onClickAction"]],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasTencentConfigs"]]],null,1,0],["text","            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","banner-textfield"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["troveTextFieldBgPath"]],"\')"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","banner-textfield-text"],["flush-element"],["append",["unknown",["tra","subnav_troves"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","banner-textfield-arrow"],["dynamic-attr","style",["concat",["--textfield-arrow-default: url(\'",["unknown",["troveArrowIconDefaultPath"]],"\'); --textfield-arrow-pressed: url(\'",["unknown",["troveArrowIconPressedPath"]],"\');"]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","standalone-title-text"],["flush-element"],["append",["unknown",["missingBannerTitle"]],false],["close-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["missingBannerImage"]]]]],["static-attr","class","banner-image"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","standalone-footer-text"],["flush-element"],["append",["unknown",["missingBannerFooter"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","banner-button"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMissingBannerImage"]]],null,3,2],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","id","event-trove_loading"],["flush-element"],["text","\\n          "],["append",["unknown",["uikit-spinner"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tr-card-background"],["dynamic-attr","style",["concat",["--tr-card-background-image: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\'); --tr-card-background-image-hover: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\'); --tr-card-background-image-pressed: url(\'",["unknown",["eventHubAssets","event-hub-troves-thumbnail-background"]],"\');"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isLoading"]]],null,5,4]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -5359,6 +5345,7 @@
             style: n(126),
             backgroundPlayCardImagePath: "",
             tftService: s.Ember.inject.service("tft"),
+            eventHubAssets: s.Ember.computed.alias("tftService.eventHubAssets"),
             eventsData: s.Ember.computed.alias("tftService.eventsData"),
             eventData: s.Ember.computed("eventsData", function () {
               const e = this.get("eventsData");
@@ -5378,9 +5365,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "2w9FpfI7",
+          id: "nqJzWnlz",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-panel-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","play-panel-background"],["dynamic-attr","style",["concat",["--play-background-image: url(\'",["unknown",["backgroundPlayCardImagePath"]],"\');"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","play-button-wrapper"],["modifier",["action"],[["get",[null]],"telemetryClickGameMode"]],["flush-element"],["text","\\n    "],["append",["helper",["tft-quick-play"],null,[["buttonClassName","queueIdOverride"],["event-play",["get",["eventQueueId"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-play-panel\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-panel-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","play-button-wrapper"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"test"],null],null],["modifier",["action"],[["get",[null]],"telemetryClickGameMode"]],["flush-element"],["text","\\n    "],["append",["helper",["tft-quick-play"],null,[["buttonClassName","queueIdOverride"],["event-play",["get",["eventQueueId"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","play-panel-background"],["dynamic-attr","style",["concat",["--play-background-image: url(\'",["unknown",["backgroundPlayCardImagePath"]],"\');"]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","pengu"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["eventHubAssets","event-hub-play-card-pride-pengu"]],"\')"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },

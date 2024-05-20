@@ -39866,6 +39866,82 @@
       },
       "type": "object"
     },
+    "LolPftPftEntitlements": {
+      "properties": {
+        "authorization": {
+          "$ref": "#/definitions/LolPftPftEntitlementsAuthorization"
+        },
+        "entitlements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsAccessToken": {
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "expiry": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsAuthorization": {
+      "properties": {
+        "accessToken": {
+          "$ref": "#/definitions/LolPftPftEntitlementsAccessToken"
+        },
+        "idToken": {
+          "$ref": "#/definitions/LolPftPftEntitlementsIdToken"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsIdToken": {
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "expiry": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "nonce": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "LolPftSummoner": {
       "properties": {
         "accountId": {
@@ -60610,7 +60686,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -60641,129 +60717,6 @@
         "summary": "Retrieves details on the current state of an asynchronous operation.",
         "tags": [
           "builtin"
-        ]
-      }
-    },
-    "/client-config/v1/config": {
-      "get": {
-        "operationId": "GetClientConfigV1Config",
-        "parameters": [
-          {
-            "enum": [
-              "public",
-              "player"
-            ],
-            "in": "query",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "app",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "version",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "patchline",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "region",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "namespace",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": {
-                "additionalProperties": true,
-                "type": "object"
-              },
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin client-config"
-        ]
-      }
-    },
-    "/client-config/v1/config/{name}": {
-      "get": {
-        "operationId": "GetClientConfigV1ConfigByName",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "enum": [
-              "public",
-              "player"
-            ],
-            "in": "query",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "app",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "version",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "patchline",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "region",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": true,
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin client-config"
         ]
       }
     },
@@ -89634,7 +89587,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -89653,7 +89606,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "HttpApiDeclarationV1",
+        "operationId": "Http2ApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",

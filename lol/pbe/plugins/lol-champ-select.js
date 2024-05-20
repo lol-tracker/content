@@ -495,7 +495,7 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            Breadcrumbs: () => R.Breadcrumbs,
+            Breadcrumbs: () => M.Breadcrumbs,
             BrowserClient: () => C.BrowserClient,
             BrowserProfilingIntegration: () => Y.BrowserProfilingIntegration,
             BrowserTracing: () => q.BrowserTracing,
@@ -527,7 +527,7 @@
             addGlobalEventProcessor: () => p.addGlobalEventProcessor,
             addIntegration: () => h.addIntegration,
             addTracingExtensions: () => g.addTracingExtensions,
-            breadcrumbsIntegration: () => R.breadcrumbsIntegration,
+            breadcrumbsIntegration: () => M.breadcrumbsIntegration,
             browserApiErrorsIntegration: () => U.browserApiErrorsIntegration,
             browserProfilingIntegration: () => Y.browserProfilingIntegration,
             browserTracingIntegration: () => W.browserTracingIntegration,
@@ -535,7 +535,7 @@
             captureException: () => m.captureException,
             captureMessage: () => m.captureMessage,
             captureSession: () => m.captureSession,
-            captureUserFeedback: () => M.captureUserFeedback,
+            captureUserFeedback: () => R.captureUserFeedback,
             chromeStackLineParser: () => A.chromeStackLineParser,
             close: () => m.close,
             configureScope: () => m.configureScope,
@@ -543,7 +543,7 @@
             createTransport: () => S.createTransport,
             createUserFeedbackEnvelope: () => D.createUserFeedbackEnvelope,
             dedupeIntegration: () => N.dedupeIntegration,
-            defaultIntegrations: () => M.defaultIntegrations,
+            defaultIntegrations: () => R.defaultIntegrations,
             defaultRequestInstrumentationOptions: () =>
               $.defaultRequestInstrumentationOptions,
             defaultStackLineParsers: () => A.defaultStackLineParsers,
@@ -555,7 +555,7 @@
             extractTraceparentData: () => _.extractTraceparentData,
             feedbackIntegration: () => G.feedbackIntegration,
             flush: () => m.flush,
-            forceLoad: () => M.forceLoad,
+            forceLoad: () => R.forceLoad,
             functionToStringIntegration: () => i.functionToStringIntegration,
             geckoStackLineParser: () => A.geckoStackLineParser,
             getActiveSpan: () => f.getActiveSpan,
@@ -563,14 +563,14 @@
             getClient: () => m.getClient,
             getCurrentHub: () => o.getCurrentHub,
             getCurrentScope: () => m.getCurrentScope,
-            getDefaultIntegrations: () => M.getDefaultIntegrations,
+            getDefaultIntegrations: () => R.getDefaultIntegrations,
             getHubFromCarrier: () => o.getHubFromCarrier,
             getReplay: () => H.getReplay,
             getSpanStatusFromHttpCode: () => b.getSpanStatusFromHttpCode,
             globalHandlersIntegration: () => B.globalHandlersIntegration,
             httpContextIntegration: () => O.httpContextIntegration,
             inboundFiltersIntegration: () => a.inboundFiltersIntegration,
-            init: () => M.init,
+            init: () => R.init,
             instrumentOutgoingRequests: () => $.instrumentOutgoingRequests,
             isInitialized: () => m.isInitialized,
             lastEventId: () => m.lastEventId,
@@ -582,7 +582,7 @@
             makeXHRTransport: () => I.makeXHRTransport,
             metrics: () => v.metrics,
             moduleMetadataIntegration: () => r.moduleMetadataIntegration,
-            onLoad: () => M.onLoad,
+            onLoad: () => R.onLoad,
             onProfilingStartRouteTransaction: () =>
               z.onProfilingStartRouteTransaction,
             opera10StackLineParser: () => A.opera10StackLineParser,
@@ -600,7 +600,7 @@
             setTag: () => m.setTag,
             setTags: () => m.setTags,
             setUser: () => m.setUser,
-            showReportDialog: () => M.showReportDialog,
+            showReportDialog: () => R.showReportDialog,
             spanStatusfromHttpCode: () => b.spanStatusfromHttpCode,
             startBrowserTracingNavigationSpan: () =>
               W.startBrowserTracingNavigationSpan,
@@ -615,7 +615,7 @@
             winjsStackLineParser: () => A.winjsStackLineParser,
             withIsolationScope: () => m.withIsolationScope,
             withScope: () => m.withScope,
-            wrap: () => M.wrap,
+            wrap: () => R.wrap,
           });
         var s = n(138),
           i = n(4),
@@ -646,8 +646,8 @@
           A = n(87),
           P = n(79),
           D = n(81),
-          M = n(88),
-          R = n(90),
+          R = n(88),
+          M = n(90),
           N = n(101),
           B = n(98),
           O = n(102),
@@ -1229,10 +1229,10 @@
             configureScope: () => f,
             endSession: () => L,
             flush: () => P,
-            getClient: () => R,
+            getClient: () => M,
             getCurrentScope: () => B,
             isInitialized: () => N,
-            lastEventId: () => M,
+            lastEventId: () => R,
             setContext: () => _,
             setExtra: () => y,
             setExtras: () => b,
@@ -1317,7 +1317,7 @@
         }
         function I(e, t) {
           const n = B(),
-            o = R();
+            o = M();
           if (o) {
             if (o.captureCheckIn) return o.captureCheckIn(e, t, n);
             c.DEBUG_BUILD &&
@@ -1361,7 +1361,7 @@
           );
         }
         async function P(e) {
-          const t = R();
+          const t = M();
           return t
             ? t.flush(e)
             : (c.DEBUG_BUILD &&
@@ -1369,7 +1369,7 @@
               Promise.resolve(!1));
         }
         async function D(e) {
-          const t = R();
+          const t = M();
           return t
             ? t.close(e)
             : (c.DEBUG_BUILD &&
@@ -1378,20 +1378,20 @@
                 ),
               Promise.resolve(!1));
         }
-        function M() {
+        function R() {
           return (0, u.getCurrentHub)().lastEventId();
         }
-        function R() {
+        function M() {
           return (0, u.getCurrentHub)().getClient();
         }
         function N() {
-          return !!R();
+          return !!M();
         }
         function B() {
           return (0, u.getCurrentHub)().getScope();
         }
         function O(e) {
-          const t = R(),
+          const t = M(),
             n = (0, u.getIsolationScope)(),
             s = B(),
             { release: i, environment: o = l.DEFAULT_ENVIRONMENT } =
@@ -1424,7 +1424,7 @@
         function U() {
           const e = (0, u.getIsolationScope)(),
             t = B(),
-            n = R(),
+            n = M(),
             s = t.getSession() || e.getSession();
           s && n && n.captureSession && n.captureSession(s);
         }
@@ -7174,14 +7174,14 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            captureUserFeedback: () => R,
+            captureUserFeedback: () => M,
             defaultIntegrations: () => C,
             forceLoad: () => P,
             getDefaultIntegrations: () => w,
             init: () => I,
             onLoad: () => D,
             showReportDialog: () => A,
-            wrap: () => M,
+            wrap: () => R,
           });
         var s = n(35),
           i = n(4),
@@ -7309,10 +7309,10 @@
         function D(e) {
           e();
         }
-        function M(e) {
+        function R(e) {
           return (0, f.wrap)(e)();
         }
-        function R(e) {
+        function M(e) {
           const t = (0, c.getClient)();
           t && t.captureUserFeedback(e);
         }
@@ -8566,8 +8566,8 @@
           A = "sentryReplaySession",
           P = "replay_event",
           D = "Unable to send Replay",
-          M = 15e4,
-          R = 5e3,
+          R = 15e4,
+          M = 5e3,
           N = 2e7,
           B = 36e5;
         function O(e) {
@@ -9420,19 +9420,19 @@
                   P.textContent.replace(/^\s+|\s+$/gm, "").length)
               ? Z()
               : Q;
-          const M = Object.assign(P, { id: D });
-          if ((s.add(e, M), D === Q)) return null;
+          const R = Object.assign(P, { id: D });
+          if ((s.add(e, R), D === Q)) return null;
           x && x(e);
-          let R = !d;
-          if (M.type === L.Element) {
-            (R = R && !M.needBlock), delete M.needBlock;
+          let M = !d;
+          if (R.type === L.Element) {
+            (M = M && !R.needBlock), delete R.needBlock;
             const t = e.shadowRoot;
-            t && F(t) && (M.isShadowHost = !0);
+            t && F(t) && (R.isShadowHost = !0);
           }
-          if ((M.type === L.Document || M.type === L.Element) && R) {
+          if ((R.type === L.Document || R.type === L.Element) && M) {
             _.headWhitespace &&
-              M.type === L.Element &&
-              "head" === M.tagName &&
+              R.type === L.Element &&
+              "head" === R.tagName &&
               (A = !1);
             const t = {
               doc: n,
@@ -9465,7 +9465,7 @@
             };
             for (const n of Array.from(e.childNodes)) {
               const e = be(n, t);
-              e && M.childNodes.push(e);
+              e && R.childNodes.push(e);
             }
             if (
               (function (e) {
@@ -9476,16 +9476,16 @@
               for (const n of Array.from(e.shadowRoot.childNodes)) {
                 const s = be(n, t);
                 s &&
-                  (F(e.shadowRoot) && (s.isShadow = !0), M.childNodes.push(s));
+                  (F(e.shadowRoot) && (s.isShadow = !0), R.childNodes.push(s));
               }
           }
           return (
             e.parentNode &&
               U(e.parentNode) &&
               F(e.parentNode) &&
-              (M.isShadow = !0),
-            M.type === L.Element &&
-              "iframe" === M.tagName &&
+              (R.isShadow = !0),
+            R.type === L.Element &&
+              "iframe" === R.tagName &&
               (function (e, t, n) {
                 const s = e.contentWindow;
                 if (!s) return;
@@ -9547,9 +9547,9 @@
                 },
                 E,
               ),
-            M.type === L.Element &&
-              "link" === M.tagName &&
-              "stylesheet" === M.attributes.rel &&
+            R.type === L.Element &&
+              "link" === R.tagName &&
+              "stylesheet" === R.attributes.rel &&
               (function (e, t, n) {
                 let s,
                   i = !1;
@@ -9603,7 +9603,7 @@
                 },
                 C,
               ),
-            M
+            R
           );
         }
         function ye(e) {
@@ -9791,7 +9791,7 @@
             (document.body && document.body.clientWidth)
           );
         }
-        function Me(e, t, n, s, i) {
+        function Re(e, t, n, s, i) {
           if (!e) return !1;
           const o = e.nodeType === e.ELEMENT_NODE ? e : e.parentElement;
           if (!o) return !1;
@@ -9807,7 +9807,7 @@
             (s && (l = he(o, ge(null, s))), (r > -1 && l < 0) || r < l)
           );
         }
-        function Re(e, t) {
+        function Me(e, t) {
           return t.getId(e) === Q;
         }
         function Ne(e, t) {
@@ -10216,7 +10216,7 @@
                   this.mutationCb(a));
               }),
               (this.processMutation = (e) => {
-                if (Re(e.target, this.mirror)) return;
+                if (Me(e.target, this.mirror)) return;
                 let t;
                 try {
                   t = document.implementation.createHTMLDocument();
@@ -10226,7 +10226,7 @@
                 switch (e.type) {
                   case "characterData": {
                     const t = e.target.textContent;
-                    Me(
+                    Re(
                       e.target,
                       this.blockClass,
                       this.blockSelector,
@@ -10280,7 +10280,7 @@
                       });
                     }
                     if (
-                      Me(
+                      Re(
                         e.target,
                         this.blockClass,
                         this.blockSelector,
@@ -10341,7 +10341,7 @@
                   }
                   case "childList":
                     if (
-                      Me(
+                      Re(
                         e.target,
                         this.blockClass,
                         this.blockSelector,
@@ -10356,14 +10356,14 @@
                           s = U(e.target)
                             ? this.mirror.getId(e.target.host)
                             : this.mirror.getId(e.target);
-                        Me(
+                        Re(
                           e.target,
                           this.blockClass,
                           this.blockSelector,
                           this.unblockSelector,
                           !1,
                         ) ||
-                          Re(t, this.mirror) ||
+                          Me(t, this.mirror) ||
                           !(function (e, t) {
                             return -1 !== t.getId(e);
                           })(t, this.mirror) ||
@@ -10390,7 +10390,7 @@
                   !this.movedSet.has(e)
                 ) {
                   if (this.mirror.hasNode(e)) {
-                    if (Re(e, this.mirror)) return;
+                    if (Me(e, this.mirror)) return;
                     this.movedSet.add(e);
                     let n = null;
                     t && this.mirror.hasNode(t) && (n = this.mirror.getId(t)),
@@ -10398,7 +10398,7 @@
                         -1 !== n &&
                         (this.movedMap[Xe(this.mirror.getId(e), n)] = !0);
                   } else this.addedSet.add(e), this.droppedSet.delete(e);
-                  Me(
+                  Re(
                     e,
                     this.blockClass,
                     this.blockSelector,
@@ -10591,7 +10591,7 @@
                 let r = $(a);
                 const u = ((t) => (a) => {
                   const r = ut(a);
-                  if (Me(r, s, i, o, !0)) return;
+                  if (Re(r, s, i, o, !0)) return;
                   let l = null,
                     u = t;
                   if ("pointerType" in a) {
@@ -10661,7 +10661,7 @@
               Ee(
                 rt((a) => {
                   const r = ut(a);
-                  if (!r || Me(r, s, i, o, !0)) return;
+                  if (!r || Re(r, s, i, o, !0)) return;
                   const l = n.getId(r);
                   if (r === t && t.defaultView) {
                     const n = Ae(t.defaultView);
@@ -10700,7 +10700,7 @@
               f = n && V(n.tagName);
             if (
               ("OPTION" === f && (n = n.parentElement),
-              !n || !f || ht.indexOf(f) < 0 || Me(n, s, i, o, !0))
+              !n || !f || ht.indexOf(f) < 0 || Re(n, s, i, o, !0))
             )
               return;
             const _ = n;
@@ -10986,7 +10986,7 @@
                   Ee(
                     rt((o) => {
                       const r = ut(o);
-                      if (!r || Me(r, t, n, s, !0)) return;
+                      if (!r || Re(r, t, n, s, !0)) return;
                       const {
                         currentTime: l,
                         volume: c,
@@ -11287,8 +11287,8 @@
                       endContainer: u,
                       endOffset: m,
                     } = a;
-                  Me(r, s, i, o, !0) ||
-                    Me(u, s, i, o, !0) ||
+                  Re(r, s, i, o, !0) ||
+                    Re(u, s, i, o, !0) ||
                     l.push({
                       start: n.getId(r),
                       startOffset: c,
@@ -11818,11 +11818,11 @@
             this.loop = !1;
           }
         }
-        function Mt(e) {
+        function Rt(e) {
           const t = e;
           return (t.timestamp = Ie()), t;
         }
-        let Rt;
+        let Mt;
         const Nt = new G();
         function Bt(e = {}) {
           const {
@@ -11858,8 +11858,8 @@
             userTriggeredOnInput: A = !1,
             collectFonts: P = !1,
             inlineImages: D = !1,
-            plugins: M,
-            keepIframeSrcFn: R = () => !1,
+            plugins: R,
+            keepIframeSrcFn: M = () => !1,
             ignoreCSSAttributes: N = new Set([]),
             errorHandler: B,
             onMutation: O,
@@ -11936,7 +11936,7 @@
           })();
           let W = 0;
           const $ = (e) => {
-              for (const t of M || [])
+              for (const t of R || [])
                 t.eventProcessor && (e = t.eventProcessor(e));
               return x && !F && (e = x(e)), e;
             },
@@ -11979,7 +11979,7 @@
             },
             z = (e) => {
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.Mutation, ...e },
                 }),
@@ -11987,14 +11987,14 @@
             },
             Y = (e) =>
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.Scroll, ...e },
                 }),
               ),
             K = (e) =>
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.CanvasMutation, ...e },
                 }),
@@ -12003,7 +12003,7 @@
               mutationCb: z,
               adoptedStyleSheetCb: (e) =>
                 V(
-                  Mt({
+                  Rt({
                     type: We.IncrementalSnapshot,
                     data: { source: $e.AdoptedStyleSheet, ...e },
                   }),
@@ -12020,7 +12020,7 @@
                     recordCrossOriginIframes: w,
                     wrappedEmit: V,
                   });
-          for (const e of M || [])
+          for (const e of R || [])
             e.getMirror &&
               e.getMirror({
                 nodeMirror: Nt,
@@ -12041,7 +12041,7 @@
               win: window,
               mutationCb: (e) =>
                 V(
-                  Mt({
+                  Rt({
                     type: We.IncrementalSnapshot,
                     data: { source: $e.CanvasMutation, ...e },
                   }),
@@ -12084,14 +12084,14 @@
                       iframeManager: X,
                       stylesheetManager: J,
                       canvasManager: Z,
-                      keepIframeSrcFn: R,
+                      keepIframeSrcFn: M,
                       processedNodeManager: Q,
                     },
                     mirror: Nt,
                   }),
             te = (e = !1) => {
               V(
-                Mt({
+                Rt({
                   type: We.Meta,
                   data: {
                     href: window.location.href,
@@ -12229,11 +12229,11 @@
                 onStylesheetLoad: (e, t) => {
                   J.attachLinkElement(e, t);
                 },
-                keepIframeSrcFn: R,
+                keepIframeSrcFn: M,
               });
               if (!t) return console.warn("Failed to snapshot the document");
               V(
-                Mt({
+                Rt({
                   type: We.FullSnapshot,
                   data: { node: t, initialOffset: Ae(window) },
                 }),
@@ -12246,7 +12246,7 @@
                     Nt.getId(document),
                   );
             };
-          Rt = te;
+          Mt = te;
           try {
             const e = [],
               t = (e) =>
@@ -12256,14 +12256,14 @@
                     mutationCb: z,
                     mousemoveCb: (e, t) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: t, positions: e },
                         }),
                       ),
                     mouseInteractionCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.MouseInteraction, ...e },
                         }),
@@ -12271,35 +12271,35 @@
                     scrollCb: Y,
                     viewportResizeCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.ViewportResize, ...e },
                         }),
                       ),
                     inputCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Input, ...e },
                         }),
                       ),
                     mediaInteractionCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.MediaInteraction, ...e },
                         }),
                       ),
                     styleSheetRuleCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.StyleSheetRule, ...e },
                         }),
                       ),
                     styleDeclarationCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.StyleDeclaration, ...e },
                         }),
@@ -12307,14 +12307,14 @@
                     canvasMutationCb: K,
                     fontCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Font, ...e },
                         }),
                       ),
                     selectionCb: (e) => {
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Selection, ...e },
                         }),
@@ -12322,7 +12322,7 @@
                     },
                     customElementCb: (e) => {
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.CustomElement, ...e },
                         }),
@@ -12347,7 +12347,7 @@
                     maskAttributeFn: b,
                     maskInputFn: y,
                     maskTextFn: v,
-                    keepIframeSrcFn: R,
+                    keepIframeSrcFn: M,
                     blockSelector: a,
                     unblockSelector: r,
                     slimDOMOptions: j,
@@ -12361,7 +12361,7 @@
                     ignoreCSSAttributes: N,
                     plugins:
                       (0, i._optionalChain)([
-                        M,
+                        R,
                         "optionalAccess",
                         (e) => e.filter,
                         "call",
@@ -12375,7 +12375,7 @@
                             options: e.options,
                             callback: (t) =>
                               V(
-                                Mt({
+                                Rt({
                                   type: We.Plugin,
                                   data: { plugin: e.name, payload: t },
                                 }),
@@ -12401,7 +12401,7 @@
                 ? n()
                 : (e.push(
                     ve("DOMContentLoaded", () => {
-                      V(Mt({ type: We.DomContentLoaded, data: {} })),
+                      V(Rt({ type: We.DomContentLoaded, data: {} })),
                         "DOMContentLoaded" === I && n();
                     }),
                   ),
@@ -12409,13 +12409,13 @@
                     ve(
                       "load",
                       () => {
-                        V(Mt({ type: We.Load, data: {} })), "load" === I && n();
+                        V(Rt({ type: We.Load, data: {} })), "load" === I && n();
                       },
                       window,
                     ),
                   )),
               () => {
-                e.forEach((e) => e()), Q.destroy(), (Rt = void 0), at();
+                e.forEach((e) => e()), Q.destroy(), (Mt = void 0), at();
               }
             );
           } catch (e) {
@@ -12424,11 +12424,11 @@
         }
         (Bt.mirror = Nt),
           (Bt.takeFullSnapshot = function (e) {
-            if (!Rt)
+            if (!Mt)
               throw new Error(
                 "please take full snapshot after start recording",
               );
-            Rt(e);
+            Mt(e);
           });
         const Ot = 3;
         function Lt(e) {
@@ -13369,10 +13369,10 @@
               !1))
           );
         }
-        function Mn(e) {
+        function Rn(e) {
           return !e.type;
         }
-        function Rn(e) {
+        function Mn(e) {
           return "transaction" === e.type;
         }
         function Nn(e) {
@@ -13387,10 +13387,10 @@
             return t.send.__sentry__baseTransport__ || !1;
           })();
           return (n, s) => {
-            if (!e.isEnabled() || (!Mn(n) && !Rn(n))) return;
+            if (!e.isEnabled() || (!Rn(n) && !Mn(n))) return;
             const i = s && s.statusCode;
             (t && (!i || i < 200 || i >= 300)) ||
-              (Rn(n)
+              (Mn(n)
                 ? (function (e, t) {
                     const n = e.getContext();
                     t.contexts &&
@@ -13421,7 +13421,7 @@
         function On(e) {
           return (t) => {
             e.isEnabled() &&
-              Mn(t) &&
+              Rn(t) &&
               (function (e, t) {
                 const n =
                   t.exception &&
@@ -13452,7 +13452,7 @@
                 })(t)
               )
                 return delete t.breadcrumbs, t;
-              if (!Mn(t) && !Rn(t) && !Nn(t)) return t;
+              if (!Rn(t) && !Mn(t) && !Nn(t)) return t;
               if (!e.checkAndHandleExpiredSession()) return t;
               if (Nn(t))
                 return (
@@ -13672,14 +13672,14 @@
           const s = { headers: e, size: t },
             { body: i, warnings: o } = (function (e) {
               if (!e || "string" != typeof e) return { body: e };
-              const t = e.length > M,
+              const t = e.length > R,
                 n = (function (e) {
                   const t = e[0],
                     n = e[e.length - 1];
                   return ("[" === t && "]" === n) || ("{" === t && "}" === n);
                 })(e);
               if (t) {
-                const t = e.slice(0, M);
+                const t = e.slice(0, R);
                 return n
                   ? { body: t, warnings: ["MAYBE_JSON_TRUNCATED"] }
                   : { body: `${t}…`, warnings: ["TEXT_TRUNCATED"] };
@@ -14138,13 +14138,13 @@
                 const s = t.map((e) => {
                   if (!e) return e;
                   if ("string" == typeof e)
-                    return e.length > R ? ((n = !0), `${e.slice(0, R)}…`) : e;
+                    return e.length > M ? ((n = !0), `${e.slice(0, M)}…`) : e;
                   if ("object" == typeof e)
                     try {
                       const t = (0, p.normalize)(e, 7);
-                      return JSON.stringify(t).length > R
+                      return JSON.stringify(t).length > M
                         ? ((n = !0),
-                          `${JSON.stringify(t, null, 2).slice(0, R)}…`)
+                          `${JSON.stringify(t, null, 2).slice(0, M)}…`)
                         : t;
                     } catch (e) {}
                   return e;
@@ -15186,8 +15186,8 @@
             maskFn: A,
             beforeAddRecordingEvent: P,
             beforeErrorSampling: D,
-            blockClass: M,
-            blockSelector: R,
+            blockClass: R,
+            blockSelector: M,
             maskInputOptions: N,
             maskTextClass: O,
             maskTextSelector: L,
@@ -15248,8 +15248,8 @@
               block: T,
               unblock: w,
               ignore: I,
-              blockClass: M,
-              blockSelector: R,
+              blockClass: R,
+              blockSelector: M,
               maskTextClass: O,
               maskTextSelector: L,
               ignoreClass: U,
@@ -15910,7 +15910,7 @@
       (e, t, n) => {
         "use strict";
         n.r(t),
-          n.d(t, { ReplayCanvas: () => R, replayCanvasIntegration: () => M });
+          n.d(t, { ReplayCanvas: () => M, replayCanvasIntegration: () => R });
         var s,
           i = n(105),
           o = n(34);
@@ -16569,7 +16569,7 @@
             },
           },
           D = "ReplayCanvas",
-          M = (0, o.defineIntegration)((e = {}) => {
+          R = (0, o.defineIntegration)((e = {}) => {
             const t = {
               quality: e.quality || "medium",
               enableManualSnapshot: e.enableManualSnapshot,
@@ -16596,7 +16596,7 @@
               },
             };
           }),
-          R = (0, o.convertIntegrationFnToClass)(D, M);
+          M = (0, o.convertIntegrationFnToClass)(D, R);
       },
       (e, t, n) => {
         "use strict";
@@ -16849,7 +16849,7 @@
                     ? e.appendChild(t)
                     : e.appendChild(n.createTextNode(String(t))));
         }
-        function M({ buttonLabel: e, onClick: t }) {
+        function R({ buttonLabel: e, onClick: t }) {
           const n = P(
             "button",
             {
@@ -16913,7 +16913,7 @@
             }
           );
         }
-        function R(e, t) {
+        function M(e, t) {
           const n = e.get(t);
           return "string" == typeof n ? n.trim() : "";
         }
@@ -17003,9 +17003,9 @@
                       if (g) {
                         const t = new FormData(e.target),
                           n = {
-                            name: R(t, "name"),
-                            email: R(t, "email"),
-                            message: R(t, "message"),
+                            name: M(t, "name"),
+                            email: M(t, "email"),
+                            message: M(t, "message"),
                           };
                         g(n);
                       }
@@ -17359,7 +17359,7 @@
             s
               ? s.addEventListener("click", g)
               : t &&
-                ((i = M({ buttonLabel: n.buttonLabel, onClick: g })),
+                ((i = R({ buttonLabel: n.buttonLabel, onClick: g })),
                 i.el && e.appendChild(i.el)),
             {
               get actor() {
@@ -19157,7 +19157,7 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            MAX_PROFILE_DURATION_MS: () => R,
+            MAX_PROFILE_DURATION_MS: () => M,
             addProfileToGlobalCache: () => H,
             addProfilesToEnvelope: () => w,
             applyDebugMetadata: () => P,
@@ -19423,8 +19423,8 @@
                   ),
                 !1);
         }
-        let M = !1;
-        const R = 3e4;
+        let R = !1;
+        const M = 3e4;
         function N() {
           const e = m.WINDOW.Profiler;
           if ("function" != typeof e)
@@ -19434,7 +19434,7 @@
                 "[Profiling] Profiling is not supported by this browser, Profiler interface missing on window object.",
               )
             );
-          const t = Math.floor(R / 10);
+          const t = Math.floor(M / 10);
           try {
             return new e({ sampleInterval: 10, maxBufferSize: t });
           } catch (e) {
@@ -19445,11 +19445,11 @@
               o.logger.log(
                 "[Profiling] Disabling profiling for current user session.",
               )),
-              (M = !0);
+              (R = !0);
           }
         }
         function B(e) {
-          if (M)
+          if (R)
             return (
               u.DEBUG_BUILD &&
                 o.logger.log(
@@ -19682,11 +19682,11 @@
             getRootSpan: () => L.getRootSpan,
             getSpanStatusFromHttpCode: () => l.getSpanStatusFromHttpCode,
             handleCallbackErrors: () => N.handleCallbackErrors,
-            hasTracingEnabled: () => M.hasTracingEnabled,
+            hasTracingEnabled: () => R.hasTracingEnabled,
             inboundFiltersIntegration: () => G.inboundFiltersIntegration,
             initAndBind: () => k.initAndBind,
             isInitialized: () => h.isInitialized,
-            isSentryRequestUrl: () => R.isSentryRequestUrl,
+            isSentryRequestUrl: () => M.isSentryRequestUrl,
             lastEventId: () => h.lastEventId,
             linkedErrorsIntegration: () => W.linkedErrorsIntegration,
             makeMain: () => g.makeMain,
@@ -19761,8 +19761,8 @@
           A = n(19),
           P = n(29),
           D = n(143),
-          M = n(55),
-          R = n(120),
+          R = n(55),
+          M = n(120),
           N = n(54),
           B = n(72),
           O = n(20),
@@ -30996,7 +30996,13 @@
         n(303);
         const { DomMixin: r } = s.EmberAddons.EmberLifeline,
           l = "COMMS_ABUSE_TEXT",
-          c = [l, "SABOTAGING_TEAM", "DISRESPECTFUL_BEHAVIOR", "OTHER"],
+          c = [
+            l,
+            "SABOTAGING_TEAM",
+            "DISRESPECTFUL_BEHAVIOR",
+            "INAPPROPRIATE_NAME",
+            "OTHER",
+          ],
           u = n(304)[0][1],
           m = s.UiKitPlugin.getContextMenuManager();
         e.exports = s.Ember.Component.extend(r, o.default, {
