@@ -34735,10 +34735,6 @@
               (this.summonerBinding = (0, i.dataBinding)("/lol-summoner", a)),
               (this.championsBinding = (0, i.dataBinding)("/lol-champions", a)),
               (this.settingsBinding = (0, i.dataBinding)("/lol-settings", a)),
-              (this.platformConfigBinding = (0, i.dataBinding)(
-                "/lol-platform-config",
-                a,
-              )),
               (this.perksBinding = (0, i.dataBinding)("/lol-perks", a)),
               (this.clientConfigBinding = (0, i.dataBinding)(
                 "/lol-client-config/v3/client-config/",
@@ -34845,19 +34841,19 @@
                     this.handlePlayButtonClick,
                   ));
               }),
-              this.platformConfigBinding.addObserver(
-                "/v1/namespaces/LCUCollections/Enabled",
+              this.clientConfigBinding.addObserver(
+                "lol.client_settings.collections.collection_nav_enabled",
                 this,
                 (e) => {
-                  "boolean" == typeof e &&
-                    (this.navigationItem &&
-                      this.NavigationPlugin.setItemEnabled(
-                        this.navigationItem,
-                        e,
-                      ),
+                  const t = e ?? !0;
+                  this.navigationItem &&
+                    this.NavigationPlugin.setItemEnabled(
+                      this.navigationItem,
+                      t,
+                    ),
                     this._updateMasteryRequirements({
-                      isCollectionsEnabled: !!e,
-                    }));
+                      isCollectionsEnabled: t,
+                    });
                 },
               );
           }
@@ -35042,12 +35038,9 @@
                 (this.showCollectionsFtux = !0);
             }
           }
-          _fetchEATseen() {
-            return this.settingsBinding
-              .get(l)
-              .then(
-                (e) => !e || void 0 === e.data || (!!e.data && !!e.data[c]),
-              );
+          async _fetchEATseen() {
+            const e = await this.settingsBinding.get(l);
+            return !e || (!!e.data && !!e.data[c]);
           }
         };
       },

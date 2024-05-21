@@ -4,7 +4,7 @@
       (e) => {
         "use strict";
         let t;
-        function n() {
+        function a() {
           return (
             t ||
             (console.error(
@@ -13,54 +13,54 @@
             null)
           );
         }
-        const a = {
-          init: function (e, n) {
-            return (t = e), this.add(n);
+        const n = {
+          init: function (e, a) {
+            return (t = e), this.add(a);
           },
-          _getValue: function (e, n) {
-            let a;
+          _getValue: function (e, a) {
+            let n;
             return (
-              "function" == typeof n
-                ? ((a = n(t)),
-                  a ||
+              "function" == typeof a
+                ? ((n = a(t)),
+                  n ||
                     console.warn(
                       "The function for key " + e + " returned a falsy value: ",
-                      a,
+                      n,
                     ))
-                : "string" == typeof n
-                  ? ((a = t.get(n)),
-                    a ||
+                : "string" == typeof a
+                  ? ((n = t.get(a)),
+                    n ||
                       console.warn(
                         "The provider `get` invocation for the key " +
                           e +
                           " returned a falsy value: ",
-                        a,
+                        n,
                       ))
-                  : "object" == typeof n && (a = n),
-              a
+                  : "object" == typeof a && (n = a),
+              n
             );
           },
           add: function (e) {
             e = e || {};
             const t = [],
-              n = this;
+              a = this;
             return (
-              Object.keys(e).forEach(function (a) {
-                const s = e[a],
-                  o = n._getValue(a, s);
+              Object.keys(e).forEach(function (n) {
+                const s = e[n],
+                  o = a._getValue(n, s);
                 o && o.then
                   ? (o.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
-                            a +
+                            n +
                             " resolved with a falsy value: ",
                           e,
                         ),
-                        n._addValue(a, e);
+                        a._addValue(n, e);
                     }),
                     t.push(o))
-                  : n._addValue(a, o);
+                  : a._addValue(n, o);
               }),
               Promise.all(t)
             );
@@ -74,20 +74,20 @@
                 "The function `provider` has been deprecated, please use `getProvider`",
                 new Error().stack,
               ),
-              n()
+              a()
             );
           },
           getProvider: function () {
-            return n();
+            return a();
           },
         };
-        e.exports = a;
+        e.exports = n;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(3);
+        var n = a(3);
         t.default = class {
           constructor(e) {
             (this.progressionComponentPriorityQueue = []),
@@ -96,22 +96,22 @@
           getProgressionComponents() {
             return this.progressionComponentPriorityQueue;
           }
-          addProgressionComponent(e, t, n, s, o) {
-            this.addInternalProgressionComponent(e, n, s, o),
+          addProgressionComponent(e, t, a, s, o) {
+            this.addInternalProgressionComponent(e, a, s, o),
               this.applicationInjector.setComponent(
-                a.POSTGAME_EMBER_APP_NAME,
+                n.POSTGAME_EMBER_APP_NAME,
                 e,
                 t,
               );
           }
-          addInternalProgressionComponent(e, t, n, a) {
+          addInternalProgressionComponent(e, t, a, n) {
             this.hasProgressionComponent(e) &&
               this.removeProgressionComponent(e),
               this.progressionComponentPriorityQueue.push({
                 componentName: e,
                 priority: t,
-                hasAnimation: Boolean(n),
-                isFixed: Boolean(a),
+                hasAnimation: Boolean(a),
+                isFixed: Boolean(n),
               }),
               this.progressionComponentPriorityQueue.sort(function (e, t) {
                 return e.priority - t.priority;
@@ -128,7 +128,7 @@
               this.progressionComponentPriorityQueue[t].componentName === e &&
                 this.progressionComponentPriorityQueue.splice(t, 1);
             this.applicationInjector.setComponent(
-              a.POSTGAME_EMBER_APP_NAME,
+              n.POSTGAME_EMBER_APP_NAME,
               e,
               null,
             );
@@ -224,6 +224,7 @@
         };
         t.STAT_SWITCHER_STATS = {
           DAMAGE_DEALT: "TOTAL_DAMAGE_DEALT_TO_CHAMPIONS",
+          DAMAGE_DEALT_OVERALL: "TOTAL_DAMAGE_DEALT",
           DAMAGE_TAKEN: "TOTAL_DAMAGE_TAKEN",
           CC_SCORE: "TIME_CCING_OTHERS",
           CREEP_SCORE: "MINIONS_KILLED",
@@ -234,18 +235,18 @@
         };
         t.MODAL_CATEGORY = { CHALLENGES: "challenges", ETERNALS: "eternals" };
         t.LOTTIE_RADIAL_UNITS = 75;
-        const n = {
+        const a = {
           DEFAULT_WAITING_STATUS: "waiting",
           READY_STATUS: "ready",
           LEFT_PARTY_STATUS: "left",
         };
-        t.PARTY_STATUS = n;
-        const a = {
-          [n.READY_STATUS]: -1,
-          [n.DEFAULT_WAITING_STATUS]: 0,
-          [n.LEFT_PARTY_STATUS]: 1,
+        t.PARTY_STATUS = a;
+        const n = {
+          [a.READY_STATUS]: -1,
+          [a.DEFAULT_WAITING_STATUS]: 0,
+          [a.LEFT_PARTY_STATUS]: 1,
         };
-        t.PLAYER_STATUS_TO_ORDER_MAP = a;
+        t.PLAYER_STATUS_TO_ORDER_MAP = n;
         t.CHERRY_PLACEMENT_TRA_KEY = "cherry_placement_";
         t.SUBTEAM_PLACEMENT_LONG_TRA_KEY = "subteam_placement_long_";
         t.GAME_MODES_WITH_SUBTEAMS = {
@@ -329,13 +330,13 @@
               ? this.runtimeComponents[e].definition
               : null;
           }
-          setComponent(e, t, n) {
-            if (n) {
-              this.runtimeComponents[t] = { parent: e, definition: n };
-              const a = this.getFactoryDefinition(e);
-              a &&
-                (this._modifyFactoryDefinition(a, n),
-                this._setFactoryDefinition(a));
+          setComponent(e, t, a) {
+            if (a) {
+              this.runtimeComponents[t] = { parent: e, definition: a };
+              const n = this.getFactoryDefinition(e);
+              n &&
+                (this._modifyFactoryDefinition(n, a),
+                this._setFactoryDefinition(n));
             } else delete this.runtimeComponents[t];
           }
           getFactoryDefinition(e) {
@@ -346,14 +347,14 @@
               this._retroactivelyModifyFactoryDefinition(e);
           }
           _modifyFactoryDefinition(e, t) {
-            if (e) for (const n in t) e[n] = t[n];
+            if (e) for (const a in t) e[a] = t[a];
           }
           _retroactivelyModifyFactoryDefinition(e) {
             let t = !1;
-            for (const n in this.runtimeComponents) {
-              const a = this.runtimeComponents[n];
-              a.parent === e.name &&
-                (this._modifyFactoryDefinition(e, a.definition), (t = !0));
+            for (const a in this.runtimeComponents) {
+              const n = this.runtimeComponents[a];
+              n.parent === e.name &&
+                (this._modifyFactoryDefinition(e, n.definition), (t = !0));
             }
             t && this._setFactoryDefinition(e);
           }
@@ -362,31 +363,31 @@
           }
         };
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = function () {
             m || (m = new r());
             return m;
           });
-        var a = n(1),
-          s = n(3),
-          o = n(6),
-          l = n(7),
-          i = n(15);
+        var n = a(1),
+          s = a(3),
+          o = a(6),
+          l = a(7),
+          i = a(15);
         class r {
           constructor() {
-            a.extEmberModel.set("isPostgameShowing", !1),
+            n.extEmberModel.set("isPostgameShowing", !1),
               this._registerApplication();
-            const e = a.Viewport.main().getScreenRoot("rcp-fe-lol-postgame"),
-              t = (0, a.getProvider)().getSocket();
+            const e = n.Viewport.main().getScreenRoot("rcp-fe-lol-postgame"),
+              t = (0, n.getProvider)().getSocket();
             (this._show = this._show.bind(this)),
               (this._handleGameflowData = this._handleGameflowData.bind(this)),
               (this._catchAndHide = this._catchAndHide.bind(this)),
               (this._application = null),
               (this._screenRoot = e),
-              (this._telemetryBinding = (0, a.dataBinding)("/telemetry")),
-              (this._gameflowBinding = (0, a.dataBinding)("/lol-gameflow", t)),
+              (this._telemetryBinding = (0, n.dataBinding)("/telemetry")),
+              (this._gameflowBinding = (0, n.dataBinding)("/lol-gameflow", t)),
               this._createGameFlowObserver();
           }
           _registerApplication() {
@@ -404,25 +405,25 @@
                 ),
               )
               .then(() => {
-                a.extEmberModel.get("isPostgameShowing") ||
+                n.extEmberModel.get("isPostgameShowing") ||
                   (this._screenRoot
                     .getElement()
                     .appendChild(this._application.domNode),
-                  a.extEmberModel.set("isPostgameShowing", !0),
+                  n.extEmberModel.set("isPostgameShowing", !0),
                   (this._startSessionTime = new Date()));
               })
               .catch(this._catchAndHide);
           }
           _hide() {
-            if (!a.extEmberModel.get("isPostgameShowing") || !this._application)
+            if (!n.extEmberModel.get("isPostgameShowing") || !this._application)
               return;
-            a.extEmberModel.set("isPostgameShowing", !1);
+            n.extEmberModel.set("isPostgameShowing", !1);
             const e = this._screenRoot.getElement();
             for (; e.hasChildNodes(); ) e.removeChild(e.lastChild);
             (this._startSessionTime = null), this._screenRoot.release();
           }
           _catchAndHide(e = {}) {
-            a.logger.error(
+            n.logger.error(
               "There was a problem creating the ember application",
               e,
             ),
@@ -439,38 +440,38 @@
               (e) => o.GAMEFLOW_PHASES[e],
             );
             e && t.includes(e.phase)
-              ? (a.Telemetry.startTracingEvent(
+              ? (n.Telemetry.startTracingEvent(
                   i.TELEMETRY_EVENT_NAMES.RENDER_POST_GAME,
                 ),
                 this._show())
               : this._hide();
           }
           sendTelemetryEvent(e, t) {
-            const n = new Date() - this._startSessionTime;
+            const a = new Date() - this._startSessionTime;
             (t = Object.assign(t, {
               plugin: "rcp-fe-lol-postgame",
-              sessionTime: n.toString(),
+              sessionTime: a.toString(),
             })),
               this._telemetryBinding.post(`/v1/events/${e}`, t);
           }
           setPlayerHonorComponent(e) {
-            a.ApplicationInjector.setComponent(
+            n.ApplicationInjector.setComponent(
               s.POSTGAME_EMBER_APP_NAME,
               s.POSTGAME_PLAYER_HONOR_NAME,
               e,
             );
           }
-          addProgressionComponent(e, t, n, s, o) {
-            a.ProgressionComponentHelper.addProgressionComponent(e, t, n, s, o);
+          addProgressionComponent(e, t, a, s, o) {
+            n.ProgressionComponentHelper.addProgressionComponent(e, t, a, s, o);
           }
           removeProgressionComponent(e) {
-            a.ProgressionComponentHelper.removeProgressionComponent(e);
+            n.ProgressionComponentHelper.removeProgressionComponent(e);
           }
-          setGameSpecificPlayAgainOverride(e, t, n) {
-            a.extEmberModel.set("playAgainOverride", {
+          setGameSpecificPlayAgainOverride(e, t, a) {
+            n.extEmberModel.set("playAgainOverride", {
               gameflowGameId: e,
               confirmButtonText: t,
-              navigationCallback: n,
+              navigationCallback: a,
             });
           }
         }
@@ -508,10 +509,10 @@
             t.DAY_IN_MS =
             t.APEX_TIERS =
               void 0);
-        const n = "rcp-fe-lol-postgame";
-        t.PLUGIN_NAME = n;
-        const a = n + "reward-celebration";
-        t.REWARD_CELEBRATION_NAME = a;
+        const a = "rcp-fe-lol-postgame";
+        t.PLUGIN_NAME = a;
+        const n = a + "reward-celebration";
+        t.REWARD_CELEBRATION_NAME = n;
         t.MAIN_NAVIGATION_ITEM_TRA_KEY = "navbar_tft";
         t.SECOND_IN_MS = 1e3;
         t.MINUTE_IN_MS = 6e4;
@@ -568,16 +569,16 @@
         t.PLAY_BUTTON_STATE_MACHINE_SELECTOR = ".postgame-button-vsm";
         t.PARTY_STATUS_STATE_MACHINE_SELECTOR = ".postgame-return-button-vsm";
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.createEmberApplication = function () {
-            return a.ComponentFactory.create(s.POSTGAME_EMBER_APP_NAME);
+            return n.ComponentFactory.create(s.POSTGAME_EMBER_APP_NAME);
           }),
           (t.registerEmberApplication = function () {
             const e = {
               name: s.POSTGAME_EMBER_APP_NAME,
-              ComponentFactory: a.ComponentFactory,
+              ComponentFactory: n.ComponentFactory,
               Router: o.default,
               IndexRoute: l.default,
               PostgameRoute: i.default,
@@ -605,65 +606,68 @@
               TftTooltipComponent: R.default,
               PostgameSecondaryProgressionComponent: M.default,
               PostgamePartyStatusComponent: w.default,
-              ArrowFooterComponent: Rt,
-              HextechLoadingAnimationComponent: Ot,
-              GenericButtonComponent: Ae.default,
+              ArrowFooterComponent: Ht,
+              HextechLoadingAnimationComponent: Ft,
+              GenericButtonComponent: Le.default,
               StrawberryPostgameRootComponent: Se.default,
-              RenderTimerComponent: Pe.default,
-              EternalsTokenComponent: Te.default,
-              PostgameRootComponent: ke.default,
-              PostgameSubNavigationComponent: Ce.default,
-              PostgameProgressionComponent: we.default,
-              PrestigeProgressionComponent: Le.default,
-              PrestigeProgressionTooltipComponent: Ie.default,
-              MasteryProgressionComponent: Ne.default,
-              LegendaryMasteryProgressionComponent: Re.default,
-              CherryProgressionComponent: Oe.default,
-              RankedProgressionComponent: Be.default,
-              RatingChangeComponent: De.default,
-              RankedRewardProgressionComponent: Ge.default,
-              MiniseriesProgressComponent: Ue.default,
-              ChallengeUpdateContainerComponent: He.default,
-              ChallengeUpdatesTooltipComponent: Fe.default,
-              EternalsUpdatesTooltipComponent: je.default,
-              PostgamePartyStatusV2Component: Ve.default,
-              ProgressionModalComponent: qe.default,
-              CherryScoreboardHeaderComponent: Ye.default,
-              ScoreboardHeaderComponent: We.default,
-              ScoreboardHonorFlairComponent: Ke.default,
-              ScoreboardRootComponent: Xe.default,
-              CherryScoreboardRowComponent: $e.default,
-              ScoreboardRowComponent: Qe.default,
-              ScoreboardRowActionsMenuComponent: ze.default,
-              ScoreboardRowStatDisplayComponent: Ze.default,
-              ScoreboardStatSwitcherComponent: Je.default,
-              AnimatedPlayButtonComponent: Me.default,
-              ScoreboardSpellComponent: et.default,
-              PostgameReportModal: Gt,
-              GameIdClipboardCopyComponent: Dt,
-              PlayerNameComponent: Bt,
-              ChallengeCardHeaderComponent: Ut,
-              ChallengeCardComponent: Ht,
-              ChallengeItemFooterComponent: Ft,
-              ChallengeItemTooltipComponent: jt,
-              ChallengeItemComponent: Vt,
-              EternalsItemTooltipComponent: qt,
-              EternalsItemComponent: Yt,
-              IdentityCustomizerTokenComponent: $t,
+              StrawberryScoreboardRootComponent: Pe.default,
+              StrawberryScoreboardHeaderComponent: Te.default,
+              StrawberryScoreboardRowComponent: ke.default,
+              RenderTimerComponent: Ce.default,
+              EternalsTokenComponent: Ae.default,
+              PostgameRootComponent: Me.default,
+              PostgameSubNavigationComponent: we.default,
+              PostgameProgressionComponent: Ne.default,
+              PrestigeProgressionComponent: Re.default,
+              PrestigeProgressionTooltipComponent: Oe.default,
+              MasteryProgressionComponent: De.default,
+              LegendaryMasteryProgressionComponent: Be.default,
+              CherryProgressionComponent: Ge.default,
+              RankedProgressionComponent: He.default,
+              RatingChangeComponent: Ue.default,
+              RankedRewardProgressionComponent: Fe.default,
+              MiniseriesProgressComponent: je.default,
+              ChallengeUpdateContainerComponent: Ve.default,
+              ChallengeUpdatesTooltipComponent: qe.default,
+              EternalsUpdatesTooltipComponent: We.default,
+              PostgamePartyStatusV2Component: Ye.default,
+              ProgressionModalComponent: Ke.default,
+              CherryScoreboardHeaderComponent: $e.default,
+              ScoreboardHeaderComponent: Xe.default,
+              ScoreboardHonorFlairComponent: Qe.default,
+              ScoreboardRootComponent: ze.default,
+              CherryScoreboardRowComponent: Ze.default,
+              ScoreboardRowComponent: Je.default,
+              ScoreboardRowActionsMenuComponent: et.default,
+              ScoreboardRowStatDisplayComponent: tt.default,
+              ScoreboardStatSwitcherComponent: at.default,
+              AnimatedPlayButtonComponent: Ie.default,
+              ScoreboardSpellComponent: nt.default,
+              PostgameReportModal: qt,
+              GameIdClipboardCopyComponent: jt,
+              PlayerNameComponent: Vt,
+              ChallengeCardHeaderComponent: Wt,
+              ChallengeCardComponent: Yt,
+              ChallengeItemFooterComponent: Kt,
+              ChallengeItemTooltipComponent: $t,
+              ChallengeItemComponent: Xt,
+              EternalsItemTooltipComponent: Qt,
+              EternalsItemComponent: zt,
+              IdentityCustomizerTokenComponent: ta,
               GradeDisplayComponent:
-                a.SharedChampionMasteryComponents.GradeDisplayComponent,
+                n.SharedChampionMasteryComponents.GradeDisplayComponent,
               MasteryTooltipComponent:
-                a.SharedChampionMasteryComponents.MasteryTooltipComponent,
+                n.SharedChampionMasteryComponents.MasteryTooltipComponent,
               MilestoneTooltipComponent:
-                a.SharedChampionMasteryComponents.MilestoneTooltipComponent,
+                n.SharedChampionMasteryComponents.MilestoneTooltipComponent,
               MasteryCrestComponent:
-                a.SharedChampionMasteryComponents.MasteryCrestComponent,
+                n.SharedChampionMasteryComponents.MasteryCrestComponent,
               PostgameScoreboardPlayerHonorFlairComponent: S.default,
               PostgameScoreboardProgressionHonorNotificationComponent:
                 P.default,
               PostgameScoreboardProgressionHonorCategoryIconComponent:
                 T.default,
-              tra: a.traService,
+              tra: n.traService,
               PostgameService: O.default,
               PostgameRankedService: D.default,
               PartiesService: B.default,
@@ -675,24 +679,24 @@
               HonorService: j.default,
               ChallengesService: V.default,
               PerksService: q.default,
-              GameDataService: Wt,
-              RiotclientService: Kt,
-              SummonerService: Xt,
-              PlayerActionsService: X.default,
-              RemedyService: Y.default,
-              ChampionMasteryService: W.default,
+              GameDataService: Zt,
+              RiotclientService: Jt,
+              SummonerService: ea,
+              PlayerActionsService: $.default,
+              RemedyService: W.default,
+              ChampionMasteryService: Y.default,
               RenderTelemetrySenderComponent:
-                a.default.SharedEmberComponents.RenderTelemetrySenderComponent,
+                n.default.SharedEmberComponents.RenderTelemetrySenderComponent,
               TEMPLATES: {
-                application: $.default,
+                application: X.default,
                 postgame: Q.default,
                 "components/postgame-common": z.default,
                 "components/postgame-header": Z.default,
                 "components/postgame-game-info": J.default,
                 "components/postgame-game-info-icons": ee.default,
                 "components/postgame-game-result": te.default,
-                "components/postgame-game-result-icon": ne.default,
-                "components/postgame-scoreboard": ae.default,
+                "components/postgame-game-result-icon": ae.default,
+                "components/postgame-scoreboard": ne.default,
                 "components/postgame-scoreboard-player-augment": se.default,
                 "components/postgame-scoreboard-player-keystone-icon":
                   oe.default,
@@ -711,99 +715,102 @@
                   fe.default,
                 "components/postgame-scoreboard-progression-honor-category-icon":
                   be.default,
-                "components/strawberry-postgame-root": tt.default,
-                "components/render-timer": nt.default,
-                "components/eternals-token": at.default,
-                "components/postgame-root": st.default,
-                "components/postgame-sub-navigation": ot.default,
-                "components/postgame-progression": lt.default,
-                "components/prestige-progression": it.default,
-                "components/prestige-progression-tooltip": rt.default,
-                "components/mastery-progression": mt.default,
-                "components/legendary-mastery-progression": ct.default,
-                "components/cherry-progression": pt.default,
-                "components/ranked-progression": dt.default,
-                "components/rating-change": ut.default,
-                "components/ranked-reward-progression": gt.default,
-                "components/miniseries-progress": ht.default,
-                "components/challenge-update-container": ft.default,
-                "components/challenge-updates-tooltip": bt.default,
-                "components/eternals-updates-tooltip": yt.default,
-                "components/progression-modal": Et.default,
-                "components/cherry-scoreboard-header": vt.default,
-                "components/scoreboard-header": xt.default,
-                "components/scoreboard-honor-flair": St.default,
-                "components/scoreboard-root": Pt.default,
-                "components/cherry-scoreboard-row": Tt.default,
-                "components/scoreboard-row": kt.default,
-                "components/scoreboard-row-actions-menu": Ct.default,
-                "components/scoreboard-row-stat-display": At.default,
-                "components/scoreboard-stat-switcher": Mt.default,
-                "components/postgame-party-status-v2": _t.default,
-                "components/animated-play-button": wt.default,
-                "components/scoreboard-spell": Lt.default,
+                "components/strawberry-postgame-root": st.default,
+                "components/strawberry-scoreboard-root": ot.default,
+                "components/strawberry-scoreboard-header": lt.default,
+                "components/strawberry-scoreboard-row": it.default,
+                "components/render-timer": rt.default,
+                "components/eternals-token": mt.default,
+                "components/postgame-root": ct.default,
+                "components/postgame-sub-navigation": pt.default,
+                "components/postgame-progression": dt.default,
+                "components/prestige-progression": ut.default,
+                "components/prestige-progression-tooltip": gt.default,
+                "components/mastery-progression": ht.default,
+                "components/legendary-mastery-progression": ft.default,
+                "components/cherry-progression": bt.default,
+                "components/ranked-progression": yt.default,
+                "components/rating-change": _t.default,
+                "components/ranked-reward-progression": Et.default,
+                "components/miniseries-progress": vt.default,
+                "components/challenge-update-container": xt.default,
+                "components/challenge-updates-tooltip": St.default,
+                "components/eternals-updates-tooltip": Pt.default,
+                "components/progression-modal": kt.default,
+                "components/cherry-scoreboard-header": Ct.default,
+                "components/scoreboard-header": At.default,
+                "components/scoreboard-honor-flair": Mt.default,
+                "components/scoreboard-root": wt.default,
+                "components/cherry-scoreboard-row": Lt.default,
+                "components/scoreboard-row": It.default,
+                "components/scoreboard-row-actions-menu": Nt.default,
+                "components/scoreboard-row-stat-display": Rt.default,
+                "components/scoreboard-stat-switcher": Ot.default,
+                "components/postgame-party-status-v2": Tt.default,
+                "components/animated-play-button": Dt.default,
+                "components/scoreboard-spell": Bt.default,
                 "components/tft-header": ye.default,
                 "components/tft-partner-group-placement": _e.default,
                 "components/tft-player": Ee.default,
                 "components/tft-tooltip": ve.default,
               },
             };
-            a.ApplicationInjector.setFactoryDefinition(e),
-              a.emberApplicationFactory.setFactoryDefinition(
+            n.ApplicationInjector.setFactoryDefinition(e),
+              n.emberApplicationFactory.setFactoryDefinition(
                 s.POSTGAME_EMBER_APP_NAME,
                 e,
                 { EMBER_CLI_COMPAT: !0 },
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-ranked",
                 10,
                 !0,
                 !1,
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-rated",
                 15,
                 !1,
                 !1,
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-ranked-rewards",
                 20,
                 !0,
                 !1,
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-mastery-meter",
                 30,
                 !0,
                 !1,
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-xp-meter",
                 40,
                 !0,
                 !1,
               ),
-              a.ProgressionComponentHelper.addInternalProgressionComponent(
+              n.ProgressionComponentHelper.addInternalProgressionComponent(
                 "postgame-scoreboard-progression-honor-notification",
                 60,
                 !1,
                 !0,
               ),
-              a.emberApplicationFactory.setFactoryDefinition({
+              n.emberApplicationFactory.setFactoryDefinition({
                 name: s.REWARD_CELEBRATION_NAME,
-                ComponentFactory: a.ComponentFactory,
-                tra: a.traService,
+                ComponentFactory: n.ComponentFactory,
+                tra: n.traService,
                 RewardCelebrationComponent: xe.default,
               });
           });
-        var a = (function (e, t) {
+        var n = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
               return { default: e };
-            var n = Nt(t);
-            if (n && n.has(e)) return n.get(e);
-            var a = {},
+            var a = Ut(t);
+            if (a && a.has(e)) return a.get(e);
+            var n = {},
               s = Object.defineProperty && Object.getOwnPropertyDescriptor;
             for (var o in e)
               if (
@@ -812,261 +819,267 @@
               ) {
                 var l = s ? Object.getOwnPropertyDescriptor(e, o) : null;
                 l && (l.get || l.set)
-                  ? Object.defineProperty(a, o, l)
-                  : (a[o] = e[o]);
+                  ? Object.defineProperty(n, o, l)
+                  : (n[o] = e[o]);
               }
-            (a.default = e), n && n.set(e, a);
-            return a;
-          })(n(1)),
-          s = n(3),
-          o = It(n(8)),
-          l = It(n(9)),
-          i = It(n(11)),
-          r = It(n(12)),
-          m = It(n(13)),
-          c = It(n(16)),
-          p = It(n(17)),
-          d = It(n(36)),
-          u = It(n(37)),
-          g = It(n(38)),
-          h = It(n(39)),
-          f = It(n(40)),
-          b = It(n(41)),
-          y = It(n(42)),
-          _ = It(n(43)),
-          E = It(n(44)),
-          v = It(n(45)),
-          x = It(n(46)),
-          S = It(n(47)),
-          P = It(n(48)),
-          T = It(n(49)),
-          k = It(n(50)),
-          C = It(n(51)),
-          A = It(n(52)),
-          M = It(n(53)),
-          w = It(n(54)),
-          L = It(n(55)),
-          I = It(n(56)),
-          N = It(n(57)),
-          R = It(n(58)),
-          O = It(n(59)),
-          D = It(n(60)),
-          B = It(n(61)),
-          G = It(n(62)),
-          U = It(n(63)),
-          H = It(n(64)),
-          F = It(n(65)),
-          j = It(n(66)),
-          V = It(n(67)),
-          q = It(n(68)),
-          Y = It(n(69)),
-          W = It(n(70)),
-          K = It(n(71)),
-          X = It(n(72)),
-          $ = It(n(73)),
-          Q = It(n(74)),
-          z = It(n(75)),
-          Z = It(n(76)),
-          J = It(n(77)),
-          ee = It(n(78)),
-          te = It(n(79)),
-          ne = It(n(80)),
-          ae = It(n(81)),
-          se = It(n(82)),
-          oe = It(n(83)),
-          le = It(n(84)),
-          ie = It(n(85)),
-          re = It(n(86)),
-          me = It(n(87)),
-          ce = It(n(88)),
-          pe = It(n(89)),
-          de = It(n(90)),
-          ue = It(n(91)),
-          ge = It(n(92)),
-          he = It(n(93)),
-          fe = It(n(94)),
-          be = It(n(95)),
-          ye = It(n(96)),
-          _e = It(n(97)),
-          Ee = It(n(98)),
-          ve = It(n(99)),
-          xe = It(n(100)),
-          Se = It(n(103)),
-          Pe = It(n(104)),
-          Te = It(n(105)),
-          ke = It(n(106)),
-          Ce = It(n(107)),
-          Ae = It(n(108)),
-          Me = It(n(112)),
-          we = It(n(113)),
-          Le = It(n(116)),
-          Ie = It(n(117)),
-          Ne = It(n(118)),
-          Re = It(n(119)),
-          Oe = It(n(120)),
-          De = It(n(121)),
-          Be = It(n(122)),
-          Ge = It(n(123)),
-          Ue = It(n(124)),
-          He = It(n(125)),
-          Fe = It(n(126)),
-          je = It(n(127)),
-          Ve = It(n(128)),
-          qe = It(n(129)),
-          Ye = It(n(131)),
-          We = It(n(133)),
-          Ke = It(n(134)),
-          Xe = It(n(135)),
-          $e = It(n(136)),
-          Qe = It(n(138)),
-          ze = It(n(139)),
-          Ze = It(n(140)),
-          Je = It(n(141)),
-          et = It(n(142)),
-          tt = It(n(143)),
-          nt = It(n(144)),
-          at = It(n(145)),
-          st = It(n(146)),
-          ot = It(n(147)),
-          lt = It(n(148)),
-          it = It(n(149)),
-          rt = It(n(150)),
-          mt = It(n(151)),
-          ct = It(n(152)),
-          pt = It(n(153)),
-          dt = It(n(154)),
-          ut = It(n(155)),
-          gt = It(n(156)),
-          ht = It(n(157)),
-          ft = It(n(158)),
-          bt = It(n(159)),
-          yt = It(n(160)),
-          _t = It(n(161)),
-          Et = It(n(162)),
-          vt = It(n(163)),
-          xt = It(n(164)),
-          St = It(n(165)),
-          Pt = It(n(166)),
-          Tt = It(n(167)),
-          kt = It(n(168)),
-          Ct = It(n(169)),
-          At = It(n(170)),
-          Mt = It(n(171)),
-          wt = It(n(172)),
-          Lt = It(n(173));
-        function It(e) {
+            (n.default = e), a && a.set(e, n);
+            return n;
+          })(a(1)),
+          s = a(3),
+          o = Gt(a(8)),
+          l = Gt(a(9)),
+          i = Gt(a(11)),
+          r = Gt(a(12)),
+          m = Gt(a(13)),
+          c = Gt(a(16)),
+          p = Gt(a(17)),
+          d = Gt(a(36)),
+          u = Gt(a(37)),
+          g = Gt(a(38)),
+          h = Gt(a(39)),
+          f = Gt(a(40)),
+          b = Gt(a(41)),
+          y = Gt(a(42)),
+          _ = Gt(a(43)),
+          E = Gt(a(44)),
+          v = Gt(a(45)),
+          x = Gt(a(46)),
+          S = Gt(a(47)),
+          P = Gt(a(48)),
+          T = Gt(a(49)),
+          k = Gt(a(50)),
+          C = Gt(a(51)),
+          A = Gt(a(52)),
+          M = Gt(a(53)),
+          w = Gt(a(54)),
+          L = Gt(a(55)),
+          I = Gt(a(56)),
+          N = Gt(a(57)),
+          R = Gt(a(58)),
+          O = Gt(a(59)),
+          D = Gt(a(60)),
+          B = Gt(a(61)),
+          G = Gt(a(62)),
+          U = Gt(a(63)),
+          H = Gt(a(64)),
+          F = Gt(a(65)),
+          j = Gt(a(66)),
+          V = Gt(a(67)),
+          q = Gt(a(68)),
+          W = Gt(a(69)),
+          Y = Gt(a(70)),
+          K = Gt(a(71)),
+          $ = Gt(a(72)),
+          X = Gt(a(73)),
+          Q = Gt(a(74)),
+          z = Gt(a(75)),
+          Z = Gt(a(76)),
+          J = Gt(a(77)),
+          ee = Gt(a(78)),
+          te = Gt(a(79)),
+          ae = Gt(a(80)),
+          ne = Gt(a(81)),
+          se = Gt(a(82)),
+          oe = Gt(a(83)),
+          le = Gt(a(84)),
+          ie = Gt(a(85)),
+          re = Gt(a(86)),
+          me = Gt(a(87)),
+          ce = Gt(a(88)),
+          pe = Gt(a(89)),
+          de = Gt(a(90)),
+          ue = Gt(a(91)),
+          ge = Gt(a(92)),
+          he = Gt(a(93)),
+          fe = Gt(a(94)),
+          be = Gt(a(95)),
+          ye = Gt(a(96)),
+          _e = Gt(a(97)),
+          Ee = Gt(a(98)),
+          ve = Gt(a(99)),
+          xe = Gt(a(100)),
+          Se = Gt(a(103)),
+          Pe = Gt(a(104)),
+          Te = Gt(a(105)),
+          ke = Gt(a(106)),
+          Ce = Gt(a(109)),
+          Ae = Gt(a(110)),
+          Me = Gt(a(111)),
+          we = Gt(a(112)),
+          Le = Gt(a(113)),
+          Ie = Gt(a(117)),
+          Ne = Gt(a(118)),
+          Re = Gt(a(120)),
+          Oe = Gt(a(121)),
+          De = Gt(a(122)),
+          Be = Gt(a(123)),
+          Ge = Gt(a(124)),
+          Ue = Gt(a(125)),
+          He = Gt(a(126)),
+          Fe = Gt(a(127)),
+          je = Gt(a(128)),
+          Ve = Gt(a(129)),
+          qe = Gt(a(130)),
+          We = Gt(a(131)),
+          Ye = Gt(a(132)),
+          Ke = Gt(a(133)),
+          $e = Gt(a(135)),
+          Xe = Gt(a(137)),
+          Qe = Gt(a(138)),
+          ze = Gt(a(139)),
+          Ze = Gt(a(140)),
+          Je = Gt(a(141)),
+          et = Gt(a(142)),
+          tt = Gt(a(143)),
+          at = Gt(a(144)),
+          nt = Gt(a(145)),
+          st = Gt(a(146)),
+          ot = Gt(a(147)),
+          lt = Gt(a(148)),
+          it = Gt(a(149)),
+          rt = Gt(a(150)),
+          mt = Gt(a(151)),
+          ct = Gt(a(152)),
+          pt = Gt(a(153)),
+          dt = Gt(a(154)),
+          ut = Gt(a(155)),
+          gt = Gt(a(156)),
+          ht = Gt(a(157)),
+          ft = Gt(a(158)),
+          bt = Gt(a(159)),
+          yt = Gt(a(160)),
+          _t = Gt(a(161)),
+          Et = Gt(a(162)),
+          vt = Gt(a(163)),
+          xt = Gt(a(164)),
+          St = Gt(a(165)),
+          Pt = Gt(a(166)),
+          Tt = Gt(a(167)),
+          kt = Gt(a(168)),
+          Ct = Gt(a(169)),
+          At = Gt(a(170)),
+          Mt = Gt(a(171)),
+          wt = Gt(a(172)),
+          Lt = Gt(a(173)),
+          It = Gt(a(174)),
+          Nt = Gt(a(175)),
+          Rt = Gt(a(176)),
+          Ot = Gt(a(177)),
+          Dt = Gt(a(178)),
+          Bt = Gt(a(179));
+        function Gt(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        function Nt(e) {
+        function Ut(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
-            n = new WeakMap();
-          return (Nt = function (e) {
-            return e ? n : t;
+            a = new WeakMap();
+          return (Ut = function (e) {
+            return e ? a : t;
           })(e);
         }
         const {
-            ArrowFooterComponent: Rt,
-            HextechLoadingAnimationComponent: Ot,
-            GameIdClipboardCopyComponent: Dt,
-            PlayerNameComponent: Bt,
-            PostgameReportModal: Gt,
-          } = a.SharedComponents.getSharedEmberComponents(),
+            ArrowFooterComponent: Ht,
+            HextechLoadingAnimationComponent: Ft,
+            GameIdClipboardCopyComponent: jt,
+            PlayerNameComponent: Vt,
+            PostgameReportModal: qt,
+          } = n.SharedComponents.getSharedEmberComponents(),
           {
-            ChallengeCardHeaderComponent: Ut,
-            ChallengeCardComponent: Ht,
-            ChallengeItemFooterComponent: Ft,
-            ChallengeItemTooltipComponent: jt,
-            ChallengeItemComponent: Vt,
-            EternalsItemTooltipComponent: qt,
-            EternalsItemComponent: Yt,
-            GameDataService: Wt,
-            RiotclientService: Kt,
-            SummonerService: Xt,
-            IdentityCustomizerTokenComponent: $t,
-          } = a.SharedComponents.getApi_SharedChallengesComponents();
+            ChallengeCardHeaderComponent: Wt,
+            ChallengeCardComponent: Yt,
+            ChallengeItemFooterComponent: Kt,
+            ChallengeItemTooltipComponent: $t,
+            ChallengeItemComponent: Xt,
+            EternalsItemTooltipComponent: Qt,
+            EternalsItemComponent: zt,
+            GameDataService: Zt,
+            RiotclientService: Jt,
+            SummonerService: ea,
+            IdentityCustomizerTokenComponent: ta,
+          } = n.SharedComponents.getApi_SharedChallengesComponents();
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        const a = n(1).Ember.Router.extend({ location: "none" });
-        a.map(function () {
+        const n = a(1).Ember.Router.extend({ location: "none" });
+        n.map(function () {
           this.route("postgame");
         });
-        var s = a;
+        var s = n;
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        n(10);
-        var s = a.Ember.Route.extend({
+        var n = a(1);
+        a(10);
+        var s = n.Ember.Route.extend({
           beforeModel() {
             this.replaceWith("postgame");
           },
         });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        n.r(t);
+        a.r(t);
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1).Ember.Route.extend({ model() {} });
-        t.default = a;
+        var n = a(1).Ember.Route.extend({ model() {} });
+        t.default = n;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(6);
-        var o = a.Ember.Controller.extend({
-          gameflow: a.Ember.inject.service(),
-          postgame: a.Ember.inject.service(),
-          gameclientPostgame: a.Ember.inject.service(),
-          backgroundImgPath: a.Ember.computed.alias(
+        var n = a(1),
+          s = a(6);
+        var o = n.Ember.Controller.extend({
+          gameflow: n.Ember.inject.service(),
+          postgame: n.Ember.inject.service(),
+          gameclientPostgame: n.Ember.inject.service(),
+          backgroundImgPath: n.Ember.computed.alias(
             "gameflow.backgroundImgPath",
           ),
-          backgroundImgPathDark: a.Ember.computed.alias(
+          backgroundImgPathDark: n.Ember.computed.alias(
             "gameflow.backgroundImgPathDark",
           ),
-          showPostgameV2: a.Ember.computed.not("gameflow.isTFT"),
-          haveEOGStatsBlock: a.Ember.computed.bool("postgame.eogStatsBlock"),
-          haveGameClientStatsBlock: a.Ember.computed.bool(
+          showPostgameV2: n.Ember.computed.not("gameflow.isTFT"),
+          haveEOGStatsBlock: n.Ember.computed.bool("postgame.eogStatsBlock"),
+          haveGameClientStatsBlock: n.Ember.computed.bool(
             "gameclientPostgame.gameClientStats",
           ),
-          isTFTReadyToShow: a.Ember.computed.and(
+          isTFTReadyToShow: n.Ember.computed.and(
             "gameflow.isTFT",
             "haveGameClientStatsBlock",
           ),
-          haveLoLGameClientStatsBlock: a.Ember.computed.bool(
+          haveLoLGameClientStatsBlock: n.Ember.computed.bool(
             "gameclientPostgame.lolGameClientStats",
           ),
-          isCherryReadyToShow: a.Ember.computed.and(
+          isCherryReadyToShow: n.Ember.computed.and(
             "gameflow.isCherry",
             "haveLoLGameClientStatsBlock",
           ),
-          isSRReadyToShow: a.Ember.computed.and(
+          isSRReadyToShow: n.Ember.computed.and(
             "haveEOGStatsBlock",
             "isEoGPhase",
           ),
-          isWaitingForStats: a.Ember.computed.equal(
+          isWaitingForStats: n.Ember.computed.equal(
             "gameflow.phase",
             s.GAMEFLOW_PHASES.WaitingForStats,
           ),
-          isEoGPhase: a.Ember.computed.equal(
+          isEoGPhase: n.Ember.computed.equal(
             "gameflow.phase",
             s.GAMEFLOW_PHASES.EndOfGame,
           ),
-          isCustomGame: a.Ember.computed.equal("gameflow.isCustomGame"),
-          isPostgameReady: a.Ember.computed.or(
+          isCustomGame: n.Ember.computed.equal("gameflow.isCustomGame"),
+          isPostgameReady: n.Ember.computed.or(
             "isSRReadyToShow",
             "isCherryReadyToShow",
             "isTFTReadyToShow",
@@ -1075,60 +1088,60 @@
           skipWaitingForStatsWaitMs: 5e3,
           actions: {
             skipWaitingForStats: () =>
-              (0, a.dataBinding)("/lol-end-of-game").post(
+              (0, n.dataBinding)("/lol-end-of-game").post(
                 "/v1/state/dismiss-stats",
               ),
           },
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = r(n(5)),
-          o = r(n(14)),
-          l = n(6),
-          i = n(15);
+        var n = a(1),
+          s = r(a(5)),
+          o = r(a(14)),
+          l = a(6),
+          i = a(15);
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        const { RunMixin: m } = a.EmberAddons.EmberLifeline;
-        var c = a.Ember.Component.extend(m, o.default, {
+        const { RunMixin: m } = n.EmberAddons.EmberLifeline;
+        var c = n.Ember.Component.extend(m, o.default, {
           classNames: ["postgame-component"],
-          parties: a.Ember.inject.service(),
-          postgame: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          gameclientPostgame: a.Ember.inject.service(),
+          parties: n.Ember.inject.service(),
+          postgame: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          gameclientPostgame: n.Ember.inject.service(),
           _battleBoostCelebratedGameIds: [],
-          isLocalPlayerInTraditionalGame: a.Ember.computed.alias(
+          isLocalPlayerInTraditionalGame: n.Ember.computed.alias(
             "postgame.isLocalPlayerInGame",
           ),
-          isLocalPlayerInTFTGame: a.Ember.computed.and(
+          isLocalPlayerInTFTGame: n.Ember.computed.and(
             "gameflow.isTFT",
             "gameClientPostgame.isLocalPlayerInGame",
           ),
-          isLocalPlayerInGame: a.Ember.computed.or(
+          isLocalPlayerInGame: n.Ember.computed.or(
             "isLocalPlayerInTraditionalGame",
             "isLocalPlayerInTFTGame",
           ),
-          backgroundMusic: a.Ember.computed.alias(
+          backgroundMusic: n.Ember.computed.alias(
             "gameflow.map.assets.postgame-ambience-loop-sound",
           ),
           init() {
             this._super(...arguments),
-              this.set("extEmberModel", a.extEmberModel);
+              this.set("extEmberModel", n.extEmberModel);
           },
           didInsertElement() {
             this._super(...arguments),
-              a.Telemetry.endTracingEvent(
+              n.Telemetry.endTracingEvent(
                 i.TELEMETRY_EVENT_NAMES.RENDER_POST_GAME,
               );
           },
-          onDidInsertElementPlayMusic: a.Ember.on(
+          onDidInsertElementPlayMusic: n.Ember.on(
             "didInsertElement",
-            a.Ember.observer("backgroundMusic", function () {
+            n.Ember.observer("backgroundMusic", function () {
               this.get("backgroundMusic") &&
                 !this.get("_music") &&
                 this.set(
@@ -1137,26 +1150,26 @@
                 );
             }),
           ),
-          battleBoostCelebrationObserver: a.Ember.observer(
+          battleBoostCelebrationObserver: n.Ember.observer(
             "postgame.eogStatsBlock.battleBoostIpEarned",
             "gameflow.phase",
             function () {
               const e = this.get("postgame.eogStatsBlock.battleBoostIpEarned"),
                 t = this.get("gameflow.phase") === l.GAMEFLOW_PHASES.EndOfGame,
-                n = this.get("postgame.eogStatsBlock.teamBoost.summonerName"),
-                a = this.get("postgame.eogStatsBlock.gameId");
+                a = this.get("postgame.eogStatsBlock.teamBoost.summonerName"),
+                n = this.get("postgame.eogStatsBlock.gameId");
               e <= 0 ||
                 !t ||
-                !n ||
                 !a ||
-                this._battleBoostCelebratedGameIds.includes(a) ||
-                (this._showBattleBoostCelebrationToast(n, e, a),
-                this._battleBoostCelebratedGameIds.push(a));
+                !n ||
+                this._battleBoostCelebratedGameIds.includes(n) ||
+                (this._showBattleBoostCelebrationToast(a, e, n),
+                this._battleBoostCelebratedGameIds.push(n));
             },
           ),
-          _showBattleBoostCelebrationToast: function (e, t, n) {
-            const a = this.get("ToastCelebrationManager");
-            if (!a) return;
+          _showBattleBoostCelebrationToast: function (e, t, a) {
+            const n = this.get("ToastCelebrationManager");
+            if (!n) return;
             const s = this.get("tra").formatString(
                 "postgame_battle_boost_celebration_title",
                 { blueEssenceAmount: t },
@@ -1168,20 +1181,20 @@
                       "postgame_battle_boost_celebration_other",
                       { playerName: e },
                     );
-            a.add({
+            n.add({
               type: "DialogToastCelebration",
               data: {
                 title: s,
                 details: o,
                 iconUrl: "/fe/lol-postgame/images/toast-blue-essence.png",
-                id: n,
+                id: a,
                 animationsEnabled:
                   this.get("postgame.largeAreaAnimationsEnabled") || !1,
               },
               timing: "slow",
             });
           },
-          onWillDestroyElement: a.Ember.on("willDestroyElement", function () {
+          onWillDestroyElement: n.Ember.on("willDestroyElement", function () {
             const e = this.get("_music");
             e && e.fadeOut(void 0, { stop: !0 });
           }),
@@ -1203,36 +1216,36 @@
         });
         t.default = c;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var n = a(1);
         const s = "rcp-fe-lol-uikit",
           o = "sfx-ui",
           l = "music-ambience";
-        var i = a.Ember.Mixin.create({
-          ModalManager: (0, a.getProvider)().get(s).getModalManager(),
-          ContextMenuManager: (0, a.getProvider)()
+        var i = n.Ember.Mixin.create({
+          ModalManager: (0, n.getProvider)().get(s).getModalManager(),
+          ContextMenuManager: (0, n.getProvider)()
             .get(s)
             .getContextMenuManager(),
-          ToastCelebrationManager: (0, a.getProvider)()
+          ToastCelebrationManager: (0, n.getProvider)()
             .get(s)
             .getToastCelebrationManager(),
-          audioPlugin: (0, a.getProvider)().get("rcp-fe-audio"),
-          duration: (0, a.getProvider)().get("rcp-fe-lol-l10n").duration(),
+          audioPlugin: (0, n.getProvider)().get("rcp-fe-audio"),
+          duration: (0, n.getProvider)().get("rcp-fe-lol-l10n").duration(),
           showModal: function (e) {
             const t = this.get("ModalManager").add(e);
             return (
-              a.Ember.get(t, "data.onOk") && t.okPromise
+              n.Ember.get(t, "data.onOk") && t.okPromise
                 ? t.okPromise.then(e.onOk)
                 : t.acceptPromise &&
                   t.acceptPromise
                     .then(() => {
-                      a.Ember.get(t, "data.onAccept") && t.data.onAccept();
+                      n.Ember.get(t, "data.onAccept") && t.data.onAccept();
                     })
                     .catch(() => {
-                      a.Ember.get(t, "data.onDecline") && t.data.onDecline();
+                      n.Ember.get(t, "data.onDecline") && t.data.onDecline();
                     }),
               t
             );
@@ -1240,11 +1253,11 @@
           removeModal: function (e) {
             this.get("ModalManager").remove(e);
           },
-          assignTooltip: function (e, t, n) {
-            this.get("TooltipManager").assign(e, t, null, n);
+          assignTooltip: function (e, t, a) {
+            this.get("TooltipManager").assign(e, t, null, a);
           },
           assignContextMenu: function (e, t) {
-            const n = this.get("ContextMenuManager");
+            const a = this.get("ContextMenuManager");
             if (
               (e.removeEventListener(
                 "contextmenu",
@@ -1252,11 +1265,11 @@
               ),
               t)
             ) {
-              const a = (e) => {
-                n.setMenuItems(t), n.openAtEvent(e), e.preventDefault();
+              const n = (e) => {
+                a.setMenuItems(t), a.openAtEvent(e), e.preventDefault();
               };
-              e.addEventListener("contextmenu", a),
-                this.set("_contextMenuEventHandler", a);
+              e.addEventListener("contextmenu", n),
+                this.set("_contextMenuEventHandler", n);
             }
           },
           getAssetPath: function (e) {
@@ -1267,8 +1280,8 @@
           },
           playSound: function (e) {
             const t = this.getAssetPath(e),
-              n = this.get("audioPlugin").getChannel(o).createSound(t);
-            return n.play(), n;
+              a = this.get("audioPlugin").getChannel(o).createSound(t);
+            return a.play(), a;
           },
           playBackgroundMusic: function (e) {
             const t = this.get("audioPlugin")
@@ -1291,13 +1304,13 @@
           TIME_ON_EOG: "eog-time-on-post-game",
         };
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["postgame-header"],
           postgame: s.Ember.inject.service(),
@@ -1326,14 +1339,14 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a },
-          l = n(18);
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n },
+          l = a(18);
         var i = s.Ember.Component.extend(o.default, {
           classNames: ["postgame-game-info"],
           gameclientPostgame: s.Ember.inject.service(),
@@ -1412,13 +1425,13 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           Object.defineProperty(t, "PAW", {
             enumerable: !0,
             get: function () {
-              return a.default;
+              return n.default;
             },
           }),
           Object.defineProperty(t, "PROFILE_PRIVACY", {
@@ -1457,36 +1470,36 @@
               return m.default;
             },
           });
-        var a = c(n(19)),
-          s = c(n(30)),
-          o = c(n(31)),
-          l = c(n(32)),
-          i = c(n(33)),
-          r = c(n(34)),
-          m = c(n(35));
+        var n = c(a(19)),
+          s = c(a(30)),
+          o = c(a(31)),
+          l = c(a(32)),
+          i = c(a(33)),
+          r = c(a(34)),
+          m = c(a(35));
         function c(e) {
           return e && e.__esModule ? e : { default: e };
         }
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = u(n(20)),
-          s = u(n(21)),
-          o = u(n(22)),
-          l = u(n(23)),
-          i = u(n(24)),
-          r = u(n(25)),
-          m = u(n(26)),
-          c = u(n(27)),
-          p = u(n(28)),
-          d = u(n(29));
+        var n = u(a(20)),
+          s = u(a(21)),
+          o = u(a(22)),
+          l = u(a(23)),
+          i = u(a(24)),
+          r = u(a(25)),
+          m = u(a(26)),
+          c = u(a(27)),
+          p = u(a(28)),
+          d = u(a(29));
         function u(e) {
           return e && e.__esModule ? e : { default: e };
         }
         var g = {
-          COMPONENT_TYPES: a.default,
+          COMPONENT_TYPES: n.default,
           CURRENCY_TYPES: s.default,
           INVENTORY_TYPES: o.default,
           MEDIA_TYPES: l.default,
@@ -1503,7 +1516,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           TEXT: "TEXT",
           TITLE_SUBTITLE: "TITLE_SUBTITLE",
           PURCHASE: "PURCHASE",
@@ -1512,20 +1525,20 @@
           SCROLL_LIST: "SCROLL_LIST",
           VERTICAL_LIST: "VERTICAL_LIST",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = { RP: "RP", IP: "IP", BE: "lol_blue_essence" };
-        t.default = n;
+        var a = { RP: "RP", IP: "IP", BE: "lol_blue_essence" };
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           CHAMPION: "CHAMPION",
           CHAMPION_SKIN: "CHAMPION_SKIN",
           WARD_SKIN: "WARD_SKIN",
@@ -1536,31 +1549,31 @@
           SUMMONER_ICON: "SUMMONER_ICON",
           STATSTONE: "STATSTONE",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = { SVG: "SVG", IMAGE: "IMAGE", VIDEO: "VIDEO" };
-        t.default = n;
+        var a = { SVG: "SVG", IMAGE: "IMAGE", VIDEO: "VIDEO" };
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           LOCAL_ASSET: "LOCAL_ASSET",
           EXTERNAL_URL: "EXTERNAL_URL",
           GAME_DATA: "GAME_DATA",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           CHAMPION_MODAL: "CHAMPION_MODAL",
           SKIN_VIEWER_MODAL: "SKIN_VIEWER_MODAL",
           MULTIPLE_PURCHASE_MODAL: "MULTIPLE_PURCHASE_MODAL",
@@ -1571,62 +1584,62 @@
           SKIN_WITH_DEPENDENCY_MODAL: "SKIN_WITH_DEPENDENCY_MODAL",
           PAW_GENERIC_MODAL: "PAW_GENERIC_MODAL",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           NOT_STARTED: "NOT_STARTED",
           IN_PROGRESS: "IN_PROGRESS",
           SUCCESS: "SUCCESS",
           FAIL: "FAIL",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           NOT_STARTED: "NOT_STARTED",
           IN_PROGRESS: "IN_PROGRESS",
           COMPLETED: "COMPLETED",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           EXPANDED: "EXPANDED",
           COMPACT: "COMPACT",
           DETAILED: "DETAILED",
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = { LARGE_TWO_COLUMN_LANDSCAPE: "LARGE_TWO_COLUMN_LANDSCAPE" };
-        t.default = n;
+        var a = { LARGE_TWO_COLUMN_LANDSCAPE: "LARGE_TWO_COLUMN_LANDSCAPE" };
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        const n = "RANKED_SOLO_5x5",
-          a = "RANKED_FLEX_SR",
+        const a = "RANKED_SOLO_5x5",
+          n = "RANKED_FLEX_SR",
           s = "RANKED_FLEX_TT",
           o = "CHERRY",
           l = "RANKED_TFT",
           i = "RANKED_TFT_DOUBLE_UP",
           r = "RANKED_TFT_TURBO",
           m = "RANKED_TFT_PAIRS",
-          c = [n, a],
+          c = [a, n],
           p = [...c, s],
           d = [o],
           u = [l, i],
@@ -1635,8 +1648,8 @@
           f = [...p, ...u],
           b = [...g, ...d];
         var y = {
-          RANKED_SOLO_5x5_QUEUE_TYPE: n,
-          RANKED_FLEX_SR_QUEUE_TYPE: a,
+          RANKED_SOLO_5x5_QUEUE_TYPE: a,
+          RANKED_FLEX_SR_QUEUE_TYPE: n,
           RANKED_FLEX_TT_QUEUE_TYPE: s,
           RANKED_CHERRY_QUEUE_TYPE: o,
           RANKED_TFT_QUEUE_TYPE: l,
@@ -1658,7 +1671,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = {
+        var a = {
           REWARD_TAGS: {
             INSTANT: "Instant",
             RARE: "Rare",
@@ -1687,38 +1700,38 @@
             NONE: "NONE",
           },
         };
-        t.default = n;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = { DEFAULT_SUMMONER_ICON_ID: 29 };
-        t.default = n;
+        var a = { DEFAULT_SUMMONER_ICON_ID: 29 };
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var n = { AUTO: "auto", ALWAYS: "always", NEVER: "never" };
-        t.default = n;
+        var a = { AUTO: "auto", ALWAYS: "always", NEVER: "never" };
+        t.default = a;
       },
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        const n = {
+        const a = {
             UNKNOWN: "UNKNOWN",
             ENABLED: "ENABLED",
             DISABLED: "DISABLED",
           },
-          a = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
+          n = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
         var s = {
-          ProfilePrivacyEnabledState: n,
-          ProfilePrivacySetting: a,
+          ProfilePrivacyEnabledState: a,
+          ProfilePrivacySetting: n,
           DEFAULT_PROFILE_PRIVACY: {
-            enabledState: n.UNKNOWN,
-            setting: a.PUBLIC,
+            enabledState: a.UNKNOWN,
+            setting: n.PUBLIC,
           },
         };
         t.default = s;
@@ -1727,7 +1740,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = t.TIME_UNITS = t.TIME_CONVERSIONS = void 0);
-        const n = {
+        const a = {
           MILLISECONDS: "milliseconds",
           SECONDS: "seconds",
           MINUTES: "minutes",
@@ -1737,29 +1750,29 @@
           MONTHS: "months",
           YEARS: "years",
         };
-        t.TIME_UNITS = n;
-        const a = 36e5,
+        t.TIME_UNITS = a;
+        const n = 36e5,
           s = 864e5,
           o = 6048e5,
           l = {
             MILLISECONDS_IN_A_SECOND: 1e3,
             MILLISECONDS_IN_A_MINUTE: 6e4,
-            MILLISECONDS_IN_A_HOUR: a,
+            MILLISECONDS_IN_A_HOUR: n,
             MILLISECONDS_IN_A_DAY: s,
             MILLISECONDS_IN_A_WEEK: o,
             MILLISECONDS_IN_A_YEAR: 314496e5,
           };
         t.TIME_CONVERSIONS = l;
-        var i = { TIME_UNITS: n, TIME_CONVERSIONS: l };
+        var i = { TIME_UNITS: a, TIME_CONVERSIONS: l };
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["postgame-game-info-icons"],
           postgame: s.Ember.inject.service(),
@@ -1805,14 +1818,14 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a },
-          l = n(3);
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n },
+          l = a(3);
         var i = s.Ember.Component.extend(o.default, {
           classNames: ["postgame-game-result"],
           classNameBindings: [
@@ -1872,10 +1885,10 @@
               if (!e) {
                 const e = this.get("gameclientPostgame.lolGameClientStats"),
                   t = this.get("postgame.localSummoner.puuid"),
-                  n = e.statsBlock.players.find((e) => e.PUUID === t);
-                return n && n.subteamStanding
+                  a = e.statsBlock.players.find((e) => e.PUUID === t);
+                return a && a.subteamStanding
                   ? this.get("tra").get(
-                      l.SUBTEAM_PLACEMENT_LONG_TRA_KEY + n.subteamStanding,
+                      l.SUBTEAM_PLACEMENT_LONG_TRA_KEY + a.subteamStanding,
                     )
                   : "";
               }
@@ -1970,15 +1983,15 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-game-result-icon"],
-            gameflow: a.Ember.inject.service(),
-            icon: a.Ember.computed(
+            gameflow: n.Ember.inject.service(),
+            icon: n.Ember.computed(
               "isLossForgiven",
               "isLeaver",
               "isVictory",
@@ -2000,39 +2013,39 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = l(n(14)),
-          o = l(n(5));
+        var n = a(1),
+          s = l(a(14)),
+          o = l(a(5));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        const { RunMixin: i } = a.EmberAddons.EmberLifeline;
-        var r = a.Ember.Component.extend(i, s.default, {
+        const { RunMixin: i } = n.EmberAddons.EmberLifeline;
+        var r = n.Ember.Component.extend(i, s.default, {
           classNames: ["postgame-scoreboard-component"],
           classNameBindings: ["isTFT:postgame-tft-scoreboard"],
-          postgame: a.Ember.inject.service(),
-          parties: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          gameclientPostgame: a.Ember.inject.service(),
-          isTFT: a.Ember.computed.alias("gameflow.isTFT"),
-          isLocalPlayerInGame: a.Ember.computed.or(
+          postgame: n.Ember.inject.service(),
+          parties: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          gameclientPostgame: n.Ember.inject.service(),
+          isTFT: n.Ember.computed.alias("gameflow.isTFT"),
+          isLocalPlayerInGame: n.Ember.computed.or(
             "gameclientPostgame.isLocalPlayerInGame",
             "postgame.isLocalPlayerInGame",
           ),
           init() {
             this._super(...arguments),
-              this.set("extEmberModel", a.extEmberModel);
+              this.set("extEmberModel", n.extEmberModel);
           },
-          teams: a.Ember.computed.alias("postgame.eogStatsBlock.teams"),
-          populatedTeams: a.Ember.computed.filter("teams", function (e) {
+          teams: n.Ember.computed.alias("postgame.eogStatsBlock.teams"),
+          populatedTeams: n.Ember.computed.filter("teams", function (e) {
             return e.players && e.players.length;
           }),
           isFooterDisabled: !1,
-          canNotPlayAgain: a.Ember.computed(
+          canNotPlayAgain: n.Ember.computed(
             "gameflow.canPlayAgain",
             "gameId",
             "extEmberModel.playAgainOverride",
@@ -2049,14 +2062,14 @@
               );
             },
           ),
-          isPlayAgainDisabled: a.Ember.computed.or(
+          isPlayAgainDisabled: n.Ember.computed.or(
             "canNotPlayAgain",
             "isFooterDisabled",
           ),
           backButtonDisabled: !0,
           isDetailsTabOpen: !1,
-          gameId: a.Ember.computed.alias("gameflow.gameId"),
-          confirmButtonText: a.Ember.computed(
+          gameId: n.Ember.computed.alias("gameflow.gameId"),
+          confirmButtonText: n.Ember.computed(
             "parties.confirmButtonText",
             "gameId",
             "extEmberModel.playAgainOverride",
@@ -2070,11 +2083,11 @@
               return e || "";
             },
           ),
-          closeButtonText: a.Ember.computed.alias(
+          closeButtonText: n.Ember.computed.alias(
             "tra.postgame_scoreboard_button_nav_quit",
           ),
-          tftPlayers: a.Ember.computed.alias("gameclientPostgame.players"),
-          tftPartnerGroupsByPlacement: a.Ember.computed(
+          tftPlayers: n.Ember.computed.alias("gameclientPostgame.players"),
+          tftPartnerGroupsByPlacement: n.Ember.computed(
             "tftPlayers",
             function () {
               const e = (this.get("gameclientPostgame.players") || []).map(
@@ -2083,11 +2096,11 @@
               return [...new Set(e)];
             },
           ),
-          hasPartnerGroups: a.Ember.computed.gt(
+          hasPartnerGroups: n.Ember.computed.gt(
             "tftPartnerGroupsByPlacement.0",
             0,
           ),
-          isPlaybookEnabled: a.Ember.computed.alias(
+          isPlaybookEnabled: n.Ember.computed.alias(
             "gameclientPostgame.isPlaybookEnabled",
           ),
           hasPlayAgainOverride: function () {
@@ -2152,7 +2165,7 @@
             },
             displayAdvancedDetails: function () {
               const e = () => this.set("isDetailsTabOpen", !1);
-              (0, a.getProvider)()
+              (0, n.getProvider)()
                 .getOptional("rcp-fe-lol-match-history")
                 .then(
                   (t) => {
@@ -2164,7 +2177,7 @@
                       closeModalCallback: e,
                     });
                   },
-                  (e) => a.logger.error("Provider getOptional failure", e),
+                  (e) => n.logger.error("Provider getOptional failure", e),
                 ),
                 this.set("isDetailsTabOpen", !0),
                 this.get("postgame").trigger("advancedDetailsDisplayed");
@@ -2173,37 +2186,37 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-player-augment-border"],
             classNameBindings: ["rarityClass"],
-            postgame: a.Ember.inject.service(),
-            augmentData: a.Ember.computed(
+            postgame: n.Ember.inject.service(),
+            augmentData: n.Ember.computed(
               "augmentId",
               "postgame.augmentsMap",
               function () {
                 return this.get("postgame.augmentsMap")[this.get("augmentId")];
               },
             ),
-            rarityClass: a.Ember.computed("augmentData", function () {
+            rarityClass: n.Ember.computed("augmentData", function () {
               return `postgame-player-augment-rarity-${this.get("augmentData.rarity") || "none"}`;
             }),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-player-keystone-icon"],
             classNameBindings: ["circleIconHolder", "isSubStyle"],
-            postgame: a.Ember.inject.service(),
+            postgame: n.Ember.inject.service(),
             sanitizeConfig: {
               allowedTags: [
                 "p",
@@ -2229,7 +2242,7 @@
               ],
               allowedAttributes: { "lol-uikit-tooltipped-keyword": ["key"] },
             },
-            keystone: a.Ember.computed(
+            keystone: n.Ember.computed(
               "keystoneId",
               "isSubStyle",
               "postgame.perkStyles",
@@ -2237,19 +2250,19 @@
               function () {
                 const e = this.get("keystoneId"),
                   t = this.get("postgame.runesMap"),
-                  n = this.get("isSubStyle"),
-                  a = this.get("postgame.perkStyles") || [];
-                return e && t ? (n ? a.find((t) => t.id === e) : t[e]) : {};
+                  a = this.get("isSubStyle"),
+                  n = this.get("postgame.perkStyles") || [];
+                return e && t ? (a ? n.find((t) => t.id === e) : t[e]) : {};
               },
             ),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1).Ember.Component.extend({
+        var n = a(1).Ember.Component.extend({
           classNames: ["postgame-player-buttons"],
           showInviteButton: !0,
           actions: {
@@ -2266,25 +2279,25 @@
             },
           },
         });
-        t.default = a;
+        t.default = n;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-player-item"],
             attributeBindings: ["style"],
-            postgame: a.Ember.inject.service(),
-            itemData: a.Ember.computed(
+            postgame: n.Ember.inject.service(),
+            itemData: n.Ember.computed(
               "itemId",
               "postgame.itemsMap",
               function () {
                 return this.get("postgame.itemsMap")[this.get("itemId")];
               },
             ),
-            style: a.Ember.computed("itemData", function () {
+            style: n.Ember.computed("itemData", function () {
               return (
                 "background-image: url(" + this.get("itemData.iconPath") + ");"
               );
@@ -2292,30 +2305,30 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        var s = a.Ember.Component.extend({
+        var n = a(1);
+        var s = n.Ember.Component.extend({
           classNames: ["postgame-progression"],
           classNameBindings: [
             "isClassicMode:postgame-progression-classic-mode:postgame-progression-aram-mode",
             "componentSharedData.animationSequence",
           ],
-          postgame: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          isClassicMode: a.Ember.computed.equal(
+          postgame: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          isClassicMode: n.Ember.computed.equal(
             "postgame.eogStatsBlock.gameMode",
             "CLASSIC",
           ),
           progressionComponents: [],
-          onDidInsertElement: a.Ember.on("didInsertElement", function () {
-            const e = a.ProgressionComponentHelper.getProgressionComponents(),
+          onDidInsertElement: n.Ember.on("didInsertElement", function () {
+            const e = n.ProgressionComponentHelper.getProgressionComponents(),
               t = this._setupAnimationPromises(e);
             this.set("progressionComponents", t);
           }),
-          scrollableComponents: a.Ember.computed(
+          scrollableComponents: n.Ember.computed(
             "progressionComponents",
             function () {
               return this.get("progressionComponents").filter(
@@ -2323,7 +2336,7 @@
               );
             },
           ),
-          fixedComponents: a.Ember.computed(
+          fixedComponents: n.Ember.computed(
             "progressionComponents",
             function () {
               return this.get("progressionComponents").filter((e) => e.isFixed);
@@ -2333,19 +2346,19 @@
           animationInitialDelay: 2500,
           _setupAnimationPromises: function (e) {
             const t = [];
-            for (let n = -1; n < e.length; n++) {
-              const a = n < 0,
-                s = e && e[n] && e[n].hasAnimation;
-              a || s
+            for (let a = -1; a < e.length; a++) {
+              const n = a < 0,
+                s = e && e[a] && e[a].hasAnimation;
+              n || s
                 ? this._appendNewAnimationPromise(t)
                 : this._appendPreviousAnimationPromise(t);
             }
-            for (let n = 0; n < e.length; n++)
-              (e[n].previousAnimationPromise = t[n].promise),
-                (e[n].resolveAnimationPromise = t[n + 1].resolve),
+            for (let a = 0; a < e.length; a++)
+              (e[a].previousAnimationPromise = t[a].promise),
+                (e[a].resolveAnimationPromise = t[a + 1].resolve),
                 this._setupAnimationPromiseTimeout(
-                  t[n].promise,
-                  t[n + 1].resolve,
+                  t[a].promise,
+                  t[a + 1].resolve,
                 );
             return (
               setTimeout(t[0].resolve, this.get("animationInitialDelay")), e
@@ -2353,10 +2366,10 @@
           },
           _appendNewAnimationPromise: function (e) {
             let t = null;
-            const n = new Promise(function (e) {
+            const a = new Promise(function (e) {
               t = e;
             });
-            e.push({ promise: n, resolve: t });
+            e.push({ promise: a, resolve: t });
           },
           _appendPreviousAnimationPromise: function (e) {
             e.push({
@@ -2365,46 +2378,46 @@
             });
           },
           _setupAnimationPromiseTimeout: function (e, t) {
-            const n = this.get("animationTimeout");
+            const a = this.get("animationTimeout");
             e.then(() => {
-              setTimeout(t, n);
+              setTimeout(t, a);
             });
           },
         });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-progression-number-reels"],
-            postgame: a.Ember.inject.service(),
-            totalFormatted: a.Ember.computed("total", "addPlus", function () {
+            postgame: n.Ember.inject.service(),
+            totalFormatted: n.Ember.computed("total", "addPlus", function () {
               const e = this.get("total") || 0;
               return this.get("addPlus") ? `+${e}` : e;
             }),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1).Ember.Component.extend({
+        var n = a(1).Ember.Component.extend({
           classNames: ["postgame-breakdown"],
         });
-        t.default = a;
+        t.default = n;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const i = s.dataBinding.bindTo((0, s.getProvider)().getSocket()),
           { RunMixin: r } = s.EmberAddons.EmberLifeline;
         var m = s.Ember.Component.extend(r, l.default, {
@@ -2491,13 +2504,13 @@
           celebrateHonors: function () {
             const e = ".postgame-player-identity-content",
               t = this.$().parents(e).find(".postgame-player-name"),
-              n = this.$().parents(e).find(".postgame-player-buttons");
+              a = this.$().parents(e).find(".postgame-player-buttons");
             t.css("transition", "all 0.5s"),
               t.css("transform", "translateX(21px)"),
-              n.css("transition", "all 0.5s"),
-              n.css("transform", "translateX(21px)");
-            const a = this.$(".honor-postgame-celebration-video");
-            a && a[0] && a[0].play(),
+              a.css("transition", "all 0.5s"),
+              a.css("transform", "translateX(21px)");
+            const n = this.$(".honor-postgame-celebration-video");
+            n && n[0] && n[0].play(),
               this.playSound("sfx-honor-scoreboard-team-choice.ogg");
           },
           tooltipText: s.Ember.computed(
@@ -2521,10 +2534,10 @@
           processChatCelebration: function () {
             const e = this.get("conversationId"),
               t = this.get("hasCelebrated"),
-              n = this.get("chatCelebrationSent");
+              a = this.get("chatCelebrationSent");
             e &&
               t &&
-              !n &&
+              !a &&
               (this.set("chatCelebrationSent", !0),
               this.createChatCelebration(e));
           },
@@ -2568,14 +2581,14 @@
         });
         t.default = m;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const i = s.dataBinding.bindTo((0, s.getProvider)().getSocket()),
           { RunMixin: r } = s.EmberAddons.EmberLifeline;
         var m = s.Ember.Component.extend(r, l.default, {
@@ -2831,12 +2844,12 @@
           processFullTeamVote: function () {
             const e = this.get("conversationId"),
               t = this.get("showedFullTeamVote"),
-              n = this.get("voteCompleted"),
-              a = this.get("voteCompletion.fullTeamVote");
+              a = this.get("voteCompleted"),
+              n = this.get("voteCompletion.fullTeamVote");
             e &&
               !t &&
-              n &&
               a &&
+              n &&
               (this.set("showedFullTeamVote", !0),
               this.createChatCelebration(e));
           },
@@ -2912,14 +2925,14 @@
         });
         t.default = m;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const { RunMixin: i } = s.EmberAddons.EmberLifeline;
         var r = s.Ember.Component.extend(i, l.default, {
           classNameBindings: [
@@ -2989,8 +3002,8 @@
                 o.HONOR_CATEGORY_DATA[e] &&
                 o.HONOR_CATEGORY_DATA[e][t]
               ) {
-                const n = o.HONOR_CATEGORY_DATA[e][t];
-                return o.HONOR_VIDEO_PATH + `${n}`;
+                const a = o.HONOR_CATEGORY_DATA[e][t];
+                return o.HONOR_VIDEO_PATH + `${a}`;
               }
               return "";
             },
@@ -3006,9 +3019,9 @@
             function () {
               const e = this.get("honorType"),
                 t = this.get("honorSenderDisplayName"),
-                n = this.get("honor.honorVisibilityEnabled");
+                a = this.get("honor.honorVisibilityEnabled");
               if (e && o.HONOR_CATEGORY_DATA[e]) {
-                if (n && t) {
+                if (a && t) {
                   const t = o.HONOR_CATEGORY_DATA[e].tooltipBySummoner;
                   return this.get("tra").formatString(t, {
                     playerName: this.get("honorSenderDisplayName"),
@@ -3025,8 +3038,8 @@
           animateIntroHandler: s.Ember.on("didInsertElement", function () {
             const e = this.get("honorIndex"),
               t = this.get("audioMap"),
-              n = e;
-            t[n] && this.playSound(t[n]),
+              a = e;
+            t[a] && this.playSound(t[a]),
               this.runTask(function () {
                 this.$("uikit-state-machine").attr("state", "initial");
               }, 1),
@@ -3058,13 +3071,13 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         const { RunMixin: l } = s.EmberAddons.EmberLifeline,
           i = 33;
         var r = s.Ember.Component.extend(l, o.default, {
@@ -3099,17 +3112,17 @@
               e = t;
             });
             this.set("resolveDataPromise", e);
-            const n = t.then(() => {
+            const a = t.then(() => {
                 const e = this.get("notification.queueType");
                 return this.leagueTierNames.getTiersForQueue(e).then((e) => {
                   this.set("rankedQueueTiers", e || []),
                     this.initializeStartingDisplay();
                 });
               }),
-              a = this.get("previousAnimationPromise");
-            a &&
-              a.then(() => {
-                n.then(() => {
+              n = this.get("previousAnimationPromise");
+            n &&
+              n.then(() => {
+                a.then(() => {
                   this.startMainAnimation();
                 }),
                   this.get("isRanked")
@@ -3185,8 +3198,8 @@
             function () {
               const e = this.get("notification"),
                 t = e && 0 !== e.gameId,
-                n = this.get("resolveDataPromise");
-              return t && n && n(), !!t;
+                a = this.get("resolveDataPromise");
+              return t && a && a(), !!t;
             },
           ),
           shouldShow: s.Ember.computed(
@@ -3217,24 +3230,24 @@
           initializeStartingDisplay: function () {
             let e = this.get("tier"),
               t = this.get("division"),
-              n = this.get("leaguePointsTotal");
+              a = this.get("leaguePointsTotal");
             if (
               !this.get("isBeingPromotedOrDemoted") &&
               this.get("isGainingLp")
             ) {
-              const a = this.get("rankedQueueTiers"),
+              const n = this.get("rankedQueueTiers"),
                 s = this.leagueTierNames.rankSubtract(
                   e,
                   t,
-                  n,
-                  this.get("leaguePointsDelta"),
                   a,
+                  this.get("leaguePointsDelta"),
+                  n,
                 );
-              (e = s.tier), (t = s.division), (n = s.lp);
+              (e = s.tier), (t = s.division), (a = s.lp);
             }
             this.set("displayedTier", e),
               this.set("displayedDivision", t),
-              this.set("displayedLp", n);
+              this.set("displayedLp", a);
           },
           startMainAnimation: function () {
             this.set("triggeredAnimation", !1),
@@ -3260,7 +3273,7 @@
           },
           gainLpAnimation: function (e) {
             let t = 1,
-              n = 1;
+              a = 1;
             e <= 2
               ? (t = 6)
               : e <= 4
@@ -3269,19 +3282,19 @@
                   ? (t = 3)
                   : e <= 8
                     ? (t = 2)
-                    : e <= 16 || (n = e <= 32 ? 2 : e <= 64 ? 4 : 8);
-            const a = this.get("rankedQueueTiers"),
+                    : e <= 16 || (a = e <= 32 ? 2 : e <= 64 ? 4 : 8);
+            const n = this.get("rankedQueueTiers"),
               s = this.leagueTierNames.rankAdd(
                 this.get("displayedTier"),
                 this.get("displayedDivision"),
                 this.get("displayedLp"),
-                n,
                 a,
+                n,
               );
             this.set("displayedTier", s.tier),
               this.set("displayedDivision", s.division),
               this.set("displayedLp", s.lp),
-              (e -= n),
+              (e -= a),
               this.lpIncreaseTickSound
                 ? this.lpIncreaseTickSound.play()
                 : (this.lpIncreaseTickSound = this.playSound(
@@ -3452,15 +3465,15 @@
                 t =
                   !this.get("isBeingPromotedOrDemoted") &&
                   !this.get("isInMiniseries"),
-                n = this.get("isVictory"),
-                a = this.get("isTFT");
+                a = this.get("isVictory"),
+                n = this.get("isTFT");
               return t
                 ? this.get("lpDeltaString")
-                : a
+                : n
                   ? void 0
                   : e
                     ? this.get("tra").get("postgame_ranked_tie_short")
-                    : n
+                    : a
                       ? this.get("tra").get("postgame_ranked_win_short")
                       : this.get("tra").get("postgame_ranked_loss_short");
             },
@@ -3608,16 +3621,16 @@
             function () {
               const e = "MINISERIES_START" === this.get("notifyReason"),
                 t = this.get("miniseriesProgress"),
-                n = this.get("isNoLpChange"),
-                a = [];
+                a = this.get("isNoLpChange"),
+                n = [];
               let s = !1;
               for (let o = t.length - 1; o >= 0; o--) {
                 const l = t[o],
                   i = "W" === l || "L" === l,
-                  r = !s && i && !e && !n;
-                a.unshift({ result: l, animate: r }), (s = i);
+                  r = !s && i && !e && !a;
+                n.unshift({ result: l, animate: r }), (s = i);
               }
-              return a;
+              return n;
             },
           ),
           miniseriesWinCount: s.Ember.computed(
@@ -3690,13 +3703,13 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         const { RunMixin: l } = s.EmberAddons.EmberLifeline;
         var i = s.Ember.Component.extend(l, o.default, {
           classNames: ["postgame-rated-component"],
@@ -3717,9 +3730,9 @@
               t.then(() => {
                 this.initializeStartingDisplay();
               });
-            const n = this.get("previousAnimationPromise");
-            n &&
-              n.then(() => {
+            const a = this.get("previousAnimationPromise");
+            a &&
+              a.then(() => {
                 this.get("resolveAnimationPromise")();
               });
           },
@@ -3759,20 +3772,20 @@
           initializeStartingDisplay: function () {
             let e = this.get("ratedTier");
             const t = this.get("ratedRating"),
-              n = this.get("ratedRatingDelta");
+              a = this.get("ratedRatingDelta");
             (e &&
               e !== s.leagueTierNames.getConstants().RATED_TIER_NAME_NONE) ||
               (e = s.leagueTierNames.getConstants().LOWEST_TFT_RATED_TIER);
-            const a =
+            const n =
               this.get("postgameRanked.gameClientStats.queueType") ||
               "RANKED_TFT_TURBO";
             this.set(
               "ratedTierImagePath",
-              s.leagueTierNames.getTFTRatedPostgameBadge(e, a),
+              s.leagueTierNames.getTFTRatedPostgameBadge(e, n),
             ),
               this.set(
                 "ratedLoadingPath",
-                s.leagueTierNames.getTFTRatedLoadingBadge(a),
+                s.leagueTierNames.getTFTRatedLoadingBadge(n),
               );
             this.$(".postgame-rated-progression-tier-badge")[0].animate(
               [
@@ -3790,9 +3803,9 @@
                 (e.style.opacity = 1),
                 e && e.animation && e.animation.play(),
                 this.set("displayedRatedRating", t),
-                n >= 0
-                  ? this.set("displayedRatedRatingDelta", "+" + n)
-                  : this.set("displayedRatedRatingDelta", n);
+                a >= 0
+                  ? this.set("displayedRatedRatingDelta", "+" + a)
+                  : this.set("displayedRatedRatingDelta", a);
             };
           },
           haveData: s.Ember.computed(
@@ -3801,8 +3814,8 @@
             function () {
               const e = this.get("notification"),
                 t = e && 0 !== e.gameId,
-                n = this.get("resolveDataPromise");
-              return t && n && n(), !!t;
+                a = this.get("resolveDataPromise");
+              return t && a && a(), !!t;
             },
           ),
           shouldShow: s.Ember.computed.readOnly("isRated"),
@@ -3820,16 +3833,16 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["postgame-replay-button"],
-            postgame: a.Ember.inject.service(),
-            gameflow: a.Ember.inject.service(),
-            gameId: a.Ember.computed(
+            postgame: n.Ember.inject.service(),
+            gameflow: n.Ember.inject.service(),
+            gameId: n.Ember.computed(
               "postgame.eogStatsBlock.reportGameId",
               "postgame.eogStatsBlock.gameId",
               function () {
@@ -3840,23 +3853,23 @@
               },
             ),
             replayButton: null,
-            onDidInsertElement: a.Ember.on("didInsertElement", function () {
+            onDidInsertElement: n.Ember.on("didInsertElement", function () {
               this.createReplayButton();
             }),
-            onWillDestroyElement: a.Ember.on("willDestroyElement", function () {
+            onWillDestroyElement: n.Ember.on("willDestroyElement", function () {
               this.get("replayButton") &&
                 (this.get("replayButton").destroy(),
                 this.set("replayButton", null));
             }),
             createReplayButton: function () {
               if (
-                !a.Replays.isPostgameReplaysEnabled() ||
+                !n.Replays.isPostgameReplaysEnabled() ||
                 this.get("replayButton")
               )
                 return !1;
               if (this.get("isDestroying") || this.get("isDestroyed"))
                 return !1;
-              const e = a.Replays.createReplayButtonForEndOfGame({
+              const e = n.Replays.createReplayButtonForEndOfGame({
                 gameId: this.get("gameId"),
                 gameType: this.get("gameflow.queue.type"),
                 queueId: this.get("gameflow.queue.id"),
@@ -3869,13 +3882,13 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         const { RunMixin: l } = s.EmberAddons.EmberLifeline;
         var i = s.Ember.Component.extend(l, o.default, {
           classNames: ["secondary-progression-component"],
@@ -3897,11 +3910,11 @@
               e = t;
             });
             this.set("resolveDataPromise", e);
-            const n = this.get("previousAnimationPromise");
-            n &&
+            const a = this.get("previousAnimationPromise");
+            a &&
               this.runTask(() => {
-                n &&
-                  n.then(() => {
+                a &&
+                  a.then(() => {
                     t.then(() => {
                       this.startAnimation(),
                         this.incrementCurrentlyDisplayedValueTime();
@@ -3912,13 +3925,13 @@
           haveData: s.Ember.computed("oldPercent", "newPercent", function () {
             const e = this.get("oldPercent"),
               t = this.get("newPercent"),
-              n =
+              a =
                 "number" == typeof e &&
                 !isNaN(e) &&
                 "number" == typeof t &&
                 !isNaN(t),
-              a = this.get("resolveDataPromise");
-            return n && a && a(), !!n;
+              n = this.get("resolveDataPromise");
+            return a && n && n(), !!a;
           }),
           startAnimation: function () {
             this.$("lol-uikit-lottie")[0] &&
@@ -3989,13 +4002,13 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         const l = s.Ember.Object.extend(s.Ember.PromiseProxyMixin),
           i = (0, s.emberDataBinding)({
             Ember: s.Ember,
@@ -4088,25 +4101,25 @@
             const t = Object.entries(e);
             if (!t || 0 === t.length)
               return this.get("tra.postgame_party_status_players_not_waiting");
-            const n = t
+            const a = t
               .map(([e, t]) => t?.playerNameFull)
               .filter((e) => e)
               .join(", ");
             return this.get("tra").formatString(
               "postgame_party_status_players_waiting",
-              { players: n },
+              { players: a },
             );
           }),
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["postgame-header"],
           gameflow: s.Ember.inject.service(),
@@ -4193,25 +4206,25 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: a.socket,
+        var n = a(1);
+        const s = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: n.socket,
           boundProperties: {
             partnerGroupColorData:
               "/lol-game-data/assets/v1/tftuxtunables.json",
           },
         });
-        var o = a.Ember.Component.extend(s, {
+        var o = n.Ember.Component.extend(s, {
           classNames: ["tft-partner-group-placement"],
-          placementDisplay: a.Ember.computed("placement", function () {
+          placementDisplay: n.Ember.computed("placement", function () {
             return this.get("placement") + 1;
           }),
-          partnerGroupColorCode: a.Ember.computed(
+          partnerGroupColorCode: n.Ember.computed(
             "partnerGroupColorData",
             "partnerGroup",
             function () {
@@ -4227,14 +4240,14 @@
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         var i = s.Ember.Component.extend(l.default, {
           classNames: ["postgame-tft-player"],
           classNameBindings: [
@@ -4270,10 +4283,10 @@
               const e = this.get("pieces.length"),
                 t = this.get("maxBenchSlots");
               if (e >= t) return s.Ember.A();
-              const n = t - e,
-                a = s.Ember.A();
-              for (let e = 0; e < n; e++) a.push(e);
-              return a;
+              const a = t - e,
+                n = s.Ember.A();
+              for (let e = 0; e < a; e++) n.push(e);
+              return n;
             },
           ),
           augments: s.Ember.computed.alias("player.augments"),
@@ -4315,17 +4328,17 @@
               const e = {},
                 t =
                   this.get("postgame.tftSets.LCTFTModeData.mActiveSets") || [],
-                n = this.get("player.setCoreName"),
-                a = t.find((e) => e.SetCoreName === n) || {};
-              (e.name = a.SetAugmentName || ""),
-                (e.icon = a.SetAugmentContainer || ""),
+                a = this.get("player.setCoreName"),
+                n = t.find((e) => e.SetCoreName === a) || {};
+              (e.name = n.SetAugmentName || ""),
+                (e.icon = n.SetAugmentContainer || ""),
                 (e.hasPortal = !1);
               const s = this.get("player.customAugmentContainer");
               return (
                 s &&
                   ((e.hasPortal = !0),
-                  a.SetPortalSystemName
-                    ? (e.portalName = a.SetPortalSystemName)
+                  n.SetPortalSystemName
+                    ? (e.portalName = n.SetPortalSystemName)
                     : (e.portalName = this.get("tra").get(
                         "postgame_scoreboard_tft_augment_tooltip_portal",
                       )),
@@ -4337,19 +4350,19 @@
             },
           ),
           _friendRequestSuccess: function (e, t) {
-            const n = t.contentBlockNotification(
+            const a = t.contentBlockNotification(
               this.get("tra.postgame_friend_request_sent"),
               "postgame-friend-request-toast",
             );
             e.getToastManager().add({
               type: "DialogToast",
-              data: { contents: n },
+              data: { contents: a },
               timing: "fast",
             });
           },
-          _friendRequestFail: function (e, t, n) {
-            let a;
-            (a = n.includes(o.FULL_LIST_ERROR)
+          _friendRequestFail: function (e, t, a) {
+            let n;
+            (n = a.includes(o.FULL_LIST_ERROR)
               ? t.contentBlockNotification(
                   this.get("tra.postgame_friend_request_error_self_full"),
                   "postgame-friend-request-toast-error",
@@ -4360,7 +4373,7 @@
                 )),
               e
                 .getToastManager()
-                .add({ type: "DialogToast", data: { contents: a } });
+                .add({ type: "DialogToast", data: { contents: n } });
           },
           scrollable: !1,
           scrollStart: 0,
@@ -4382,8 +4395,8 @@
             function ({ event: e }) {
               if (this.get("scrollable") && e && e.pageX) {
                 const t = this.$(".tft-player-pieces-container"),
-                  n = t.scrollLeft();
-                t.scrollLeft(n - (this.get("scrollStart") - e.pageX)),
+                  a = t.scrollLeft();
+                t.scrollLeft(a - (this.get("scrollStart") - e.pageX)),
                   t.toggleClass("fade-left", t.scrollLeft() > 0),
                   t.toggleClass(
                     "fade-right",
@@ -4397,18 +4410,18 @@
               if (this.get("player.summonerId")) {
                 const e = (0, s.getProvider)().get("rcp-fe-lol-uikit"),
                   t = e.getTemplateHelper(),
-                  n = { direction: "out", puuid: this.get("player.puuid") };
+                  a = { direction: "out", puuid: this.get("player.puuid") };
                 this.set("hasSentFriendRequest", !0),
                   (0, s.dataBinding)("/lol-chat")
-                    .post("/v2/friend-requests", n)
+                    .post("/v2/friend-requests", a)
                     .then(() => {
                       this._friendRequestSuccess(e, t);
                     })
-                    .catch((n) => {
-                      if (405 === n.status) this._showAddBlockedFriendDialog();
+                    .catch((a) => {
+                      if (405 === a.status) this._showAddBlockedFriendDialog();
                       else {
-                        const a = n.data.message;
-                        this._friendRequestFail(e, t, a),
+                        const n = a.data.message;
+                        this._friendRequestFail(e, t, n),
                           this.set("hasSentFriendRequest", !1);
                       }
                     }),
@@ -4429,13 +4442,13 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = a.UIKit.getTooltipManager();
-        var o = a.Ember.Component.extend({
+        var n = a(1);
+        const s = n.UIKit.getTooltipManager();
+        var o = n.Ember.Component.extend({
           classNames: ["tft-tooltip"],
           toolTipAttached: !1,
           tooltipOptions: {
@@ -4477,14 +4490,14 @@
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1);
+        const s = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: (0, n.getProvider)().getSocket(),
           logPrefix: "service:postgame:end-of-game",
           basePaths: { endofgame: "/lol-end-of-game", chat: "/lol-chat" },
           boundProperties: {
@@ -4532,23 +4545,23 @@
             tftSets: "/lol-game-data/assets/v1/tftsets.json",
           },
         });
-        var o = a.Ember.Service.extend(s, a.Ember.Evented, {
-          largeAreaAnimationsEnabled: a.Ember.computed.alias(
+        var o = n.Ember.Service.extend(s, n.Ember.Evented, {
+          largeAreaAnimationsEnabled: n.Ember.computed.alias(
             "uxSettings.largeAreaAnimationsEnabled",
           ),
-          isItemSetsDisabled: a.Ember.computed.not(
+          isItemSetsDisabled: n.Ember.computed.not(
             "itemSetJmxConfig.EditorEnabled",
           ),
           playerMuteStatus: {},
-          playerNames: a.playerNames,
+          playerNames: n.playerNames,
           init: function () {
             this._super(...arguments),
               (this._setPlayerNamesForTeam =
                 this._setPlayerNamesForTeam.bind(this)),
               (this._uxSettingsListener = this._uxSettingsObserver.bind(this)),
-              a.UXSettings.addObserver(this._uxSettingsListener),
-              (this.binding = a.dataBinding.bindTo(
-                (0, a.getProvider)().getSocket(),
+              n.UXSettings.addObserver(this._uxSettingsListener),
+              (this.binding = n.dataBinding.bindTo(
+                (0, n.getProvider)().getSocket(),
               )),
               this.binding.observe(
                 "/lol-chat/v1/player-mutes",
@@ -4558,8 +4571,8 @@
               this.getPerkStyles(this.binding),
               this.set("alreadyFriendRequestedList", []);
           },
-          onWillDestroy: a.Ember.on("willDestroy", function () {
-            a.UXSettings.removeObserver(this._uxSettingsListener);
+          onWillDestroy: n.Ember.on("willDestroy", function () {
+            n.UXSettings.removeObserver(this._uxSettingsListener);
           }),
           _uxSettingsObserver: function (e) {
             this.set("uxSettings", e);
@@ -4577,15 +4590,15 @@
               .postAliasesByPUUID(t)
               .then((t) => {
                 e.players.map((e) => {
-                  const n = t[e.puuid];
+                  const a = t[e.puuid];
                   try {
                     const t = this.get("playerNames").formatPlayerName({
-                      ...n,
+                      ...a,
                       displayName: e.summonerName,
                     });
                     e.set("displayName", t);
                   } catch (t) {
-                    a.logger.error(
+                    n.logger.error(
                       `Failed getting displayName, falling back to summonerName with error: ${t.message}`,
                     ),
                       e.set("displayName", {
@@ -4596,7 +4609,7 @@
                 });
               })
               .catch((e) => {
-                a.logger.error(
+                n.logger.error(
                   `Team playerName fetch failed with error: ${e.message}`,
                 );
               });
@@ -4617,29 +4630,29 @@
                   );
               });
           },
-          isCustomGame: a.Ember.computed.equal(
+          isCustomGame: n.Ember.computed.equal(
             "eogStatsBlock.gameType",
             "CUSTOM_GAME",
           ),
-          isClash: a.Ember.computed.equal("eogStatsBlock.queueType", "CLASH"),
-          playerTeam: a.Ember.computed("eogStatsBlock.teams", function () {
+          isClash: n.Ember.computed.equal("eogStatsBlock.queueType", "CLASH"),
+          playerTeam: n.Ember.computed("eogStatsBlock.teams", function () {
             const e = this.get("eogStatsBlock.teams");
             if (!e) return null;
             for (const t of e) this._setPlayerNamesForTeam(t);
             return e.find((e) => e.isPlayerTeam);
           }),
-          player: a.Ember.computed(
+          player: n.Ember.computed(
             "playerTeam",
             "localSummoner.summonerId",
             function () {
               const e = this.get("playerTeam.players"),
                 t = this.get("localSummoner.summonerId");
-              return e && t ? a.Ember.A(e).findBy("summonerId", t) : null;
+              return e && t ? n.Ember.A(e).findBy("summonerId", t) : null;
             },
           ),
-          isLocalPlayerInGame: a.Ember.computed.notEmpty("player"),
-          isLocalPlayerNotInGame: a.Ember.computed.not("isLocalPlayerInGame"),
-          locale: a.Ember.computed("locale", function () {
+          isLocalPlayerInGame: n.Ember.computed.notEmpty("player"),
+          isLocalPlayerNotInGame: n.Ember.computed.not("isLocalPlayerInGame"),
+          locale: n.Ember.computed("locale", function () {
             return (this.get("regionLocale.locale") || "en_US").replace(
               "_",
               "-",
@@ -4651,7 +4664,7 @@
           handlePlayerMuteStatusUpdate: function (e) {
             e && this.set("playerMuteStatus", e);
           },
-          isEarlySurrenderBystander: a.Ember.computed(
+          isEarlySurrenderBystander: n.Ember.computed(
             "eogStatsBlock.gameEndedInEarlySurrender",
             "eogStatsBlock.causedEarlySurrender",
             "eogStatsBlock.isEarlySurrenderAccomplice",
@@ -4663,13 +4676,13 @@
               );
             },
           ),
-          runesMap: a.Ember.computed("runes.[]", function () {
+          runesMap: n.Ember.computed("runes.[]", function () {
             const e = this.get("runes");
             return e
               ? e.reduce((e, t) => (t && t.id && (e[t.id] = t), e), {})
               : {};
           }),
-          itemsMap: a.Ember.computed("items.[]", function () {
+          itemsMap: n.Ember.computed("items.[]", function () {
             const e = this.get("items");
             if (e) {
               const t = {};
@@ -4682,7 +4695,7 @@
             }
             return {};
           }),
-          augmentsMap: a.Ember.computed("augments.[]", function () {
+          augmentsMap: n.Ember.computed("augments.[]", function () {
             const e = this.get("augments");
             if (e) {
               const t = {};
@@ -4695,8 +4708,8 @@
             }
             return {};
           }),
-          gameclientPostgame: a.Ember.inject.service(),
-          shouldShowGameClientStats: a.Ember.computed(
+          gameclientPostgame: n.Ember.inject.service(),
+          shouldShowGameClientStats: n.Ember.computed(
             "gameclientPostgame.lolGameClientStats",
             "eogStatsBlock",
             function () {
@@ -4706,29 +4719,29 @@
               );
             },
           ),
-          cherryTeams: a.Ember.computed("eogStatsBlock.teams", function () {
+          cherryTeams: n.Ember.computed("eogStatsBlock.teams", function () {
             const e = [];
             return (
               this.get("eogStatsBlock.teams").forEach(
                 (t) =>
                   t.players.forEach(function (t) {
-                    const n = t.stats.PLAYER_SUBTEAM - 1;
-                    (e[n] = e[n] || {}),
+                    const a = t.stats.PLAYER_SUBTEAM - 1;
+                    (e[a] = e[a] || {}),
                       (t.augments = this.buildPlayerAugmentsFromStats(t)),
-                      (e[n].players = e[n].players || []),
-                      e[n].players.push(t),
-                      (e[n].isPlayerTeam =
-                        t.isLocalPlayer && t.stats.PLAYER_SUBTEAM - 1 === n);
+                      (e[a].players = e[a].players || []),
+                      e[a].players.push(t),
+                      (e[a].isPlayerTeam =
+                        t.isLocalPlayer && t.stats.PLAYER_SUBTEAM - 1 === a);
                   }, this),
                 this,
               ),
               e.forEach(
                 (t) =>
                   t.players.forEach(function (t) {
-                    const n = t.stats.PLAYER_SUBTEAM - 1;
-                    e[n].stats
-                      ? (e[n].stats = this.sumStatsByKey(e[n].stats, t.stats))
-                      : (e[n].stats = Object.assign({}, t.stats));
+                    const a = t.stats.PLAYER_SUBTEAM - 1;
+                    e[a].stats
+                      ? (e[a].stats = this.sumStatsByKey(e[a].stats, t.stats))
+                      : (e[a].stats = Object.assign({}, t.stats));
                   }, this),
                 this,
               ),
@@ -4744,16 +4757,16 @@
           buildPlayerAugmentsFromStats: function (e) {
             const t = [];
             return (
-              Object.keys(e.stats).map(function (n) {
-                n.includes("PLAYER_AUGMENT") && t.push(e.stats[n]);
+              Object.keys(e.stats).map(function (a) {
+                a.includes("PLAYER_AUGMENT") && t.push(e.stats[a]);
               }),
               t
             );
           },
           sumStatsByKey: function (e, t) {
             return (
-              Object.keys(t).forEach(function (n) {
-                n.includes("PLAYER_SUBTEAM") || (e[n] = e[n] + t[n]);
+              Object.keys(t).forEach(function (a) {
+                a.includes("PLAYER_SUBTEAM") || (e[a] = e[a] + t[a]);
               }),
               e
             );
@@ -4761,15 +4774,15 @@
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(18);
-        const o = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1),
+          s = a(18);
+        const o = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: (0, n.getProvider)().getSocket(),
           logPrefix: "service:postgame:gameflow",
           boundProperties: {
             gameClientStats: "/lol-end-of-game/v1/tft-eog-stats",
@@ -4779,8 +4792,8 @@
             currentRankedStats: "/lol-ranked/v1/current-ranked-stats",
           },
         });
-        var l = a.Ember.Service.extend(o, {
-          isRanked: a.Ember.computed(
+        var l = n.Ember.Service.extend(o, {
+          isRanked: n.Ember.computed(
             "eogStatsBlock.ranked",
             "eogStatsBlock.queueType",
             "gameClientStats.isRanked",
@@ -4792,11 +4805,11 @@
               return Boolean(e || t);
             },
           ),
-          isRated: a.Ember.computed("queueType", function () {
+          isRated: n.Ember.computed("queueType", function () {
             const e = this.get("queueType");
             return s.QUEUES.ALL_RATED_QUEUE_TYPES.includes(e);
           }),
-          queueType: a.Ember.computed(
+          queueType: n.Ember.computed(
             "eogStatsBlock.queueType",
             "gameClientStats.queueType",
             function () {
@@ -4804,7 +4817,7 @@
               return e || this.get("eogStatsBlock.queueType");
             },
           ),
-          isProvisional: a.Ember.computed(
+          isProvisional: n.Ember.computed(
             "currentLpChangeNotification.provisionalGamesRemaining",
             function () {
               return (
@@ -4817,14 +4830,14 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1);
+        const s = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: (0, n.getProvider)().getSocket(),
           logPrefix: "service:postgame:parties",
           basePaths: {
             lobby: "/lol-lobby",
@@ -4845,14 +4858,14 @@
             partyGameMode: { api: "lobby", path: "/v1/parties/gamemode" },
           },
         });
-        var o = a.Ember.Service.extend(s, {
+        var o = n.Ember.Service.extend(s, {
           playAgain: function () {
             return this.get("api.lobby").post("/v2/play-again");
           },
           declinePlayAgain: function () {
             return this.get("api.lobby").post("/v2/play-again-decline");
           },
-          confirmButtonText: a.Ember.computed(
+          confirmButtonText: n.Ember.computed(
             "tra.postgame_scoreboard_button_nav_play_again",
             function () {
               return this.get("tra.postgame_scoreboard_button_nav_play_again");
@@ -4865,21 +4878,21 @@
                 ])
               : Promise.reject();
           },
-          enabled: a.Ember.computed.and(
+          enabled: n.Ember.computed.and(
             "partiesEnabled",
             "enabledForTeamBuilderQueues",
           ),
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1);
+        const s = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: (0, n.getProvider)().getSocket(),
           logPrefix: "service:postgame:end-of-game",
           basePaths: {
             endofgame: "/lol-end-of-game",
@@ -4893,26 +4906,26 @@
             },
           },
         });
-        var o = a.Ember.Service.extend(s, {
-          gameId: a.Ember.computed.alias("gameClientStats.gameId"),
-          players: a.Ember.computed.alias("gameClientStats.players"),
-          localPlayer: a.Ember.computed.alias("gameClientStats.localPlayer"),
-          isLocalPlayerInGame: a.Ember.computed.bool(
+        var o = n.Ember.Service.extend(s, {
+          gameId: n.Ember.computed.alias("gameClientStats.gameId"),
+          players: n.Ember.computed.alias("gameClientStats.players"),
+          localPlayer: n.Ember.computed.alias("gameClientStats.localPlayer"),
+          isLocalPlayerInGame: n.Ember.computed.bool(
             "gameClientStats.localPlayer",
           ),
           isPlaybookEnabled: !1,
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(3);
-        const o = (0, a.emberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1),
+          s = a(3);
+        const o = (0, n.emberDataBinding)({
+          Ember: n.Ember,
+          websocket: (0, n.getProvider)().getSocket(),
           logPrefix: "service:postgame:gameflow",
           boundProperties: {
             gameflowSession: "/lol-gameflow/v1/session",
@@ -4921,52 +4934,52 @@
               "/lol-gameflow/v1/gameflow-metadata/player-status",
           },
         });
-        var l = a.Ember.Service.extend(o, {
-          map: a.Ember.computed.alias("gameflowSession.map"),
-          gameId: a.Ember.computed.alias("gameflowSession.gameData.gameId"),
-          queue: a.Ember.computed.alias("gameflowSession.gameData.queue"),
-          isCustomGame: a.Ember.computed.alias(
+        var l = n.Ember.Service.extend(o, {
+          map: n.Ember.computed.alias("gameflowSession.map"),
+          gameId: n.Ember.computed.alias("gameflowSession.gameData.gameId"),
+          queue: n.Ember.computed.alias("gameflowSession.gameData.queue"),
+          isCustomGame: n.Ember.computed.alias(
             "gameflowSession.gameData.isCustomGame",
           ),
-          phase: a.Ember.computed.alias("gameflowSession.phase"),
-          canPlayAgain: a.Ember.computed.bool(
+          phase: n.Ember.computed.alias("gameflowSession.phase"),
+          canPlayAgain: n.Ember.computed.bool(
             "gameflowPlayerStatus.lastQueuedLobbyStatus.allowedPlayAgain",
           ),
-          canInviteOthersAtEog: a.Ember.computed.bool(
+          canInviteOthersAtEog: n.Ember.computed.bool(
             "gameflowPlayerStatus.canInviteOthersAtEog",
           ),
-          lastQueuedMemberSummonerIds: a.Ember.computed.alias(
+          lastQueuedMemberSummonerIds: n.Ember.computed.alias(
             "gameflowPlayerStatus.lastQueuedLobbyStatus.memberSummonerIds",
           ),
-          gameMode: a.Ember.computed.alias(
+          gameMode: n.Ember.computed.alias(
             "gameflowSession.gameData.queue.gameMode",
           ),
-          isTFT: a.Ember.computed.equal("gameMode", s.TFT_GAME_MODE),
-          isCherry: a.Ember.computed.equal("gameMode", s.CHERRY_GAME_MODE),
-          isStrawberry: a.Ember.computed.equal(
+          isTFT: n.Ember.computed.equal("gameMode", s.TFT_GAME_MODE),
+          isCherry: n.Ember.computed.equal("gameMode", s.CHERRY_GAME_MODE),
+          isStrawberry: n.Ember.computed.equal(
             "gameMode",
             s.STRAWBERRY_GAME_MODE,
           ),
-          backgroundImgPath: a.Ember.computed.alias(
+          backgroundImgPath: n.Ember.computed.alias(
             "gameflowSession.map.assets.gameflow-background",
           ),
-          backgroundImgPathDark: a.Ember.computed.alias(
+          backgroundImgPathDark: n.Ember.computed.alias(
             "gameflowSession.map.assets.gameflow-background-dark",
           ),
-          showKeystone: a.Ember.computed.not(
+          showKeystone: n.Ember.computed.not(
             "gameflowSession.map.properties.suppressRunesMasteriesPerks",
           ),
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = (0, a.emberDataBinding)({
-            Ember: a.Ember,
-            websocket: (0, a.getProvider)().getSocket(),
+        var n = a(1);
+        const s = (0, n.emberDataBinding)({
+            Ember: n.Ember,
+            websocket: (0, n.getProvider)().getSocket(),
             logPrefix: "service:postgame:chat-messages",
             basePaths: { chat: "/lol-chat" },
             boundProperties: {
@@ -4979,58 +4992,58 @@
           }),
           o = [],
           l = [];
-        var i = a.Ember.Service.extend(s, {
-          postgame: a.Ember.inject.service(),
-          eternals: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          teamPlayers: a.Ember.computed.readOnly("postgame.playerTeam.players"),
-          selfPlayer: a.Ember.computed.readOnly("postgame.player"),
-          championMasteryUpdateNotification: a.Ember.computed.readOnly(
+        var i = n.Ember.Service.extend(s, {
+          postgame: n.Ember.inject.service(),
+          eternals: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          teamPlayers: n.Ember.computed.readOnly("postgame.playerTeam.players"),
+          selfPlayer: n.Ember.computed.readOnly("postgame.player"),
+          championMasteryUpdateNotification: n.Ember.computed.readOnly(
             "postgame.championMasteryUpdateNotification",
           ),
-          memberGrades: a.Ember.computed.readOnly(
+          memberGrades: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.memberGrades",
           ),
-          levelUpList: a.Ember.computed.readOnly(
+          levelUpList: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.levelUpList",
           ),
-          gameId: a.Ember.computed.readOnly("postgame.eogStatsBlock.gameId"),
-          eternalsEoGNotification: a.Ember.computed.readOnly(
+          gameId: n.Ember.computed.readOnly("postgame.eogStatsBlock.gameId"),
+          eternalsEoGNotification: n.Ember.computed.readOnly(
             "eternals.eogNotification",
           ),
-          eternalsEnabledQueues: a.Ember.computed.readOnly(
+          eternalsEnabledQueues: n.Ember.computed.readOnly(
             "eternals.enabledQueues",
           ),
-          initializeValues: a.Ember.on("init", function () {
+          initializeValues: n.Ember.on("init", function () {
             this.get("conversationId"),
               this.get("decoratedMemberGrades"),
               this.get("levelUpList"),
               this.get("championMasteryUpdateNotification.id"),
               this.get("teamBoost");
           }),
-          championMasteryUpdateNotificationObserver: a.Ember.on(
+          championMasteryUpdateNotificationObserver: n.Ember.on(
             "init",
-            a.Ember.observer(
+            n.Ember.observer(
               "conversationId",
               "championMasteryUpdateNotification.id",
               "decoratedMemberGrades.[]",
               "postgame.championSummary",
               function () {
-                a.Ember.run.once(this, "processChampionMasteryUpdates");
+                n.Ember.run.once(this, "processChampionMasteryUpdates");
               },
             ),
           ),
-          lootGrantNotificationObserver: a.Ember.on(
+          lootGrantNotificationObserver: n.Ember.on(
             "init",
-            a.Ember.observer(
+            n.Ember.observer(
               "currentGameLootGrants.@each.id",
               "conversationId",
               function () {
-                a.Ember.run.once(this, "processLootGrantNotifications");
+                n.Ember.run.once(this, "processLootGrantNotifications");
               },
             ),
           ),
-          eternalsEoGNotificationObserver: a.Ember.observer(
+          eternalsEoGNotificationObserver: n.Ember.observer(
             "eternalsEoGNotification",
             "eternals",
             "gameflow.queue.id",
@@ -5039,10 +5052,10 @@
                 this.get("gameflow.queue.id"),
               ) &&
                 this.get("eternalsEoGNotification") &&
-                a.Ember.run.once(this, "processEternalsNotification");
+                n.Ember.run.once(this, "processEternalsNotification");
             },
           ),
-          currentGameLootGrants: a.Ember.computed(
+          currentGameLootGrants: n.Ember.computed(
             "gameId",
             "lootGrantNotifications.@each.gameId",
             function () {
@@ -5064,7 +5077,7 @@
                         this.get("tra.postgame_chat_message_unowned_champion"),
                         e,
                       ),
-                        (0, a.dataBinding)("/lol-loot").delete(
+                        (0, n.dataBinding)("/lol-loot").delete(
                           `/v1/loot-grants/${t.id}`,
                         );
                       break;
@@ -5073,7 +5086,7 @@
                         this.get("tra.postgame_chat_message_game_leaver"),
                         e,
                       ),
-                        (0, a.dataBinding)("/lol-loot").delete(
+                        (0, n.dataBinding)("/lol-loot").delete(
                           `/v1/loot-grants/${t.id}`,
                         );
                   }
@@ -5081,7 +5094,7 @@
                 }
               });
           },
-          conversationId: a.Ember.computed(
+          conversationId: n.Ember.computed(
             "conversations.@each.id",
             function () {
               const e = this.get("conversations");
@@ -5095,20 +5108,20 @@
               );
             },
           ),
-          encodedConversationId: a.Ember.computed(
+          encodedConversationId: n.Ember.computed(
             "conversationId",
             function () {
               return encodeURIComponent(this.get("conversationId"));
             },
           ),
-          summonerIdsInChat: a.Ember.computed(
+          summonerIdsInChat: n.Ember.computed(
             "chatParticipants",
             "chatParticipants.[]",
             function () {
-              return a._.map(this.get("chatParticipants"), "summonerId");
+              return n._.map(this.get("chatParticipants"), "summonerId");
             },
           ),
-          eternalsEnabled: a.Ember.computed(
+          eternalsEnabled: n.Ember.computed(
             "eternals",
             "gameflow.queue.id",
             function () {
@@ -5117,7 +5130,7 @@
               );
             },
           ),
-          decoratedMemberGrades: a.Ember.computed(
+          decoratedMemberGrades: n.Ember.computed(
             "memberGrades.[]",
             "teamPlayers.[]",
             "selfPlayer",
@@ -5125,23 +5138,23 @@
             function () {
               const e = this.get("memberGrades"),
                 t = this.get("teamPlayers"),
-                n = this.get("selfPlayer"),
-                a = this.get("postgame.championSummary");
+                a = this.get("selfPlayer"),
+                n = this.get("postgame.championSummary");
               if (
                 this.get("memberGrades.length") &&
                 this.get("teamPlayers.length") &&
-                n &&
-                a
+                a &&
+                n
               )
                 return (
                   e.forEach(function (e) {
-                    (e.championName = a.find(
+                    (e.championName = n.find(
                       (t) => t.id === e.championId,
                     ).name),
-                      e.puuid === n.puuid
+                      e.puuid === a.puuid
                         ? ((e.isSelfPlayer = !0),
                           (e.displayName =
-                            n.displayName?.playerName || e.summonerName))
+                            a.displayName?.playerName || e.summonerName))
                         : t.forEach(function (t) {
                             e.puuid === t.puuid &&
                               ((e.isTeamPlayer = !0),
@@ -5153,13 +5166,13 @@
                 );
             },
           ),
-          allPlayersPersonalBests: a.Ember.computed(
+          allPlayersPersonalBests: n.Ember.computed(
             "eternalsEoGNotification.selfPersonalBests",
             "eternalsEoGNotification.otherPersonalBests",
             function () {
               const e = this.get("eternalsEoGNotification");
               if (e)
-                return a._.union(
+                return n._.union(
                   e.selfPersonalBests || [],
                   e.otherPersonalBests || [],
                 );
@@ -5168,14 +5181,14 @@
           processChampionMasteryUpdates: function () {
             const e = this.get("conversationId"),
               t = this.get("championMasteryUpdateNotification.id"),
-              n = this.get("decoratedMemberGrades.length"),
-              a = l.includes(t),
+              a = this.get("decoratedMemberGrades.length"),
+              n = l.includes(t),
               s = this.get("postgame.championSummary");
-            n &&
+            a &&
               e &&
               t &&
               s &&
-              !a &&
+              !n &&
               (this._displayMemberGradeMessages(),
               this._displayLevelUpMessages(),
               l.push(t));
@@ -5186,22 +5199,22 @@
               e &&
               this._displayStatstonePersonalBestMessages();
           },
-          updatePlayerMute: function (e, t, n) {
-            const a = this.get("conversationId");
+          updatePlayerMute: function (e, t, a) {
+            const n = this.get("conversationId");
             this.get("api.chat").post("/v1/player-mutes", {
               puuids: [e],
-              isMuted: n,
+              isMuted: a,
             });
             const s = this.get("tra");
             let o = "";
-            (o = n
+            (o = a
               ? s.formatString("postgame_system_message_player_muted", {
                   summonerName: t,
                 })
               : s.formatString("postgame_system_message_player_unmuted", {
                   summonerName: t,
                 })),
-              this._sendSystemChatMessage(o, a);
+              this._sendSystemChatMessage(o, n);
           },
           _displayMemberGradeMessages: function () {
             const e = this.get("decoratedMemberGrades"),
@@ -5250,8 +5263,8 @@
           _displayLevelUpMessages: function () {
             const e = this.get("championMasteryUpdateNotification.levelUpList"),
               t = this.get("conversationId"),
-              n = this.get("selfPlayer"),
-              a = this.get("teamPlayers"),
+              a = this.get("selfPlayer"),
+              n = this.get("teamPlayers"),
               s = this.get("postgame.championSummary");
             e.forEach((e) => {
               const o = s.find((t) => t.id === e.championId),
@@ -5264,7 +5277,7 @@
                   (m = this.get(
                     `tra.champion_mastery_role_title_${i.toLowerCase()}_${r}`,
                   )),
-                e.playerId === n.summonerId)
+                e.playerId === a.summonerId)
               )
                 this._sendSystemChatMessage(
                   this.get("tra").formatString(
@@ -5274,9 +5287,9 @@
                   t,
                 );
               else {
-                const n = a.find((t) => e.playerId === t.summonerId);
-                if (n) {
-                  const e = n && (n.displayName?.playerName || n.summonerName);
+                const a = n.find((t) => e.playerId === t.summonerId);
+                if (a) {
+                  const e = a && (a.displayName?.playerName || a.summonerName);
                   this._sendSystemChatMessage(
                     this.get("tra").formatString(
                       "postgame_chat_message_champion_mastery_level_other",
@@ -5302,24 +5315,24 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var n = a(1);
         const s = "/lol-statstones/v1/statstones-enabled-queue-ids",
           o = "/lol-statstones/v1/eog-notifications",
           l = "/lol-platform-config/v1/namespaces/Eternals/Enabled",
           i = "/lol-end-of-game/v1/eog-stats-block",
           r = "/lol-end-of-game/v1/gameclient-eog-stats-block";
-        var m = a.Ember.Service.extend({
+        var m = n.Ember.Service.extend({
           init: function () {
             this._super(...arguments),
               (this._prevGameId = 0),
               this.set("enabledQueues", []),
               this.set("notifications", []),
-              (this.binding = a.dataBinding.bindTo(
-                (0, a.getProvider)().getSocket(),
+              (this.binding = n.dataBinding.bindTo(
+                (0, n.getProvider)().getSocket(),
               )),
               this.initDataBindings();
           },
@@ -5379,7 +5392,7 @@
           enabledForQueue: function (e) {
             return (this.get("enabledQueues") || []).includes(e);
           },
-          selfProgression: a.Ember.computed(
+          selfProgression: n.Ember.computed(
             "eogNotification.selfStatstoneProgress.[]",
             "eogNotification.selfMilestoneProgress.[]",
             function () {
@@ -5391,8 +5404,8 @@
           addMilestoneToProgressData: function (e, t) {
             return (
               t.forEach((t) => {
-                const n = e.find((e) => e.statstoneId === t.statstoneId);
-                n && (n.isMilestone = !0);
+                const a = e.find((e) => e.statstoneId === t.statstoneId);
+                a && (a.isMilestone = !0);
               }),
               e
             );
@@ -5400,23 +5413,23 @@
         });
         t.default = m;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        var s = a.Ember.Service.extend({
-          enabled: a.Ember.computed.alias("honorConfig.Enabled"),
-          recallRewardEnabled: a.Ember.computed.alias(
+        var n = a(1);
+        var s = n.Ember.Service.extend({
+          enabled: n.Ember.computed.alias("honorConfig.Enabled"),
+          recallRewardEnabled: n.Ember.computed.alias(
             "honorConfig.RecallRewardEnabled",
           ),
-          honorVisibilityEnabled: a.Ember.computed.alias(
+          honorVisibilityEnabled: n.Ember.computed.alias(
             "honorConfig.HonorVisibilityEnabled",
           ),
           init: function () {
             this._super(...arguments),
-              (this.binding = a.dataBinding.bindTo(
-                (0, a.getProvider)().getSocket(),
+              (this.binding = n.dataBinding.bindTo(
+                (0, n.getProvider)().getSocket(),
               )),
               this.initDataBindingObservers();
           },
@@ -5487,13 +5500,13 @@
         });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        var a = n(1);
-        e.exports = a.Ember.Service.extend({
+        var n = a(1);
+        e.exports = n.Ember.Service.extend({
           init: function () {
             this._super(...arguments),
-              (this._binding = a.dataBinding.bindTo(a.socket)),
+              (this._binding = n.dataBinding.bindTo(n.socket)),
               this._binding.observe(
                 "/lol-challenges/v1/challenges/local-player",
                 this,
@@ -5505,17 +5518,17 @@
           },
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Service.extend({
+        var n = a(1),
+          s = n.Ember.Service.extend({
             init: function () {
               this._super(...arguments), this.initPerksDataBindings();
             },
             initPerksDataBindings() {
-              (this.databinding = (0, a.dataBinding)("/lol-perks", a.socket)),
+              (this.databinding = (0, n.dataBinding)("/lol-perks", n.socket)),
                 this.databinding.observe(
                   "/v1/inventory",
                   this,
@@ -5547,19 +5560,19 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        var a = n(1);
+        var n = a(1);
         const s = "couldShowRemedyVerbalAbuseModal",
           o = "/lol-remedy/v1/config/is-verbal-abuse-remedy-modal-enabled",
           l = "/lol-player-report-sender/v1/game-ids-with-verbal-abuse-report";
-        e.exports = a.Ember.Service.extend({
+        e.exports = n.Ember.Service.extend({
           isVerbalAbuseRemedyEnabled: !1,
           gameIdsWithVerbalAbuseReports: [],
           couldShowVerbalAbuseModalPreference: !0,
           init() {
             this._super(...arguments),
-              (this.db = a.dataBinding.bindTo(a.socket)),
+              (this.db = n.dataBinding.bindTo(n.socket)),
               this.initObservers(),
               this.db
                 .get("/lol-settings/v2/account/LCUPreferences/lol-navigation")
@@ -5585,18 +5598,18 @@
           },
           couldShowRemedyVerbalAbuseModal: function (e) {
             const t = this.get("isVerbalAbuseRemedyEnabled"),
-              n = this.get("gameIdsWithVerbalAbuseReports"),
-              a = this.get("couldShowVerbalAbuseModalPreference");
-            return t && a && n.includes(e);
+              a = this.get("gameIdsWithVerbalAbuseReports"),
+              n = this.get("couldShowVerbalAbuseModalPreference");
+            return t && n && a.includes(e);
           },
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Service.extend({
+        var n = a(1),
+          s = n.Ember.Service.extend({
             championMasteryUpdateNotification: {},
             championMasteryData: {},
             championMasteryBasePath: "/lol-champion-mastery",
@@ -5612,9 +5625,9 @@
               this.removeObservers(), this.removeDataBindings();
             },
             initDataBindings() {
-              this._championMasteryBinding = (0, a.dataBinding)(
+              this._championMasteryBinding = (0, n.dataBinding)(
                 this.get("championMasteryBasePath"),
-                a.socket,
+                n.socket,
               );
             },
             initObservers() {
@@ -5651,12 +5664,12 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Service.extend({
+        var n = a(1),
+          s = n.Ember.Service.extend({
             championMasteryUpdateNotification: null,
             summonerBasePath: "/lol-summoner",
             currentSummonerPath: "/v1/current-summoner",
@@ -5676,21 +5689,21 @@
               this.removeObservers(), this.removeDataBindings();
             },
             initDataBindings() {
-              (this.summonerBinding = (0, a.dataBinding)(
+              (this.summonerBinding = (0, n.dataBinding)(
                 this.get("summonerBasePath"),
-                a.socket,
+                n.socket,
               )),
-                (this.endOfGameBinding = (0, a.dataBinding)(
+                (this.endOfGameBinding = (0, n.dataBinding)(
                   this.get("endOfGameBasePath"),
-                  a.socket,
+                  n.socket,
                 )),
-                (this.platformConfigBinding = (0, a.dataBinding)(
+                (this.platformConfigBinding = (0, n.dataBinding)(
                   this.get("platformConfigBasePath"),
-                  a.socket,
+                  n.socket,
                 )),
-                (this.playerReportSenderBinding = (0, a.dataBinding)(
+                (this.playerReportSenderBinding = (0, n.dataBinding)(
                   this.get("playerReportSenderBasePath"),
-                  a.socket,
+                  n.socket,
                 ));
             },
             initObservers() {
@@ -5765,39 +5778,39 @@
             handleChampionMasteryConfigUpdate(e) {
               this.set("championMasteryConfig", e);
             },
-            playerTeam: a.Ember.computed("eogStatsBlock.teams", function () {
+            playerTeam: n.Ember.computed("eogStatsBlock.teams", function () {
               const e = this.get("eogStatsBlock.teams");
               return e ? e.find((e) => e.isPlayerTeam) : null;
             }),
-            player: a.Ember.computed(
+            player: n.Ember.computed(
               "playerTeam",
               "currentSummoner.summonerId",
               function () {
                 const e = this.get("playerTeam.players"),
                   t = this.get("currentSummoner.summonerId");
-                return e && t ? a.Ember.A(e).findBy("summonerId", t) : null;
+                return e && t ? n.Ember.A(e).findBy("summonerId", t) : null;
               },
             ),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(3);
+        var n = a(1),
+          s = a(3);
         const o = { type: "DialogToast" };
-        var l = a.Ember.Service.extend({
-          templateHelper: a.UIKit.getTemplateHelper(),
-          toastManager: a.UIKit.getToastManager(),
-          modalManager: a.UIKit.getModalManager(),
-          profilePlugin: a.profilePlugin,
-          parties: a.Ember.inject.service(),
+        var l = n.Ember.Service.extend({
+          templateHelper: n.UIKit.getTemplateHelper(),
+          toastManager: n.UIKit.getToastManager(),
+          modalManager: n.UIKit.getModalManager(),
+          profilePlugin: n.profilePlugin,
+          parties: n.Ember.inject.service(),
           init() {
             this._super(...arguments),
               this.set("alreadyFriendRequestedList", []),
-              (this.binding = a.dataBinding.bindTo(a.socket)),
+              (this.binding = n.dataBinding.bindTo(n.socket)),
               this.binding.observe(
                 "/lol-gameflow/v1/session",
                 this,
@@ -5810,19 +5823,19 @@
               );
           },
           handleGameflowSession(e) {
-            const t = a.Ember.get(e, "map.id");
+            const t = n.Ember.get(e, "map.id");
             this.set("currentMapId", t);
           },
           handleBlockedPlayers(e) {
             this.set("blockedPlayersList", e || []);
           },
-          showToast(e, t, n) {
-            const a = Object.assign({}, o, n);
+          showToast(e, t, a) {
+            const n = Object.assign({}, o, a);
             return (
-              (a.data = {
+              (n.data = {
                 contents: this.templateHelper.contentBlockNotification(e, t),
               }),
-              this.toastManager.add(a)
+              this.toastManager.add(n)
             );
           },
           showFriendRequestSuccessToast() {
@@ -5840,16 +5853,16 @@
           showConfirmDialog(e) {
             const {
                 title: t,
-                body: n,
-                className: a,
+                body: a,
+                className: n,
                 acceptText: s,
                 declineText: o,
               } = e,
               l = this.templateHelper.contentBlockDialog(
                 t,
-                n,
-                "dialog-medium",
                 a,
+                "dialog-medium",
+                n,
               );
             return this.modalManager.add({
               type: "DialogConfirm",
@@ -5861,7 +5874,7 @@
               },
             });
           },
-          _showAddBlockedFriendDialog: function (e, t, n) {
+          _showAddBlockedFriendDialog: function (e, t, a) {
             this.showConfirmDialog({
               title: this.get("tra.postgame_add_blocked_friend_title"),
               body: this.get("tra").formatString(
@@ -5873,27 +5886,27 @@
               declineText: this.get("tra.postgame_add_blocked_friend_cancel"),
             })
               .acceptPromise.then(() => {
-                this._unblockAndAddFriend(e, t, n);
+                this._unblockAndAddFriend(e, t, a);
               })
               .catch(() => {});
           },
-          _unblockAndAddFriend: function (e, t, n) {
-            return (0, a.dataBinding)("/lol-chat")
+          _unblockAndAddFriend: function (e, t, a) {
+            return (0, n.dataBinding)("/lol-chat")
               .get("/v1/blocked-players")
               .then((s) => {
-                const o = s.find((e) => e.puuid === n);
+                const o = s.find((e) => e.puuid === a);
                 o
-                  ? (0, a.dataBinding)("/lol-chat")
+                  ? (0, n.dataBinding)("/lol-chat")
                       .delete(`/v1/blocked-players/${encodeURIComponent(o.id)}`)
                       .then(() => {
-                        this.sendFriendRequest(e, t, n);
+                        this.sendFriendRequest(e, t, a);
                       })
-                  : this.sendFriendRequest(e, t, n);
+                  : this.sendFriendRequest(e, t, a);
               });
           },
           importItemSet: function (e) {
             const t = e.championName,
-              n = e.championId,
+              a = e.championId,
               s = {
                 source: "eog",
                 items: (e.items || []).slice(),
@@ -5902,38 +5915,38 @@
                   { champion: t, summoner: e?.displayName?.playerNameFull },
                 ),
                 maps: [this.get("currentMapId")],
-                champions: [n],
+                champions: [a],
               };
-            (0, a.getProvider)()
+            (0, n.getProvider)()
               .getOptional("rcp-fe-lol-collections")
               .then(
                 (e) => e.getItemSetsApi().saveItemSet(s),
-                (e) => a.logger.error("Provider getOptional failure", e),
+                (e) => n.logger.error("Provider getOptional failure", e),
               );
           },
           inviteToParty: function (e) {
             e && this.get("parties").invitePlayerToParty(e);
           },
-          sendFriendRequest: function (e, t, n) {
-            const s = { direction: "out", puuid: n };
-            return (0, a.dataBinding)("/lol-chat")
+          sendFriendRequest: function (e, t, a) {
+            const s = { direction: "out", puuid: a };
+            return (0, n.dataBinding)("/lol-chat")
               .post("/v2/friend-requests", s)
               .then(() => {
                 const e = this.get("alreadyFriendRequestedList").slice();
-                e.push(n),
+                e.push(a),
                   this.set("alreadyFriendRequestedList", e),
                   this.showFriendRequestSuccessToast();
               })
-              .catch((a) => {
-                if (405 === a.status) this._showAddBlockedFriendDialog(e, t, n);
+              .catch((n) => {
+                if (405 === n.status) this._showAddBlockedFriendDialog(e, t, a);
                 else {
-                  const e = a.data.message;
+                  const e = n.data.message;
                   this.showFriendRequestFailToast(e);
                 }
               });
           },
           confirmBlockPlayer(e, t) {
-            const n = this.templateHelper.contentBlockDialog(
+            const a = this.templateHelper.contentBlockDialog(
                 this.get("tra.postgame_roster_confirm_block_title"),
                 this.get("tra").formatString(
                   "postgame_roster_confirm_block_text",
@@ -5945,7 +5958,7 @@
               s = this.modalManager.add({
                 type: "DialogConfirm",
                 data: {
-                  contents: n,
+                  contents: a,
                   acceptText: this.get("tra.postgame_roster_confirm_block"),
                   declineText: this.get("tra.postgame_roster_confirm_cancel"),
                   closeButton: !1,
@@ -5956,7 +5969,7 @@
               (o.querySelector("p").style.textAlign = "left"),
               s.acceptPromise
                 .then(() => {
-                  (0, a.dataBinding)("/lol-chat").post("/v1/blocked-players", {
+                  (0, n.dataBinding)("/lol-chat").post("/v1/blocked-players", {
                     summonerId: t,
                   });
                 })
@@ -5968,258 +5981,258 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "AT+rCcID",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\application.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-application"],["flush-element"],["text","\\n  "],["append",["unknown",["outlet"]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "MmAB6ZUr",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\postgame.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["isPostgameReady"]]],null,7,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","skip-waiting-for-stats-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skipWaitingForStats"],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_skip_waiting_for_stats"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["render-timer"],null,[["renderAfterMs"],[["get",["skipWaitingForStatsWaitMs"]]]],0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-waiting-for-stats-container"],["flush-element"],["text","\\n    "],["append",["unknown",["hextech-loading-animation"]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-skip-waiting-for-stats-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isWaitingForStats"]]],null,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-background-image"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["backgroundImgPath"]],")"]]],["flush-element"],["close-element"],["text","\\n    "],["append",["unknown",["postgame-common"]],false],["text","\\n  "]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-background-image"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["backgroundImgPathDark"]],")"]]],["flush-element"],["close-element"],["text","\\n    "],["append",["unknown",["postgame-root"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showPostgameV2"]]],null,4,3]],"locals":[]},{"statements":[["text","    "],["append",["unknown",["strawberry-postgame-root"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["gameflow","isStrawberry"]]],null,6,5]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "QU3H5qM7",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-common.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-common.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-common.js\\" "],["text","\\n"],["block",["if"],[["get",["extEmberModel","isPostgameShowing"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","postgame-chat-box"],["flush-element"],["text","\\n          "],["open-element","lol-social-chat-room",[]],["static-attr","type","postGame"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-content"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard"],null,[["leavePostgame"],["leavePostgame"]]],false],["text","\\n\\n"],["block",["if"],[["get",["isLocalPlayerInGame"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "iXaUO0IB",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-header.js\\" "],["text","\\n"],["append",["helper",["postgame-game-result-icon"],null,[["isLeaver","isVictory","isLossForgiven"],[["get",["isLeaver"]],["get",["isVictory"]],["get",["isLossForgiven"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-header-wrapper"],["flush-element"],["text","\\n  "],["append",["helper",["postgame-game-result"],null,[["isLeaver","isVictory","isLossForgiven","isDefeat","isURFDefeat"],[["get",["isLeaver"]],["get",["isVictory"]],["get",["isLossForgiven"]],["get",["isDefeat"]],["get",["isURFDefeat"]]]]],false],["text","\\n  "],["append",["helper",["postgame-game-info"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "AvX6jWLn",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-game-info.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-game-info.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-game-info.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-map-info"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-game-mode"],["flush-element"],["append",["unknown",["queueDescription"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["postgame","isLocalPlayerInGame"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-game-length"],["flush-element"],["append",["unknown",["gameLength"]],false],["close-element"],["text","\\n  "],["append",["helper",["game-id-clipboard-copy"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["append",["unknown",["postgame-game-info-icons"]],false]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-win-loss"],["flush-element"],["append",["unknown",["playerWinLoss"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "0cA9ldNi",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-game-info-icons.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-game-info-icons.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-game-info-icons.js\\" "],["text","\\n"],["block",["if"],[["get",["areRerollPointsAvailable"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-game-info-icons-tooltip"],["flush-element"],["append",["unknown",["rerollPointsTagline"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-game-info-icons-item-aram-reroll"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "2DIYkCl1",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-game-result.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-game-result.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-game-result.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-outcome"],["flush-element"],["text","\\n"],["block",["if"],[["get",["rankedInfoTagline"]]],null,18,17],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowPlacements"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-game-result-placement-games"],["flush-element"],["append",["unknown",["placementGamesString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_defeat"]],false],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_defeat_urf"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isURFDefeat"]]],null,2,1]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_victory"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isVictory"]]],null,4,3]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["subteamPlacementString"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isGameModeWithSubteams"]]],null,6,5]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_leaver"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLeaver"]]],null,8,7]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_remake"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEarlySurrenderBystander"]]],null,10,9]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_remake_restricted"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEarlySurrenderAccomplice"]]],null,12,11]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_remake_leaver"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEarlySurrenderCauser"]]],null,14,13]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","postgame_progress_loss_forgiven"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLossForgiven"]]],null,16,15]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["rankedInfoTagline"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "WxOXpVq7",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-game-result-icon.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-game-result-icon.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-game-result-icon.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-map-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["icon"]],");"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "1MJzkA4c",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-scoreboard-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTFT"]]],null,9,8],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-scoreboard-body"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-tft-players"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-tft-player tft-player-header-row"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tft-player-left-column"],["flush-element"],["text","\\n        "],["open-element","h3",[]],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_tft_header_placement_shortened"]],false],["close-element"],["text","\\n        "],["open-element","h3",[]],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_tft_header_player"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasPartnerGroups"]]],null,5],["block",["each"],[["get",["tftPlayers"]]],null,3],["text","  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLocalPlayerInGame"]]],null,2,1],["close-element"],["text","\\n\\n"],["append",["unknown",["postgame-party-status"]],false],["text","\\n\\n"],["append",["helper",["arrow-footer"],null,[["confirmButtonDisabled","closeButtonDisabled","confirmButtonText","closeButtonText","closeButtonHoverSound","closeButtonClickSound","confirmButtonHoverSound","confirmButtonClickSound","closeButtonType","confirmButtonClicked","closeButtonClicked"],[["get",["isPlayAgainDisabled"]],["get",["isFooterDisabled"]],["get",["confirmButtonText"]],["get",["closeButtonText"]],"/fe/lol-postgame/sfx-uikit-button-gold-hover.ogg","/fe/lol-postgame/sfx-uikit-button-gold-click.ogg","/fe/lol-postgame/sfx-nav-button-play-hover.ogg","/fe/lol-postgame/sfx-nav-button-play-click.ogg","close","playAgain","goToHome"]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["postgame-scoreboard-progression"]],false],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["gameclientPostgame","isLocalPlayerInGame"]]],null,0]],"locals":[]},{"statements":[["text","    "],["append",["unknown",["postgame-scoreboard-progression"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["tft-player"],null,[["player","showPlacementBanner","isPlaybookEnabled"],[["get",["player"]],["helper",["if"],[["get",["hasPartnerGroups"]],false,true],null],["get",["isPlaybookEnabled"]]]]],false],["text","\\n"]],"locals":["player"]},{"statements":[["text","          "],["append",["helper",["tft-partner-group-placement"],null,[["partnerGroup","placement"],[["get",["partnerGroup"]],["get",["index"]]]]],false],["text","\\n"]],"locals":["partnerGroup","index"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-tft-partner-group-placements"],["flush-element"],["text","\\n"],["block",["each"],[["get",["tftPartnerGroupsByPlacement"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","postgame-match-history-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"displayAdvancedDetails"],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_view_advanced_details"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["postgame-scoreboard-replay-button"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["postgame-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-scoreboard-header-button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["postgame","isLocalPlayerInGame"]]],null,7],["block",["unless"],[["get",["isDetailsTabOpen"]]],null,6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["tft-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "WiD2O/1i",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-player-augment.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-player-augment.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-player-augment.js\\" "],["text","\\n"],["block",["if"],[["get",["augmentId"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n      "],["append",["unknown",["augmentData","nameTRA"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-player-augment"],["dynamic-attr","style",["concat",["-webkit-mask-image: url(",["unknown",["augmentData","augmentSmallIconPath"]],");"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "BpxSrv5j",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-player-keystone-icon.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-player-keystone-icon.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-player-keystone-icon.js\\" "],["text","\\n"],["block",["if"],[["get",["circleIconHolder"]]],null,4,3],["text","\\n"],["block",["uikit-tooltip"],null,[["targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY","offsetX","offsetY","restrictArea"],["left","bottom","left","top",-18,5,"whole-window"]],2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-player-keystone-icon-description"],["flush-element"],["append",["helper",["sanitize"],[["get",["keystone","shortDesc"]]],[["config"],[["get",["sanitizeConfig"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-player-keystone-icon-description"],["flush-element"],["append",["helper",["sanitize"],[["get",["keystone","tooltip"]]],[["config"],[["get",["sanitizeConfig"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-player-keystone-icon-tooltip"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-player-keystone-icon-tooltip-header"],["flush-element"],["text","\\n      "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["keystone","iconPath"]]]]],["static-attr","class","postgame-player-keystone-icon-tooltip-icon"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-player-keystone-icon-tooltip-name"],["flush-element"],["append",["helper",["sanitize"],[["get",["keystone","name"]]],[["config"],[["get",["sanitizeConfig"]]]]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["isSubStyle"]]],null,1,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["keystone","iconPath"]]]]],["static-attr","class","postgame-player-keystone-icon-img"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["keystone","iconPath"]]]]],["static-attr","class","postgame-player-keystone-icon-img"],["flush-element"],["close-element"],["text","  \\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "3IEu8GeM",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-player-buttons.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-player-buttons.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-player-buttons.js\\" "],["text","\\n"],["open-element","button",[]],["static-attr","class","postgame-player-button-add-friend"],["dynamic-attr","disabled",["unknown",["isFriendRequestDisabled"]],null],["modifier",["action"],[["get",[null]],"sendFriendRequest",["get",["player"]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition","disabled"],["system","top",["get",["isFriendRequestDisabled"]]]],3],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showInviteButton"]]],null,2],["text","\\n"],["open-element","button",[]],["static-attr","class","postgame-player-button-report"],["dynamic-attr","disabled",["unknown",["isReportDisabled"]],null],["modifier",["action"],[["get",[null]],"showReportDialog",["get",["player"]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition","disabled"],["system","top",["get",["isReportDisabled"]]]],0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-player-button-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","postgame_scorecard_harassment_report_player"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-player-button-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","postgame_scorecard_invite_to_party"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","button",[]],["static-attr","class","postgame-player-invite-to-party"],["dynamic-attr","disabled",["unknown",["isInviteDisabled"]],null],["modifier",["action"],[["get",[null]],"inviteToParty",["get",["player"]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition","disabled"],["system","top",["get",["isInviteDisabled"]]]],1],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-player-button-tooltip"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_add_friend"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "XwC838cw",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-player-item.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-player-item.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-player-item.js\\" "],["text","\\n"],["block",["if"],[["get",["itemId"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-player-item-tooltip"],["flush-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","postgame-player-item-tooltip-header"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","postgame-player-item-tooltip-icon"],["dynamic-attr","src",["concat",[["unknown",["itemData","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-player-item-tooltip-name"],["flush-element"],["append",["unknown",["itemData","name"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-player-item-tooltip-price"],["flush-element"],["append",["unknown",["itemData","priceTotal"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","postgame-player-item-tooltip-description"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-game-data-markup",[]],["static-attr","type","item"],["dynamic-attr","markup",["concat",[["unknown",["itemData","description"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["right"]],0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Dvyd95ae",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","progression-body"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","progression-scroll-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","disabled"],["static-attr","class","progression-components"],["flush-element"],["text","\\n"],["block",["each"],[["get",["scrollableComponents"]]],null,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  \\n"],["block",["each"],[["get",["fixedComponents"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["component"],[["get",["fixedComponent","componentName"]]],[["sharedData","previousAnimationPromise","resolveAnimationPromise"],[["get",["componentSharedData"]],["get",["fixedComponent","previousAnimationPromise"]],["get",["fixedComponent","resolveAnimationPromise"]]]]],false],["text","\\n"]],"locals":["fixedComponent"]},{"statements":[["text","        "],["append",["helper",["component"],[["get",["scrollableComponent","componentName"]]],[["sharedData","previousAnimationPromise","resolveAnimationPromise"],[["get",["componentSharedData"]],["get",["scrollableComponent","previousAnimationPromise"]],["get",["scrollableComponent","resolveAnimationPromise"]]]]],false],["text","\\n"]],"locals":["scrollableComponent"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "VALadEB5",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression-number-reels.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression-number-reels.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression-number-reels.js\\" "],["text","\\n"],["append",["unknown",["totalFormatted"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Wj4/dd2o",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-breakdown.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-breakdown.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-breakdown.js\\" "],["text","\\n"],["open-element","table",[]],["static-attr","class","lol-uikit-list-table postgame-breakdown-table"],["flush-element"],["text","\\n"],["block",["each"],[["get",["breakdownValues"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","tr",[]],["static-attr","class","postgame-breakdown-entry"],["dynamic-attr","disabled",["unknown",["breakdownValue","isDisabled"]],null],["flush-element"],["text","\\n      "],["open-element","td",[]],["static-attr","class","postgame-breakdown-amount"],["flush-element"],["open-element","span",[]],["static-attr","class","lol-typekit-value"],["flush-element"],["text","+"],["append",["unknown",["breakdownValue","amount"]],false],["close-element"],["close-element"],["text","\\n      "],["open-element","td",[]],["static-attr","class","postgame-breakdown-name"],["flush-element"],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["append",["unknown",["breakdownValue","name"]],false],["close-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["breakdownValue"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "My75ct9+",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression-ranked.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression-ranked.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression-ranked.js\\" "],["text","\\n"],["block",["if"],[["get",["shouldShow"]]],null,27]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-lottie",[]],["static-attr","src","fe/lol-static-assets/lottie/postgame/tft_EOG_WinStreak_LabelVFX.json"],["static-attr","image-path","fe/lol-static-assets/lottie/postgame/images/"],["static-attr","class","postgame-win-streak"],["dynamic-attr","text-winstreak",["concat",[["unknown",["winStreakString"]]]]],["static-attr","autoplay","true"],["static-attr","fixed-width","true"],["static-attr","loop","true"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-demotion-protection"],["flush-element"],["append",["unknown",["tra","postgame_demotion_protection"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","uikit-video",[]],["static-attr","class","delta-lp-modifier-video"],["static-attr","src","/fe/lol-static-assets/videos/lp_returned_effect.webm"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","uikit-video",[]],["static-attr","class","delta-lp-modifier-video"],["static-attr","src","/fe/lol-static-assets/videos/lp_penalty_effect.webm"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["afkLpPenaltyAppliedTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],4]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["consolationTooltipBody"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],6]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-tooltip"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-tooltip-header"],["flush-element"],["append",["unknown",["errorTooltipHeader"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-tooltip-body"],["flush-element"],["append",["unknown",["errorTooltipBody"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["left"]],8]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-ranked-pending ",["helper",["if"],[["get",["spinnerIsVisible"]],"visible"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-ranked-pending-spinner"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","postgame-ranked-body-no-change"],["flush-element"],["text","\\n            "],["append",["helper",["sanitize"],[["get",["displayedLpText"]]],null],false],["text","\\n          "],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","postgame-ranked-body"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","postgame-ranked-overflow-box"],["flush-element"],["text","\\n              "],["open-element","span",[]],["dynamic-attr","class",["concat",["lp-loss-scroll-area ",["helper",["if"],[["get",["triggeredAnimation"]],"active"],null]]]],["flush-element"],["text","\\n                "],["append",["helper",["sanitize"],[["get",["displayedLpText"]]],null],false],["text","\\n                "],["open-element","div",[]],["static-attr","class","lp-loss-scroll-container"],["flush-element"],["text","\\n                  "],["append",["unknown",["leaguePointsTotal"]],false],["text","\\n                  "],["open-element","div",[]],["static-attr","class","lp-loss-scroll new"],["flush-element"],["text","\\n                    "],["append",["unknown",["leaguePointsTotal"]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","lp-loss-scroll previous"],["flush-element"],["text","\\n                    "],["append",["unknown",["previousLp"]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","lp-loss-flash"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","lp-loss-flash-2"],["flush-element"],["text","\\n                      "],["append",["unknown",["leaguePointsTotal"]],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLosingLp"]]],null,12,11]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","postgame-ranked-body"],["flush-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","lp-win-container"],["flush-element"],["text","\\n              "],["append",["helper",["sanitize"],[["get",["displayedLpText"]]],null],false],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["lp-win-flash ",["helper",["if"],[["get",["triggeredAnimation"]],"active"],null]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","lp-win-flash-2"],["flush-element"],["text","\\n                  "],["append",["unknown",["leaguePointsTotal"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isGainingLp"]]],null,14,13]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","miniseries-placeholder"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","span",[]],["dynamic-attr","class",["concat",["miniseries-container ",["helper",["if"],[["get",["triggeredAnimation"]],"active"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["miniseriesGame","animate"]]],null,16],["text","                "],["open-element","span",[]],["dynamic-attr","class",["concat",["miniseries-result-wrapper ",["helper",["if"],[["get",["miniseriesGame","animate"]],"animate"],null]]]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["dynamic-attr","class",["concat",["miniseries-result ",["unknown",["miniseriesGame","result"]]," ",["helper",["if"],[["get",["miniseriesGame","animate"]],"animate"],null]]]],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":["miniseriesGame"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","postgame-ranked-body-miniseries"],["flush-element"],["text","\\n"],["block",["each"],[["get",["miniseriesData"]]],null,17],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isInMiniseries"]]],null,18,15]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-ranked-body-promotion-demotion ",["helper",["if"],[["get",["isPromotedMultipleTimes"]],"multiple-promotions"],null]]]],["flush-element"],["text","\\n            "],["append",["unknown",["promotionStatusString"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-ranked-body-promoted-number"],["flush-element"],["text","\\n            "],["append",["unknown",["numberOfTimesPromotedString"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","break"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","afk-penalty-message"],["flush-element"],["text","\\n              "],["append",["unknown",["afkLpPenaltyAppliedText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","delta"],["flush-element"],["text","\\n              "],["append",["unknown",["headerString"]],false],["text","\\n            "],["close-element"],["text","\\n          "]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","postgame-ranked-delta-body"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","postgame-ranked-delta-overflow-box"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["lp-loss-delta-scroll-area ",["helper",["if"],[["get",["triggeredLpModificationAnimation"]],"active"],null]]]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["flush-element"],["append",["unknown",["consolationHeaderString"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","lp-loss-delta-scroll-container"],["flush-element"],["text","\\n                    "],["append",["unknown",["headerString"]],false],["text","\\n                    "],["open-element","div",[]],["static-attr","class","lp-loss-delta-scroll new"],["flush-element"],["text","\\n                      "],["append",["unknown",["headerString"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","lp-loss-delta-scroll previous"],["flush-element"],["text","\\n                      "],["append",["unknown",["consolationHeaderString"]],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","break"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["delta-consolation-msg ",["helper",["if"],[["get",["triggeredLpModificationAnimation"]],"visible"],null]]]],["flush-element"],["text","\\n              "],["append",["unknown",["consolationLpWasAppliedText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["consolationLpWasApplied"]]],null,23,22]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","delta is-win"],["flush-element"],["text","\\n              "],["append",["unknown",["headerString"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","postgame-ranked-progression-contents"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-ranked-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isConsideredVictory"]]],null,25,24],["block",["if"],[["get",["afkLpPenaltyApplied"]]],null,21],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-ranked-footer"],["flush-element"],["append",["unknown",["displayedTierDivisionLabel"]],false],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isBeingPromotedOrDemoted"]]],null,20,19],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-ranked-progression-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["haveData"]]],null,26],["block",["unless"],[["get",["unloadSpinner"]]],null,10],["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-ranked-error-contents ",["helper",["if"],[["get",["errorIsVisible"]],"visible"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-header"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-body"],["flush-element"],["text","\\n        - - -\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-ranked-error-footer"],["flush-element"],["text","\\n        "],["append",["unknown",["errorText"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["errorIsVisible"]]],null,9],["block",["if"],[["get",["consolationLpWasApplied"]]],null,7],["block",["if"],[["get",["afkLpPenaltyApplied"]]],null,5],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-ranked-lp-divider ",["helper",["if"],[["get",["isTFT"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","delta-lp-modifier-video-switch"],["static-attr","default-visibility","hidden"],["static-attr","class","delta-lp-modifier-video-switch"],["flush-element"],["text","\\n"],["block",["if"],[["get",["afkLpPenaltyApplied"]]],null,3,2],["text","      "],["open-element","span",[]],["static-attr","class","hidden"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["showDemotionProtected"]]],null,1],["block",["if"],[["get",["winStreakString"]]],null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "PUv7E1hv",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression-rated.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression-rated.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression-rated.js\\" "],["text","\\n"],["block",["if"],[["get",["shouldShow"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","rated-rating-total-text"],["flush-element"],["text","---"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","rated-rating-total-text"],["flush-element"],["append",["unknown",["displayedRatedRating"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["rated-rating-delta-text ",["helper",["if"],[["get",["isPositiveRatingDelta"]],"positive-rating-delta"],null]]]],["flush-element"],["append",["unknown",["displayedRatedRatingDelta"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-rated-progression-container"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-lottie",[]],["static-attr","class","postgame-rated-badge-loading"],["static-attr","image-path","/fe/lol-static-assets/lottie/tft-rated/images/"],["dynamic-attr","src",["unknown",["ratedLoadingPath"]],null],["static-attr","resize-to-fit","true"],["static-attr","loop","true"],["static-attr","autoplay","true"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","postgame-rated-progression-tier-badge"],["dynamic-attr","src",["concat",[["unknown",["ratedTierImagePath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-lottie",[]],["static-attr","class","postgame-rated-badge-highlight"],["static-attr","image-path","/fe/lol-static-assets/lottie/tft-rated/images/"],["static-attr","src","/fe/lol-static-assets/lottie/tft-rated/Badge_Highlight_EOG.json"],["static-attr","resize-to-fit","true"],["static-attr","loop","true"],["static-attr","autoplay","false"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-rated-progression-footer"],["flush-element"],["text","\\n"],["block",["if"],[["get",["haveData"]]],null,1,0],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Dpf5W3w4",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-secondary-progression.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-secondary-progression.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-secondary-progression.js\\" "],["text","\\n"],["block",["if"],[["get",["haveData"]]],null,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","span",[]],["dynamic-attr","class",["concat",["flash ",["helper",["if"],[["get",["doneAnimating"]],"active"],null]]]],["flush-element"],["append",["unknown",["headerLevelUpText"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["component"],[["get",["tooltipComponentName"]]],[["tooltipData"],[["get",["tooltipData"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["left"]],1]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["secondary-progression-center-text ",["unknown",["centerTextLengthClass"]]]]],["flush-element"],["text","\\n        "],["append",["unknown",["centerText"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","secondary-progression-lottie-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-lottie",[]],["dynamic-attr","src",["concat",[["unknown",["lottiePath"]]]]],["static-attr","autoplay","false"],["dynamic-attr","param-current-exp",["unknown",["oldPercent"]],null],["dynamic-attr","param-new-exp",["unknown",["newDisplayedPercent"]],null],["dynamic-attr","param-level-up",["concat",[["unknown",["isLevelUp"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","secondary-progression-full-meter"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","secondary-progression-full-frame"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","secondary-progression-center-image"],["flush-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["centerImage"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","secondary-progression-radial"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","secondary-progression-full-frame-background"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["hasCenterImage"]]],null,6],["text","\\n"],["block",["if"],[["get",["isFull"]]],null,5,4],["text","\\n"],["block",["if"],[["get",["hasCenterText"]]],null,3],["text","\\n"],["block",["if"],[["get",["hasTooltip"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","secondary-progression-details"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","secondary-progression-header"],["flush-element"],["text","\\n      "],["append",["unknown",["displayedHeaderText"]],false],["text","\\n"],["block",["if"],[["get",["hasLevelUpText"]]],null,0],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","secondary-progression-body"],["flush-element"],["text","\\n      +"],["append",["unknown",["currentlyDisplayedValue"]],false],["text"," "],["append",["unknown",["unitText"]],false],["text","\\n        "],["open-element","span",[]],["dynamic-attr","class",["concat",["flash ",["helper",["if"],[["get",["doneAnimating"]],"active"],null]," ",["helper",["if"],[["get",["gainedValue"]],"gained"],null]]]],["flush-element"],["text","+"],["append",["unknown",["numberValue"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "9wTPILdF",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-party-status.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-party-status.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-party-status.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-party-status-icons"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showComponent"]]],null,5],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","postgame-party-status-player"],["static-attr","player-status","left"],["dynamic-attr","style",["concat",["order:",["get",["player"]],";"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["player"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","postgame-party-status-player"],["static-attr","player-status","eog"],["flush-element"],["close-element"],["text","\\n"]],"locals":["player"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","postgame-party-status-player"],["static-attr","player-status","ready"],["dynamic-attr","style",["concat",["order:",["get",["player"]],";"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["player"]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","postgame-party-status-mouseover-header"],["flush-element"],["text","\\n                        "],["append",["unknown",["tra","postgame_party_status_players_header"]],false],["text"," ("],["append",["unknown",["numPlayersReady"]],false],["text","/"],["append",["unknown",["partySize"]],false],["text",")\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMouseOverHeader"]]],null,3],["text","                "],["open-element","div",[]],["static-attr","class","postgame-party-status-mouseover-text"],["flush-element"],["text","\\n                    "],["append",["unknown",["mouseOverText"]],false],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],4],["text","        "],["open-element","div",[]],["static-attr","class","postgame-party-status-decorator"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-party-status-ready-players"],["flush-element"],["text","\\n"],["block",["each"],[["get",["playerIconOrder"]]],null,2],["text","        "],["close-element"],["text","\\n"],["block",["each"],[["get",["eogPlayers"]]],null,1],["text","        "],["open-element","div",[]],["static-attr","class","postgame-party-status-left-players"],["flush-element"],["text","\\n"],["block",["each"],[["get",["leftIconOrder"]]],null,0],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-party-status-decorator"],["static-attr","position","right"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "/ZPcIZ1n",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-player-honor-flair.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-player-honor-flair.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-player-honor-flair.js\\" "],["text","\\n"],["block",["unless"],[["get",["isBot"]]],null,3],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","class","honor-postgame-celebration-video"],["dynamic-attr","src",["concat",[["unknown",["teamChoiceMograph"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","class",["concat",["honor-postgame-celebration-icon ",["helper",["if"],[["get",["hasCelebrated"]],"visible"],null]]]],["dynamic-attr","src",["concat",[["unknown",["teamChoiceIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLowSpec"]]],null,2,1],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-postgame-celebration-tooltip-container ",["unknown",["hideTooltipClassName"]]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","bottom"]],0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Q7gpj55U",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression-honor-notification.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression-honor-notification.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression-honor-notification.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-postgame-notification-header"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-header-text ",["unknown",["headerProgressVisibilityClass"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["headerProgressText"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-header-text ",["unknown",["headerVisibilityClass"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["headerText"]],false],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["headerTooltipIsVisible"]]],null,4],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-postgame-notification-contents"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-progress-container ",["unknown",["progressVisibilityClass"]]]]],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","honor-postgame-notification-progress-indicator top"],["dynamic-attr","src",["concat",[["unknown",["progressIndicator"]]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","honor-postgame-notification-progress-indicator bottom"],["dynamic-attr","src",["concat",[["unknown",["progressIndicator"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","honor-postgame-notification-flair-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-flair-icon ",["unknown",["strangerFlairVisibilityClass"]]]]],["dynamic-attr","src",["concat",[["unknown",["strangerFlairIcon"]]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-flair-icon ",["unknown",["premadeFlairVisibilityClass"]]]]],["dynamic-attr","src",["concat",[["unknown",["premadeFlairIcon"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["flairTooltipIsVisible"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","honor-postgame-notification-emblem-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["displayedHonors"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-progression-honor-category-icon"],null,[["displayedHonor","honorIndex","hexakillClass","isLowSpec","decrementTransitionLock"],[["get",["displayedHonor"]],["get",["index"]],["get",["hexakillClass"]],["get",["isLowSpec"]],"decrementTransitionLock"]]],false],["text","\\n"]],"locals":["displayedHonor","index"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["flairTooltip"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","bottom"]],1]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["headerTooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],3]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "+NOZVyla",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\postgame-scoreboard-progression-honor-category-icon.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\postgame-scoreboard-progression-honor-category-icon.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\postgame-scoreboard-progression-honor-category-icon.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["dynamic-attr","assets-ready",["concat",[["unknown",["assetsReady"]]]]],["dynamic-attr","should-beam",["concat",[["unknown",["shouldBeam"]]]]],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","initial"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#beam"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","assets-ready"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","should-beam"],["static-attr","value","false"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","#intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","beam"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-delay",[]],["static-attr","duration","50"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","assets-ready"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","should-beam"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","#intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","#beam"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","beam"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#beam"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","id","beam"],["static-attr","visible-state","beam"],["static-attr","default-visibility","hidden"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","class","honor-postgame-category-beam"],["dynamic-attr","src",["concat",[["unknown",["categoryBeamUrl"]]]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","id","intro"],["static-attr","visible-state","intro,beam"],["static-attr","default-visibility","hidden"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLowSpec"]]],null,2,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","bottom"]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["categoryIconTooltip"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["honor-postgame-notification-video ",["unknown",["positionClassName"]]]]],["dynamic-attr","src",["concat",[["unknown",["categoryVideoUrl"]]]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","honor-postgame-category-icon-group"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-postgame-category-low-spec-glow ",["unknown",["positionClassName"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","class",["concat",["honor-postgame-category-icon ",["unknown",["positionClassName"]]]]],["dynamic-attr","src",["concat",[["unknown",["categoryIconUrl"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "OBmzcJZ2",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\tft-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\tft-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\tft-header.js\\" "],["text","\\n"],["append",["helper",["postgame-game-result-icon"],null,[["isVictory","isTop4"],[["get",["isVictory"]],["get",["isTop4"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-header-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-outcome"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-game-result"],["flush-element"],["text","\\n      "],["append",["unknown",["playerRankText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlacements"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","postgame-game-info"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-map-info"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-game-mode"],["flush-element"],["append",["unknown",["tra","tft_header_mode_text"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-queue-type"],["flush-element"],["append",["unknown",["queueDescription"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-map-info-item-game-length"],["flush-element"],["append",["unknown",["gameLength"]],false],["close-element"],["text","\\n      "],["append",["helper",["game-id-clipboard-copy"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-game-result-placement-games"],["flush-element"],["append",["unknown",["placementGamesString"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "1F1ExRsr",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\tft-partner-group-placement.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\tft-partner-group-placement.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\tft-partner-group-placement.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["tft-partner-group-rank tft-partner-group-rank-place-",["unknown",["placement"]]]]],["flush-element"],["append",["unknown",["placementDisplay"]],false],["close-element"],["text","\\n"],["open-element","svg",[]],["static-attr","class","tft-partner-group-banner"],["dynamic-attr","style",["concat",["fill: ",["unknown",["partnerGroupColorCode"]],";"]]],["static-attr","version","1.1"],["static-attr","id","Layer_1"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","xmlns:xlink","http://www.w3.org/1999/xlink","http://www.w3.org/2000/xmlns/"],["static-attr","x","0px"],["static-attr","y","0px"],["static-attr","viewBox","0 0 13 98"],["static-attr","style","enable-background:new 0 0 13 98;"],["static-attr","xml:space","preserve","http://www.w3.org/XML/1998/namespace"],["flush-element"],["text","\\n    "],["open-element","linearGradient",[]],["static-attr","id","SVGID_1_"],["static-attr","gradientUnits","userSpaceOnUse"],["static-attr","x1","6.5"],["static-attr","y1","98"],["static-attr","x2","6.5"],["static-attr","y2","18"],["static-attr","gradientTransform","matrix(1 0 0 -1 0 100)"],["flush-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","offset","0.1649"],["static-attr","style","stop-color:#1C32FF"],["flush-element"],["close-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","offset","1"],["static-attr","style","stop-color:#1221A7"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","path",[]],["static-attr","d","M2,6.6c0-0.4,0.2-0.8,0.6-0.9l7-3.1C10.3,2.3,11,2.8,11,3.5v90.9c0,0.7-0.7,1.2-1.4,0.9l-7-3.1\\n        C2.2,92.1,2,91.7,2,91.4V6.6z"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "zXccYR6d",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\tft-player.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\styles\\\\components\\\\tft-player.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\tft-player.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","tft-player-left-column"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showPlacementBanner"]]],null,15],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["tft-player-icon ",["helper",["if"],[["get",["showPlacementBanner"]],"","tft-player-icon-no-banner"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tft-companion-icon-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tft-companion-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["player","companion","icon"]],");"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ring"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-player-identity"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","tft-player-name-section"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","tft-player-name"],["flush-element"],["text","\\n        "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["player","riotIdGameName"]],["get",["player","riotIdTagLine"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,14],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["isPlaybookEnabled"]]],null,13],["open-element","div",[]],["static-attr","class","tft-player-piece tft-player-augment"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["augmentContainer","icon"]],");"]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","piece-inner-border"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-player-piece-item-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["augments"]]],null,9],["text","  "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],8],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","tft-player-pieces-container fade-right"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","tft-player-pieces"],["flush-element"],["text","\\n"],["block",["each"],[["get",["pieces"]]],null,5],["block",["each"],[["get",["piecePlaceholders"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tft-player-piece tft-player-piece-placeholder"],["flush-element"],["close-element"],["text","\\n"]],"locals":["placeholder"]},{"statements":[["text","            "],["open-element","p",[]],["static-attr","class","postgame-tft-piece-tooltip-item"],["flush-element"],["append",["unknown",["item","name"]],false],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","                "],["append",["helper",["if"],[["get",["traitIndex"]]," : "],null],false],["text","\\n                "],["append",["unknown",["trait","name"]],false],["text","\\n"]],"locals":["trait","traitIndex"]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-tft-piece-tooltip"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","postgame-tft-piece-tooltip-champ"],["flush-element"],["append",["unknown",["piece","name"]],false],["close-element"],["text","\\n            "],["open-element","p",[]],["static-attr","class","postgame-tft-piece-tooltip-traits"],["flush-element"],["text","\\n"],["block",["each"],[["get",["piece","traits"]]],null,2],["text","            "],["close-element"],["text","\\n"],["block",["each"],[["get",["piece","items"]]],null,1],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","tft-player-piece-item"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["item","icon"]],");"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["tft-player-piece piece-level-",["unknown",["piece","level"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["piece","icon"]],");"]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","piece-inner-border"],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["static-attr","class","tft-player-piece-item-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["piece","items"]]],null,4],["text","        "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],3],["text","      "],["close-element"],["text","\\n"]],"locals":["piece"]},{"statements":[["text","        "],["open-element","p",[]],["static-attr","class","postgame-tft-piece-tooltip-item"],["flush-element"],["append",["unknown",["augment","name"]],false],["close-element"],["text","\\n"]],"locals":["augment"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","postgame-tft-piece-tooltip-champ"],["flush-element"],["text","\\n          "],["append",["unknown",["augmentContainer","portalName"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-tft-piece-tooltip-item"],["flush-element"],["text","\\n          "],["append",["unknown",["augmentContainer","name"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-tft-piece-tooltip postgame-tft-augment-tooltip"],["flush-element"],["text","\\n"],["block",["if"],[["get",["augmentContainer","hasPortal"]]],null,7],["text","      "],["open-element","div",[]],["static-attr","class","postgame-tft-piece-tooltip-champ"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_tft_augment_tooltip_augments"]],false],["text","\\n      "],["close-element"],["text","\\n"],["block",["each"],[["get",["augments"]]],null,6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tft-player-piece-item"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["augment","icon"]],");"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["augment"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","postgame-tft-piece-tooltip postgame-tft-player-tooltip"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-tft-piece-tooltip-champ"],["flush-element"],["append",["unknown",["playbook","name"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tft-player-piece tft-player-playbook"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","tft-player-playbook-container"],["dynamic-attr","src",["unknown",["playbook","iconSmall"]],null],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],10],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["playbook","name"]]],null,11]],"locals":[]},{"statements":[["block",["if"],[["get",["playbook"]]],null,12]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["isFriendRequestDisabled","isReportDisabled","sendFriendRequest","showReportDialog","isInviteDisabled","showInviteButton"],[["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],"sendFriendRequest","showReportDialog",["get",["isInviteDisabled"]],["get",["showInviteButton"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["tft-player-rank tft-rank-place-",["unknown",["player","rank"]]]]],["flush-element"],["append",["unknown",["player","rank"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "S0mK5HdZ",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\tft-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\components\\\\tft-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["dynamic-attr","id",["concat",["tft-tooltip-",["unknown",["tooltipId"]]]]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(6),
-          l = (a = n(101)) && a.__esModule ? a : { default: a };
-        n(102);
+        var n,
+          s = a(1),
+          o = a(6),
+          l = (n = a(101)) && n.__esModule ? n : { default: n };
+        a(102);
         const i = s.UIKit.getVignetteCelebrationManager();
         var r = s.Ember.Component.extend({
           classNames: [`${o.PLUGIN_NAME}-reward-celebration`],
@@ -6244,50 +6257,50 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "RdRVhk3p",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\lib\\\\reward-celebration\\\\addon\\\\templates\\\\reward-celebration.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\lib\\\\reward-celebration\\\\addon\\\\styles\\\\reward-celebration.styl\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","rewards-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["rewards"]]],null,2],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","reward-select"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectReward",["get",["reward"]]],null],null],["static-attr","class","reward-select-button"],["dynamic-attr","disabled",["unknown",["reward","isSelected"]],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","celebration_select_text"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["dimming-filter ",["helper",["if"],[["get",["reward","isSelected"]],"selected"],null]," ",["helper",["if"],[["get",["softSelectionMade"]],"dimmed"],null]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","radial-glow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward ",["helper",["if"],[["get",["selectable"]],"selectable"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["selectable"]]],null,1],["text","    "],["open-element","img",[]],["static-attr","class","reward-icon"],["dynamic-attr","src",["unknown",["reward","iconUrl"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","reward-description"],["flush-element"],["append",["unknown",["reward","description"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["selectable"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":["reward"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        n.r(t);
+        a.r(t);
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const { RunMixin: s } = a.EmberAddons.EmberLifeline,
+        var n = a(1);
+        const { RunMixin: s } = n.EmberAddons.EmberLifeline,
           o = "/lol-summoner/v1/current-summoner",
           l = "/lol-lobby/v2/party/eog-status",
-          i = a.Ember.Object.extend(a.Ember.PromiseProxyMixin);
-        var r = a.Ember.Component.extend(s, {
+          i = n.Ember.Object.extend(n.Ember.PromiseProxyMixin);
+        var r = n.Ember.Component.extend(s, {
           classNames: ["strawberry-postgame-root-component"],
-          parties: a.Ember.inject.service(),
-          postgame: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          remedy: a.Ember.inject.service(),
-          gameclientPostgame: a.Ember.inject.service(),
-          gameDataService: a.Ember.inject.service("game-data"),
-          eogStats: a.Ember.computed.alias("postgame.eogStatsBlock"),
-          eogPlayerStatsAsText: a.Ember.computed("postgame", function () {
+          parties: n.Ember.inject.service(),
+          postgame: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          remedy: n.Ember.inject.service(),
+          gameclientPostgame: n.Ember.inject.service(),
+          gameDataService: n.Ember.inject.service("game-data"),
+          eogStats: n.Ember.computed.alias("postgame.eogStatsBlock"),
+          eogPlayerStatsAsText: n.Ember.computed("postgame", function () {
             const e = this.get("postgame.eogStatsBlock");
             let t = "";
             if (e && e.localPlayer)
-              for (const n in e.localPlayer)
-                t += `${n}: ${e.localPlayer[n]}<br/>`;
+              for (const a in e.localPlayer)
+                t += `${a}: ${e.localPlayer[a]}<br/>`;
             return t;
           }),
-          isCustomGame: a.Ember.computed.alias("postgame.isCustomGame"),
-          gameMode: a.Ember.computed.alias(
+          isCustomGame: n.Ember.computed.alias("postgame.isCustomGame"),
+          gameMode: n.Ember.computed.alias(
             "gameflow.gameflowSession.gameData.queue.gameMode",
           ),
-          shouldShowGameClientStats: a.Ember.computed(
+          shouldShowGameClientStats: n.Ember.computed(
             "gameclientPostgame.lolGameClientStats",
             "postgame.eogStatsBlock",
             function () {
@@ -6297,7 +6310,7 @@
               );
             },
           ),
-          gameId: a.Ember.computed(
+          gameId: n.Ember.computed(
             "eogStats.gameId",
             "gameclientPostgame.lolGameClientStats.statsBlock.gameId",
             function () {
@@ -6311,7 +6324,7 @@
               );
             },
           ),
-          championDataProxy: a.Ember.computed(
+          championDataProxy: n.Ember.computed(
             "gameclientPostgame.lolGameClientStats.statsBlock.players.@each",
             function () {
               const e = this.get(
@@ -6323,10 +6336,10 @@
                   promise: Promise.all(
                     e.map(async (e) => {
                       const t = e.championId,
-                        n = e.championSkinId,
-                        s = this.generateChampionDataId(t, n),
+                        a = e.championSkinId,
+                        s = this.generateChampionDataId(t, a),
                         { skins: o } =
-                          await a.ChampionAssetsManager.getChampionAssetsByChampionId(
+                          await n.ChampionAssetsManager.getChampionAssetsByChampionId(
                             t,
                           );
                       let l;
@@ -6353,10 +6366,10 @@
               );
             },
           ),
-          eogChampionAssets: a.Ember.computed.alias(
+          eogChampionAssets: n.Ember.computed.alias(
             "championDataProxy.content",
           ),
-          gameClientStats: a.Ember.computed(
+          gameClientStats: n.Ember.computed(
             "gameclientPostgame",
             "postgame.localSummoner.puuid",
             "eogChampionAssets",
@@ -6365,8 +6378,8 @@
                 t = this.get(
                   "gameclientPostgame.lolGameClientStats.statsBlock.players",
                 ),
-                n = this.get("eogChampionAssets");
-              if (n?.length)
+                a = this.get("eogChampionAssets");
+              if (a?.length)
                 return (
                   t.forEach(function (e, t) {
                     (e.puuid = e.PUUID),
@@ -6385,25 +6398,25 @@
                       (e.level = e.championLevel),
                       (e.spell1Id = e.summonerSpell1),
                       (e.spell2Id = e.summonerSpell2),
-                      (e.skinSplashPath = n[t].skinSplashPath),
-                      (e.skinTilePath = n[t].tilePath),
+                      (e.skinSplashPath = a[t].skinSplashPath),
+                      (e.skinTilePath = a[t].tilePath),
                       (e.augments = e.augmentPlatformIds || []);
                   }, this),
                   e.toString()
                 );
             },
           ),
-          forwardButtonText: a.Ember.computed("selectedTab", function () {
+          forwardButtonText: n.Ember.computed("selectedTab", function () {
             return this.get("tra.career_postgame_button_play_again");
           }),
           forwardHoverSound: "/fe/lol-postgame/sfx-nav-button-play-hover.ogg",
           forwardClickSound: "/fe/lol-postgame/sfx-nav-button-play-click.ogg",
           init() {
             this._super(...arguments),
-              (this.binding = a.dataBinding.bindTo(a.socket)),
+              (this.binding = n.dataBinding.bindTo(n.socket)),
               this.binding.observe(o, this, this._handleCurrentSummoner),
               this.binding.observe(l, this, this._handlePartyStatus),
-              this.set("extEmberModel", a.extEmberModel),
+              this.set("extEmberModel", n.extEmberModel),
               this.get("remedy");
           },
           didInsertElement() {
@@ -6431,7 +6444,7 @@
               });
           },
           hasIntroAnimationPlayed: !1,
-          animationsEnabled: a.Ember.computed(
+          animationsEnabled: n.Ember.computed(
             "postgame.largeAreaAnimationsEnabled",
             "postgame.disableEogAnimations",
             function () {
@@ -6441,7 +6454,7 @@
               );
             },
           ),
-          willAnimate: a.Ember.computed(
+          willAnimate: n.Ember.computed(
             "hasIntroAnimationPlayed",
             "animationsEnabled",
             function () {
@@ -6451,26 +6464,21 @@
               );
             },
           ),
-          animationObserver: a.Ember.on(
+          animationObserver: n.Ember.on(
             "didInsertElement",
-            a.Ember.observer(
-              "animationsEnabled",
-              "isProgressionTabSelected",
-              function () {
-                this.get("animationsEnabled")
-                  ? this.get("isProgressionTabSelected") &&
-                    (this.get("hasIntroAnimationPlayed") ||
-                      a.Ember.run.scheduleOnce(
-                        "afterRender",
-                        this,
-                        this._playIntroAnimation,
-                      ))
-                  : this.set("hasIntroAnimationPlayed", !1);
-              },
-            ),
+            n.Ember.observer("animationsEnabled", function () {
+              this.get("animationsEnabled")
+                ? this.get("hasIntroAnimationPlayed") ||
+                  n.Ember.run.scheduleOnce(
+                    "afterRender",
+                    this,
+                    this._playIntroAnimation,
+                  )
+                : this.set("hasIntroAnimationPlayed", !1);
+            }),
           ),
           _playIntroAnimation() {
-            const e = new a.gsap.TimelineMax({ paused: !0 });
+            const e = new n.gsap.TimelineMax({ paused: !0 });
             e.add(() => {
               this.set("isAnimating", !0);
             }, "start+=0.5"),
@@ -6482,8 +6490,8 @@
               }, "start+=4.3"),
               e.play();
           },
-          isTempPageNotAdded: a.Ember.computed.not("hasAddedTempPage"),
-          hasPlayAgainOverride: a.Ember.computed(
+          isTempPageNotAdded: n.Ember.computed.not("hasAddedTempPage"),
+          hasPlayAgainOverride: n.Ember.computed(
             "extEmberModel.playAgainOverride",
             "eogStats.gameId",
             function () {
@@ -6510,13 +6518,13 @@
             return this.get("parties").playAgain();
           },
           _leavePostgame() {
-            (0, a.dataBinding)("/lol-end-of-game", a.socket).post(
+            (0, n.dataBinding)("/lol-end-of-game", n.socket).post(
               "/v1/state/dismiss-stats",
             );
           },
           _showVerbalAbuseRemedyModal() {
             this.set("hasShownVerbalAbuseRemedyModal", !0),
-              a.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal();
+              n.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal();
           },
           actions: {
             copyEOGDataToClipboard() {
@@ -6541,27 +6549,705 @@
                 : this._leavePostgame();
             },
             onButtonClick() {
-              const e = this.get("remedy");
-              this.get("isProgressionTabSelected")
-                ? this.set("isContinueButtonClicked", !0)
-                : e.couldShowRemedyVerbalAbuseModal(this.get("gameId")) &&
-                    !this.get("hasShownVerbalAbuseRemedyModal")
-                  ? this._showVerbalAbuseRemedyModal()
-                  : this._playAgain().catch(() => {
-                      this._leavePostgame();
-                    });
+              this.get("remedy").couldShowRemedyVerbalAbuseModal(
+                this.get("gameId"),
+              ) && !this.get("hasShownVerbalAbuseRemedyModal")
+                ? this._showVerbalAbuseRemedyModal()
+                : this._playAgain().catch(() => {
+                    this._leavePostgame();
+                  });
             },
           },
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const { RunMixin: s } = a.EmberAddons.EmberLifeline;
-        var o = a.Ember.Component.extend(s, {
+        var n,
+          s = a(1),
+          o = a(3),
+          l = a(15),
+          i = (n = a(14)) && n.__esModule ? n : { default: n };
+        var r = s.Ember.Component.extend(i.default, {
+          classNames: ["strawberry-scoreboard-root-component"],
+          gameflow: s.Ember.inject.service(),
+          postgame: s.Ember.inject.service(),
+          hasScoreboardAnimationPlayed: !1,
+          hasCelebratedHonor: !1,
+          isContinueButtonClicked: !1,
+          showTeamIntroAnimation: !1,
+          backgroundMusic: s.Ember.computed.alias(
+            "gameflow.map.assets.postgame-ambience-loop-sound",
+          ),
+          init() {
+            this._super(...arguments),
+              this.set(
+                "statSwitcherStatName1",
+                o.STAT_SWITCHER_STATS.DAMAGE_DEALT,
+              ),
+              this.set("statSwitcherStatName2", o.STAT_SWITCHER_STATS.GOLD),
+              s.Telemetry.startTracingEvent(
+                l.TELEMETRY_EVENT_NAMES.TIME_ON_SCOREBOARD_SCREEN,
+              );
+          },
+          didInsertElement() {
+            this._super(...arguments),
+              this.get("hasScoreboardAnimationPlayed") ||
+                s.Ember.run.scheduleOnce(
+                  "afterRender",
+                  this,
+                  this._playScoreboardAnimation,
+                ),
+              this.addObserver(
+                "backgroundMusic",
+                this,
+                "_handleBackgroundMusic",
+              ),
+              this._handleBackgroundMusic();
+          },
+          willDestroyElement() {
+            this._super(...arguments);
+            const e = this.get("animationTimeline");
+            e && e.kill(),
+              s.Telemetry.endTracingEvent(
+                l.TELEMETRY_EVENT_NAMES.TIME_ON_SCOREBOARD_SCREEN,
+              );
+            const t = this.get("_bgMusic");
+            t && t.fadeOut(void 0, { stop: !0 }),
+              this.removeObserver(
+                "backgroundMusic",
+                this,
+                "_handleBackgroundMusic",
+              );
+          },
+          addNonZeroStatOptions: (e, t, a) => t.concat(e.filter((e) => !!a[e])),
+          animationsEnabled: s.Ember.computed(
+            "postgame.largeAreaAnimationsEnabled",
+            "postgame.disableEogAnimations",
+            function () {
+              return (
+                this.get("postgame.largeAreaAnimationsEnabled") &&
+                !this.get("postgame.disableEogAnimations")
+              );
+            },
+          ),
+          statSwitcher1Options: s.Ember.computed(
+            "highestStatValueByStatMap",
+            function () {
+              const e = this.get("highestStatValueByStatMap");
+              return this.addNonZeroStatOptions(
+                [o.STAT_SWITCHER_STATS.CC_SCORE],
+                [
+                  o.STAT_SWITCHER_STATS.DAMAGE_DEALT,
+                  o.STAT_SWITCHER_STATS.DAMAGE_TAKEN,
+                ],
+                e,
+              );
+            },
+          ),
+          statSwitcher2Options: s.Ember.computed(
+            "highestStatValueByStatMap",
+            function () {
+              const e = this.get("highestStatValueByStatMap");
+              return this.addNonZeroStatOptions(
+                [o.STAT_SWITCHER_STATS.VISION_SCORE],
+                [o.STAT_SWITCHER_STATS.GOLD, o.STAT_SWITCHER_STATS.CREEP_SCORE],
+                e,
+              );
+            },
+          ),
+          highestStatValueByStatMap: s.Ember.computed(
+            "eogStats.teams.players.@each.stats",
+            function () {
+              const e = {};
+              return (
+                this.get("eogStats.teams").forEach((t) => {
+                  t.players.forEach((t) => {
+                    t.stats &&
+                      Object.values(o.STAT_SWITCHER_STATS).forEach((a) => {
+                        e[a] = Math.max(e[a] || 0, t.stats[a] || 0);
+                      });
+                  });
+                }),
+                e
+              );
+            },
+          ),
+          _handleBackgroundMusic() {
+            this.get("backgroundMusic") &&
+              !this.get("_bgMusic") &&
+              this.set(
+                "_bgMusic",
+                this.playBackgroundMusic(this.get("backgroundMusic")),
+              );
+          },
+          _playScoreboardAnimation() {
+            const e = this.$(".strawberry-scoreboard-root-content-container"),
+              t = s.gsap.Linear.easeNone;
+            if (this.get("animationsEnabled")) {
+              let a = this.get("animationTimeline");
+              a && a.isActive() && a.kill(),
+                (a = new s.gsap.TimelineMax({
+                  paused: !0,
+                  onComplete: () => {
+                    this.sendAction("updateScoreboardAnimation", !0);
+                  },
+                })),
+                e &&
+                  a.fromTo(
+                    e,
+                    0.33,
+                    { css: { opacity: 0 }, ease: t },
+                    { css: { opacity: 1 } },
+                    "start+=0",
+                  ),
+                this.set("animationTimeline", a),
+                a.play(),
+                this.set("showTeamIntroAnimation", !0);
+              this.get("isContinueButtonClicked") ||
+                this.playSound("sfx-eog-chaos-order.ogg");
+            }
+          },
+          actions: {
+            setSelectedStat: function (e, t) {
+              this.set(`statSwitcherStatName${t}`, e);
+            },
+            updateHonorCelebrationAnimation(e) {
+              this.sendAction("updateHonorCelebrationAnimation", e);
+            },
+          },
+        });
+        t.default = r;
+      },
+      (e, t, a) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var n = a(1),
+          s = n.Ember.Component.extend({
+            classNames: ["scoreboard-header-component"],
+            classNameBindings: ["team.isPlayerTeam"],
+            showScoreboardColumnIcons: n.Ember.computed.equal("index", 0),
+            teamGoldLoc: n.Ember.computed(
+              "team.stats.GOLD_EARNED",
+              "locale",
+              function () {
+                return (this.get("team.stats.GOLD_EARNED") || 0).toLocaleString(
+                  this.get("locale"),
+                );
+              },
+            ),
+            teamNameLoc: n.Ember.computed("index", "tra.ready", function () {
+              const e = this.get("index") + 1;
+              return this.get("tra").formatString(
+                "postgame_scoreboard_header_team_label",
+                { teamNumber: e },
+              );
+            }),
+            actions: {
+              selectStat: function (e, t) {
+                this.sendAction("setSelectedStat", e, t);
+              },
+            },
+          });
+        t.default = s;
+      },
+      (e, t, a) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var n,
+          s = a(1),
+          o = a(107),
+          l = a(108),
+          i = (n = a(14)) && n.__esModule ? n : { default: n };
+        var r = s.Ember.Component.extend(i.default, {
+          classNames: ["scoreboard-row-component"],
+          classNameBindings: [
+            "player.isLocalPlayer",
+            "player.leaver",
+            "team.isPlayerTeam:is-ally",
+            "showNotInChat:not-in-chat",
+          ],
+          endOfGameService: s.Ember.inject.service("end-of-game"),
+          postgame: s.Ember.inject.service(),
+          parties: s.Ember.inject.service(),
+          gameflow: s.Ember.inject.service(),
+          playerActions: s.Ember.inject.service(),
+          chatMessages: s.Ember.inject.service(),
+          honor: s.Ember.inject.service(),
+          challenges: s.Ember.inject.service(),
+          currentLevel: s.Ember.computed.alias(
+            "topMostProgressedChallenge.currentLevel",
+          ),
+          nextLevel: s.Ember.computed.alias(
+            "topMostProgressedChallenge.nextLevel",
+          ),
+          isLeaver: s.Ember.computed.bool("player.leaver"),
+          teamChoices: s.Ember.computed.readOnly("honor.teamChoices"),
+          localPlayerChallengesData: s.Ember.computed.readOnly(
+            "challenges.localPlayerChallengesData",
+          ),
+          isRowInitialized: !1,
+          hasScoreboardAnimationPlayed: !1,
+          hasCelebratedHonor: !1,
+          animationsEnabled: !0,
+          init: function () {
+            this._super(...arguments),
+              (this.challengesBinding = (0, s.dataBinding)(
+                "/lol-challenges",
+                s.socket,
+              )),
+              this.setupUpdatedChallengeListener(this.get("player")),
+              this._initializeAnimationData();
+          },
+          willDestroyElement: function () {
+            this._super(...arguments),
+              this.challengesBinding.unobserve(
+                this.updatedChallengesPath,
+                this,
+              );
+          },
+          setupUpdatedChallengeListener(e) {
+            return (0, s.dataBinding)("/lol-summoner")
+              .get(`/v1/summoners/${e.summonerId}`)
+              .then((e) => {
+                if (e) {
+                  const { puuid: t, gameName: a, tagLine: n } = e;
+                  this.set("puuid", t),
+                    this.set("gameName", a),
+                    this.set("tagLine", n);
+                  const s = this.get("gameId");
+                  (this.updatedChallengePath = `/lol-challenges/v1/updated-challenges/${s}/${t}`),
+                    this.challengesBinding.observe(
+                      `/v1/updated-challenges/${s}/${t}`,
+                      this,
+                      this.handleUpdatedChallenge,
+                    );
+                }
+              });
+          },
+          handleUpdatedChallenge(e) {
+            this.set("updatedChallenges", e);
+          },
+          isPlayerMuted: s.Ember.computed(
+            "postgame.playerMuteStatus",
+            "player.puuid",
+            function () {
+              return this._getMuteStatus(l.MUTE_TYPES.isPlayerMuted);
+            },
+          ),
+          isSettingsMuted: s.Ember.computed(
+            "postgame.playerMuteStatus",
+            "player.puuid",
+            function () {
+              return this._getMuteStatus(l.MUTE_TYPES.isSettingsMuted);
+            },
+          ),
+          isSystemMuted: s.Ember.computed(
+            "postgame.playerMuteStatus",
+            "player.puuid",
+            function () {
+              return this._getMuteStatus(l.MUTE_TYPES.isSystemMuted);
+            },
+          ),
+          isPlayerMuteNotToggleable: s.Ember.computed.or(
+            "isSettingsMuted",
+            "isSystemMuted",
+          ),
+          isPlayerMuteToggleable: s.Ember.computed.not(
+            "isPlayerMuteNotToggleable",
+          ),
+          showPlayerMute: s.Ember.computed(
+            "isPlayerMuted",
+            "isSettingsMuted",
+            function () {
+              const e = this.get("isPlayerMuted"),
+                t = this.get("isSettingsMuted"),
+                a = this.get("isSystemMuted"),
+                n = t || e || a;
+              return this.animateMuteStatusUpdate(n), n;
+            },
+          ),
+          topMostProgressedChallenge: s.Ember.computed(
+            "updatedChallenges",
+            function () {
+              const e = this.get("updatedChallenges") || {},
+                t = Object.values(e).filter((e) => !e.isCapstone);
+              return (0, o.getFirstChallengeSlotScore)(t);
+            },
+          ),
+          showChallengeTooltipComparison: s.Ember.computed(
+            "localPlayerChallengesData",
+            "isLocalPlayer",
+            function () {
+              const e = this.get("isLocalPlayer");
+              return this.get("localPlayerChallengesData") && !e;
+            },
+          ),
+          updatedChallengeIcon: s.Ember.computed(
+            "topMostProgressedChallenge.levelToIconPath",
+            "currentLevel",
+            "nextLevel",
+            function () {
+              const e =
+                  this.get("topMostProgressedChallenge.levelToIconPath") || {},
+                t = this.get("currentLevel");
+              return (
+                e[
+                  t !== s.SharedChallengesConstants.CHALLENGE_LEVELS.NONE
+                    ? t
+                    : this.get("nextLevel")
+                ] || ""
+              );
+            },
+          ),
+          isInChatRoom: s.Ember.computed(
+            "chatMessages.summonerIdsInChat",
+            "player.summonerId",
+            function () {
+              const e = this.get("player.summonerId");
+              return (
+                this.get("chatMessages.summonerIdsInChat") || []
+              ).includes(e);
+            },
+          ),
+          showNotInChat: s.Ember.computed(
+            "isInChatRoom",
+            "postgame.isLocalPlayerInGame",
+            function () {
+              const e = this.get("isInChatRoom"),
+                t = this.get("postgame.isLocalPlayerInGame");
+              return !e && t;
+            },
+          ),
+          displayedPosition: s.Ember.computed(
+            "player.detectedPosition",
+            "player.selectedPosition",
+            function () {
+              const e = this.get("player.detectedPosition"),
+                t = this.get("player.selectedPosition"),
+                a = (e || t || "").toLowerCase();
+              return "none" === a ? "" : a;
+            },
+          ),
+          displayedPositionTranslatedText: s.Ember.computed(
+            "tra",
+            "displayedPosition",
+            function () {
+              const e = this.get("displayedPosition");
+              return e
+                ? this.get("tra").get(
+                    `postgame_scoreboard_lane_position_name_${e}`,
+                  )
+                : "";
+            },
+          ),
+          skinSplashStyle: s.Ember.computed(
+            "player.skinSplashPath",
+            function () {
+              return `background-image: url(${this.get("player.skinSplashPath")})`;
+            },
+          ),
+          shouldShowButtons: s.Ember.computed(
+            "player.botPlayer",
+            "player.isLocalPlayer",
+            function () {
+              return (
+                !this.get("player.botPlayer") &&
+                !this.get("player.isLocalPlayer")
+              );
+            },
+          ),
+          isFriendRequestDisabled: s.Ember.computed(
+            "player.summondId",
+            "postgame.friendsList.[]",
+            "playerActions.alreadyFriendRequestedList.[]",
+            function () {
+              const e = this.get("player.summonerId"),
+                t = this.get("playerActions.alreadyFriendRequestedList") || [],
+                a = this.get("postgame.friendsList") || [],
+                n = Boolean(a.find((t) => t.summonerId === e)),
+                s = Boolean(t.find((t) => t.summonerId === e));
+              return n || s;
+            },
+          ),
+          isReportDisabled: s.Ember.computed(
+            "gameflow.isCustomGame",
+            "player.puuid",
+            "endOfGameService.reportedPlayers.[]",
+            function () {
+              if (this.get("gameflow.isCustomGame")) return !0;
+              const e = this.get("player.puuid");
+              return (
+                this.get("endOfGameService.reportedPlayers") || []
+              ).includes(e);
+            },
+          ),
+          isInviteDisabled: s.Ember.computed(
+            "team.isPlayerTeam",
+            "parties.enabled",
+            "gameflow.canInviteOthersAtEog",
+            "gameflow.lastQueuedMemberSummonerIds.[]",
+            "player.summonerId",
+            function () {
+              return !(
+                this.get("team.isPlayerTeam") &&
+                this.get("parties.enabled") &&
+                this.get("gameflow.canInviteOthersAtEog") &&
+                this.get("gameflow.lastQueuedMemberSummonerIds") &&
+                -1 ===
+                  this.get("gameflow.lastQueuedMemberSummonerIds").indexOf(
+                    this.get("player.summonerId"),
+                  )
+              );
+            },
+          ),
+          isPlayerBlocked: s.Ember.computed(
+            "playerActions.blockedPlayersList",
+            "player.summonerId",
+            function () {
+              const e = this.get("playerActions.blockedPlayerList") || [],
+                t = this.get("player.summonerId");
+              return Boolean(e.find((e) => e.summonerId === t));
+            },
+          ),
+          flyoutOptions: s.Ember.computed("player", function () {
+            return {
+              targetAnchor: { x: "center", y: "center" },
+              tooltipAnchor: { x: "center", y: "center" },
+              offset: { x: -30, y: 110 },
+              backdropCutout: null,
+              orientation: "right",
+              animated: !1,
+              caretless: !0,
+              closeWhenInsideClicked: !0,
+            };
+          }),
+          shouldShowPlayerHonorComponent: s.Ember.computed(
+            "postgame.isLocalPlayerInGame",
+            "honor.enabled",
+            "isLeaver",
+            "teamChoices.[]",
+            "player.summonerId",
+            function () {
+              const e = this.get("teamChoices"),
+                t = this.get("player.puuid"),
+                a = this.get("postgame.isLocalPlayerInGame"),
+                n = this.get("honor.enabled"),
+                s = this.get("isLeaver");
+              return e && e.includes(t) && a && n && !s;
+            },
+          ),
+          paredItems: s.Ember.computed("player.items", function () {
+            return this.get("player.items").slice(0, 5);
+          }),
+          _initializeAnimationData() {
+            s.gsapCustomEase.create(
+              "muteIn",
+              " M 0,0 C0.11,-0.56 0.18,1.11 0.5,1.11 0.61,1.06 0.68,1 1,1",
+            ),
+              s.gsapCustomEase.create("muteOut", "M 0,0 C0.66,0 0.86,0 1,1");
+          },
+          animateMuteStatusUpdate(e) {
+            const t = this.element.querySelector("#mute-indicator");
+            if (!t) return;
+            this.get("isRowInitialized")
+              ? this.animateMuteStatusToggle(e, t)
+              : this.animateMuteStatusInit(e, t),
+              this.set("prevIsPlayerMuted", e);
+          },
+          animateMuteStatusInit(e, t) {
+            this.set("isRowInitialized", !0),
+              e ? s.gsap.to(t, 0, { scale: 1 }) : s.gsap.to(t, 0, { scale: 0 });
+          },
+          animateMuteStatusToggle(e, t) {
+            this.get("prevIsPlayerMuted") !== e &&
+              (e
+                ? s.gsap.fromTo(
+                    t,
+                    0.3,
+                    { scale: 0 },
+                    { ease: "muteIn", scale: 1 },
+                  )
+                : s.gsap.fromTo(
+                    t,
+                    0.3,
+                    { scale: 1 },
+                    { ease: "muteOut", scale: 0 },
+                  ));
+          },
+          _getMuteStatus(e) {
+            const t = this.get("player.puuid"),
+              a = this.get("postgame.playerMuteStatus");
+            return !(!a || !(t in a)) && a[t][e];
+          },
+          actions: {
+            showPlayerActionsMenu: function () {
+              this.set("isPlayerActionsMenuOpen", !0);
+            },
+            hidePlayerActionsMenu: function () {
+              this.set("isPlayerActionsMenuOpen", !1);
+            },
+            sendFriendRequest: function (e) {
+              this.get("playerActions").sendFriendRequest(
+                e.summonerName,
+                e.displayName.playerNameFull,
+                e.puuid,
+              ),
+                this.playSound("sfx-uikit-click-generic.ogg");
+            },
+            inviteToParty: function (e) {
+              this.get("playerActions").inviteToParty(e);
+            },
+            showReportDialog: function (e) {
+              s.SharedReportModalApps.showReportModal(
+                e,
+                e.championSquarePortraitPath,
+              ),
+                this.playSound("sfx-uikit-click-generic.ogg");
+            },
+            confirmBlockPlayer: function (e) {
+              this.get("playerActions").confirmBlockPlayer(
+                e.displayName.playerNameFull,
+                e.summonerId,
+              );
+            },
+            viewProfile: function (e) {
+              this.get("playerActions").viewProfile(e.summonerId);
+            },
+            importItemSet: function (e) {
+              this.get("playerActions").importItemSet(e);
+            },
+            togglePlayerMute: function (e) {
+              const t = this.get("isPlayerMuted") || !1,
+                a = this.get("chatMessages"),
+                n = e.displayName.playerNameFull,
+                s = e.puuid;
+              a.updatePlayerMute(s, n, !t);
+            },
+            updateHonorCelebrationAnimation(e) {
+              this.sendAction("updateHonorCelebrationAnimation", e);
+            },
+          },
+        });
+        t.default = r;
+      },
+      (e, t, a) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.calculateEoGChallengeSlots = function (e, t, a) {
+            const n = [...Array(a).map((e) => null)];
+            if (!e.length && !t.length) return n;
+            for (let s = 0; s < a; s++) {
+              if (s === a - 1) {
+                n[s] = t.length >= 1 ? g(t) : h(e, s) || null;
+                break;
+              }
+              n[s] = h(e, s) || null;
+            }
+            return n;
+          }),
+          (t.getFirstChallengeSlotScore = h),
+          (t.sortChallengeUpdatesDesc = function (e, t) {
+            const a = d(e);
+            return d(t) - a;
+          }),
+          (t.sortEternalUpdatesDesc = function (e, t) {
+            const a = p(e);
+            return p(t) - a;
+          }),
+          (t.sortGroupedChallengeUpdates = function (e, t) {
+            const a = i[t.currentLevel] - i[e.currentLevel],
+              n = u(t) - u(e),
+              s = d(t) - d(e),
+              o = e.id - t.id;
+            return a || n || s || o;
+          });
+        var n = a(1);
+        const s = 10,
+          o = 50,
+          l = 100,
+          i = n.SharedChallengesConstants.CHALLENGE_LEVEL_TO_ORDINAL,
+          r = {
+            NONE: 1,
+            IRON: 2,
+            BRONZE: 3,
+            SILVER: 5,
+            GOLD: 8,
+            PLATINUM: 13,
+            DIAMOND: 21,
+            MASTER: 1,
+            GRANDMASTER: 1,
+            CHALLENGER: 1,
+          },
+          m = [
+            { TEAMWORK: 10, EXPERTISE: 5, IMAGINATION: 3, VETERANCY: 1 },
+            { EXPERTISE: 10, TEAMWORK: 5, IMAGINATION: 3, VETERANCY: 1 },
+            { IMAGINATION: 10, EXPERTISE: 5, TEAMWORK: 3, VETERANCY: 1 },
+            { VETERANCY: 13, EXPERTISE: 8, TEAMWORK: 5, IMAGINATION: 3 },
+            { TEAMWORK: 10, EXPERTISE: 8, IMAGINATION: 6, VETERANCY: 3 },
+          ],
+          c = [1, 3, 5, 8, 13];
+        function p(e) {
+          let t = 0;
+          const a = e.level >= c.length ? 1 : c[e.level],
+            n = 1 + (parseFloat(e.newProgressPercent) || 0) / 100,
+            s = Boolean(e.isMilestone),
+            i = Boolean(e.isNewBest);
+          return (t = s ? a * n * o : a * n), i ? t * l : t;
+        }
+        function d(e, t = null) {
+          let a = 0;
+          const n = null !== t ? m[t][e.category] : 1,
+            o = r[e.currentLevel],
+            l = e.nextThreshold - e.currentThreshold,
+            i = 1 + (e.currentValue - e.currentThreshold) / l;
+          a = e.currentLevel !== e.previousLevel ? n * o * s : n * o * i;
+          return (e.priority || 1) * a;
+        }
+        function u(e) {
+          const t = e.currentLevel !== e.previousLevel,
+            a = e.nextThreshold - e.currentThreshold,
+            n = e.currentValue - e.currentThreshold;
+          return t ? 0 : 1 + n / a;
+        }
+        function g(e) {
+          return e
+            .sort((e, t) => {
+              const a = p(e);
+              return p(t) - a;
+            })
+            .shift();
+        }
+        function h(e, t) {
+          return e
+            .sort((e, a) => {
+              const n = d(e, t);
+              return d(a, t) - n;
+            })
+            .shift();
+        }
+      },
+      (e, t) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.MUTE_TYPES = void 0);
+        t.MUTE_TYPES = {
+          isPlayerMuted: "isPlayerMuted",
+          isSettingsMuted: "isSettingsMuted",
+          isSystemMuted: "isSystemMuted",
+        };
+      },
+      (e, t, a) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var n = a(1);
+        const { RunMixin: s } = n.EmberAddons.EmberLifeline;
+        var o = n.Ember.Component.extend(s, {
           classNames: ["render-timer-component"],
           didInsertElement: function () {
             this._super(...arguments);
@@ -6587,82 +7273,82 @@
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["progression-modal-eternals-token-container"],
             index: null,
-            isNewMilestone: a.Ember.computed.bool("eternal.isMilestone"),
-            eternalLevel: a.Ember.computed.alias("eternal.level"),
-            isLevelFiveOrGreater: a.Ember.computed("eternalLevel", function () {
+            isNewMilestone: n.Ember.computed.bool("eternal.isMilestone"),
+            eternalLevel: n.Ember.computed.alias("eternal.level"),
+            isLevelFiveOrGreater: n.Ember.computed("eternalLevel", function () {
               return (
                 (this.get("eternalLevel") || 0) >=
-                a.SharedChallengesConstants.REKINDLED_MILESTONE_MARKER
+                n.SharedChallengesConstants.REKINDLED_MILESTONE_MARKER
               );
             }),
-            isPersonalBest: a.Ember.computed.and(
+            isPersonalBest: n.Ember.computed.and(
               "eternal.isNewBest",
               "isLevelFiveOrGreater",
             ),
-            headerValue: a.Ember.computed(
+            headerValue: n.Ember.computed(
               "isLevelFiveOrGreater",
               "eternalLevel",
               function () {
                 const e = this.get("eternalLevel");
                 return this.get("isLevelFiveOrGreater")
                   ? e
-                  : `${e}/${a.SharedChallengesConstants.REKINDLED_MILESTONE_MARKER}`;
+                  : `${e}/${n.SharedChallengesConstants.REKINDLED_MILESTONE_MARKER}`;
               },
             ),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(15),
-          o = n(3);
-        const { RunMixin: l } = a.EmberAddons.EmberLifeline,
+        var n = a(1),
+          s = a(15),
+          o = a(3);
+        const { RunMixin: l } = n.EmberAddons.EmberLifeline,
           i = "/lol-summoner/v1/current-summoner",
           r = "/lol-lobby/v2/party/eog-status",
           m = "PROGRESSION",
           c = "SCOREBOARD",
-          p = a.Ember.Object.extend(a.Ember.PromiseProxyMixin);
-        var d = a.Ember.Component.extend(l, {
+          p = n.Ember.Object.extend(n.Ember.PromiseProxyMixin);
+        var d = n.Ember.Component.extend(l, {
           classNames: ["postgame-root-component"],
           classNameBindings: ["willAnimate:animating"],
-          parties: a.Ember.inject.service(),
-          postgame: a.Ember.inject.service(),
-          gameflow: a.Ember.inject.service(),
-          eternals: a.Ember.inject.service(),
-          remedy: a.Ember.inject.service(),
-          gameclientPostgame: a.Ember.inject.service(),
-          gameDataService: a.Ember.inject.service("game-data"),
-          perks: a.Ember.inject.service(),
+          parties: n.Ember.inject.service(),
+          postgame: n.Ember.inject.service(),
+          gameflow: n.Ember.inject.service(),
+          eternals: n.Ember.inject.service(),
+          remedy: n.Ember.inject.service(),
+          gameclientPostgame: n.Ember.inject.service(),
+          gameDataService: n.Ember.inject.service("game-data"),
+          perks: n.Ember.inject.service(),
           hasScoreboardAnimationPlayed: !1,
           hasCelebratedHonor: !1,
           isContinueButtonClicked: !1,
           hasShownVerbalAbuseRemedyModal: !1,
-          eogStats: a.Ember.computed.alias("postgame.eogStatsBlock"),
-          isCustomGame: a.Ember.computed.alias("postgame.isCustomGame"),
-          gameMode: a.Ember.computed.alias(
+          eogStats: n.Ember.computed.alias("postgame.eogStatsBlock"),
+          isCustomGame: n.Ember.computed.alias("postgame.isCustomGame"),
+          gameMode: n.Ember.computed.alias(
             "gameflow.gameflowSession.gameData.queue.gameMode",
           ),
-          shouldShowAdvancedDetailsButton: a.Ember.computed(
+          shouldShowAdvancedDetailsButton: n.Ember.computed(
             "gameMode",
             function () {
               return this.get("gameMode") !== o.CHERRY_GAME_MODE;
             },
           ),
-          shouldHideChatRoom: a.Ember.computed("gameMode", function () {
+          shouldHideChatRoom: n.Ember.computed("gameMode", function () {
             return this.get("gameMode") === o.CHERRY_GAME_MODE;
           }),
-          shouldShowGameClientStats: a.Ember.computed(
+          shouldShowGameClientStats: n.Ember.computed(
             "gameclientPostgame.lolGameClientStats",
             "postgame.eogStatsBlock",
             function () {
@@ -6672,7 +7358,7 @@
               );
             },
           ),
-          gameId: a.Ember.computed(
+          gameId: n.Ember.computed(
             "eogStats.gameId",
             "gameclientPostgame.lolGameClientStats.statsBlock.gameId",
             function () {
@@ -6686,7 +7372,7 @@
               );
             },
           ),
-          championDataProxy: a.Ember.computed(
+          championDataProxy: n.Ember.computed(
             "gameclientPostgame.lolGameClientStats.statsBlock.players.@each",
             function () {
               const e = this.get(
@@ -6698,10 +7384,10 @@
                   promise: Promise.all(
                     e.map(async (e) => {
                       const t = e.championId,
-                        n = e.championSkinId,
-                        s = this.generateChampionDataId(t, n),
+                        a = e.championSkinId,
+                        s = this.generateChampionDataId(t, a),
                         { skins: o } =
-                          await a.ChampionAssetsManager.getChampionAssetsByChampionId(
+                          await n.ChampionAssetsManager.getChampionAssetsByChampionId(
                             t,
                           );
                       let l;
@@ -6728,66 +7414,66 @@
               );
             },
           ),
-          eogChampionAssets: a.Ember.computed.alias(
+          eogChampionAssets: n.Ember.computed.alias(
             "championDataProxy.content",
           ),
-          gameClientStats: a.Ember.computed(
+          gameClientStats: n.Ember.computed(
             "gameclientPostgame",
             "postgame.localSummoner.puuid",
             "eogChampionAssets",
             function () {
               const e = this.get("postgame.localSummoner.puuid"),
                 t = [],
-                n = this.get("gameclientPostgame.lolGameClientStats"),
-                a = this.get(
+                a = this.get("gameclientPostgame.lolGameClientStats"),
+                n = this.get(
                   "gameclientPostgame.lolGameClientStats.statsBlock.players",
                 ),
                 s = this.get("eogChampionAssets"),
                 o = this.get("gameId");
               if (s?.length)
                 return (
-                  a.forEach(function (n, a) {
-                    const l = n.subteamId - 1;
+                  n.forEach(function (a, n) {
+                    const l = a.subteamId - 1;
                     (t[l] = t[l] || {}),
-                      (n.puuid = n.PUUID),
-                      (n.summonerId = n.summonerId || n.playerId),
-                      (n.stats = n.stats || {}),
-                      (n.stats.PLAYER_SUBTEAM = n.subteamId),
-                      (n.stats.PLAYER_SUBTEAM_PLACEMENT = n.subteamStanding),
-                      (n.stats.TOTAL_DAMAGE_TAKEN = n.damageTaken),
-                      (n.stats.TOTAL_DAMAGE_DEALT_TO_CHAMPIONS =
-                        n.damageDealtToChampions),
-                      (n.stats.GOLD_EARNED = n.goldEarned),
-                      (n.stats.CHAMPIONS_KILLED = n.playerKills),
-                      (n.stats.NUM_DEATHS = n.playerDeaths),
-                      (n.stats.ASSISTS = n.playerAssists),
-                      (n.items = n.itemIds),
-                      (n.level = n.championLevel),
-                      (n.spell1Id = n.summonerSpell1),
-                      (n.spell2Id = n.summonerSpell2),
-                      (n.skinSplashPath = s[a].skinSplashPath),
-                      (n.skinTilePath = s[a].tilePath),
-                      (n.augments = n.augmentPlatformIds || []),
-                      (n.gameId = o),
-                      (n.isLocalPlayer = n.PUUID === e),
+                      (a.puuid = a.PUUID),
+                      (a.summonerId = a.summonerId || a.playerId),
+                      (a.stats = a.stats || {}),
+                      (a.stats.PLAYER_SUBTEAM = a.subteamId),
+                      (a.stats.PLAYER_SUBTEAM_PLACEMENT = a.subteamStanding),
+                      (a.stats.TOTAL_DAMAGE_TAKEN = a.damageTaken),
+                      (a.stats.TOTAL_DAMAGE_DEALT_TO_CHAMPIONS =
+                        a.damageDealtToChampions),
+                      (a.stats.GOLD_EARNED = a.goldEarned),
+                      (a.stats.CHAMPIONS_KILLED = a.playerKills),
+                      (a.stats.NUM_DEATHS = a.playerDeaths),
+                      (a.stats.ASSISTS = a.playerAssists),
+                      (a.items = a.itemIds),
+                      (a.level = a.championLevel),
+                      (a.spell1Id = a.summonerSpell1),
+                      (a.spell2Id = a.summonerSpell2),
+                      (a.skinSplashPath = s[n].skinSplashPath),
+                      (a.skinTilePath = s[n].tilePath),
+                      (a.augments = a.augmentPlatformIds || []),
+                      (a.gameId = o),
+                      (a.isLocalPlayer = a.PUUID === e),
                       (t[l].players = t[l].players || []),
-                      t[l].players.push(n);
+                      t[l].players.push(a);
                   }, this),
                   t.forEach(
-                    (a) =>
-                      a.players.forEach(function (a) {
-                        const s = a.subteamId - 1;
+                    (n) =>
+                      n.players.forEach(function (n) {
+                        const s = n.subteamId - 1;
                         (t[s].stats = t[s].stats || {}),
-                          (t[s].stats.PLAYER_SUBTEAM = a.subteamId),
+                          (t[s].stats.PLAYER_SUBTEAM = n.subteamId),
                           (t[s].stats.PLAYER_SUBTEAM_PLACEMENT =
-                            a.subteamStanding),
+                            n.subteamStanding),
                           t[s].stats
                             ? (t[s].stats = this.sumStatsByKey(
                                 t[s].stats,
-                                a.stats,
+                                n.stats,
                               ))
-                            : (t[s].stats = Object.assign({}, a.stats)),
-                          e === a.PUUID && (n.localPlayer = a);
+                            : (t[s].stats = Object.assign({}, n.stats)),
+                          e === n.PUUID && (a.localPlayer = n);
                       }, this),
                     this,
                   ),
@@ -6797,8 +7483,8 @@
                       t.stats.PLAYER_SUBTEAM_PLACEMENT
                     );
                   }),
-                  (n.teams = t),
-                  n
+                  (a.teams = t),
+                  a
                 );
             },
           ),
@@ -6807,29 +7493,29 @@
             { name: "progression", value: m },
             { name: "scoreboard", value: c },
           ],
-          tabs: a.Ember.computed("selectedTab", function () {
+          tabs: n.Ember.computed("selectedTab", function () {
             const e = [],
               t = this.get("selectedTab"),
-              n = this.get("tabDefinitions"),
-              a = this.get("isCustomGame");
+              a = this.get("tabDefinitions"),
+              n = this.get("isCustomGame");
             return (
-              n.forEach((n) => {
-                (a && n.value === m) ||
+              a.forEach((a) => {
+                (n && a.value === m) ||
                   e.push({
-                    name: this.get(`tra.career_postgame_tab_${n.name}_name`),
-                    value: n.value,
-                    selected: n.value === t,
+                    name: this.get(`tra.career_postgame_tab_${a.name}_name`),
+                    value: a.value,
+                    selected: a.value === t,
                   });
               }),
               e
             );
           }),
-          selectedTab: a.Ember.computed("isCustomGame", function () {
+          selectedTab: n.Ember.computed("isCustomGame", function () {
             return this.get("isCustomGame") ? c : m;
           }),
-          isProgressionTabSelected: a.Ember.computed.equal("selectedTab", m),
-          isScoreboardTabSelected: a.Ember.computed.equal("selectedTab", c),
-          forwardButtonText: a.Ember.computed(
+          isProgressionTabSelected: n.Ember.computed.equal("selectedTab", m),
+          isScoreboardTabSelected: n.Ember.computed.equal("selectedTab", c),
+          forwardButtonText: n.Ember.computed(
             "selectedTab",
             "postgame.isClash",
             function () {
@@ -6844,23 +7530,23 @@
           forwardClickSound: "/fe/lol-postgame/sfx-nav-button-play-click.ogg",
           init() {
             this._super(...arguments),
-              (this.binding = a.dataBinding.bindTo(a.socket)),
+              (this.binding = n.dataBinding.bindTo(n.socket)),
               this.binding.observe(i, this, this._handleCurrentSummoner),
               this.binding.observe(r, this, this._handlePartyStatus),
-              this.set("extEmberModel", a.extEmberModel),
+              this.set("extEmberModel", n.extEmberModel),
               this.get("remedy");
           },
           didInsertElement() {
             this._super(...arguments),
               this._startCountdown(),
-              a.Telemetry.startTracingEvent(
+              n.Telemetry.startTracingEvent(
                 s.TELEMETRY_EVENT_NAMES.TIME_ON_EOG,
               );
           },
           willDestroyElement() {
             this._super(...arguments),
               this.cancelTask(this._proceedToScoreboardTimer),
-              a.Telemetry.endTracingEvent(s.TELEMETRY_EVENT_NAMES.TIME_ON_EOG),
+              n.Telemetry.endTracingEvent(s.TELEMETRY_EVENT_NAMES.TIME_ON_EOG),
               this._observedUpdateChallengesPath &&
                 this.binding.unobserve(
                   this._observedUpdateChallengesPath,
@@ -6871,9 +7557,9 @@
           },
           sumStatsByKey: function (e, t) {
             return (
-              Object.keys(t).forEach(function (n) {
-                n.includes("PLAYER_SUBTEAM") ||
-                  ((e[n] = e[n] || 0), (e[n] = e[n] + t[n]));
+              Object.keys(t).forEach(function (a) {
+                a.includes("PLAYER_SUBTEAM") ||
+                  ((e[a] = e[a] || 0), (e[a] = e[a] + t[a]));
               }),
               e
             );
@@ -6881,9 +7567,9 @@
           generateChampionDataId: function (e, t) {
             return 1e3 * e + t;
           },
-          gameIdObserver: a.Ember.on(
+          gameIdObserver: n.Ember.on(
             "init",
-            a.Ember.observer("eogStats.gameId", function () {
+            n.Ember.observer("eogStats.gameId", function () {
               const e = this.get("eogStats.gameId");
               e &&
                 (this._observedUpdateChallengesPath &&
@@ -6916,7 +7602,7 @@
               });
           },
           hasIntroAnimationPlayed: !1,
-          animationsEnabled: a.Ember.computed(
+          animationsEnabled: n.Ember.computed(
             "postgame.largeAreaAnimationsEnabled",
             "postgame.disableEogAnimations",
             function () {
@@ -6926,7 +7612,7 @@
               );
             },
           ),
-          willAnimate: a.Ember.computed(
+          willAnimate: n.Ember.computed(
             "hasIntroAnimationPlayed",
             "animationsEnabled",
             function () {
@@ -6936,16 +7622,16 @@
               );
             },
           ),
-          animationObserver: a.Ember.on(
+          animationObserver: n.Ember.on(
             "didInsertElement",
-            a.Ember.observer(
+            n.Ember.observer(
               "animationsEnabled",
               "isProgressionTabSelected",
               function () {
                 this.get("animationsEnabled")
                   ? this.get("isProgressionTabSelected") &&
                     (this.get("hasIntroAnimationPlayed") ||
-                      a.Ember.run.scheduleOnce(
+                      n.Ember.run.scheduleOnce(
                         "afterRender",
                         this,
                         this._playIntroAnimation,
@@ -6955,7 +7641,7 @@
             ),
           ),
           _playIntroAnimation() {
-            const e = new a.gsap.TimelineMax({ paused: !0 });
+            const e = new n.gsap.TimelineMax({ paused: !0 });
             e.add(() => {
               this.set("isAnimating", !0);
             }, "start+=0.5"),
@@ -6975,7 +7661,7 @@
             this.set("selectedTab", e);
           },
           timer: null,
-          hasTimer: a.Ember.computed("timer", function () {
+          hasTimer: n.Ember.computed("timer", function () {
             return null !== this.get("timer");
           }),
           _startCountdown() {
@@ -6997,32 +7683,32 @@
             const t = this.element.querySelector(
               ".career-postgame-countdown-meter",
             );
-            let n = this.get("timeAnimationTween");
-            n
-              ? n.play(0)
-              : ((n = a.gsap.TweenLite.to(t, e, {
+            let a = this.get("timeAnimationTween");
+            a
+              ? a.play(0)
+              : ((a = n.gsap.TweenLite.to(t, e, {
                   css: { scaleX: 0 },
                   ease: "Linear.easeNone",
                 })),
-                this.set("timeAnimationTween", n));
+                this.set("timeAnimationTween", a));
           },
-          showAddPerksPageButton: a.Ember.computed(
+          showAddPerksPageButton: n.Ember.computed(
             "perks.isCurrentPageTemporary",
             "perks.isCustomPageCreationUnlocked",
             "hasAddedTempPage",
             function () {
               const e = this.get("perks.isCurrentPageTemporary"),
                 t = this.get("perks.isCustomPageCreationUnlocked"),
-                n = this.get("hasAddedTempPage");
-              return t && (e || n);
+                a = this.get("hasAddedTempPage");
+              return t && (e || a);
             },
           ),
-          isTempPageNotAdded: a.Ember.computed.not("hasAddedTempPage"),
-          addPerksPageButtonEnabled: a.Ember.computed.and(
+          isTempPageNotAdded: n.Ember.computed.not("hasAddedTempPage"),
+          addPerksPageButtonEnabled: n.Ember.computed.and(
             "perks.canAddCustomPage",
             "isTempPageNotAdded",
           ),
-          addRunePageButtonDisabledText: a.Ember.computed(
+          addRunePageButtonDisabledText: n.Ember.computed(
             "perks.canAddCustomPage",
             "hasAddedTempPage",
             function () {
@@ -7033,7 +7719,7 @@
                 : this.get("tra.perks_add_rune_page_button_disabled_max_pages");
             },
           ),
-          hasPlayAgainOverride: a.Ember.computed(
+          hasPlayAgainOverride: n.Ember.computed(
             "extEmberModel.playAgainOverride",
             "eogStats.gameId",
             function () {
@@ -7060,13 +7746,13 @@
             return this.get("parties").playAgain();
           },
           _leavePostgame() {
-            (0, a.dataBinding)("/lol-end-of-game", a.socket).post(
+            (0, n.dataBinding)("/lol-end-of-game", n.socket).post(
               "/v1/state/dismiss-stats",
             );
           },
           _showVerbalAbuseRemedyModal() {
             this.set("hasShownVerbalAbuseRemedyModal", !0),
-              a.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal();
+              n.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal();
           },
           actions: {
             exitPostgame() {
@@ -7098,7 +7784,7 @@
             },
             displayAdvancedDetails: function () {
               const e = () => this.set("isDetailsTabOpen", !1);
-              (0, a.getProvider)()
+              (0, n.getProvider)()
                 .getOptional("rcp-fe-lol-match-history")
                 .then(
                   (t) => {
@@ -7110,7 +7796,7 @@
                       closeModalCallback: e,
                     });
                   },
-                  (e) => a.logger.error("Provider getOptional failure", e),
+                  (e) => n.logger.error("Provider getOptional failure", e),
                 ),
                 this.set("isDetailsTabOpen", !0),
                 this.get("postgame").trigger("advancedDetailsDisplayed");
@@ -7135,32 +7821,32 @@
         });
         t.default = d;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1).Ember.Component.extend({
+        var n = a(1).Ember.Component.extend({
           classNames: ["career-postgame-sub-navigation-component"],
           tabs: [],
           actions: {
             selectTab(e) {
               const t = this.get("onSelect");
               if (t) {
-                const n = this.get("tabs");
-                n && e >= 0 && e < n.length && t(n[e]);
+                const a = this.get("tabs");
+                a && e >= 0 && e < a.length && t(a[e]);
               }
             },
           },
         });
-        t.default = a;
+        t.default = n;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        var a = n(1),
-          s = n(109);
-        n(110);
+        var n = a(1),
+          s = a(114);
+        a(115);
         const o = "sfx-ui",
-          l = a.Ember.Component.extend({
+          l = n.Ember.Component.extend({
             classNames: ["clash-generic-button"],
             classNameBindings: [
               "matchHeight:match-h",
@@ -7168,7 +7854,7 @@
               "isImgFlippedX:flip-x",
               "isImgFlippedY:flip-y",
             ],
-            layout: n(111),
+            layout: a(116),
             canBeSelected: !1,
             triggerSelected: !1,
             selectionGroup: null,
@@ -7203,13 +7889,13 @@
             currentState: null,
             isClickTarget: !1,
             isSelected: !1,
-            onInit: a.Ember.on("init", function () {
+            onInit: n.Ember.on("init", function () {
               this._changeState(s.ButtonState.UP);
             }),
-            upBgPathInternal: a.Ember.computed.or("upBgPath", "baseBgPath"),
-            overBgPathInternal: a.Ember.computed.or("overBgPath", "baseBgPath"),
-            downBgPathInternal: a.Ember.computed.or("downBgPath", "baseBgPath"),
-            disabledBgPathInternal: a.Ember.computed(
+            upBgPathInternal: n.Ember.computed.or("upBgPath", "baseBgPath"),
+            overBgPathInternal: n.Ember.computed.or("overBgPath", "baseBgPath"),
+            downBgPathInternal: n.Ember.computed.or("downBgPath", "baseBgPath"),
+            disabledBgPathInternal: n.Ember.computed(
               "disabledBgPath",
               "baseBgPath",
               "noDisabledBg",
@@ -7219,16 +7905,16 @@
                   : this.get("disabledBgPath") || this.get("baseBgPath");
               },
             ),
-            upImgPathInternal: a.Ember.computed.or("upImgPath", "baseImgPath"),
-            overImgPathInternal: a.Ember.computed.or(
+            upImgPathInternal: n.Ember.computed.or("upImgPath", "baseImgPath"),
+            overImgPathInternal: n.Ember.computed.or(
               "overImgPath",
               "baseImgPath",
             ),
-            downImgPathInternal: a.Ember.computed.or(
+            downImgPathInternal: n.Ember.computed.or(
               "downImgPath",
               "baseImgPath",
             ),
-            disabledImgPathInternal: a.Ember.computed.or(
+            disabledImgPathInternal: n.Ember.computed.or(
               "disabledImgPath",
               "baseImgPath",
             ),
@@ -7236,32 +7922,32 @@
             customContentOver: { isOver: !0, isAny: !0 },
             customContentDown: { isDown: !0, isAny: !0 },
             customContentDisabled: { isDisabled: !0, isAny: !0 },
-            iconSizeModifierStyle: a.Ember.computed(
+            iconSizeModifierStyle: n.Ember.computed(
               "iconSizeModifier",
               function () {
                 const e = this.get("iconSizeModifier");
                 if (1 === e) return null;
                 const t = 100 * Math.max(e, 0),
-                  n = this.get("matchHeight");
-                let a = "";
+                  a = this.get("matchHeight");
+                let n = "";
                 return (
-                  this.get("matchWidth") && (a += `width: ${t}%;`),
-                  n && (a += `height: ${t}%`),
-                  a
+                  this.get("matchWidth") && (n += `width: ${t}%;`),
+                  a && (n += `height: ${t}%`),
+                  n
                 );
               },
             ),
-            triggerSelectedObserver: a.Ember.computed(
+            triggerSelectedObserver: n.Ember.computed(
               "triggerSelected",
               function () {
                 this.get("triggerSelected") &&
                   (this._setSelected(!0),
-                  a.Ember.run.next(() => {
+                  n.Ember.run.next(() => {
                     this.set("triggerSelected", !1);
                   }));
               },
             ),
-            isEnabledObserver: a.Ember.computed("isEnabled", function () {
+            isEnabledObserver: n.Ember.computed("isEnabled", function () {
               const e = this.get("currentState") !== s.ButtonState.DISABLED,
                 t = this.get("isEnabled");
               e && !t
@@ -7270,11 +7956,11 @@
             }),
             _changeState(e) {
               const t = this.get("currentState"),
-                n = this.get("isClickTarget");
+                a = this.get("isClickTarget");
               e === s.ButtonState.OVER &&
                 (this.get("onHoverSound") &&
-                  a.Audio.getChannel(o).playSound(this.get("onHoverSound")),
-                n && (e = s.ButtonState.DOWN)),
+                  n.Audio.getChannel(o).playSound(this.get("onHoverSound")),
+                a && (e = s.ButtonState.DOWN)),
                 this.set("isState_" + t, !1),
                 this.set("isState_" + e, !0),
                 this.set("currentState", e);
@@ -7307,7 +7993,7 @@
               beginClick() {
                 if (this.get("currentState") === s.ButtonState.DISABLED) return;
                 this.get("onClickSound") &&
-                  a.Audio.getChannel(o).playSound(this.get("onClickSound")),
+                  n.Audio.getChannel(o).playSound(this.get("onClickSound")),
                   this._changeState(s.ButtonState.DOWN),
                   this.set("isClickTarget", !0);
                 const e = () => {
@@ -7320,7 +8006,7 @@
                 if (this.get("currentState") === s.ButtonState.DISABLED) return;
                 this.get("isClickTarget") &&
                   (this.get("onClickReleaseSound") &&
-                    a.Audio.getChannel(o).playSound(
+                    n.Audio.getChannel(o).playSound(
                       this.get("onClickReleaseSound"),
                     ),
                   this._processClick(),
@@ -7343,8 +8029,8 @@
           currentSelectionMap: {},
           setSelection(e, t) {
             if (!e || !t || !t.get("canBeSelected")) return;
-            const n = l.currentSelectionMap[e];
-            n && n._setSelected(!1), (l.currentSelectionMap[e] = t);
+            const a = l.currentSelectionMap[e];
+            a && a._setSelected(!1), (l.currentSelectionMap[e] = t);
           },
         }),
           (e.exports = l);
@@ -7353,35 +8039,35 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.ButtonState = void 0);
-        const n = Object.freeze({
+        const a = Object.freeze({
           UP: "up",
           OVER: "over",
           DOWN: "down",
           DISABLED: "disabled",
         });
-        t.ButtonState = n;
+        t.ButtonState = a;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        n.r(t);
+        a.r(t);
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "TA3Hs/up",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\lib\\\\generic-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\lib\\\\generic-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\lib\\\\generic-button\\\\index.js\\" "],["text","\\n"],["append",["unknown",["isEnabledObserver"]],false],["text","\\n"],["append",["unknown",["triggerSelectedObserver"]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","clash-generic-button-root"],["modifier",["action"],[["get",[null]],"onHoverLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"onHover"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"beginClick"],[["on"],["mouseDown"]]],["modifier",["action"],[["get",[null]],"endClick"],[["on"],["mouseUp"]]],["flush-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-state up ",["helper",["if"],[["get",["isSelected"]],"selected"],null]," ",["helper",["if"],[["get",["isState_up"]],"active"],null]]]],["dynamic-attr","style",["unknown",["upStyle"]],null],["flush-element"],["text","\\n    "],["block",["if"],[["get",["upBgPathInternal"]]],null,27],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-primary-img-container ",["helper",["if"],[["get",["upBgPathInternal"]],"has-bg"],null]]]],["flush-element"],["text","\\n      "],["block",["if"],[["get",["upImgPathInternal"]]],null,26],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["text"]]],null,25,24],["text","    "],["block",["if"],[["get",["useCustomContent"]]],null,22],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-state over ",["helper",["if"],[["get",["isSelected"]],"selected"],null]," ",["helper",["if"],[["get",["isState_over"]],"active"],null]]]],["dynamic-attr","style",["unknown",["overStyle"]],null],["flush-element"],["text","\\n    "],["block",["if"],[["get",["overBgPathInternal"]]],null,21],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-primary-img-container ",["helper",["if"],[["get",["overBgPathInternal"]],"has-bg"],null]]]],["flush-element"],["text","\\n      "],["block",["if"],[["get",["overImgPathInternal"]]],null,20],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["text"]]],null,19,18],["text","    "],["block",["if"],[["get",["useCustomContent"]]],null,16],["text","\\n"],["block",["if"],[["get",["tooltipText"]]],null,15],["text","  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-state down ",["helper",["if"],[["get",["isSelected"]],"selected"],null]," ",["helper",["if"],[["get",["isState_down"]],"active"],null]]]],["dynamic-attr","style",["unknown",["downStyle"]],null],["flush-element"],["text","\\n    "],["block",["if"],[["get",["downBgPathInternal"]]],null,13],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-primary-img-container ",["helper",["if"],[["get",["downBgPathInternal"]],"has-bg"],null]]]],["flush-element"],["text","\\n      "],["block",["if"],[["get",["downImgPathInternal"]]],null,12],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["text"]]],null,11,10],["text","    "],["block",["if"],[["get",["useCustomContent"]]],null,8],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-state disabled ",["helper",["if"],[["get",["isSelected"]],"selected"],null]," ",["helper",["if"],[["get",["isState_disabled"]],"active"],null]]]],["dynamic-attr","style",["unknown",["disabledStyle"]],null],["flush-element"],["text","\\n    "],["block",["if"],[["get",["disabledBgPathInternal"]]],null,7],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["clash-generic-button-primary-img-container ",["helper",["if"],[["get",["disabledBgPathInternal"]],"has-bg"],null]]]],["flush-element"],["text","\\n      "],["block",["if"],[["get",["disabledImgPathInternal"]]],null,6],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["text"]]],null,5,4],["text","    "],["block",["if"],[["get",["useCustomContent"]]],null,2],["text","\\n"],["block",["if"],[["get",["disabledTooltipText"]]],null,1],["text","  "],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["disabledTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],[["get",["disabledTooltipPosition"]],["get",["disabledTooltipType"]]]],0]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","clash-generic-button-custom-content"],["flush-element"],["yield","default",[["get",["customContentDisabled"]]]],["close-element"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["disabledText"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["disabledText"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["disabledImgPathInternal"]]]]],["dynamic-attr","style",["unknown",["iconSizeModifierStyle"]],null],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["disabledBgPathInternal"]]]]],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","clash-generic-button-custom-content"],["flush-element"],["yield","default",[["get",["customContentDown"]]]],["close-element"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["downText"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["downText"]]],null,9]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["downImgPathInternal"]]]]],["dynamic-attr","style",["unknown",["iconSizeModifierStyle"]],null],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["downBgPathInternal"]]]]],["flush-element"],["close-element"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],[["get",["tooltipPosition"]],["get",["tooltipType"]]]],14]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","clash-generic-button-custom-content"],["flush-element"],["yield","default",[["get",["customContentOver"]]]],["close-element"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["overText"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["overText"]]],null,17]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["overImgPathInternal"]]]]],["dynamic-attr","style",["unknown",["iconSizeModifierStyle"]],null],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["overBgPathInternal"]]]]],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","clash-generic-button-custom-content"],["flush-element"],["yield","default",[["get",["customContentUp"]]]],["close-element"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["upText"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["upText"]]],null,23]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","clash-generic-button-text"],["flush-element"],["append",["unknown",["text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["upImgPathInternal"]]]]],["dynamic-attr","style",["unknown",["iconSizeModifierStyle"]],null],["flush-element"],["close-element"]],"locals":[]},{"statements":[["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["upBgPathInternal"]]]]],["flush-element"],["close-element"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        var a = n(1),
-          s = n(109),
-          o = n(6);
-        const { RunMixin: l } = a.EmberAddons.EmberLifeline,
+        var n = a(1),
+          s = a(114),
+          o = a(6);
+        const { RunMixin: l } = n.EmberAddons.EmberLifeline,
           i = "sfx-ui";
-        e.exports = a.Ember.Component.extend(l, {
+        e.exports = n.Ember.Component.extend(l, {
           classNames: ["postgame-button-wrapper"],
           _oldPlayersReady: 0,
           currentState: s.ButtonState.UP,
@@ -7393,9 +8079,9 @@
           downImgPath: null,
           partyStatus: null,
           buttonText: "",
-          readyPlayers: a.Ember.computed.alias("partyStatus.readyPlayers"),
-          partySize: a.Ember.computed.alias("partyStatus.partySize"),
-          numPlayersReady: a.Ember.computed.alias("readyPlayers.length"),
+          readyPlayers: n.Ember.computed.alias("partyStatus.readyPlayers"),
+          partySize: n.Ember.computed.alias("partyStatus.partySize"),
+          numPlayersReady: n.Ember.computed.alias("readyPlayers.length"),
           videoSourceState: o.PLAYFLOW_VIDEO_SOURCE_STATE.intro,
           videoSource: {
             intro: o.PLAYFLOW_VIDEO_SOURCE_PATH.intro,
@@ -7405,7 +8091,7 @@
             pulse: o.PLAYFLOW_VIDEO_SOURCE_PATH.pulse,
             allReturned: o.PLAYFLOW_VIDEO_SOURCE_PATH.allReturned,
           },
-          currentImgPath: a.Ember.computed("currentState", function () {
+          currentImgPath: n.Ember.computed("currentState", function () {
             switch (this.get("currentState")) {
               case s.ButtonState.UP:
                 return this.get("baseImgPath");
@@ -7428,7 +8114,7 @@
             this._super(...arguments);
             const e = this.get("_oldPlayersReady"),
               t = this.get("hasIntroAnimationPlayed"),
-              n = this.get("numPlayersReady"),
+              a = this.get("numPlayersReady"),
               s = this.get("partySize"),
               l = 1 === s;
             if (
@@ -7441,13 +8127,13 @@
                 o.PLAYFLOW_VIDEO_SOURCE_STATE.idle,
                 o.PLAY_BUTTON_STATE_MACHINE_SELECTOR,
               ),
-              e < n)
+              e < a)
             ) {
               if (!this.get("readyPlayers") || l) return;
-              n >= 1 &&
-                n < s &&
-                n > e &&
-                (s >= 2 && n === s - 1
+              a >= 1 &&
+                a < s &&
+                a > e &&
+                (s >= 2 && a === s - 1
                   ? this._updateVideoStateMachine(
                       o.PLAYFLOW_VIDEO_SOURCE_STATE.allReturned,
                       o.PARTY_STATUS_STATE_MACHINE_SELECTOR,
@@ -7456,23 +8142,23 @@
                       o.PLAYFLOW_VIDEO_SOURCE_STATE.pulse,
                       o.PARTY_STATUS_STATE_MACHINE_SELECTOR,
                     ),
-                a.Audio.getChannel(i).playSound(
+                n.Audio.getChannel(i).playSound(
                   "/fe/lol-static-assets/sounds/sfx-eog-lobby-player-returned.ogg",
                 )),
-                this.set("_oldPlayersReady", n);
+                this.set("_oldPlayersReady", a);
             }
           },
           _updatePlayButtonState(e) {
             this.set("currentState", e);
           },
           _updateVideoStateMachine(e, t) {
-            const n = this.element.querySelector(t);
-            n && n.isAttached && n.dispatchEvent(new Event(e));
+            const a = this.element.querySelector(t);
+            a && a.isAttached && a.dispatchEvent(new Event(e));
           },
           mouseUp(e) {
             e.preventDefault();
             const t = this.get("onClickReleaseSound");
-            t && a.Audio.getChannel(i).playSound(t),
+            t && n.Audio.getChannel(i).playSound(t),
               this._updatePlayButtonState(s.ButtonState.OVER),
               this._updateVideoStateMachine(
                 o.PLAYFLOW_VIDEO_SOURCE_STATE.idle,
@@ -7483,7 +8169,7 @@
           mouseDown(e) {
             e.preventDefault();
             const t = this.get("onClickSound");
-            t && a.Audio.getChannel(i).playSound(t),
+            t && n.Audio.getChannel(i).playSound(t),
               this._updatePlayButtonState(s.ButtonState.DOWN),
               this._updateVideoStateMachine(
                 o.PLAYFLOW_VIDEO_SOURCE_STATE.active,
@@ -7492,7 +8178,7 @@
           },
           mouseEnter() {
             const e = this.get("onHoverSound");
-            e && a.Audio.getChannel(i).playSound(e),
+            e && n.Audio.getChannel(i).playSound(e),
               this._updatePlayButtonState(s.ButtonState.OVER),
               this._updateVideoStateMachine(
                 o.PLAYFLOW_VIDEO_SOURCE_STATE.hover,
@@ -7508,17 +8194,17 @@
           },
         });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(114),
-          l = n(15),
-          i = n(115),
-          r = n(3),
-          m = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(107),
+          l = a(15),
+          i = a(119),
+          r = a(3),
+          m = (n = a(14)) && n.__esModule ? n : { default: n };
         const c = "/lol-ranked/v1/current-lp-change-notification";
         var p = s.Ember.Component.extend(m.default, {
           classNames: ["career-postgame-progression-component"],
@@ -7583,14 +8269,14 @@
             const e = this.element.querySelector(".progression-screen-header"),
               t = this.element.querySelector(".postgame-champion-background");
             s.gsapCustomEase.create("backgroundCB", "0.32,-0.94,0.6,1");
-            const n = new s.gsap.TimelineMax({
+            const a = new s.gsap.TimelineMax({
               paused: !0,
               onComplete: () => {
                 this.set("didAnimate", !0), this.set("isAnimating", !1);
               },
             });
             t &&
-              n.fromTo(
+              a.fromTo(
                 t,
                 1,
                 { css: { scaleX: 0.95, scaleY: 0.95, opacity: 0 } },
@@ -7601,9 +8287,9 @@
                 "start",
               ),
               e &&
-                n.fromTo(e, 0.33, { opacity: 0 }, { opacity: 1 }, "start+=0.2"),
-              this.set("animationTimeline", n),
-              n.play(),
+                a.fromTo(e, 0.33, { opacity: 0 }, { opacity: 1 }, "start+=0.2"),
+              this.set("animationTimeline", a),
+              a.play(),
               this.set("isAnimating", !0);
           },
           handleLeaguesNotification(e) {
@@ -7648,10 +8334,10 @@
               if (this.get("isCherry")) return !1;
               const e = this.get("leaguesNotification"),
                 t = this.get("leaguesNotification.rewardEarnedId"),
-                n = this.get(
+                a = this.get(
                   "leaguesNotification.splitPointsNotification.nextRewardId",
                 );
-              return e && (t || n);
+              return e && (t || a);
             },
           ),
           isPrestigeProgressionLarge: s.Ember.computed(
@@ -7701,8 +8387,8 @@
             function () {
               const e = this.get("eternals.selfProgression") || [],
                 t = this.get("updatedChallenges") || {},
-                n = Object.values(t).filter((e) => !e.isCapstone);
-              return (0, o.calculateEoGChallengeSlots)(n, [...e], 5);
+                a = Object.values(t).filter((e) => !e.isCapstone);
+              return (0, o.calculateEoGChallengeSlots)(a, [...e], 5);
             },
           ),
           allChallengeUpdates: s.Ember.computed(
@@ -7730,9 +8416,9 @@
               t = Object.values(e)
                 .filter((e) => !e.isCapstone)
                 .sort(o.sortGroupedChallengeUpdates),
-              n = (0, i.groupChallengesByProgression)(t),
-              a = new Map([...n].sort().reverse());
-            return this._flattenGroups(a);
+              a = (0, i.groupChallengesByProgression)(t),
+              n = new Map([...a].sort().reverse());
+            return this._flattenGroups(n);
           }),
           groupedEternals: s.Ember.computed(
             "eternals.selfProgression.[]",
@@ -7764,16 +8450,16 @@
             let t = [];
             return (
               e &&
-                e.forEach((e, n) => {
+                e.forEach((e, a) => {
                   if (!e.length) return;
-                  const a = {
+                  const n = {
                     id: "header",
                     isHeader: !0,
                     groupName: this.get("tra").get(
-                      `postgame_updates_grouping_${n}`,
+                      `postgame_updates_grouping_${a}`,
                     ),
                   };
-                  t.push(a), (t = t.concat(e));
+                  t.push(n), (t = t.concat(e));
                 }),
               t
             );
@@ -7805,122 +8491,26 @@
         });
         t.default = p;
       },
-      (e, t, n) => {
-        "use strict";
-        Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.calculateEoGChallengeSlots = function (e, t, n) {
-            const a = [...Array(n).map((e) => null)];
-            if (!e.length && !t.length) return a;
-            for (let s = 0; s < n; s++) {
-              if (s === n - 1) {
-                a[s] = t.length >= 1 ? g(t) : h(e, s) || null;
-                break;
-              }
-              a[s] = h(e, s) || null;
-            }
-            return a;
-          }),
-          (t.getFirstChallengeSlotScore = h),
-          (t.sortChallengeUpdatesDesc = function (e, t) {
-            const n = d(e);
-            return d(t) - n;
-          }),
-          (t.sortEternalUpdatesDesc = function (e, t) {
-            const n = p(e);
-            return p(t) - n;
-          }),
-          (t.sortGroupedChallengeUpdates = function (e, t) {
-            const n = i[t.currentLevel] - i[e.currentLevel],
-              a = u(t) - u(e),
-              s = d(t) - d(e),
-              o = e.id - t.id;
-            return n || a || s || o;
-          });
-        var a = n(1);
-        const s = 10,
-          o = 50,
-          l = 100,
-          i = a.SharedChallengesConstants.CHALLENGE_LEVEL_TO_ORDINAL,
-          r = {
-            NONE: 1,
-            IRON: 2,
-            BRONZE: 3,
-            SILVER: 5,
-            GOLD: 8,
-            PLATINUM: 13,
-            DIAMOND: 21,
-            MASTER: 1,
-            GRANDMASTER: 1,
-            CHALLENGER: 1,
-          },
-          m = [
-            { TEAMWORK: 10, EXPERTISE: 5, IMAGINATION: 3, VETERANCY: 1 },
-            { EXPERTISE: 10, TEAMWORK: 5, IMAGINATION: 3, VETERANCY: 1 },
-            { IMAGINATION: 10, EXPERTISE: 5, TEAMWORK: 3, VETERANCY: 1 },
-            { VETERANCY: 13, EXPERTISE: 8, TEAMWORK: 5, IMAGINATION: 3 },
-            { TEAMWORK: 10, EXPERTISE: 8, IMAGINATION: 6, VETERANCY: 3 },
-          ],
-          c = [1, 3, 5, 8, 13];
-        function p(e) {
-          let t = 0;
-          const n = e.level >= c.length ? 1 : c[e.level],
-            a = 1 + (parseFloat(e.newProgressPercent) || 0) / 100,
-            s = Boolean(e.isMilestone),
-            i = Boolean(e.isNewBest);
-          return (t = s ? n * a * o : n * a), i ? t * l : t;
-        }
-        function d(e, t = null) {
-          let n = 0;
-          const a = null !== t ? m[t][e.category] : 1,
-            o = r[e.currentLevel],
-            l = e.nextThreshold - e.currentThreshold,
-            i = 1 + (e.currentValue - e.currentThreshold) / l;
-          n = e.currentLevel !== e.previousLevel ? a * o * s : a * o * i;
-          return (e.priority || 1) * n;
-        }
-        function u(e) {
-          const t = e.currentLevel !== e.previousLevel,
-            n = e.nextThreshold - e.currentThreshold,
-            a = e.currentValue - e.currentThreshold;
-          return t ? 0 : 1 + a / n;
-        }
-        function g(e) {
-          return e
-            .sort((e, t) => {
-              const n = p(e);
-              return p(t) - n;
-            })
-            .shift();
-        }
-        function h(e, t) {
-          return e
-            .sort((e, n) => {
-              const a = d(e, t);
-              return d(n, t) - a;
-            })
-            .shift();
-        }
-      },
       (e, t) => {
         "use strict";
-        function n(e, t) {
-          const n = new Map();
+        function a(e, t) {
+          const a = new Map();
           return (
             e.forEach((e) => {
-              const a = t(e);
-              n.has(a) ? n.get(a).push(e) : n.set(a, [e]);
+              const n = t(e);
+              a.has(n) ? a.get(n).push(e) : a.set(n, [e]);
             }),
-            n
+            a
           );
         }
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.groupChallengesByProgression = function (e) {
-            return n(e, (e) =>
+            return a(e, (e) =>
               e.currentLevel !== e.previousLevel ? "upgraded" : "progressed",
             );
           }),
           (t.groupEternalsByMilestone = function (e) {
-            return n(e, (e) =>
+            return a(e, (e) =>
               e.isNewBest
                 ? "new_personal_best"
                 : Boolean(e.isMilestone)
@@ -7929,14 +8519,14 @@
             );
           });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a },
-          l = n(3);
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n },
+          l = a(3);
         const i = [
           "boostXpEarned",
           "globalBoostXpEarned",
@@ -8002,8 +8592,8 @@
           _playIntroAnimation() {
             const e = this.get("tra"),
               t = this.get("xpEarned"),
-              n = this.get("isRanked"),
-              a = this.get("leveledUp"),
+              a = this.get("isRanked"),
+              n = this.get("leveledUp"),
               o = { amount: 0 },
               l = this.element.querySelector(
                 ".points-gained-spark-small-video",
@@ -8030,7 +8620,7 @@
                   );
                 },
                 onComplete: () => {
-                  a &&
+                  n &&
                     this.set("animatedPointsText", this.get("playerXpGainLoc"));
                 },
               }),
@@ -8040,11 +8630,11 @@
                 m.add(() => {
                   r.play();
                 }, "start"),
-              n ||
+              a ||
                 m.add(() => {
                   this.playSound("sfx-eog-ui-exp-burst.ogg");
                 }, "start+=0.2");
-            const c = a ? i : l;
+            const c = n ? i : l;
             m.add(() => {
               c && c.play();
             }, "start+=0.35"),
@@ -8167,20 +8757,20 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["prestige-progression-tooltip-component"],
-            summonerLevelLoc: a.Ember.computed("level", function () {
+            summonerLevelLoc: n.Ember.computed("level", function () {
               return this.get("tra").formatString(
                 "career_postgame_progress_tooltip_level",
                 { level: this.get("level") },
               );
             }),
-            xpTotalLoc: a.Ember.computed(
+            xpTotalLoc: n.Ember.computed(
               "xpTotal",
               "nextLevelXpRequired",
               function () {
@@ -8196,76 +8786,76 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(3);
+        var n = a(1),
+          s = a(3);
         const o = ["RANKED_SOLO_5x5", "RANKED_TEAM_5x5", "CAP_5x5", "NORMAL"];
-        var l = a.Ember.Component.extend({
+        var l = n.Ember.Component.extend({
           classNames: ["mastery-progression-component"],
           classNameBindings: ["isSmall"],
-          endOfGameService: a.Ember.inject.service("end-of-game"),
-          postgame: a.Ember.inject.service("postgame"),
-          gameflowService: a.Ember.inject.service("gameflow"),
+          endOfGameService: n.Ember.inject.service("end-of-game"),
+          postgame: n.Ember.inject.service("postgame"),
+          gameflowService: n.Ember.inject.service("gameflow"),
           championMasteryUpdateNotification: {},
-          dataIsLoaded: a.Ember.computed.bool(
+          dataIsLoaded: n.Ember.computed.bool(
             "championMasteryUpdateNotification",
           ),
-          masteryLevel: a.Ember.computed.readOnly(
+          masteryLevel: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.level",
           ),
-          hasLeveledUp: a.Ember.computed.readOnly(
+          hasLeveledUp: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.hasLeveledUp",
           ),
-          pointsGained: a.Ember.computed.readOnly(
+          pointsGained: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.pointsGained",
           ),
-          pointsBeforeGame: a.Ember.computed.readOnly(
+          pointsBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.pointsBeforeGame",
           ),
-          grade: a.Ember.computed.readOnly(
+          grade: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.grade",
           ),
-          isLastLevelReached: a.Ember.computed.equal(
+          isLastLevelReached: n.Ember.computed.equal(
             "championMasteryUpdateNotification.pointsUntilNextLevelAfterGame",
             0,
           ),
-          pointsUntilNextLevelAfterGame: a.Ember.computed.readOnly(
+          pointsUntilNextLevelAfterGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.pointsUntilNextLevelAfterGame",
           ),
-          pointsUntilNextLevelBeforeGame: a.Ember.computed.readOnly(
+          pointsUntilNextLevelBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.pointsUntilNextLevelBeforeGame",
           ),
-          pointsSinceLastLevelBeforeGame: a.Ember.computed.readOnly(
+          pointsSinceLastLevelBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.pointsSinceLastLevelBeforeGame",
           ),
-          achievedMastery5: a.Ember.computed.gte("masteryLevel", 5),
-          isMastery5: a.Ember.computed.equal("masteryLevel", 5),
-          isMastery6: a.Ember.computed.equal("masteryLevel", 6),
-          isMastery5or6: a.Ember.computed.or("isMastery5", "isMastery6"),
-          tokensEarned: a.Ember.computed.readOnly(
+          achievedMastery5: n.Ember.computed.gte("masteryLevel", 5),
+          isMastery5: n.Ember.computed.equal("masteryLevel", 5),
+          isMastery6: n.Ember.computed.equal("masteryLevel", 6),
+          isMastery5or6: n.Ember.computed.or("isMastery5", "isMastery6"),
+          tokensEarned: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.tokensEarned",
           ),
-          tokenEarnedAfterGame: a.Ember.computed.bool(
+          tokenEarnedAfterGame: n.Ember.computed.bool(
             "championMasteryUpdateNotification.tokenEarnedAfterGame",
           ),
-          isCustomGame: a.Ember.computed.equal(
+          isCustomGame: n.Ember.computed.equal(
             "endOfGameService.eogStatsBlock.gameType",
             "CUSTOM_GAME",
           ),
-          isNotCustomGame: a.Ember.computed.not("isCustomGame"),
+          isNotCustomGame: n.Ember.computed.not("isCustomGame"),
           willAnimate: !1,
           animationPending: !1,
-          animationObserver: a.Ember.on(
+          animationObserver: n.Ember.on(
             "didInsertElement",
-            a.Ember.observer("willAnimate", "dataIsLoaded", function () {
+            n.Ember.observer("willAnimate", "dataIsLoaded", function () {
               this.get("didAnimate") ||
                 (this.get("willAnimate") && this.set("animationPending", !0),
                 this.get("animationPending") &&
                   this.get("dataIsLoaded") &&
-                  (a.Ember.run.scheduleOnce(
+                  (n.Ember.run.scheduleOnce(
                     "afterRender",
                     this,
                     this._playIntroAnimation,
@@ -8273,11 +8863,11 @@
                   this.set("animationPending", !1)));
             }),
           ),
-          showAnimatedElements: a.Ember.computed.or(
+          showAnimatedElements: n.Ember.computed.or(
             "willAnimate",
             "didAnimate",
           ),
-          lottieBarFillPath: a.Ember.computed("hasLeveledUp", function () {
+          lottieBarFillPath: n.Ember.computed("hasLeveledUp", function () {
             return this.get("hasLeveledUp")
               ? "/fe/lol-static-assets/lottie/challenges/challenges-progress-bar-levelup.json"
               : "/fe/lol-static-assets/lottie/challenges/challenges-progress-bar.json";
@@ -8285,7 +8875,7 @@
           _playIntroAnimation() {
             const e = this.get("tra"),
               t = this.get("pointsGained") || 0,
-              n = this.get("hasLeveledUp"),
+              a = this.get("hasLeveledUp"),
               s = { amount: 0 },
               o = this.element.querySelector(
                 ".points-gained-spark-small-video",
@@ -8294,14 +8884,14 @@
                 ".points-gained-spark-medium-video",
               ),
               i = this.element.querySelector(".lottie-radial-fill"),
-              r = new a.gsap.TimelineMax({
+              r = new n.gsap.TimelineMax({
                 paused: !0,
                 onComplete: () => {
                   this.set("didAnimate", !0);
                 },
               });
             r.add(
-              a.gsap.TweenLite.to(s, 0.25, {
+              n.gsap.TweenLite.to(s, 0.25, {
                 amount: t,
                 onUpdate: () => {
                   this.set(
@@ -8319,13 +8909,13 @@
                 r.add(() => {
                   i.play();
                 }, "start");
-            const m = n ? l : o;
+            const m = a ? l : o;
             r.add(() => {
               m && m.play();
             }, "start+=0.35"),
               r.play();
           },
-          totalMasteryPoints: a.Ember.computed(
+          totalMasteryPoints: n.Ember.computed(
             "pointsGained",
             "pointsBeforeGame",
             function () {
@@ -8335,13 +8925,13 @@
               );
             },
           ),
-          tokenList: a.Ember.computed("tokensEarned", function () {
+          tokenList: n.Ember.computed("tokensEarned", function () {
             const e = [],
               t = this.get("tokensEarned") || 0;
-            for (let n = 0; n < t; n++) e.push(0);
+            for (let a = 0; a < t; a++) e.push(0);
             return e;
           }),
-          tokensRemainingToBeEarned: a.Ember.computed(
+          tokensRemainingToBeEarned: n.Ember.computed(
             "isMastery5",
             "isMastery6",
             "tokensEarned",
@@ -8356,27 +8946,27 @@
               );
             },
           ),
-          checkboxList: a.Ember.computed(
+          checkboxList: n.Ember.computed(
             "tokensRemainingToBeEarned",
             function () {
               const e = [],
                 t = this.get("tokensRemainingToBeEarned") || 0;
-              for (let n = 0; n < t; n++) e.push(0);
+              for (let a = 0; a < t; a++) e.push(0);
               return e;
             },
           ),
-          showMastery5or6Text: a.Ember.computed(
+          showMastery5or6Text: n.Ember.computed(
             "tokenEarnedAfterGame",
             "tokensRemainingToBeEarned",
             "isMastery5or6",
             function () {
               const e = this.get("isMastery5or6"),
                 t = this.get("tokensRemainingToBeEarned"),
-                n = this.get("tokenEarnedAfterGame");
-              return e && (0 === t || n);
+                a = this.get("tokenEarnedAfterGame");
+              return e && (0 === t || a);
             },
           ),
-          mastery5or6Text: a.Ember.computed(
+          mastery5or6Text: n.Ember.computed(
             "tra.career_postgame_token_earned",
             "tra.career_postgame_upgrade_ready",
             "tokensRemainingToBeEarned",
@@ -8386,7 +8976,7 @@
                 : this.get("tra.career_postgame_token_earned");
             },
           ),
-          masteryLevelText: a.Ember.computed(
+          masteryLevelText: n.Ember.computed(
             "tra.ready",
             "tra.career_postgame_mastery_progress_level",
             "masteryLevel",
@@ -8399,7 +8989,7 @@
                 : "";
             },
           ),
-          pointsGainedText: a.Ember.computed(
+          pointsGainedText: n.Ember.computed(
             "tra.ready",
             "tra.career_postgame_mastery_progress_points_gained",
             "pointsGained",
@@ -8413,7 +9003,7 @@
                 : "";
             },
           ),
-          championPointQueueTypesArray: a.Ember.computed(
+          championPointQueueTypesArray: n.Ember.computed(
             "endOfGameService.championMasteryConfig.ChampionPointQueueTypes",
             function () {
               const e = this.get(
@@ -8423,7 +9013,7 @@
               return (t = e || "" === e ? e.split(",") : o), t;
             },
           ),
-          isQueueSupportedForChampionMastery: a.Ember.computed(
+          isQueueSupportedForChampionMastery: n.Ember.computed(
             "championPointQueueTypesArray",
             "gameflowService.gameflowSession.gameData.queue.type",
             function () {
@@ -8433,7 +9023,7 @@
               return this.get("championPointQueueTypesArray").indexOf(e) > -1;
             },
           ),
-          isPlayerLevelSupportedForChampionMastery: a.Ember.computed(
+          isPlayerLevelSupportedForChampionMastery: n.Ember.computed(
             "endOfGameService.championMasteryConfig.MinSummonerLevel",
             "endOfGameService.player.level",
             function () {
@@ -8445,13 +9035,13 @@
               );
             },
           ),
-          isChampionMasteryEnabled: a.Ember.computed.bool(
+          isChampionMasteryEnabled: n.Ember.computed.bool(
             "endOfGameService.championMasteryConfig.Enabled",
           ),
-          isPostgameChampionMasteryEnabled: a.Ember.computed.bool(
+          isPostgameChampionMasteryEnabled: n.Ember.computed.bool(
             "postgame.postgameChampionMasteryEnabled",
           ),
-          isChampionMasteryAvailable: a.Ember.computed.and(
+          isChampionMasteryAvailable: n.Ember.computed.and(
             "isQueueSupportedForChampionMastery",
             "isPlayerLevelSupportedForChampionMastery",
             "isChampionMasteryEnabled",
@@ -8459,7 +9049,7 @@
             "dataIsLoaded",
             "isPostgameChampionMasteryEnabled",
           ),
-          masteryRadialProgressPercent: a.Ember.computed(
+          masteryRadialProgressPercent: n.Ember.computed(
             "isLastLevelReached",
             "nextLevelPercentFill",
             "currentLevelPercentFill",
@@ -8473,7 +9063,7 @@
                     this.get("beforeMatchPercentFill");
             },
           ),
-          lottieRadialNewPercent: a.Ember.computed(
+          lottieRadialNewPercent: n.Ember.computed(
             "hasLeveledUp",
             "isLastLevelReached",
             "nextLevelPercentFill",
@@ -8486,7 +9076,7 @@
               return (e = e || 0), (e * s.LOTTIE_RADIAL_UNITS) / 100;
             },
           ),
-          lottieRadialCurrentPercent: a.Ember.computed(
+          lottieRadialCurrentPercent: n.Ember.computed(
             "beforeMatchPercentFill",
             "isLastLevelReached",
             function () {
@@ -8498,7 +9088,7 @@
               );
             },
           ),
-          currentLevelTotalMasteryPoints: a.Ember.computed(
+          currentLevelTotalMasteryPoints: n.Ember.computed(
             "pointsSinceLastLevelBeforeGame",
             "pointsUntilNextLevelBeforeGame",
             function () {
@@ -8508,7 +9098,7 @@
               );
             },
           ),
-          beforeMatchPercentFill: a.Ember.computed(
+          beforeMatchPercentFill: n.Ember.computed(
             "pointsSinceLastLevelBeforeGame",
             "currentLevelTotalMasteryPoints",
             function () {
@@ -8519,7 +9109,7 @@
               );
             },
           ),
-          currentLevelPercentFill: a.Ember.computed(
+          currentLevelPercentFill: n.Ember.computed(
             "pointsGained",
             "currentLevelTotalMasteryPoints",
             function () {
@@ -8530,7 +9120,7 @@
               );
             },
           ),
-          spilloverMasteryPoints: a.Ember.computed(
+          spilloverMasteryPoints: n.Ember.computed(
             "pointsGained",
             "pointsUntilNextLevelBeforeGame",
             function () {
@@ -8540,7 +9130,7 @@
               );
             },
           ),
-          nextLevelTotalMasteryPoints: a.Ember.computed(
+          nextLevelTotalMasteryPoints: n.Ember.computed(
             "pointsUntilNextLevelAfterGame",
             "spilloverMasteryPoints",
             function () {
@@ -8550,7 +9140,7 @@
               );
             },
           ),
-          nextLevelPercentFill: a.Ember.computed(
+          nextLevelPercentFill: n.Ember.computed(
             "nextLevelTotalMasteryPoints",
             "spilloverMasteryPoints",
             function () {
@@ -8561,38 +9151,38 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var n = a(1);
         const s = ["RANKED_SOLO_5x5", "RANKED_TEAM_5x5", "CAP_5x5", "NORMAL"];
-        var o = a.Ember.Component.extend({
+        var o = n.Ember.Component.extend({
           classNames: ["legendary-mastery-progression-component"],
           classNameBindings: ["isSmall"],
-          endOfGameService: a.Ember.inject.service("end-of-game"),
-          postgame: a.Ember.inject.service("postgame"),
-          gameflowService: a.Ember.inject.service("gameflow"),
-          championMasteryService: a.Ember.inject.service("champion-mastery"),
-          championMasteryUpdateNotification: a.Ember.computed.readOnly(
+          endOfGameService: n.Ember.inject.service("end-of-game"),
+          postgame: n.Ember.inject.service("postgame"),
+          gameflowService: n.Ember.inject.service("gameflow"),
+          championMasteryService: n.Ember.inject.service("champion-mastery"),
+          championMasteryUpdateNotification: n.Ember.computed.readOnly(
             "championMasteryService.championMasteryUpdateNotification",
           ),
-          championMasteryData: a.Ember.computed.readOnly(
+          championMasteryData: n.Ember.computed.readOnly(
             "championMasteryService.championMasteryData",
           ),
-          milestoneRewardsData: a.Ember.computed.readOnly(
+          milestoneRewardsData: n.Ember.computed.readOnly(
             "championMasteryData.seasonMilestoneRequireAndRewards",
           ),
-          customRewards: a.Ember.computed.readOnly(
+          customRewards: n.Ember.computed.readOnly(
             "championMasteryData.customRewards",
           ),
-          championCountByMilestone: a.Ember.computed.readOnly(
+          championCountByMilestone: n.Ember.computed.readOnly(
             "championMasteryData.championCountByMilestone",
           ),
-          masteryLevel: a.Ember.computed.readOnly(
+          masteryLevel: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championLevel",
           ),
-          hasLeveledUp: a.Ember.computed(
+          hasLeveledUp: n.Ember.computed(
             "championMasteryUpdateNotification.championLevelUp",
             "masteryLevel",
             function () {
@@ -8602,70 +9192,70 @@
               );
             },
           ),
-          pointsGained: a.Ember.computed.readOnly(
+          pointsGained: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championPointsGained",
           ),
-          pointsBeforeGame: a.Ember.computed.readOnly(
+          pointsBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championPointsBeforeGame",
           ),
-          score: a.Ember.computed.readOnly(
+          score: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.score",
           ),
-          grade: a.Ember.computed.readOnly(
+          grade: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.playerGrade",
           ),
-          pointsUntilNextLevelAfterGame: a.Ember.computed.readOnly(
+          pointsUntilNextLevelAfterGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championPointsUntilNextLevelAfterGame",
           ),
-          pointsUntilNextLevelBeforeGame: a.Ember.computed.readOnly(
+          pointsUntilNextLevelBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championPointsUntilNextLevelBeforeGame",
           ),
-          pointsSinceLastLevelBeforeGame: a.Ember.computed.readOnly(
+          pointsSinceLastLevelBeforeGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championPointsSinceLastLevelBeforeGame",
           ),
-          marksEarned: a.Ember.computed.readOnly(
+          marksEarned: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.tokensEarned",
           ),
-          isMarksEarnedAfterGame: a.Ember.computed.readOnly(
+          isMarksEarnedAfterGame: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.tokenEarnedAfterGame",
           ),
-          markRequiredForNextLevel: a.Ember.computed.readOnly(
+          markRequiredForNextLevel: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.markRequiredForNextLevel",
           ),
-          seasonMilestone: a.Ember.computed.readOnly(
+          seasonMilestone: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championSeasonMilestone",
           ),
-          hasSeasonMilestoneLeveledUp: a.Ember.computed.readOnly(
+          hasSeasonMilestoneLeveledUp: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.championSeasonMilestoneUp",
           ),
-          milestoneGrades: a.Ember.computed.readOnly(
+          milestoneGrades: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.milestoneGrades",
           ),
-          nextSeasonMilestone: a.Ember.computed.readOnly(
+          nextSeasonMilestone: n.Ember.computed.readOnly(
             "championMasteryUpdateNotification.seasonMilestone",
           ),
-          isCustomGame: a.Ember.computed.equal(
+          isCustomGame: n.Ember.computed.equal(
             "endOfGameService.eogStatsBlock.gameType",
             "CUSTOM_GAME",
           ),
-          isNotCustomGame: a.Ember.computed.not("isCustomGame"),
+          isNotCustomGame: n.Ember.computed.not("isCustomGame"),
           willAnimate: !1,
           animationPending: !1,
-          dataIsLoaded: a.Ember.computed(
+          dataIsLoaded: n.Ember.computed(
             "championMasteryUpdateNotification",
             function () {
               const e = this.get("championMasteryUpdateNotification");
               return e && e.gameId && e.puuid;
             },
           ),
-          animationObserver: a.Ember.on(
+          animationObserver: n.Ember.on(
             "didInsertElement",
-            a.Ember.observer("willAnimate", "dataIsLoaded", function () {
+            n.Ember.observer("willAnimate", "dataIsLoaded", function () {
               this.get("didAnimate") ||
                 (this.get("willAnimate") && this.set("animationPending", !0),
                 this.get("animationPending") &&
                   this.get("dataIsLoaded") &&
-                  (a.Ember.run.scheduleOnce(
+                  (n.Ember.run.scheduleOnce(
                     "afterRender",
                     this,
                     this._playIntroAnimation,
@@ -8673,14 +9263,14 @@
                   this.set("animationPending", !1)));
             }),
           ),
-          showAnimatedElements: a.Ember.computed.or(
+          showAnimatedElements: n.Ember.computed.or(
             "willAnimate",
             "didAnimate",
           ),
           _playIntroAnimation() {
             const e = this.get("tra"),
               t = this.get("pointsGained") || 0,
-              n = this.get("hasLeveledUp"),
+              a = this.get("hasLeveledUp"),
               s = { amount: 0 },
               o = this.element.querySelector(
                 ".points-gained-spark-small-video",
@@ -8688,14 +9278,14 @@
               l = this.element.querySelector(
                 ".points-gained-spark-medium-video",
               ),
-              i = new a.gsap.TimelineMax({
+              i = new n.gsap.TimelineMax({
                 paused: !0,
                 onComplete: () => {
                   this.set("didAnimate", !0);
                 },
               });
             i.add(
-              a.gsap.TweenLite.to(s, 0.25, {
+              n.gsap.TweenLite.to(s, 0.25, {
                 amount: t,
                 onUpdate: () => {
                   this.set(
@@ -8709,13 +9299,13 @@
               }),
               "start+=0.2",
             );
-            const r = n ? l : o;
+            const r = a ? l : o;
             i.add(() => {
               r && r.play();
             }, "start+=0.35"),
               i.play();
           },
-          currentChampionMasteryData: a.Ember.computed(
+          currentChampionMasteryData: n.Ember.computed(
             "championMasteryUpdateNotification.championId",
             "championMasteryData.championMasteries.[]",
             function () {
@@ -8724,19 +9314,19 @@
               return e.find((e) => e.championId === t);
             },
           ),
-          milestoneProgressMap: a.Ember.computed(
+          milestoneProgressMap: n.Ember.computed(
             "milestoneGrades",
             "championMasteryRewardConfig",
             function () {
               const e = this.get("milestoneGrades") || [],
                 t = this.get("nextSeasonMilestone.requireGradeCounts");
-              return a.SharedChampionMasteryConstants.calculateGradeRequirements(
+              return n.SharedChampionMasteryConstants.calculateGradeRequirements(
                 e,
                 t,
               );
             },
           ),
-          tooltipSeasonMilestone: a.Ember.computed(
+          tooltipSeasonMilestone: n.Ember.computed(
             "hasSeasonMilestoneLeveledUp",
             "seasonMilestone",
             function () {
@@ -8744,7 +9334,7 @@
               return this.get("hasSeasonMilestoneLeveledUp") ? e - 1 : e;
             },
           ),
-          totalMasteryPoints: a.Ember.computed(
+          totalMasteryPoints: n.Ember.computed(
             "pointsGained",
             "pointsBeforeGame",
             function () {
@@ -8754,20 +9344,20 @@
               );
             },
           ),
-          marksDisplayList: a.Ember.computed(
+          marksDisplayList: n.Ember.computed(
             "markRequiredForNextLevel",
             "marksEarned",
             function () {
               const e = [],
                 t = this.get("markRequiredForNextLevel"),
-                n = this.get("marksEarned");
-              for (let a = 0; a < Math.min(n, t); a++)
+                a = this.get("marksEarned");
+              for (let n = 0; n < Math.min(a, t); n++)
                 e.push({ isComplete: !0 });
-              for (let a = 0; a < t - n; a++) e.push({ isComplete: !1 });
+              for (let n = 0; n < t - a; n++) e.push({ isComplete: !1 });
               return e;
             },
           ),
-          masteryLevelText: a.Ember.computed(
+          masteryLevelText: n.Ember.computed(
             "tra.ready",
             "tra.career_postgame_mastery_progress_level",
             "masteryLevel",
@@ -8780,7 +9370,7 @@
                 : "";
             },
           ),
-          pointsGainedText: a.Ember.computed(
+          pointsGainedText: n.Ember.computed(
             "tra.ready",
             "tra.career_postgame_legendary_mastery_progress_points_gained",
             "pointsGained",
@@ -8794,7 +9384,7 @@
                 : "";
             },
           ),
-          championPointQueueTypesArray: a.Ember.computed(
+          championPointQueueTypesArray: n.Ember.computed(
             "endOfGameService.championMasteryConfig.ChampionPointQueueTypes",
             function () {
               const e = this.get(
@@ -8804,7 +9394,7 @@
               return (t = e || "" === e ? e.split(",") : s), t;
             },
           ),
-          isQueueSupportedForChampionMastery: a.Ember.computed(
+          isQueueSupportedForChampionMastery: n.Ember.computed(
             "championPointQueueTypesArray",
             "gameflowService.gameflowSession.gameData.queue.type",
             function () {
@@ -8814,7 +9404,7 @@
               return this.get("championPointQueueTypesArray").indexOf(e) > -1;
             },
           ),
-          isPlayerLevelSupportedForChampionMastery: a.Ember.computed(
+          isPlayerLevelSupportedForChampionMastery: n.Ember.computed(
             "endOfGameService.championMasteryConfig.MinSummonerLevel",
             "endOfGameService.player.level",
             function () {
@@ -8826,13 +9416,13 @@
               );
             },
           ),
-          isChampionMasteryEnabled: a.Ember.computed.bool(
+          isChampionMasteryEnabled: n.Ember.computed.bool(
             "endOfGameService.championMasteryConfig.Enabled",
           ),
-          isPostgameChampionMasteryEnabled: a.Ember.computed.bool(
+          isPostgameChampionMasteryEnabled: n.Ember.computed.bool(
             "postgame.postgameChampionMasteryEnabled",
           ),
-          isChampionMasteryAvailable: a.Ember.computed.and(
+          isChampionMasteryAvailable: n.Ember.computed.and(
             "isQueueSupportedForChampionMastery",
             "isPlayerLevelSupportedForChampionMastery",
             "isChampionMasteryEnabled",
@@ -8840,7 +9430,7 @@
             "dataIsLoaded",
             "isPostgameChampionMasteryEnabled",
           ),
-          masteryRadialCurrentProgressPercent: a.Ember.computed(
+          masteryRadialCurrentProgressPercent: n.Ember.computed(
             "nextLevelPercentFill",
             "currentLevelPercentFill",
             "hasLeveledUp",
@@ -8851,7 +9441,7 @@
                 : this.get("beforeMatchPercentFill");
             },
           ),
-          masteryRadialNewProgressPercent: a.Ember.computed(
+          masteryRadialNewProgressPercent: n.Ember.computed(
             "nextLevelPercentFill",
             "currentLevelPercentFill",
             "hasLeveledUp",
@@ -8861,7 +9451,7 @@
                 : this.get("currentLevelPercentFill");
             },
           ),
-          masteryRadialTotalProgressPercent: a.Ember.computed(
+          masteryRadialTotalProgressPercent: n.Ember.computed(
             "masteryRadialCurrentProgressPercent",
             "masteryRadialNewProgressPercent",
             function () {
@@ -8871,7 +9461,7 @@
               );
             },
           ),
-          currentLevelTotalMasteryPoints: a.Ember.computed(
+          currentLevelTotalMasteryPoints: n.Ember.computed(
             "pointsSinceLastLevelBeforeGame",
             "pointsUntilNextLevelBeforeGame",
             function () {
@@ -8881,7 +9471,7 @@
               );
             },
           ),
-          beforeMatchPercentFill: a.Ember.computed(
+          beforeMatchPercentFill: n.Ember.computed(
             "pointsSinceLastLevelBeforeGame",
             "currentLevelTotalMasteryPoints",
             function () {
@@ -8892,7 +9482,7 @@
               );
             },
           ),
-          currentLevelPercentFill: a.Ember.computed(
+          currentLevelPercentFill: n.Ember.computed(
             "pointsGained",
             "currentLevelTotalMasteryPoints",
             function () {
@@ -8903,7 +9493,7 @@
               );
             },
           ),
-          spilloverMasteryPoints: a.Ember.computed(
+          spilloverMasteryPoints: n.Ember.computed(
             "pointsGained",
             "pointsUntilNextLevelBeforeGame",
             function () {
@@ -8913,7 +9503,7 @@
               );
             },
           ),
-          nextLevelTotalMasteryPoints: a.Ember.computed(
+          nextLevelTotalMasteryPoints: n.Ember.computed(
             "pointsUntilNextLevelAfterGame",
             "spilloverMasteryPoints",
             function () {
@@ -8923,7 +9513,7 @@
               );
             },
           ),
-          nextLevelPercentFill: a.Ember.computed(
+          nextLevelPercentFill: n.Ember.computed(
             "nextLevelTotalMasteryPoints",
             "spilloverMasteryPoints",
             function () {
@@ -8934,13 +9524,13 @@
         });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["cherry-progression-component"],
           classNameBindings: [
@@ -8976,13 +9566,13 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["rating-change-component"],
           classNameBindings: ["isWin::is-loss"],
@@ -9022,8 +9612,8 @@
           _playIntroAnimation() {
             const e = this.get("ratingDelta"),
               t = this.get("isWin"),
-              n = this.get("shouldShowAnimatedRatingDeltaString"),
-              a = { amount: 0 },
+              a = this.get("shouldShowAnimatedRatingDeltaString"),
+              n = { amount: 0 },
               o = this.element.querySelector(".points-gained-spark-video"),
               l = new s.gsap.TimelineMax({
                 paused: !0,
@@ -9032,18 +9622,18 @@
                 },
               });
             l.add(
-              s.gsap.TweenLite.to(a, 0.3, {
+              s.gsap.TweenLite.to(n, 0.3, {
                 amount: e,
                 onUpdate: () => {
                   this.set(
                     "animatedPointsText",
-                    this.get("getLocForRatingChange")(Math.round(a.amount)),
+                    this.get("getLocForRatingChange")(Math.round(n.amount)),
                   );
                 },
               }),
               "start+=0.2",
             ),
-              n && t
+              a && t
                 ? (l.add(() => {
                     this.playSound("sfx-eog-ui-exp-burst.ogg");
                   }, "start+=0.2"),
@@ -9100,13 +9690,13 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = (n = a(14)) && n.__esModule ? n : { default: n };
         var l = s.Ember.Component.extend(o.default, {
           classNames: ["ranked-progression-component"],
           classNameBindings: [
@@ -9180,14 +9770,14 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const i = 100;
         var r = s.Ember.Component.extend(l.default, {
           classNames: ["ranked-reward-progression-component"],
@@ -9213,8 +9803,8 @@
                   "splitPointsNotification.previousSplitPointsRequired",
                 ),
                 t = this.get("splitPointsNotification.splitPointsRequired"),
-                n = this.get("splitPointsNotification.splitPointsBeforeGame");
-              return e === t ? 0 : Math.max(0, ((n - e) / (t - e)) * i);
+                a = this.get("splitPointsNotification.splitPointsBeforeGame");
+              return e === t ? 0 : Math.max(0, ((a - e) / (t - e)) * i);
             },
           ),
           shouldSplitPointsGainedTextAnimate: s.Ember.computed(
@@ -9239,10 +9829,10 @@
                   "splitPointsNotification.previousSplitPointsRequired",
                 ),
                 t = this.get("splitPointsNotification.splitPointsRequired"),
-                n = this.get("splitPointsNotification.splitPointsAfterGame");
+                a = this.get("splitPointsNotification.splitPointsAfterGame");
               return this.get("noMoreRewardsToEarn") || e === t
                 ? i
-                : ((n - e) / (t - e)) * i;
+                : ((a - e) / (t - e)) * i;
             },
           ),
           noMoreRewardsToEarn: s.Ember.computed.not(
@@ -9308,21 +9898,21 @@
             const e = this.get("leaguesNotification");
             if (!e) return;
             const t = this.get("isRewardDataLoaded"),
-              n =
+              a =
                 e.rewardEarnedId ||
                 (e.splitPointsNotification &&
                   e.splitPointsNotification.nextRewardId);
-            if (n && !t) {
-              this.leagueTierNames.asyncGetRewardImage(n).then((e) => {
+            if (a && !t) {
+              this.leagueTierNames.asyncGetRewardImage(a).then((e) => {
                 this.set("rewardImagePath", e);
               });
               const t = !!e.rewardEarnedId,
-                a =
+                n =
                   e.rewardEarnedType ||
                   (e.splitPointsNotification &&
                     e.splitPointsNotification.nextRewardType);
               this.set("isRewardDataLoaded", !0),
-                this.set("rewardType", a),
+                this.set("rewardType", n),
                 this.set("isRewardEarned", t);
             }
           },
@@ -9330,10 +9920,10 @@
             this.get("tra");
             const e = this.get("splitPointsNotification.splitPointsDelta") || 0,
               t = { amount: 0 },
-              n = this.element.querySelector(
+              a = this.element.querySelector(
                 ".ranked-reward-progression-points-gained-spark-video",
               ),
-              a = this.element.querySelector(
+              n = this.element.querySelector(
                 ".ranked-reward-progression-lottie-radial-fill",
               ),
               o = new s.gsap.TimelineMax({
@@ -9356,12 +9946,12 @@
               }),
               "start+=0.2",
             ),
-              a &&
+              n &&
                 o.add(() => {
-                  a.play();
+                  n.play();
                 }, "start"),
               o.add(() => {
-                n && n.play();
+                a && a.play();
               }, "start+=0.35"),
               o.play();
           },
@@ -9393,33 +9983,33 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["miniseries-progress-component"],
-            miniseriesResultArray: a.Ember.computed(
+            miniseriesResultArray: n.Ember.computed(
               "miniseriesProgress",
               function () {
                 const e = [],
                   t = this.get("miniseriesProgress") || "";
-                for (let n = 0; n < t.length; n++) e.push(t.charAt(n));
+                for (let a = 0; a < t.length; a++) e.push(t.charAt(a));
                 return e;
               },
             ),
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const i = "/lol-challenges/v1/penalty",
           r = 0.9;
         var m = s.Ember.Component.extend(l.default, {
@@ -9519,8 +10109,8 @@
           _playIntroAnimation() {
             const e = this.element.querySelectorAll(".container-item"),
               t = this.element.querySelectorAll(".container-item-contents"),
-              n = this.element.querySelector(".challenge-progression-top"),
-              a = this.get("hasWarning"),
+              a = this.element.querySelector(".challenge-progression-top"),
+              n = this.get("hasWarning"),
               o = new s.gsap.TimelineMax({
                 paused: !0,
                 onComplete: () => {
@@ -9536,21 +10126,21 @@
                 "start+=" + (0.5 * e + 1),
               );
             for (let t = 0; t < e.length; t++) {
-              const n = e[t],
-                s = n.getAttribute("anim-data-challenge-level");
-              if (!n.hasAttribute("anim-data-is-empty") && !a)
+              const a = e[t],
+                s = a.getAttribute("anim-data-challenge-level");
+              if (!a.hasAttribute("anim-data-is-empty") && !n)
                 if (s) {
-                  const e = n.hasAttribute("anim-data-is-levelup"),
-                    a = n.querySelector(".lottie-card-outline");
-                  a &&
+                  const e = a.hasAttribute("anim-data-is-levelup"),
+                    n = a.querySelector(".lottie-card-outline");
+                  n &&
                     (o.add(
                       () => {
-                        a.play();
+                        n.play();
                       },
                       `start+=${0.5 * t + r}`,
                     ),
-                    o.to(a, 0.3, { opacity: 0 }, `start+=${0.5 * t + r + 1}`));
-                  const l = n.querySelector(".lottie-card-sheen");
+                    o.to(n, 0.3, { opacity: 0 }, `start+=${0.5 * t + r + 1}`));
+                  const l = a.querySelector(".lottie-card-sheen");
                   if (
                     (l &&
                       (o.add(
@@ -9567,7 +10157,7 @@
                       )),
                     e)
                   ) {
-                    const e = n.querySelector(".anim-card-intro");
+                    const e = a.querySelector(".anim-card-intro");
                     e &&
                       (o.add(
                         () => {
@@ -9597,25 +10187,25 @@
                       `start+=${0.5 * t + r}`,
                     );
                 } else {
-                  const e = n.hasAttribute("anim-data-is-milestone"),
-                    a = n.querySelector(".lottie-card-outline");
+                  const e = a.hasAttribute("anim-data-is-milestone"),
+                    n = a.querySelector(".lottie-card-outline");
                   if (
-                    (a &&
+                    (n &&
                       (o.add(
                         () => {
-                          a.play();
+                          n.play();
                         },
                         `start+=${0.5 * t + r}`,
                       ),
                       o.to(
-                        a,
+                        n,
                         0.3,
                         { opacity: 0 },
                         `start+=${0.5 * t + r + 1}`,
                       )),
                     e)
                   ) {
-                    const e = n.querySelector(".anim-card-intro");
+                    const e = a.querySelector(".anim-card-intro");
                     e &&
                       (o.add(
                         () => {
@@ -9642,8 +10232,8 @@
               this.sendAction("playOutlineAnimation"),
                 this.playSound("sfx-eog-ui-edge-flare.ogg");
             }, "start+=3"),
-              n &&
-                o.fromTo(n, 0.33, { opacity: 0 }, { opacity: 1 }, "start+=3.2"),
+              a &&
+                o.fromTo(a, 0.33, { opacity: 0 }, { opacity: 1 }, "start+=3.2"),
               this.set("animationTimeline", o),
               o.play();
           },
@@ -9709,12 +10299,12 @@
           }),
           _decorateChallengeCard(e, t) {
             const {
-                currentValue: n,
-                previousValue: a,
+                currentValue: a,
+                previousValue: n,
                 currentThreshold: s,
               } = e,
-              o = Math.abs(n - a),
-              l = Math.abs(n - s);
+              o = Math.abs(a - n),
+              l = Math.abs(a - s);
             return (
               (e.isLevelUp = o > l),
               (e.animateStartDelay = 0.5 * t + r - 0.2),
@@ -9737,14 +10327,14 @@
         });
         t.default = m;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["challenge-updates-tooltip-container"],
-            upgradedChallenges: a.Ember.computed(
+            upgradedChallenges: n.Ember.computed(
               "challengeUpdates",
               function () {
                 const e = this.get("challengeUpdates");
@@ -9755,7 +10345,7 @@
                 return null;
               },
             ),
-            progressedChallenges: a.Ember.computed(
+            progressedChallenges: n.Ember.computed(
               "challengeUpdates",
               function () {
                 const e = this.get("challengeUpdates");
@@ -9769,14 +10359,14 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["eternals-updates-tooltip-container"],
-            newMilestoneText: a.Ember.computed(
+            newMilestoneText: n.Ember.computed(
               "tra",
               "eternalsUpdates",
               "newMilestoneEternals",
@@ -9791,7 +10381,7 @@
                     );
               },
             ),
-            newPersonalBestEternals: a.Ember.computed(
+            newPersonalBestEternals: n.Ember.computed(
               "eternalsUpdates",
               function () {
                 const e = this.get("eternalsUpdates");
@@ -9802,7 +10392,7 @@
                 return null;
               },
             ),
-            newMilestoneEternals: a.Ember.computed(
+            newMilestoneEternals: n.Ember.computed(
               "eternalsUpdates",
               function () {
                 const e = this.get("eternalsUpdates");
@@ -9813,7 +10403,7 @@
                 return null;
               },
             ),
-            progressedEternals: a.Ember.computed(
+            progressedEternals: n.Ember.computed(
               "eternalsUpdates",
               function () {
                 const e = this.get("eternalsUpdates");
@@ -9827,14 +10417,14 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         var i = s.Ember.Component.extend(l.default, s.Ember.Evented, {
           classNames: ["postgame-party-status-v2"],
           animationsEnabled: !0,
@@ -9861,8 +10451,8 @@
             function () {
               const e = this.get("partyGroupData"),
                 t = this.get("readyPlayers"),
-                n = this.get("leftPlayers");
-              if (e && t && n) {
+                a = this.get("leftPlayers");
+              if (e && t && a) {
                 const t = [];
                 return (
                   e.forEach((e) => {
@@ -9952,10 +10542,10 @@
           },
           _getPartyStatusString(e) {
             const t = this.get("readyPlayers"),
-              n = this.get("leftPlayers"),
-              a = t && t.includes(e),
-              s = n && n.includes(e);
-            return a
+              a = this.get("leftPlayers"),
+              n = t && t.includes(e),
+              s = a && a.includes(e);
+            return n
               ? o.PARTY_STATUS.READY_STATUS
               : s
                 ? o.PARTY_STATUS.LEFT_PARTY_STATUS
@@ -9966,30 +10556,30 @@
             this.get("summonerService")
               .getSummonersByPuuid(e)
               .then((e) => {
-                const n = [];
+                const a = [];
                 e.forEach((e) => {
                   e &&
-                    n.push(
+                    a.push(
                       this.get("gameDataService").getSummonerIcon(
                         e.profileIconId,
                       ),
                     );
                 }),
-                  Promise.all(n).then((n) => {
-                    if (n) {
-                      const a = [];
+                  Promise.all(a).then((a) => {
+                    if (a) {
+                      const n = [];
                       e.forEach((e, s) => {
                         const o = t
                           ? `${e.gameName} #${e.tagLine}`
                           : e.displayName;
-                        n[s] &&
-                          a.push({
+                        a[s] &&
+                          n.push({
                             puuid: e.puuid,
                             displayName: o,
-                            profileIconPath: n[s].iconPath,
+                            profileIconPath: a[s].iconPath,
                           });
                       }),
-                        this.set("partyGroupData", a);
+                        this.set("partyGroupData", n);
                     }
                   });
               });
@@ -10005,18 +10595,18 @@
         });
         t.default = i;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        n(130);
-        var s = a.Ember.Component.extend({
+        var n = a(1);
+        a(134);
+        var s = n.Ember.Component.extend({
           classNames: ["progression-modal-root-component"],
           challenges: [],
           eternals: [],
-          showEternalsData: a.Ember.computed.bool("showEternalsData"),
-          showChallengesData: a.Ember.computed.bool("showChallengessData"),
+          showEternalsData: n.Ember.computed.bool("showEternalsData"),
+          showChallengesData: n.Ember.computed.bool("showChallengessData"),
           actions: {
             closeModal() {
               this.sendAction("closeModal");
@@ -10025,26 +10615,26 @@
         });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
-        n.r(t);
+        a.r(t);
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(132),
-          o = n(3),
-          l = a.Ember.Component.extend({
+        var n = a(1),
+          s = a(136),
+          o = a(3),
+          l = n.Ember.Component.extend({
             classNames: ["scoreboard-header-component"],
             classNameBindings: ["team.isPlayerTeam"],
-            gameflow: a.Ember.inject.service(),
-            showScoreboardColumnIcons: a.Ember.computed.equal("index", 0),
-            gameMode: a.Ember.computed.alias(
+            gameflow: n.Ember.inject.service(),
+            showScoreboardColumnIcons: n.Ember.computed.equal("index", 0),
+            gameMode: n.Ember.computed.alias(
               "gameflow.gameflowSession.gameData.queue.gameMode",
             ),
-            teamGoldLoc: a.Ember.computed(
+            teamGoldLoc: n.Ember.computed(
               "team.stats.GOLD_EARNED",
               "locale",
               function () {
@@ -10053,7 +10643,7 @@
                 );
               },
             ),
-            teamPlacementLoc: a.Ember.computed(function () {
+            teamPlacementLoc: n.Ember.computed(function () {
               return (
                 this.get("tra").formatString(
                   o.CHERRY_PLACEMENT_TRA_KEY +
@@ -10061,18 +10651,18 @@
                 ) || ""
               );
             }),
-            teamIcon: a.Ember.computed(function () {
+            teamIcon: n.Ember.computed(function () {
               const e = this.get("team.stats.PLAYER_SUBTEAM"),
                 t = this._getSubteamData(e);
               if (t) return t.display.icon;
             }),
-            teamNameLoc: a.Ember.computed("index", "tra.ready", function () {
+            teamNameLoc: n.Ember.computed("index", "tra.ready", function () {
               const e = this.get("team.stats.PLAYER_SUBTEAM"),
                 t = this._getSubteamData(e),
-                n = this.get("tra");
-              if (t) return n.formatString(t.display.label, { teamNumber: e });
+                a = this.get("tra");
+              if (t) return a.formatString(t.display.label, { teamNumber: e });
             }),
-            kdaLoc: a.Ember.computed(
+            kdaLoc: n.Ember.computed(
               "team.stats.CHAMPIONS_KILLED",
               "team.stats.NUM_DEATHS",
               "team.stats.ASSISTS",
@@ -10090,8 +10680,8 @@
             },
             _getSubteamData: function (e) {
               const t = o.GAME_MODES_WITH_SUBTEAMS,
-                n = this.get("gameMode");
-              if (t && n) return t[n].subteams.find((t) => t.subteamId === e);
+                a = this.get("gameMode");
+              if (t && a) return t[a].subteams.find((t) => t.subteamId === e);
             },
           });
         t.default = l;
@@ -10101,9 +10691,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.getKdaDecimal = function (e, t) {
             if (e) {
-              const n = e.CHAMPIONS_KILLED || 0,
-                a = e.NUM_DEATHS || 1,
-                s = ((n + (e.ASSISTS || 0)) / a).toFixed(1);
+              const a = e.CHAMPIONS_KILLED || 0,
+                n = e.NUM_DEATHS || 1,
+                s = ((a + (e.ASSISTS || 0)) / n).toFixed(1);
               return t.formatString("postgame_scoreboard_row_kda_decimal", {
                 kda: s,
               });
@@ -10112,29 +10702,29 @@
           }),
           (t.getKdaFull = function (e, t) {
             if (e) {
-              const n = e.CHAMPIONS_KILLED || 0,
-                a = e.NUM_DEATHS || 0,
+              const a = e.CHAMPIONS_KILLED || 0,
+                n = e.NUM_DEATHS || 0,
                 s = e.ASSISTS || 0;
               return t.formatString("postgame_scoreboard_row_kda_full", {
-                kills: n,
-                deaths: a,
+                kills: a,
+                deaths: n,
                 assists: s,
               });
             }
             return "";
           });
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(132),
-          o = a.Ember.Component.extend({
+        var n = a(1),
+          s = a(136),
+          o = n.Ember.Component.extend({
             classNames: ["scoreboard-header-component"],
             classNameBindings: ["team.isPlayerTeam"],
-            showScoreboardColumnIcons: a.Ember.computed.equal("index", 0),
-            teamGoldLoc: a.Ember.computed(
+            showScoreboardColumnIcons: n.Ember.computed.equal("index", 0),
+            teamGoldLoc: n.Ember.computed(
               "team.stats.GOLD_EARNED",
               "locale",
               function () {
@@ -10143,14 +10733,14 @@
                 );
               },
             ),
-            teamNameLoc: a.Ember.computed("index", "tra.ready", function () {
+            teamNameLoc: n.Ember.computed("index", "tra.ready", function () {
               const e = this.get("index") + 1;
               return this.get("tra").formatString(
                 "postgame_scoreboard_header_team_label",
                 { teamNumber: e },
               );
             }),
-            kdaLoc: a.Ember.computed(
+            kdaLoc: n.Ember.computed(
               "team.stats.CHAMPIONS_KILLED",
               "team.stats.NUM_DEATHS",
               "team.stats.ASSISTS",
@@ -10169,14 +10759,14 @@
           });
         t.default = o;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = (n = a(14)) && n.__esModule ? n : { default: n };
         const i = s.dataBinding.bindTo((0, s.getProvider)().getSocket()),
           { RunMixin: r } = s.EmberAddons.EmberLifeline;
         var m = s.Ember.Component.extend(r, l.default, {
@@ -10311,10 +10901,10 @@
           processChatCelebration: function () {
             const e = this.get("conversationId"),
               t = this.get("hasCelebrated"),
-              n = this.get("chatCelebrationSent");
+              a = this.get("chatCelebrationSent");
             e &&
               t &&
-              !n &&
+              !a &&
               (this.set("chatCelebrationSent", !0),
               this.createChatCelebration(e));
           },
@@ -10358,15 +10948,15 @@
         });
         t.default = m;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(3),
-          l = n(15),
-          i = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(3),
+          l = a(15),
+          i = (n = a(14)) && n.__esModule ? n : { default: n };
         var r = s.Ember.Component.extend(i.default, {
           classNames: ["scoreboard-root-component"],
           gameflow: s.Ember.inject.service(),
@@ -10420,7 +11010,7 @@
                 "_handleBackgroundMusic",
               );
           },
-          addNonZeroStatOptions: (e, t, n) => t.concat(e.filter((e) => !!n[e])),
+          addNonZeroStatOptions: (e, t, a) => t.concat(e.filter((e) => !!a[e])),
           animationsEnabled: s.Ember.computed(
             "postgame.largeAreaAnimationsEnabled",
             "postgame.disableEogAnimations",
@@ -10464,8 +11054,8 @@
                 this.get("eogStats.teams").forEach((t) => {
                   t.players.forEach((t) => {
                     t.stats &&
-                      Object.values(o.STAT_SWITCHER_STATS).forEach((n) => {
-                        e[n] = Math.max(e[n] || 0, t.stats[n] || 0);
+                      Object.values(o.STAT_SWITCHER_STATS).forEach((a) => {
+                        e[a] = Math.max(e[a] || 0, t.stats[a] || 0);
                       });
                   });
                 }),
@@ -10485,24 +11075,24 @@
             const e = this.$(".scoreboard-root-content-container"),
               t = s.gsap.Linear.easeNone;
             if (this.get("animationsEnabled")) {
-              let n = this.get("animationTimeline");
-              n && n.isActive() && n.kill(),
-                (n = new s.gsap.TimelineMax({
+              let a = this.get("animationTimeline");
+              a && a.isActive() && a.kill(),
+                (a = new s.gsap.TimelineMax({
                   paused: !0,
                   onComplete: () => {
                     this.sendAction("updateScoreboardAnimation", !0);
                   },
                 })),
                 e &&
-                  n.fromTo(
+                  a.fromTo(
                     e,
                     0.33,
                     { css: { opacity: 0 }, ease: t },
                     { css: { opacity: 1 } },
                     "start+=0",
                   ),
-                this.set("animationTimeline", n),
-                n.play(),
+                this.set("animationTimeline", a),
+                a.play(),
                 this.set("showTeamIntroAnimation", !0);
               this.get("isContinueButtonClicked") ||
                 this.playSound("sfx-eog-chaos-order.ogg");
@@ -10519,16 +11109,16 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(114),
-          l = n(137),
-          i = (a = n(14)) && a.__esModule ? a : { default: a },
-          r = n(6);
+        var n,
+          s = a(1),
+          o = a(107),
+          l = a(108),
+          i = (n = a(14)) && n.__esModule ? n : { default: n },
+          r = a(6);
         var m = s.Ember.Component.extend(i.default, {
           classNames: ["scoreboard-row-component"],
           classNameBindings: [
@@ -10581,10 +11171,10 @@
               .get(`/v1/summoners/${e.summonerId}`)
               .then((e) => {
                 if (e) {
-                  const { puuid: t, gameName: n, tagLine: a } = e;
+                  const { puuid: t, gameName: a, tagLine: n } = e;
                   this.set("puuid", t),
-                    this.set("gameName", n),
-                    this.set("tagLine", a);
+                    this.set("gameName", a),
+                    this.set("tagLine", n);
                   const s = this.get("gameId");
                   (this.updatedChallengePath = `/lol-challenges/v1/updated-challenges/${s}/${t}`),
                     this.challengesBinding.observe(
@@ -10632,9 +11222,9 @@
             function () {
               const e = this.get("isPlayerMuted"),
                 t = this.get("isSettingsMuted"),
-                n = this.get("isSystemMuted"),
-                a = t || e || n;
-              return this.animateMuteStatusUpdate(a), a;
+                a = this.get("isSystemMuted"),
+                n = t || e || a;
+              return this.animateMuteStatusUpdate(n), n;
             },
           ),
           topMostProgressedChallenge: s.Ember.computed(
@@ -10695,8 +11285,8 @@
             function () {
               const e = this.get("player.detectedPosition"),
                 t = this.get("player.selectedPosition"),
-                n = (e || t || "").toLowerCase();
-              return "none" === n ? "" : n;
+                a = (e || t || "").toLowerCase();
+              return "none" === a ? "" : a;
             },
           ),
           displayedPositionTranslatedText: s.Ember.computed(
@@ -10720,9 +11310,9 @@
           displayedAugments: s.Ember.computed("player.augments", function () {
             const e = this.get("player.augments") || [],
               t = [];
-            for (let n = 0; n < r.NUMBER_AUGMENTS_TO_RENDER; ++n) {
-              const a = e[n] || 0;
-              t.push(a);
+            for (let a = 0; a < r.NUMBER_AUGMENTS_TO_RENDER; ++a) {
+              const n = e[a] || 0;
+              t.push(n);
             }
             return t;
           }),
@@ -10743,10 +11333,10 @@
             function () {
               const e = this.get("player.summonerId"),
                 t = this.get("playerActions.alreadyFriendRequestedList") || [],
-                n = this.get("postgame.friendsList") || [],
-                a = Boolean(n.find((t) => t.summonerId === e)),
+                a = this.get("postgame.friendsList") || [],
+                n = Boolean(a.find((t) => t.summonerId === e)),
                 s = Boolean(t.find((t) => t.summonerId === e));
-              return a || s;
+              return n || s;
             },
           ),
           isReportDisabled: s.Ember.computed(
@@ -10808,10 +11398,10 @@
             function () {
               const e = this.get("teamChoices"),
                 t = this.get("player.puuid"),
-                n = this.get("postgame.isLocalPlayerInGame"),
-                a = this.get("honor.enabled"),
+                a = this.get("postgame.isLocalPlayerInGame"),
+                n = this.get("honor.enabled"),
                 s = this.get("isLeaver");
-              return e && e.includes(t) && n && a && !s;
+              return e && e.includes(t) && a && n && !s;
             },
           ),
           _initializeAnimationData() {
@@ -10851,8 +11441,8 @@
           },
           _getMuteStatus(e) {
             const t = this.get("player.puuid"),
-              n = this.get("postgame.playerMuteStatus");
-            return !(!n || !(t in n)) && n[t][e];
+              a = this.get("postgame.playerMuteStatus");
+            return !(!a || !(t in a)) && a[t][e];
           },
           actions: {
             showPlayerActionsMenu: function () {
@@ -10893,10 +11483,10 @@
             },
             togglePlayerMute: function (e) {
               const t = this.get("isPlayerMuted") || !1,
-                n = this.get("chatMessages"),
-                a = e.displayName.playerNameFull,
+                a = this.get("chatMessages"),
+                n = e.displayName.playerNameFull,
                 s = e.puuid;
-              n.updatePlayerMute(s, a, !t);
+              a.updatePlayerMute(s, n, !t);
             },
             updateHonorCelebrationAnimation(e) {
               this.sendAction("updateHonorCelebrationAnimation", e);
@@ -10905,25 +11495,15 @@
         });
         t.default = m;
       },
-      (e, t) => {
-        "use strict";
-        Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.MUTE_TYPES = void 0);
-        t.MUTE_TYPES = {
-          isPlayerMuted: "isPlayerMuted",
-          isSettingsMuted: "isSettingsMuted",
-          isSystemMuted: "isSystemMuted",
-        };
-      },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          o = n(114),
-          l = n(137),
-          i = (a = n(14)) && a.__esModule ? a : { default: a };
+        var n,
+          s = a(1),
+          o = a(107),
+          l = a(108),
+          i = (n = a(14)) && n.__esModule ? n : { default: n };
         var r = s.Ember.Component.extend(i.default, {
           classNames: ["scoreboard-row-component"],
           classNameBindings: [
@@ -10976,10 +11556,10 @@
               .get(`/v1/summoners/${e.summonerId}`)
               .then((e) => {
                 if (e) {
-                  const { puuid: t, gameName: n, tagLine: a } = e;
+                  const { puuid: t, gameName: a, tagLine: n } = e;
                   this.set("puuid", t),
-                    this.set("gameName", n),
-                    this.set("tagLine", a);
+                    this.set("gameName", a),
+                    this.set("tagLine", n);
                   const s = this.get("gameId");
                   (this.updatedChallengePath = `/lol-challenges/v1/updated-challenges/${s}/${t}`),
                     this.challengesBinding.observe(
@@ -11027,9 +11607,9 @@
             function () {
               const e = this.get("isPlayerMuted"),
                 t = this.get("isSettingsMuted"),
-                n = this.get("isSystemMuted"),
-                a = t || e || n;
-              return this.animateMuteStatusUpdate(a), a;
+                a = this.get("isSystemMuted"),
+                n = t || e || a;
+              return this.animateMuteStatusUpdate(n), n;
             },
           ),
           topMostProgressedChallenge: s.Ember.computed(
@@ -11090,8 +11670,8 @@
             function () {
               const e = this.get("player.detectedPosition"),
                 t = this.get("player.selectedPosition"),
-                n = (e || t || "").toLowerCase();
-              return "none" === n ? "" : n;
+                a = (e || t || "").toLowerCase();
+              return "none" === a ? "" : a;
             },
           ),
           displayedPositionTranslatedText: s.Ember.computed(
@@ -11129,10 +11709,10 @@
             function () {
               const e = this.get("player.summonerId"),
                 t = this.get("playerActions.alreadyFriendRequestedList") || [],
-                n = this.get("postgame.friendsList") || [],
-                a = Boolean(n.find((t) => t.summonerId === e)),
+                a = this.get("postgame.friendsList") || [],
+                n = Boolean(a.find((t) => t.summonerId === e)),
                 s = Boolean(t.find((t) => t.summonerId === e));
-              return a || s;
+              return n || s;
             },
           ),
           isReportDisabled: s.Ember.computed(
@@ -11196,10 +11776,10 @@
             function () {
               const e = this.get("teamChoices"),
                 t = this.get("player.puuid"),
-                n = this.get("postgame.isLocalPlayerInGame"),
-                a = this.get("honor.enabled"),
+                a = this.get("postgame.isLocalPlayerInGame"),
+                n = this.get("honor.enabled"),
                 s = this.get("isLeaver");
-              return e && e.includes(t) && n && a && !s;
+              return e && e.includes(t) && a && n && !s;
             },
           ),
           _initializeAnimationData() {
@@ -11239,8 +11819,8 @@
           },
           _getMuteStatus(e) {
             const t = this.get("player.puuid"),
-              n = this.get("postgame.playerMuteStatus");
-            return !(!n || !(t in n)) && n[t][e];
+              a = this.get("postgame.playerMuteStatus");
+            return !(!a || !(t in a)) && a[t][e];
           },
           actions: {
             showPlayerActionsMenu: function () {
@@ -11281,10 +11861,10 @@
             },
             togglePlayerMute: function (e) {
               const t = this.get("isPlayerMuted") || !1,
-                n = this.get("chatMessages"),
-                a = e.displayName.playerNameFull,
+                a = this.get("chatMessages"),
+                n = e.displayName.playerNameFull,
                 s = e.puuid;
-              n.updatePlayerMute(s, a, !t);
+              a.updatePlayerMute(s, n, !t);
             },
             updateHonorCelebrationAnimation(e) {
               this.sendAction("updateHonorCelebrationAnimation", e);
@@ -11293,16 +11873,16 @@
         });
         t.default = r;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var n = a(1);
         const s = "togglePlayerMuteOff",
           o = "togglePlayerMuteOn";
-        var l = a.Ember.Component.extend({
+        var l = n.Ember.Component.extend({
           classNames: ["scoreboard-row-actions-menu-component"],
-          actionOptions: a.Ember.computed(
+          actionOptions: n.Ember.computed(
             "isItemSetsDisabled",
             "isFriendRequestDisabled",
             "isPlayerBlocked",
@@ -11312,10 +11892,10 @@
             function () {
               const e = this.get("isPlayerMuted") || !1,
                 t = e ? s : o,
-                n = e
+                a = e
                   ? this.get("tra.postgame_context_menu_unmute")
                   : this.get("tra.postgame_context_menu_mute"),
-                a = this.get("isPlayerMuteToggleable");
+                n = this.get("isPlayerMuteToggleable");
               return [
                 {
                   actionName: "inviteToParty",
@@ -11336,7 +11916,7 @@
                   label: this.get("tra.postgame_context_menu_import_item_set"),
                   disabled: this.get("isItemSetsDisabled"),
                 },
-                { actionName: t, label: n, disabled: !a },
+                { actionName: t, label: a, disabled: !n },
                 {
                   actionName: "confirmBlockPlayer",
                   label: this.get("tra.postgame_context_menu_block"),
@@ -11360,13 +11940,13 @@
         });
         t.default = l;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(3),
-          o = n(132);
+        var n = a(1),
+          s = a(3),
+          o = a(136);
         const l = [
             s.STAT_SWITCHER_STATS.DAMAGE_DEALT,
             s.STAT_SWITCHER_STATS.DAMAGE_TAKEN,
@@ -11381,7 +11961,7 @@
           m = {};
         (m[s.STAT_SWITCHER_STATS.CREEP_SCORE] = 1),
           (m[s.STAT_SWITCHER_STATS.VISION_SCORE] = 1);
-        var c = a.Ember.Component.extend({
+        var c = n.Ember.Component.extend({
           classNames: ["scoreboard-row-stat-display-component"],
           classNameBindings: ["statName"],
           hasScoreboardAnimationPlayed: !1,
@@ -11392,7 +11972,7 @@
             this._super(...arguments),
               !this.get("hasScoreboardAnimationPlayed") &&
                 this.get("animationsEnabled") &&
-                a.Ember.run.scheduleOnce(
+                n.Ember.run.scheduleOnce(
                   "afterRender",
                   this,
                   this._playIntroStatAnimation,
@@ -11403,7 +11983,7 @@
             const e = this.get("animationTimeline");
             e && e.kill();
           },
-          showStatNumberAnimation: a.Ember.computed(
+          showStatNumberAnimation: n.Ember.computed(
             "statName",
             "player.stats",
             "showStatAnimations",
@@ -11415,32 +11995,32 @@
               );
             },
           ),
-          primaryStatValue: a.Ember.computed(
+          primaryStatValue: n.Ember.computed(
             "statName",
             "player.stats",
             "tra.ready",
             function () {
               const e = this.get("statName") || "",
                 t = this.get("player.stats");
-              let n = 0;
+              let a = 0;
               return e && t
                 ? e === s.STAT_SWITCHER_STATS.INDIVIDUAL_KDA
                   ? (0, o.getKdaFull)(t, this.get("tra"))
-                  : ((n =
+                  : ((a =
                       e === s.STAT_SWITCHER_STATS.CREEP_SCORE
                         ? t[e] +
                             t[s.STAT_SWITCHER_STATS.NEUTRAL_MINIONS_SLAIN] || 0
                         : t[e] || 0),
-                    n)
+                    a)
                 : 0;
             },
           ),
-          statLinePrimary: a.Ember.computed("primaryStatValue", function () {
+          statLinePrimary: n.Ember.computed("primaryStatValue", function () {
             return this.get("primaryStatValue").toLocaleString(
               this.get("locale"),
             );
           }),
-          statLineSecondary: a.Ember.computed(
+          statLineSecondary: n.Ember.computed(
             "statName",
             "player.stats",
             "gameLengthSeconds",
@@ -11452,20 +12032,20 @@
                 if (e === s.STAT_SWITCHER_STATS.INDIVIDUAL_KDA)
                   return (0, o.getKdaDecimal)(t, this.get("tra"));
                 if (i.includes(e)) {
-                  const n = Math.max(
+                  const a = Math.max(
                       (this.get("gameLengthSeconds") || 0) / 60,
                       1,
                     ),
-                    a = this.get("tra"),
+                    n = this.get("tra"),
                     o = m[e] || 0;
                   let l = t[e] || 0;
                   return (
                     e === s.STAT_SWITCHER_STATS.CREEP_SCORE &&
                       (l +=
                         t[s.STAT_SWITCHER_STATS.NEUTRAL_MINIONS_SLAIN] || 0),
-                    a.formatString(
+                    n.formatString(
                       "postgame_scoreboard_stat_display_stat_per_minute",
-                      { statValue: Number((l / n).toFixed(o)) },
+                      { statValue: Number((l / a).toFixed(o)) },
                     )
                   );
                 }
@@ -11474,11 +12054,11 @@
               return "";
             },
           ),
-          showHighestStatValueAchiever: a.Ember.computed.and(
+          showHighestStatValueAchiever: n.Ember.computed.and(
             "isHighestStatValueAchiever",
             "isSecondaryDisplayLineGraph",
           ),
-          isHighestStatValueAchiever: a.Ember.computed(
+          isHighestStatValueAchiever: n.Ember.computed(
             "highestStatValue",
             "player.stats",
             "statName",
@@ -11491,7 +12071,7 @@
               );
             },
           ),
-          highestStatValue: a.Ember.computed(
+          highestStatValue: n.Ember.computed(
             "highestStatValueByStatMap",
             "statName",
             function () {
@@ -11499,37 +12079,37 @@
               return this.get(`highestStatValueByStatMap.${e}`) || 0;
             },
           ),
-          teamHighestStatValue: a.Ember.computed(
+          teamHighestStatValue: n.Ember.computed(
             "statName",
             "team.players.@each.stats",
             function () {
               let e = 0;
               const t = this.get("statName");
               return (
-                (this.get("team.players") || []).forEach((n) => {
-                  const s = a.Ember.get(n, `stats.${t}`) || 0;
+                (this.get("team.players") || []).forEach((a) => {
+                  const s = n.Ember.get(a, `stats.${t}`) || 0;
                   e = Math.max(e, s);
                 }),
                 e
               );
             },
           ),
-          barScaleValue: a.Ember.computed(
+          barScaleValue: n.Ember.computed(
             "statName",
             "teamHighestStatValue",
             "player.stats",
             function () {
               const e = this.get("statName"),
                 t = this.get(`player.stats.${e}`) || 0,
-                n = this.get("teamHighestStatValue");
-              let a = 0;
-              return n > 0 && (a = Math.max(t / n, 0.1)), a;
+                a = this.get("teamHighestStatValue");
+              let n = 0;
+              return a > 0 && (n = Math.max(t / a, 0.1)), n;
             },
           ),
-          graphFillStyle: a.Ember.computed("barScaleValue", function () {
+          graphFillStyle: n.Ember.computed("barScaleValue", function () {
             return `transform: scaleX(${this.get("barScaleValue")})`;
           }),
-          selectedStatLoc: a.Ember.computed(
+          selectedStatLoc: n.Ember.computed(
             "tra.isReady",
             "statName",
             function () {
@@ -11539,7 +12119,7 @@
               );
             },
           ),
-          isSecondaryDisplayLineGraph: a.Ember.computed(
+          isSecondaryDisplayLineGraph: n.Ember.computed(
             "statName",
             function () {
               return l.includes(this.get("statName"));
@@ -11548,14 +12128,14 @@
           _playIntroStatAnimation() {
             const e = this.get("primaryStatValue"),
               t = this.get("barScaleValue"),
-              n = { amount: 0 },
-              s = a.gsapCustomEase.create("custom", "M 0,0 C1,0 0,1 1,1"),
+              a = { amount: 0 },
+              s = n.gsapCustomEase.create("custom", "M 0,0 C1,0 0,1 1,1"),
               o = this.$(".scoreboard-row-stat-graph-fill");
             let l = this.get("animationTimeline");
             l && l.isActive() && l.kill(),
-              (l = new a.gsap.TimelineMax({ paused: !0 })),
+              (l = new n.gsap.TimelineMax({ paused: !0 })),
               l.to(
-                n,
+                a,
                 0.43,
                 {
                   amount: e,
@@ -11563,7 +12143,7 @@
                   onUpdate: () => {
                     this.set(
                       "animatedStatLinePrimary",
-                      Math.round(n.amount).toLocaleString(this.get("locale")),
+                      Math.round(a.amount).toLocaleString(this.get("locale")),
                     );
                   },
                   onComplete: () => {
@@ -11587,18 +12167,18 @@
         });
         t.default = c;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["scoreboard-stat-switcher-component"],
             classNameBindings: ["selectedStat"],
             init: function () {
               this._super(...arguments), this.set("currentIndex", 0);
             },
-            selectedStatLoc: a.Ember.computed(
+            selectedStatLoc: n.Ember.computed(
               "tra.isReady",
               "selectedStat",
               function () {
@@ -11615,26 +12195,26 @@
             actions: {
               scroll(e) {
                 const t = this.get("currentIndex"),
-                  n = this.get("options.length"),
-                  a = (t + e + n) % n,
-                  s = this.getNewSelectedStat(a);
-                this.set("currentIndex", a),
+                  a = this.get("options.length"),
+                  n = (t + e + a) % a,
+                  s = this.getNewSelectedStat(n);
+                this.set("currentIndex", n),
                   this.sendAction("selectStat", s, this.get("ordinal"));
               },
             },
           });
         t.default = s;
       },
-      (e, t, n) => {
+      (e, t, a) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = a.Ember.Component.extend({
+        var n = a(1),
+          s = n.Ember.Component.extend({
             classNames: ["scoreboard-spell-component"],
             classNameBindings: ["isSmall"],
-            postgame: a.Ember.inject.service(),
-            spellData: a.Ember.computed(
+            postgame: n.Ember.inject.service(),
+            spellData: n.Ember.computed(
               "spellId",
               "postgame.summonerSpells",
               function () {
@@ -11646,279 +12226,306 @@
           });
         t.default = s;
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "JvruqT5P",
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "/JvxL7B2",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-postgame-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,0],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["chat-container ",["helper",["if"],[["get",["shouldHideChatRoom"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-social-chat-room",[]],["static-attr","class","scoreboard-v2"],["static-attr","type","postGame"],["dynamic-attr","placeholder",["concat",[["unknown",["tra","postgame_chat_placeholder"]]]]],["static-attr","can-hide-player-messages",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","class","postgame-footer-exit-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"exitPostgame"],null],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-left"],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["animated-play-button"],null,[["onClick","hasIntroAnimationPlayed","buttonText","baseImgPath","overImgPath","downImgPath","onHoverSound","onClickSound","clickedStyle","partyStatus"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],["get",["hasIntroAnimationPlayed"]],["get",["forwardButtonText"]],"/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png",["get",["forwardHoverSound"]],["get",["forwardClickSound"]],"color: #005A82",["get",["partyStatus"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-right"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["append",["helper",["postgame-party-status-v2"],null,[["partyStatus","animationsEnabled"],[["get",["partyStatus"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["text","🍓🍓🍓🍓"],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","Game ID: "],["append",["unknown",["gameId"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","Game Time: "],["append",["unknown",["eogStats","gameLength"]],false],["text"," seconds"],["close-element"],["text","\\n        "],["open-element","button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"copyEOGDataToClipboard"],null],null],["flush-element"],["text","Copy EOGData to Clipboard"],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","Champion: "],["append",["unknown",["eogStats","localPlayer","championName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","Damage Done: "],["append",["unknown",["eogStats","localPlayer","stats","TOTAL_DAMAGE_DEALT"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-postgame-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,0],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-header-section"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-background"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-header-button-container"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n    "],["append",["helper",["strawberry-scoreboard-root"],null,[["eogStats","showKeystone","hasScoreboardAnimationPlayed","hasCelebratedHonor","isContinueButtonClicked","updateHonorCelebrationAnimation","updateScoreboardAnimation"],[["get",["eogStats"]],["get",["gameflow","showKeystone"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["isContinueButtonClicked"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null],["helper",["action"],[["get",[null]],"updateScoreboardAnimation"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["chat-container ",["helper",["if"],[["get",["shouldHideChatRoom"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-social-chat-room",[]],["static-attr","class","scoreboard-v2"],["static-attr","type","postGame"],["dynamic-attr","placeholder",["concat",[["unknown",["tra","postgame_chat_placeholder"]]]]],["static-attr","can-hide-player-messages",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","class","postgame-footer-exit-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"exitPostgame"],null],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-left"],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["animated-play-button"],null,[["onClick","hasIntroAnimationPlayed","buttonText","baseImgPath","overImgPath","downImgPath","onHoverSound","onClickSound","clickedStyle","partyStatus"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],["get",["hasIntroAnimationPlayed"]],["get",["forwardButtonText"]],"/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png",["get",["forwardHoverSound"]],["get",["forwardClickSound"]],"color: #005A82",["get",["partyStatus"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-right"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["append",["helper",["postgame-party-status-v2"],null,[["partyStatus","animationsEnabled"],[["get",["partyStatus"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["flush-element"],["text","🍓🍓🍓🍓"],["close-element"],["text","\\n      "],["open-element","button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"copyEOGDataToClipboard"],null],null],["flush-element"],["text","Copy EOGData to Clipboard"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "TnhJxeON",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-root-content-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["postgame","eogStatsBlock","teams"]]],null,3],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","video",[]],["dynamic-attr","class",["concat",["scoreboard-team-intro-animation ",["helper",["unless"],[["get",["team","isPlayerTeam"]],"scoreboard-team-intro-animation-enemy"],null]]]],["static-attr","src","/fe/lol-postgame/EOG_Scoreboard_Team_Color.webm"],["static-attr","type","video/webm"],["static-attr","autoplay",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator top"],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["strawberry-scoreboard-row"],null,[["player","team","showKeystone","gameLengthSeconds","gameId","hasScoreboardAnimationPlayed","hasCelebratedHonor","animationsEnabled","updateHonorCelebrationAnimation"],[["get",["player"]],["get",["team"]],["get",["showKeystone"]],["get",["eogStats","gameLength"]],["get",["eogStats","gameId"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":["player"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-header"],["flush-element"],["close-element"],["text","\\n      "],["append",["helper",["strawberry-scoreboard-header"],null,[["team","index","locale"],[["get",["team"]],["get",["index"]],["get",["postgame","locale"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-team-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-team"],["flush-element"],["text","\\n"],["block",["each"],[["get",["team","players"]]],null,1],["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator bottom"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamIntroAnimation"]]],null,0],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["team","isPlayerTeam"]]],null,2]],"locals":["team","index"]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "5FqtS3oU",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-header.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-content"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-name"],["flush-element"],["append",["unknown",["teamNameLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],5],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small kda"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["kdaLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],4],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small gold"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["teamGoldLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showScoreboardColumnIcons"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_GOLD_EARNED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_MINIONS_KILLED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TOTAL_DAMAGE_DEALT"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-column-icons-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon damage-dealt"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],2],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon minions"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon gold"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TEAM_GOLD_EARNED"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_KILL_DEATH_ASSIST"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "Lwc35K/L",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-row.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-content-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLeaver"]]],null,12],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["scoreboard-row-color-bar ",["unknown",["playerColorBarClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-details-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-background"],["dynamic-attr","style",["unknown",["skinSplashStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay secondary"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-details-content horizontal-flex-box"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-level-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayedPosition"]]],null,11],["text","        "],["open-element","div",[]],["static-attr","class","scoreboard-row-in-game-level centered-flex-box"],["flush-element"],["append",["unknown",["player","stats","LEVEL"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spacer"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-name-and-champ-container vertical-flex-box"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-name"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,9,8],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["player","leaver"]]],null,7,6],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,3],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","id","mute-indicator"],["static-attr","class","scoreboard-row-mute-indicator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlayerHonorComponent"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-row-items-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["paredItems"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","hasScoreboardAnimationPlayed","animationsEnabled"],["TOTAL_DAMAGE_DEALT",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["MINIONS_KILLED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["GOLD_EARNED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-hover-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,0],["text","  "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isPlayerActionsMenuOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hidePlayerActionsMenu"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutOptions"]],null],["flush-element"],["text","\\n    "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["scoreboard-row-actions-menu"],null,[["data","isItemSetsDisabled","isFriendRequestDisabled","isPlayerBlocked","isReportDisabled","isPlayerMuted","sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute","isPlayerMuteToggleable"],[["get",["player"]],["get",["postgame","isItemSetsDisabled"]],["get",["isFriendRequestDisabled"]],["get",["isPlayerBlocked"]],["get",["isReportDisabled"]],["get",["showPlayerMute"]],"sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute",["get",["isPlayerMuteToggleable"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-controls-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["player","isFriendRequestDisabled","isReportDisabled","isPlayerTeam","isInviteDisabled","sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute","isPlayerMuted"],[["get",["player"]],["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],["get",["team","isPlayerTeam"]],["get",["isInviteDisabled"]],"sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute",["get",["isPlayerMuted"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-item"],null,[["itemId"],[["get",["itemId"]]]]],false],["text","\\n"]],"locals":["itemId"]},{"statements":[["text","    "],["append",["helper",["scoreboard-honor-flair"],null,[["isLocalPlayer","isPlayerTeam","isBot","puuid","summonerName","gameName","tagLine","hasScoreboardAnimationPlayed","hasCelebrated","updateHonorCelebrationAnimation"],[["get",["player","isLocalPlayer"]],["get",["team","isPlayerTeam"]],["get",["player","botPlayer"]],["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPlayerActionsMenu"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-champ-name"],["flush-element"],["append",["unknown",["player","championName"]],false],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-is-system-muted"],["flush-element"],["append",["unknown",["tra","postgame_system_muted_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSystemMuted"]]],null,5,4]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-leaver-text"],["flush-element"],["append",["unknown",["tra","postgame_afk_penalty_applied_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["player","summonerName"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","class","scoreboard-row-lane-position-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-header"],["flush-element"],["append",["unknown",["displayedPositionTranslatedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-description"],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_lane_position_tooltip_description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-icon-wrapper centered-flex-box"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","scoreboard-row-position-icon"],["dynamic-attr","src",["concat",["/fe/lol-parties/icon-position-",["unknown",["displayedPosition"]],"-hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],10],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","embellishment-icon-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cancel-icon"],["static-attr","src","/fe/lol-postgame/icon-cancel.svg"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "1a9Y67bX",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\render-timer.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["isTimeToShow"]]],null,0]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","  "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "RdKUsn/t",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\eternals-token.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type","pseudoPartSelector"],["right","system","eternals-item-tooltip"]],3],["open-element","div",[]],["static-attr","class","progression-modal-eternals-token-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","progression-modal-eternals-token"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","eternals-token-img"],["dynamic-attr","src",["unknown",["eternal","imageUrl"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["isPersonalBest"]]],null,2,1],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","progresion-modal-eternals-footer"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","eternals-icon"],["static-attr","src","/fe/lol-postgame/icon-milestone.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["eternal","level"]],false],["text","\\n        "],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["isNewMilestone"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","progresion-modal-eternals-footer"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","eternals-icon"],["static-attr","src","/fe/lol-postgame/icon-target.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["eternal","value"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["eternals-item-tooltip"],null,[["eternal","index","isLevelFiveOrGreater","leftHeaderValue"],[["get",["eternal"]],["get",["index"]],["get",["isLevelFiveOrGreater"]],["get",["headerValue"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "RzHM4Q6F",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\postgame-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGameClientStats"]]],null,14,10],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-header-section ",["helper",["if"],[["get",["isProgressionTabSelected"]],"progression-tab"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-header-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-header-container"],["flush-element"],["text","\\n    "],["append",["helper",["postgame-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showAddPerksPageButton"]]],null,6],["block",["if"],[["get",["postgame","isLocalPlayerInGame"]]],null,5],["block",["unless"],[["get",["shouldShowGameClientStats"]]],null,4],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["chat-container ",["helper",["if"],[["get",["shouldHideChatRoom"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-social-chat-room",[]],["static-attr","class","scoreboard-v2"],["static-attr","type","postGame"],["dynamic-attr","placeholder",["concat",[["unknown",["tra","postgame_chat_placeholder"]]]]],["static-attr","can-hide-player-messages",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","class","postgame-footer-exit-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"exitPostgame"],null],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-left"],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["animationsEnabled"]]],null,1,0],["text","      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-right"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["career-postgame-countdown-meter-container ",["helper",["if"],[["get",["hasTimer"]],"visible"],null]]]],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","career-postgame-countdown-meter-background"],["static-attr","src","/fe/lol-postgame/countdown_meter_bg.svg"],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","career-postgame-countdown-meter"],["static-attr","src","/fe/lol-postgame/countdown_meter.svg"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["append",["helper",["postgame-party-status-v2"],null,[["partyStatus","animationsEnabled"],[["get",["partyStatus"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["text","\\n    "],["append",["unknown",["postgame-scoreboard-progression-honor-notification"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["append",["helper",["postgame-sub-navigation"],null,[["tabs","onSelect"],[["get",["tabs"]],["helper",["action"],[["get",[null]],"handleTabSelected"],null]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-progression-lottie-outline"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-lottie",[]],["static-attr","id","lottie-outline-anim"],["static-attr","src","/fe/lol-static-assets/lottie/postgame/postgame-screen-border.json"],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["animated-play-button"],null,[["onClick","hasIntroAnimationPlayed","buttonText","baseImgPath","overImgPath","downImgPath","onHoverSound","onClickSound","clickedStyle","partyStatus"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],["get",["hasIntroAnimationPlayed"]],["get",["forwardButtonText"]],"/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png",["get",["forwardHoverSound"]],["get",["forwardClickSound"]],"color: #005A82",["get",["partyStatus"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","upText","overText","downText","onHoverSound","onClickSound"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],"/fe/lol-postgame/button-find-match.png","/fe/lol-postgame/button-find-match-over.png","/fe/lol-postgame/button-find-match-down.png",["get",["forwardButtonText"]],["get",["forwardButtonText"]],["get",["forwardButtonText"]],["get",["forwardHoverSound"]],["get",["forwardClickSound"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","postgame-match-history-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"displayAdvancedDetails"],null],null],["flush-element"],["text","\\n              "],["append",["unknown",["tra","postgame_scoreboard_view_advanced_details"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowAdvancedDetailsButton"]]],null,2]],"locals":[]},{"statements":[["block",["unless"],[["get",["isDetailsTabOpen"]]],null,3]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["postgame-scoreboard-replay-button"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","add-perks-page-button-container"],["flush-element"],["text","\\n          "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","disabledImgPath","tooltipText","disabledTooltipText","isEnabled","onHoverSound","onClickSound"],[["helper",["action"],[["get",[null]],"addPerksPage"],null],"/fe/lol-postgame/add-rune-page.png","/fe/lol-postgame/add-rune-page.png","/fe/lol-postgame/add-rune-page-disabled.png","/fe/lol-postgame/add-rune-page-disabled.png",["get",["tra","perks_add_rune_page_button"]],["get",["addRunePageButtonDisabledText"]],["get",["addPerksPageButtonEnabled"]],["get",["forwardHoverSound"]],["get",["forwardClickSound"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["scoreboard-root"],null,[["eogStats","showKeystone","hasScoreboardAnimationPlayed","hasCelebratedHonor","isContinueButtonClicked","updateHonorCelebrationAnimation","updateScoreboardAnimation"],[["get",["eogStats"]],["get",["gameflow","showKeystone"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["isContinueButtonClicked"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null],["helper",["action"],[["get",[null]],"updateScoreboardAnimation"],null]]]],false],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["isScoreboardTabSelected"]]],null,7]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-progression"],null,[["eogStats","updatedChallenges","summonerIconPath","willAnimate","playOutlineAnimation"],[["get",["eogStats"]],["get",["updatedChallenges"]],["get",["summonerIconPath"]],["get",["isAnimating"]],["helper",["action"],[["get",[null]],"playOutlineAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressionTabSelected"]]],null,9,8]],"locals":[]},{"statements":[["text","      "],["append",["helper",["scoreboard-root"],null,[["eogStats","showKeystone","hasScoreboardAnimationPlayed","hasCelebratedHonor","isContinueButtonClicked","updateHonorCelebrationAnimation","updateScoreboardAnimation"],[["get",["gameClientStats"]],["get",["gameflow","showKeystone"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["isContinueButtonClicked"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null],["helper",["action"],[["get",[null]],"updateScoreboardAnimation"],null]]]],false],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["isScoreboardTabSelected"]]],null,11]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-progression"],null,[["eogStats","updatedChallenges","summonerIconPath","willAnimate","playOutlineAnimation","shouldHidePrestigeProgression"],[["get",["gameClientStats"]],["get",["updatedChallenges"]],["get",["summonerIconPath"]],["get",["isAnimating"]],["helper",["action"],[["get",[null]],"playOutlineAnimation"],null],["get",["shouldShowGameClientStats"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressionTabSelected"]]],null,13,12]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "xUhEIPBL",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\postgame-sub-navigation.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","lol-uikit-navigation-bar",[]],["static-attr","type","nav-bar-secondary"],["static-attr","class","postgame-sub-navigation-container"],["flush-element"],["text","\\n"],["block",["each"],[["helper",["-each-in"],[["get",["tabs"]]],null]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["modifier",["action"],[["get",[null]],"selectTab",["get",["index"]]]],["flush-element"],["text","\\n    "],["open-element","lol-uikit-navigation-item",[]],["dynamic-attr","active",["concat",[["helper",["if"],[["get",["tab","selected"]],"true"],null]]]],["flush-element"],["text","\\n      "],["append",["unknown",["tab","name"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["index","tab"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "FV3DDyqM",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\postgame-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],11]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lc-modal",[]],["dynamic-attr","open",["unknown",["showProgressionModal"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"closeModal"],null],null],["flush-element"],["text","\\n      "],["open-element","lc-modal-content",[]],["flush-element"],["text","\\n        "],["append",["helper",["progression-modal"],null,[["challenges","eternals","groupedChallenges","groupedEternals","showEternalsData","showChallengesData","closeModal"],[["get",["allChallengeUpdates"]],["get",["allEternalsUpdates"]],["get",["groupedChallenges"]],["get",["groupedEternals"]],["get",["showProgressedEternalsData"]],["get",["showProgressedChallengesData"]],["helper",["action"],[["get",[null]],"closeModal"],null]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["challenge-update-container"],null,[["challenges","eternals","groupedChallenges","groupedEternals","items","willAnimate","openModal","playOutlineAnimation"],[["get",["allChallengeUpdates"]],["get",["allEternalsUpdates"]],["get",["challengesMap"]],["get",["eternalsMap"]],["get",["showcasedEoGUpdateSlots"]],["get",["willAnimate"]],["helper",["action"],[["get",[null]],"openModal"],null],["helper",["action"],[["get",[null]],"playOutlineAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["mastery-progression"],null,[["championMasteryUpdateNotification","isSmall","willAnimate"],[["get",["championMasteryUpdateNotification"]],["get",["eogStats","ranked"]],["get",["willAnimate"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["legendary-mastery-progression"],null,[["isSmall","willAnimate"],[["get",["eogStats","ranked"]],["get",["willAnimate"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowLegendaryMasteryProgression"]]],null,3,2]],"locals":[]},{"statements":[["text","        "],["append",["helper",["ranked-progression"],null,[["tier","division","leaguePointsDelta","leaguePoints","consolationLpUsed","afkLpPenaltyAmount","miniseriesProgress","notifyReason","isLossPrevented","isWin","provisionalGamesRemaining","willAnimate"],[["get",["leaguesNotification","tier"]],["get",["leaguesNotification","division"]],["get",["leaguesNotification","leaguePointsDelta"]],["get",["leaguesNotification","leaguePoints"]],["get",["leaguesNotification","consolationLpUsed"]],["get",["leaguesNotification","afkLpPenaltyAmount"]],["get",["leaguesNotification","miniseriesProgress"]],["get",["leaguesNotification","notifyReason"]],["get",["isLossPrevented"]],["get",["isWin"]],["get",["leaguesNotification","provisionalGamesRemaining"]],["get",["willAnimate"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["cherry-progression"],null,[["ratedTier","ratedRating","ratedRatingDelta","notifyReason","isLossPrevented","isWin","willAnimate","leftSpacing"],[["get",["leaguesNotification","ratedTier"]],["get",["leaguesNotification","ratedRating"]],["get",["leaguesNotification","ratedRatingDelta"]],["get",["leaguesNotification","notifyReason"]],["get",["isLossPrevented"]],["get",["isWin"]],["get",["willAnimate"]],["get",["shouldShowPrestigeProgression"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isCherry"]]],null,6,5]],"locals":[]},{"statements":[["text","      "],["append",["helper",["prestige-progression"],null,[["isLarge","eogStats","summonerIconPath","isRanked","isCherry","willAnimate"],[["get",["isPrestigeProgressionLarge"]],["get",["eogStats"]],["get",["summonerIconPath"]],["get",["isRanked"]],["get",["isCherry"]],["get",["willAnimate"]]]]],false],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowPrestigeProgression"]]],null,8]],"locals":[]},{"statements":[["text","      "],["append",["helper",["ranked-reward-progression"],null,[["willAnimate","leaguesNotification"],[["get",["willAnimate"]],["get",["leaguesNotification"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","postgame-champion-background-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-champion-background-mask"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","postgame-champion-background"],["dynamic-attr","src",["concat",[["unknown",["eogStats","localPlayer","skinSplashPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","progression-screen-header"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowRankedRewardProgression"]]],null,10,9],["block",["if"],[["get",["leaguesNotification"]]],null,7],["block",["if"],[["get",["shouldShowMasteryProgression"]]],null,4],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["showcasedEoGUpdateSlots"]]],null,1],["block",["if"],[["get",["showProgressionModal"]]],null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "5GmpGz9y",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\prestige-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prestige-progression-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["animated-radial ",["helper",["if"],[["get",["showAnimatedElements"]],"visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","radial-fill"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-lottie",[]],["static-attr","class","lottie-radial-fill"],["dynamic-attr","src",["unknown",["lottieBarFillPath"]],null],["dynamic-attr","param-current-exp",["unknown",["lottieRadialOldPercent"]],null],["dynamic-attr","param-new-exp",["unknown",["lottieRadialNewPercent"]],null],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showAnimatedElements"]]],null,3],["text","  "],["open-element","div",[]],["static-attr","class","summoner-icon-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","summoner-icon"],["dynamic-attr","src",["unknown",["summonerIconPath"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summoner-icon-frame"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summoner-level-plate"],["flush-element"],["append",["unknown",["playerLevel"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],2],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prestige-progression-details"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["prestige-progression-xp-gained ",["helper",["if"],[["get",["isCherry"]],"align-higher"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["willAnimate"]]],null,1,0],["text","    "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-small-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-small.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-medium-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-medium.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","prestige-progression-level-label"],["flush-element"],["append",["unknown",["tra","career_postgame_progress_xp_level_label"]],false],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["playerXpGainLoc"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["animatedPointsText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["prestige-progression-tooltip"],null,[["xpSources","xpEarned","xpTotal","nextLevelXpRequired","level"],[["get",["xpSources"]],["get",["xpEarned"]],["get",["xpTotal"]],["get",["nextLevelXpRequired"]],["get",["playerLevel"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","prestige-progression-radial-progress"],["static-attr","type","custom"],["dynamic-attr","percent",["concat",[["unknown",["radialProgressPercent"]]]]],["static-attr","start-angle","-135"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","prestige-progression-radial radial-bottom "],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","prestige-progression-radial radial-middle"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "wOH3lEnU",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\prestige-progression-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prestige-progression-tooltip-header"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","prestige-progression-summoner-level"],["flush-element"],["append",["unknown",["summonerLevelLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","prestige-progression-xp-total"],["flush-element"],["append",["unknown",["xpTotalLoc"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","hr",[]],["static-attr","class","prestige-progression-tooltip-divider"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prestige-progression-tooltip-sources-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","prestige-progression-tooltip-sources-label"],["flush-element"],["text","\\n    "],["append",["unknown",["tra","career_postgame_progress_tooltip_sources_header_label"]],false],["text","\\n  "],["close-element"],["text","\\n"],["block",["each"],[["get",["xpSources"]]],null,1],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","prestige-progression-source-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","prestige-progression-source-value"],["flush-element"],["append",["unknown",["xpSource","valueLoc"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","prestige-progression-source-type-loc"],["flush-element"],["append",["unknown",["xpSource","typeLoc"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["xpSource","shouldShow"]]],null,0]],"locals":["xpSource"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "FErV2G8s",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\mastery-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-progression-container ",["helper",["if"],[["get",["isChampionMasteryAvailable"]],"visible"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mastery-progression-main"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["animated-radial ",["helper",["if"],[["get",["showAnimatedElements"]],"visible"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","radial-fill"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-lottie",[]],["static-attr","class","lottie-radial-fill"],["dynamic-attr","src",["unknown",["lottieBarFillPath"]],null],["dynamic-attr","param-current-exp",["unknown",["lottieRadialCurrentPercent"]],null],["dynamic-attr","param-new-exp",["unknown",["lottieRadialNewPercent"]],null],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showAnimatedElements"]]],null,8],["text","    "],["open-element","div",[]],["static-attr","class","mastery-progression-icon-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-progression-icon mastery-level-",["unknown",["masteryLevel"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mastery-progression-details"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mastery-progression-grade"],["flush-element"],["append",["unknown",["grade"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isMastery5or6"]]],null,7],["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-experience-gained ",["helper",["if"],[["get",["isMastery5or6"]],"isMastery5or6"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["willAnimate"]]],null,4,3],["text","      "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-small-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-small.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-medium-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-medium.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["showMastery5or6Text"]]],null,2,1],["block",["if"],[["get",["achievedMastery5"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","mastery-progression-mastery-points"],["flush-element"],["append",["unknown",["totalMasteryPoints"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","mastery-experience-meta-info"],["flush-element"],["append",["unknown",["masteryLevelText"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","mastery-5-or-6-status"],["flush-element"],["append",["unknown",["mastery5or6Text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["pointsGainedText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["animatedPointsText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","mastery-token isCheckbox"],["flush-element"],["close-element"],["text","\\n"]],"locals":["checkbox"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","mastery-token isCheckmark"],["flush-element"],["close-element"],["text","\\n"]],"locals":["token"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","mastery-tokens-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["tokenList"]]],null,6],["block",["each"],[["get",["checkboxList"]]],null,5],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","mastery-progression-radial-progress"],["static-attr","type","custom"],["dynamic-attr","percent",["unknown",["masteryRadialProgressPercent"]],null],["static-attr","start-angle","-135"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","mastery-progression-radial radial-bottom "],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","mastery-progression-radial radial-middle"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "fN4orIcL",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\legendary-mastery-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["legendary-mastery-progression-container ",["helper",["if"],[["get",["isChampionMasteryAvailable"]],"visible"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasLeveledUp"]]],null,6],["text","  "],["open-element","div",[]],["static-attr","class","mastery-progression-main"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","mastery-progression-radial-progress"],["static-attr","type","custom"],["static-attr","start-angle","-135"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","bottom mastery-progression-radial radial-bottom"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle mastery-progression-radial radial-middle"],["dynamic-attr","percent",["unknown",["masteryRadialCurrentProgressPercent"]],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle mastery-progression-radial radial-top"],["dynamic-attr","percent",["unknown",["masteryRadialNewProgressPercent"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mastery-progression-icon-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-progression-icon mastery-level-",["unknown",["masteryLevel"]]," ",["helper",["if"],[["get",["hasLeveledUp"]],"level-up"],null]]]],["flush-element"],["text","\\n        "],["append",["helper",["mastery-crest"],null,[["masteryLevel"],[["get",["masteryLevel"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-progression-grade ",["helper",["if"],[["get",["hasLeveledUp"]],"level-up"],null]]]],["flush-element"],["append",["unknown",["grade"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mastery-progression-marks-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["marksDisplayList"]]],null,5],["text","    "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],4],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mastery-milestone-grades-container"],["flush-element"],["text","\\n    "],["append",["helper",["grade-display"],null,[["gradeDisplaySize","isGradeListCentered","milestoneProgressMap"],[["helper",["if"],[["get",["isSmall"]],"small","medium"],null],true,["get",["milestoneProgressMap"]]]]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],3],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mastery-progression-details"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mastery-experience-gained"],["flush-element"],["text","\\n"],["block",["if"],[["get",["willAnimate"]]],null,2,1],["text","      "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-small-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-small.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-medium-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-medium.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mastery-experience-meta-info"],["flush-element"],["append",["unknown",["masteryLevelText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasSeasonMilestoneLeveledUp"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","mastery-mark-gained-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","mastery-mark-gained-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","mastery-mark-gained-txt"],["flush-element"],["append",["unknown",["tra","postgame_lcm_mark_earned"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["pointsGainedText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["animatedPointsText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["milestone-tooltip"],null,[["masteryRewardData","milestoneProgressMap","seasonMilestone","customRewards","championCountByMilestone"],[["get",["milestoneRewardsData"]],["get",["milestoneProgressMap"]],["get",["tooltipSeasonMilestone"]],["get",["customRewards"]],["get",["championCountByMilestone"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["mastery-tooltip"],null,[["championMasteryUpdateNotification","customRewards"],[["get",["championMasteryUpdateNotification"]],["get",["customRewards"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["mastery-progression-mark-icon ",["helper",["if"],[["get",["mark","isComplete"]],"complete"],null]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["mark"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","mastery-levelup-text-container"],["flush-element"],["text","\\n      "],["append",["unknown",["tra","postgame_lcm_mastery_level_up"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "cvXFoi2w",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\cherry-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","cherry-progression-medallion-container"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","cherry-rating-medallion"],["dynamic-attr","src",["unknown",["cherryRatedMedallion"]],null],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","cherry-progression-details"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cherry-progression-update-result-container"],["flush-element"],["text","\\n    "],["append",["helper",["rating-change"],null,[["ratingDelta","willAnimate","isWin","isBeingPromoted","isLossPrevented","getLocForRatingChange"],[["get",["ratedRatingDelta"]],["get",["willAnimate"]],["get",["isWin"]],["get",["isBeingPromoted"]],["get",["isLossPrevented"]],["get",["getRatedRatingChangeLoc"]]]]],false],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-large.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cherry-progression-update-result-status-text"],["flush-element"],["append",["unknown",["currentRatedTierLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","cherry-progression-total-rating-container"],["flush-element"],["append",["unknown",["currentRatedRatingLoc"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "fvP17EuC",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\ranked-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","ranked-progression-ranked-emblem-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ranked-progression-ranked-emblem-sizer"],["flush-element"],["text","\\n    "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["unknown",["tier"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","ranked-progression-details"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ranked-progression-update-result-container"],["flush-element"],["text","\\n    "],["append",["helper",["rating-change"],null,[["ratingDelta","willAnimate","isWin","isBeingPromoted","isBeingDemoted","isInMiniseries","isLossPrevented","getLocForRatingChange"],[["get",["leaguePointsDelta"]],["get",["willAnimate"]],["get",["isWin"]],["get",["isBeingPromoted"]],["get",["isBeingDemoted"]],["get",["isInMiniseries"]],["get",["isLossPrevented"]],["get",["getLocForLpChange"]]]]],false],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","class","points-gained-spark-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-large.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ranked-progression-update-result-status-text"],["flush-element"],["append",["unknown",["updateResultStatusText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isInMiniseries"]]],null,1,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","ranked-progression-total-lp-container"],["flush-element"],["append",["unknown",["currentLpLoc"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["miniseries-progress"],null,[["miniseriesProgress"],[["get",["miniseriesProgress"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Ziv+LXDA",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\rating-change.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["shouldShowAnimatedRatingDeltaString"]]],null,1,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["unknown",["updateResultLoc"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["unknown",["animatedPointsText"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "mo1RJuLq",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\ranked-reward-progression.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","ranked-reward-progression-container visible"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-main"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["ranked-reward-progression-animated-radial ",["helper",["if"],[["get",["showAnimatedElements"]],"visible"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-radial-fill"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-lottie",[]],["static-attr","class","ranked-reward-progression-lottie-radial-fill"],["dynamic-attr","src",["unknown",["lottieBarFillPath"]],null],["dynamic-attr","param-current-exp",["unknown",["lottieSplitPointProgressBeforeGamePercent"]],null],["dynamic-attr","param-new-exp",["unknown",["lottieSplitPointProgressGainedPercent"]],null],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showAnimatedElements"]]],null,4],["block",["if"],[["get",["rewardImagePath"]]],null,3],["text","    "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-border"],["flush-element"],["text","\\n    "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isRewardEarned"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-details"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-split-points-gained-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldSplitPointsGainedTextAnimate"]]],null,1,0],["text","      "],["open-element","lol-uikit-video",[]],["static-attr","class","ranked-reward-progression-points-gained-spark-video"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-spark-small.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-split-text"],["flush-element"],["append",["unknown",["currentSplitText"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["unknown",["unanimatedSplitPointsGainedText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["animatedSplitPointsGainedText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-earned-pip-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","ranked-reward-progression-earned-pip-checkmark"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","class",["concat",["ranked-reward-progression-item ",["unknown",["rewardType"]]]]],["dynamic-attr","src",["unknown",["rewardImagePath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","ranked-reward-progression-radial-progress"],["static-attr","type","custom"],["dynamic-attr","percent",["unknown",["splitPointProgressAfterGamePercent"]],null],["static-attr","start-angle","-135"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","ranked-reward-progression-radial radial-bottom "],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","ranked-reward-progression-radial radial-middle"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "doAw6Rep",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\miniseries-progress.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["each"],[["get",["miniseriesResultArray"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","img",[]],["static-attr","class","miniseries-progress-result-icon"],["dynamic-attr","src",["concat",["/fe/lol-postgame/miniseries-progress-",["get",["miniseriesResult"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["miniseriesResult"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "/UHvcgMm",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\challenge-update-container.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],26]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loading-state"],["flush-element"],["text","\\n      "],["append",["unknown",["hextech-loading-animation"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","challenge-update-warning"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/red-info-icon.svg"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-title"],["flush-element"],["append",["unknown",["tra","challenge_cards_revoked_title"]],false],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-msg"],["flush-element"],["append",["unknown",["tra","challenge_cards_revoked_msg"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["isLeaver"]]],null,1]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","challenge-update-warning"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/yellow-info-icon.svg"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-title"],["flush-element"],["append",["unknown",["tra","challenge_cards_remake_title"]],false],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-msg"],["flush-element"],["append",["unknown",["tra","challenge_cards_remake_msg"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isRemake"]]],null,3,2]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","challenge-update-warning"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/yellow-info-icon.svg"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-msg"],["flush-element"],["append",["unknown",["tra","challenge_cards_no_progress_in_queue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isNotChallengesProgressQueue"]]],null,5,4]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","challenge-update-warning"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/yellow-info-icon.svg"],["flush-element"],["close-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","challenge-update-warning-msg"],["flush-element"],["append",["unknown",["tra","challenge_cards_temporarily_disabled"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-video",[]],["dynamic-attr","class",["concat",["anim-card-intro eternals ",["unknown",["card","category"]]]]],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-eternals-card-intro.webm"],["flush-element"],["close-element"],["text","\\n                "]],"locals":[]},{"statements":[["block",["if"],[["get",["card","statstoneName"]]],null,8]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-video",[]],["dynamic-attr","class",["concat",["anim-card-intro challenges ",["unknown",["card","currentLevel"]]]]],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","src","/fe/lol-static-assets/videos/challenges/postgame/postgame-challenges-card-intro.webm"],["flush-element"],["close-element"],["text","\\n                  "],["open-element","lol-uikit-lottie",[]],["static-attr","class","lottie-card-sheen"],["static-attr","src","/fe/lol-static-assets/lottie/postgame/postgame-challenges-card-sheen.json"],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                      "],["append",["helper",["challenge-card"],null,[["isEmpty"],[true]]],false],["text","\\n                  "]],"locals":[]},{"statements":[["text","                      "],["append",["helper",["eternals-item"],null,[["eternal","animationsEnabled","willAnimate","animateStartDelay"],[["get",["card"]],["get",["animationsEnabled"]],["get",["willAnimate"]],["get",["card","animateStartDelay"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["card","statstoneName"]]],null,12,11]],"locals":[]},{"statements":[["text","                      "],["append",["helper",["challenge-item"],null,[["challengeData","isEoGUpdate","animationsEnabled","willAnimate","animateStartDelay"],[["get",["card"]],true,["get",["animationsEnabled"]],["get",["willAnimate"]],["get",["card","animateStartDelay"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["card","currentLevel"]]],null,14,13]],"locals":[]},{"statements":[["text","                  "],["append",["helper",["challenge-card"],null,[["isEmpty"],[true]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-lottie",[]],["static-attr","class","lottie-card-outline"],["static-attr","src","/fe/lol-static-assets/lottie/postgame/postgame-eternals-card-intro.json"],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n                "]],"locals":[]},{"statements":[["block",["if"],[["get",["card","statstoneName"]]],null,17]],"locals":[]},{"statements":[["text","                  "],["open-element","lol-uikit-lottie",[]],["static-attr","class","lottie-card-outline"],["static-attr","src","/fe/lol-static-assets/lottie/postgame/postgame-challenges-card-intro.json"],["static-attr","autoplay","false"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","container-item"],["dynamic-attr","anim-data-challenge-level",["unknown",["card","currentLevel"]],null],["dynamic-attr","anim-data-is-levelup",["unknown",["card","isLevelUp"]],null],["dynamic-attr","anim-data-is-milestone",["unknown",["card","isMilestone"]],null],["dynamic-attr","anim-data-is-empty",["unknown",["card","isEmpty"]],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","container-anim-contents"],["flush-element"],["text","\\n"],["block",["if"],[["get",["card","currentLevel"]]],null,19,18],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","container-item-contents"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasWarning"]]],null,16,15],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","container-anim-contents"],["flush-element"],["text","\\n"],["block",["if"],[["get",["card","currentLevel"]]],null,10,9],["text","              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["card"]},{"statements":[["text","              "],["append",["helper",["eternals-updates-tooltip"],null,[["eternalsUpdates"],[["get",["groupedEternals"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],21]],"locals":[]},{"statements":[["text","              "],["append",["helper",["challenge-updates-tooltip"],null,[["challengeUpdates"],[["get",["groupedChallenges"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],23]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","challenge-progression-top"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_progression_pills_label"]],false],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenge-progression-pill ",["helper",["if"],[["get",["hasNoChallengeUpdates"]],"disabled"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","challenges-progressed"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"openChallengesModal"],null],null],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","challenges-progressed-logo"],["static-attr","src","/fe/lol-postgame/scoreboard-challenge-crystal-icon.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["challengeUpdatesCount"]],false],["text","\\n          "],["close-element"],["text","\\n"],["block",["unless"],[["get",["hasNoChallengeUpdates"]]],null,24],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenge-progression-pill ",["helper",["if"],[["get",["hasNoEternalsUpdates"]],"disabled"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-progressed"],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"openEternalsModal"],null],null],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","eternals-progressed-logo"],["static-attr","src","/fe/lol-postgame/eternals-icon.svg"],["flush-element"],["close-element"],["text","\\n            "],["append",["unknown",["eternalsUpdatesCount"]],false],["text","\\n          "],["close-element"],["text","\\n"],["block",["unless"],[["get",["hasNoEternalsUpdates"]]],null,22],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenge-container ",["helper",["if"],[["get",["isAnimationQueued"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["unless"],[["get",["hasWarning"]]],null,25],["text","    "],["open-element","div",[]],["static-attr","class","challenge-update-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","container-items-page"],["flush-element"],["text","\\n"],["block",["each"],[["get",["cards"]]],null,20],["text","      "],["close-element"],["text","\\n"],["block",["if"],[["get",["isPostgameChallengesDisabled"]]],null,7,6],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isAnimationQueued"]]],null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "VGdqVfhy",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\challenge-updates-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","challenge-updates-tooltip-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","challenge-updates-tooltip-header"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_challenges_tooltip_heading"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","challenge-updates-tooltip-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["upgradedChallenges"]]],null,1],["block",["if"],[["get",["progressedChallenges"]]],null,0],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","challenge-updates-tooltip-footer"],["flush-element"],["append",["unknown",["tra","postgame_progression_tooltip_footer"]],false],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","challenge-update-text"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["text","\\n                    "],["open-element","b",[]],["flush-element"],["append",["unknown",["progressedChallenges","count"]],false],["close-element"],["text","\\n                    "],["append",["unknown",["tra","postgame_challenges_tooltip_progressed"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","challenge-update-icon"],["flush-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","src","/fe/lol-postgame/icon-progressed.svg"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","challenge-update-text"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["text","\\n                    "],["open-element","b",[]],["flush-element"],["append",["unknown",["upgradedChallenges","count"]],false],["close-element"],["text","\\n                    "],["append",["unknown",["tra","postgame_challenges_tooltip_upgraded"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","challenge-update-icon"],["flush-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","src","/fe/lol-postgame/icon-crystal.svg"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "tw05OxTK",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\eternals-updates-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","eternals-updates-tooltip-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eternals-updates-tooltip-header"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_eternals_tooltip_heading"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eternals-updates-tooltip-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["newPersonalBestEternals"]]],null,2],["block",["if"],[["get",["newMilestoneEternals"]]],null,1],["block",["if"],[["get",["progressedEternals"]]],null,0],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eternals-updates-tooltip-footer"],["flush-element"],["append",["unknown",["tra","postgame_progression_tooltip_footer"]],false],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","eternals-update-text"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["text","\\n                    "],["open-element","b",[]],["flush-element"],["append",["unknown",["progressedEternals","count"]],false],["close-element"],["text","\\n                    "],["append",["unknown",["tra","postgame_eternals_tooltip_progressed"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-update-icon"],["flush-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","src","/fe/lol-postgame/icon-progressed.svg"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","eternals-update-text"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["text","\\n                    "],["open-element","b",[]],["flush-element"],["append",["unknown",["newMilestoneEternals","count"]],false],["close-element"],["text","\\n                    "],["append",["unknown",["newMilestoneText"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-update-icon"],["flush-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","src","/fe/lol-postgame/icon-milestone.svg"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","eternals-update-text"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["text","\\n                    "],["open-element","b",[]],["flush-element"],["append",["unknown",["newPersonalBestEternals","count"]],false],["close-element"],["text","\\n                    "],["append",["unknown",["tra","postgame_eternals_tooltip_new_personal_best"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-update-icon"],["flush-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","src","/fe/lol-postgame/icon-target.svg"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "IZ6zfqtH",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\postgame-party-status-v2.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-display"],["dynamic-attr","showHover",["concat",[["unknown",["showPartyStatusTooltipOnHover"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showComponent"]]],null,3],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","tooltip-row-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","icon"],["dynamic-attr","src",["concat",[["unknown",["summoner","profileIconPath"]]]]],["dynamic-attr","player-status",["concat",[["unknown",["summoner","partyStatus"]]]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","ring"],["dynamic-attr","player-status",["concat",[["unknown",["summoner","partyStatus"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-tooltip-name"],["dynamic-attr","player-status",["concat",[["unknown",["summoner","partyStatus"]]]]],["flush-element"],["text","\\n"],["text","              "],["append",["unknown",["summoner","displayName"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","tooltip-status-icon-container"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","tooltip-status-icon-ready-or-left"],["dynamic-attr","player-status",["concat",[["unknown",["summoner","partyStatus"]]]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","dot-container"],["dynamic-attr","player-status",["concat",[["unknown",["summoner","partyStatus"]]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","dot"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","dot"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","dot"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-mouseover-header"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_party_status_players_header"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-tooltip"],["flush-element"],["text","\\n"],["block",["each"],[["get",["partyStatusToolTip"]]],null,0],["text","        "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1]],"locals":[]},{"statements":[["block",["if"],[["get",["showPartyStatusTooltipOnHover"]]],null,2],["text","    "],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-icon"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-party-status-v2-counts"],["flush-element"],["append",["unknown",["numPlayersReady"]],false],["text","/"],["append",["unknown",["partySize"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "DwUbUknl",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\progression-modal.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","progression-modal-root-component"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","backdrop-click"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"closeModal"],null],null],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-dialog-frame",[]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","progression-modal-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"closeModal"],null],null],["static-attr","class","update-icon-close-btn"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showEternalsData"]]],null,9,8],["text","      "],["open-element","div",[]],["static-attr","class","progresion-modal-content"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showEternalsData"]]],null,7,3],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","progression-modal-challenge-token-container"],["dynamic-attr","id",["concat",["token-id-",["unknown",["challenge","id"]]]]],["flush-element"],["text","\\n                    "],["append",["helper",["identity-customizer-token"],null,[["challengeData","isTooltipEnabled","isShowIdentityPoints","isSelectable"],[["get",["challenge"]],true,true,false]]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","progression-modal-content-header"],["flush-element"],["append",["unknown",["challenge","groupName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["challenge","isHeader"]]],null,1,0]],"locals":["challenge"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","progression-modal-content-grid"],["flush-element"],["text","\\n"],["block",["each"],[["get",["groupedChallenges"]]],null,2],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["append",["helper",["eternals-token"],null,[["eternal","index"],[["get",["eternal"]],["get",["index"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","progression-modal-content-header"],["flush-element"],["append",["unknown",["eternal","groupName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["eternal","isHeader"]]],null,5,4]],"locals":["eternal","index"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","progression-modal-content-grid"],["flush-element"],["text","\\n"],["block",["each"],[["get",["groupedEternals"]]],null,6],["text","            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","progression-modal-header"],["flush-element"],["append",["unknown",["tra","postgame_challenges_modal_heading"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","progression-modal-header"],["flush-element"],["append",["unknown",["tra","postgame_eternals_modal_heading"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "XScL3RT7",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\cherry-scoreboard-header.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-content"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-subteam-placement"],["flush-element"],["append",["unknown",["teamPlacementLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["teamIcon"]],");"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-name"],["flush-element"],["append",["unknown",["teamNameLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],3],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small kda"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["kdaLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],2],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small gold"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["teamGoldLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showScoreboardColumnIcons"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_INDIVIDUAL_KDA"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-column-icons-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon kda"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","      "],["close-element"],["text","\\n      "],["append",["helper",["scoreboard-stat-switcher"],null,[["options","selectedStat","ordinal","selectStat"],[["get",["statSwitcher1Options"]],["get",["statSwitcherStatName1"]],1,"selectStat"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TEAM_GOLD_EARNED"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_KILL_DEATH_ASSIST"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "EqYglzNR",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-header.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-content"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-name"],["flush-element"],["append",["unknown",["teamNameLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],4],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small kda"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["kdaLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],3],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small gold"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["teamGoldLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showScoreboardColumnIcons"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_most_progressed_challenge_column_tooltip"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_INDIVIDUAL_KDA"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-column-icons-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon kda"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1],["text","      "],["close-element"],["text","\\n      "],["append",["helper",["scoreboard-stat-switcher"],null,[["options","selectedStat","ordinal","selectStat"],[["get",["statSwitcher1Options"]],["get",["statSwitcherStatName1"]],1,"selectStat"]]],false],["text","\\n      "],["append",["helper",["scoreboard-stat-switcher"],null,[["options","selectedStat","ordinal","selectStat"],[["get",["statSwitcher2Options"]],["get",["statSwitcherStatName2"]],2,"selectStat"]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-challenge-icon-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon challenge-crystal"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TEAM_GOLD_EARNED"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_KILL_DEATH_ASSIST"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "vNL8lP8X",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-honor-flair.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["unless"],[["get",["isBot"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","honor-flair-icon-static"],["dynamic-attr","src",["concat",[["unknown",["teamChoiceIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","class",["concat",["honor-flair-icon ",["helper",["if"],[["get",["hasCelebrated"]],"visible"],null]]]],["dynamic-attr","src",["concat",[["unknown",["teamChoiceIconPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","class","honor-flair-video"],["dynamic-attr","src",["concat",[["unknown",["teamChoiceMograph"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["willAnimate"]]],null,2,1],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["honor-flair-tooltip-container  ",["helper",["unless"],[["get",["hasCelebrated"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","right"]],0],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "GsL2RBN4",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["isCherry"]]],null,12,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","video",[]],["dynamic-attr","class",["concat",["scoreboard-team-intro-animation ",["helper",["unless"],[["get",["team","isPlayerTeam"]],"scoreboard-team-intro-animation-enemy"],null]]]],["static-attr","src","/fe/lol-postgame/EOG_Scoreboard_Team_Color.webm"],["static-attr","type","video/webm"],["static-attr","autoplay",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator top"],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["scoreboard-row"],null,[["player","team","showKeystone","statSwitcherStatName1","statSwitcherStatName2","gameLengthSeconds","highestStatValueByStatMap","gameId","hasScoreboardAnimationPlayed","hasCelebratedHonor","animationsEnabled","updateHonorCelebrationAnimation"],[["get",["player"]],["get",["team"]],["get",["showKeystone"]],["get",["statSwitcherStatName1"]],["get",["statSwitcherStatName2"]],["get",["eogStats","gameLength"]],["get",["highestStatValueByStatMap"]],["get",["eogStats","gameId"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":["player"]},{"statements":[["text","      "],["append",["helper",["scoreboard-header"],null,[["team","index","setSelectedStat","statSwitcherStatName1","statSwitcher1Options","statSwitcherStatName2","statSwitcher2Options","locale"],[["get",["team"]],["get",["index"]],"setSelectedStat",["get",["statSwitcherStatName1"]],["get",["statSwitcher1Options"]],["get",["statSwitcherStatName2"]],["get",["statSwitcher2Options"]],["get",["postgame","locale"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-team-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-team"],["flush-element"],["text","\\n"],["block",["each"],[["get",["team","players"]]],null,1],["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator bottom"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamIntroAnimation"]]],null,0],["text","      "],["close-element"],["text","\\n"]],"locals":["team","index"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-root-content-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["postgame","eogStatsBlock","teams"]]],null,2],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","video",[]],["dynamic-attr","class",["concat",["scoreboard-team-intro-animation ",["helper",["unless"],[["get",["team","isPlayerTeam"]],"scoreboard-team-intro-animation-enemy"],null]]]],["static-attr","src","/fe/lol-postgame/EOG_Scoreboard_Team_Color.webm"],["static-attr","type","video/webm"],["static-attr","autoplay",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator top"],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["cherry-scoreboard-row"],null,[["player","team","showKeystone","statSwitcherStatName1","gameLengthSeconds","highestStatValueByStatMap","gameId","hasScoreboardAnimationPlayed","hasCelebratedHonor","animationsEnabled","updateHonorCelebrationAnimation"],[["get",["player"]],["get",["team"]],["get",["showKeystone"]],["get",["statSwitcherStatName1"]],["get",["eogStats","gameLength"]],["get",["highestStatValueByStatMap"]],["get",["eogStats","gameId"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":["player"]},{"statements":[["text","      "],["append",["helper",["cherry-scoreboard-header"],null,[["team","index","setSelectedStat","statSwitcherStatName1","statSwitcher1Options","locale"],[["get",["team"]],["get",["index"]],"setSelectedStat",["get",["statSwitcherStatName1"]],["get",["statSwitcher1Options"]],["get",["postgame","locale"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-team-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-team"],["flush-element"],["text","\\n"],["block",["each"],[["get",["team","players"]]],null,5],["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator bottom"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamIntroAnimation"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":["team","index"]},{"statements":[["block",["each"],[["get",["postgame","cherryTeams"]]],null,6]],"locals":[]},{"statements":[["text","          "],["open-element","video",[]],["dynamic-attr","class",["concat",["scoreboard-team-intro-animation ",["helper",["unless"],[["get",["team","isPlayerTeam"]],"scoreboard-team-intro-animation-enemy"],null]]]],["static-attr","src","/fe/lol-postgame/EOG_Scoreboard_Team_Color.webm"],["static-attr","type","video/webm"],["static-attr","autoplay",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator top"],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["cherry-scoreboard-row"],null,[["player","team","showKeystone","statSwitcherStatName1","gameLengthSeconds","highestStatValueByStatMap","gameId","hasScoreboardAnimationPlayed","hasCelebratedHonor","animationsEnabled","updateHonorCelebrationAnimation"],[["get",["player"]],["get",["team"]],["get",["showKeystone"]],["get",["statSwitcherStatName1"]],["get",["eogStats","gameLength"]],["get",["highestStatValueByStatMap"]],["get",["eogStats","gameId"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":["player"]},{"statements":[["text","      "],["append",["helper",["cherry-scoreboard-header"],null,[["team","index","setSelectedStat","statSwitcherStatName1","statSwitcher1Options","locale"],[["get",["team"]],["get",["index"]],"setSelectedStat",["get",["statSwitcherStatName1"]],["get",["statSwitcher1Options"]],["get",["postgame","locale"]]]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-team-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-team"],["flush-element"],["text","\\n"],["block",["each"],[["get",["team","players"]]],null,9],["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-separator bottom"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamIntroAnimation"]]],null,8],["text","      "],["close-element"],["text","\\n"]],"locals":["team","index"]},{"statements":[["block",["each"],[["get",["eogStats","teams"]]],null,10]],"locals":[]},{"statements":[["text","  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","cherry-scoreboard-root-content-container"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["postgame","shouldShowGameClientStats"]]],null,11,7],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "Mg3Jq0dP",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\cherry-scoreboard-row.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-content-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLeaver"]]],null,13],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["scoreboard-row-color-bar ",["unknown",["playerColorBarClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-details-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-background"],["dynamic-attr","style",["unknown",["skinSplashStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay secondary"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-details-content horizontal-flex-box"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-level-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayedPosition"]]],null,12],["text","        "],["open-element","div",[]],["static-attr","class","scoreboard-row-in-game-level centered-flex-box"],["flush-element"],["append",["unknown",["player","stats","LEVEL"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spacer"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-name-and-champ-container vertical-flex-box"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-name"],["flush-element"],["text","\\n          "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["player","leaver"]]],null,10,9],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,6],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","id","mute-indicator"],["static-attr","class","scoreboard-row-mute-indicator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlayerHonorComponent"]]],null,5],["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-row-pike"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-summoner-spells-container vertical-flex-box centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,4,3],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-augments-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["displayedAugments"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-items-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["player","items"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","hasScoreboardAnimationPlayed","animationsEnabled"],["INDIVIDUAL_KDA",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],[["get",["statSwitcherStatName1"]],["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-hover-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,0],["text","  "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isPlayerActionsMenuOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hidePlayerActionsMenu"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutOptions"]],null],["flush-element"],["text","\\n    "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["scoreboard-row-actions-menu"],null,[["data","isItemSetsDisabled","isFriendRequestDisabled","isPlayerBlocked","isReportDisabled","isPlayerMuted","sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute","isPlayerMuteToggleable"],[["get",["player"]],["get",["postgame","isItemSetsDisabled"]],["get",["isFriendRequestDisabled"]],["get",["isPlayerBlocked"]],["get",["isReportDisabled"]],["get",["showPlayerMute"]],"sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute",["get",["isPlayerMuteToggleable"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-controls-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["player","isFriendRequestDisabled","isReportDisabled","isPlayerTeam","isInviteDisabled","sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute","isPlayerMuted"],[["get",["player"]],["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],["get",["team","isPlayerTeam"]],["get",["isInviteDisabled"]],"sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute",["get",["isPlayerMuted"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-item"],null,[["itemId"],[["get",["itemId"]]]]],false],["text","\\n"]],"locals":["itemId"]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-augment"],null,[["augmentId"],[["get",["augmentId"]]]]],false],["text","\\n"]],"locals":["augmentId"]},{"statements":[["text","      "],["append",["helper",["scoreboard-spell"],null,[["spellId","isSmall"],[["get",["player","spell1Id"]],true]]],false],["text","\\n      "],["append",["helper",["scoreboard-spell"],null,[["spellId","isSmall"],[["get",["player","spell2Id"]],true]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spell-icon-placeholder"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spell-icon-placeholder"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["scoreboard-honor-flair"],null,[["isLocalPlayer","isPlayerTeam","isBot","summonerId","summonerName","gameName","tagLine","hasScoreboardAnimationPlayed","hasCelebrated","updateHonorCelebrationAnimation"],[["get",["player","isLocalPlayer"]],["get",["team","isPlayerTeam"]],["get",["player","botPlayer"]],["get",["player","summonerId"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPlayerActionsMenu"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-champ-name"],["flush-element"],["append",["unknown",["player","championName"]],false],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-is-system-muted"],["flush-element"],["append",["unknown",["tra","postgame_system_muted_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSystemMuted"]]],null,8,7]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-leaver-text"],["flush-element"],["append",["unknown",["tra","postgame_afk_penalty_applied_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","class","scoreboard-row-lane-position-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-header"],["flush-element"],["append",["unknown",["displayedPositionTranslatedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-description"],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_lane_position_tooltip_description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-icon-wrapper centered-flex-box"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","scoreboard-row-position-icon"],["dynamic-attr","src",["concat",["/fe/lol-parties/icon-position-",["unknown",["displayedPosition"]],"-hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],11],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","embellishment-icon-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cancel-icon"],["static-attr","src","/fe/lol-postgame/icon-cancel.svg"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "HbTU8VL6",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-row.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-content-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLeaver"]]],null,19],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["scoreboard-row-color-bar ",["unknown",["playerColorBarClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-details-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-background"],["dynamic-attr","style",["unknown",["skinSplashStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay secondary"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-details-content horizontal-flex-box"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-level-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayedPosition"]]],null,18],["text","        "],["open-element","div",[]],["static-attr","class","scoreboard-row-in-game-level centered-flex-box"],["flush-element"],["append",["unknown",["player","stats","LEVEL"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spacer"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-name-and-champ-container vertical-flex-box"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-name"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,16,15],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["player","leaver"]]],null,14,13],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,10],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","id","mute-indicator"],["static-attr","class","scoreboard-row-mute-indicator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlayerHonorComponent"]]],null,9],["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-row-pike"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-keystone-container centered-flex-box"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-keystone-alignment-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showKeystone"]]],null,8],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-summoner-spells-container vertical-flex-box centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,6,5],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-items-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["player","items"]]],null,4],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","hasScoreboardAnimationPlayed","animationsEnabled"],["INDIVIDUAL_KDA",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],[["get",["statSwitcherStatName1"]],["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],[["get",["statSwitcherStatName2"]],["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-updated-challenge-component"],["flush-element"],["text","\\n"],["block",["if"],[["get",["topMostProgressedChallenge"]]],null,3,1],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-hover-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,0],["text","  "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isPlayerActionsMenuOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hidePlayerActionsMenu"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutOptions"]],null],["flush-element"],["text","\\n    "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["scoreboard-row-actions-menu"],null,[["data","isItemSetsDisabled","isFriendRequestDisabled","isPlayerBlocked","isReportDisabled","isPlayerMuted","sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute","isPlayerMuteToggleable"],[["get",["player"]],["get",["postgame","isItemSetsDisabled"]],["get",["isFriendRequestDisabled"]],["get",["isPlayerBlocked"]],["get",["isReportDisabled"]],["get",["showPlayerMute"]],"sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute",["get",["isPlayerMuteToggleable"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-controls-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["player","isFriendRequestDisabled","isReportDisabled","isPlayerTeam","isInviteDisabled","sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute","isPlayerMuted"],[["get",["player"]],["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],["get",["team","isPlayerTeam"]],["get",["isInviteDisabled"]],"sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute",["get",["isPlayerMuted"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","scoreboard-updated-challenge-icon"],["static-attr","src","/fe/lol-static-assets/images/challenges-shared/icon_background.png"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["challenge-item-tooltip"],null,[["puuid","challengeData","isLocalPlayer","isComparable","localPlayerChallengesData"],[["get",["puuid"]],["get",["topMostProgressedChallenge"]],["get",["player","isLocalPlayer"]],["get",["showChallengeTooltipComparison"]],["get",["localPlayerChallengesData"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","scoreboard-updated-challenge-icon"],["dynamic-attr","src",["unknown",["updatedChallengeIcon"]],null],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type","pseudoPartSelector"],["right","system","challenge-item-tooltip"]],2]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-item"],null,[["itemId"],[["get",["itemId"]]]]],false],["text","\\n"]],"locals":["itemId"]},{"statements":[["text","      "],["append",["helper",["scoreboard-spell"],null,[["spellId","isSmall"],[["get",["player","spell1Id"]],true]]],false],["text","\\n      "],["append",["helper",["scoreboard-spell"],null,[["spellId","isSmall"],[["get",["player","spell2Id"]],true]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spell-icon-placeholder"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spell-icon-placeholder"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["helper",["postgame-scoreboard-player-keystone-icon"],null,[["keystoneId","isSubStyle","circleIconHolder"],[["get",["player","stats","PERK_SUB_STYLE"]],true,true]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["postgame-scoreboard-player-keystone-icon"],null,[["keystoneId","circleIconHolder"],[["get",["player","stats","PERK0"]],true]]],false],["text","\\n"],["block",["if"],[["get",["player","stats","PERK_SUB_STYLE"]]],null,7]],"locals":[]},{"statements":[["text","    "],["append",["helper",["scoreboard-honor-flair"],null,[["isLocalPlayer","isPlayerTeam","isBot","puuid","summonerName","gameName","tagLine","hasScoreboardAnimationPlayed","hasCelebrated","updateHonorCelebrationAnimation"],[["get",["player","isLocalPlayer"]],["get",["team","isPlayerTeam"]],["get",["player","botPlayer"]],["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPlayerActionsMenu"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-champ-name"],["flush-element"],["append",["unknown",["player","championName"]],false],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-is-system-muted"],["flush-element"],["append",["unknown",["tra","postgame_system_muted_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSystemMuted"]]],null,12,11]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-leaver-text"],["flush-element"],["append",["unknown",["tra","postgame_afk_penalty_applied_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["player","summonerName"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","class","scoreboard-row-lane-position-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-header"],["flush-element"],["append",["unknown",["displayedPositionTranslatedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-description"],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_lane_position_tooltip_description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-icon-wrapper centered-flex-box"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","scoreboard-row-position-icon"],["dynamic-attr","src",["concat",["/fe/lol-parties/icon-position-",["unknown",["displayedPosition"]],"-hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],17],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","embellishment-icon-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cancel-icon"],["static-attr","src","/fe/lol-postgame/icon-cancel.svg"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "DmJ58xv+",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-row-actions-menu.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","player-actions-menu-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["actionOptions"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["player-action-container ",["unknown",["actionItem","actionName"]]," ",["helper",["if"],[["get",["actionItem","disabled"]],"disabled"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"handleButtonClick",["get",["actionItem"]],["get",["data"]]],null],null],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","player-action-icon"],["dynamic-attr","src",["unknown",["actionItem","iconPath"]],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","player-action-label"],["flush-element"],["append",["unknown",["actionItem","label"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["player-actions-divider index-",["get",["index"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["actionItem","index"]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "5oF3TejR",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-row-stat-display.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],5],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-sizer centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showHighestStatValueAchiever"]]],null,4],["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-line-primary"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showStatNumberAnimation"]]],null,3,2],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-sizer centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isSecondaryDisplayLineGraph"]]],null,1,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-line-secondary"],["flush-element"],["append",["unknown",["statLineSecondary"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-graph-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["scoreboard-row-stat-graph-fill ",["helper",["unless"],[["get",["showStatAnimations"]],"css-animate"],null]," ",["helper",["if"],[["get",["player","isLocalPlayer"]],"is-local-player"],null]]]],["dynamic-attr","style",["unknown",["graphFillStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["statLinePrimary"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["animatedStatLinePrimary"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-stat-highest-achiever-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n    "],["append",["unknown",["selectedStatLoc"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "8jMl3VLj",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\scoreboard-stat-switcher.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-stat-switcher-arrow left"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"scroll",-1],null],null],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-stat-switcher-icon"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-stat-switcher-arrow right"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"scroll",1],null],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n      "],["append",["unknown",["selectedStatLoc"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "lAAIthII",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\v2\\\\animated-play-button.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-button"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["postgame-state ",["unknown",["currentState"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","img-container"],["flush-element"],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["currentImgPath"]]]]],["flush-element"],["close-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","class","postgame-button-vsm"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video-group",[]],["static-attr","class","postgame-button-video"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","intro"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","intro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","idle"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","idle"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","active"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","active"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","hover"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","class","postgame-return-button-vsm"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-group",[]],["static-attr","class","postgame-return-button-video"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","pulse"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","pulse"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-video-state",[]],["static-attr","state","all-returned"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","allReturned"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["button-text ",["unknown",["currentState"]]]]],["flush-element"],["append",["unknown",["buttonText"]],false],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
-      (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
+      (e, t, a) => {
+        const n = a(1).Ember;
+        e.exports = n.HTMLBars.template({
           id: "pxTV8Zsi",
           block:
             '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\shared\\\\scoreboard-spell.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-container"],["flush-element"],["text","\\n  "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["spellData","iconPath"]]]]],["static-attr","class","postgame-player-spell-icon"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY","offsetX","offsetY","restrictArea"],["left","bottom","left","top",-18,5,"whole-window"]],0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-tooltip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-tooltip-header"],["flush-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["spellData","iconPath"]]]]],["static-attr","class","postgame-player-spell-icon-tooltip-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-tooltip-name"],["flush-element"],["append",["unknown",["spellData","name"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-tooltip-level"],["flush-element"],["append",["unknown",["tra","postgame_summoner_spell_level"]],false],["text"," "],["append",["unknown",["spellData","summonerLevel"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-player-spell-icon-description"],["flush-element"],["append",["unknown",["spellData","description"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
@@ -11927,13 +12534,13 @@
       },
     ],
     t = {};
-  function n(a) {
-    var s = t[a];
+  function a(n) {
+    var s = t[n];
     if (void 0 !== s) return s.exports;
-    var o = (t[a] = { exports: {} });
-    return e[a](o, o.exports, n), o.exports;
+    var o = (t[n] = { exports: {} });
+    return e[n](o, o.exports, a), o.exports;
   }
-  (n.r = (e) => {
+  (a.r = (e) => {
     "undefined" != typeof Symbol &&
       Symbol.toStringTag &&
       Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
@@ -11942,10 +12549,10 @@
     (() => {
       "use strict";
       var e,
-        t = (e = n(1)) && e.__esModule ? e : { default: e };
-      const a = "rcp-fe-lol-postgame",
+        t = (e = a(1)) && e.__esModule ? e : { default: e };
+      const n = "rcp-fe-lol-postgame",
         s = document.currentScript.ownerDocument;
-      const o = window.getPluginAnnounceEventName(a);
+      const o = window.getPluginAnnounceEventName(n);
       s.addEventListener(
         o,
         function (e) {
@@ -11981,7 +12588,7 @@
                   e
                     .get("rcp-fe-lol-shared-components")
                     .getApi_LeagueTierNames(),
-                logger: (e) => e.get("rcp-fe-common-libs").logging.create(a),
+                logger: (e) => e.get("rcp-fe-common-libs").logging.create(n),
                 lottie: (e) => e.get("rcp-fe-common-libs").getLottie("1"),
                 playerNames: (e) => e.get("rcp-fe-common-libs").playerNames,
                 profilePlugin: (e) => e.get("rcp-fe-lol-profiles"),
@@ -12026,7 +12633,7 @@
                 _: (e) => e.get("rcp-fe-common-libs").getLodash(4),
               })
               .then(() => {
-                const n = e
+                const a = e
                     .get("rcp-fe-lol-l10n")
                     .tra()
                     .overlay("/fe/lol-l10n/trans.json")
@@ -12036,25 +12643,25 @@
                     .overlay(
                       "/fe/lol-shared-components/trans-champion-mastery.json",
                     ),
-                  a = t.default.emberL10n(t.default.Ember, n);
+                  n = t.default.emberL10n(t.default.Ember, a);
                 return t.default.add({
-                  tra: n,
-                  traService: a,
+                  tra: a,
+                  traService: n,
                   extEmberModel: t.default.Ember.Object.create({}),
                   emberApplicationFactory: (e) =>
                     e.get("rcp-fe-ember-libs").getEmberApplicationFactory(),
                 });
               })
               .then(() => {
-                const e = n(2).default,
-                  a = new (0, n(4).default)(t.default.emberApplicationFactory),
-                  s = new e(a);
+                const e = a(2).default,
+                  n = new (0, a(4).default)(t.default.emberApplicationFactory),
+                  s = new e(n);
                 return t.default.add({
-                  ApplicationInjector: a,
+                  ApplicationInjector: n,
                   ProgressionComponentHelper: s,
                 });
               })
-              .then(() => (0, n(5).default)()),
+              .then(() => (0, a(5).default)()),
           );
         },
         { once: !0 },

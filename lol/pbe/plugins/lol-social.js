@@ -12759,10 +12759,10 @@
           r = (o = n(102)) && o.__esModule ? o : { default: o };
         const s = document.createElement("div"),
           l = i.components.fragments.createTemplate(
-            "{{ data.t('system_message_' + message.body, { actor: getFormattedDisplayName(message) }) }}",
+            "{{ data.t('system_message_' + message.body, { actor: data.getFormattedDisplayName(message) }) }}",
           ),
           c = i.components.fragments.createTemplate(
-            '<strong class="action-name">{{ getFormattedDisplayName(message) }}</strong>',
+            '<strong class="action-name">{{ data.getFormattedDisplayName(message) }}</strong>',
           );
         i.components.binder("chat-message", {
           priority: -10,
