@@ -5429,15 +5429,27 @@
                 s = this.get("hasSeasonMemorialModalShownThisSession"),
                 a = this.get("isSeasonMemorialModalEnabled"),
                 i = this.get("previousSeasonHighestRankedSRQueue"),
-                o = Boolean(this.get("eosRewardsMap")),
-                l = Boolean(this.get("honorConfig")),
+                o = this.get("eosRewardsMap"),
+                l = this.get("honorConfig"),
                 r = this.get("honorProfile.honorLevel"),
                 c = this.get("isGameflowPhaseValid"),
-                u = e.data && e.data[d] >= t,
-                p = Boolean(i),
-                m = Boolean(this.get("currentSummoner")),
-                g = Boolean(n);
-              return a && !s && !u && c && p && m && g && o && l && r >= 0;
+                u = this.get("currentSummoner");
+              return (
+                this._isModalConfigured(a, o, c, l) &&
+                this._hasPlayerReachedRankedLevel(i, n, u, r) &&
+                !this._hasModalShown(s, e, t)
+              );
+            },
+            _isModalConfigured: (e, t, n, s) =>
+              e && Boolean(t) && n && Boolean(s),
+            _hasPlayerReachedRankedLevel(e, t, n, s) {
+              const a = Boolean(e),
+                i = Boolean(t);
+              return a && i && Boolean(n) && s >= 0;
+            },
+            _hasModalShown(e, t, n) {
+              const s = Boolean(t.data && t.data[d] >= n);
+              return e || s;
             },
             _initializeModal() {
               const e = this.get("currentSummoner.puuid"),

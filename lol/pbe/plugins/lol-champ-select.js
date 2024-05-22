@@ -25557,11 +25557,15 @@
                 return "CHERRY" === this.get("gameMode");
               },
             ),
-            bansComponentClass: s.Ember.computed("gameMode", function () {
-              return this.get("showGroupedBansWithHeader")
-                ? `left-anchored-combined-bans local-bans-num-${this.get("myTeamBanActions.length")}`
-                : null;
-            }),
+            bansComponentClass: s.Ember.computed(
+              "showGroupedBansWithHeader",
+              "myTeamBanActions.[]",
+              function () {
+                return this.get("showGroupedBansWithHeader")
+                  ? `left-anchored-combined-bans local-bans-num-${this.get("myTeamBanActions.length")}`
+                  : null;
+              },
+            ),
           }));
       },
       (e, t, n) => {

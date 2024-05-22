@@ -93878,13 +93878,13 @@
         ]
       }
     },
-    "/services-api/session/v1/game-session/token": {
+    "/services-api/game-session/v1/game-session-token": {
       "put": {
-        "operationId": "PutServicesApiSessionV1GameSessionToken",
+        "operationId": "PutServicesApiGameSessionV1GameSessionToken",
         "parameters": [
           {
             "in": "query",
-            "name": "token",
+            "name": "gameSessionToken",
             "required": true,
             "type": "string"
           }

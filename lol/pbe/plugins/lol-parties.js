@@ -15344,17 +15344,22 @@
                 const t = Math.floor(Math.random() * e.length),
                   n = e.objectAt(t);
                 let i;
-                (i = this.get("botPosition")
+                i = this.get("botPosition")
                   ? this.get("botPosition")
                   : n.recommendedPositions
                     ? n.recommendedPositions[0]
-                    : r.CUSTOM_GAME_BOT_POSITIONS.TOP),
-                  this.get("customGameService").addBot(
-                    this.get("team"),
-                    n.id,
-                    n.botDifficulties[0].difficulty,
-                    i,
-                  );
+                    : r.CUSTOM_GAME_BOT_POSITIONS.TOP;
+                const s = n && n.botDifficulties,
+                  o = s
+                    ? s.find((e) => "RSINTERMEDIATE" === e.difficulty)
+                    : void 0,
+                  a = o ? o.difficulty : s[0].difficulty;
+                this.get("customGameService").addBot(
+                  this.get("team"),
+                  n.id,
+                  a,
+                  i,
+                );
               },
               changeBotChampion: function (e) {
                 e &&

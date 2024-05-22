@@ -3968,15 +3968,15 @@
                   eventId: this.get("eventHubService.info.eventId"),
                   videoTitle: this.get("playNarrativeButtonLabel"),
                 });
-                const t =
-                    e?.narrativeVideo?.localizedNarrativeVideoUrl +
-                    "?&autoplay=1&rel=0",
-                  n = document.createElement("iframe");
-                n.setAttribute("src", t),
-                  n.setAttribute("width", "100%"),
-                  n.setAttribute("height", "100%"),
-                  n.setAttribute("frameborder", "0"),
-                  a.FullPageModalManager.open({ data: { contents: n } });
+                const t = document.createElement("iframe");
+                t.setAttribute(
+                  "src",
+                  e?.narrativeVideo?.localizedNarrativeVideoUrl,
+                ),
+                  t.setAttribute("width", "100%"),
+                  t.setAttribute("height", "100%"),
+                  t.setAttribute("frameborder", "0"),
+                  a.FullPageModalManager.open({ data: { contents: t } });
               },
             },
           });
