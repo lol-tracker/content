@@ -13,31 +13,31 @@
             null)
           );
         }
-        const a = {
+        const s = {
           init: function (e, n) {
             return (t = e), this.add(n);
           },
           _getValue: function (e, n) {
-            let a;
+            let s;
             return (
               "function" == typeof n
-                ? ((a = n(t)),
-                  a ||
+                ? ((s = n(t)),
+                  s ||
                     console.warn(
                       "The function for key " + e + " returned a falsy value: ",
-                      a,
+                      s,
                     ))
                 : "string" == typeof n
-                  ? ((a = t.get(n)),
-                    a ||
+                  ? ((s = t.get(n)),
+                    s ||
                       console.warn(
                         "The provider `get` invocation for the key " +
                           e +
                           " returned a falsy value: ",
-                        a,
+                        s,
                       ))
-                  : "object" == typeof n && (a = n),
-              a
+                  : "object" == typeof n && (s = n),
+              s
             );
           },
           add: function (e) {
@@ -45,22 +45,22 @@
             const t = [],
               n = this;
             return (
-              Object.keys(e).forEach(function (a) {
-                const s = e[a],
-                  i = n._getValue(a, s);
+              Object.keys(e).forEach(function (s) {
+                const a = e[s],
+                  i = n._getValue(s, a);
                 i && i.then
                   ? (i.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
-                            a +
+                            s +
                             " resolved with a falsy value: ",
                           e,
                         ),
-                        n._addValue(a, e);
+                        n._addValue(s, e);
                     }),
                     t.push(i))
-                  : n._addValue(a, i);
+                  : n._addValue(s, i);
               }),
               Promise.all(t)
             );
@@ -81,14 +81,14 @@
             return n();
           },
         };
-        e.exports = a;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = l(n(3)),
+        var s = n(1),
+          a = l(n(3)),
           i = l(n(4)),
           r = l(n(5)),
           o = n(7);
@@ -105,13 +105,13 @@
               (this._componentRegistrations = {}),
               (this._platformConfigListeners = new Set()),
               (this._isPrivacyEnabled = !1),
-              (this._platformConfigBinding = (0, a.DataBinding)(
+              (this._platformConfigBinding = (0, s.DataBinding)(
                 "/lol-platform-config",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
-              (this._summonerBinding = (0, a.DataBinding)(
+              (this._summonerBinding = (0, s.DataBinding)(
                 "/lol-summoner",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
               this._createComponents(),
               (this._challengesManager = new r.default()),
@@ -122,14 +122,14 @@
           _createComponents() {
             const e = n(25),
               t = n(250),
-              a = n(268);
+              s = n(268);
             e(),
               (this._modalProfile = t()),
-              (this._mainProfile = a(this)),
+              (this._mainProfile = s(this)),
               this._initializeModalObservers();
           }
           _initializeModalObservers() {
-            this._rankedReferenceModalObserver = new s.default();
+            this._rankedReferenceModalObserver = new a.default();
           }
           _registerProfilesEnabledListeners() {
             this._platformConfigBinding.observe(
@@ -137,10 +137,10 @@
               (e) => {
                 const t = Object.assign({}, e);
                 (t.Enabled =
-                  a.Lodash.isNil(e) || a.Lodash.isNil(e.Enabled) || e.Enabled),
+                  s.Lodash.isNil(e) || s.Lodash.isNil(e.Enabled) || e.Enabled),
                   (this._profilesEnabled = t.Enabled);
                 try {
-                  a.Navigation.setItemEnabled(
+                  s.Navigation.setItemEnabled(
                     this._mainProfile.mainNavigationItem,
                     this._profilesEnabled,
                   ),
@@ -152,7 +152,7 @@
                       (this._isChallengesCollectionInitialized = !0));
                 } catch (e) {
                   const t = e && e.message ? e.message : "unknown";
-                  a.logger.error("PrivateAPI initialization error: " + t);
+                  s.logger.error("PrivateAPI initialization error: " + t);
                 }
                 for (const e of this._platformConfigListeners) e(t);
               },
@@ -184,10 +184,10 @@
           }
           registerComponent(e, t, n) {
             if (!e || !t) return;
-            let a = this._componentRegistrations[e];
-            a || (a = {}),
-              n ? (a[t] = n) : delete a[t],
-              (this._componentRegistrations[e] = a);
+            let s = this._componentRegistrations[e];
+            s || (s = {}),
+              n ? (s[t] = n) : delete s[t],
+              (this._componentRegistrations[e] = s);
           }
           get mainProfile() {
             return this._mainProfile;
@@ -206,7 +206,7 @@
                   this.showOverlayForSummoner(e);
                 })
                 .catch((e) => {
-                  a.logger.error("Error showing summoner profile", e);
+                  s.logger.error("Error showing summoner profile", e);
                 });
           }
           showOverlayForSummoner(e) {
@@ -219,20 +219,20 @@
             return !!this._isPrivacyEnabled && e.privacy === d.PRIVATE;
           }
           showAlertSummonerIsPrivate(e) {
-            const t = a.tra.get("profile_private_hint_text"),
-              n = a.tra.formatString("profile_private_cannot_view", {
+            const t = s.tra.get("profile_private_hint_text"),
+              n = s.tra.formatString("profile_private_cannot_view", {
                 name: e,
               }),
-              s = a.tra.get("lib_ui_dialog_alert_ok"),
-              i = a.TemplateHelper.contentBlockDialog(
+              a = s.tra.get("lib_ui_dialog_alert_ok"),
+              i = s.TemplateHelper.contentBlockDialog(
                 t,
                 n,
                 "dialog-small",
                 "profile-private-alert",
               );
-            a.ModalManager.add({
+            s.ModalManager.add({
               type: "DialogAlert",
-              data: { contents: i, okText: s },
+              data: { contents: i, okText: a },
             });
           }
           async hasPrivateProfile(e) {
@@ -252,8 +252,8 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = "/lol-login/v1/session",
+        var s = n(1);
+        const a = "/lol-login/v1/session",
           i =
             "/lol-platform-config/v1/namespaces/LeagueConfig/RankedReferenceModalEnabled",
           r =
@@ -275,15 +275,15 @@
               seenForSeason: null,
               fullyLoaded: !1,
             }),
-              (this._binding = a.DataBinding.bindTo(
-                (0, a.getProvider)().getSocket(),
+              (this._binding = s.DataBinding.bindTo(
+                (0, s.getProvider)().getSocket(),
               )),
-              this._binding.addObserver(s, this, this._updateLogin),
+              this._binding.addObserver(a, this, this._updateLogin),
               this._binding.addObserver(i, this, this._updateEnabledConfig),
               this._binding.addObserver(o, this, this._updateSettingsReady),
               this._binding.addObserver(d, this, this._updateSummoner),
               this._binding.addObserver(r, this, this._updateCurrentSeason),
-              a.lockAndLoadPlugin.addEventListener(
+              s.lockAndLoadPlugin.addEventListener(
                 "unlock",
                 this._setLoadingScreenLock,
                 this,
@@ -291,7 +291,7 @@
           }
           _setLoadingScreenLock() {
             this._updateRequirements({ fullyLoaded: !0 }),
-              a.lockAndLoadPlugin.removeEventListener(
+              s.lockAndLoadPlugin.removeEventListener(
                 "unlock",
                 this._setLoadingScreenLock,
                 this,
@@ -323,15 +323,15 @@
           _updateSettings(e) {
             const t = void 0 !== e,
               { settingsReady: n } = this._requirements,
-              a = { settingsExist: t };
+              s = { settingsExist: t };
             if (t && n) {
               const t = e && e.data && e.data[m];
-              a.seenForSeason = t ? e.data[m] : 9;
+              s.seenForSeason = t ? e.data[m] : 9;
             }
-            this._updateRequirements(a);
+            this._updateRequirements(s);
           }
           _updateRequirements(e) {
-            (this._requirements = a.Lodash.assign(this._requirements, e)),
+            (this._requirements = s.Lodash.assign(this._requirements, e)),
               this._requirements.login &&
                 this._requirements.enabled &&
                 this._requirements.settingsExist &&
@@ -348,7 +348,7 @@
                   this._binding.removeObserver(l, this),
                   this._binding.removeObserver(r, this)),
                 this._binding.removeObserver(d, this),
-                this._binding.removeObserver(s, this),
+                this._binding.removeObserver(a, this),
                 this._binding.removeObserver(i, this),
                 this._binding.removeObserver(o, this));
           }
@@ -358,17 +358,17 @@
           }
           showLoginModal() {
             const e = () => this._closeModal();
-            return a.LeagueTierNames.getTiersForQueue("RANKED_SOLO_5x5").then(
+            return s.LeagueTierNames.getTiersForQueue("RANKED_SOLO_5x5").then(
               (t) => {
-                (this._app = a.ComponentFactory.create(
+                (this._app = s.ComponentFactory.create(
                   "RankedReferenceModalComponent",
                   { closeCallback: e, tiers: t },
                 )),
-                  (this._modal = a.ModalManager.add({
+                  (this._modal = s.ModalManager.add({
                     type: "DialogAlert",
                     data: {
                       contents: this._app.domNode,
-                      okText: a.tra.get("ranked_reference_modal_queue_up_text"),
+                      okText: s.tra.get("ranked_reference_modal_queue_up_text"),
                       dismissible: !0,
                       dismissibleType: "inside",
                     },
@@ -377,7 +377,7 @@
                   this._modal.okPromise
                     .then((e) => {
                       "ok-button" === e
-                        ? (a.Parties.showGameSelectPreselected(123),
+                        ? (s.Parties.showGameSelectPreselected(123),
                           this._closeModal())
                         : "close-button" === e && this._closeModal();
                     })
@@ -386,8 +386,8 @@
             );
           }
           _closeModal() {
-            a.ModalManager.remove(this._modal),
-              a.Util.destroyEmberApp(this._app),
+            s.ModalManager.remove(this._modal),
+              s.Util.destroyEmberApp(this._app),
               (this._modal = null),
               (this._app = null);
           }
@@ -397,16 +397,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
-        const s = () => a.traService.get("profile_navigation_match_history");
+        var s = n(1);
+        const a = () => s.traService.get("profile_navigation_match_history");
         t.default = class {
           constructor() {
             this._isSectionRegistered = !1;
           }
           init() {
-            const e = (0, a.DataBinding)(
+            const e = (0, s.DataBinding)(
               "/lol-platform-config",
-              (0, a.getProvider)().getSocket(),
+              (0, s.getProvider)().getSocket(),
             );
             e.addObserver(
               "/v1/namespaces/NewMatchHistory/Enabled",
@@ -420,21 +420,21 @@
                   this._isSectionRegistered ||
                     (this._registerSection(
                       "profile-main",
-                      a.PrivateAPI.mainProfile,
+                      s.PrivateAPI.mainProfile,
                     ),
                     this._registerSection(
                       "profile-overlay",
-                      a.PrivateAPI.modalProfile,
+                      s.PrivateAPI.modalProfile,
                     ),
-                    a.PrivateAPI.modalProfile.subnavigationApi.addEventListener(
+                    s.PrivateAPI.modalProfile.subnavigationApi.addEventListener(
                       "showSubsection",
                       (e) => {
-                        (0, a.getProvider)()
+                        (0, s.getProvider)()
                           .getOptional("rcp-fe-lol-match-history")
                           .then(
                             (e) => e.hideMatchDetails(),
                             (e) =>
-                              a.logger.error("Provider getOptional failure", e),
+                              s.logger.error("Provider getOptional failure", e),
                           );
                       },
                     ),
@@ -453,7 +453,7 @@
               })(e),
               i = t.subnavigationApi.registerSection({
                 id: e + "-match-history",
-                title: s(),
+                title: a(),
                 priority: 2,
                 render: () => n,
                 enabled: !0,
@@ -461,31 +461,31 @@
               r = { matchHistorySection: i, rootElement: n },
               o = (e) => ((e = e || {}), Object.assign(e, r), e);
             i.addEventListener("willShow", (e) => {
-              (0, a.getProvider)()
+              (0, s.getProvider)()
                 .getOptional("rcp-fe-lol-match-history")
                 .then(
                   (t) => t.displayMatchSummary(o(e)),
-                  (e) => a.logger.error("Provider getOptional failure", e),
+                  (e) => s.logger.error("Provider getOptional failure", e),
                 );
             }),
               i.addEventListener("hide", (e) => {
-                (0, a.getProvider)()
+                (0, s.getProvider)()
                   .getOptional("rcp-fe-lol-match-history")
                   .then(
                     (t) => t.hideMatchSummary(o(e)),
-                    (e) => a.logger.error("Provider getOptional failure", e),
+                    (e) => s.logger.error("Provider getOptional failure", e),
                   );
               }),
               t.subnavigationApi.addEventListener("screenHidden", (e) => {
-                (0, a.getProvider)()
+                (0, s.getProvider)()
                   .getOptional("rcp-fe-lol-match-history")
                   .then(
                     (t) => t.hideMatchSummary(o(e)),
-                    (e) => a.logger.error("Provider getOptional failure", e),
+                    (e) => s.logger.error("Provider getOptional failure", e),
                   );
               }),
-              a.tra.observe(() => {
-                i.set("title", s());
+              s.tra.observe(() => {
+                i.set("title", a());
               });
           }
         };
@@ -494,16 +494,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1),
-          s = n(6);
-        const i = () => a.traService.get("profile_navigation_challenges"),
+        var s = n(1),
+          a = n(6);
+        const i = () => s.traService.get("profile_navigation_challenges"),
           r = "/v2/account/LCUPreferences/lol-challenges",
           o = "challenges-collection",
           l = "seasonal-tooltip-";
         t.default = class {
           constructor() {
             (this._section = null),
-              (this._clientState = s.CHALLENGES_CLIENT_STATES.HIDDEN),
+              (this._clientState = a.CHALLENGES_CLIENT_STATES.HIDDEN),
               (this._tabEnabledState = !1),
               (this._isSectionRegistered = !1),
               (this._isObservingSettings = !1),
@@ -512,21 +512,21 @@
               (this._seasonalTooltipSeenState = !0),
               (this._isSeasonalTooltipShowing = !1),
               (this._currentChallengeSeason = null),
-              (this._platformConfigBinding = (0, a.DataBinding)(
+              (this._platformConfigBinding = (0, s.DataBinding)(
                 "/lol-platform-config",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
-              (this._challengesBinding = (0, a.DataBinding)(
+              (this._challengesBinding = (0, s.DataBinding)(
                 "/lol-challenges",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
-              (this._settingsBinding = (0, a.DataBinding)(
+              (this._settingsBinding = (0, s.DataBinding)(
                 "/lol-settings",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
-              (this._lolseasonsBinding = (0, a.DataBinding)(
+              (this._lolseasonsBinding = (0, s.DataBinding)(
                 "/lol-seasons",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               ));
           }
           init() {
@@ -560,14 +560,14 @@
           }
           handleCollectionEnabled(e) {
             (this._tabEnabledState =
-              a.SharedChallengesConstants.getFlagValueOrDefault(
-                a.SharedChallengesConstants.CHALLENGE_FLAG_NAMES
+              s.SharedChallengesConstants.getFlagValueOrDefault(
+                s.SharedChallengesConstants.CHALLENGE_FLAG_NAMES
                   .COLLECTION_ENABLED,
                 e,
               )),
               this._isSectionRegistered
                 ? this.setSectionEnabled(this._tabEnabledState)
-                : this._tryRegisterSection(o, a.PrivateAPI.mainProfile);
+                : this._tryRegisterSection(o, s.PrivateAPI.mainProfile);
           }
           handleSeasonalTooltipEnabled(e) {
             (this._seasonalTooltipEnabledState = null != e && !!e),
@@ -577,10 +577,10 @@
             if (null != e)
               if (((this._clientState = e), this._isSectionRegistered)) {
                 const e =
-                  this._clientState === s.CHALLENGES_CLIENT_STATES.DISABLED ||
-                  this._clientState === s.CHALLENGES_CLIENT_STATES.HIDDEN;
+                  this._clientState === a.CHALLENGES_CLIENT_STATES.DISABLED ||
+                  this._clientState === a.CHALLENGES_CLIENT_STATES.HIDDEN;
                 this.setSectionEnabled(!e);
-              } else this._tryRegisterSection(o, a.PrivateAPI.mainProfile);
+              } else this._tryRegisterSection(o, s.PrivateAPI.mainProfile);
           }
           handleSettingsReady(e) {
             (this._isSettingsReady = Boolean(e)),
@@ -608,7 +608,7 @@
           }
           _tryRegisterSection(e, t) {
             !this._isSectionRegistered &&
-              this._clientState !== s.CHALLENGES_CLIENT_STATES.HIDDEN &&
+              this._clientState !== a.CHALLENGES_CLIENT_STATES.HIDDEN &&
               this._tabEnabledState &&
               (this._registerSection(e, t), (this._isSectionRegistered = !0));
           }
@@ -620,7 +620,7 @@
               render: () => {
                 if ((this._destroyApp(), !this._application)) {
                   const e =
-                    a.SharedComponents.getApi_SharedChallengesApps().createCollectionApp();
+                    s.SharedComponents.getApi_SharedChallengesApps().createCollectionApp();
                   return (
                     e.componentPromise.then((e) => {
                       this._application = e;
@@ -631,7 +631,7 @@
                 return this._application.rootElement;
               },
               enabled:
-                this._clientState !== s.CHALLENGES_CLIENT_STATES.DISABLED,
+                this._clientState !== a.CHALLENGES_CLIENT_STATES.DISABLED,
             })),
               t.subnavigationApi.addEventListener("screenHidden", () => {
                 this._destroyApp();
@@ -643,7 +643,7 @@
               this._section.addEventListener("hide", () => {
                 this._destroyApp();
               }),
-              a.tra.observe(() => {
+              s.tra.observe(() => {
                 this._section.set("title", i());
               });
           }
@@ -652,7 +652,7 @@
               e
                 ? this._section.setTooltip("")
                 : this._section.setTooltip(
-                    a.traService.get(
+                    s.traService.get(
                       "profile_navigation_challenges_tooltip_disabled",
                     ),
                   );
@@ -691,23 +691,23 @@
             const { year: e } = this._currentChallengeSeason.metadata,
               t = new Date(this._currentChallengeSeason.seasonEnd),
               n = new Date(this._currentChallengeSeason.seasonStart),
-              s = e || n.getFullYear(),
-              i = s + 1;
-            a.Navigation.setItemAlert(
-              a.PrivateAPI.mainProfile.mainNavigationItem,
+              a = e || n.getFullYear(),
+              i = a + 1;
+            s.Navigation.setItemAlert(
+              s.PrivateAPI.mainProfile.mainNavigationItem,
               !0,
             ),
-              a.Navigation.setAttentionTooltip(
-                a.PrivateAPI.mainProfile.mainNavigationItem,
+              s.Navigation.setAttentionTooltip(
+                s.PrivateAPI.mainProfile.mainNavigationItem,
                 {
-                  title: a.traService.formatString(
+                  title: s.traService.formatString(
                     "profile_navigation_challenges_seasonal_attention_tooltip_title",
-                    { year: s },
+                    { year: a },
                   ),
-                  description: a.traService.formatString(
+                  description: s.traService.formatString(
                     "profile_navigation_challenges_seasonal_attention_tooltip_description",
                     {
-                      currentYear: s,
+                      currentYear: a,
                       date: t.toLocaleDateString(),
                       nextYear: i,
                     },
@@ -724,12 +724,12 @@
               });
           }
           _disableSeasonalTooltip() {
-            a.Navigation.setItemAlert(
-              a.PrivateAPI.mainProfile.mainNavigationItem,
+            s.Navigation.setItemAlert(
+              s.PrivateAPI.mainProfile.mainNavigationItem,
               !1,
             ),
-              a.Navigation.setAttentionTooltip(
-                a.PrivateAPI.mainProfile.mainNavigationItem,
+              s.Navigation.setAttentionTooltip(
+                s.PrivateAPI.mainProfile.mainNavigationItem,
                 {},
                 !1,
               ),
@@ -758,7 +758,7 @@
           Object.defineProperty(t, "PAW", {
             enumerable: !0,
             get: function () {
-              return a.default;
+              return s.default;
             },
           }),
           Object.defineProperty(t, "PROFILE_PRIVACY", {
@@ -770,7 +770,7 @@
           Object.defineProperty(t, "QUEUES", {
             enumerable: !0,
             get: function () {
-              return s.default;
+              return a.default;
             },
           }),
           Object.defineProperty(t, "REWARD_TRACKER", {
@@ -797,8 +797,8 @@
               return d.default;
             },
           });
-        var a = m(n(8)),
-          s = m(n(19)),
+        var s = m(n(8)),
+          a = m(n(19)),
           i = m(n(20)),
           r = m(n(21)),
           o = m(n(22)),
@@ -812,30 +812,30 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = c(n(9)),
-          s = c(n(10)),
+        var s = c(n(9)),
+          a = c(n(10)),
           i = c(n(11)),
           r = c(n(12)),
           o = c(n(13)),
           l = c(n(14)),
           d = c(n(15)),
           m = c(n(16)),
-          _ = c(n(17)),
-          u = c(n(18));
+          u = c(n(17)),
+          _ = c(n(18));
         function c(e) {
           return e && e.__esModule ? e : { default: e };
         }
         var p = {
-          COMPONENT_TYPES: a.default,
-          CURRENCY_TYPES: s.default,
+          COMPONENT_TYPES: s.default,
+          CURRENCY_TYPES: a.default,
           INVENTORY_TYPES: i.default,
           MEDIA_TYPES: r.default,
           MEDIA_LOAD_TYPES: o.default,
           MODAL_TYPES: l.default,
           OFFER_PURCHASE_STATES: d.default,
           OFFER_VALIDATION_STATES: m.default,
-          SCROLL_LIST_DISPLAY_TYPES: _.default,
-          TEMPLATE_TYPES: u.default,
+          SCROLL_LIST_DISPLAY_TYPES: u.default,
+          TEMPLATE_TYPES: _.default,
         };
         t.default = p;
       },
@@ -959,31 +959,31 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         const n = "RANKED_SOLO_5x5",
-          a = "RANKED_FLEX_SR",
-          s = "RANKED_FLEX_TT",
+          s = "RANKED_FLEX_SR",
+          a = "RANKED_FLEX_TT",
           i = "CHERRY",
           r = "RANKED_TFT",
           o = "RANKED_TFT_DOUBLE_UP",
           l = "RANKED_TFT_TURBO",
           d = "RANKED_TFT_PAIRS",
-          m = [n, a],
-          _ = [...m, s],
-          u = [i],
+          m = [n, s],
+          u = [...m, a],
+          _ = [i],
           c = [r, o],
           p = [l, d],
           h = [...c, ...p],
-          f = [..._, ...c],
-          y = [...p, ...u];
+          f = [...u, ...c],
+          y = [...p, ..._];
         var M = {
           RANKED_SOLO_5x5_QUEUE_TYPE: n,
-          RANKED_FLEX_SR_QUEUE_TYPE: a,
-          RANKED_FLEX_TT_QUEUE_TYPE: s,
+          RANKED_FLEX_SR_QUEUE_TYPE: s,
+          RANKED_FLEX_TT_QUEUE_TYPE: a,
           RANKED_CHERRY_QUEUE_TYPE: i,
           RANKED_TFT_QUEUE_TYPE: r,
           RANKED_TFT_DOUBLE_UP_QUEUE_TYPE: o,
           RANKED_TFT_TURBO_QUEUE_TYPE: l,
           RANKED_TFT_PAIRS_QUEUE_TYPE: d,
-          RANKED_LOL_QUEUE_TYPES: _,
+          RANKED_LOL_QUEUE_TYPES: u,
           RANKED_SR_QUEUE_TYPES: m,
           RANKED_TFT_QUEUE_TYPES: c,
           RATED_TFT_QUEUE_TYPES: p,
@@ -1052,16 +1052,16 @@
             ENABLED: "ENABLED",
             DISABLED: "DISABLED",
           },
-          a = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
-        var s = {
+          s = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
+        var a = {
           ProfilePrivacyEnabledState: n,
-          ProfilePrivacySetting: a,
+          ProfilePrivacySetting: s,
           DEFAULT_PROFILE_PRIVACY: {
             enabledState: n.UNKNOWN,
-            setting: a.PUBLIC,
+            setting: s.PUBLIC,
           },
         };
-        t.default = s;
+        t.default = a;
       },
       (e, t) => {
         "use strict";
@@ -1078,14 +1078,14 @@
           YEARS: "years",
         };
         t.TIME_UNITS = n;
-        const a = 36e5,
-          s = 864e5,
+        const s = 36e5,
+          a = 864e5,
           i = 6048e5,
           r = {
             MILLISECONDS_IN_A_SECOND: 1e3,
             MILLISECONDS_IN_A_MINUTE: 6e4,
-            MILLISECONDS_IN_A_HOUR: a,
-            MILLISECONDS_IN_A_DAY: s,
+            MILLISECONDS_IN_A_HOUR: s,
+            MILLISECONDS_IN_A_DAY: a,
             MILLISECONDS_IN_A_WEEK: i,
             MILLISECONDS_IN_A_YEAR: 314496e5,
           };
@@ -1095,13 +1095,13 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
+        var s = n(1);
         e.exports = function () {
-          const { PlayerNameInputApi: e } = a.SharedEmberComponents;
-          a.EmberApplicationFactory.setFactoryDefinition({
+          const { PlayerNameInputApi: e } = s.SharedEmberComponents;
+          s.EmberApplicationFactory.setFactoryDefinition({
             name: "rcp-fe-lol-profiles-overview",
-            ComponentFactory: a.ComponentFactory,
-            tra: a.traService,
+            ComponentFactory: s.ComponentFactory,
+            tra: s.traService,
             ProfileWrapperComponent: n(26),
             ProfileSummonerInfoComponent: n(30),
             SummonerNamingsComponent: n(33),
@@ -1124,106 +1124,101 @@
             EternalsTooltipComponent: n(89).default,
             ProfileBoostsComponent: n(92),
             PlayerRestrictionInfoComponent:
-              a.SharedEmberComponents.PlayerRestrictionInfoComponent,
-            PlayerNameComponent: a.SharedEmberComponents.PlayerNameComponent,
+              s.SharedEmberComponents.PlayerRestrictionInfoComponent,
+            PlayerNameComponent: s.SharedEmberComponents.PlayerNameComponent,
             RenderTelemetrySenderComponent:
-              a.SharedEmberComponents.RenderTelemetrySenderComponent,
+              s.SharedEmberComponents.RenderTelemetrySenderComponent,
             ChallengeBannerTitleComponent:
-              a.SharedChallengesComponents.ChallengeBannerTitleComponent,
+              s.SharedChallengesComponents.ChallengeBannerTitleComponent,
             ChallengeBannerTokenComponent:
-              a.SharedChallengesComponents.ChallengeBannerTokenComponent,
+              s.SharedChallengesComponents.ChallengeBannerTokenComponent,
             ChallengeBannerTokenContainerComponent:
-              a.SharedChallengesComponents
+              s.SharedChallengesComponents
                 .ChallengeBannerTokenContainerComponent,
             ChallengeItemTooltipComponent:
-              a.SharedChallengesComponents.ChallengeItemTooltipComponent,
+              s.SharedChallengesComponents.ChallengeItemTooltipComponent,
             ChallengeItemFooterComponent:
-              a.SharedChallengesComponents.ChallengeItemFooterComponent,
+              s.SharedChallengesComponents.ChallengeItemFooterComponent,
             MasteryCrestComponent:
-              a.SharedChampionMasteryComponents.MasteryCrestComponent,
+              s.SharedChampionMasteryComponents.MasteryCrestComponent,
             ProfileService: n(224),
             EternalsService: n(225),
             NotificationsService: n(226),
-            RiotclientService: a.SharedChallengesComponents.RiotclientService,
-            GameDataService: a.SharedChallengesComponents.GameDataService,
+            RiotclientService: s.SharedChallengesComponents.RiotclientService,
+            GameDataService: s.SharedChallengesComponents.GameDataService,
             SharedNotificationsService:
-              a.SharedChallengesComponents.SharedNotificationsService,
-            SummonerService: a.SharedChallengesComponents.SummonerService,
+              s.SharedChallengesComponents.SharedNotificationsService,
+            SummonerService: s.SharedChallengesComponents.SummonerService,
             CallToActionPipComponent:
-              a.SharedEmberComponents.CallToActionPipComponent,
+              s.SharedEmberComponents.CallToActionPipComponent,
             RankedReferenceModalButtonComponent: n(227),
           }),
-            a.EmberApplicationFactory.setFactoryDefinition({
+            s.EmberApplicationFactory.setFactoryDefinition({
               name: "RankedReferenceModalComponent",
-              tra: a.traService,
-              ComponentFactory: a.ComponentFactory,
+              tra: s.traService,
+              ComponentFactory: s.ComponentFactory,
               RankedReferenceModalComponent: n(230),
             }),
-            a.EmberApplicationFactory.setFactoryDefinition({
-              ComponentFactory: a.ComponentFactory,
+            s.EmberApplicationFactory.setFactoryDefinition({
+              ComponentFactory: s.ComponentFactory,
               name: "ClashBannerPickerComponent",
-              tra: a.traService,
+              tra: s.traService,
               ClashBannerPickerComponent: n(235).default,
             }),
-            a.EmberApplicationFactory.setFactoryDefinition({
-              ComponentFactory: a.ComponentFactory,
+            s.EmberApplicationFactory.setFactoryDefinition({
+              ComponentFactory: s.ComponentFactory,
               name: "rcp-fe-lol-profiles-backdrop",
-              tra: a.traService,
+              tra: s.traService,
               ProfileBackdropComponent: n(238),
               ProfileService: n(224),
             }),
-            a.EmberApplicationFactory.setFactoryDefinition({
-              ComponentFactory: a.ComponentFactory,
+            s.EmberApplicationFactory.setFactoryDefinition({
+              ComponentFactory: s.ComponentFactory,
               name: "rcp-fe-lol-profiles-backdrop-picker",
-              tra: a.traService,
+              tra: s.traService,
               ProfileBackdropPickerComponent: n(241),
             }),
-            a.EmberApplicationFactory.setFactoryDefinition({
-              ComponentFactory: a.ComponentFactory,
+            s.EmberApplicationFactory.setFactoryDefinition({
+              ComponentFactory: s.ComponentFactory,
               name: "rcp-fe-lol-profiles-search-input",
-              tra: a.traService,
+              tra: s.traService,
               ProfileSearchInputComponent: n(244).default,
               ...e.fetchPlayerNameInputAndDependencies(),
             }),
-            a.EmberApplicationFactory.setFactoryDefinition({
-              ComponentFactory: a.ComponentFactory,
+            s.EmberApplicationFactory.setFactoryDefinition({
+              ComponentFactory: s.ComponentFactory,
               name: "rcp-fe-lol-profiles-search-trail",
-              tra: a.traService,
+              tra: s.traService,
               ProfileSearchTrailComponent: n(247),
               ProfileService: n(224),
-              PlayerNameComponent: a.SharedEmberComponents.PlayerNameComponent,
+              PlayerNameComponent: s.SharedEmberComponents.PlayerNameComponent,
             });
         };
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(28),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-overview-component"],
             classNameBindings: ["loadingComplete:loaded:loading"],
             layout: n(29),
-            notificationsService: s.Ember.inject.service("notifications"),
-            profileService: s.Ember.inject.service("profile"),
-            loadingComplete: s.Ember.computed.alias(
+            notificationsService: a.Ember.inject.service("notifications"),
+            profileService: a.Ember.inject.service("profile"),
+            loadingComplete: a.Ember.computed.alias(
               "profileService.loadingComplete",
             ),
-            isTopNavUpdatesEnabled: s.Ember.computed.alias(
-              "profileService.isTopNavUpdatesEnabled",
-            ),
-            legendaryChampionMasteryEnabled: s.Ember.computed.alias(
+            legendaryChampionMasteryEnabled: a.Ember.computed.alias(
               "profileService.isLegendaryChampionMasteryEnabled",
             ),
-            shouldShowUnreadNotifications: s.Ember.computed(
+            shouldShowUnreadNotifications: a.Ember.computed(
               "isSearched",
               "notificationsService.hasUnreadNotifications",
-              "profileService.isTopNavUpdatesEnabled",
               function () {
                 return (
                   !this.get("isSearched") &&
-                  this.get("profileService.isTopNavUpdatesEnabled") &&
                   this.get("notificationsService.hasUnreadNotifications")
                 );
               },
@@ -1232,21 +1227,21 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
-        e.exports = a.Ember.Mixin.create({
-          profileMode: a.Ember.computed.alias("profileService.profileMode"),
-          summoner: a.Ember.computed.alias("profileService.summoner"),
-          hasSummoner: a.Ember.computed.bool("summoner"),
-          isSearched: a.Ember.computed.alias("profileService.isSearched"),
-          isMe: a.Ember.computed.not("isSearched"),
+        var s = n(1);
+        e.exports = s.Ember.Mixin.create({
+          profileMode: s.Ember.computed.alias("profileService.profileMode"),
+          summoner: s.Ember.computed.alias("profileService.summoner"),
+          hasSummoner: s.Ember.computed.bool("summoner"),
+          isSearched: s.Ember.computed.alias("profileService.isSearched"),
+          isMe: s.Ember.computed.not("isSearched"),
           setOnlyIfGet: function (e, t) {
             const n = this.get(t),
-              a = this.get(e);
-            Boolean(n) && n !== a && this.set(e, n);
+              s = this.get(e);
+            Boolean(n) && n !== s && this.set(e, n);
           },
-          onSummonerComponentInit: a.Ember.on("init", function () {
+          onSummonerComponentInit: s.Ember.on("init", function () {
             this.get("profileService") ||
-              a.logger.error(
+              s.logger.error(
                 "No profileService! Found Component failing to inject profile service!",
               ),
               this.setOnlyIfGet("profileService.profileMode", "profileMode"),
@@ -1259,26 +1254,26 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "hzq9kphz",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "50rlwFFg",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-overview-content"],["flush-element"],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName"],["profile-overview-rendered"]],3],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-champion-mastery"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-legendary-champion-mastery"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-call-to-action"],["flush-element"],["text","\\n      "],["append",["unknown",["call-to-action-pip"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","\\n    "],["append",["helper",["profile-summoner-info"],null,[["isSearched"],[["get",["isSearched"]]]]],false],["text","\\n\\n"],["block",["if"],[["get",["shouldShowUnreadNotifications"]]],null,2],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblems-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-ranked"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-honor"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["legendaryChampionMasteryEnabled"]]],null,1,0],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-clash-trophy"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-clash-banner"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-overview-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-loading-spinner"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-overview-content"],["flush-element"],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName"],["profile-overview-rendered"]],3],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-champion-mastery"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-legendary-champion-mastery"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-call-to-action"],["flush-element"],["text","\\n      "],["append",["unknown",["call-to-action-pip"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","\\n    "],["append",["helper",["profile-summoner-info"],null,[["isSearched"],[["get",["isSearched"]]]]],false],["text","\\n\\n"],["block",["if"],[["get",["shouldShowUnreadNotifications"]]],null,2],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblems-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-ranked"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-honor"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["legendaryChampionMasteryEnabled"]]],null,1,0],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-clash-trophy"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-slot"],["flush-element"],["append",["unknown",["profile-emblem-clash-banner"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(31),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-summoner-info-component"],
             layout: n(32),
-            profileService: s.Ember.inject.service("profile"),
-            isLocalPlayer: s.Ember.computed.not("isSearched"),
-            challengesConfig: s.Ember.computed.alias(
+            profileService: a.Ember.inject.service("profile"),
+            isLocalPlayer: a.Ember.computed.not("isSearched"),
+            challengesConfig: a.Ember.computed.alias(
               "profileService.challengesConfig",
             ),
           }));
@@ -1288,32 +1283,32 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "nho3OXdT",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "x/zOl/It",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["open-element","lol-regalia-profile-v2-element",[]],["dynamic-attr","summoner-id",["unknown",["summoner","summonerId"]],null],["dynamic-attr","is-searched",["concat",[["unknown",["isSearched"]]]]],["dynamic-attr","puuid",["concat",[["unknown",["summoner","puuid"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["summoner-namings"]],false],["text","\\n    "],["append",["unknown",["summoner-xp-radial"]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-summoner-status-icons"],["flush-element"],["block",["if"],[["get",["isLocalPlayer"]]],null,1],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","player-restriction-info-outer-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","player-restriction-info-inner-container"],["flush-element"],["text","\\n        "],["block",["if"],[["get",["isLocalPlayer"]]],null,0],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-challenge-banner-tokens"],["flush-element"],["text","\\n    "],["append",["helper",["challenge-banner-token-container"],null,[["puuid","isLocalPlayer"],[["get",["summoner","puuid"]],true]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["player-restriction-info"]],false]],"locals":[]},{"statements":[["append",["unknown",["profile-boosts"]],false]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["open-element","lol-regalia-profile-v2-element",[]],["dynamic-attr","summoner-id",["unknown",["summoner","summonerId"]],null],["dynamic-attr","is-searched",["concat",[["unknown",["isSearched"]]]]],["dynamic-attr","puuid",["concat",[["unknown",["summoner","puuid"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["summoner-namings"]],false],["text","\\n    "],["append",["unknown",["summoner-xp-radial"]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-summoner-status-icons"],["flush-element"],["block",["if"],[["get",["isLocalPlayer"]]],null,1],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","player-restriction-info-outer-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","player-restriction-info-inner-container"],["flush-element"],["text","\\n        "],["block",["if"],[["get",["isLocalPlayer"]]],null,0],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-challenge-banner-tokens"],["flush-element"],["text","\\n    "],["append",["helper",["challenge-banner-token-container"],null,[["puuid","isLocalPlayer"],[["get",["summoner","puuid"]],true]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["append",["unknown",["player-restriction-info"]],false]],"locals":[]},{"statements":[["append",["unknown",["profile-boosts"]],false]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(34),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-summoner-namings-component"],
             layout: n(35),
-            profileService: s.Ember.inject.service("profile"),
-            puuid: s.Ember.computed.alias("summoner.puuid"),
-            gameName: s.Ember.computed("summoner.gameName", function () {
+            profileService: a.Ember.inject.service("profile"),
+            puuid: a.Ember.computed.alias("summoner.puuid"),
+            gameName: a.Ember.computed("summoner.gameName", function () {
               return this.get("summoner.gameName") || null;
             }),
-            tagLine: s.Ember.computed("summoner.tagLine", function () {
+            tagLine: a.Ember.computed("summoner.tagLine", function () {
               return this.get("summoner.tagLine") || null;
             }),
-            summonerName: s.Ember.computed("summoner.displayName", function () {
+            summonerName: a.Ember.computed("summoner.displayName", function () {
               return this.get("summoner.displayName") || null;
             }),
           }));
@@ -1323,33 +1318,33 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "84LWhJ8j",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "6k+U1hvI",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-resizing-text-field",[]],["static-attr","class","style-profile-summoner-name"],["static-attr","data-max-width","155"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid","gameName","tagLine","summonerName","isCopyEnabled"],["tooltip",["get",["puuid"]],["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]],true]]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-namings-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-resizing-text-field",[]],["static-attr","class","style-profile-summoner-name"],["static-attr","data-max-width","155"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid","gameName","tagLine","summonerName","isCopyEnabled"],["tooltip",["get",["puuid"]],["get",["gameName"]],["get",["tagLine"]],["get",["summonerName"]],true]]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a },
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s },
           r = n(37);
         n(38),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-summoner-xp-radial-component"],
             layout: n(39),
-            profileService: s.Ember.inject.service("profile"),
+            profileService: a.Ember.inject.service("profile"),
             circlePercentFill: 2,
             circleDiameter: 13,
             circlePositionXY: 6.5,
             circleRadius: 5,
-            circleCircumference: s.Ember.computed("circleRadius", function () {
+            circleCircumference: a.Ember.computed("circleRadius", function () {
               return 2 * this.get("circleRadius") * Math.PI;
             }),
-            progressPercent: s.Ember.computed(
+            progressPercent: a.Ember.computed(
               "circlePercentFill",
               "circleCircumference",
               function () {
@@ -1360,7 +1355,7 @@
                 );
               },
             ),
-            xpProgressNumbersDisplay: s.Ember.computed(
+            xpProgressNumbersDisplay: a.Ember.computed(
               "summoner.xpSinceLastLevel",
               "summoner.xpUntilNextLevel",
               function () {
@@ -1375,12 +1370,12 @@
                 );
               },
             ),
-            onPercentCompleteForNextLevelChange: s.Ember.on(
+            onPercentCompleteForNextLevelChange: a.Ember.on(
               "didInsertElement",
-              s.Ember.observer(
+              a.Ember.observer(
                 "summoner.percentCompleteForNextLevel",
                 function () {
-                  s.Ember.run.once(this, "updateXpProgressBar");
+                  a.Ember.run.once(this, "updateXpProgressBar");
                 },
               ),
             ),
@@ -1402,8 +1397,8 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.translate = function (e, t, n) {
-            const a = e.get("tra");
-            return a.get("formatString")(t, n);
+            const s = e.get("tra");
+            return s.get("formatString")(t, n);
           });
       },
       (e, t, n) => {
@@ -1411,41 +1406,41 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "ShNfjuo7",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "7p+Ix8fp",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-xp-radial-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-xp-radial"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["static-attr","class","summoner-xp-radial-progress"],["dynamic-attr","width",["concat",[["unknown",["circleDiameter"]]]]],["dynamic-attr","height",["concat",[["unknown",["circleDiameter"]]]]],["flush-element"],["text","\\n"],["text","      "],["open-element","circle",[]],["static-attr","class","summoner-xp-radial-progress-circle summoner-xp-radial-progress-circle-bg"],["static-attr","stroke-width","2"],["dynamic-attr","stroke-dasharray",["concat",[["unknown",["circleCircumference"]]," ",["unknown",["circleCircumference"]]]]],["static-attr","stroke-dashoffset","0"],["static-attr","fill","transparent"],["dynamic-attr","r",["concat",[["unknown",["circleRadius"]]]]],["dynamic-attr","cx",["concat",[["unknown",["circlePositionXY"]]]]],["dynamic-attr","cy",["concat",[["unknown",["circlePositionXY"]]]]],["flush-element"],["close-element"],["text","\\n"],["text","      "],["open-element","circle",[]],["static-attr","class","summoner-xp-radial-progress-circle"],["static-attr","stroke-width","2"],["dynamic-attr","stroke-dasharray",["concat",[["unknown",["circleCircumference"]]," ",["unknown",["circleCircumference"]]]]],["dynamic-attr","stroke-dashoffset",["concat",[["unknown",["progressPercent"]]]]],["static-attr","fill","transparent"],["dynamic-attr","r",["concat",[["unknown",["circleRadius"]]]]],["dynamic-attr","cx",["concat",[["unknown",["circlePositionXY"]]]]],["dynamic-attr","cy",["concat",[["unknown",["circlePositionXY"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","summoner-xp-radial-numbers"],["flush-element"],["append",["unknown",["summoner","summonerLevel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summoner-xp-radial-hover-text"],["flush-element"],["append",["unknown",["xpProgressNumbersDisplay"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["right"]],0],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_message"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-xp-radial-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-xp-radial-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-xp-radial"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["static-attr","class","summoner-xp-radial-progress"],["dynamic-attr","width",["concat",[["unknown",["circleDiameter"]]]]],["dynamic-attr","height",["concat",[["unknown",["circleDiameter"]]]]],["flush-element"],["text","\\n"],["text","      "],["open-element","circle",[]],["static-attr","class","summoner-xp-radial-progress-circle summoner-xp-radial-progress-circle-bg"],["static-attr","stroke-width","2"],["dynamic-attr","stroke-dasharray",["concat",[["unknown",["circleCircumference"]]," ",["unknown",["circleCircumference"]]]]],["static-attr","stroke-dashoffset","0"],["static-attr","fill","transparent"],["dynamic-attr","r",["concat",[["unknown",["circleRadius"]]]]],["dynamic-attr","cx",["concat",[["unknown",["circlePositionXY"]]]]],["dynamic-attr","cy",["concat",[["unknown",["circlePositionXY"]]]]],["flush-element"],["close-element"],["text","\\n"],["text","      "],["open-element","circle",[]],["static-attr","class","summoner-xp-radial-progress-circle"],["static-attr","stroke-width","2"],["dynamic-attr","stroke-dasharray",["concat",[["unknown",["circleCircumference"]]," ",["unknown",["circleCircumference"]]]]],["dynamic-attr","stroke-dashoffset",["concat",[["unknown",["progressPercent"]]]]],["static-attr","fill","transparent"],["dynamic-attr","r",["concat",[["unknown",["circleRadius"]]]]],["dynamic-attr","cx",["concat",[["unknown",["circlePositionXY"]]]]],["dynamic-attr","cy",["concat",[["unknown",["circlePositionXY"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","summoner-xp-radial-numbers"],["flush-element"],["append",["unknown",["summoner","summonerLevel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summoner-xp-radial-hover-text"],["flush-element"],["append",["unknown",["xpProgressNumbersDisplay"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["right"]],0],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_message"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a },
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s },
           r = n(37);
         function o(e) {
           return e ? ((e = Number.parseInt(e)), isNaN(e) ? 0 : e) : 0;
         }
         function l(e) {
-          return (t = o(e)), (n = 0), (a = 100), Math.min(Math.max(t, n), a);
-          var t, n, a;
+          return (t = o(e)), (n = 0), (s = 100), Math.min(Math.max(t, n), s);
+          var t, n, s;
         }
         n(41),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-summoner-level-bar-component"],
             layout: n(42),
-            profileService: s.Ember.inject.service("profile"),
-            challengesConfig: s.Ember.computed.alias(
+            profileService: a.Ember.inject.service("profile"),
+            challengesConfig: a.Ember.computed.alias(
               "profileService.challengesConfig",
             ),
-            onPercentCompleteForNextLevelChange: s.Ember.on(
+            onPercentCompleteForNextLevelChange: a.Ember.on(
               "didInsertElement",
-              s.Ember.observer(
+              a.Ember.observer(
                 "summoner.percentCompleteForNextLevel",
                 function () {
-                  s.Ember.run.once(this, "updateXpProgressBar");
+                  a.Ember.run.once(this, "updateXpProgressBar");
                 },
               ),
             ),
@@ -1459,7 +1454,7 @@
               let n = l(this.get("summoner.percentCompleteForNextLevel"));
               n > 0 && n < 2 && (n = 2), (t.style.width = n + "%");
             },
-            xpProgressNumbersDisplay: s.Ember.computed(
+            xpProgressNumbersDisplay: a.Ember.computed(
               "summoner.xpSinceLastLevel",
               "summoner.xpUntilNextLevel",
               function () {
@@ -1479,11 +1474,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "Z/xeEB2O",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "oQjvbelO",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-background"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill-preloader"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-number-plate"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-number-value"],["flush-element"],["append",["unknown",["summoner","summonerLevel"]],false],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-numbers-display"],["flush-element"],["text","\\n  "],["append",["unknown",["xpProgressNumbersDisplay"]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["right"]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n    "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_title"]],false],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_message"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-summoner-info-component\\\\summoner-level-bar-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-background"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill-preloader"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-fill"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-number-plate"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-number-value"],["flush-element"],["append",["unknown",["summoner","summonerLevel"]],false],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","style-profile-summoner-level-bar-xp-progress-numbers-display"],["flush-element"],["text","\\n  "],["append",["unknown",["xpProgressNumbersDisplay"]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["right"]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n    "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_title"]],false],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_summoner_info_experience_description_tooltip_message"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1491,30 +1486,30 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
+        var s,
+          a = n(1),
           i = n(37),
-          r = (a = n(27)) && a.__esModule ? a : { default: a },
+          r = (s = n(27)) && s.__esModule ? s : { default: s },
           o = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
               return { default: e };
             var n = l(t);
             if (n && n.has(e)) return n.get(e);
-            var a = {},
-              s = Object.defineProperty && Object.getOwnPropertyDescriptor;
+            var s = {},
+              a = Object.defineProperty && Object.getOwnPropertyDescriptor;
             for (var i in e)
               if (
                 "default" !== i &&
                 Object.prototype.hasOwnProperty.call(e, i)
               ) {
-                var r = s ? Object.getOwnPropertyDescriptor(e, i) : null;
+                var r = a ? Object.getOwnPropertyDescriptor(e, i) : null;
                 r && (r.get || r.set)
-                  ? Object.defineProperty(a, i, r)
-                  : (a[i] = e[i]);
+                  ? Object.defineProperty(s, i, r)
+                  : (s[i] = e[i]);
               }
-            (a.default = e), n && n.set(e, a);
-            return a;
+            (s.default = e), n && n.set(e, s);
+            return s;
           })(n(44));
         function l(e) {
           if ("function" != typeof WeakMap) return null;
@@ -1526,26 +1521,26 @@
         }
         n(45);
         const d = "UNRANKED";
-        var m = s.Ember.Component.extend(r.default, {
+        var m = a.Ember.Component.extend(r.default, {
           classNames: ["style-profile-ranked-component"],
           layout: n(46),
-          profileService: s.Ember.inject.service("profile"),
-          rankedData: s.Ember.computed.alias("profileService.rankedData"),
-          challengesConfig: s.Ember.computed.alias(
+          profileService: a.Ember.inject.service("profile"),
+          rankedData: a.Ember.computed.alias("profileService.rankedData"),
+          challengesConfig: a.Ember.computed.alias(
             "profileService.challengesConfig",
           ),
-          computedQueueInfos: s.Ember.computed(
+          computedQueueInfos: a.Ember.computed(
             "summoner.puuid",
             "rankedData.queues",
             function () {
               const e = this.get("rankedData");
-              if (s.Lodash.isNil(e)) return;
+              if (a.Lodash.isNil(e)) return;
               const t = e.queues ? e.queues : [],
                 n = o.getRankedQueues(t);
               return this.buildQueueInfos(n);
             },
           ),
-          mostValuableQueueInfo: s.Ember.computed(
+          mostValuableQueueInfo: a.Ember.computed(
             "computedQueueInfos",
             "computedQueueInfos.[]",
             function () {
@@ -1557,7 +1552,7 @@
               };
             },
           ),
-          splitReward: s.Ember.computed(
+          splitReward: a.Ember.computed(
             "rankedData.rankedRegaliaLevel",
             function () {
               const e = this.get("rankedData.rankedRegaliaLevel");
@@ -1581,16 +1576,16 @@
             return t;
           },
           buildQueueLabel: (e) =>
-            e ? s.LeagueTierNames.getRankedQueueName(e.queueType) : "",
+            e ? a.LeagueTierNames.getRankedQueueName(e.queueType) : "",
           buildTierDivisionLabel(e) {
             if (!e) return "";
-            const { tier: t, division: n, isProvisional: a } = e,
-              r = s.LeagueTierNames.getFullTierDivisionName(t, n);
-            return a
+            const { tier: t, division: n, isProvisional: s } = e,
+              r = a.LeagueTierNames.getFullTierDivisionName(t, n);
+            return s
               ? (0, i.translate)(this, "ranked_subtitle_provisional_rank", {
                   tierDivisionLoc: r,
                 })
-              : s.LeagueTierNames.getFullTierDivisionName(t, n);
+              : a.LeagueTierNames.getFullTierDivisionName(t, n);
           },
           buildSubtitleLabel(e) {
             return e.tier && e.tier !== d
@@ -1608,7 +1603,7 @@
                 (t = Math.max(t, n.warnings.demotionWarning));
             return t;
           },
-          warningAnyQueue: s.Ember.computed(
+          warningAnyQueue: a.Ember.computed(
             "computedQueueInfos",
             "computedQueueInfos.[]",
             function () {
@@ -1616,7 +1611,7 @@
               return e ? this.getHighestWarning(e) : 0;
             },
           ),
-          lastSeasonTier: s.Ember.computed(
+          lastSeasonTier: a.Ember.computed(
             "summoner.puuid",
             "rankedData.{highestPreviousSeasonEndTier,highestPreviousSeasonEndDivision}",
             function () {
@@ -1626,8 +1621,8 @@
               return (e && "NONE" !== e) || (e = d), e;
             },
           ),
-          lastSeasonTierText: s.Ember.computed("lastSeasonTier", function () {
-            return s.LeagueTierNames.getTierName(this.get("lastSeasonTier"));
+          lastSeasonTierText: a.Ember.computed("lastSeasonTier", function () {
+            return a.LeagueTierNames.getTierName(this.get("lastSeasonTier"));
           }),
         });
         t.default = m;
@@ -1639,21 +1634,21 @@
             const t = [];
             for (const n of e) {
               const e = i(n);
-              s.QUEUES.ALL_RATED_QUEUE_TYPES.includes(e.queueType) || t.push(e);
+              a.QUEUES.ALL_RATED_QUEUE_TYPES.includes(e.queueType) || t.push(e);
             }
             return t;
           });
-        var a = n(1),
-          s = n(7);
+        var s = n(1),
+          a = n(7);
         function i(e) {
           const t = {};
           return (
             (t.queueType = e.queueType),
-            (t.tier = a.Lodash.get(e, "tier", "UNRANKED")),
+            (t.tier = s.Lodash.get(e, "tier", "UNRANKED")),
             "NONE" === t.tier && (t.tier = "UNRANKED"),
             (t.isUnranked = "UNRANKED" === String(t.tier).toUpperCase()),
             (t.leaguePoints = e.leaguePoints),
-            (t.division = a.Lodash.get(e, "division", "IV")),
+            (t.division = s.Lodash.get(e, "division", "IV")),
             (t.wins = e.wins),
             (t.warnings = e.warnings),
             (t.isProvisional = e.isProvisional),
@@ -1666,11 +1661,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "Cj3XKe1O",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "ol+qHoGT",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["mostValuableQueueInfo","queueLabel"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["mostValuableQueueInfo","isUnranked"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n      "],["append",["helper",["ranked-icon"],null,[["queueInfo","splitReward"],[["get",["mostValuableQueueInfo"]],["get",["splitReward"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-ranked-reference-modal-button"],["flush-element"],["text","\\n        "],["append",["helper",["ranked-reference-modal-button"],null,[["queueType"],[["get",["mostValuableQueueInfo","queue","queueType"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-demotion-shield-warning"],["flush-element"],["text","\\n        "],["append",["helper",["ranked-demotion-warning"],null,[["computedQueueInfos","demotionWarning"],[["get",["computedQueueInfos"]],["get",["mostValuableQueueInfo","demotionWarning"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",287]],3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-warning"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-ranked-emblem-tooltip-warning-icon icon-warning-",["unknown",["warningAnyQueue"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-warning-message"],["flush-element"],["append",["unknown",["tra","ranked_demotion_shield_expiring"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-ranked-emblem-tooltip-warning-icon icon-warning-",["unknown",["queueInfo","demotionWarning"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue"],["flush-element"],["text","\\n          "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["helper",["if"],[["get",["queue","isUnranked"]],"unranked",["get",["queueInfo","tier"]]],null],null],["flush-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-name"],["flush-element"],["append",["unknown",["queueInfo","queueLabel"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-tier"],["flush-element"],["append",["unknown",["queueInfo","tierDivisionLabel"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-lp"],["flush-element"],["append",["helper",["sanitize"],[["get",["queueInfo","subtitleLabel"]]],null],false],["close-element"],["text","\\n"],["block",["if"],[["get",["queueInfo","demotionWarning"]]],null,1],["text","        "],["close-element"],["text","\\n"]],"locals":["queueInfo"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-queues"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedQueueInfos"]]],null,2],["text","      "],["open-element","div",[]],["static-attr","class","ranked-tooltip-last-season"],["flush-element"],["text","\\n          "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["unknown",["lastSeasonTier"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-name"],["flush-element"],["append",["unknown",["tra","ranked_tooltip_past_highest_rank"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-tier"],["flush-element"],["append",["unknown",["lastSeasonTierText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["warningAnyQueue"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","style-profile-emblem-subheader-position"],["dynamic-attr","src",["concat",[["unknown",["mostValuablePositionIcon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-subheader-ranked"],["flush-element"],["text","\\n"],["block",["if"],[["get",["mostValuablePositionIcon"]]],null,4],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["mostValuableQueueInfo","tierDivisionLabel"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["mostValuableQueueInfo","queueLabel"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["mostValuableQueueInfo","isUnranked"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n      "],["append",["helper",["ranked-icon"],null,[["queueInfo","splitReward"],[["get",["mostValuableQueueInfo"]],["get",["splitReward"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-ranked-reference-modal-button"],["flush-element"],["text","\\n        "],["append",["helper",["ranked-reference-modal-button"],null,[["queueType"],[["get",["mostValuableQueueInfo","queue","queueType"]]]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-demotion-shield-warning"],["flush-element"],["text","\\n        "],["append",["helper",["ranked-demotion-warning"],null,[["computedQueueInfos","demotionWarning"],[["get",["computedQueueInfos"]],["get",["mostValuableQueueInfo","demotionWarning"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",287]],3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-warning"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-ranked-emblem-tooltip-warning-icon icon-warning-",["unknown",["warningAnyQueue"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-warning-message"],["flush-element"],["append",["unknown",["tra","ranked_demotion_shield_expiring"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-ranked-emblem-tooltip-warning-icon icon-warning-",["unknown",["queueInfo","demotionWarning"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue"],["flush-element"],["text","\\n          "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["helper",["if"],[["get",["queue","isUnranked"]],"unranked",["get",["queueInfo","tier"]]],null],null],["flush-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-name"],["flush-element"],["append",["unknown",["queueInfo","queueLabel"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-tier"],["flush-element"],["append",["unknown",["queueInfo","tierDivisionLabel"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-lp"],["flush-element"],["append",["helper",["sanitize"],[["get",["queueInfo","subtitleLabel"]]],null],false],["close-element"],["text","\\n"],["block",["if"],[["get",["queueInfo","demotionWarning"]]],null,1],["text","        "],["close-element"],["text","\\n"]],"locals":["queueInfo"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-ranked-emblem-tooltip-queues"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedQueueInfos"]]],null,2],["text","      "],["open-element","div",[]],["static-attr","class","ranked-tooltip-last-season"],["flush-element"],["text","\\n          "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["unknown",["lastSeasonTier"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-name"],["flush-element"],["append",["unknown",["tra","ranked_tooltip_past_highest_rank"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ranked-tooltip-queue-tier"],["flush-element"],["append",["unknown",["lastSeasonTierText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["warningAnyQueue"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","style-profile-emblem-subheader-position"],["dynamic-attr","src",["concat",[["unknown",["mostValuablePositionIcon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-subheader-ranked"],["flush-element"],["text","\\n"],["block",["if"],[["get",["mostValuablePositionIcon"]]],null,4],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["mostValuableQueueInfo","tierDivisionLabel"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1678,37 +1673,37 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(48);
-        var r = s.Ember.Component.extend(i.default, {
+        var r = a.Ember.Component.extend(i.default, {
           layout: n(49),
-          profileService: s.Ember.inject.service("profile"),
+          profileService: a.Ember.inject.service("profile"),
           computedQueueInfos: null,
           demotionWarning: null,
-          computedWarnings: s.Ember.computed("computedQueueInfos", function () {
+          computedWarnings: a.Ember.computed("computedQueueInfos", function () {
             const e = {};
             return (
-              s.Lodash.toPairs(this.get("computedQueueInfos")).forEach(
+              a.Lodash.toPairs(this.get("computedQueueInfos")).forEach(
                 ([t, n]) => {
-                  const a = [];
+                  const s = [];
                   n.demotionWarning > 0 &&
-                    a.push({ severity: n.demotionWarning }),
-                    a.length && (e[t] = a);
+                    s.push({ severity: n.demotionWarning }),
+                    s.length && (e[t] = s);
                 },
               ),
               e
             );
           }),
-          computedWarningsMaxSeverity: s.Ember.computed(
+          computedWarningsMaxSeverity: a.Ember.computed(
             "computedWarnings",
             function () {
               const e = this.get("computedWarnings"),
-                t = s.Lodash.flatMap(s.Lodash.values(e), (e) =>
+                t = a.Lodash.flatMap(a.Lodash.values(e), (e) =>
                   e.map((e) => e.severity),
                 );
-              return t.length ? s.Lodash.max(t) : 0;
+              return t.length ? a.Lodash.max(t) : 0;
             },
           ),
         });
@@ -1719,11 +1714,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "8RpwPnxC",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "4TX+31go",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["computedWarningsMaxSeverity"]]],null,2,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-demotion-warning warning-",["unknown",["demotionWarning"]]]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["demotionWarning"]]],null,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-demotion-warning warning-",["unknown",["computedWarningsMaxSeverity"]]]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-demotion-warning-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["computedWarningsMaxSeverity"]]],null,2,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-demotion-warning warning-",["unknown",["demotionWarning"]]]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["demotionWarning"]]],null,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-demotion-warning warning-",["unknown",["computedWarningsMaxSeverity"]]]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1731,35 +1726,35 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         n(51);
-        var s = a.Ember.Component.extend({
+        var a = s.Ember.Component.extend({
           classNames: ["style-profile-ranked-icon-component"],
           layout: n(52),
           queueInfo: null,
           splitReward: 0,
-          profileService: a.Ember.inject.service("profile"),
-          challengesConfig: a.Ember.computed.alias(
+          profileService: s.Ember.inject.service("profile"),
+          challengesConfig: s.Ember.computed.alias(
             "profileService.challengesConfig",
           ),
-          queue: a.Ember.computed.alias("queueInfo.queue"),
-          isUnranked: a.Ember.computed.alias("queue.isUnranked"),
-          isProvisional: a.Ember.computed.alias("queue.isProvisional"),
-          tier: a.Ember.computed.alias("queue.tier"),
-          division: a.Ember.computed.alias("queue.division"),
+          queue: s.Ember.computed.alias("queueInfo.queue"),
+          isUnranked: s.Ember.computed.alias("queue.isUnranked"),
+          isProvisional: s.Ember.computed.alias("queue.isProvisional"),
+          tier: s.Ember.computed.alias("queue.tier"),
+          division: s.Ember.computed.alias("queue.division"),
         });
-        t.default = s;
+        t.default = a;
       },
       (e, t, n) => {
         "use strict";
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "tL3kUaMt",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "Aw4uP+mE",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-ranked"],["flush-element"],["text","\\n    "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["helper",["if"],[["get",["isUnranked"]],"unranked",["get",["tier"]]],null],null],["flush-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-ranked"],["flush-element"],["text","\\n    "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["helper",["if"],[["get",["isUnranked"]],"unranked",["get",["tier"]]],null],null],["flush-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1767,27 +1762,27 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(54);
-        var r = s.Ember.Component.extend(i.default, {
+        var r = a.Ember.Component.extend(i.default, {
           classNames: ["style-profile-ranked-icon-tooltip-component"],
           layout: n(55),
-          profileService: s.Ember.inject.service("profile"),
+          profileService: a.Ember.inject.service("profile"),
           queueInfo: null,
           splitReward: 0,
-          queue: s.Ember.computed.alias("queueInfo.queue"),
-          isUnranked: s.Ember.computed.alias("queue.isUnranked"),
-          isProvisional: s.Ember.computed.alias("queue.isProvisional"),
-          tier: s.Ember.computed.alias("queue.tier"),
-          division: s.Ember.computed.alias("queue.division"),
-          queueLabel: s.Ember.computed.alias("queueInfo.queueLabel"),
-          tierDivisionLabel: s.Ember.computed.alias(
+          queue: a.Ember.computed.alias("queueInfo.queue"),
+          isUnranked: a.Ember.computed.alias("queue.isUnranked"),
+          isProvisional: a.Ember.computed.alias("queue.isProvisional"),
+          tier: a.Ember.computed.alias("queue.tier"),
+          division: a.Ember.computed.alias("queue.division"),
+          queueLabel: a.Ember.computed.alias("queueInfo.queueLabel"),
+          tierDivisionLabel: a.Ember.computed.alias(
             "queueInfo.tierDivisionLabel",
           ),
-          subtitleLabel: s.Ember.computed.alias("queueInfo.subtitleLabel"),
-          demotionWarning: s.Ember.computed.alias("queueInfo.demotionWarning"),
+          subtitleLabel: a.Ember.computed.alias("queueInfo.subtitleLabel"),
+          demotionWarning: a.Ember.computed.alias("queueInfo.demotionWarning"),
         });
         t.default = r;
       },
@@ -1796,11 +1791,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "1surwru4",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "IqyIrwcZ",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-crest-inner"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isUnranked"]]],null,2,1],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","style-profile-ranked-crest-tooltip-queue-and-division"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-queue ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n      "],["append",["unknown",["queueLabel"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-tier-division ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n      "],["append",["unknown",["tierDivisionLabel"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-crest-dividing-line ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","style-profile-ranked-crest-tooltip-stats-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-lp"],["flush-element"],["append",["helper",["sanitize"],[["get",["subtitleLabel"]]],null],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-warning-",["unknown",["demotionWarning"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-ranked ",["helper",["if"],[["get",["isProvisional"]],"provisional"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-regalia-crest-element",[]],["static-attr","animations","false"],["dynamic-attr","ranked-tier",["concat",[["unknown",["tier"]]]]],["dynamic-attr","ranked-division",["concat",[["unknown",["division"]]]]],["static-attr","visor-down","true"],["dynamic-attr","ranked-split-reward",["concat",[["unknown",["splitReward"]]]]],["static-attr","crest-type","ranked"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["demotionWarning"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-unranked"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-icon-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-crest-inner"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isUnranked"]]],null,2,1],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","style-profile-ranked-crest-tooltip-queue-and-division"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-queue ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n      "],["append",["unknown",["queueLabel"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-tier-division ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n      "],["append",["unknown",["tierDivisionLabel"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-crest-dividing-line ",["helper",["if"],[["get",["isUnranked"]],"unranked"],null]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","style-profile-ranked-crest-tooltip-stats-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-lp"],["flush-element"],["append",["helper",["sanitize"],[["get",["subtitleLabel"]]],null],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-warning-",["unknown",["demotionWarning"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-crest-tooltip-ranked ",["helper",["if"],[["get",["isProvisional"]],"provisional"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-regalia-crest-element",[]],["static-attr","animations","false"],["dynamic-attr","ranked-tier",["concat",[["unknown",["tier"]]]]],["dynamic-attr","ranked-division",["concat",[["unknown",["division"]]]]],["static-attr","visor-down","true"],["dynamic-attr","ranked-split-reward",["concat",[["unknown",["splitReward"]]]]],["static-attr","crest-type","ranked"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["demotionWarning"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-ranked-crest-tooltip-unranked"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1808,16 +1803,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(57);
-        var r = s.Ember.Component.extend(i.default, {
+        var r = a.Ember.Component.extend(i.default, {
           classNames: ["style-profile-ranked-last-season-tooltip-component"],
           layout: n(58),
-          profileService: s.Ember.inject.service("profile"),
+          profileService: a.Ember.inject.service("profile"),
           rankedData: null,
-          lastSeasonTier: s.Ember.computed(
+          lastSeasonTier: a.Ember.computed(
             "summoner.puuid",
             "rankedData.{highestPreviousSeasonEndTier,highestPreviousSeasonEndDivision}",
             function () {
@@ -1827,18 +1822,18 @@
               return (e && "NONE" !== e) || (e = "UNRANKED"), e;
             },
           ),
-          lastSeasonIsUnranked: s.Ember.computed("lastSeasonTier", function () {
+          lastSeasonIsUnranked: a.Ember.computed("lastSeasonTier", function () {
             const e = this.get("lastSeasonTier");
             return Boolean(!e || "UNRANKED" === e);
           }),
-          tooltipLastSeasonLabel: s.Ember.computed(
+          tooltipLastSeasonLabel: a.Ember.computed(
             "lastSeasonTier",
             "rankedData.{highestPreviousSeasonEndDivision}",
             function () {
               const e = this.get("lastSeasonTier");
               if (!e) return;
               const t = this.get("rankedData.highestPreviousSeasonEndDivision");
-              return s.LeagueTierNames.getFullTierDivisionName(e, t);
+              return a.LeagueTierNames.getFullTierDivisionName(e, t);
             },
           ),
         });
@@ -1849,11 +1844,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "6Pg875dv",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "ekxe0Mgu",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-tooltip-last-trim"],["flush-element"],["text","\\n  "],["open-element","lol-regalia-banner-element",[]],["static-attr","animations","false"],["dynamic-attr","banner-rank",["concat",[["unknown",["lastSeasonTier"]]]]],["static-attr","banner-type","lastSeasonHighestRank"],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-tooltip-last-title ",["helper",["if"],[["get",["lastSeasonIsUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["tra","ranked_tooltip_past_highest_rank"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-tooltip-last-rank ",["helper",["if"],[["get",["lastSeasonIsUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["tooltipLastSeasonLabel"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-ranked-component\\\\ranked-last-season-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-ranked-tooltip-last-trim"],["flush-element"],["text","\\n  "],["open-element","lol-regalia-banner-element",[]],["static-attr","animations","false"],["dynamic-attr","banner-rank",["concat",[["unknown",["lastSeasonTier"]]]]],["static-attr","banner-type","lastSeasonHighestRank"],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-tooltip-last-title ",["helper",["if"],[["get",["lastSeasonIsUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["tra","ranked_tooltip_past_highest_rank"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-ranked-tooltip-last-rank ",["helper",["if"],[["get",["lastSeasonIsUnranked"]],"unranked"],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["tooltipLastSeasonLabel"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1861,24 +1856,24 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(60);
         var r = n(61);
-        var o = s.Ember.Component.extend(i.default, {
+        var o = a.Ember.Component.extend(i.default, {
           classNames: ["style-profile-honor-component"],
           layout: n(62),
-          profileService: s.Ember.inject.service("profile"),
+          profileService: a.Ember.inject.service("profile"),
           honorLockImageUrl: r.HONOR_LOCK_IMAGE_URL,
           init: function () {
             this._super(...arguments), this.initHonorConfig();
           },
           initHonorConfig: function () {
             this.set("shouldShowHonor", !1);
-            const e = (0, s.DataBinding)(
+            const e = (0, a.DataBinding)(
               "/lol-honor-v2",
-              (0, s.getProvider)().getSocket(),
+              (0, a.getProvider)().getSocket(),
             );
             e.get("/v1/config").then(
               ((t) => {
@@ -1898,7 +1893,7 @@
                 (this.set("honorProfile", e), this.set("shouldShowHonor", !0));
             }
           },
-          shouldShowOtherSummonerTooltip: s.Ember.computed(
+          shouldShowOtherSummonerTooltip: a.Ember.computed(
             "honorEnabled",
             "isMe",
             function () {
@@ -1906,7 +1901,7 @@
               return !this.get("isMe");
             },
           ),
-          honorProfileImageUrl: s.Ember.computed(
+          honorProfileImageUrl: a.Ember.computed(
             "honorProfile.honorLevel",
             "honorProfile.checkpoint",
             "honorProfile.rewardsLocked",
@@ -1917,18 +1912,18 @@
                   3,
                 ),
                 n = this.get("honorProfile.rewardsLocked");
-              let a;
+              let s;
               r.HONOR_IMAGES[e] &&
-                (a = n
+                (s = n
                   ? r.HONOR_IMAGES[e].LOCKED
                   : 5 === e
                     ? r.HONOR_IMAGES[e]
                     : r.HONOR_IMAGES[e][t]),
-                a || (a = r.HONOR_IMAGES.UNKNOWN);
-              return `${r.HONOR_IMAGES_PATH}/${a}`;
+                s || (s = r.HONOR_IMAGES.UNKNOWN);
+              return `${r.HONOR_IMAGES_PATH}/${s}`;
             },
           ),
-          honorProfileLevel: s.Ember.computed(
+          honorProfileLevel: a.Ember.computed(
             "honorProfile.honorLevel",
             "honorProfile.checkpoint",
             function () {
@@ -1940,7 +1935,7 @@
               });
             },
           ),
-          shouldShowHonorLockIcon: s.Ember.computed(
+          shouldShowHonorLockIcon: a.Ember.computed(
             "shouldShowHonor",
             "honorProfile.honorLevel",
             "honorProfile.rewardsLocked",
@@ -1951,7 +1946,7 @@
               return e && (n || 0 === t || 1 === t);
             },
           ),
-          profileTooltipText: s.Ember.computed(
+          profileTooltipText: a.Ember.computed(
             "honorProfile.honorLevel",
             "honorProfile.checkpoint",
             "honorProfile.rewardsLocked",
@@ -1959,21 +1954,21 @@
               const e = this.get("honorProfile.rewardsLocked"),
                 t = this.get("honorProfile.checkpoint"),
                 n = this.get("honorProfile.honorLevel");
-              let a, s;
+              let s, a;
               if (
                 (e
-                  ? (a = r.HONOR_TRA_KEYS.LOCKED)
+                  ? (s = r.HONOR_TRA_KEYS.LOCKED)
                   : n >= 5
-                    ? (a = r.HONOR_TRA_KEYS.MAX_LEVEL)
-                    : ((a = r.HONOR_TRA_KEYS.CHECKPOINT[t]),
-                      (s = r.HONOR_TRA_KEYS.LEVEL_APPEND.NORMAL[n])),
-                a)
+                    ? (s = r.HONOR_TRA_KEYS.MAX_LEVEL)
+                    : ((s = r.HONOR_TRA_KEYS.CHECKPOINT[t]),
+                      (a = r.HONOR_TRA_KEYS.LEVEL_APPEND.NORMAL[n])),
+                s)
               ) {
-                let e = this.get("tra").formatString(a, {
+                let e = this.get("tra").formatString(s, {
                   nextLevel: n + 1,
                   honorCheckpoint: t,
                 });
-                return s && (e = e + " " + this.get("tra").get(s)), e;
+                return a && (e = e + " " + this.get("tra").get(a)), e;
               }
               return "";
             },
@@ -1995,8 +1990,8 @@
               void 0);
         const n = "/fe/lol-honor/assets/profile";
         t.HONOR_IMAGES_PATH = n;
-        const a = n + "/Honor_Lock.png";
-        t.HONOR_LOCK_IMAGE_URL = a;
+        const s = n + "/Honor_Lock.png";
+        t.HONOR_LOCK_IMAGE_URL = s;
         t.HONOR_IMAGES = {
           UNKNOWN: "Emblem_Generic.png",
           0: {
@@ -2059,11 +2054,11 @@
         };
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "6cWhrBX1",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "V9dEOItm",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","honor_profile_header"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,8],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-honor-lock-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonorLockIcon"]]],null,7],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,6,5],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,4,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","honor_profile_other_player_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowOtherSummonerTooltip"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["profileTooltipText"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],3]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-honor-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","style-profile-honor-icon"],["dynamic-attr","src",["concat",[["unknown",["honorProfileImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","style-profile-honor-lock"],["dynamic-attr","src",["concat",[["unknown",["honorLockImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["honorProfileLevel"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-honor-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","honor_profile_header"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,8],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-honor-lock-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonorLockIcon"]]],null,7],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,6,5],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowHonor"]]],null,4,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","honor_profile_other_player_tooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowOtherSummonerTooltip"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["profileTooltipText"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],3]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-honor-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","style-profile-honor-icon"],["dynamic-attr","src",["concat",[["unknown",["honorProfileImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","style-profile-honor-lock"],["dynamic-attr","src",["concat",[["unknown",["honorLockImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["honorProfileLevel"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2071,25 +2066,25 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(64);
-        var r = s.Ember.Component.extend(i.default, {
+        var r = a.Ember.Component.extend(i.default, {
           classNames: ["style-profile-champion-mastery-component"],
           layout: n(65),
-          profileService: s.Ember.inject.service("profile"),
-          eternalsService: s.Ember.inject.service("eternals"),
-          championMasteries: s.Ember.computed.alias(
+          profileService: a.Ember.inject.service("profile"),
+          eternalsService: a.Ember.inject.service("eternals"),
+          championMasteries: a.Ember.computed.alias(
             "profileService.championMasteries",
           ),
-          computedEternals: s.Ember.computed.alias("eternalsService.summary"),
-          shouldShowEternals: s.Ember.computed.and(
+          computedEternals: a.Ember.computed.alias("eternalsService.summary"),
+          shouldShowEternals: a.Ember.computed.and(
             "eternalsEnabled",
             "computedEternals.length",
           ),
-          eternalsEnabled: s.Ember.computed.alias("eternalsService.enabled"),
-          computedMasteries: s.Ember.computed(
+          eternalsEnabled: a.Ember.computed.alias("eternalsService.enabled"),
+          computedMasteries: a.Ember.computed(
             "championMasteries.masteries",
             function () {
               const e = this.get("championMasteries.masteries");
@@ -2104,7 +2099,7 @@
               }
             },
           ),
-          hasChampionMasteryScore: s.Ember.computed(
+          hasChampionMasteryScore: a.Ember.computed(
             "championMasteries.score",
             function () {
               const e = this.get("championMasteries.score");
@@ -2119,11 +2114,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "CvZ17v9Q",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "fBQy8O4I",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","champmastery_score_label"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChampionMasteryScore"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n    "],["append",["helper",["mastery-icon"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["append",["helper",["eternals-tooltip"],null,[["eternal","index"],[["get",["eternal"]],["get",["index"]]]]],false],["text","\\n"]],"locals":["eternal","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-tooltip-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-eternals-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_eternals_title"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-tripple-tooltip"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedEternals"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-progression-section"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-mastery-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-mastery-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_mastery_title"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-triple-tooltip"],["flush-element"],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","1"]],"secondary"]]],false],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","2"]],"secondary"]]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowEternals"]]],null,1],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",0]],2]],"locals":[]},{"statements":[["block",["if"],[["get",["computedMasteries"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-score"],["flush-element"],["append",["unknown",["championMasteries","score"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","champmastery_score_label"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChampionMasteryScore"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n    "],["append",["helper",["mastery-icon"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["append",["helper",["eternals-tooltip"],null,[["eternal","index"],[["get",["eternal"]],["get",["index"]]]]],false],["text","\\n"]],"locals":["eternal","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-tooltip-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-eternals-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_eternals_title"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-tripple-tooltip"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedEternals"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-progression-section"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-mastery-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-mastery-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_mastery_title"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-triple-tooltip"],["flush-element"],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","1"]],"secondary"]]],false],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n            "],["append",["helper",["mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","2"]],"secondary"]]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowEternals"]]],null,1],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",0]],2]],"locals":[]},{"statements":[["block",["if"],[["get",["computedMasteries"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-score"],["flush-element"],["append",["unknown",["championMasteries","score"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2131,28 +2126,28 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(67);
-        var r = s.Ember.Component.extend(i.default, {
+        var r = a.Ember.Component.extend(i.default, {
           classNames: ["profile-legendary-champion-mastery-component"],
           layout: n(68),
-          profileService: s.Ember.inject.service("profile"),
-          eternalsService: s.Ember.inject.service("eternals"),
-          championMasteryData: s.Ember.computed.alias(
+          profileService: a.Ember.inject.service("profile"),
+          eternalsService: a.Ember.inject.service("eternals"),
+          championMasteryData: a.Ember.computed.alias(
             "profileService.championMasteries",
           ),
-          championMasteryScore: s.Ember.computed.alias(
+          championMasteryScore: a.Ember.computed.alias(
             "championMasteryData.score",
           ),
-          computedEternals: s.Ember.computed.alias("eternalsService.summary"),
-          shouldShowEternals: s.Ember.computed.and(
+          computedEternals: a.Ember.computed.alias("eternalsService.summary"),
+          shouldShowEternals: a.Ember.computed.and(
             "eternalsEnabled",
             "computedEternals.length",
           ),
-          eternalsEnabled: s.Ember.computed.alias("eternalsService.enabled"),
-          computedMasteries: s.Ember.computed(
+          eternalsEnabled: a.Ember.computed.alias("eternalsService.enabled"),
+          computedMasteries: a.Ember.computed(
             "championMasteryData.masteries",
             function () {
               const e = this.get("championMasteryData.masteries");
@@ -2167,7 +2162,7 @@
               }
             },
           ),
-          totalScore: s.Ember.computed("championMasteryScore", function () {
+          totalScore: a.Ember.computed("championMasteryScore", function () {
             const e = this.get("championMasteryScore") || 0,
               t = (this.get("tra.metadata.locale.id") || "en_US").replace(
                 "_",
@@ -2183,11 +2178,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "zlB8eH32",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "4k1wcx1L",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","champmastery_score_label"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-score"],["flush-element"],["append",["unknown",["totalScore"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n      "],["append",["helper",["legendary-mastery-icon"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["append",["helper",["eternals-tooltip"],null,[["eternal","index"],[["get",["eternal"]],["get",["index"]]]]],false],["text","\\n"]],"locals":["eternal","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-tooltip-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-eternals-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_eternals_title"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-tripple-tooltip"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedEternals"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","profile-legendary-champion-mastery-section"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-mastery-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-mastery-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_mastery_title"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-legendary-champion-mastery-triple-tooltip"],["flush-element"],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","1"]],"secondary"]]],false],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","2"]],"secondary"]]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowEternals"]]],null,1],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",0]],2]],"locals":[]},{"statements":[["block",["if"],[["get",["computedMasteries"]]],null,3]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","champmastery_score_label"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-score"],["flush-element"],["append",["unknown",["totalScore"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n      "],["append",["helper",["legendary-mastery-icon"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["append",["helper",["eternals-tooltip"],null,[["eternal","index"],[["get",["eternal"]],["get",["index"]]]]],false],["text","\\n"]],"locals":["eternal","index"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-tooltip-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-eternals-section"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_eternals_title"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","style-profile-eternals-tripple-tooltip"],["flush-element"],["text","\\n"],["block",["each"],[["get",["computedEternals"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","profile-legendary-champion-mastery-section"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-mastery-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-mastery-title"],["flush-element"],["append",["unknown",["tra","profile_mastery_tooltip_mastery_title"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","style-profile-legendary-champion-mastery-triple-tooltip"],["flush-element"],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","1"]],"secondary"]]],false],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","0"]],"primary"]]],false],["text","\\n            "],["append",["helper",["legendary-mastery-tooltip"],null,[["mastery","emphasis"],[["get",["computedMasteries","2"]],"secondary"]]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowEternals"]]],null,1],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","positioningStrategy","offsetX"],["top","preserve",0]],2]],"locals":[]},{"statements":[["block",["if"],[["get",["computedMasteries"]]],null,3]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2195,38 +2190,38 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
+        var s,
+          a = n(1),
           i = n(37),
-          r = (a = n(27)) && a.__esModule ? a : { default: a };
+          r = (s = n(27)) && s.__esModule ? s : { default: s };
         n(70);
         function o(e) {
           return e ? ((e = Number.parseInt(e)), isNaN(e) ? 0 : e) : 0;
         }
-        var l = s.Ember.Component.extend(r.default, {
+        var l = a.Ember.Component.extend(r.default, {
           classNames: ["style-profile-champion-mastery-icon-component"],
           layout: n(71),
-          profileService: s.Ember.inject.service("profile"),
-          championMasteryConfig: s.Ember.computed.alias(
+          profileService: a.Ember.inject.service("profile"),
+          championMasteryConfig: a.Ember.computed.alias(
             "profileService.championMasteryConfig",
           ),
-          masteryDisabled: s.Ember.computed.equal(
+          masteryDisabled: a.Ember.computed.equal(
             "masteryTreatment",
             "disabled",
           ),
-          championInfoObserver: s.Ember.on(
+          championInfoObserver: a.Ember.on(
             "init",
-            s.Ember.observer("mastery.championId", function () {
+            a.Ember.observer("mastery.championId", function () {
               const e = parseInt(this.get("mastery.championId"));
               e &&
-                s.GameDataChampionSummary.getChampionSummaryPromise(e).then(
+                a.GameDataChampionSummary.getChampionSummaryPromise(e).then(
                   (e) => {
                     this.set("championInfo", e);
                   },
                 );
             }),
           ),
-          masteryTreatment: s.Ember.computed(
+          masteryTreatment: a.Ember.computed(
             "mastery",
             "levelInProgress",
             function () {
@@ -2239,21 +2234,21 @@
                 : "disabled";
             },
           ),
-          levelClassName: s.Ember.computed(
+          levelClassName: a.Ember.computed(
             "mastery.championLevel",
             function () {
               const e = Number.parseInt(this.get("mastery.championLevel"));
               return !e || isNaN(e) ? "level0" : `level${e}`;
             },
           ),
-          levelInProgress: s.Ember.computed(
+          levelInProgress: a.Ember.computed(
             "mastery.championLevel",
             function () {
               const e = Number.parseInt(this.get("mastery.championLevel"));
               return !(!e || isNaN(e)) && e < 5;
             },
           ),
-          progress: s.Ember.computed(
+          progress: a.Ember.computed(
             "levelInProgress",
             "mastery.championPointsSinceLastLevel",
             "mastery.championPointsUntilNextLevel",
@@ -2268,7 +2263,7 @@
               }
             },
           ),
-          tooltipPointString: s.Ember.computed(
+          tooltipPointString: a.Ember.computed(
             "mastery",
             "mastery.formattedChampionPoints",
             "championMasteryConfig.MaxChampionLevel",
@@ -2286,7 +2281,7 @@
               }
             },
           ),
-          masteryRoleTitle: s.Ember.computed(
+          masteryRoleTitle: a.Ember.computed(
             "mastery",
             "championInfo.roles.[]",
             function () {
@@ -2294,19 +2289,19 @@
                 t = this.get("championInfo.roles");
               if (e && t && t[0]) {
                 const n = e.championLevel,
-                  a = "champmastery_role_title_" + t[0] + "_" + n;
-                return (0, i.translate)(this, a);
+                  s = "champmastery_role_title_" + t[0] + "_" + n;
+                return (0, i.translate)(this, s);
               }
             },
           ),
-          masteryLevelUpDetails: s.Ember.computed(
+          masteryLevelUpDetails: a.Ember.computed(
             "mastery.championLevel",
             function () {
               const e = `champmastery_level_up_details_${this.get("mastery.championLevel")}`;
               return (0, i.translate)(this, e);
             },
           ),
-          masteryHighestGrade: s.Ember.computed(
+          masteryHighestGrade: a.Ember.computed(
             "mastery.highestGrade",
             function () {
               const e =
@@ -2327,11 +2322,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "Y1fvf3NP",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "hsHllQyb",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon ",["unknown",["emphasis"]]," ",["unknown",["masteryTreatment"]]," ",["unknown",["levelClassName"]]]]],["flush-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-banner-layer"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-banner-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","    "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,1],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-accent-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-accent-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","style-profile-mastery-radial-progress"],["static-attr","type","champion"],["dynamic-attr","percent",["unknown",["progress"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["levelInProgress"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon ",["unknown",["emphasis"]]," ",["unknown",["masteryTreatment"]]," ",["unknown",["levelClassName"]]]]],["flush-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-banner-layer"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-banner-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","    "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,1],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-accent-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-accent-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","style-profile-mastery-radial-progress"],["static-attr","type","champion"],["dynamic-attr","percent",["unknown",["progress"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["levelInProgress"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2339,55 +2334,55 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         n(73);
-        var s = a.Ember.Component.extend({
+        var a = s.Ember.Component.extend({
           classNames: [
             "style-profile-legendary-champion-mastery-icon-component",
           ],
           layout: n(74),
           mastery: {},
           emphasis: "",
-          masteryDisabled: a.Ember.computed.empty("mastery"),
-          masteryLevel: a.Ember.computed.alias("mastery.championLevel"),
-          championInfoObserver: a.Ember.on(
+          masteryDisabled: s.Ember.computed.empty("mastery"),
+          masteryLevel: s.Ember.computed.alias("mastery.championLevel"),
+          championInfoObserver: s.Ember.on(
             "init",
-            a.Ember.observer("mastery.championId", function () {
+            s.Ember.observer("mastery.championId", function () {
               const e = parseInt(this.get("mastery.championId"));
               e &&
-                a.GameDataChampionSummary.getChampionSummaryPromise(e).then(
+                s.GameDataChampionSummary.getChampionSummaryPromise(e).then(
                   (e) => {
                     this.set("championInfo", e);
                   },
                 );
             }),
           ),
-          masteryLevelCss: a.Ember.computed("masteryLevel", function () {
+          masteryLevelCss: s.Ember.computed("masteryLevel", function () {
             const e =
               this.get("masteryLevel") ||
-              a.SharedChampionMasteryConstants.MINIMUM_MASTERY_LEVEL;
+              s.SharedChampionMasteryConstants.MINIMUM_MASTERY_LEVEL;
             return Math.min(
               e,
-              a.SharedChampionMasteryConstants.MASTERY_CREST_INFINITE_THRESHOLD,
+              s.SharedChampionMasteryConstants.MASTERY_CREST_INFINITE_THRESHOLD,
             );
           }),
-          masteryBannerPath: a.Ember.computed("masteryLevel", function () {
+          masteryBannerPath: s.Ember.computed("masteryLevel", function () {
             const e = this.get("masteryLevel");
-            return a.SharedChampionMasteryConstants.getMasteryBannerAsset(e);
+            return s.SharedChampionMasteryConstants.getMasteryBannerAsset(e);
           }),
         });
-        t.default = s;
+        t.default = a;
       },
       (e, t, n) => {
         "use strict";
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "9mmjgiiY",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "+H3trAP5",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-banner-layer ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","style-profile-banner-image"],["dynamic-attr","src",["unknown",["masteryBannerPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","    "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,1],["text","  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-accent-layer ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-accent-image level-",["unknown",["masteryLevelCss"]]]]],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["mastery-crest"],null,[["masteryLevel"],[["get",["masteryLevel"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-icon-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-banner-layer ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","style-profile-banner-image"],["dynamic-attr","src",["unknown",["masteryBannerPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","    "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,1],["text","  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-accent-layer ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-accent-image level-",["unknown",["masteryLevelCss"]]]]],["flush-element"],["text","\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["mastery-crest"],null,[["masteryLevel"],[["get",["masteryLevel"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2395,10 +2390,10 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = (a = n(69)) && a.__esModule ? a : { default: a };
+        var s,
+          a = (s = n(69)) && s.__esModule ? s : { default: s };
         n(76);
-        var i = s.default.extend({ layout: n(77) });
+        var i = a.default.extend({ layout: n(77) });
         t.default = i;
       },
       (e, t, n) => {
@@ -2406,11 +2401,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "HozgGCwx",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "N+2vWgEA",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-inner-container ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-inner ",["unknown",["emphasis"]]," ",["unknown",["masteryTreatment"]]," ",["unknown",["levelClassName"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-banner-layer-inner"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-banner-image-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked-inner"],["flush-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["levelInProgress"]]],null,3],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-accent-layer-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-accent-image-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-tooltip-inner-grade"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-tooltip-inner-grade"],["flush-element"],["append",["unknown",["masteryHighestGrade"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-champion-mastery-tooltip",[]],["dynamic-attr","class",["concat",["style-profile-champion-mastery-tooltip-inner ",["unknown",["emphasis"]]," separator-background-image"]]],["dynamic-attr","name",["unknown",["championInfo","name"]],null],["dynamic-attr","score",["unknown",["tooltipPointString"]],null],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isSearched"]]],null,1,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","style-profile-mastery-radial-progress-inner"],["static-attr","type","champion"],["dynamic-attr","percent",["unknown",["progress"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-champion-mastery-component\\\\mastery-icon-component\\\\tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-inner-container ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-champion-icon-inner ",["unknown",["emphasis"]]," ",["unknown",["masteryTreatment"]]," ",["unknown",["levelClassName"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-banner-layer-inner"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-banner-image-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-layer-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-masked-inner"],["flush-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["levelInProgress"]]],null,3],["text","      "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-top-frame-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-champion-icon-accent-layer-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-accent-image-inner"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,2],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-tooltip-inner-grade"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-champion-mastery-tooltip-inner-grade"],["flush-element"],["append",["unknown",["masteryHighestGrade"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-champion-mastery-tooltip",[]],["dynamic-attr","class",["concat",["style-profile-champion-mastery-tooltip-inner ",["unknown",["emphasis"]]," separator-background-image"]]],["dynamic-attr","name",["unknown",["championInfo","name"]],null],["dynamic-attr","score",["unknown",["tooltipPointString"]],null],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isSearched"]]],null,1,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","style-profile-mastery-radial-progress-inner"],["static-attr","type","champion"],["dynamic-attr","percent",["unknown",["progress"]],null],["flush-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2418,31 +2413,31 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         n(79);
-        var s = a.Ember.Component.extend({
+        var a = s.Ember.Component.extend({
           classNames: ["profile-legendary-champion-mastery-tooltip-component"],
           layout: n(80),
           mastery: {},
           emphasis: "",
-          profileService: a.Ember.inject.service("profile"),
-          championMasteryConfig: a.Ember.computed.alias(
+          profileService: s.Ember.inject.service("profile"),
+          championMasteryConfig: s.Ember.computed.alias(
             "profileService.championMasteryConfig",
           ),
-          masteryDisabled: a.Ember.computed.empty("mastery"),
-          championInfoObserver: a.Ember.on(
+          masteryDisabled: s.Ember.computed.empty("mastery"),
+          championInfoObserver: s.Ember.on(
             "init",
-            a.Ember.observer("mastery.championId", function () {
+            s.Ember.observer("mastery.championId", function () {
               const e = parseInt(this.get("mastery.championId"));
               e &&
-                a.GameDataChampionSummary.getChampionSummaryPromise(e).then(
+                s.GameDataChampionSummary.getChampionSummaryPromise(e).then(
                   (e) => {
                     this.set("championInfo", e);
                   },
                 );
             }),
           ),
-          masteryLevelTxt: a.Ember.computed(
+          masteryLevelTxt: s.Ember.computed(
             "mastery.championLevel",
             function () {
               const e = this.get("mastery.championLevel");
@@ -2452,7 +2447,7 @@
               );
             },
           ),
-          highestGradeTxt: a.Ember.computed(
+          highestGradeTxt: s.Ember.computed(
             "mastery.highestGrade",
             function () {
               const e =
@@ -2465,18 +2460,18 @@
             },
           ),
         });
-        t.default = s;
+        t.default = a;
       },
       (e, t, n) => {
         "use strict";
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "5z9sYSGP",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "nYtlES48",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-champion-icon-inner-container ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-icon-container"],["flush-element"],["text","\\n    "],["append",["helper",["legendary-mastery-icon"],null,[["mastery","emphasis"],[["get",["mastery"]],["get",["emphasis"]]]]],false],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,0],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-title"],["flush-element"],["text","\\n        "],["append",["unknown",["championInfo","name"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-hr"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-level"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","profile-lcm-tooltip-contents-level-icon"],["static-attr","src","/fe/lol-static-assets/images/champion-mastery/icon-mastery.svg"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-level-text"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelTxt"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-best-grade"],["flush-element"],["text","\\n        "],["append",["unknown",["highestGradeTxt"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-legendary-champion-mastery-component\\\\legendary-mastery-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-champion-icon-inner-container ",["unknown",["emphasis"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-icon-container"],["flush-element"],["text","\\n    "],["append",["helper",["legendary-mastery-icon"],null,[["mastery","emphasis"],[["get",["mastery"]],["get",["emphasis"]]]]],false],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["masteryDisabled"]]],null,0],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-title"],["flush-element"],["text","\\n        "],["append",["unknown",["championInfo","name"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-hr"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-level"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","profile-lcm-tooltip-contents-level-icon"],["static-attr","src","/fe/lol-static-assets/images/champion-mastery/icon-mastery.svg"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-level-text"],["flush-element"],["text","\\n          "],["append",["unknown",["masteryLevelTxt"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","profile-lcm-tooltip-contents-best-grade"],["flush-element"],["text","\\n        "],["append",["unknown",["highestGradeTxt"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2485,59 +2480,59 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0),
           (t.validateTrophy = l);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(82);
-        const r = (0, s.EmberDataBinding)({
-          Ember: s.Ember,
-          websocket: (0, s.getProvider)().getSocket(),
+        const r = (0, a.EmberDataBinding)({
+          Ember: a.Ember,
+          websocket: (0, a.getProvider)().getSocket(),
           basePaths: { trophies: "/lol-trophies" },
           boundProperties: {
             trophiesConfigNamespace:
               "/lol-platform-config/v1/namespaces/Trophies",
           },
         });
-        var o = s.Ember.Component.extend(i.default, r, {
+        var o = a.Ember.Component.extend(i.default, r, {
           classNames: ["style-profile-trophy-component"],
           layout: n(83),
-          profileService: s.Ember.inject.service("profile"),
-          puuid: s.Ember.computed.alias("summoner.puuid"),
-          isEnabledOnProfile: s.Ember.computed.bool(
+          profileService: a.Ember.inject.service("profile"),
+          puuid: a.Ember.computed.alias("summoner.puuid"),
+          isEnabledOnProfile: a.Ember.computed.bool(
             "trophiesConfigNamespace.IsEnabledOnProfile",
           ),
-          hasTrophyImgAssets: s.Ember.computed.and(
+          hasTrophyImgAssets: a.Ember.computed.and(
             "pedestalImgSrc",
             "cupgemImgSrc",
           ),
-          hasNoTrophy: s.Ember.computed.equal("trophy", null),
-          hasTrophy: s.Ember.computed.not("hasNoTrophy"),
-          trophyImgObserver: s.Ember.on(
+          hasNoTrophy: a.Ember.computed.equal("trophy", null),
+          hasTrophy: a.Ember.computed.not("hasNoTrophy"),
+          trophyImgObserver: a.Ember.on(
             "init",
-            s.Ember.observer("trophy", function () {
+            a.Ember.observer("trophy", function () {
               const e = this.get("trophy");
               if (!(e && e.theme && e.tier && e.bracket))
                 return (
                   this.set("cupgemImgSrc", ""),
                   void this.set("pedestalImgSrc", "")
                 );
-              s.GameDataClashTrophies.getTrophyPromise(e.theme, e.bracket).then(
+              a.GameDataClashTrophies.getTrophyPromise(e.theme, e.bracket).then(
                 (e) => {
                   let t = "";
                   e && e.profileIcon && (t = e.profileIcon),
                     this.set("cupgemImgSrc", t);
                 },
               ),
-                s.GameDataClashTrophies.getPedestalPromise(e.tier).then((e) => {
+                a.GameDataClashTrophies.getPedestalPromise(e.tier).then((e) => {
                   let t = "";
                   e && e.profileIcon && (t = e.profileIcon),
                     this.set("pedestalImgSrc", t);
                 });
             }),
           ),
-          fetchTrophyProfileObserver: s.Ember.on(
+          fetchTrophyProfileObserver: a.Ember.on(
             "init",
-            s.Ember.observer(
+            a.Ember.observer(
               "isEnabledOnProfile",
               "isMe",
               "hasSummoner",
@@ -2546,7 +2541,7 @@
               function () {
                 this.get("isEnabledOnProfile") &&
                   this.get("hasSummoner") &&
-                  s.Ember.run.once(this, "fetchTrophyProfile");
+                  a.Ember.run.once(this, "fetchTrophyProfile");
               },
             ),
           ),
@@ -2555,7 +2550,7 @@
               t = this.get("trophy");
             if (e || t) return;
             const n = this.get("isMe");
-            if (s.Lodash.isNil(n)) return;
+            if (a.Lodash.isNil(n)) return;
             if (!n) {
               if (
                 !this.get(
@@ -2564,42 +2559,42 @@
               )
                 return;
             }
-            const a = this.get("api.trophies");
+            const s = this.get("api.trophies");
             let i;
             if (n)
-              i = a
+              i = s
                 .get("/v1/current-summoner/trophies/profile", { skipCache: !0 })
                 .catch((e) => {
                   404 === e.status
-                    ? s.logger.trace(
+                    ? a.logger.trace(
                         "Current summoner has no profile trophy",
                         e,
                       )
-                    : s.logger.warning(
+                    : a.logger.warning(
                         "Failed to get current summoner's profile trophy",
                         e,
                       );
                 });
             else {
               const e = this.get("puuid");
-              if (s.Lodash.isNil(e))
-                return void s.logger.warning(
+              if (a.Lodash.isNil(e))
+                return void a.logger.warning(
                   "No puuid passed in when requesting other player's profile trophy",
                 );
-              i = a
+              i = s
                 .get(`/v1/players/${e}/trophies/profile`, { skipCache: !0 })
                 .catch((t) => {
-                  const { message: n, status: a, text: i } = t;
-                  404 === a
-                    ? s.logger.trace("Summoner has no profile trophy", {
+                  const { message: n, status: s, text: i } = t;
+                  404 === s
+                    ? a.logger.trace("Summoner has no profile trophy", {
                         puuid: e,
                         message: n,
-                        status: a,
+                        status: s,
                         text: i,
                       })
-                    : s.logger.warning(
+                    : a.logger.warning(
                         "Failed to get other player's profile trophy",
-                        { puuid: e, message: n, status: a, text: i },
+                        { puuid: e, message: n, status: s, text: i },
                       );
                 });
             }
@@ -2613,7 +2608,7 @@
                     this.set("_getTrophyProfilePromise", null);
                 });
           },
-          tournamentHeader: s.Ember.computed("trophy", function () {
+          tournamentHeader: a.Ember.computed("trophy", function () {
             let e = null;
             const t = this.get("trophy");
             return (
@@ -2625,7 +2620,7 @@
               e || this.get("tra").get("trophies_profile_header")
             );
           }),
-          tierText: s.Ember.computed("trophy", function () {
+          tierText: a.Ember.computed("trophy", function () {
             const e = this.get("trophy");
             if (!e || !e.tier) return "";
             const t = this.get("tra").get("clash_roster_tier_name_" + e.tier);
@@ -2633,7 +2628,7 @@
               tier: t,
             });
           }),
-          bracketText: s.Ember.computed("trophy", function () {
+          bracketText: a.Ember.computed("trophy", function () {
             const e = this.get("trophy");
             return e && e.bracket
               ? this.get("tra").formatString("trophies_bracket_size_display", {
@@ -2643,7 +2638,7 @@
           }),
         });
         function l(e) {
-          return s.Lodash.isNil(e) ||
+          return a.Lodash.isNil(e) ||
             ["theme", "tier", "bracket", "seasonId"].some(
               (t) => !e.hasOwnProperty(t),
             )
@@ -2657,11 +2652,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "ccDHdmQG",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "chU6S+ug",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tournamentHeader"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasTrophy"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasTrophyImgAssets"]]],null,4,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isEnabledOnProfile"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","trophies_tournament_blank_tooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoTrophy"]]],null,1]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-trophy-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-trophy-container"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","style-profile-trophy-pedestal"],["dynamic-attr","src",["concat",[["unknown",["pedestalImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","style-profile-trophy-cupgem"],["dynamic-attr","src",["concat",[["unknown",["cupgemImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["tierText"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["bracketText"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-trophy-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tournamentHeader"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasTrophy"]]],null,5],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasTrophyImgAssets"]]],null,4,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isEnabledOnProfile"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","trophies_tournament_blank_tooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoTrophy"]]],null,1]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-trophy-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-trophy-container"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","style-profile-trophy-pedestal"],["dynamic-attr","src",["concat",[["unknown",["pedestalImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","style-profile-trophy-cupgem"],["dynamic-attr","src",["concat",[["unknown",["cupgemImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["tierText"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["bracketText"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2670,36 +2665,36 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0),
           (t.validateFlag = m);
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a },
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s },
           r = n(85);
         n(86);
         var o = n(87);
-        const l = (0, s.EmberDataBinding)({
-          Ember: s.Ember,
-          websocket: (0, s.getProvider)().getSocket(),
+        const l = (0, a.EmberDataBinding)({
+          Ember: a.Ember,
+          websocket: (0, a.getProvider)().getSocket(),
           basePaths: { banners: "/lol-banners" },
           boundProperties: {
             bannersConfigNamespace:
               "/lol-platform-config/v1/namespaces/Banners",
           },
         });
-        var d = s.Ember.Component.extend(i.default, l, {
+        var d = a.Ember.Component.extend(i.default, l, {
           classNames: ["style-profile-clash-banner-component"],
           classNameBindings: [
             "isBannerClickable:clickable",
             "isBannerPickDisabled:pick-disabled",
           ],
           layout: n(88),
-          profileService: s.Ember.inject.service("profile"),
-          puuid: s.Ember.computed.alias("summoner.puuid"),
-          isEnabledOnProfile: s.Ember.computed.bool(
+          profileService: a.Ember.inject.service("profile"),
+          puuid: a.Ember.computed.alias("summoner.puuid"),
+          isEnabledOnProfile: a.Ember.computed.bool(
             "bannersConfigNamespace.IsEnabledOnProfile",
           ),
-          bannerImgSrcObserver: s.Ember.on(
+          bannerImgSrcObserver: a.Ember.on(
             "init",
-            s.Ember.observer("equippedFlag.{theme,level}", function () {
+            a.Ember.observer("equippedFlag.{theme,level}", function () {
               const e = this.get("equippedFlag");
               if (void 0 !== e) {
                 const t = !!e;
@@ -2707,14 +2702,14 @@
                   this.set("hasNoEquippedFlag", !t);
               }
               e && e.theme && e.level
-                ? (s.GameDataClashBanners.getDefaultBannerFramePromise().then(
+                ? (a.GameDataClashBanners.getDefaultBannerFramePromise().then(
                     (e) => {
                       let t = "";
                       e && e.inventoryIcon && (t = e.inventoryIcon),
                         this.set("frameImgSrc", t);
                     },
                   ),
-                  s.GameDataClashBanners.getBannerFlagPromise(
+                  a.GameDataClashBanners.getBannerFlagPromise(
                     e.theme,
                     e.level,
                   ).then((e) => {
@@ -2726,7 +2721,7 @@
             }),
           ),
           _getEquippedFlag(e) {
-            return s.Lodash.isNil(e)
+            return a.Lodash.isNil(e)
               ? Promise.reject(
                   new Error("Null parameter given to getEquippedFlag"),
                 )
@@ -2734,9 +2729,9 @@
                   skipCache: !0,
                 });
           },
-          fetchEquippedFlagObserver: s.Ember.on(
+          fetchEquippedFlagObserver: a.Ember.on(
             "init",
-            s.Ember.observer(
+            a.Ember.observer(
               "isEnabledOnProfile",
               "isMe",
               "hasSummoner",
@@ -2745,7 +2740,7 @@
               function () {
                 this.get("isEnabledOnProfile") &&
                   this.get("hasSummoner") &&
-                  s.Ember.run.once(this, "fetchEquippedFlag");
+                  a.Ember.run.once(this, "fetchEquippedFlag");
               },
             ),
           ),
@@ -2754,7 +2749,7 @@
               t = this.get("equippedFlag");
             if (e || t) return;
             const n = this.get("isMe");
-            if (!s.Lodash.isNil(n)) {
+            if (!a.Lodash.isNil(n)) {
               if (!n) {
                 if (
                   !this.get(
@@ -2771,23 +2766,23 @@
                 );
               else {
                 const e = this.get("puuid");
-                if (s.Lodash.isNil(e))
-                  return void s.logger.warning(
+                if (a.Lodash.isNil(e))
+                  return void a.logger.warning(
                     "Fetching other summoner flag: no puuid",
                   );
                 const t = this._getEquippedFlag(e).catch((t) => {
-                  const { message: n, status: a, text: i } = t;
-                  404 === a
-                    ? s.logger.trace("Summoner has no flag", {
+                  const { message: n, status: s, text: i } = t;
+                  404 === s
+                    ? a.logger.trace("Summoner has no flag", {
                         puuid: e,
                         message: n,
-                        status: a,
+                        status: s,
                         text: i,
                       })
-                    : s.logger.warning("Failed to fetch other summoner flag", {
+                    : a.logger.warning("Failed to fetch other summoner flag", {
                         puuid: e,
                         message: n,
-                        status: a,
+                        status: s,
                         text: i,
                       });
                 });
@@ -2803,7 +2798,7 @@
               }
             }
           },
-          bannerTournamentTitle: s.Ember.computed(
+          bannerTournamentTitle: a.Ember.computed(
             "equippedFlag.theme",
             function () {
               const e = this.get("equippedFlag.theme");
@@ -2814,7 +2809,7 @@
                 : "";
             },
           ),
-          bannerTooltipTournamentText: s.Ember.computed(
+          bannerTooltipTournamentText: a.Ember.computed(
             "equippedFlag.theme",
             function () {
               const e = this.get("equippedFlag.theme");
@@ -2825,7 +2820,7 @@
                 : "";
             },
           ),
-          bannerTooltipLevelText: s.Ember.computed(
+          bannerTooltipLevelText: a.Ember.computed(
             "equippedFlag.level",
             "equippedFlag.theme",
             function () {
@@ -2839,7 +2834,7 @@
               );
             },
           ),
-          bannerTooltipEarnedDateText: s.Ember.computed(
+          bannerTooltipEarnedDateText: a.Ember.computed(
             "equippedFlag.earnedDateIso8601",
             function () {
               const e = this.get("equippedFlag.earnedDateIso8601"),
@@ -2847,39 +2842,39 @@
               return e ? this.get("tra").moment(e).locale(t).format("LL") : "";
             },
           ),
-          _isEquipEnabled: s.Ember.computed.bool(
+          _isEquipEnabled: a.Ember.computed.bool(
             "bannersConfigNamespace.IsEquipEnabled",
           ),
-          _isEquipDisabled: s.Ember.computed.not("_isEquipEnabled"),
-          isBannerClickable: s.Ember.computed.and(
+          _isEquipDisabled: a.Ember.computed.not("_isEquipEnabled"),
+          isBannerClickable: a.Ember.computed.and(
             "_isEquipEnabled",
             "isMe",
             "hasEquippedFlag",
           ),
-          isBannerPickDisabled: s.Ember.computed.and(
+          isBannerPickDisabled: a.Ember.computed.and(
             "_isEquipDisabled",
             "isMe",
             "hasEquippedFlag",
           ),
           actions: {
             clickBanner() {
-              s.AudioPlugin.getChannel("sfx-ui").playSound(
+              a.AudioPlugin.getChannel("sfx-ui").playSound(
                 "/fe/lol-uikit/sfx-uikit-click-generic.ogg",
               ),
-                s.logger.trace("Displaying banner update modal"),
+                a.logger.trace("Displaying banner update modal"),
                 r.ClashBannerPickerHandler.showModal(),
-                s.Telemetry.sendCustomData("profile-overview-events", {
+                a.Telemetry.sendCustomData("profile-overview-events", {
                   event: "show-banners-update-modal",
                 });
             },
           },
-          onWillDestroyElement: s.Ember.on("willDestroyElement", function () {
+          onWillDestroyElement: a.Ember.on("willDestroyElement", function () {
             this.get("isBannerClickable") &&
               r.ClashBannerPickerHandler.hideModal();
           }),
         });
         function m(e) {
-          return s.Lodash.isNil(e) ||
+          return a.Lodash.isNil(e) ||
             ["level", "theme", "seasonId"].some((t) => !e.hasOwnProperty(t))
             ? null
             : e;
@@ -2888,26 +2883,26 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
-        const s = new (class {
+        var s = n(1);
+        const a = new (class {
           constructor() {
             this._bannerPickerModalInstance = null;
           }
           showModal() {
-            this._bannerPickerModalInstance = a.ModalManager.add({
+            this._bannerPickerModalInstance = s.ModalManager.add({
               type: "ClashBannerPickerComponent",
-              ComponentFactory: a.ComponentFactory,
+              ComponentFactory: s.ComponentFactory,
               show: !0,
             });
           }
           hideModal() {
             this._bannerPickerModalInstance &&
-              a.ModalManager.remove(this._bannerPickerModalInstance, () => {
+              s.ModalManager.remove(this._bannerPickerModalInstance, () => {
                 this._bannerPickerModalInstance = void 0;
               });
           }
         })();
-        e.exports = { ClashBannerPickerHandler: s };
+        e.exports = { ClashBannerPickerHandler: a };
       },
       (e, t, n) => {
         "use strict";
@@ -2920,11 +2915,11 @@
         t.CLASH_THEMES_EOS = ["EOS2020", "EOS2021", "EOS2022", "EOS2023"];
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "nUC3qhG/",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "PtMxbMnr",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["dynamic-attr","onclick",["helper",["if"],[["get",["isBannerClickable"]],["helper",["action"],[["get",[null]],"clickBanner"],null]],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","banners_profile_header"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["bannerImgSrc"]]],null,8],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["bannerImgSrc"]]],null,7,6],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["comment"," This if/elseif pattern is used so that toooltip creation doesn\'t get confused on initialization, when it temporarily appears that there isn\'t a flag  "],["text","\\n"],["block",["if"],[["get",["hasEquippedFlag"]]],null,5,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","banners_profile_blank_tooltip_message"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoEquippedFlag"]]],null,1]],"locals":[]},{"statements":[["text","          "],["open-element","hr",[]],["static-attr","class","style-profile-clash-banner-tooltip-call-to-action-separator"],["flush-element"],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","banners_profile_tooltip_message"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-group"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-theme"],["flush-element"],["append",["unknown",["bannerTooltipTournamentText"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-level"],["flush-element"],["append",["unknown",["bannerTooltipLevelText"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-earned-date"],["flush-element"],["append",["unknown",["bannerTooltipEarnedDateText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isBannerClickable"]]],null,3],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],4]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-image"],["dynamic-attr","src",["concat",[["unknown",["bannerImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-frame"],["dynamic-attr","src",["concat",[["unknown",["frameImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-preloader"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-button"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["bannerTournamentTitle"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-emblem-wrapper"],["dynamic-attr","onclick",["helper",["if"],[["get",["isBannerClickable"]],["helper",["action"],[["get",[null]],"clickBanner"],null]],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-title"],["flush-element"],["append",["unknown",["tra","banners_profile_header"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["bannerImgSrc"]]],null,8],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","style-profile-emblem-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["bannerImgSrc"]]],null,7,6],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["comment"," This if/elseif pattern is used so that toooltip creation doesn\'t get confused on initialization, when it temporarily appears that there isn\'t a flag  "],["text","\\n"],["block",["if"],[["get",["hasEquippedFlag"]]],null,5,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","banners_profile_blank_tooltip_message"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0]],"locals":[]},{"statements":[["block",["if"],[["get",["hasNoEquippedFlag"]]],null,1]],"locals":[]},{"statements":[["text","          "],["open-element","hr",[]],["static-attr","class","style-profile-clash-banner-tooltip-call-to-action-separator"],["flush-element"],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","banners_profile_tooltip_message"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-group"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-theme"],["flush-element"],["append",["unknown",["bannerTooltipTournamentText"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-level"],["flush-element"],["append",["unknown",["bannerTooltipLevelText"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-tooltip-details-earned-date"],["flush-element"],["append",["unknown",["bannerTooltipEarnedDateText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isBannerClickable"]]],null,3],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],4]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-empty"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-image"],["dynamic-attr","src",["concat",[["unknown",["bannerImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-frame"],["dynamic-attr","src",["concat",[["unknown",["frameImgSrc"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-preloader"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-button"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","style-profile-emblem-header-subtitle"],["flush-element"],["append",["unknown",["bannerTournamentTitle"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2932,16 +2927,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         n(90);
-        var s = a.Ember.Component.extend({
+        var a = s.Ember.Component.extend({
           classNames: ["style-profile-eternals-component"],
           classNameBindings: ["emphasis"],
           layout: n(91),
           eternal: null,
           index: null,
           championInfo: null,
-          emphasis: a.Ember.computed("index", function () {
+          emphasis: s.Ember.computed("index", function () {
             switch (this.get("index")) {
               case 0:
                 return "primary";
@@ -2951,11 +2946,11 @@
                 return "tertiary";
             }
           }),
-          championId: a.Ember.computed("eternal.championId", function () {
+          championId: s.Ember.computed("eternal.championId", function () {
             const e = this.get("eternal.championId");
             return (
               e &&
-                a.GameDataChampionSummary.getChampionSummaryPromise(e).then(
+                s.GameDataChampionSummary.getChampionSummaryPromise(e).then(
                   (e) => {
                     this.set("championInfo", e);
                   },
@@ -2963,39 +2958,39 @@
               e
             );
           }),
-          categoryLower: a.Ember.computed("eternal.category", function () {
+          categoryLower: s.Ember.computed("eternal.category", function () {
             return this.get("eternal.category").toLowerCase();
           }),
         });
-        t.default = s;
+        t.default = a;
       },
       (e, t, n) => {
         "use strict";
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "ZxWbZNbc",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "1sMvTq7x",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-eternals-image ",["unknown",["emphasis"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["eternal","imageUrl"]],");"]]],["flush-element"],["close-element"],["text","\\n"],["open-element","span",[]],["static-attr","class","profile-eternals-value"],["flush-element"],["append",["unknown",["eternal","value"]],false],["close-element"],["text","\\n"],["open-element","span",[]],["static-attr","class","profile-eternals-name"],["flush-element"],["append",["unknown",["eternal","name"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-eternals-champion ",["unknown",["championId"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-eternals-champion-framing"],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","profile-eternals-champion-icon"],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\eternals-tooltip-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-eternals-image ",["unknown",["emphasis"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["eternal","imageUrl"]],");"]]],["flush-element"],["close-element"],["text","\\n"],["open-element","span",[]],["static-attr","class","profile-eternals-value"],["flush-element"],["append",["unknown",["eternal","value"]],false],["close-element"],["text","\\n"],["open-element","span",[]],["static-attr","class","profile-eternals-name"],["flush-element"],["append",["unknown",["eternal","name"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["profile-eternals-champion ",["unknown",["championId"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","profile-eternals-champion-framing"],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","profile-eternals-champion-icon"],["dynamic-attr","src",["concat",[["unknown",["championInfo","squarePortraitPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1),
-          s = n(37),
+        var s = n(1),
+          a = n(37),
           i = o(n(93)),
           r = o(n(27));
         function o(e) {
           return e && e.__esModule ? e : { default: e };
         }
         n(222);
-        const { RunMixin: l } = a.EmberAddons.EmberLifeline;
-        const d = (0, a.EmberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        const { RunMixin: l } = s.EmberAddons.EmberLifeline;
+        const d = (0, s.EmberDataBinding)({
+          Ember: s.Ember,
+          websocket: (0, s.getProvider)().getSocket(),
           basePaths: {
             honor: "/lol-honor-v2",
             settings: "/lol-settings",
@@ -3007,24 +3002,24 @@
             settingsReady: { api: "settings", path: "/v2/ready" },
           },
         });
-        e.exports = a.Ember.Component.extend(l, d, r.default, {
+        e.exports = s.Ember.Component.extend(l, d, r.default, {
           classNames: ["style-profile-boosts-component"],
           layout: n(223),
-          tooltipManager: a.TooltipManager,
-          profileService: a.Ember.inject.service("profile"),
-          boosts: a.Ember.computed.alias("profileService.boosts"),
-          honorEnabled: a.Ember.computed.bool("honorConfig.Enabled"),
-          shouldShowHonor: a.Ember.computed.and("honorEnabled", "isMe"),
-          boostActive: a.Ember.computed("xpBoostActive", "boosts", function () {
+          tooltipManager: s.TooltipManager,
+          profileService: s.Ember.inject.service("profile"),
+          boosts: s.Ember.computed.alias("profileService.boosts"),
+          honorEnabled: s.Ember.computed.bool("honorConfig.Enabled"),
+          shouldShowHonor: s.Ember.computed.and("honorEnabled", "isMe"),
+          boostActive: s.Ember.computed("xpBoostActive", "boosts", function () {
             if (this.get("boosts")) {
               if (this.get("xpBoostActive")) return !0;
-              a.Ember.run.scheduleOnce("afterRender", this, function () {
+              s.Ember.run.scheduleOnce("afterRender", this, function () {
                 this.$(".boost .boost-tooltip").addClass("inactive");
               });
             }
             return !1;
           }),
-          xpBoostActive: a.Ember.computed(
+          xpBoostActive: s.Ember.computed(
             "boosts.xpBoostEndDate",
             "boosts.xpBoostPerWinCount",
             function () {
@@ -3032,13 +3027,13 @@
               if (e) {
                 const t = Date.now(),
                   n = new Date(e.xpBoostEndDate).getTime() > t,
-                  a = e.xpBoostPerWinCount > 0;
-                return n || a;
+                  s = e.xpBoostPerWinCount > 0;
+                return n || s;
               }
               return !1;
             },
           ),
-          xpBoostWinCountString: a.Ember.computed(
+          xpBoostWinCountString: s.Ember.computed(
             "boosts.xpBoostPerWinCount",
             "tra.profile_perks_boost_tooltip_message_xp_wins",
             "tra.profile_perks_boost_tooltip_message_xp_wins_single",
@@ -3049,13 +3044,13 @@
                 if (0 === t);
                 else {
                   if (1 === t)
-                    return (0, s.translate)(
+                    return (0, a.translate)(
                       this,
                       "profile_perks_boost_tooltip_message_xp_wins_single",
                       { xpBoostPerWinCount: t },
                     );
                   if (t > 1)
-                    return (0, s.translate)(
+                    return (0, a.translate)(
                       this,
                       "profile_perks_boost_tooltip_message_xp_wins",
                       { xpBoostPerWinCount: t },
@@ -3064,7 +3059,7 @@
               }
             },
           ),
-          xpExpireString: a.Ember.computed(
+          xpExpireString: s.Ember.computed(
             "boosts.xpBoostEndDate",
             "tra.profile_perks_boost_tooltip_message_xp_time",
             "tra.profile_perks_boost_tooltip_message_xp_time_single",
@@ -3081,12 +3076,12 @@
                 return t < 1
                   ? ""
                   : 1 === t
-                    ? (0, s.translate)(
+                    ? (0, a.translate)(
                         this,
                         "profile_perks_boost_tooltip_message_xp_time_single",
                         { xpExpireDays: t },
                       )
-                    : (0, s.translate)(
+                    : (0, a.translate)(
                         this,
                         "profile_perks_boost_tooltip_message_xp_time",
                         { xpExpireDays: t },
@@ -3094,7 +3089,7 @@
               }
             },
           ),
-          rerollsMoreThanMax: a.Ember.computed(
+          rerollsMoreThanMax: s.Ember.computed(
             "summoner.rerollPoints.numberOfRolls",
             "summoner.rerollPoints.maxRolls",
             function () {
@@ -3105,7 +3100,7 @@
               );
             },
           ),
-          aramRerollCount: a.Ember.computed(
+          aramRerollCount: s.Ember.computed(
             "summoner.rerollPoints.numberOfRolls",
             "summoner.rerollPoints.maxRolls",
             function () {
@@ -3118,7 +3113,7 @@
               return 0;
             },
           ),
-          pointsTowardReroll: a.Ember.computed(
+          pointsTowardReroll: s.Ember.computed(
             "summoner.rerollPoints.currentPoints",
             "summoner.rerollPoints.pointsCostToRoll",
             function () {
@@ -3131,19 +3126,19 @@
               return 0;
             },
           ),
-          rerollsMoreThanMaxString: a.Ember.computed(
+          rerollsMoreThanMaxString: s.Ember.computed(
             "aramRerollCount",
             "tra.profile_perks_aram_reroll_tooltip_message_full",
             function () {
               const e = this.get("aramRerollCount");
-              return (0, s.translate)(
+              return (0, a.translate)(
                 this,
                 "profile_perks_aram_reroll_tooltip_message_full",
                 { aramRerollCount: e },
               );
             },
           ),
-          rerollsProgressPercentage: a.Ember.computed(
+          rerollsProgressPercentage: s.Ember.computed(
             "summoner.rerollPoints.currentPoints",
             "summoner.rerollPoints.pointsCostToRoll",
             function () {
@@ -3161,7 +3156,7 @@
               return 0;
             },
           ),
-          rerollsProgressString: a.Ember.computed(
+          rerollsProgressString: s.Ember.computed(
             "summoner.rerollPoints.currentPoints",
             "summoner.rerollPoints.pointsCostToRoll",
             "aramRerollCount",
@@ -3170,7 +3165,7 @@
               const e = this.get("summoner");
               if (e) {
                 const t = this.get("pointsTowardReroll");
-                return (0, s.translate)(
+                return (0, a.translate)(
                   this,
                   "profile_perks_aram_reroll_tooltip_message_progress",
                   {
@@ -3187,8 +3182,8 @@
       function (e, t, n) {
         (e = n.nmd(e)).exports = (function () {
           "use strict";
-          var t, a;
-          function s() {
+          var t, s;
+          function a() {
             return t.apply(null, arguments);
           }
           function i(e) {
@@ -3222,17 +3217,17 @@
               "[object Number]" === Object.prototype.toString.call(e)
             );
           }
-          function _(e) {
+          function u(e) {
             return (
               e instanceof Date ||
               "[object Date]" === Object.prototype.toString.call(e)
             );
           }
-          function u(e, t) {
+          function _(e, t) {
             var n,
-              a = [];
-            for (n = 0; n < e.length; ++n) a.push(t(e[n], n));
-            return a;
+              s = [];
+            for (n = 0; n < e.length; ++n) s.push(t(e[n], n));
+            return s;
           }
           function c(e, t) {
             return Object.prototype.hasOwnProperty.call(e, t);
@@ -3245,8 +3240,8 @@
               e
             );
           }
-          function h(e, t, n, a) {
-            return qn(e, t, n, a, !0).utc();
+          function h(e, t, n, s) {
+            return qn(e, t, n, s, !0).utc();
           }
           function f() {
             return {
@@ -3272,10 +3267,10 @@
           function M(e) {
             if (null == e._isValid) {
               var t = y(e),
-                n = a.call(t.parsedDateParts, function (e) {
+                n = s.call(t.parsedDateParts, function (e) {
                   return null != e;
                 }),
-                s =
+                a =
                   !isNaN(e._d.getTime()) &&
                   t.overflow < 0 &&
                   !t.empty &&
@@ -3288,15 +3283,15 @@
                   (!t.meridiem || (t.meridiem && n));
               if (
                 (e._strict &&
-                  (s =
-                    s &&
+                  (a =
+                    a &&
                     0 === t.charsLeftOver &&
                     0 === t.unusedTokens.length &&
                     void 0 === t.bigHour),
                 null != Object.isFrozen && Object.isFrozen(e))
               )
-                return s;
-              e._isValid = s;
+                return a;
+              e._isValid = a;
             }
             return e._isValid;
           }
@@ -3304,20 +3299,20 @@
             var t = h(NaN);
             return null != e ? p(y(t), e) : (y(t).userInvalidated = !0), t;
           }
-          a = Array.prototype.some
+          s = Array.prototype.some
             ? Array.prototype.some
             : function (e) {
                 for (
-                  var t = Object(this), n = t.length >>> 0, a = 0;
-                  a < n;
-                  a++
+                  var t = Object(this), n = t.length >>> 0, s = 0;
+                  s < n;
+                  s++
                 )
-                  if (a in t && e.call(this, t[a], a, t)) return !0;
+                  if (s in t && e.call(this, t[s], s, t)) return !0;
                 return !1;
               };
-          var L = (s.momentProperties = []);
+          var L = (a.momentProperties = []);
           function v(e, t) {
-            var n, a, s;
+            var n, s, a;
             if (
               (d(t._isAMomentObject) ||
                 (e._isAMomentObject = t._isAMomentObject),
@@ -3333,7 +3328,7 @@
               L.length > 0)
             )
               for (n = 0; n < L.length; n++)
-                d((s = t[(a = L[n])])) || (e[a] = s);
+                d((a = t[(s = L[n])])) || (e[s] = a);
             return e;
           }
           var k = !1;
@@ -3341,7 +3336,7 @@
             v(this, e),
               (this._d = new Date(null != e._d ? e._d.getTime() : NaN)),
               this.isValid() || (this._d = new Date(NaN)),
-              !1 === k && ((k = !0), s.updateOffset(this), (k = !1));
+              !1 === k && ((k = !0), a.updateOffset(this), (k = !1));
           }
           function Y(e) {
             return e instanceof b || (null != e && null != e._isAMomentObject);
@@ -3355,16 +3350,16 @@
             return 0 !== t && isFinite(t) && (n = T(t)), n;
           }
           function D(e, t, n) {
-            var a,
-              s = Math.min(e.length, t.length),
+            var s,
+              a = Math.min(e.length, t.length),
               i = Math.abs(e.length - t.length),
               r = 0;
-            for (a = 0; a < s; a++)
-              ((n && e[a] !== t[a]) || (!n && S(e[a]) !== S(t[a]))) && r++;
+            for (s = 0; s < a; s++)
+              ((n && e[s] !== t[s]) || (!n && S(e[s]) !== S(t[s]))) && r++;
             return r + i;
           }
           function w(e) {
-            !1 === s.suppressDeprecationWarnings &&
+            !1 === a.suppressDeprecationWarnings &&
               "undefined" != typeof console &&
               console.warn &&
               console.warn("Deprecation warning: " + e);
@@ -3373,16 +3368,16 @@
             var n = !0;
             return p(function () {
               if (
-                (null != s.deprecationHandler && s.deprecationHandler(null, e),
+                (null != a.deprecationHandler && a.deprecationHandler(null, e),
                 n)
               ) {
-                for (var a, i = [], r = 0; r < arguments.length; r++) {
-                  if (((a = ""), "object" == typeof arguments[r])) {
-                    for (var o in ((a += "\n[" + r + "] "), arguments[0]))
-                      a += o + ": " + arguments[0][o] + ", ";
-                    a = a.slice(0, -2);
-                  } else a = arguments[r];
-                  i.push(a);
+                for (var s, i = [], r = 0; r < arguments.length; r++) {
+                  if (((s = ""), "object" == typeof arguments[r])) {
+                    for (var o in ((s += "\n[" + r + "] "), arguments[0]))
+                      s += o + ": " + arguments[0][o] + ", ";
+                    s = s.slice(0, -2);
+                  } else s = arguments[r];
+                  i.push(s);
                 }
                 w(
                   e +
@@ -3399,7 +3394,7 @@
           var x,
             P = {};
           function H(e, t) {
-            null != s.deprecationHandler && s.deprecationHandler(e, t),
+            null != a.deprecationHandler && a.deprecationHandler(e, t),
               P[e] || (w(t), (P[e] = !0));
           }
           function O(e) {
@@ -3419,24 +3414,24 @@
                   /\d{1,2}/.source,
               ));
           }
-          function I(e, t) {
+          function j(e, t) {
             var n,
-              a = p({}, e);
+              s = p({}, e);
             for (n in t)
               c(t, n) &&
                 (o(e[n]) && o(t[n])
-                  ? ((a[n] = {}), p(a[n], e[n]), p(a[n], t[n]))
+                  ? ((s[n] = {}), p(s[n], e[n]), p(s[n], t[n]))
                   : null != t[n]
-                    ? (a[n] = t[n])
-                    : delete a[n]);
-            for (n in e) c(e, n) && !c(t, n) && o(e[n]) && (a[n] = p({}, a[n]));
-            return a;
+                    ? (s[n] = t[n])
+                    : delete s[n]);
+            for (n in e) c(e, n) && !c(t, n) && o(e[n]) && (s[n] = p({}, s[n]));
+            return s;
           }
-          function j(e) {
+          function I(e) {
             null != e && this.set(e);
           }
-          (s.suppressDeprecationWarnings = !1),
-            (s.deprecationHandler = null),
+          (a.suppressDeprecationWarnings = !1),
+            (a.deprecationHandler = null),
             (x = Object.keys
               ? Object.keys
               : function (e) {
@@ -3453,11 +3448,11 @@
             lastWeek: "[Last] dddd [at] LT",
             sameElse: "L",
           };
-          function A(e, t, n) {
-            var a = this._calendar[e] || this._calendar.sameElse;
-            return O(a) ? a.call(t, n) : a;
+          function R(e, t, n) {
+            var s = this._calendar[e] || this._calendar.sameElse;
+            return O(s) ? s.call(t, n) : s;
           }
-          var R = {
+          var A = {
             LTS: "h:mm:ss A",
             LT: "h:mm A",
             L: "MM/DD/YYYY",
@@ -3479,10 +3474,10 @@
                 this._longDateFormat[e]);
           }
           var F = "Invalid date";
-          function B() {
+          function U() {
             return this._invalidDate;
           }
-          var U = "%d",
+          var B = "%d",
             z = /\d{1,2}/;
           function V(e) {
             return this._ordinal.replace("%d", e);
@@ -3503,9 +3498,9 @@
             y: "a year",
             yy: "%d years",
           };
-          function J(e, t, n, a) {
-            var s = this._relativeTime[n];
-            return O(s) ? s(e, t, n, a) : s.replace(/%d/i, e);
+          function J(e, t, n, s) {
+            var a = this._relativeTime[n];
+            return O(a) ? a(e, t, n, s) : a.replace(/%d/i, e);
           }
           function q(e, t) {
             var n = this._relativeTime[e > 0 ? "future" : "past"];
@@ -3522,9 +3517,9 @@
           function Z(e) {
             var t,
               n,
-              a = {};
-            for (n in e) c(e, n) && (t = $(n)) && (a[t] = e[n]);
-            return a;
+              s = {};
+            for (n in e) c(e, n) && (t = $(n)) && (s[t] = e[n]);
+            return s;
           }
           var X = {};
           function ee(e, t) {
@@ -3541,33 +3536,33 @@
             );
           }
           function ne(e, t, n) {
-            var a = "" + Math.abs(e),
-              s = t - a.length;
+            var s = "" + Math.abs(e),
+              a = t - s.length;
             return (
               (e >= 0 ? (n ? "+" : "") : "-") +
-              Math.pow(10, Math.max(0, s)).toString().substr(1) +
-              a
+              Math.pow(10, Math.max(0, a)).toString().substr(1) +
+              s
             );
           }
-          var ae =
+          var se =
               /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,
-            se = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
+            ae = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
             ie = {},
             re = {};
-          function oe(e, t, n, a) {
-            var s = a;
-            "string" == typeof a &&
-              (s = function () {
-                return this[a]();
+          function oe(e, t, n, s) {
+            var a = s;
+            "string" == typeof s &&
+              (a = function () {
+                return this[s]();
               }),
-              e && (re[e] = s),
+              e && (re[e] = a),
               t &&
                 (re[t[0]] = function () {
-                  return ne(s.apply(this, arguments), t[1], t[2]);
+                  return ne(a.apply(this, arguments), t[1], t[2]);
                 }),
               n &&
                 (re[n] = function () {
-                  return this.localeData().ordinal(s.apply(this, arguments), e);
+                  return this.localeData().ordinal(a.apply(this, arguments), e);
                 });
           }
           function le(e) {
@@ -3578,33 +3573,33 @@
           function de(e) {
             var t,
               n,
-              a = e.match(ae);
-            for (t = 0, n = a.length; t < n; t++)
-              re[a[t]] ? (a[t] = re[a[t]]) : (a[t] = le(a[t]));
+              s = e.match(se);
+            for (t = 0, n = s.length; t < n; t++)
+              re[s[t]] ? (s[t] = re[s[t]]) : (s[t] = le(s[t]));
             return function (t) {
-              var s,
+              var a,
                 i = "";
-              for (s = 0; s < n; s++) i += O(a[s]) ? a[s].call(t, e) : a[s];
+              for (a = 0; a < n; a++) i += O(s[a]) ? s[a].call(t, e) : s[a];
               return i;
             };
           }
           function me(e, t) {
             return e.isValid()
-              ? ((t = _e(t, e.localeData())),
+              ? ((t = ue(t, e.localeData())),
                 (ie[t] = ie[t] || de(t)),
                 ie[t](e))
               : e.localeData().invalidDate();
           }
-          function _e(e, t) {
+          function ue(e, t) {
             var n = 5;
-            function a(e) {
+            function s(e) {
               return t.longDateFormat(e) || e;
             }
-            for (se.lastIndex = 0; n >= 0 && se.test(e); )
-              (e = e.replace(se, a)), (se.lastIndex = 0), (n -= 1);
+            for (ae.lastIndex = 0; n >= 0 && ae.test(e); )
+              (e = e.replace(ae, s)), (ae.lastIndex = 0), (n -= 1);
             return e;
           }
-          var ue = /\d/,
+          var _e = /\d/,
             ce = /\d\d/,
             pe = /\d{3}/,
             he = /\d{4}/,
@@ -3626,7 +3621,7 @@
           function xe(e, t, n) {
             Ee[e] = O(t)
               ? t
-              : function (e, a) {
+              : function (e, s) {
                   return e && n ? n : t;
                 };
           }
@@ -3639,8 +3634,8 @@
                 .replace("\\", "")
                 .replace(
                   /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
-                  function (e, t, n, a, s) {
-                    return t || n || a || s;
+                  function (e, t, n, s, a) {
+                    return t || n || s || a;
                   },
                 ),
             );
@@ -3649,35 +3644,35 @@
             return e.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
           }
           var Ce = {};
-          function Ie(e, t) {
+          function je(e, t) {
             var n,
-              a = t;
+              s = t;
             for (
               "string" == typeof e && (e = [e]),
                 m(t) &&
-                  (a = function (e, n) {
+                  (s = function (e, n) {
                     n[t] = S(e);
                   }),
                 n = 0;
               n < e.length;
               n++
             )
-              Ce[e[n]] = a;
+              Ce[e[n]] = s;
           }
-          function je(e, t) {
-            Ie(e, function (e, n, a, s) {
-              (a._w = a._w || {}), t(e, a._w, a, s);
+          function Ie(e, t) {
+            je(e, function (e, n, s, a) {
+              (s._w = s._w || {}), t(e, s._w, s, a);
             });
           }
           function Ne(e, t, n) {
             null != t && c(Ce, e) && Ce[e](t, n._a, n, e);
           }
-          var Ae = 0,
-            Re = 1,
+          var Re = 0,
+            Ae = 1,
             We = 2,
             Fe = 3,
-            Be = 4,
-            Ue = 5,
+            Ue = 4,
+            Be = 5,
             ze = 6,
             Ve = 7,
             Ge = 8;
@@ -3704,17 +3699,17 @@
             xe("YYYY", ve, he),
             xe("YYYYY", ke, fe),
             xe("YYYYYY", ke, fe),
-            Ie(["YYYYY", "YYYYYY"], Ae),
-            Ie("YYYY", function (e, t) {
-              t[Ae] = 2 === e.length ? s.parseTwoDigitYear(e) : S(e);
+            je(["YYYYY", "YYYYYY"], Re),
+            je("YYYY", function (e, t) {
+              t[Re] = 2 === e.length ? a.parseTwoDigitYear(e) : S(e);
             }),
-            Ie("YY", function (e, t) {
-              t[Ae] = s.parseTwoDigitYear(e);
+            je("YY", function (e, t) {
+              t[Re] = a.parseTwoDigitYear(e);
             }),
-            Ie("Y", function (e, t) {
-              t[Ae] = parseInt(e, 10);
+            je("Y", function (e, t) {
+              t[Re] = parseInt(e, 10);
             }),
-            (s.parseTwoDigitYear = function (e) {
+            (a.parseTwoDigitYear = function (e) {
               return S(e) + (S(e) > 68 ? 1900 : 2e3);
             });
           var Ke,
@@ -3725,7 +3720,7 @@
           function Ze(e, t) {
             return function (n) {
               return null != n
-                ? (et(this, e, n), s.updateOffset(this, t), this)
+                ? (et(this, e, n), a.updateOffset(this, t), this)
                 : Xe(this, e);
             };
           }
@@ -3744,7 +3739,7 @@
                 ? e._d["set" + (e._isUTC ? "UTC" : "") + t](
                     n,
                     e.month(),
-                    st(n, e.month()),
+                    at(n, e.month()),
                   )
                 : e._d["set" + (e._isUTC ? "UTC" : "") + t](n));
           }
@@ -3753,17 +3748,17 @@
           }
           function nt(e, t) {
             if ("object" == typeof e)
-              for (var n = te((e = Z(e))), a = 0; a < n.length; a++)
-                this[n[a].unit](e[n[a].unit]);
+              for (var n = te((e = Z(e))), s = 0; s < n.length; s++)
+                this[n[s].unit](e[n[s].unit]);
             else if (O(this[(e = $(e))])) return this[e](t);
             return this;
           }
-          function at(e, t) {
+          function st(e, t) {
             return ((e % t) + t) % t;
           }
-          function st(e, t) {
+          function at(e, t) {
             if (isNaN(e) || isNaN(t)) return NaN;
-            var n = at(t, 12);
+            var n = st(t, 12);
             return (
               (e += (t - n) / 12),
               1 === n ? (qe(e) ? 29 : 28) : 31 - ((n % 7) % 2)
@@ -3795,12 +3790,12 @@
             xe("MMMM", function (e, t) {
               return t.monthsRegex(e);
             }),
-            Ie(["M", "MM"], function (e, t) {
-              t[Re] = S(e) - 1;
+            je(["M", "MM"], function (e, t) {
+              t[Ae] = S(e) - 1;
             }),
-            Ie(["MMM", "MMMM"], function (e, t, n, a) {
-              var s = n._locale.monthsParse(e, a, n._strict);
-              null != s ? (t[Re] = s) : (y(n).invalidMonth = e);
+            je(["MMM", "MMMM"], function (e, t, n, s) {
+              var a = n._locale.monthsParse(e, s, n._strict);
+              null != a ? (t[Ae] = a) : (y(n).invalidMonth = e);
             });
           var it = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
             rt =
@@ -3833,8 +3828,8 @@
                 : this._monthsShort.standalone;
           }
           function mt(e, t, n) {
-            var a,
-              s,
+            var s,
+              a,
               i,
               r = e.toLocaleLowerCase();
             if (!this._monthsParse)
@@ -3842,93 +3837,93 @@
                 this._monthsParse = [],
                   this._longMonthsParse = [],
                   this._shortMonthsParse = [],
-                  a = 0;
-                a < 12;
-                ++a
+                  s = 0;
+                s < 12;
+                ++s
               )
-                (i = h([2e3, a])),
-                  (this._shortMonthsParse[a] = this.monthsShort(
+                (i = h([2e3, s])),
+                  (this._shortMonthsParse[s] = this.monthsShort(
                     i,
                     "",
                   ).toLocaleLowerCase()),
-                  (this._longMonthsParse[a] = this.months(
+                  (this._longMonthsParse[s] = this.months(
                     i,
                     "",
                   ).toLocaleLowerCase());
             return n
               ? "MMM" === t
-                ? -1 !== (s = Ke.call(this._shortMonthsParse, r))
-                  ? s
+                ? -1 !== (a = Ke.call(this._shortMonthsParse, r))
+                  ? a
                   : null
-                : -1 !== (s = Ke.call(this._longMonthsParse, r))
-                  ? s
+                : -1 !== (a = Ke.call(this._longMonthsParse, r))
+                  ? a
                   : null
               : "MMM" === t
-                ? -1 !== (s = Ke.call(this._shortMonthsParse, r)) ||
-                  -1 !== (s = Ke.call(this._longMonthsParse, r))
-                  ? s
+                ? -1 !== (a = Ke.call(this._shortMonthsParse, r)) ||
+                  -1 !== (a = Ke.call(this._longMonthsParse, r))
+                  ? a
                   : null
-                : -1 !== (s = Ke.call(this._longMonthsParse, r)) ||
-                    -1 !== (s = Ke.call(this._shortMonthsParse, r))
-                  ? s
+                : -1 !== (a = Ke.call(this._longMonthsParse, r)) ||
+                    -1 !== (a = Ke.call(this._shortMonthsParse, r))
+                  ? a
                   : null;
           }
-          function _t(e, t, n) {
-            var a, s, i;
+          function ut(e, t, n) {
+            var s, a, i;
             if (this._monthsParseExact) return mt.call(this, e, t, n);
             for (
               this._monthsParse ||
                 ((this._monthsParse = []),
                 (this._longMonthsParse = []),
                 (this._shortMonthsParse = [])),
-                a = 0;
-              a < 12;
-              a++
+                s = 0;
+              s < 12;
+              s++
             ) {
               if (
-                ((s = h([2e3, a])),
+                ((a = h([2e3, s])),
                 n &&
-                  !this._longMonthsParse[a] &&
-                  ((this._longMonthsParse[a] = new RegExp(
-                    "^" + this.months(s, "").replace(".", "") + "$",
+                  !this._longMonthsParse[s] &&
+                  ((this._longMonthsParse[s] = new RegExp(
+                    "^" + this.months(a, "").replace(".", "") + "$",
                     "i",
                   )),
-                  (this._shortMonthsParse[a] = new RegExp(
-                    "^" + this.monthsShort(s, "").replace(".", "") + "$",
+                  (this._shortMonthsParse[s] = new RegExp(
+                    "^" + this.monthsShort(a, "").replace(".", "") + "$",
                     "i",
                   ))),
                 n ||
-                  this._monthsParse[a] ||
+                  this._monthsParse[s] ||
                   ((i =
-                    "^" + this.months(s, "") + "|^" + this.monthsShort(s, "")),
-                  (this._monthsParse[a] = new RegExp(i.replace(".", ""), "i"))),
-                n && "MMMM" === t && this._longMonthsParse[a].test(e))
+                    "^" + this.months(a, "") + "|^" + this.monthsShort(a, "")),
+                  (this._monthsParse[s] = new RegExp(i.replace(".", ""), "i"))),
+                n && "MMMM" === t && this._longMonthsParse[s].test(e))
               )
-                return a;
-              if (n && "MMM" === t && this._shortMonthsParse[a].test(e))
-                return a;
-              if (!n && this._monthsParse[a].test(e)) return a;
+                return s;
+              if (n && "MMM" === t && this._shortMonthsParse[s].test(e))
+                return s;
+              if (!n && this._monthsParse[s].test(e)) return s;
             }
           }
-          function ut(e, t) {
+          function _t(e, t) {
             var n;
             if (!e.isValid()) return e;
             if ("string" == typeof t)
               if (/^\d+$/.test(t)) t = S(t);
               else if (!m((t = e.localeData().monthsParse(t)))) return e;
             return (
-              (n = Math.min(e.date(), st(e.year(), t))),
+              (n = Math.min(e.date(), at(e.year(), t))),
               e._d["set" + (e._isUTC ? "UTC" : "") + "Month"](t, n),
               e
             );
           }
           function ct(e) {
             return null != e
-              ? (ut(this, e), s.updateOffset(this, !0), this)
+              ? (_t(this, e), a.updateOffset(this, !0), this)
               : Xe(this, "Month");
           }
           function pt() {
-            return st(this.year(), this.month());
+            return at(this.year(), this.month());
           }
           var ht = we;
           function ft(e) {
@@ -3956,36 +3951,36 @@
             }
             var t,
               n,
-              a = [],
               s = [],
+              a = [],
               i = [];
             for (t = 0; t < 12; t++)
               (n = h([2e3, t])),
-                a.push(this.monthsShort(n, "")),
-                s.push(this.months(n, "")),
+                s.push(this.monthsShort(n, "")),
+                a.push(this.months(n, "")),
                 i.push(this.months(n, "")),
                 i.push(this.monthsShort(n, ""));
-            for (a.sort(e), s.sort(e), i.sort(e), t = 0; t < 12; t++)
-              (a[t] = Oe(a[t])), (s[t] = Oe(s[t]));
+            for (s.sort(e), a.sort(e), i.sort(e), t = 0; t < 12; t++)
+              (s[t] = Oe(s[t])), (a[t] = Oe(a[t]));
             for (t = 0; t < 24; t++) i[t] = Oe(i[t]);
             (this._monthsRegex = new RegExp("^(" + i.join("|") + ")", "i")),
               (this._monthsShortRegex = this._monthsRegex),
               (this._monthsStrictRegex = new RegExp(
-                "^(" + s.join("|") + ")",
+                "^(" + a.join("|") + ")",
                 "i",
               )),
               (this._monthsShortStrictRegex = new RegExp(
-                "^(" + a.join("|") + ")",
+                "^(" + s.join("|") + ")",
                 "i",
               ));
           }
-          function Lt(e, t, n, a, s, i, r) {
+          function Lt(e, t, n, s, a, i, r) {
             var o;
             return (
               e < 100 && e >= 0
-                ? ((o = new Date(e + 400, t, n, a, s, i, r)),
+                ? ((o = new Date(e + 400, t, n, s, a, i, r)),
                   isFinite(o.getFullYear()) && o.setFullYear(e))
-                : (o = new Date(e, t, n, a, s, i, r)),
+                : (o = new Date(e, t, n, s, a, i, r)),
               o
             );
           }
@@ -4000,13 +3995,13 @@
             return t;
           }
           function kt(e, t, n) {
-            var a = 7 + t - n;
-            return (-(7 + vt(e, 0, a).getUTCDay() - t) % 7) + a - 1;
+            var s = 7 + t - n;
+            return (-(7 + vt(e, 0, s).getUTCDay() - t) % 7) + s - 1;
           }
-          function bt(e, t, n, a, s) {
+          function bt(e, t, n, s, a) {
             var i,
               r,
-              o = 1 + 7 * (t - 1) + ((7 + n - a) % 7) + kt(e, a, s);
+              o = 1 + 7 * (t - 1) + ((7 + n - s) % 7) + kt(e, s, a);
             return (
               o <= 0
                 ? (r = Je((i = e - 1)) + o)
@@ -4017,23 +4012,23 @@
             );
           }
           function Yt(e, t, n) {
-            var a,
-              s,
+            var s,
+              a,
               i = kt(e.year(), t, n),
               r = Math.floor((e.dayOfYear() - i - 1) / 7) + 1;
             return (
               r < 1
-                ? (a = r + Tt((s = e.year() - 1), t, n))
+                ? (s = r + Tt((a = e.year() - 1), t, n))
                 : r > Tt(e.year(), t, n)
-                  ? ((a = r - Tt(e.year(), t, n)), (s = e.year() + 1))
-                  : ((s = e.year()), (a = r)),
-              { week: a, year: s }
+                  ? ((s = r - Tt(e.year(), t, n)), (a = e.year() + 1))
+                  : ((a = e.year()), (s = r)),
+              { week: s, year: a }
             );
           }
           function Tt(e, t, n) {
-            var a = kt(e, t, n),
-              s = kt(e + 1, t, n);
-            return (Je(e) - a + s) / 7;
+            var s = kt(e, t, n),
+              a = kt(e + 1, t, n);
+            return (Je(e) - s + a) / 7;
           }
           function St(e) {
             return Yt(e, this._week.dow, this._week.doy).week;
@@ -4048,8 +4043,8 @@
             xe("ww", ye, ce),
             xe("W", ye),
             xe("WW", ye, ce),
-            je(["w", "ww", "W", "WW"], function (e, t, n, a) {
-              t[a.substr(0, 1)] = S(e);
+            Ie(["w", "ww", "W", "WW"], function (e, t, n, s) {
+              t[s.substr(0, 1)] = S(e);
             });
           var Dt = { dow: 0, doy: 6 };
           function wt() {
@@ -4115,18 +4110,18 @@
             xe("dddd", function (e, t) {
               return t.weekdaysRegex(e);
             }),
-            je(["dd", "ddd", "dddd"], function (e, t, n, a) {
-              var s = n._locale.weekdaysParse(e, a, n._strict);
-              null != s ? (t.d = s) : (y(n).invalidWeekday = e);
+            Ie(["dd", "ddd", "dddd"], function (e, t, n, s) {
+              var a = n._locale.weekdaysParse(e, s, n._strict);
+              null != a ? (t.d = a) : (y(n).invalidWeekday = e);
             }),
-            je(["d", "e", "E"], function (e, t, n, a) {
-              t[a] = S(e);
+            Ie(["d", "e", "E"], function (e, t, n, s) {
+              t[s] = S(e);
             });
-          var It =
+          var jt =
             "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
               "_",
             );
-          function jt(e, t) {
+          function It(e, t) {
             var n = r(this._weekdays)
               ? this._weekdays
               : this._weekdays[
@@ -4137,14 +4132,14 @@
             return !0 === e ? Ct(n, this._week.dow) : e ? n[e.day()] : n;
           }
           var Nt = "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_");
-          function At(e) {
+          function Rt(e) {
             return !0 === e
               ? Ct(this._weekdaysShort, this._week.dow)
               : e
                 ? this._weekdaysShort[e.day()]
                 : this._weekdaysShort;
           }
-          var Rt = "Su_Mo_Tu_We_Th_Fr_Sa".split("_");
+          var At = "Su_Mo_Tu_We_Th_Fr_Sa".split("_");
           function Wt(e) {
             return !0 === e
               ? Ct(this._weekdaysMin, this._week.dow)
@@ -4153,8 +4148,8 @@
                 : this._weekdaysMin;
           }
           function Ft(e, t, n) {
-            var a,
-              s,
+            var s,
+              a,
               i,
               r = e.toLocaleLowerCase();
             if (!this._weekdaysParse)
@@ -4162,55 +4157,55 @@
                 this._weekdaysParse = [],
                   this._shortWeekdaysParse = [],
                   this._minWeekdaysParse = [],
-                  a = 0;
-                a < 7;
-                ++a
+                  s = 0;
+                s < 7;
+                ++s
               )
-                (i = h([2e3, 1]).day(a)),
-                  (this._minWeekdaysParse[a] = this.weekdaysMin(
+                (i = h([2e3, 1]).day(s)),
+                  (this._minWeekdaysParse[s] = this.weekdaysMin(
                     i,
                     "",
                   ).toLocaleLowerCase()),
-                  (this._shortWeekdaysParse[a] = this.weekdaysShort(
+                  (this._shortWeekdaysParse[s] = this.weekdaysShort(
                     i,
                     "",
                   ).toLocaleLowerCase()),
-                  (this._weekdaysParse[a] = this.weekdays(
+                  (this._weekdaysParse[s] = this.weekdays(
                     i,
                     "",
                   ).toLocaleLowerCase());
             return n
               ? "dddd" === t
-                ? -1 !== (s = Ke.call(this._weekdaysParse, r))
-                  ? s
+                ? -1 !== (a = Ke.call(this._weekdaysParse, r))
+                  ? a
                   : null
                 : "ddd" === t
-                  ? -1 !== (s = Ke.call(this._shortWeekdaysParse, r))
-                    ? s
+                  ? -1 !== (a = Ke.call(this._shortWeekdaysParse, r))
+                    ? a
                     : null
-                  : -1 !== (s = Ke.call(this._minWeekdaysParse, r))
-                    ? s
+                  : -1 !== (a = Ke.call(this._minWeekdaysParse, r))
+                    ? a
                     : null
               : "dddd" === t
-                ? -1 !== (s = Ke.call(this._weekdaysParse, r)) ||
-                  -1 !== (s = Ke.call(this._shortWeekdaysParse, r)) ||
-                  -1 !== (s = Ke.call(this._minWeekdaysParse, r))
-                  ? s
+                ? -1 !== (a = Ke.call(this._weekdaysParse, r)) ||
+                  -1 !== (a = Ke.call(this._shortWeekdaysParse, r)) ||
+                  -1 !== (a = Ke.call(this._minWeekdaysParse, r))
+                  ? a
                   : null
                 : "ddd" === t
-                  ? -1 !== (s = Ke.call(this._shortWeekdaysParse, r)) ||
-                    -1 !== (s = Ke.call(this._weekdaysParse, r)) ||
-                    -1 !== (s = Ke.call(this._minWeekdaysParse, r))
-                    ? s
+                  ? -1 !== (a = Ke.call(this._shortWeekdaysParse, r)) ||
+                    -1 !== (a = Ke.call(this._weekdaysParse, r)) ||
+                    -1 !== (a = Ke.call(this._minWeekdaysParse, r))
+                    ? a
                     : null
-                  : -1 !== (s = Ke.call(this._minWeekdaysParse, r)) ||
-                      -1 !== (s = Ke.call(this._weekdaysParse, r)) ||
-                      -1 !== (s = Ke.call(this._shortWeekdaysParse, r))
-                    ? s
+                  : -1 !== (a = Ke.call(this._minWeekdaysParse, r)) ||
+                      -1 !== (a = Ke.call(this._weekdaysParse, r)) ||
+                      -1 !== (a = Ke.call(this._shortWeekdaysParse, r))
+                    ? a
                     : null;
           }
-          function Bt(e, t, n) {
-            var a, s, i;
+          function Ut(e, t, n) {
+            var s, a, i;
             if (this._weekdaysParseExact) return Ft.call(this, e, t, n);
             for (
               this._weekdaysParse ||
@@ -4218,49 +4213,49 @@
                 (this._minWeekdaysParse = []),
                 (this._shortWeekdaysParse = []),
                 (this._fullWeekdaysParse = [])),
-                a = 0;
-              a < 7;
-              a++
+                s = 0;
+              s < 7;
+              s++
             ) {
               if (
-                ((s = h([2e3, 1]).day(a)),
+                ((a = h([2e3, 1]).day(s)),
                 n &&
-                  !this._fullWeekdaysParse[a] &&
-                  ((this._fullWeekdaysParse[a] = new RegExp(
-                    "^" + this.weekdays(s, "").replace(".", "\\.?") + "$",
+                  !this._fullWeekdaysParse[s] &&
+                  ((this._fullWeekdaysParse[s] = new RegExp(
+                    "^" + this.weekdays(a, "").replace(".", "\\.?") + "$",
                     "i",
                   )),
-                  (this._shortWeekdaysParse[a] = new RegExp(
-                    "^" + this.weekdaysShort(s, "").replace(".", "\\.?") + "$",
+                  (this._shortWeekdaysParse[s] = new RegExp(
+                    "^" + this.weekdaysShort(a, "").replace(".", "\\.?") + "$",
                     "i",
                   )),
-                  (this._minWeekdaysParse[a] = new RegExp(
-                    "^" + this.weekdaysMin(s, "").replace(".", "\\.?") + "$",
+                  (this._minWeekdaysParse[s] = new RegExp(
+                    "^" + this.weekdaysMin(a, "").replace(".", "\\.?") + "$",
                     "i",
                   ))),
-                this._weekdaysParse[a] ||
+                this._weekdaysParse[s] ||
                   ((i =
                     "^" +
-                    this.weekdays(s, "") +
+                    this.weekdays(a, "") +
                     "|^" +
-                    this.weekdaysShort(s, "") +
+                    this.weekdaysShort(a, "") +
                     "|^" +
-                    this.weekdaysMin(s, "")),
-                  (this._weekdaysParse[a] = new RegExp(
+                    this.weekdaysMin(a, "")),
+                  (this._weekdaysParse[s] = new RegExp(
                     i.replace(".", ""),
                     "i",
                   ))),
-                n && "dddd" === t && this._fullWeekdaysParse[a].test(e))
+                n && "dddd" === t && this._fullWeekdaysParse[s].test(e))
               )
-                return a;
-              if (n && "ddd" === t && this._shortWeekdaysParse[a].test(e))
-                return a;
-              if (n && "dd" === t && this._minWeekdaysParse[a].test(e))
-                return a;
-              if (!n && this._weekdaysParse[a].test(e)) return a;
+                return s;
+              if (n && "ddd" === t && this._shortWeekdaysParse[s].test(e))
+                return s;
+              if (n && "dd" === t && this._minWeekdaysParse[s].test(e))
+                return s;
+              if (!n && this._weekdaysParse[s].test(e)) return s;
             }
           }
-          function Ut(e) {
+          function Bt(e) {
             if (!this.isValid()) return null != e ? this : NaN;
             var t = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
             return null != e
@@ -4317,8 +4312,8 @@
             }
             var t,
               n,
-              a,
               s,
+              a,
               i,
               r = [],
               o = [],
@@ -4326,14 +4321,14 @@
               d = [];
             for (t = 0; t < 7; t++)
               (n = h([2e3, 1]).day(t)),
-                (a = this.weekdaysMin(n, "")),
-                (s = this.weekdaysShort(n, "")),
+                (s = this.weekdaysMin(n, "")),
+                (a = this.weekdaysShort(n, "")),
                 (i = this.weekdays(n, "")),
-                r.push(a),
-                o.push(s),
+                r.push(s),
+                o.push(a),
                 l.push(i),
-                d.push(a),
                 d.push(s),
+                d.push(a),
                 d.push(i);
             for (r.sort(e), o.sort(e), l.sort(e), d.sort(e), t = 0; t < 7; t++)
               (o[t] = Oe(o[t])), (l[t] = Oe(l[t])), (d[t] = Oe(d[t]));
@@ -4371,7 +4366,7 @@
           function nn(e, t) {
             return t._meridiemParse;
           }
-          function an(e) {
+          function sn(e) {
             return "p" === (e + "").toLowerCase().charAt(0);
           }
           oe("H", ["HH", 2], 0, "hour"),
@@ -4415,43 +4410,43 @@
             xe("hmmss", ge),
             xe("Hmm", Me),
             xe("Hmmss", ge),
-            Ie(["H", "HH"], Fe),
-            Ie(["k", "kk"], function (e, t, n) {
-              var a = S(e);
-              t[Fe] = 24 === a ? 0 : a;
+            je(["H", "HH"], Fe),
+            je(["k", "kk"], function (e, t, n) {
+              var s = S(e);
+              t[Fe] = 24 === s ? 0 : s;
             }),
-            Ie(["a", "A"], function (e, t, n) {
+            je(["a", "A"], function (e, t, n) {
               (n._isPm = n._locale.isPM(e)), (n._meridiem = e);
             }),
-            Ie(["h", "hh"], function (e, t, n) {
+            je(["h", "hh"], function (e, t, n) {
               (t[Fe] = S(e)), (y(n).bigHour = !0);
             }),
-            Ie("hmm", function (e, t, n) {
-              var a = e.length - 2;
-              (t[Fe] = S(e.substr(0, a))),
-                (t[Be] = S(e.substr(a))),
-                (y(n).bigHour = !0);
-            }),
-            Ie("hmmss", function (e, t, n) {
-              var a = e.length - 4,
-                s = e.length - 2;
-              (t[Fe] = S(e.substr(0, a))),
-                (t[Be] = S(e.substr(a, 2))),
+            je("hmm", function (e, t, n) {
+              var s = e.length - 2;
+              (t[Fe] = S(e.substr(0, s))),
                 (t[Ue] = S(e.substr(s))),
                 (y(n).bigHour = !0);
             }),
-            Ie("Hmm", function (e, t, n) {
-              var a = e.length - 2;
-              (t[Fe] = S(e.substr(0, a))), (t[Be] = S(e.substr(a)));
+            je("hmmss", function (e, t, n) {
+              var s = e.length - 4,
+                a = e.length - 2;
+              (t[Fe] = S(e.substr(0, s))),
+                (t[Ue] = S(e.substr(s, 2))),
+                (t[Be] = S(e.substr(a))),
+                (y(n).bigHour = !0);
             }),
-            Ie("Hmmss", function (e, t, n) {
-              var a = e.length - 4,
-                s = e.length - 2;
-              (t[Fe] = S(e.substr(0, a))),
-                (t[Be] = S(e.substr(a, 2))),
-                (t[Ue] = S(e.substr(s)));
+            je("Hmm", function (e, t, n) {
+              var s = e.length - 2;
+              (t[Fe] = S(e.substr(0, s))), (t[Ue] = S(e.substr(s)));
+            }),
+            je("Hmmss", function (e, t, n) {
+              var s = e.length - 4,
+                a = e.length - 2;
+              (t[Fe] = S(e.substr(0, s))),
+                (t[Ue] = S(e.substr(s, 2))),
+                (t[Be] = S(e.substr(a)));
             });
-          var sn = /[ap]\.?m?\.?/i;
+          var an = /[ap]\.?m?\.?/i;
           function rn(e, t, n) {
             return e > 11 ? (n ? "pm" : "PM") : n ? "am" : "AM";
           }
@@ -4459,34 +4454,34 @@
             ln = Ze("Hours", !0),
             dn = {
               calendar: N,
-              longDateFormat: R,
+              longDateFormat: A,
               invalidDate: F,
-              ordinal: U,
+              ordinal: B,
               dayOfMonthOrdinalParse: z,
               relativeTime: G,
               months: rt,
               monthsShort: lt,
               week: Dt,
-              weekdays: It,
-              weekdaysMin: Rt,
+              weekdays: jt,
+              weekdaysMin: At,
               weekdaysShort: Nt,
-              meridiemParse: sn,
+              meridiemParse: an,
             },
             mn = {},
-            _n = {};
-          function un(e) {
+            un = {};
+          function _n(e) {
             return e ? e.toLowerCase().replace("_", "-") : e;
           }
           function cn(e) {
-            for (var t, n, a, s, i = 0; i < e.length; ) {
+            for (var t, n, s, a, i = 0; i < e.length; ) {
               for (
-                t = (s = un(e[i]).split("-")).length,
-                  n = (n = un(e[i + 1])) ? n.split("-") : null;
+                t = (a = _n(e[i]).split("-")).length,
+                  n = (n = _n(e[i + 1])) ? n.split("-") : null;
                 t > 0;
 
               ) {
-                if ((a = pn(s.slice(0, t).join("-")))) return a;
-                if (n && n.length >= t && D(s, n, !0) >= t - 1) break;
+                if ((s = pn(a.slice(0, t).join("-")))) return s;
+                if (n && n.length >= t && D(a, n, !0) >= t - 1) break;
                 t--;
               }
               i++;
@@ -4494,10 +4489,10 @@
             return on;
           }
           function pn(t) {
-            var a = null;
+            var s = null;
             if (!mn[t] && e && e.exports)
               try {
-                (a = on._abbr), n(94)("./" + t), hn(a);
+                (s = on._abbr), n(94)("./" + t), hn(s);
               } catch (e) {}
             return mn[t];
           }
@@ -4518,28 +4513,28 @@
           function fn(e, t) {
             if (null !== t) {
               var n,
-                a = dn;
+                s = dn;
               if (((t.abbr = e), null != mn[e]))
                 H(
                   "defineLocaleOverride",
                   "use moment.updateLocale(localeName, config) to change an existing locale. moment.defineLocale(localeName, config) should only be used for creating a new locale See http://momentjs.com/guides/#/warnings/define-locale/ for more info.",
                 ),
-                  (a = mn[e]._config);
+                  (s = mn[e]._config);
               else if (null != t.parentLocale)
-                if (null != mn[t.parentLocale]) a = mn[t.parentLocale]._config;
+                if (null != mn[t.parentLocale]) s = mn[t.parentLocale]._config;
                 else {
                   if (null == (n = pn(t.parentLocale)))
                     return (
-                      _n[t.parentLocale] || (_n[t.parentLocale] = []),
-                      _n[t.parentLocale].push({ name: e, config: t }),
+                      un[t.parentLocale] || (un[t.parentLocale] = []),
+                      un[t.parentLocale].push({ name: e, config: t }),
                       null
                     );
-                  a = n._config;
+                  s = n._config;
                 }
               return (
-                (mn[e] = new j(I(a, t))),
-                _n[e] &&
-                  _n[e].forEach(function (e) {
+                (mn[e] = new I(j(s, t))),
+                un[e] &&
+                  un[e].forEach(function (e) {
                     fn(e.name, e.config);
                   }),
                 hn(e),
@@ -4551,10 +4546,10 @@
           function yn(e, t) {
             if (null != t) {
               var n,
-                a,
-                s = dn;
-              null != (a = pn(e)) && (s = a._config),
-                ((n = new j((t = I(s, t)))).parentLocale = mn[e]),
+                s,
+                a = dn;
+              null != (s = pn(e)) && (a = s._config),
+                ((n = new I((t = j(a, t)))).parentLocale = mn[e]),
                 (mn[e] = n),
                 hn(e);
             } else
@@ -4586,23 +4581,23 @@
               n &&
                 -2 === y(e).overflow &&
                 ((t =
-                  n[Re] < 0 || n[Re] > 11
-                    ? Re
-                    : n[We] < 1 || n[We] > st(n[Ae], n[Re])
+                  n[Ae] < 0 || n[Ae] > 11
+                    ? Ae
+                    : n[We] < 1 || n[We] > at(n[Re], n[Ae])
                       ? We
                       : n[Fe] < 0 ||
                           n[Fe] > 24 ||
                           (24 === n[Fe] &&
-                            (0 !== n[Be] || 0 !== n[Ue] || 0 !== n[ze]))
+                            (0 !== n[Ue] || 0 !== n[Be] || 0 !== n[ze]))
                         ? Fe
-                        : n[Be] < 0 || n[Be] > 59
-                          ? Be
-                          : n[Ue] < 0 || n[Ue] > 59
-                            ? Ue
+                        : n[Ue] < 0 || n[Ue] > 59
+                          ? Ue
+                          : n[Be] < 0 || n[Be] > 59
+                            ? Be
                             : n[ze] < 0 || n[ze] > 999
                               ? ze
                               : -1),
-                y(e)._overflowDayOfYear && (t < Ae || t > We) && (t = We),
+                y(e)._overflowDayOfYear && (t < Re || t > We) && (t = We),
                 y(e)._overflowWeeks && -1 === t && (t = Ve),
                 y(e)._overflowWeekday && -1 === t && (t = Ge),
                 (y(e).overflow = t)),
@@ -4613,7 +4608,7 @@
             return null != e ? e : null != t ? t : n;
           }
           function kn(e) {
-            var t = new Date(s.now());
+            var t = new Date(a.now());
             return e._useUTC
               ? [t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate()]
               : [t.getFullYear(), t.getMonth(), t.getDate()];
@@ -4621,69 +4616,69 @@
           function bn(e) {
             var t,
               n,
-              a,
               s,
+              a,
               i,
               r = [];
             if (!e._d) {
               for (
-                a = kn(e),
-                  e._w && null == e._a[We] && null == e._a[Re] && Yn(e),
+                s = kn(e),
+                  e._w && null == e._a[We] && null == e._a[Ae] && Yn(e),
                   null != e._dayOfYear &&
-                    ((i = vn(e._a[Ae], a[Ae])),
+                    ((i = vn(e._a[Re], s[Re])),
                     (e._dayOfYear > Je(i) || 0 === e._dayOfYear) &&
                       (y(e)._overflowDayOfYear = !0),
                     (n = vt(i, 0, e._dayOfYear)),
-                    (e._a[Re] = n.getUTCMonth()),
+                    (e._a[Ae] = n.getUTCMonth()),
                     (e._a[We] = n.getUTCDate())),
                   t = 0;
                 t < 3 && null == e._a[t];
                 ++t
               )
-                e._a[t] = r[t] = a[t];
+                e._a[t] = r[t] = s[t];
               for (; t < 7; t++)
                 e._a[t] = r[t] = null == e._a[t] ? (2 === t ? 1 : 0) : e._a[t];
               24 === e._a[Fe] &&
-                0 === e._a[Be] &&
                 0 === e._a[Ue] &&
+                0 === e._a[Be] &&
                 0 === e._a[ze] &&
                 ((e._nextDay = !0), (e._a[Fe] = 0)),
                 (e._d = (e._useUTC ? vt : Lt).apply(null, r)),
-                (s = e._useUTC ? e._d.getUTCDay() : e._d.getDay()),
+                (a = e._useUTC ? e._d.getUTCDay() : e._d.getDay()),
                 null != e._tzm &&
                   e._d.setUTCMinutes(e._d.getUTCMinutes() - e._tzm),
                 e._nextDay && (e._a[Fe] = 24),
                 e._w &&
                   void 0 !== e._w.d &&
-                  e._w.d !== s &&
+                  e._w.d !== a &&
                   (y(e).weekdayMismatch = !0);
             }
           }
           function Yn(e) {
-            var t, n, a, s, i, r, o, l;
+            var t, n, s, a, i, r, o, l;
             if (null != (t = e._w).GG || null != t.W || null != t.E)
               (i = 1),
                 (r = 4),
-                (n = vn(t.GG, e._a[Ae], Yt(Kn(), 1, 4).year)),
-                (a = vn(t.W, 1)),
-                ((s = vn(t.E, 1)) < 1 || s > 7) && (l = !0);
+                (n = vn(t.GG, e._a[Re], Yt(Kn(), 1, 4).year)),
+                (s = vn(t.W, 1)),
+                ((a = vn(t.E, 1)) < 1 || a > 7) && (l = !0);
             else {
               (i = e._locale._week.dow), (r = e._locale._week.doy);
               var d = Yt(Kn(), i, r);
-              (n = vn(t.gg, e._a[Ae], d.year)),
-                (a = vn(t.w, d.week)),
+              (n = vn(t.gg, e._a[Re], d.year)),
+                (s = vn(t.w, d.week)),
                 null != t.d
-                  ? ((s = t.d) < 0 || s > 6) && (l = !0)
+                  ? ((a = t.d) < 0 || a > 6) && (l = !0)
                   : null != t.e
-                    ? ((s = t.e + i), (t.e < 0 || t.e > 6) && (l = !0))
-                    : (s = i);
+                    ? ((a = t.e + i), (t.e < 0 || t.e > 6) && (l = !0))
+                    : (a = i);
             }
-            a < 1 || a > Tt(n, i, r)
+            s < 1 || s > Tt(n, i, r)
               ? (y(e)._overflowWeeks = !0)
               : null != l
                 ? (y(e)._overflowWeekday = !0)
-                : ((o = bt(n, a, s, i, r)),
-                  (e._a[Ae] = o.year),
+                : ((o = bt(n, s, a, i, r)),
+                  (e._a[Re] = o.year),
                   (e._dayOfYear = o.dayOfYear));
           }
           var Tn =
@@ -4719,8 +4714,8 @@
           function Pn(e) {
             var t,
               n,
-              a,
               s,
+              a,
               i,
               r,
               o = e._i,
@@ -4728,10 +4723,10 @@
             if (l) {
               for (y(e).iso = !0, t = 0, n = wn.length; t < n; t++)
                 if (wn[t][1].exec(l[1])) {
-                  (s = wn[t][0]), (a = !1 !== wn[t][2]);
+                  (a = wn[t][0]), (s = !1 !== wn[t][2]);
                   break;
                 }
-              if (null == s) return void (e._isValid = !1);
+              if (null == a) return void (e._isValid = !1);
               if (l[3]) {
                 for (t = 0, n = En.length; t < n; t++)
                   if (En[t][1].exec(l[3])) {
@@ -4740,23 +4735,23 @@
                   }
                 if (null == i) return void (e._isValid = !1);
               }
-              if (!a && null != i) return void (e._isValid = !1);
+              if (!s && null != i) return void (e._isValid = !1);
               if (l[4]) {
                 if (!Dn.exec(l[4])) return void (e._isValid = !1);
                 r = "Z";
               }
-              (e._f = s + (i || "") + (r || "")), Fn(e);
+              (e._f = a + (i || "") + (r || "")), Fn(e);
             } else e._isValid = !1;
           }
           var Hn =
             /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/;
-          function On(e, t, n, a, s, i) {
+          function On(e, t, n, s, a, i) {
             var r = [
               Cn(e),
               lt.indexOf(t),
               parseInt(n, 10),
-              parseInt(a, 10),
               parseInt(s, 10),
+              parseInt(a, 10),
             ];
             return i && r.push(parseInt(i, 10)), r;
           }
@@ -4764,14 +4759,14 @@
             var t = parseInt(e, 10);
             return t <= 49 ? 2e3 + t : t <= 999 ? 1900 + t : t;
           }
-          function In(e) {
+          function jn(e) {
             return e
               .replace(/\([^)]*\)|[\n\t]/g, " ")
               .replace(/(\s\s+)/g, " ")
               .replace(/^\s\s*/, "")
               .replace(/\s\s*$/, "");
           }
-          function jn(e, t, n) {
+          function In(e, t, n) {
             return (
               !e ||
               Nt.indexOf(e) === new Date(t[0], t[1], t[2]).getDay() ||
@@ -4790,20 +4785,20 @@
             PDT: -420,
             PST: -480,
           };
-          function An(e, t, n) {
+          function Rn(e, t, n) {
             if (e) return Nn[e];
             if (t) return 0;
-            var a = parseInt(n, 10),
-              s = a % 100;
-            return ((a - s) / 100) * 60 + s;
+            var s = parseInt(n, 10),
+              a = s % 100;
+            return ((s - a) / 100) * 60 + a;
           }
-          function Rn(e) {
-            var t = Hn.exec(In(e._i));
+          function An(e) {
+            var t = Hn.exec(jn(e._i));
             if (t) {
               var n = On(t[4], t[3], t[2], t[5], t[6], t[7]);
-              if (!jn(t[1], n, e)) return;
+              if (!In(t[1], n, e)) return;
               (e._a = n),
-                (e._tzm = An(t[8], t[9], t[10])),
+                (e._tzm = Rn(t[8], t[9], t[10])),
                 (e._d = vt.apply(null, e._a)),
                 e._d.setUTCMinutes(e._d.getUTCMinutes() - e._tzm),
                 (y(e).rfc2822 = !0);
@@ -4815,29 +4810,29 @@
               ? (Pn(e),
                 !1 === e._isValid &&
                   (delete e._isValid,
-                  Rn(e),
+                  An(e),
                   !1 === e._isValid &&
-                    (delete e._isValid, s.createFromInputFallback(e))))
+                    (delete e._isValid, a.createFromInputFallback(e))))
               : (e._d = new Date(+t[1]));
           }
           function Fn(e) {
-            if (e._f !== s.ISO_8601)
-              if (e._f !== s.RFC_2822) {
+            if (e._f !== a.ISO_8601)
+              if (e._f !== a.RFC_2822) {
                 (e._a = []), (y(e).empty = !0);
                 var t,
                   n,
-                  a,
+                  s,
                   i,
                   r,
                   o = "" + e._i,
                   l = o.length,
                   d = 0;
                 for (
-                  a = _e(e._f, e._locale).match(ae) || [], t = 0;
-                  t < a.length;
+                  s = ue(e._f, e._locale).match(se) || [], t = 0;
+                  t < s.length;
                   t++
                 )
-                  (i = a[t]),
+                  (i = s[t]),
                     (n = (o.match(Pe(i, e)) || [])[0]) &&
                       ((r = o.substr(0, o.indexOf(n))).length > 0 &&
                         y(e).unusedInput.push(r),
@@ -4855,45 +4850,45 @@
                     (y(e).bigHour = void 0),
                   (y(e).parsedDateParts = e._a.slice(0)),
                   (y(e).meridiem = e._meridiem),
-                  (e._a[Fe] = Bn(e._locale, e._a[Fe], e._meridiem)),
+                  (e._a[Fe] = Un(e._locale, e._a[Fe], e._meridiem)),
                   bn(e),
                   Ln(e);
-              } else Rn(e);
+              } else An(e);
             else Pn(e);
           }
-          function Bn(e, t, n) {
-            var a;
+          function Un(e, t, n) {
+            var s;
             return null == n
               ? t
               : null != e.meridiemHour
                 ? e.meridiemHour(t, n)
                 : null != e.isPM
-                  ? ((a = e.isPM(n)) && t < 12 && (t += 12),
-                    a || 12 !== t || (t = 0),
+                  ? ((s = e.isPM(n)) && t < 12 && (t += 12),
+                    s || 12 !== t || (t = 0),
                     t)
                   : t;
           }
-          function Un(e) {
-            var t, n, a, s, i;
+          function Bn(e) {
+            var t, n, s, a, i;
             if (0 === e._f.length)
               return (y(e).invalidFormat = !0), void (e._d = new Date(NaN));
-            for (s = 0; s < e._f.length; s++)
+            for (a = 0; a < e._f.length; a++)
               (i = 0),
                 (t = v({}, e)),
                 null != e._useUTC && (t._useUTC = e._useUTC),
-                (t._f = e._f[s]),
+                (t._f = e._f[a]),
                 Fn(t),
                 M(t) &&
                   ((i += y(t).charsLeftOver),
                   (i += 10 * y(t).unusedTokens.length),
                   (y(t).score = i),
-                  (null == a || i < a) && ((a = i), (n = t)));
+                  (null == s || i < s) && ((s = i), (n = t)));
             p(e, n || t);
           }
           function zn(e) {
             if (!e._d) {
               var t = Z(e._i);
-              (e._a = u(
+              (e._a = _(
                 [
                   t.year,
                   t.month,
@@ -4924,7 +4919,7 @@
                 : ("string" == typeof t && (e._i = t = e._locale.preparse(t)),
                   Y(t)
                     ? new b(Ln(t))
-                    : (_(t) ? (e._d = t) : r(n) ? Un(e) : n ? Fn(e) : Jn(e),
+                    : (u(t) ? (e._d = t) : r(n) ? Bn(e) : n ? Fn(e) : Jn(e),
                       M(e) || (e._d = null),
                       e))
             );
@@ -4932,13 +4927,13 @@
           function Jn(e) {
             var t = e._i;
             d(t)
-              ? (e._d = new Date(s.now()))
-              : _(t)
+              ? (e._d = new Date(a.now()))
+              : u(t)
                 ? (e._d = new Date(t.valueOf()))
                 : "string" == typeof t
                   ? Wn(e)
                   : r(t)
-                    ? ((e._a = u(t.slice(0), function (e) {
+                    ? ((e._a = _(t.slice(0), function (e) {
                         return parseInt(e, 10);
                       })),
                       bn(e))
@@ -4946,33 +4941,33 @@
                       ? zn(e)
                       : m(t)
                         ? (e._d = new Date(t))
-                        : s.createFromInputFallback(e);
+                        : a.createFromInputFallback(e);
           }
-          function qn(e, t, n, a, s) {
+          function qn(e, t, n, s, a) {
             var i = {};
             return (
-              (!0 !== n && !1 !== n) || ((a = n), (n = void 0)),
+              (!0 !== n && !1 !== n) || ((s = n), (n = void 0)),
               ((o(e) && l(e)) || (r(e) && 0 === e.length)) && (e = void 0),
               (i._isAMomentObject = !0),
-              (i._useUTC = i._isUTC = s),
+              (i._useUTC = i._isUTC = a),
               (i._l = n),
               (i._i = e),
               (i._f = t),
-              (i._strict = a),
+              (i._strict = s),
               Vn(i)
             );
           }
-          function Kn(e, t, n, a) {
-            return qn(e, t, n, a, !1);
+          function Kn(e, t, n, s) {
+            return qn(e, t, n, s, !1);
           }
-          (s.createFromInputFallback = E(
+          (a.createFromInputFallback = E(
             "value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.",
             function (e) {
               e._d = new Date(e._i + (e._useUTC ? " UTC" : ""));
             },
           )),
-            (s.ISO_8601 = function () {}),
-            (s.RFC_2822 = function () {});
+            (a.ISO_8601 = function () {}),
+            (a.RFC_2822 = function () {});
           var Qn = E(
               "moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/",
               function () {
@@ -4996,23 +4991,23 @@
               },
             );
           function Zn(e, t) {
-            var n, a;
+            var n, s;
             if ((1 === t.length && r(t[0]) && (t = t[0]), !t.length))
               return Kn();
-            for (n = t[0], a = 1; a < t.length; ++a)
-              (t[a].isValid() && !t[a][e](n)) || (n = t[a]);
+            for (n = t[0], s = 1; s < t.length; ++s)
+              (t[s].isValid() && !t[s][e](n)) || (n = t[s]);
             return n;
           }
           function Xn() {
             return Zn("isBefore", [].slice.call(arguments, 0));
           }
-          function ea() {
+          function es() {
             return Zn("isAfter", [].slice.call(arguments, 0));
           }
-          var ta = function () {
+          var ts = function () {
               return Date.now ? Date.now() : +new Date();
             },
-            na = [
+            ns = [
               "year",
               "quarter",
               "month",
@@ -5023,49 +5018,49 @@
               "second",
               "millisecond",
             ];
-          function aa(e) {
+          function ss(e) {
             for (var t in e)
-              if (-1 === Ke.call(na, t) || (null != e[t] && isNaN(e[t])))
+              if (-1 === Ke.call(ns, t) || (null != e[t] && isNaN(e[t])))
                 return !1;
-            for (var n = !1, a = 0; a < na.length; ++a)
-              if (e[na[a]]) {
+            for (var n = !1, s = 0; s < ns.length; ++s)
+              if (e[ns[s]]) {
                 if (n) return !1;
-                parseFloat(e[na[a]]) !== S(e[na[a]]) && (n = !0);
+                parseFloat(e[ns[s]]) !== S(e[ns[s]]) && (n = !0);
               }
             return !0;
           }
-          function sa() {
+          function as() {
             return this._isValid;
           }
-          function ia() {
-            return Da(NaN);
+          function is() {
+            return Ds(NaN);
           }
-          function ra(e) {
+          function rs(e) {
             var t = Z(e),
               n = t.year || 0,
-              a = t.quarter || 0,
-              s = t.month || 0,
+              s = t.quarter || 0,
+              a = t.month || 0,
               i = t.week || t.isoWeek || 0,
               r = t.day || 0,
               o = t.hour || 0,
               l = t.minute || 0,
               d = t.second || 0,
               m = t.millisecond || 0;
-            (this._isValid = aa(t)),
+            (this._isValid = ss(t)),
               (this._milliseconds = +m + 1e3 * d + 6e4 * l + 1e3 * o * 60 * 60),
               (this._days = +r + 7 * i),
-              (this._months = +s + 3 * a + 12 * n),
+              (this._months = +a + 3 * s + 12 * n),
               (this._data = {}),
               (this._locale = Mn()),
               this._bubble();
           }
-          function oa(e) {
-            return e instanceof ra;
+          function os(e) {
+            return e instanceof rs;
           }
-          function la(e) {
+          function ls(e) {
             return e < 0 ? -1 * Math.round(-1 * e) : Math.round(e);
           }
-          function da(e, t) {
+          function ds(e, t) {
             oe(e, 0, 0, function () {
               var e = this.utcOffset(),
                 n = "+";
@@ -5075,99 +5070,99 @@
               );
             });
           }
-          da("Z", ":"),
-            da("ZZ", ""),
+          ds("Z", ":"),
+            ds("ZZ", ""),
             xe("Z", Se),
             xe("ZZ", Se),
-            Ie(["Z", "ZZ"], function (e, t, n) {
-              (n._useUTC = !0), (n._tzm = _a(Se, e));
+            je(["Z", "ZZ"], function (e, t, n) {
+              (n._useUTC = !0), (n._tzm = us(Se, e));
             });
-          var ma = /([\+\-]|\d\d)/gi;
-          function _a(e, t) {
+          var ms = /([\+\-]|\d\d)/gi;
+          function us(e, t) {
             var n = (t || "").match(e);
             if (null === n) return null;
-            var a = ((n[n.length - 1] || []) + "").match(ma) || ["-", 0, 0],
-              s = 60 * a[1] + S(a[2]);
-            return 0 === s ? 0 : "+" === a[0] ? s : -s;
+            var s = ((n[n.length - 1] || []) + "").match(ms) || ["-", 0, 0],
+              a = 60 * s[1] + S(s[2]);
+            return 0 === a ? 0 : "+" === s[0] ? a : -a;
           }
-          function ua(e, t) {
-            var n, a;
+          function _s(e, t) {
+            var n, s;
             return t._isUTC
               ? ((n = t.clone()),
-                (a =
-                  (Y(e) || _(e) ? e.valueOf() : Kn(e).valueOf()) - n.valueOf()),
-                n._d.setTime(n._d.valueOf() + a),
-                s.updateOffset(n, !1),
+                (s =
+                  (Y(e) || u(e) ? e.valueOf() : Kn(e).valueOf()) - n.valueOf()),
+                n._d.setTime(n._d.valueOf() + s),
+                a.updateOffset(n, !1),
                 n)
               : Kn(e).local();
           }
-          function ca(e) {
+          function cs(e) {
             return 15 * -Math.round(e._d.getTimezoneOffset() / 15);
           }
-          function pa(e, t, n) {
-            var a,
+          function ps(e, t, n) {
+            var s,
               i = this._offset || 0;
             if (!this.isValid()) return null != e ? this : NaN;
             if (null != e) {
               if ("string" == typeof e) {
-                if (null === (e = _a(Se, e))) return this;
+                if (null === (e = us(Se, e))) return this;
               } else Math.abs(e) < 16 && !n && (e *= 60);
               return (
-                !this._isUTC && t && (a = ca(this)),
+                !this._isUTC && t && (s = cs(this)),
                 (this._offset = e),
                 (this._isUTC = !0),
-                null != a && this.add(a, "m"),
+                null != s && this.add(s, "m"),
                 i !== e &&
                   (!t || this._changeInProgress
-                    ? Ha(this, Da(e - i, "m"), 1, !1)
+                    ? Hs(this, Ds(e - i, "m"), 1, !1)
                     : this._changeInProgress ||
                       ((this._changeInProgress = !0),
-                      s.updateOffset(this, !0),
+                      a.updateOffset(this, !0),
                       (this._changeInProgress = null))),
                 this
               );
             }
-            return this._isUTC ? i : ca(this);
+            return this._isUTC ? i : cs(this);
           }
-          function ha(e, t) {
+          function hs(e, t) {
             return null != e
               ? ("string" != typeof e && (e = -e), this.utcOffset(e, t), this)
               : -this.utcOffset();
           }
-          function fa(e) {
+          function fs(e) {
             return this.utcOffset(0, e);
           }
-          function ya(e) {
+          function ys(e) {
             return (
               this._isUTC &&
                 (this.utcOffset(0, e),
                 (this._isUTC = !1),
-                e && this.subtract(ca(this), "m")),
+                e && this.subtract(cs(this), "m")),
               this
             );
           }
-          function Ma() {
+          function Ms() {
             if (null != this._tzm) this.utcOffset(this._tzm, !1, !0);
             else if ("string" == typeof this._i) {
-              var e = _a(Te, this._i);
+              var e = us(Te, this._i);
               null != e ? this.utcOffset(e) : this.utcOffset(0, !0);
             }
             return this;
           }
-          function ga(e) {
+          function gs(e) {
             return (
               !!this.isValid() &&
               ((e = e ? Kn(e).utcOffset() : 0),
               (this.utcOffset() - e) % 60 == 0)
             );
           }
-          function La() {
+          function Ls() {
             return (
               this.utcOffset() > this.clone().month(0).utcOffset() ||
               this.utcOffset() > this.clone().month(5).utcOffset()
             );
           }
-          function va() {
+          function vs() {
             if (!d(this._isDSTShifted)) return this._isDSTShifted;
             var e = {};
             if ((v(e, this), (e = Gn(e))._a)) {
@@ -5176,68 +5171,68 @@
             } else this._isDSTShifted = !1;
             return this._isDSTShifted;
           }
-          function ka() {
+          function ks() {
             return !!this.isValid() && !this._isUTC;
           }
-          function ba() {
+          function bs() {
             return !!this.isValid() && this._isUTC;
           }
-          function Ya() {
+          function Ys() {
             return !!this.isValid() && this._isUTC && 0 === this._offset;
           }
-          s.updateOffset = function () {};
-          var Ta = /^(\-|\+)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/,
-            Sa =
+          a.updateOffset = function () {};
+          var Ts = /^(\-|\+)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/,
+            Ss =
               /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
-          function Da(e, t) {
+          function Ds(e, t) {
             var n,
-              a,
               s,
+              a,
               i = e,
               r = null;
             return (
-              oa(e)
+              os(e)
                 ? (i = { ms: e._milliseconds, d: e._days, M: e._months })
                 : m(e)
                   ? ((i = {}), t ? (i[t] = e) : (i.milliseconds = e))
-                  : (r = Ta.exec(e))
+                  : (r = Ts.exec(e))
                     ? ((n = "-" === r[1] ? -1 : 1),
                       (i = {
                         y: 0,
                         d: S(r[We]) * n,
                         h: S(r[Fe]) * n,
-                        m: S(r[Be]) * n,
-                        s: S(r[Ue]) * n,
-                        ms: S(la(1e3 * r[ze])) * n,
+                        m: S(r[Ue]) * n,
+                        s: S(r[Be]) * n,
+                        ms: S(ls(1e3 * r[ze])) * n,
                       }))
-                    : (r = Sa.exec(e))
+                    : (r = Ss.exec(e))
                       ? ((n = "-" === r[1] ? -1 : 1),
                         (i = {
-                          y: wa(r[2], n),
-                          M: wa(r[3], n),
-                          w: wa(r[4], n),
-                          d: wa(r[5], n),
-                          h: wa(r[6], n),
-                          m: wa(r[7], n),
-                          s: wa(r[8], n),
+                          y: ws(r[2], n),
+                          M: ws(r[3], n),
+                          w: ws(r[4], n),
+                          d: ws(r[5], n),
+                          h: ws(r[6], n),
+                          m: ws(r[7], n),
+                          s: ws(r[8], n),
                         }))
                       : null == i
                         ? (i = {})
                         : "object" == typeof i &&
                           ("from" in i || "to" in i) &&
-                          ((s = xa(Kn(i.from), Kn(i.to))),
-                          ((i = {}).ms = s.milliseconds),
-                          (i.M = s.months)),
-              (a = new ra(i)),
-              oa(e) && c(e, "_locale") && (a._locale = e._locale),
-              a
+                          ((a = xs(Kn(i.from), Kn(i.to))),
+                          ((i = {}).ms = a.milliseconds),
+                          (i.M = a.months)),
+              (s = new rs(i)),
+              os(e) && c(e, "_locale") && (s._locale = e._locale),
+              s
             );
           }
-          function wa(e, t) {
+          function ws(e, t) {
             var n = e && parseFloat(e.replace(",", "."));
             return (isNaN(n) ? 0 : n) * t;
           }
-          function Ea(e, t) {
+          function Es(e, t) {
             var n = {};
             return (
               (n.months = t.month() - e.month() + 12 * (t.year() - e.year())),
@@ -5246,23 +5241,23 @@
               n
             );
           }
-          function xa(e, t) {
+          function xs(e, t) {
             var n;
             return e.isValid() && t.isValid()
-              ? ((t = ua(t, e)),
+              ? ((t = _s(t, e)),
                 e.isBefore(t)
-                  ? (n = Ea(e, t))
-                  : (((n = Ea(t, e)).milliseconds = -n.milliseconds),
+                  ? (n = Es(e, t))
+                  : (((n = Es(t, e)).milliseconds = -n.milliseconds),
                     (n.months = -n.months)),
                 n)
               : { milliseconds: 0, months: 0 };
           }
-          function Pa(e, t) {
-            return function (n, a) {
-              var s;
+          function Ps(e, t) {
+            return function (n, s) {
+              var a;
               return (
-                null === a ||
-                  isNaN(+a) ||
+                null === s ||
+                  isNaN(+s) ||
                   (H(
                     t,
                     "moment()." +
@@ -5271,29 +5266,29 @@
                       t +
                       "(number, period). See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info.",
                   ),
-                  (s = n),
-                  (n = a),
-                  (a = s)),
-                Ha(this, Da((n = "string" == typeof n ? +n : n), a), e),
+                  (a = n),
+                  (n = s),
+                  (s = a)),
+                Hs(this, Ds((n = "string" == typeof n ? +n : n), s), e),
                 this
               );
             };
           }
-          function Ha(e, t, n, a) {
+          function Hs(e, t, n, s) {
             var i = t._milliseconds,
-              r = la(t._days),
-              o = la(t._months);
+              r = ls(t._days),
+              o = ls(t._months);
             e.isValid() &&
-              ((a = null == a || a),
-              o && ut(e, Xe(e, "Month") + o * n),
+              ((s = null == s || s),
+              o && _t(e, Xe(e, "Month") + o * n),
               r && et(e, "Date", Xe(e, "Date") + r * n),
               i && e._d.setTime(e._d.valueOf() + i * n),
-              a && s.updateOffset(e, r || o));
+              s && a.updateOffset(e, r || o));
           }
-          (Da.fn = ra.prototype), (Da.invalid = ia);
-          var Oa = Pa(1, "add"),
-            Ca = Pa(-1, "subtract");
-          function Ia(e, t) {
+          (Ds.fn = rs.prototype), (Ds.invalid = is);
+          var Os = Ps(1, "add"),
+            Cs = Ps(-1, "subtract");
+          function js(e, t) {
             var n = e.diff(t, "days", !0);
             return n < -6
               ? "sameElse"
@@ -5309,17 +5304,17 @@
                         ? "nextWeek"
                         : "sameElse";
           }
-          function ja(e, t) {
+          function Is(e, t) {
             var n = e || Kn(),
-              a = ua(n, this).startOf("day"),
-              i = s.calendarFormat(this, a) || "sameElse",
+              s = _s(n, this).startOf("day"),
+              i = a.calendarFormat(this, s) || "sameElse",
               r = t && (O(t[i]) ? t[i].call(this, n) : t[i]);
             return this.format(r || this.localeData().calendar(i, this, Kn(n)));
           }
-          function Na() {
+          function Ns() {
             return new b(this);
           }
-          function Aa(e, t) {
+          function Rs(e, t) {
             var n = Y(e) ? e : Kn(e);
             return (
               !(!this.isValid() || !n.isValid()) &&
@@ -5328,7 +5323,7 @@
                 : n.valueOf() < this.clone().startOf(t).valueOf())
             );
           }
-          function Ra(e, t) {
+          function As(e, t) {
             var n = Y(e) ? e : Kn(e);
             return (
               !(!this.isValid() || !n.isValid()) &&
@@ -5337,89 +5332,89 @@
                 : this.clone().endOf(t).valueOf() < n.valueOf())
             );
           }
-          function Wa(e, t, n, a) {
-            var s = Y(e) ? e : Kn(e),
+          function Ws(e, t, n, s) {
+            var a = Y(e) ? e : Kn(e),
               i = Y(t) ? t : Kn(t);
             return (
-              !!(this.isValid() && s.isValid() && i.isValid()) &&
-              ("(" === (a = a || "()")[0]
-                ? this.isAfter(s, n)
-                : !this.isBefore(s, n)) &&
-              (")" === a[1] ? this.isBefore(i, n) : !this.isAfter(i, n))
+              !!(this.isValid() && a.isValid() && i.isValid()) &&
+              ("(" === (s = s || "()")[0]
+                ? this.isAfter(a, n)
+                : !this.isBefore(a, n)) &&
+              (")" === s[1] ? this.isBefore(i, n) : !this.isAfter(i, n))
             );
           }
-          function Fa(e, t) {
+          function Fs(e, t) {
             var n,
-              a = Y(e) ? e : Kn(e);
+              s = Y(e) ? e : Kn(e);
             return (
-              !(!this.isValid() || !a.isValid()) &&
+              !(!this.isValid() || !s.isValid()) &&
               ("millisecond" === (t = $(t) || "millisecond")
-                ? this.valueOf() === a.valueOf()
-                : ((n = a.valueOf()),
+                ? this.valueOf() === s.valueOf()
+                : ((n = s.valueOf()),
                   this.clone().startOf(t).valueOf() <= n &&
                     n <= this.clone().endOf(t).valueOf()))
             );
           }
-          function Ba(e, t) {
+          function Us(e, t) {
             return this.isSame(e, t) || this.isAfter(e, t);
           }
-          function Ua(e, t) {
+          function Bs(e, t) {
             return this.isSame(e, t) || this.isBefore(e, t);
           }
-          function za(e, t, n) {
-            var a, s, i;
+          function zs(e, t, n) {
+            var s, a, i;
             if (!this.isValid()) return NaN;
-            if (!(a = ua(e, this)).isValid()) return NaN;
+            if (!(s = _s(e, this)).isValid()) return NaN;
             switch (
-              ((s = 6e4 * (a.utcOffset() - this.utcOffset())), (t = $(t)))
+              ((a = 6e4 * (s.utcOffset() - this.utcOffset())), (t = $(t)))
             ) {
               case "year":
-                i = Va(this, a) / 12;
+                i = Vs(this, s) / 12;
                 break;
               case "month":
-                i = Va(this, a);
+                i = Vs(this, s);
                 break;
               case "quarter":
-                i = Va(this, a) / 3;
+                i = Vs(this, s) / 3;
                 break;
               case "second":
-                i = (this - a) / 1e3;
+                i = (this - s) / 1e3;
                 break;
               case "minute":
-                i = (this - a) / 6e4;
+                i = (this - s) / 6e4;
                 break;
               case "hour":
-                i = (this - a) / 36e5;
+                i = (this - s) / 36e5;
                 break;
               case "day":
-                i = (this - a - s) / 864e5;
+                i = (this - s - a) / 864e5;
                 break;
               case "week":
-                i = (this - a - s) / 6048e5;
+                i = (this - s - a) / 6048e5;
                 break;
               default:
-                i = this - a;
+                i = this - s;
             }
             return n ? i : T(i);
           }
-          function Va(e, t) {
+          function Vs(e, t) {
             var n = 12 * (t.year() - e.year()) + (t.month() - e.month()),
-              a = e.clone().add(n, "months");
+              s = e.clone().add(n, "months");
             return (
               -(
                 n +
-                (t - a < 0
-                  ? (t - a) / (a - e.clone().add(n - 1, "months"))
-                  : (t - a) / (e.clone().add(n + 1, "months") - a))
+                (t - s < 0
+                  ? (t - s) / (s - e.clone().add(n - 1, "months"))
+                  : (t - s) / (e.clone().add(n + 1, "months") - s))
               ) || 0
             );
           }
-          function Ga() {
+          function Gs() {
             return this.clone()
               .locale("en")
               .format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
           }
-          function Ja(e) {
+          function Js(e) {
             if (!this.isValid()) return null;
             var t = !0 !== e,
               n = t ? this.clone().utc() : this;
@@ -5443,7 +5438,7 @@
                       : "YYYY-MM-DD[T]HH:mm:ss.SSSZ",
                   );
           }
-          function qa() {
+          function qs() {
             if (!this.isValid()) return "moment.invalid(/* " + this._i + " */)";
             var e = "moment",
               t = "";
@@ -5451,71 +5446,71 @@
               ((e = 0 === this.utcOffset() ? "moment.utc" : "moment.parseZone"),
               (t = "Z"));
             var n = "[" + e + '("]',
-              a = 0 <= this.year() && this.year() <= 9999 ? "YYYY" : "YYYYYY",
-              s = "-MM-DD[T]HH:mm:ss.SSS",
+              s = 0 <= this.year() && this.year() <= 9999 ? "YYYY" : "YYYYYY",
+              a = "-MM-DD[T]HH:mm:ss.SSS",
               i = t + '[")]';
-            return this.format(n + a + s + i);
+            return this.format(n + s + a + i);
           }
-          function Ka(e) {
-            e || (e = this.isUtc() ? s.defaultFormatUtc : s.defaultFormat);
+          function Ks(e) {
+            e || (e = this.isUtc() ? a.defaultFormatUtc : a.defaultFormat);
             var t = me(this, e);
             return this.localeData().postformat(t);
           }
-          function Qa(e, t) {
+          function Qs(e, t) {
             return this.isValid() && ((Y(e) && e.isValid()) || Kn(e).isValid())
-              ? Da({ to: this, from: e }).locale(this.locale()).humanize(!t)
+              ? Ds({ to: this, from: e }).locale(this.locale()).humanize(!t)
               : this.localeData().invalidDate();
           }
-          function $a(e) {
+          function $s(e) {
             return this.from(Kn(), e);
           }
-          function Za(e, t) {
+          function Zs(e, t) {
             return this.isValid() && ((Y(e) && e.isValid()) || Kn(e).isValid())
-              ? Da({ from: this, to: e }).locale(this.locale()).humanize(!t)
+              ? Ds({ from: this, to: e }).locale(this.locale()).humanize(!t)
               : this.localeData().invalidDate();
           }
-          function Xa(e) {
+          function Xs(e) {
             return this.to(Kn(), e);
           }
-          function es(e) {
+          function ea(e) {
             var t;
             return void 0 === e
               ? this._locale._abbr
               : (null != (t = Mn(e)) && (this._locale = t), this);
           }
-          (s.defaultFormat = "YYYY-MM-DDTHH:mm:ssZ"),
-            (s.defaultFormatUtc = "YYYY-MM-DDTHH:mm:ss[Z]");
-          var ts = E(
+          (a.defaultFormat = "YYYY-MM-DDTHH:mm:ssZ"),
+            (a.defaultFormatUtc = "YYYY-MM-DDTHH:mm:ss[Z]");
+          var ta = E(
             "moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.",
             function (e) {
               return void 0 === e ? this.localeData() : this.locale(e);
             },
           );
-          function ns() {
+          function na() {
             return this._locale;
           }
-          var as = 1e3,
-            ss = 60 * as,
-            is = 60 * ss,
-            rs = 3506328 * is;
-          function os(e, t) {
+          var sa = 1e3,
+            aa = 60 * sa,
+            ia = 60 * aa,
+            ra = 3506328 * ia;
+          function oa(e, t) {
             return ((e % t) + t) % t;
           }
-          function ls(e, t, n) {
+          function la(e, t, n) {
             return e < 100 && e >= 0
-              ? new Date(e + 400, t, n) - rs
+              ? new Date(e + 400, t, n) - ra
               : new Date(e, t, n).valueOf();
           }
-          function ds(e, t, n) {
+          function da(e, t, n) {
             return e < 100 && e >= 0
-              ? Date.UTC(e + 400, t, n) - rs
+              ? Date.UTC(e + 400, t, n) - ra
               : Date.UTC(e, t, n);
           }
-          function ms(e) {
+          function ma(e) {
             var t;
             if (void 0 === (e = $(e)) || "millisecond" === e || !this.isValid())
               return this;
-            var n = this._isUTC ? ds : ls;
+            var n = this._isUTC ? da : la;
             switch (e) {
               case "year":
                 t = n(this.year(), 0, 1);
@@ -5542,21 +5537,21 @@
                 break;
               case "hour":
                 (t = this._d.valueOf()),
-                  (t -= os(t + (this._isUTC ? 0 : this.utcOffset() * ss), is));
+                  (t -= oa(t + (this._isUTC ? 0 : this.utcOffset() * aa), ia));
                 break;
               case "minute":
-                (t = this._d.valueOf()), (t -= os(t, ss));
+                (t = this._d.valueOf()), (t -= oa(t, aa));
                 break;
               case "second":
-                (t = this._d.valueOf()), (t -= os(t, as));
+                (t = this._d.valueOf()), (t -= oa(t, sa));
             }
-            return this._d.setTime(t), s.updateOffset(this, !0), this;
+            return this._d.setTime(t), a.updateOffset(this, !0), this;
           }
-          function _s(e) {
+          function ua(e) {
             var t;
             if (void 0 === (e = $(e)) || "millisecond" === e || !this.isValid())
               return this;
-            var n = this._isUTC ? ds : ls;
+            var n = this._isUTC ? da : la;
             switch (e) {
               case "year":
                 t = n(this.year() + 1, 0, 1) - 1;
@@ -5591,28 +5586,28 @@
               case "hour":
                 (t = this._d.valueOf()),
                   (t +=
-                    is -
-                    os(t + (this._isUTC ? 0 : this.utcOffset() * ss), is) -
+                    ia -
+                    oa(t + (this._isUTC ? 0 : this.utcOffset() * aa), ia) -
                     1);
                 break;
               case "minute":
-                (t = this._d.valueOf()), (t += ss - os(t, ss) - 1);
+                (t = this._d.valueOf()), (t += aa - oa(t, aa) - 1);
                 break;
               case "second":
-                (t = this._d.valueOf()), (t += as - os(t, as) - 1);
+                (t = this._d.valueOf()), (t += sa - oa(t, sa) - 1);
             }
-            return this._d.setTime(t), s.updateOffset(this, !0), this;
+            return this._d.setTime(t), a.updateOffset(this, !0), this;
           }
-          function us() {
+          function _a() {
             return this._d.valueOf() - 6e4 * (this._offset || 0);
           }
-          function cs() {
+          function ca() {
             return Math.floor(this.valueOf() / 1e3);
           }
-          function ps() {
+          function pa() {
             return new Date(this.valueOf());
           }
-          function hs() {
+          function ha() {
             var e = this;
             return [
               e.year(),
@@ -5624,7 +5619,7 @@
               e.millisecond(),
             ];
           }
-          function fs() {
+          function fa() {
             var e = this;
             return {
               years: e.year(),
@@ -5636,19 +5631,19 @@
               milliseconds: e.milliseconds(),
             };
           }
-          function ys() {
+          function ya() {
             return this.isValid() ? this.toISOString() : null;
           }
-          function Ms() {
+          function Ma() {
             return M(this);
           }
-          function gs() {
+          function ga() {
             return p({}, y(this));
           }
-          function Ls() {
+          function La() {
             return y(this).overflow;
           }
-          function vs() {
+          function va() {
             return {
               input: this._i,
               format: this._f,
@@ -5657,11 +5652,11 @@
               strict: this._strict,
             };
           }
-          function ks(e, t) {
+          function ka(e, t) {
             oe(0, [e, e.length], 0, t);
           }
-          function bs(e) {
-            return Ds.call(
+          function ba(e) {
+            return Da.call(
               this,
               e,
               this.week(),
@@ -5670,25 +5665,25 @@
               this.localeData()._week.doy,
             );
           }
-          function Ys(e) {
-            return Ds.call(this, e, this.isoWeek(), this.isoWeekday(), 1, 4);
+          function Ya(e) {
+            return Da.call(this, e, this.isoWeek(), this.isoWeekday(), 1, 4);
           }
-          function Ts() {
+          function Ta() {
             return Tt(this.year(), 1, 4);
           }
-          function Ss() {
+          function Sa() {
             var e = this.localeData()._week;
             return Tt(this.year(), e.dow, e.doy);
           }
-          function Ds(e, t, n, a, s) {
+          function Da(e, t, n, s, a) {
             var i;
             return null == e
-              ? Yt(this, a, s).year
-              : (t > (i = Tt(e, a, s)) && (t = i),
-                ws.call(this, e, t, n, a, s));
+              ? Yt(this, s, a).year
+              : (t > (i = Tt(e, s, a)) && (t = i),
+                wa.call(this, e, t, n, s, a));
           }
-          function ws(e, t, n, a, s) {
-            var i = bt(e, t, n, a, s),
+          function wa(e, t, n, s, a) {
+            var i = bt(e, t, n, s, a),
               r = vt(i.year, 0, i.dayOfYear);
             return (
               this.year(r.getUTCFullYear()),
@@ -5697,7 +5692,7 @@
               this
             );
           }
-          function Es(e) {
+          function Ea(e) {
             return null == e
               ? Math.ceil((this.month() + 1) / 3)
               : this.month(3 * (e - 1) + (this.month() % 3));
@@ -5708,10 +5703,10 @@
             oe(0, ["GG", 2], 0, function () {
               return this.isoWeekYear() % 100;
             }),
-            ks("gggg", "weekYear"),
-            ks("ggggg", "weekYear"),
-            ks("GGGG", "isoWeekYear"),
-            ks("GGGGG", "isoWeekYear"),
+            ka("gggg", "weekYear"),
+            ka("ggggg", "weekYear"),
+            ka("GGGG", "isoWeekYear"),
+            ka("GGGGG", "isoWeekYear"),
             Q("weekYear", "gg"),
             Q("isoWeekYear", "GG"),
             ee("weekYear", 1),
@@ -5724,18 +5719,18 @@
             xe("gggg", ve, he),
             xe("GGGGG", ke, fe),
             xe("ggggg", ke, fe),
-            je(["gggg", "ggggg", "GGGG", "GGGGG"], function (e, t, n, a) {
-              t[a.substr(0, 2)] = S(e);
+            Ie(["gggg", "ggggg", "GGGG", "GGGGG"], function (e, t, n, s) {
+              t[s.substr(0, 2)] = S(e);
             }),
-            je(["gg", "GG"], function (e, t, n, a) {
-              t[a] = s.parseTwoDigitYear(e);
+            Ie(["gg", "GG"], function (e, t, n, s) {
+              t[s] = a.parseTwoDigitYear(e);
             }),
             oe("Q", 0, "Qo", "quarter"),
             Q("quarter", "Q"),
             ee("quarter", 7),
-            xe("Q", ue),
-            Ie("Q", function (e, t) {
-              t[Re] = 3 * (S(e) - 1);
+            xe("Q", _e),
+            je("Q", function (e, t) {
+              t[Ae] = 3 * (S(e) - 1);
             }),
             oe("D", ["DD", 2], "Do", "date"),
             Q("date", "D"),
@@ -5747,12 +5742,12 @@
                 ? t._dayOfMonthOrdinalParse || t._ordinalParse
                 : t._dayOfMonthOrdinalParseLenient;
             }),
-            Ie(["D", "DD"], We),
-            Ie("Do", function (e, t) {
+            je(["D", "DD"], We),
+            je("Do", function (e, t) {
               t[We] = S(e.match(ye)[0]);
             });
-          var xs = Ze("Date", !0);
-          function Ps(e) {
+          var xa = Ze("Date", !0);
+          function Pa(e) {
             var t =
               Math.round(
                 (this.clone().startOf("day") - this.clone().startOf("year")) /
@@ -5765,7 +5760,7 @@
             ee("dayOfYear", 4),
             xe("DDD", Le),
             xe("DDDD", pe),
-            Ie(["DDD", "DDDD"], function (e, t, n) {
+            je(["DDD", "DDDD"], function (e, t, n) {
               n._dayOfYear = S(e);
             }),
             oe("m", ["mm", 2], 0, "minute"),
@@ -5773,16 +5768,16 @@
             ee("minute", 14),
             xe("m", ye),
             xe("mm", ye, ce),
-            Ie(["m", "mm"], Be);
-          var Hs = Ze("Minutes", !1);
+            je(["m", "mm"], Ue);
+          var Ha = Ze("Minutes", !1);
           oe("s", ["ss", 2], 0, "second"),
             Q("second", "s"),
             ee("second", 15),
             xe("s", ye),
             xe("ss", ye, ce),
-            Ie(["s", "ss"], Ue);
-          var Os,
-            Cs = Ze("Seconds", !1);
+            je(["s", "ss"], Be);
+          var Oa,
+            Ca = Ze("Seconds", !1);
           for (
             oe("S", 0, 0, function () {
               return ~~(this.millisecond() / 100);
@@ -5811,196 +5806,196 @@
               }),
               Q("millisecond", "ms"),
               ee("millisecond", 16),
-              xe("S", Le, ue),
+              xe("S", Le, _e),
               xe("SS", Le, ce),
               xe("SSS", Le, pe),
-              Os = "SSSS";
-            Os.length <= 9;
-            Os += "S"
+              Oa = "SSSS";
+            Oa.length <= 9;
+            Oa += "S"
           )
-            xe(Os, be);
-          function Is(e, t) {
+            xe(Oa, be);
+          function ja(e, t) {
             t[ze] = S(1e3 * ("0." + e));
           }
-          for (Os = "S"; Os.length <= 9; Os += "S") Ie(Os, Is);
-          var js = Ze("Milliseconds", !1);
-          function Ns() {
+          for (Oa = "S"; Oa.length <= 9; Oa += "S") je(Oa, ja);
+          var Ia = Ze("Milliseconds", !1);
+          function Na() {
             return this._isUTC ? "UTC" : "";
           }
-          function As() {
+          function Ra() {
             return this._isUTC ? "Coordinated Universal Time" : "";
           }
           oe("z", 0, 0, "zoneAbbr"), oe("zz", 0, 0, "zoneName");
-          var Rs = b.prototype;
-          function Ws(e) {
+          var Aa = b.prototype;
+          function Wa(e) {
             return Kn(1e3 * e);
           }
-          function Fs() {
+          function Fa() {
             return Kn.apply(null, arguments).parseZone();
           }
-          function Bs(e) {
+          function Ua(e) {
             return e;
           }
-          (Rs.add = Oa),
-            (Rs.calendar = ja),
-            (Rs.clone = Na),
-            (Rs.diff = za),
-            (Rs.endOf = _s),
-            (Rs.format = Ka),
-            (Rs.from = Qa),
-            (Rs.fromNow = $a),
-            (Rs.to = Za),
-            (Rs.toNow = Xa),
-            (Rs.get = tt),
-            (Rs.invalidAt = Ls),
-            (Rs.isAfter = Aa),
-            (Rs.isBefore = Ra),
-            (Rs.isBetween = Wa),
-            (Rs.isSame = Fa),
-            (Rs.isSameOrAfter = Ba),
-            (Rs.isSameOrBefore = Ua),
-            (Rs.isValid = Ms),
-            (Rs.lang = ts),
-            (Rs.locale = es),
-            (Rs.localeData = ns),
-            (Rs.max = $n),
-            (Rs.min = Qn),
-            (Rs.parsingFlags = gs),
-            (Rs.set = nt),
-            (Rs.startOf = ms),
-            (Rs.subtract = Ca),
-            (Rs.toArray = hs),
-            (Rs.toObject = fs),
-            (Rs.toDate = ps),
-            (Rs.toISOString = Ja),
-            (Rs.inspect = qa),
-            (Rs.toJSON = ys),
-            (Rs.toString = Ga),
-            (Rs.unix = cs),
-            (Rs.valueOf = us),
-            (Rs.creationData = vs),
-            (Rs.year = Qe),
-            (Rs.isLeapYear = $e),
-            (Rs.weekYear = bs),
-            (Rs.isoWeekYear = Ys),
-            (Rs.quarter = Rs.quarters = Es),
-            (Rs.month = ct),
-            (Rs.daysInMonth = pt),
-            (Rs.week = Rs.weeks = xt),
-            (Rs.isoWeek = Rs.isoWeeks = Pt),
-            (Rs.weeksInYear = Ss),
-            (Rs.isoWeeksInYear = Ts),
-            (Rs.date = xs),
-            (Rs.day = Rs.days = Ut),
-            (Rs.weekday = zt),
-            (Rs.isoWeekday = Vt),
-            (Rs.dayOfYear = Ps),
-            (Rs.hour = Rs.hours = ln),
-            (Rs.minute = Rs.minutes = Hs),
-            (Rs.second = Rs.seconds = Cs),
-            (Rs.millisecond = Rs.milliseconds = js),
-            (Rs.utcOffset = pa),
-            (Rs.utc = fa),
-            (Rs.local = ya),
-            (Rs.parseZone = Ma),
-            (Rs.hasAlignedHourOffset = ga),
-            (Rs.isDST = La),
-            (Rs.isLocal = ka),
-            (Rs.isUtcOffset = ba),
-            (Rs.isUtc = Ya),
-            (Rs.isUTC = Ya),
-            (Rs.zoneAbbr = Ns),
-            (Rs.zoneName = As),
-            (Rs.dates = E(
+          (Aa.add = Os),
+            (Aa.calendar = Is),
+            (Aa.clone = Ns),
+            (Aa.diff = zs),
+            (Aa.endOf = ua),
+            (Aa.format = Ks),
+            (Aa.from = Qs),
+            (Aa.fromNow = $s),
+            (Aa.to = Zs),
+            (Aa.toNow = Xs),
+            (Aa.get = tt),
+            (Aa.invalidAt = La),
+            (Aa.isAfter = Rs),
+            (Aa.isBefore = As),
+            (Aa.isBetween = Ws),
+            (Aa.isSame = Fs),
+            (Aa.isSameOrAfter = Us),
+            (Aa.isSameOrBefore = Bs),
+            (Aa.isValid = Ma),
+            (Aa.lang = ta),
+            (Aa.locale = ea),
+            (Aa.localeData = na),
+            (Aa.max = $n),
+            (Aa.min = Qn),
+            (Aa.parsingFlags = ga),
+            (Aa.set = nt),
+            (Aa.startOf = ma),
+            (Aa.subtract = Cs),
+            (Aa.toArray = ha),
+            (Aa.toObject = fa),
+            (Aa.toDate = pa),
+            (Aa.toISOString = Js),
+            (Aa.inspect = qs),
+            (Aa.toJSON = ya),
+            (Aa.toString = Gs),
+            (Aa.unix = ca),
+            (Aa.valueOf = _a),
+            (Aa.creationData = va),
+            (Aa.year = Qe),
+            (Aa.isLeapYear = $e),
+            (Aa.weekYear = ba),
+            (Aa.isoWeekYear = Ya),
+            (Aa.quarter = Aa.quarters = Ea),
+            (Aa.month = ct),
+            (Aa.daysInMonth = pt),
+            (Aa.week = Aa.weeks = xt),
+            (Aa.isoWeek = Aa.isoWeeks = Pt),
+            (Aa.weeksInYear = Sa),
+            (Aa.isoWeeksInYear = Ta),
+            (Aa.date = xa),
+            (Aa.day = Aa.days = Bt),
+            (Aa.weekday = zt),
+            (Aa.isoWeekday = Vt),
+            (Aa.dayOfYear = Pa),
+            (Aa.hour = Aa.hours = ln),
+            (Aa.minute = Aa.minutes = Ha),
+            (Aa.second = Aa.seconds = Ca),
+            (Aa.millisecond = Aa.milliseconds = Ia),
+            (Aa.utcOffset = ps),
+            (Aa.utc = fs),
+            (Aa.local = ys),
+            (Aa.parseZone = Ms),
+            (Aa.hasAlignedHourOffset = gs),
+            (Aa.isDST = Ls),
+            (Aa.isLocal = ks),
+            (Aa.isUtcOffset = bs),
+            (Aa.isUtc = Ys),
+            (Aa.isUTC = Ys),
+            (Aa.zoneAbbr = Na),
+            (Aa.zoneName = Ra),
+            (Aa.dates = E(
               "dates accessor is deprecated. Use date instead.",
-              xs,
+              xa,
             )),
-            (Rs.months = E(
+            (Aa.months = E(
               "months accessor is deprecated. Use month instead",
               ct,
             )),
-            (Rs.years = E(
+            (Aa.years = E(
               "years accessor is deprecated. Use year instead",
               Qe,
             )),
-            (Rs.zone = E(
+            (Aa.zone = E(
               "moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/",
-              ha,
+              hs,
             )),
-            (Rs.isDSTShifted = E(
+            (Aa.isDSTShifted = E(
               "isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information",
-              va,
+              vs,
             ));
-          var Us = j.prototype;
-          function zs(e, t, n, a) {
-            var s = Mn(),
-              i = h().set(a, t);
-            return s[n](i, e);
+          var Ba = I.prototype;
+          function za(e, t, n, s) {
+            var a = Mn(),
+              i = h().set(s, t);
+            return a[n](i, e);
           }
-          function Vs(e, t, n) {
+          function Va(e, t, n) {
             if ((m(e) && ((t = e), (e = void 0)), (e = e || ""), null != t))
-              return zs(e, t, n, "month");
-            var a,
-              s = [];
-            for (a = 0; a < 12; a++) s[a] = zs(e, a, n, "month");
-            return s;
+              return za(e, t, n, "month");
+            var s,
+              a = [];
+            for (s = 0; s < 12; s++) a[s] = za(e, s, n, "month");
+            return a;
           }
-          function Gs(e, t, n, a) {
+          function Ga(e, t, n, s) {
             "boolean" == typeof e
               ? (m(t) && ((n = t), (t = void 0)), (t = t || ""))
               : ((n = t = e),
                 (e = !1),
                 m(t) && ((n = t), (t = void 0)),
                 (t = t || ""));
-            var s,
+            var a,
               i = Mn(),
               r = e ? i._week.dow : 0;
-            if (null != n) return zs(t, (n + r) % 7, a, "day");
+            if (null != n) return za(t, (n + r) % 7, s, "day");
             var o = [];
-            for (s = 0; s < 7; s++) o[s] = zs(t, (s + r) % 7, a, "day");
+            for (a = 0; a < 7; a++) o[a] = za(t, (a + r) % 7, s, "day");
             return o;
           }
-          function Js(e, t) {
-            return Vs(e, t, "months");
+          function Ja(e, t) {
+            return Va(e, t, "months");
           }
-          function qs(e, t) {
-            return Vs(e, t, "monthsShort");
+          function qa(e, t) {
+            return Va(e, t, "monthsShort");
           }
-          function Ks(e, t, n) {
-            return Gs(e, t, n, "weekdays");
+          function Ka(e, t, n) {
+            return Ga(e, t, n, "weekdays");
           }
-          function Qs(e, t, n) {
-            return Gs(e, t, n, "weekdaysShort");
+          function Qa(e, t, n) {
+            return Ga(e, t, n, "weekdaysShort");
           }
-          function $s(e, t, n) {
-            return Gs(e, t, n, "weekdaysMin");
+          function $a(e, t, n) {
+            return Ga(e, t, n, "weekdaysMin");
           }
-          (Us.calendar = A),
-            (Us.longDateFormat = W),
-            (Us.invalidDate = B),
-            (Us.ordinal = V),
-            (Us.preparse = Bs),
-            (Us.postformat = Bs),
-            (Us.relativeTime = J),
-            (Us.pastFuture = q),
-            (Us.set = C),
-            (Us.months = ot),
-            (Us.monthsShort = dt),
-            (Us.monthsParse = _t),
-            (Us.monthsRegex = Mt),
-            (Us.monthsShortRegex = ft),
-            (Us.week = St),
-            (Us.firstDayOfYear = Et),
-            (Us.firstDayOfWeek = wt),
-            (Us.weekdays = jt),
-            (Us.weekdaysMin = Wt),
-            (Us.weekdaysShort = At),
-            (Us.weekdaysParse = Bt),
-            (Us.weekdaysRegex = Jt),
-            (Us.weekdaysShortRegex = Kt),
-            (Us.weekdaysMinRegex = $t),
-            (Us.isPM = an),
-            (Us.meridiem = rn),
+          (Ba.calendar = R),
+            (Ba.longDateFormat = W),
+            (Ba.invalidDate = U),
+            (Ba.ordinal = V),
+            (Ba.preparse = Ua),
+            (Ba.postformat = Ua),
+            (Ba.relativeTime = J),
+            (Ba.pastFuture = q),
+            (Ba.set = C),
+            (Ba.months = ot),
+            (Ba.monthsShort = dt),
+            (Ba.monthsParse = ut),
+            (Ba.monthsRegex = Mt),
+            (Ba.monthsShortRegex = ft),
+            (Ba.week = St),
+            (Ba.firstDayOfYear = Et),
+            (Ba.firstDayOfWeek = wt),
+            (Ba.weekdays = It),
+            (Ba.weekdaysMin = Wt),
+            (Ba.weekdaysShort = Rt),
+            (Ba.weekdaysParse = Ut),
+            (Ba.weekdaysRegex = Jt),
+            (Ba.weekdaysShortRegex = Kt),
+            (Ba.weekdaysMinRegex = $t),
+            (Ba.isPM = sn),
+            (Ba.meridiem = rn),
             hn("en", {
               dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
               ordinal: function (e) {
@@ -6019,36 +6014,36 @@
                 );
               },
             }),
-            (s.lang = E(
+            (a.lang = E(
               "moment.lang is deprecated. Use moment.locale instead.",
               hn,
             )),
-            (s.langData = E(
+            (a.langData = E(
               "moment.langData is deprecated. Use moment.localeData instead.",
               Mn,
             ));
-          var Zs = Math.abs;
-          function Xs() {
+          var Za = Math.abs;
+          function Xa() {
             var e = this._data;
             return (
-              (this._milliseconds = Zs(this._milliseconds)),
-              (this._days = Zs(this._days)),
-              (this._months = Zs(this._months)),
-              (e.milliseconds = Zs(e.milliseconds)),
-              (e.seconds = Zs(e.seconds)),
-              (e.minutes = Zs(e.minutes)),
-              (e.hours = Zs(e.hours)),
-              (e.months = Zs(e.months)),
-              (e.years = Zs(e.years)),
+              (this._milliseconds = Za(this._milliseconds)),
+              (this._days = Za(this._days)),
+              (this._months = Za(this._months)),
+              (e.milliseconds = Za(e.milliseconds)),
+              (e.seconds = Za(e.seconds)),
+              (e.minutes = Za(e.minutes)),
+              (e.hours = Za(e.hours)),
+              (e.months = Za(e.months)),
+              (e.years = Za(e.years)),
               this
             );
           }
-          function ei(e, t, n, a) {
-            var s = Da(t, n);
+          function ei(e, t, n, s) {
+            var a = Ds(t, n);
             return (
-              (e._milliseconds += a * s._milliseconds),
-              (e._days += a * s._days),
-              (e._months += a * s._months),
+              (e._milliseconds += s * a._milliseconds),
+              (e._days += s * a._days),
+              (e._months += s * a._months),
               e._bubble()
             );
           }
@@ -6058,15 +6053,15 @@
           function ni(e, t) {
             return ei(this, e, t, -1);
           }
-          function ai(e) {
+          function si(e) {
             return e < 0 ? Math.floor(e) : Math.ceil(e);
           }
-          function si() {
+          function ai() {
             var e,
               t,
               n,
-              a,
               s,
+              a,
               i = this._milliseconds,
               r = this._days,
               o = this._months,
@@ -6074,7 +6069,7 @@
             return (
               (i >= 0 && r >= 0 && o >= 0) ||
                 (i <= 0 && r <= 0 && o <= 0) ||
-                ((i += 864e5 * ai(ri(o) + r)), (r = 0), (o = 0)),
+                ((i += 864e5 * si(ri(o) + r)), (r = 0), (o = 0)),
               (l.milliseconds = i % 1e3),
               (e = T(i / 1e3)),
               (l.seconds = e % 60),
@@ -6083,13 +6078,13 @@
               (n = T(t / 60)),
               (l.hours = n % 24),
               (r += T(n / 24)),
-              (o += s = T(ii(r))),
-              (r -= ai(ri(s))),
-              (a = T(o / 12)),
+              (o += a = T(ii(r))),
+              (r -= si(ri(a))),
+              (s = T(o / 12)),
               (o %= 12),
               (l.days = r),
               (l.months = o),
-              (l.years = a),
+              (l.years = s),
               this
             );
           }
@@ -6103,10 +6098,10 @@
             if (!this.isValid()) return NaN;
             var t,
               n,
-              a = this._milliseconds;
+              s = this._milliseconds;
             if ("month" === (e = $(e)) || "quarter" === e || "year" === e)
               switch (
-                ((t = this._days + a / 864e5), (n = this._months + ii(t)), e)
+                ((t = this._days + s / 864e5), (n = this._months + ii(t)), e)
               ) {
                 case "month":
                   return n;
@@ -6118,17 +6113,17 @@
             else
               switch (((t = this._days + Math.round(ri(this._months))), e)) {
                 case "week":
-                  return t / 7 + a / 6048e5;
+                  return t / 7 + s / 6048e5;
                 case "day":
-                  return t + a / 864e5;
+                  return t + s / 864e5;
                 case "hour":
-                  return 24 * t + a / 36e5;
+                  return 24 * t + s / 36e5;
                 case "minute":
-                  return 1440 * t + a / 6e4;
+                  return 1440 * t + s / 6e4;
                 case "second":
-                  return 86400 * t + a / 1e3;
+                  return 86400 * t + s / 1e3;
                 case "millisecond":
-                  return Math.floor(864e5 * t) + a;
+                  return Math.floor(864e5 * t) + s;
                 default:
                   throw new Error("Unknown unit " + e);
               }
@@ -6147,8 +6142,8 @@
             };
           }
           var mi = di("ms"),
-            _i = di("s"),
-            ui = di("m"),
+            ui = di("s"),
+            _i = di("m"),
             ci = di("h"),
             pi = di("d"),
             hi = di("w"),
@@ -6156,7 +6151,7 @@
             yi = di("Q"),
             Mi = di("y");
           function gi() {
-            return Da(this);
+            return Ds(this);
           }
           function Li(e) {
             return (e = $(e)), this.isValid() ? this[e + "s"]() : NaN;
@@ -6178,19 +6173,19 @@
           }
           var xi = Math.round,
             Pi = { ss: 44, s: 45, m: 45, h: 22, d: 26, M: 11 };
-          function Hi(e, t, n, a, s) {
-            return s.relativeTime(t || 1, !!n, e, a);
+          function Hi(e, t, n, s, a) {
+            return a.relativeTime(t || 1, !!n, e, s);
           }
           function Oi(e, t, n) {
-            var a = Da(e).abs(),
-              s = xi(a.as("s")),
-              i = xi(a.as("m")),
-              r = xi(a.as("h")),
-              o = xi(a.as("d")),
-              l = xi(a.as("M")),
-              d = xi(a.as("y")),
-              m = (s <= Pi.ss && ["s", s]) ||
-                (s < Pi.s && ["ss", s]) ||
+            var s = Ds(e).abs(),
+              a = xi(s.as("s")),
+              i = xi(s.as("m")),
+              r = xi(s.as("h")),
+              o = xi(s.as("d")),
+              l = xi(s.as("M")),
+              d = xi(s.as("y")),
+              m = (a <= Pi.ss && ["s", a]) ||
+                (a < Pi.s && ["ss", a]) ||
                 (i <= 1 && ["m"]) ||
                 (i < Pi.m && ["mm", i]) ||
                 (r <= 1 && ["h"]) ||
@@ -6205,7 +6200,7 @@
           function Ci(e) {
             return void 0 === e ? xi : "function" == typeof e && ((xi = e), !0);
           }
-          function Ii(e, t) {
+          function ji(e, t) {
             return (
               void 0 !== Pi[e] &&
               (void 0 === t
@@ -6213,38 +6208,38 @@
                 : ((Pi[e] = t), "s" === e && (Pi.ss = t - 1), !0))
             );
           }
-          function ji(e) {
+          function Ii(e) {
             if (!this.isValid()) return this.localeData().invalidDate();
             var t = this.localeData(),
               n = Oi(this, !e, t);
             return e && (n = t.pastFuture(+this, n)), t.postformat(n);
           }
           var Ni = Math.abs;
-          function Ai(e) {
+          function Ri(e) {
             return (e > 0) - (e < 0) || +e;
           }
-          function Ri() {
+          function Ai() {
             if (!this.isValid()) return this.localeData().invalidDate();
             var e,
               t,
               n = Ni(this._milliseconds) / 1e3,
-              a = Ni(this._days),
-              s = Ni(this._months);
+              s = Ni(this._days),
+              a = Ni(this._months);
             (e = T(n / 60)), (t = T(e / 60)), (n %= 60), (e %= 60);
-            var i = T(s / 12),
-              r = (s %= 12),
-              o = a,
+            var i = T(a / 12),
+              r = (a %= 12),
+              o = s,
               l = t,
               d = e,
               m = n ? n.toFixed(3).replace(/\.?0+$/, "") : "",
-              _ = this.asSeconds();
-            if (!_) return "P0D";
-            var u = _ < 0 ? "-" : "",
-              c = Ai(this._months) !== Ai(_) ? "-" : "",
-              p = Ai(this._days) !== Ai(_) ? "-" : "",
-              h = Ai(this._milliseconds) !== Ai(_) ? "-" : "";
+              u = this.asSeconds();
+            if (!u) return "P0D";
+            var _ = u < 0 ? "-" : "",
+              c = Ri(this._months) !== Ri(u) ? "-" : "",
+              p = Ri(this._days) !== Ri(u) ? "-" : "",
+              h = Ri(this._milliseconds) !== Ri(u) ? "-" : "";
             return (
-              u +
+              _ +
               "P" +
               (i ? c + i + "Y" : "") +
               (r ? c + r + "M" : "") +
@@ -6255,16 +6250,16 @@
               (m ? h + m + "S" : "")
             );
           }
-          var Wi = ra.prototype;
+          var Wi = rs.prototype;
           return (
-            (Wi.isValid = sa),
-            (Wi.abs = Xs),
+            (Wi.isValid = as),
+            (Wi.abs = Xa),
             (Wi.add = ti),
             (Wi.subtract = ni),
             (Wi.as = oi),
             (Wi.asMilliseconds = mi),
-            (Wi.asSeconds = _i),
-            (Wi.asMinutes = ui),
+            (Wi.asSeconds = ui),
+            (Wi.asMinutes = _i),
             (Wi.asHours = ci),
             (Wi.asDays = pi),
             (Wi.asWeeks = hi),
@@ -6272,7 +6267,7 @@
             (Wi.asQuarters = yi),
             (Wi.asYears = Mi),
             (Wi.valueOf = li),
-            (Wi._bubble = si),
+            (Wi._bubble = ai),
             (Wi.clone = gi),
             (Wi.get = Li),
             (Wi.milliseconds = ki),
@@ -6283,57 +6278,57 @@
             (Wi.weeks = Ei),
             (Wi.months = Di),
             (Wi.years = wi),
-            (Wi.humanize = ji),
-            (Wi.toISOString = Ri),
-            (Wi.toString = Ri),
-            (Wi.toJSON = Ri),
-            (Wi.locale = es),
-            (Wi.localeData = ns),
+            (Wi.humanize = Ii),
+            (Wi.toISOString = Ai),
+            (Wi.toString = Ai),
+            (Wi.toJSON = Ai),
+            (Wi.locale = ea),
+            (Wi.localeData = na),
             (Wi.toIsoString = E(
               "toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)",
-              Ri,
+              Ai,
             )),
-            (Wi.lang = ts),
+            (Wi.lang = ta),
             oe("X", 0, 0, "unix"),
             oe("x", 0, 0, "valueOf"),
             xe("x", Ye),
             xe("X", De),
-            Ie("X", function (e, t, n) {
+            je("X", function (e, t, n) {
               n._d = new Date(1e3 * parseFloat(e, 10));
             }),
-            Ie("x", function (e, t, n) {
+            je("x", function (e, t, n) {
               n._d = new Date(S(e));
             }),
-            (s.version = "2.24.0"),
+            (a.version = "2.24.0"),
             i(Kn),
-            (s.fn = Rs),
-            (s.min = Xn),
-            (s.max = ea),
-            (s.now = ta),
-            (s.utc = h),
-            (s.unix = Ws),
-            (s.months = Js),
-            (s.isDate = _),
-            (s.locale = hn),
-            (s.invalid = g),
-            (s.duration = Da),
-            (s.isMoment = Y),
-            (s.weekdays = Ks),
-            (s.parseZone = Fs),
-            (s.localeData = Mn),
-            (s.isDuration = oa),
-            (s.monthsShort = qs),
-            (s.weekdaysMin = $s),
-            (s.defineLocale = fn),
-            (s.updateLocale = yn),
-            (s.locales = gn),
-            (s.weekdaysShort = Qs),
-            (s.normalizeUnits = $),
-            (s.relativeTimeRounding = Ci),
-            (s.relativeTimeThreshold = Ii),
-            (s.calendarFormat = Ia),
-            (s.prototype = Rs),
-            (s.HTML5_FMT = {
+            (a.fn = Aa),
+            (a.min = Xn),
+            (a.max = es),
+            (a.now = ts),
+            (a.utc = h),
+            (a.unix = Wa),
+            (a.months = Ja),
+            (a.isDate = u),
+            (a.locale = hn),
+            (a.invalid = g),
+            (a.duration = Ds),
+            (a.isMoment = Y),
+            (a.weekdays = Ka),
+            (a.parseZone = Fa),
+            (a.localeData = Mn),
+            (a.isDuration = os),
+            (a.monthsShort = qa),
+            (a.weekdaysMin = $a),
+            (a.defineLocale = fn),
+            (a.updateLocale = yn),
+            (a.locales = gn),
+            (a.weekdaysShort = Qa),
+            (a.normalizeUnits = $),
+            (a.relativeTimeRounding = Ci),
+            (a.relativeTimeThreshold = ji),
+            (a.calendarFormat = js),
+            (a.prototype = Aa),
+            (a.HTML5_FMT = {
               DATETIME_LOCAL: "YYYY-MM-DDTHH:mm",
               DATETIME_LOCAL_SECONDS: "YYYY-MM-DDTHH:mm:ss",
               DATETIME_LOCAL_MS: "YYYY-MM-DDTHH:mm:ss.SSS",
@@ -6344,12 +6339,12 @@
               WEEK: "GGGG-[W]WW",
               MONTH: "YYYY-MM",
             }),
-            s
+            a
           );
         })();
       },
       (e, t, n) => {
-        var a = {
+        var s = {
           "./af": 95,
           "./af.js": 95,
           "./ar": 96,
@@ -6605,23 +6600,23 @@
           "./zh-tw": 221,
           "./zh-tw.js": 221,
         };
-        function s(e) {
+        function a(e) {
           var t = i(e);
           return n(t);
         }
         function i(e) {
-          if (!n.o(a, e)) {
+          if (!n.o(s, e)) {
             var t = new Error("Cannot find module '" + e + "'");
             throw ((t.code = "MODULE_NOT_FOUND"), t);
           }
-          return a[e];
+          return s[e];
         }
-        (s.keys = function () {
-          return Object.keys(a);
+        (a.keys = function () {
+          return Object.keys(s);
         }),
-          (s.resolve = i),
-          (e.exports = s),
-          (s.id = 94);
+          (a.resolve = i),
+          (e.exports = a),
+          (a.id = 94);
       },
       function (e, t, n) {
         !(function (e) {
@@ -6713,7 +6708,7 @@
               "٩": "9",
               "٠": "0",
             },
-            a = function (e) {
+            s = function (e) {
               return 0 === e
                 ? 0
                 : 1 === e
@@ -6726,7 +6721,7 @@
                         ? 4
                         : 5;
             },
-            s = {
+            a = {
               s: [
                 "أقل من ثانية",
                 "ثانية واحدة",
@@ -6778,8 +6773,8 @@
             },
             i = function (e) {
               return function (t, n, i, r) {
-                var o = a(t),
-                  l = s[e][a(t)];
+                var o = s(t),
+                  l = a[e][s(t)];
                 return 2 === o && (l = l[n ? 0 : 1]), l.replace(/%d/i, t);
               };
             },
@@ -6996,7 +6991,7 @@
                         ? 4
                         : 5;
             },
-            a = {
+            s = {
               s: [
                 "أقل من ثانية",
                 "ثانية واحدة",
@@ -7046,11 +7041,11 @@
                 "%d عام",
               ],
             },
-            s = function (e) {
-              return function (t, s, i, r) {
+            a = function (e) {
+              return function (t, a, i, r) {
                 var o = n(t),
-                  l = a[e][n(t)];
-                return 2 === o && (l = l[s ? 0 : 1]), l.replace(/%d/i, t);
+                  l = s[e][n(t)];
+                return 2 === o && (l = l[a ? 0 : 1]), l.replace(/%d/i, t);
               };
             },
             i = [
@@ -7101,18 +7096,18 @@
             relativeTime: {
               future: "بعد %s",
               past: "منذ %s",
-              s: s("s"),
-              ss: s("s"),
-              m: s("m"),
-              mm: s("m"),
-              h: s("h"),
-              hh: s("h"),
-              d: s("d"),
-              dd: s("d"),
-              M: s("M"),
-              MM: s("M"),
-              y: s("y"),
-              yy: s("y"),
+              s: a("s"),
+              ss: a("s"),
+              m: a("m"),
+              mm: a("m"),
+              h: a("h"),
+              hh: a("h"),
+              d: a("d"),
+              dd: a("d"),
+              M: a("M"),
+              MM: a("M"),
+              y: a("y"),
+              yy: a("y"),
             },
             preparse: function (e) {
               return e.replace(/،/g, ",");
@@ -7418,9 +7413,9 @@
             ordinal: function (e) {
               if (0 === e) return e + "-ıncı";
               var n = e % 10,
-                a = (e % 100) - n,
-                s = e >= 100 ? 100 : null;
-              return e + (t[n] || t[a] || t[s]);
+                s = (e % 100) - n,
+                a = e >= 100 ? 100 : null;
+              return e + (t[n] || t[s] || t[a]);
             },
             week: { dow: 1, doy: 7 },
           });
@@ -7437,12 +7432,12 @@
                 ? n[1]
                 : n[2];
           }
-          function n(e, n, a) {
-            return "m" === a
+          function n(e, n, s) {
+            return "m" === s
               ? n
                 ? "хвіліна"
                 : "хвіліну"
-              : "h" === a
+              : "h" === s
                 ? n
                   ? "гадзіна"
                   : "гадзіну"
@@ -7462,7 +7457,7 @@
                       dd: "дзень_дні_дзён",
                       MM: "месяц_месяцы_месяцаў",
                       yy: "год_гады_гадоў",
-                    }[a],
+                    }[s],
                     +e,
                   );
           }
@@ -7934,11 +7929,11 @@
           "use strict";
           function t(e, t, n) {
             return (
-              e + " " + s({ mm: "munutenn", MM: "miz", dd: "devezh" }[n], e)
+              e + " " + a({ mm: "munutenn", MM: "miz", dd: "devezh" }[n], e)
             );
           }
           function n(e) {
-            switch (a(e)) {
+            switch (s(e)) {
               case 1:
               case 3:
               case 4:
@@ -7949,10 +7944,10 @@
                 return e + " vloaz";
             }
           }
-          function a(e) {
-            return e > 9 ? a(e % 10) : e;
+          function s(e) {
+            return e > 9 ? s(e % 10) : e;
           }
-          function s(e, t) {
+          function a(e, t) {
             return 2 === t ? i(e) : e;
           }
           function i(e) {
@@ -8016,10 +8011,10 @@
         !(function (e) {
           "use strict";
           function t(e, t, n) {
-            var a = e + " ";
+            var s = e + " ";
             switch (n) {
               case "ss":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "sekunda"
                     : 2 === e || 3 === e || 4 === e
@@ -8028,7 +8023,7 @@
               case "m":
                 return t ? "jedna minuta" : "jedne minute";
               case "mm":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "minuta"
                     : 2 === e || 3 === e || 4 === e
@@ -8037,23 +8032,23 @@
               case "h":
                 return t ? "jedan sat" : "jednog sata";
               case "hh":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "sat"
                     : 2 === e || 3 === e || 4 === e
                       ? "sata"
                       : "sati");
               case "dd":
-                return (a += 1 === e ? "dan" : "dana");
+                return (s += 1 === e ? "dan" : "dana");
               case "MM":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "mjesec"
                     : 2 === e || 3 === e || 4 === e
                       ? "mjeseca"
                       : "mjeseci");
               case "yy":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "godina"
                     : 2 === e || 3 === e || 4 === e
@@ -8253,7 +8248,7 @@
                 "_",
               ),
             n = "led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro".split("_"),
-            a = [
+            s = [
               /^led/i,
               /^úno/i,
               /^bře/i,
@@ -8267,58 +8262,58 @@
               /^lis/i,
               /^pro/i,
             ],
-            s =
+            a =
               /^(leden|únor|březen|duben|květen|červenec|července|červen|června|srpen|září|říjen|listopad|prosinec|led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i;
           function i(e) {
             return e > 1 && e < 5 && 1 != ~~(e / 10);
           }
-          function r(e, t, n, a) {
-            var s = e + " ";
+          function r(e, t, n, s) {
+            var a = e + " ";
             switch (n) {
               case "s":
-                return t || a ? "pár sekund" : "pár sekundami";
+                return t || s ? "pár sekund" : "pár sekundami";
               case "ss":
-                return t || a
-                  ? s + (i(e) ? "sekundy" : "sekund")
-                  : s + "sekundami";
+                return t || s
+                  ? a + (i(e) ? "sekundy" : "sekund")
+                  : a + "sekundami";
               case "m":
-                return t ? "minuta" : a ? "minutu" : "minutou";
+                return t ? "minuta" : s ? "minutu" : "minutou";
               case "mm":
-                return t || a
-                  ? s + (i(e) ? "minuty" : "minut")
-                  : s + "minutami";
+                return t || s
+                  ? a + (i(e) ? "minuty" : "minut")
+                  : a + "minutami";
               case "h":
-                return t ? "hodina" : a ? "hodinu" : "hodinou";
+                return t ? "hodina" : s ? "hodinu" : "hodinou";
               case "hh":
-                return t || a
-                  ? s + (i(e) ? "hodiny" : "hodin")
-                  : s + "hodinami";
+                return t || s
+                  ? a + (i(e) ? "hodiny" : "hodin")
+                  : a + "hodinami";
               case "d":
-                return t || a ? "den" : "dnem";
+                return t || s ? "den" : "dnem";
               case "dd":
-                return t || a ? s + (i(e) ? "dny" : "dní") : s + "dny";
+                return t || s ? a + (i(e) ? "dny" : "dní") : a + "dny";
               case "M":
-                return t || a ? "měsíc" : "měsícem";
+                return t || s ? "měsíc" : "měsícem";
               case "MM":
-                return t || a ? s + (i(e) ? "měsíce" : "měsíců") : s + "měsíci";
+                return t || s ? a + (i(e) ? "měsíce" : "měsíců") : a + "měsíci";
               case "y":
-                return t || a ? "rok" : "rokem";
+                return t || s ? "rok" : "rokem";
               case "yy":
-                return t || a ? s + (i(e) ? "roky" : "let") : s + "lety";
+                return t || s ? a + (i(e) ? "roky" : "let") : a + "lety";
             }
           }
           e.defineLocale("cs", {
             months: t,
             monthsShort: n,
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(leden|ledna|února|únor|březen|března|duben|dubna|květen|května|červenec|července|červen|června|srpen|srpna|září|říjen|října|listopadu|listopad|prosinec|prosince)/i,
             monthsShortStrictRegex:
               /^(led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays: "neděle_pondělí_úterý_středa_čtvrtek_pátek_sobota".split(
               "_",
             ),
@@ -8597,8 +8592,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               m: ["eine Minute", "einer Minute"],
               h: ["eine Stunde", "einer Stunde"],
               d: ["ein Tag", "einem Tag"],
@@ -8608,7 +8603,7 @@
               y: ["ein Jahr", "einem Jahr"],
               yy: [e + " Jahre", e + " Jahren"],
             };
-            return t ? s[n][0] : s[n][1];
+            return t ? a[n][0] : a[n][1];
           }
           e.defineLocale("de", {
             months:
@@ -8668,8 +8663,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               m: ["eine Minute", "einer Minute"],
               h: ["eine Stunde", "einer Stunde"],
               d: ["ein Tag", "einem Tag"],
@@ -8679,7 +8674,7 @@
               y: ["ein Jahr", "einem Jahr"],
               yy: [e + " Jahre", e + " Jahren"],
             };
-            return t ? s[n][0] : s[n][1];
+            return t ? a[n][0] : a[n][1];
           }
           e.defineLocale("de-at", {
             months:
@@ -8739,8 +8734,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               m: ["eine Minute", "einer Minute"],
               h: ["eine Stunde", "einer Stunde"],
               d: ["ein Tag", "einem Tag"],
@@ -8750,7 +8745,7 @@
               y: ["ein Jahr", "einem Jahr"],
               yy: [e + " Jahre", e + " Jahren"],
             };
-            return t ? s[n][0] : s[n][1];
+            return t ? a[n][0] : a[n][1];
           }
           e.defineLocale("de-ch", {
             months:
@@ -8950,11 +8945,11 @@
               sameElse: "L",
             },
             calendar: function (e, n) {
-              var a = this._calendarEl[e],
-                s = n && n.hours();
+              var s = this._calendarEl[e],
+                a = n && n.hours();
               return (
-                t(a) && (a = a.apply(n)),
-                a.replace("{}", s % 12 == 1 ? "στη" : "στις")
+                t(s) && (s = s.apply(n)),
+                s.replace("{}", a % 12 == 1 ? "στη" : "στις")
               );
             },
             relativeTime: {
@@ -9525,7 +9520,7 @@
                 "_",
               ),
             n = "ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_"),
-            a = [
+            s = [
               /^ene/i,
               /^feb/i,
               /^mar/i,
@@ -9539,25 +9534,25 @@
               /^nov/i,
               /^dic/i,
             ],
-            s =
+            a =
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
           e.defineLocale("es", {
             months:
               "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
             monthsShortStrictRegex:
               /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays:
               "domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),
             weekdaysShort: "dom._lun._mar._mié._jue._vie._sáb.".split("_"),
@@ -9625,7 +9620,7 @@
                 "_",
               ),
             n = "ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_"),
-            a = [
+            s = [
               /^ene/i,
               /^feb/i,
               /^mar/i,
@@ -9639,25 +9634,25 @@
               /^nov/i,
               /^dic/i,
             ],
-            s =
+            a =
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
           e.defineLocale("es-do", {
             months:
               "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
             monthsShortStrictRegex:
               /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays:
               "domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),
             weekdaysShort: "dom._lun._mar._mié._jue._vie._sáb.".split("_"),
@@ -9725,7 +9720,7 @@
                 "_",
               ),
             n = "ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_"),
-            a = [
+            s = [
               /^ene/i,
               /^feb/i,
               /^mar/i,
@@ -9739,25 +9734,25 @@
               /^nov/i,
               /^dic/i,
             ],
-            s =
+            a =
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
           e.defineLocale("es-us", {
             months:
               "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
             monthsShortStrictRegex:
               /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays:
               "domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),
             weekdaysShort: "dom._lun._mar._mié._jue._vie._sáb.".split("_"),
@@ -9820,8 +9815,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               s: ["mõne sekundi", "mõni sekund", "paar sekundit"],
               ss: [e + "sekundi", e + "sekundit"],
               m: ["ühe minuti", "üks minut"],
@@ -9834,7 +9829,7 @@
               y: ["ühe aasta", "aasta", "üks aasta"],
               yy: [e + " aasta", e + " aastat"],
             };
-            return t ? (s[n][2] ? s[n][2] : s[n][1]) : a ? s[n][0] : s[n][1];
+            return t ? (a[n][2] ? a[n][2] : a[n][1]) : s ? a[n][0] : a[n][1];
           }
           e.defineLocale("et", {
             months:
@@ -10071,42 +10066,42 @@
               t[8],
               t[9],
             ];
-          function a(e, t, n, a) {
+          function s(e, t, n, s) {
             var i = "";
             switch (n) {
               case "s":
-                return a ? "muutaman sekunnin" : "muutama sekunti";
+                return s ? "muutaman sekunnin" : "muutama sekunti";
               case "ss":
-                return a ? "sekunnin" : "sekuntia";
+                return s ? "sekunnin" : "sekuntia";
               case "m":
-                return a ? "minuutin" : "minuutti";
+                return s ? "minuutin" : "minuutti";
               case "mm":
-                i = a ? "minuutin" : "minuuttia";
+                i = s ? "minuutin" : "minuuttia";
                 break;
               case "h":
-                return a ? "tunnin" : "tunti";
+                return s ? "tunnin" : "tunti";
               case "hh":
-                i = a ? "tunnin" : "tuntia";
+                i = s ? "tunnin" : "tuntia";
                 break;
               case "d":
-                return a ? "päivän" : "päivä";
+                return s ? "päivän" : "päivä";
               case "dd":
-                i = a ? "päivän" : "päivää";
+                i = s ? "päivän" : "päivää";
                 break;
               case "M":
-                return a ? "kuukauden" : "kuukausi";
+                return s ? "kuukauden" : "kuukausi";
               case "MM":
-                i = a ? "kuukauden" : "kuukautta";
+                i = s ? "kuukauden" : "kuukautta";
                 break;
               case "y":
-                return a ? "vuoden" : "vuosi";
+                return s ? "vuoden" : "vuosi";
               case "yy":
-                i = a ? "vuoden" : "vuotta";
+                i = s ? "vuoden" : "vuotta";
             }
-            return (i = s(e, a) + " " + i);
+            return (i = a(e, s) + " " + i);
           }
-          function s(e, a) {
-            return e < 10 ? (a ? n[e] : t[e]) : e;
+          function a(e, s) {
+            return e < 10 ? (s ? n[e] : t[e]) : e;
           }
           e.defineLocale("fi", {
             months:
@@ -10146,18 +10141,18 @@
             relativeTime: {
               future: "%s päästä",
               past: "%s sitten",
-              s: a,
-              ss: a,
-              m: a,
-              mm: a,
-              h: a,
-              hh: a,
-              d: a,
-              dd: a,
-              M: a,
-              MM: a,
-              y: a,
-              yy: a,
+              s,
+              ss: s,
+              m: s,
+              mm: s,
+              h: s,
+              hh: s,
+              d: s,
+              dd: s,
+              M: s,
+              MM: s,
+              y: s,
+              yy: s,
             },
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal: "%d.",
@@ -10439,8 +10434,8 @@
               "jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
             monthsParseExact: !0,
             weekdays:
@@ -10521,7 +10516,7 @@
               "Samh",
               "Noll",
             ],
-            a = [
+            s = [
               "Dé Domhnaigh",
               "Dé Luain",
               "Dé Máirt",
@@ -10530,14 +10525,14 @@
               "Dé hAoine",
               "Dé Satharn",
             ],
-            s = ["Dom", "Lua", "Mái", "Céa", "Déa", "hAo", "Sat"],
+            a = ["Dom", "Lua", "Mái", "Céa", "Déa", "hAo", "Sat"],
             i = ["Do", "Lu", "Má", "Ce", "Dé", "hA", "Sa"];
           e.defineLocale("ga", {
             months: t,
             monthsShort: n,
             monthsParseExact: !0,
-            weekdays: a,
-            weekdaysShort: s,
+            weekdays: s,
+            weekdaysShort: a,
             weekdaysMin: i,
             longDateFormat: {
               LT: "HH:mm",
@@ -10610,7 +10605,7 @@
               "Samh",
               "Dùbh",
             ],
-            a = [
+            s = [
               "Didòmhnaich",
               "Diluain",
               "Dimàirt",
@@ -10619,14 +10614,14 @@
               "Dihaoine",
               "Disathairne",
             ],
-            s = ["Did", "Dil", "Dim", "Dic", "Dia", "Dih", "Dis"],
+            a = ["Did", "Dil", "Dim", "Dic", "Dia", "Dih", "Dis"],
             i = ["Dò", "Lu", "Mà", "Ci", "Ar", "Ha", "Sa"];
           e.defineLocale("gd", {
             months: t,
             monthsShort: n,
             monthsParseExact: !0,
-            weekdays: a,
-            weekdaysShort: s,
+            weekdays: s,
+            weekdaysShort: a,
             weekdaysMin: i,
             longDateFormat: {
               LT: "HH:mm",
@@ -10744,8 +10739,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               s: ["thodde secondanim", "thodde second"],
               ss: [e + " secondanim", e + " second"],
               m: ["eka mintan", "ek minute"],
@@ -10759,7 +10754,7 @@
               y: ["eka vorsan", "ek voros"],
               yy: [e + " vorsanim", e + " vorsam"],
             };
-            return t ? s[n][0] : s[n][1];
+            return t ? a[n][0] : a[n][1];
           }
           e.defineLocale("gom-latn", {
             months:
@@ -11173,10 +11168,10 @@
         !(function (e) {
           "use strict";
           function t(e, t, n) {
-            var a = e + " ";
+            var s = e + " ";
             switch (n) {
               case "ss":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "sekunda"
                     : 2 === e || 3 === e || 4 === e
@@ -11185,7 +11180,7 @@
               case "m":
                 return t ? "jedna minuta" : "jedne minute";
               case "mm":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "minuta"
                     : 2 === e || 3 === e || 4 === e
@@ -11194,23 +11189,23 @@
               case "h":
                 return t ? "jedan sat" : "jednog sata";
               case "hh":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "sat"
                     : 2 === e || 3 === e || 4 === e
                       ? "sata"
                       : "sati");
               case "dd":
-                return (a += 1 === e ? "dan" : "dana");
+                return (s += 1 === e ? "dan" : "dana");
               case "MM":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "mjesec"
                     : 2 === e || 3 === e || 4 === e
                       ? "mjeseca"
                       : "mjeseci");
               case "yy":
-                return (a +=
+                return (s +=
                   1 === e
                     ? "godina"
                     : 2 === e || 3 === e || 4 === e
@@ -11313,37 +11308,37 @@
             "vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton".split(
               " ",
             );
-          function n(e, t, n, a) {
-            var s = e;
+          function n(e, t, n, s) {
+            var a = e;
             switch (n) {
               case "s":
-                return a || t ? "néhány másodperc" : "néhány másodperce";
+                return s || t ? "néhány másodperc" : "néhány másodperce";
               case "ss":
-                return s + (a || t) ? " másodperc" : " másodperce";
+                return a + (s || t) ? " másodperc" : " másodperce";
               case "m":
-                return "egy" + (a || t ? " perc" : " perce");
+                return "egy" + (s || t ? " perc" : " perce");
               case "mm":
-                return s + (a || t ? " perc" : " perce");
+                return a + (s || t ? " perc" : " perce");
               case "h":
-                return "egy" + (a || t ? " óra" : " órája");
+                return "egy" + (s || t ? " óra" : " órája");
               case "hh":
-                return s + (a || t ? " óra" : " órája");
+                return a + (s || t ? " óra" : " órája");
               case "d":
-                return "egy" + (a || t ? " nap" : " napja");
+                return "egy" + (s || t ? " nap" : " napja");
               case "dd":
-                return s + (a || t ? " nap" : " napja");
+                return a + (s || t ? " nap" : " napja");
               case "M":
-                return "egy" + (a || t ? " hónap" : " hónapja");
+                return "egy" + (s || t ? " hónap" : " hónapja");
               case "MM":
-                return s + (a || t ? " hónap" : " hónapja");
+                return a + (s || t ? " hónap" : " hónapja");
               case "y":
-                return "egy" + (a || t ? " év" : " éve");
+                return "egy" + (s || t ? " év" : " éve");
               case "yy":
-                return s + (a || t ? " év" : " éve");
+                return a + (s || t ? " év" : " éve");
             }
             return "";
           }
-          function a(e) {
+          function s(e) {
             return (e ? "" : "[múlt] ") + "[" + t[this.day()] + "] LT[-kor]";
           }
           e.defineLocale("hu", {
@@ -11376,11 +11371,11 @@
               sameDay: "[ma] LT[-kor]",
               nextDay: "[holnap] LT[-kor]",
               nextWeek: function () {
-                return a.call(this, !0);
+                return s.call(this, !0);
               },
               lastDay: "[tegnap] LT[-kor]",
               lastWeek: function () {
-                return a.call(this, !1);
+                return s.call(this, !1);
               },
               sameElse: "L",
             },
@@ -11572,53 +11567,53 @@
           function t(e) {
             return e % 100 == 11 || e % 10 != 1;
           }
-          function n(e, n, a, s) {
+          function n(e, n, s, a) {
             var i = e + " ";
-            switch (a) {
+            switch (s) {
               case "s":
-                return n || s ? "nokkrar sekúndur" : "nokkrum sekúndum";
+                return n || a ? "nokkrar sekúndur" : "nokkrum sekúndum";
               case "ss":
                 return t(e)
-                  ? i + (n || s ? "sekúndur" : "sekúndum")
+                  ? i + (n || a ? "sekúndur" : "sekúndum")
                   : i + "sekúnda";
               case "m":
                 return n ? "mínúta" : "mínútu";
               case "mm":
                 return t(e)
-                  ? i + (n || s ? "mínútur" : "mínútum")
+                  ? i + (n || a ? "mínútur" : "mínútum")
                   : n
                     ? i + "mínúta"
                     : i + "mínútu";
               case "hh":
                 return t(e)
-                  ? i + (n || s ? "klukkustundir" : "klukkustundum")
+                  ? i + (n || a ? "klukkustundir" : "klukkustundum")
                   : i + "klukkustund";
               case "d":
-                return n ? "dagur" : s ? "dag" : "degi";
+                return n ? "dagur" : a ? "dag" : "degi";
               case "dd":
                 return t(e)
                   ? n
                     ? i + "dagar"
-                    : i + (s ? "daga" : "dögum")
+                    : i + (a ? "daga" : "dögum")
                   : n
                     ? i + "dagur"
-                    : i + (s ? "dag" : "degi");
+                    : i + (a ? "dag" : "degi");
               case "M":
-                return n ? "mánuður" : s ? "mánuð" : "mánuði";
+                return n ? "mánuður" : a ? "mánuð" : "mánuði";
               case "MM":
                 return t(e)
                   ? n
                     ? i + "mánuðir"
-                    : i + (s ? "mánuði" : "mánuðum")
+                    : i + (a ? "mánuði" : "mánuðum")
                   : n
                     ? i + "mánuður"
-                    : i + (s ? "mánuð" : "mánuði");
+                    : i + (a ? "mánuð" : "mánuði");
               case "y":
-                return n || s ? "ár" : "ári";
+                return n || a ? "ár" : "ári";
               case "yy":
                 return t(e)
-                  ? i + (n || s ? "ár" : "árum")
-                  : i + (n || s ? "ár" : "ári");
+                  ? i + (n || a ? "ár" : "árum")
+                  : i + (n || a ? "ár" : "ári");
             }
           }
           e.defineLocale("is", {
@@ -12099,8 +12094,8 @@
             dayOfMonthOrdinalParse: /\d{1,2}-(ші|шы)/,
             ordinal: function (e) {
               var n = e % 10,
-                a = e >= 100 ? 100 : null;
-              return e + (t[e] || t[n] || t[a]);
+                s = e >= 100 ? 100 : null;
+              return e + (t[e] || t[n] || t[s]);
             },
             week: { dow: 1, doy: 7 },
           });
@@ -12429,7 +12424,7 @@
               "٩": "9",
               "٠": "0",
             },
-            a = [
+            s = [
               "کانونی دووەم",
               "شوبات",
               "ئازار",
@@ -12444,8 +12439,8 @@
               "كانونی یەکەم",
             ];
           e.defineLocale("ku", {
-            months: a,
-            monthsShort: a,
+            months: s,
+            monthsShort: s,
             weekdays:
               "یه‌كشه‌ممه‌_دووشه‌ممه‌_سێشه‌ممه‌_چوارشه‌ممه‌_پێنجشه‌ممه‌_هه‌ینی_شه‌ممه‌".split(
                 "_",
@@ -12586,8 +12581,8 @@
             dayOfMonthOrdinalParse: /\d{1,2}-(чи|чы|чү|чу)/,
             ordinal: function (e) {
               var n = e % 10,
-                a = e >= 100 ? 100 : null;
-              return e + (t[e] || t[n] || t[a]);
+                s = e >= 100 ? 100 : null;
+              return e + (t[e] || t[n] || t[s]);
             },
             week: { dow: 1, doy: 7 },
           });
@@ -12596,35 +12591,35 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               m: ["eng Minutt", "enger Minutt"],
               h: ["eng Stonn", "enger Stonn"],
               d: ["een Dag", "engem Dag"],
               M: ["ee Mount", "engem Mount"],
               y: ["ee Joer", "engem Joer"],
             };
-            return t ? s[n][0] : s[n][1];
+            return t ? a[n][0] : a[n][1];
           }
           function n(e) {
-            return s(e.substr(0, e.indexOf(" "))) ? "a " + e : "an " + e;
-          }
-          function a(e) {
-            return s(e.substr(0, e.indexOf(" "))) ? "viru " + e : "virun " + e;
+            return a(e.substr(0, e.indexOf(" "))) ? "a " + e : "an " + e;
           }
           function s(e) {
+            return a(e.substr(0, e.indexOf(" "))) ? "viru " + e : "virun " + e;
+          }
+          function a(e) {
             if (((e = parseInt(e, 10)), isNaN(e))) return !1;
             if (e < 0) return !0;
             if (e < 10) return 4 <= e && e <= 7;
             if (e < 100) {
               var t = e % 10;
-              return s(0 === t ? e / 10 : t);
+              return a(0 === t ? e / 10 : t);
             }
             if (e < 1e4) {
               for (; e >= 10; ) e /= 10;
-              return s(e);
+              return a(e);
             }
-            return s((e /= 1e3));
+            return a((e /= 1e3));
           }
           e.defineLocale("lb", {
             months:
@@ -12669,7 +12664,7 @@
             },
             relativeTime: {
               future: n,
-              past: a,
+              past: s,
               s: "e puer Sekonnen",
               ss: "%d Sekonnen",
               m: t,
@@ -12767,17 +12762,17 @@
             y: "metai_metų_metus",
             yy: "metai_metų_metus",
           };
-          function n(e, t, n, a) {
+          function n(e, t, n, s) {
             return t
               ? "kelios sekundės"
-              : a
+              : s
                 ? "kelių sekundžių"
                 : "kelias sekundes";
           }
-          function a(e, t, n, a) {
-            return t ? i(n)[0] : a ? i(n)[1] : i(n)[2];
+          function s(e, t, n, s) {
+            return t ? i(n)[0] : s ? i(n)[1] : i(n)[2];
           }
-          function s(e) {
+          function a(e) {
             return e % 10 == 0 || (e > 10 && e < 20);
           }
           function i(e) {
@@ -12786,12 +12781,12 @@
           function r(e, t, n, r) {
             var o = e + " ";
             return 1 === e
-              ? o + a(e, t, n[0], r)
+              ? o + s(e, t, n[0], r)
               : t
-                ? o + (s(e) ? i(n)[1] : i(n)[0])
+                ? o + (a(e) ? i(n)[1] : i(n)[0])
                 : r
                   ? o + i(n)[1]
-                  : o + (s(e) ? i(n)[1] : i(n)[2]);
+                  : o + (a(e) ? i(n)[1] : i(n)[2]);
           }
           e.defineLocale("lt", {
             months: {
@@ -12847,15 +12842,15 @@
               past: "prieš %s",
               s: n,
               ss: r,
-              m: a,
+              m: s,
               mm: r,
-              h: a,
+              h: s,
               hh: r,
-              d: a,
+              d: s,
               dd: r,
-              M: a,
+              M: s,
               MM: r,
-              y: a,
+              y: s,
               yy: r,
             },
             dayOfMonthOrdinalParse: /\d{1,2}-oji/,
@@ -12891,11 +12886,11 @@
                 ? e[0]
                 : e[1];
           }
-          function a(e, a, s) {
-            return e + " " + n(t[s], e, a);
+          function s(e, s, a) {
+            return e + " " + n(t[a], e, s);
           }
-          function s(e, a, s) {
-            return n(t[s], e, a);
+          function a(e, s, a) {
+            return n(t[a], e, s);
           }
           function i(e, t) {
             return t ? "dažas sekundes" : "dažām sekundēm";
@@ -12934,17 +12929,17 @@
               future: "pēc %s",
               past: "pirms %s",
               s: i,
-              ss: a,
-              m: s,
-              mm: a,
-              h: s,
-              hh: a,
-              d: s,
-              dd: a,
-              M: s,
-              MM: a,
-              y: s,
-              yy: a,
+              ss: s,
+              m: a,
+              mm: s,
+              h: a,
+              hh: s,
+              d: a,
+              dd: s,
+              M: a,
+              MM: s,
+              y: a,
+              yy: s,
             },
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal: "%d.",
@@ -12969,13 +12964,13 @@
             correctGrammaticalCase: function (e, t) {
               return 1 === e ? t[0] : e >= 2 && e <= 4 ? t[1] : t[2];
             },
-            translate: function (e, n, a) {
-              var s = t.words[a];
-              return 1 === a.length
+            translate: function (e, n, s) {
+              var a = t.words[s];
+              return 1 === s.length
                 ? n
-                  ? s[0]
-                  : s[1]
-                : e + " " + t.correctGrammaticalCase(e, s);
+                  ? a[0]
+                  : a[1]
+                : e + " " + t.correctGrammaticalCase(e, a);
             },
           };
           e.defineLocale("me", {
@@ -13279,7 +13274,7 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
+          function t(e, t, n, s) {
             switch (n) {
               case "s":
                 return t ? "хэдхэн секунд" : "хэдхэн секундын";
@@ -13398,85 +13393,85 @@
               "९": "9",
               "०": "0",
             };
-          function a(e, t, n, a) {
-            var s = "";
+          function s(e, t, n, s) {
+            var a = "";
             if (t)
               switch (n) {
                 case "s":
-                  s = "काही सेकंद";
+                  a = "काही सेकंद";
                   break;
                 case "ss":
-                  s = "%d सेकंद";
+                  a = "%d सेकंद";
                   break;
                 case "m":
-                  s = "एक मिनिट";
+                  a = "एक मिनिट";
                   break;
                 case "mm":
-                  s = "%d मिनिटे";
+                  a = "%d मिनिटे";
                   break;
                 case "h":
-                  s = "एक तास";
+                  a = "एक तास";
                   break;
                 case "hh":
-                  s = "%d तास";
+                  a = "%d तास";
                   break;
                 case "d":
-                  s = "एक दिवस";
+                  a = "एक दिवस";
                   break;
                 case "dd":
-                  s = "%d दिवस";
+                  a = "%d दिवस";
                   break;
                 case "M":
-                  s = "एक महिना";
+                  a = "एक महिना";
                   break;
                 case "MM":
-                  s = "%d महिने";
+                  a = "%d महिने";
                   break;
                 case "y":
-                  s = "एक वर्ष";
+                  a = "एक वर्ष";
                   break;
                 case "yy":
-                  s = "%d वर्षे";
+                  a = "%d वर्षे";
               }
             else
               switch (n) {
                 case "s":
-                  s = "काही सेकंदां";
+                  a = "काही सेकंदां";
                   break;
                 case "ss":
-                  s = "%d सेकंदां";
+                  a = "%d सेकंदां";
                   break;
                 case "m":
-                  s = "एका मिनिटा";
+                  a = "एका मिनिटा";
                   break;
                 case "mm":
-                  s = "%d मिनिटां";
+                  a = "%d मिनिटां";
                   break;
                 case "h":
-                  s = "एका तासा";
+                  a = "एका तासा";
                   break;
                 case "hh":
-                  s = "%d तासां";
+                  a = "%d तासां";
                   break;
                 case "d":
-                  s = "एका दिवसा";
+                  a = "एका दिवसा";
                   break;
                 case "dd":
-                  s = "%d दिवसां";
+                  a = "%d दिवसां";
                   break;
                 case "M":
-                  s = "एका महिन्या";
+                  a = "एका महिन्या";
                   break;
                 case "MM":
-                  s = "%d महिन्यां";
+                  a = "%d महिन्यां";
                   break;
                 case "y":
-                  s = "एका वर्षा";
+                  a = "एका वर्षा";
                   break;
                 case "yy":
-                  s = "%d वर्षां";
+                  a = "%d वर्षां";
               }
-            return s.replace(/%d/i, e);
+            return a.replace(/%d/i, e);
           }
           e.defineLocale("mr", {
             months:
@@ -13511,18 +13506,18 @@
             relativeTime: {
               future: "%sमध्ये",
               past: "%sपूर्वी",
-              s: a,
-              ss: a,
-              m: a,
-              mm: a,
-              h: a,
-              hh: a,
-              d: a,
-              dd: a,
-              M: a,
-              MM: a,
-              y: a,
-              yy: a,
+              s,
+              ss: s,
+              m: s,
+              mm: s,
+              h: s,
+              hh: s,
+              d: s,
+              dd: s,
+              M: s,
+              MM: s,
+              y: s,
+              yy: s,
             },
             preparse: function (e) {
               return e.replace(/[१२३४५६७८९०]/g, function (e) {
@@ -14038,7 +14033,7 @@
                 "_",
               ),
             n = "jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec".split("_"),
-            a = [
+            s = [
               /^jan/i,
               /^feb/i,
               /^maart|mrt.?$/i,
@@ -14052,25 +14047,25 @@
               /^nov/i,
               /^dec/i,
             ],
-            s =
+            a =
               /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
           e.defineLocale("nl", {
             months:
               "januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
             monthsShortStrictRegex:
               /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays:
               "zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag".split(
                 "_",
@@ -14126,7 +14121,7 @@
                 "_",
               ),
             n = "jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec".split("_"),
-            a = [
+            s = [
               /^jan/i,
               /^feb/i,
               /^maart|mrt.?$/i,
@@ -14140,25 +14135,25 @@
               /^nov/i,
               /^dec/i,
             ],
-            s =
+            a =
               /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
           e.defineLocale("nl-be", {
             months:
               "januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split(
                 "_",
               ),
-            monthsShort: function (e, a) {
-              return e ? (/-MMM-/.test(a) ? n[e.month()] : t[e.month()]) : t;
+            monthsShort: function (e, s) {
+              return e ? (/-MMM-/.test(s) ? n[e.month()] : t[e.month()]) : t;
             },
-            monthsRegex: s,
-            monthsShortRegex: s,
+            monthsRegex: a,
+            monthsShortRegex: a,
             monthsStrictRegex:
               /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
             monthsShortStrictRegex:
               /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             weekdays:
               "zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag".split(
                 "_",
@@ -14387,34 +14382,34 @@
               "stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia".split(
                 "_",
               );
-          function a(e) {
+          function s(e) {
             return e % 10 < 5 && e % 10 > 1 && ~~(e / 10) % 10 != 1;
           }
-          function s(e, t, n) {
-            var s = e + " ";
+          function a(e, t, n) {
+            var a = e + " ";
             switch (n) {
               case "ss":
-                return s + (a(e) ? "sekundy" : "sekund");
+                return a + (s(e) ? "sekundy" : "sekund");
               case "m":
                 return t ? "minuta" : "minutę";
               case "mm":
-                return s + (a(e) ? "minuty" : "minut");
+                return a + (s(e) ? "minuty" : "minut");
               case "h":
                 return t ? "godzina" : "godzinę";
               case "hh":
-                return s + (a(e) ? "godziny" : "godzin");
+                return a + (s(e) ? "godziny" : "godzin");
               case "MM":
-                return s + (a(e) ? "miesiące" : "miesięcy");
+                return a + (s(e) ? "miesiące" : "miesięcy");
               case "yy":
-                return s + (a(e) ? "lata" : "lat");
+                return a + (s(e) ? "lata" : "lat");
             }
           }
           e.defineLocale("pl", {
-            months: function (e, a) {
+            months: function (e, s) {
               return e
-                ? "" === a
+                ? "" === s
                   ? "(" + n[e.month()] + "|" + t[e.month()] + ")"
-                  : /D MMMM/.test(a)
+                  : /D MMMM/.test(s)
                     ? n[e.month()]
                     : t[e.month()]
                 : t;
@@ -14471,17 +14466,17 @@
               future: "za %s",
               past: "%s temu",
               s: "kilka sekund",
-              ss: s,
-              m: s,
-              mm: s,
-              h: s,
-              hh: s,
+              ss: a,
+              m: a,
+              mm: a,
+              h: a,
+              hh: a,
               d: "1 dzień",
               dd: "%d dni",
               M: "miesiąc",
-              MM: s,
+              MM: a,
               y: "rok",
-              yy: s,
+              yy: a,
             },
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal: "%d.",
@@ -14610,11 +14605,11 @@
         !(function (e) {
           "use strict";
           function t(e, t, n) {
-            var a = " ";
+            var s = " ";
             return (
-              (e % 100 >= 20 || (e >= 100 && e % 100 == 0)) && (a = " de "),
+              (e % 100 >= 20 || (e >= 100 && e % 100 == 0)) && (s = " de "),
               e +
-                a +
+                s +
                 {
                   ss: "secunde",
                   mm: "minute",
@@ -14687,8 +14682,8 @@
                 ? n[1]
                 : n[2];
           }
-          function n(e, n, a) {
-            return "m" === a
+          function n(e, n, s) {
+            return "m" === s
               ? n
                 ? "минута"
                 : "минуту"
@@ -14704,11 +14699,11 @@
                       dd: "день_дня_дней",
                       MM: "месяц_месяца_месяцев",
                       yy: "год_года_лет",
-                    }[a],
+                    }[s],
                     +e,
                   );
           }
-          var a = [
+          var s = [
             /^янв/i,
             /^фев/i,
             /^мар/i,
@@ -14756,9 +14751,9 @@
             },
             weekdaysShort: "вс_пн_вт_ср_чт_пт_сб".split("_"),
             weekdaysMin: "вс_пн_вт_ср_чт_пт_сб".split("_"),
-            monthsParse: a,
-            longMonthsParse: a,
-            shortMonthsParse: a,
+            monthsParse: s,
+            longMonthsParse: s,
+            shortMonthsParse: s,
             monthsRegex:
               /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
             monthsShortRegex:
@@ -15074,44 +15069,44 @@
                 "_",
               ),
             n = "jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec".split("_");
-          function a(e) {
+          function s(e) {
             return e > 1 && e < 5;
           }
-          function s(e, t, n, s) {
+          function a(e, t, n, a) {
             var i = e + " ";
             switch (n) {
               case "s":
-                return t || s ? "pár sekúnd" : "pár sekundami";
+                return t || a ? "pár sekúnd" : "pár sekundami";
               case "ss":
-                return t || s
-                  ? i + (a(e) ? "sekundy" : "sekúnd")
+                return t || a
+                  ? i + (s(e) ? "sekundy" : "sekúnd")
                   : i + "sekundami";
               case "m":
-                return t ? "minúta" : s ? "minútu" : "minútou";
+                return t ? "minúta" : a ? "minútu" : "minútou";
               case "mm":
-                return t || s
-                  ? i + (a(e) ? "minúty" : "minút")
+                return t || a
+                  ? i + (s(e) ? "minúty" : "minút")
                   : i + "minútami";
               case "h":
-                return t ? "hodina" : s ? "hodinu" : "hodinou";
+                return t ? "hodina" : a ? "hodinu" : "hodinou";
               case "hh":
-                return t || s
-                  ? i + (a(e) ? "hodiny" : "hodín")
+                return t || a
+                  ? i + (s(e) ? "hodiny" : "hodín")
                   : i + "hodinami";
               case "d":
-                return t || s ? "deň" : "dňom";
+                return t || a ? "deň" : "dňom";
               case "dd":
-                return t || s ? i + (a(e) ? "dni" : "dní") : i + "dňami";
+                return t || a ? i + (s(e) ? "dni" : "dní") : i + "dňami";
               case "M":
-                return t || s ? "mesiac" : "mesiacom";
+                return t || a ? "mesiac" : "mesiacom";
               case "MM":
-                return t || s
-                  ? i + (a(e) ? "mesiace" : "mesiacov")
+                return t || a
+                  ? i + (s(e) ? "mesiace" : "mesiacov")
                   : i + "mesiacmi";
               case "y":
-                return t || s ? "rok" : "rokom";
+                return t || a ? "rok" : "rokom";
               case "yy":
-                return t || s ? i + (a(e) ? "roky" : "rokov") : i + "rokmi";
+                return t || a ? i + (s(e) ? "roky" : "rokov") : i + "rokmi";
             }
           }
           e.defineLocale("sk", {
@@ -15170,18 +15165,18 @@
             relativeTime: {
               future: "za %s",
               past: "pred %s",
-              s,
-              ss: s,
-              m: s,
-              mm: s,
-              h: s,
-              hh: s,
-              d: s,
-              dd: s,
-              M: s,
-              MM: s,
-              y: s,
-              yy: s,
+              s: a,
+              ss: a,
+              m: a,
+              mm: a,
+              h: a,
+              hh: a,
+              d: a,
+              dd: a,
+              M: a,
+              MM: a,
+              y: a,
+              yy: a,
             },
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal: "%d.",
@@ -15192,115 +15187,115 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = e + " ";
+          function t(e, t, n, s) {
+            var a = e + " ";
             switch (n) {
               case "s":
-                return t || a ? "nekaj sekund" : "nekaj sekundami";
+                return t || s ? "nekaj sekund" : "nekaj sekundami";
               case "ss":
-                return (s +=
+                return (a +=
                   1 === e
                     ? t
                       ? "sekundo"
                       : "sekundi"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "sekundi"
                         : "sekundah"
                       : e < 5
-                        ? t || a
+                        ? t || s
                           ? "sekunde"
                           : "sekundah"
                         : "sekund");
               case "m":
                 return t ? "ena minuta" : "eno minuto";
               case "mm":
-                return (s +=
+                return (a +=
                   1 === e
                     ? t
                       ? "minuta"
                       : "minuto"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "minuti"
                         : "minutama"
                       : e < 5
-                        ? t || a
+                        ? t || s
                           ? "minute"
                           : "minutami"
-                        : t || a
+                        : t || s
                           ? "minut"
                           : "minutami");
               case "h":
                 return t ? "ena ura" : "eno uro";
               case "hh":
-                return (s +=
+                return (a +=
                   1 === e
                     ? t
                       ? "ura"
                       : "uro"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "uri"
                         : "urama"
                       : e < 5
-                        ? t || a
+                        ? t || s
                           ? "ure"
                           : "urami"
-                        : t || a
+                        : t || s
                           ? "ur"
                           : "urami");
               case "d":
-                return t || a ? "en dan" : "enim dnem";
+                return t || s ? "en dan" : "enim dnem";
               case "dd":
-                return (s +=
+                return (a +=
                   1 === e
-                    ? t || a
+                    ? t || s
                       ? "dan"
                       : "dnem"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "dni"
                         : "dnevoma"
-                      : t || a
+                      : t || s
                         ? "dni"
                         : "dnevi");
               case "M":
-                return t || a ? "en mesec" : "enim mesecem";
+                return t || s ? "en mesec" : "enim mesecem";
               case "MM":
-                return (s +=
+                return (a +=
                   1 === e
-                    ? t || a
+                    ? t || s
                       ? "mesec"
                       : "mesecem"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "meseca"
                         : "mesecema"
                       : e < 5
-                        ? t || a
+                        ? t || s
                           ? "mesece"
                           : "meseci"
-                        : t || a
+                        : t || s
                           ? "mesecev"
                           : "meseci");
               case "y":
-                return t || a ? "eno leto" : "enim letom";
+                return t || s ? "eno leto" : "enim letom";
               case "yy":
-                return (s +=
+                return (a +=
                   1 === e
-                    ? t || a
+                    ? t || s
                       ? "leto"
                       : "letom"
                     : 2 === e
-                      ? t || a
+                      ? t || s
                         ? "leti"
                         : "letoma"
                       : e < 5
-                        ? t || a
+                        ? t || s
                           ? "leta"
                           : "leti"
-                        : t || a
+                        : t || s
                           ? "let"
                           : "leti");
             }
@@ -15465,13 +15460,13 @@
             correctGrammaticalCase: function (e, t) {
               return 1 === e ? t[0] : e >= 2 && e <= 4 ? t[1] : t[2];
             },
-            translate: function (e, n, a) {
-              var s = t.words[a];
-              return 1 === a.length
+            translate: function (e, n, s) {
+              var a = t.words[s];
+              return 1 === s.length
                 ? n
-                  ? s[0]
-                  : s[1]
-                : e + " " + t.correctGrammaticalCase(e, s);
+                  ? a[0]
+                  : a[1]
+                : e + " " + t.correctGrammaticalCase(e, a);
             },
           };
           e.defineLocale("sr", {
@@ -15570,13 +15565,13 @@
             correctGrammaticalCase: function (e, t) {
               return 1 === e ? t[0] : e >= 2 && e <= 4 ? t[1] : t[2];
             },
-            translate: function (e, n, a) {
-              var s = t.words[a];
-              return 1 === a.length
+            translate: function (e, n, s) {
+              var a = t.words[s];
+              return 1 === s.length
                 ? n
-                  ? s[0]
-                  : s[1]
-                : e + " " + t.correctGrammaticalCase(e, s);
+                  ? a[0]
+                  : a[1]
+                : e + " " + t.correctGrammaticalCase(e, a);
             },
           };
           e.defineLocale("sr-cyrl", {
@@ -16232,8 +16227,8 @@
             dayOfMonthOrdinalParse: /\d{1,2}-(ум|юм)/,
             ordinal: function (e) {
               var n = e % 10,
-                a = e >= 100 ? 100 : null;
-              return e + (t[e] || t[n] || t[a]);
+                s = e >= 100 ? 100 : null;
+              return e + (t[e] || t[n] || t[s]);
             },
             week: { dow: 1, doy: 7 },
           });
@@ -16373,7 +16368,7 @@
                     ? t.slice(0, -3) + "nem"
                     : t + " pIq");
           }
-          function a(e) {
+          function s(e) {
             var t = e;
             return (t =
               -1 !== e.indexOf("jaj")
@@ -16384,32 +16379,32 @@
                     ? t.slice(0, -3) + "ben"
                     : t + " ret");
           }
-          function s(e, t, n, a) {
-            var s = i(e);
+          function a(e, t, n, s) {
+            var a = i(e);
             switch (n) {
               case "ss":
-                return s + " lup";
+                return a + " lup";
               case "mm":
-                return s + " tup";
+                return a + " tup";
               case "hh":
-                return s + " rep";
+                return a + " rep";
               case "dd":
-                return s + " jaj";
+                return a + " jaj";
               case "MM":
-                return s + " jar";
+                return a + " jar";
               case "yy":
-                return s + " DIS";
+                return a + " DIS";
             }
           }
           function i(e) {
             var n = Math.floor((e % 1e3) / 100),
-              a = Math.floor((e % 100) / 10),
-              s = e % 10,
+              s = Math.floor((e % 100) / 10),
+              a = e % 10,
               i = "";
             return (
               n > 0 && (i += t[n] + "vatlh"),
-              a > 0 && (i += ("" !== i ? " " : "") + t[a] + "maH"),
-              s > 0 && (i += ("" !== i ? " " : "") + t[s]),
+              s > 0 && (i += ("" !== i ? " " : "") + t[s] + "maH"),
+              a > 0 && (i += ("" !== i ? " " : "") + t[a]),
               "" === i ? "pagh" : i
             );
           }
@@ -16453,19 +16448,19 @@
             },
             relativeTime: {
               future: n,
-              past: a,
+              past: s,
               s: "puS lup",
-              ss: s,
+              ss: a,
               m: "wa’ tup",
-              mm: s,
+              mm: a,
               h: "wa’ rep",
-              hh: s,
+              hh: a,
               d: "wa’ jaj",
-              dd: s,
+              dd: a,
               M: "wa’ jar",
-              MM: s,
+              MM: a,
               y: "wa’ DIS",
-              yy: s,
+              yy: a,
             },
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal: "%d.",
@@ -16550,10 +16545,10 @@
                   return e;
                 default:
                   if (0 === e) return e + "'ıncı";
-                  var a = e % 10,
-                    s = (e % 100) - a,
+                  var s = e % 10,
+                    a = (e % 100) - s,
                     i = e >= 100 ? 100 : null;
-                  return e + (t[a] || t[s] || t[i]);
+                  return e + (t[s] || t[a] || t[i]);
               }
             },
             week: { dow: 1, doy: 7 },
@@ -16563,8 +16558,8 @@
       function (e, t, n) {
         !(function (e) {
           "use strict";
-          function t(e, t, n, a) {
-            var s = {
+          function t(e, t, n, s) {
+            var a = {
               s: ["viensas secunds", "'iensas secunds"],
               ss: [e + " secunds", e + " secunds"],
               m: ["'n míut", "'iens míut"],
@@ -16578,7 +16573,7 @@
               y: ["'n ar", "'iens ar"],
               yy: [e + " ars", e + " ars"],
             };
-            return a || t ? s[n][0] : s[n][1];
+            return s || t ? a[n][0] : a[n][1];
           }
           e.defineLocale("tzl", {
             months:
@@ -16786,16 +16781,16 @@
               );
             },
             meridiem: function (e, t, n) {
-              var a = 100 * e + t;
-              return a < 600
+              var s = 100 * e + t;
+              return s < 600
                 ? "يېرىم كېچە"
-                : a < 900
+                : s < 900
                   ? "سەھەر"
-                  : a < 1130
+                  : s < 1130
                     ? "چۈشتىن بۇرۇن"
-                    : a < 1230
+                    : s < 1230
                       ? "چۈش"
-                      : a < 1800
+                      : s < 1800
                         ? "چۈشتىن كېيىن"
                         : "كەچ";
             },
@@ -16858,12 +16853,12 @@
                 ? n[1]
                 : n[2];
           }
-          function n(e, n, a) {
-            return "m" === a
+          function n(e, n, s) {
+            return "m" === s
               ? n
                 ? "хвилина"
                 : "хвилину"
-              : "h" === a
+              : "h" === s
                 ? n
                   ? "година"
                   : "годину"
@@ -16881,11 +16876,11 @@
                       dd: "день_дні_днів",
                       MM: "місяць_місяці_місяців",
                       yy: "рік_роки_років",
-                    }[a],
+                    }[s],
                     +e,
                   );
           }
-          function a(e, t) {
+          function s(e, t) {
             var n = {
               nominative:
                 "неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота".split(
@@ -16912,7 +16907,7 @@
                   ][e.day()]
                 : n.nominative;
           }
-          function s(e) {
+          function a(e) {
             return function () {
               return e + "о" + (11 === this.hours() ? "б" : "") + "] LT";
             };
@@ -16932,7 +16927,7 @@
               "січ_лют_бер_квіт_трав_черв_лип_серп_вер_жовт_лист_груд".split(
                 "_",
               ),
-            weekdays: a,
+            weekdays: s,
             weekdaysShort: "нд_пн_вт_ср_чт_пт_сб".split("_"),
             weekdaysMin: "нд_пн_вт_ср_чт_пт_сб".split("_"),
             longDateFormat: {
@@ -16944,21 +16939,21 @@
               LLLL: "dddd, D MMMM YYYY р., HH:mm",
             },
             calendar: {
-              sameDay: s("[Сьогодні "),
-              nextDay: s("[Завтра "),
-              lastDay: s("[Вчора "),
-              nextWeek: s("[У] dddd ["),
+              sameDay: a("[Сьогодні "),
+              nextDay: a("[Завтра "),
+              lastDay: a("[Вчора "),
+              nextWeek: a("[У] dddd ["),
               lastWeek: function () {
                 switch (this.day()) {
                   case 0:
                   case 3:
                   case 5:
                   case 6:
-                    return s("[Минулої] dddd [").call(this);
+                    return a("[Минулої] dddd [").call(this);
                   case 1:
                   case 2:
                   case 4:
-                    return s("[Минулого] dddd [").call(this);
+                    return a("[Минулого] dddd [").call(this);
                 }
               },
               sameElse: "L",
@@ -17420,16 +17415,16 @@
               );
             },
             meridiem: function (e, t, n) {
-              var a = 100 * e + t;
-              return a < 600
+              var s = 100 * e + t;
+              return s < 600
                 ? "凌晨"
-                : a < 900
+                : s < 900
                   ? "早上"
-                  : a < 1130
+                  : s < 1130
                     ? "上午"
-                    : a < 1230
+                    : s < 1230
                       ? "中午"
-                      : a < 1800
+                      : s < 1800
                         ? "下午"
                         : "晚上";
             },
@@ -17520,16 +17515,16 @@
               );
             },
             meridiem: function (e, t, n) {
-              var a = 100 * e + t;
-              return a < 600
+              var s = 100 * e + t;
+              return s < 600
                 ? "凌晨"
-                : a < 900
+                : s < 900
                   ? "早上"
-                  : a < 1130
+                  : s < 1130
                     ? "上午"
-                    : a < 1230
+                    : s < 1230
                       ? "中午"
-                      : a < 1800
+                      : s < 1800
                         ? "下午"
                         : "晚上";
             },
@@ -17619,16 +17614,16 @@
               );
             },
             meridiem: function (e, t, n) {
-              var a = 100 * e + t;
-              return a < 600
+              var s = 100 * e + t;
+              return s < 600
                 ? "凌晨"
-                : a < 900
+                : s < 900
                   ? "早上"
-                  : a < 1130
+                  : s < 1130
                     ? "上午"
-                    : a < 1230
+                    : s < 1230
                       ? "中午"
-                      : a < 1800
+                      : s < 1800
                         ? "下午"
                         : "晚上";
             },
@@ -17680,21 +17675,21 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "MNFGkT80",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "oLnGXlY7",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-boost ",["helper",["if"],[["get",["boostActive"]],"","disabled"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],8],["close-element"],["text","\\n\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-reroll ",["helper",["if"],[["get",["aramRerollCount"]],"","disabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","style-profile-val"],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_progress"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsProgressString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_full"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsMoreThanMaxString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-reroll-tooltip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","type","blue"],["dynamic-attr","percent",["unknown",["rerollsProgressPercentage"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-desc"],["flush-element"],["text","\\n"],["block",["if"],[["get",["rerollsMoreThanMax"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_message_none"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpBoostWinCountString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpExpireString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","tr",[]],["flush-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["static-attr","class","lol-typekit-value"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","profile_perks_boost_tooltip_message_xp_subtitle"]],false],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpExpireString"]]],null,5],["block",["if"],[["get",["xpBoostWinCountString"]]],null,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","table",[]],["static-attr","class","lol-uikit-list-table"],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpBoostActive"]]],null,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-profile-boosts-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["dynamic-attr","class",["concat",["style-profile-boosts-tooltip-title ",["helper",["if"],[["get",["boostActive"]],"left",""],null]]]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["boostActive"]]],null,7,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-boosts-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-boost ",["helper",["if"],[["get",["boostActive"]],"","disabled"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],8],["close-element"],["text","\\n\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["style-profile-perks-icon style-profile-reroll ",["helper",["if"],[["get",["aramRerollCount"]],"","disabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","span",[]],["static-attr","class","style-profile-val"],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_progress"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsProgressString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","profile_perks_aram_reroll_tooltip_title_full"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["rerollsMoreThanMaxString"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-reroll-tooltip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","type","blue"],["dynamic-attr","percent",["unknown",["rerollsProgressPercentage"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["aramRerollCount"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-small-progress-radial-desc"],["flush-element"],["text","\\n"],["block",["if"],[["get",["rerollsMoreThanMax"]]],null,1,0],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_message_none"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpBoostWinCountString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","lol-typekit-label"],["flush-element"],["text","\\n                    "],["append",["unknown",["xpExpireString"]],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","tr",[]],["flush-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n                  "],["open-element","span",[]],["static-attr","class","lol-typekit-value"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","profile_perks_boost_tooltip_message_xp_subtitle"]],false],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","td",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpExpireString"]]],null,5],["block",["if"],[["get",["xpBoostWinCountString"]]],null,4],["text","                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","table",[]],["static-attr","class","lol-uikit-list-table"],["flush-element"],["text","\\n"],["block",["if"],[["get",["xpBoostActive"]]],null,6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","class","style-profile-boosts-tooltip"],["flush-element"],["text","\\n      "],["open-element","h6",[]],["dynamic-attr","class",["concat",["style-profile-boosts-tooltip-title ",["helper",["if"],[["get",["boostActive"]],"left",""],null]]]],["flush-element"],["append",["unknown",["tra","profile_perks_boost_tooltip_title"]],false],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["boostActive"]]],null,7,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
-        const { RunMixin: s } = a.EmberAddons.EmberLifeline,
-          i = (0, a.EmberDataBinding)({
-            Ember: a.Ember,
-            websocket: (0, a.getProvider)().getSocket(),
+        var s = n(1);
+        const { RunMixin: a } = s.EmberAddons.EmberLifeline,
+          i = (0, s.EmberDataBinding)({
+            Ember: s.Ember,
+            websocket: (0, s.getProvider)().getSocket(),
             basePaths: {
               login: "/lol-login",
               summoner: "/lol-summoner",
@@ -17729,28 +17724,23 @@
                 path: "/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
                 default: null,
               },
-              isTopNavUpdatesEnabled: {
-                api: "clientConfig",
-                path: "/v3/client-config/lol.client_settings.topNavUpdates.profileButtonMigration",
-                default: !1,
-              },
             },
           });
-        e.exports = a.Ember.Service.extend(i, s, {
-          friends: a.Ember.A(),
+        e.exports = s.Ember.Service.extend(i, a, {
+          friends: s.Ember.A(),
           init: function () {
             this._super(...arguments),
               this.runTask(() => {
-                a.logger.trace("PROFILEREADY: force set ready"),
+                s.logger.trace("PROFILEREADY: force set ready"),
                   this.set("loadingComplete", !0);
               }, 3e3);
           },
-          locale: a.Ember.computed("regionLocale.locale", function () {
+          locale: s.Ember.computed("regionLocale.locale", function () {
             return (this.get("regionLocale.locale") || "").replace("_", "-");
           }),
-          onProfileModeObserver: a.Ember.on(
+          onProfileModeObserver: s.Ember.on(
             "init",
-            a.Ember.observer("summonerId", "profileMode", function () {
+            s.Ember.observer("summonerId", "profileMode", function () {
               const e = this.get("profileMode");
               if (!e) return;
               const t = "searched" === e;
@@ -17774,7 +17764,7 @@
                   this.set("summoner", e);
                 });
           },
-          friend: a.Ember.computed(
+          friend: s.Ember.computed(
             "summoner.summonerId",
             "isSearched",
             "friends.[]",
@@ -17786,14 +17776,14 @@
               return !(!t || !n) && this.get("friends").isAny("summonerId", e);
             },
           ),
-          boosts: a.Ember.computed("isSearched", function () {
+          boosts: s.Ember.computed("isSearched", function () {
             const e = Boolean(this.get("profileMode")),
               t = Boolean(this.get("isSearched"));
             e &&
               !t &&
               this.dataBindProperty("boosts", "/v1/active-boosts", "boosts");
           }),
-          rankedData: a.Ember.computed("summoner.puuid", function () {
+          rankedData: s.Ember.computed("summoner.puuid", function () {
             const e = this.get("summoner.puuid");
             if (!e) return;
             this.get("api.ranked")
@@ -17802,7 +17792,7 @@
                 t || (t = {}), (t.puuid = e), this.set("rankedData", t);
               });
           }),
-          championMasteries: a.Ember.computed(
+          championMasteries: s.Ember.computed(
             "summoner.puuid",
             "isLegendaryChampionMasteryEnabled",
             function () {
@@ -17828,7 +17818,7 @@
                 }
             },
           ),
-          backdropObserver: a.Ember.observer(
+          backdropObserver: s.Ember.observer(
             "summoner.summonerId",
             function () {
               const e = this.get("summoner.summonerId");
@@ -17841,7 +17831,7 @@
                 );
             },
           ),
-          loadingComplete: a.Ember.computed(
+          loadingComplete: s.Ember.computed(
             "backdrop.summonerId",
             "championMasteries.puuid",
             "rankedData.summonerId",
@@ -17849,15 +17839,15 @@
               const e = Boolean(this.get("backdrop.summonerId")),
                 t = Boolean(this.get("championMasteries.puuid")),
                 n = Boolean(this.get("rankedData.puuid")),
-                s = e && t && n;
+                a = e && t && n;
               return (
-                a.logger.trace("PROFILEREADY", {
+                s.logger.trace("PROFILEREADY", {
                   backdrop: e,
                   mastery: t,
                   ranked: n,
-                  ready: s,
+                  ready: a,
                 }),
-                s
+                a
               );
             },
           ),
@@ -17865,15 +17855,15 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
-        e.exports = a.Ember.Service.extend({
+        var s = n(1);
+        e.exports = s.Ember.Service.extend({
           summary: [],
           enabled: !1,
-          profileService: a.Ember.inject.service("profile"),
-          puuid: a.Ember.computed.alias("profileService.summoner.puuid"),
+          profileService: s.Ember.inject.service("profile"),
+          puuid: s.Ember.computed.alias("profileService.summoner.puuid"),
           init() {
             this._super(...arguments),
-              (this.binding = a.DataBinding.bindTo(a.socket)),
+              (this.binding = s.DataBinding.bindTo(s.socket)),
               this.initDatabindings();
           },
           willDestroy() {
@@ -17915,39 +17905,39 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.CUSTOMIZER_TITLES_SETTINGS_VERSION = void 0);
-        var a = n(1);
+        var s = n(1);
         t.CUSTOMIZER_TITLES_SETTINGS_VERSION = 1;
-        const s = "/v2/account/LCUPreferences/lol-notifications",
+        const a = "/v2/account/LCUPreferences/lol-notifications",
           i = "/v1/latest-challenge-level-up",
           r = "/v2/account/LCUPreferences/lol-customizer-tokens",
           o = "/lol-challenges-latest-level-up",
           l = `/v2/account/LCUPreferences${o}`;
-        e.exports = a.Ember.Service.extend({
-          sharedNotificationsService: a.Ember.inject.service(
+        e.exports = s.Ember.Service.extend({
+          sharedNotificationsService: s.Ember.inject.service(
             "shared-notifications",
           ),
           tokenSettings: {},
           lastChallengeLevelUpTimestamp: 0,
           init() {
             this._super(...arguments),
-              (this.settingsBinding = (0, a.DataBinding)(
+              (this.settingsBinding = (0, s.DataBinding)(
                 "/lol-settings",
-                a.socket,
+                s.socket,
               )),
-              (this.inventoryBinding = (0, a.DataBinding)(
+              (this.inventoryBinding = (0, s.DataBinding)(
                 "/lol-inventory",
-                a.socket,
+                s.socket,
               )),
-              (this.challengesBinding = (0, a.DataBinding)(
+              (this.challengesBinding = (0, s.DataBinding)(
                 "/lol-challenges",
-                a.socket,
+                s.socket,
               )),
-              (this.accountPreferences = (0, a.DataBinding)(
+              (this.accountPreferences = (0, s.DataBinding)(
                 "/lol-settings/v2/account/LCUPreferences",
-                a.socket,
+                s.socket,
               )),
               this.settingsBinding.addObserver(
-                s,
+                a,
                 this,
                 this._handleNotificationPreferences.bind(this),
               ),
@@ -17965,11 +17955,11 @@
           willDestroy() {
             this._super(...arguments),
               this._destroyObservers(),
-              this.settingsBinding.removeObserver(s, this),
+              this.settingsBinding.removeObserver(a, this),
               this.settingsBinding.removeObserver(r, this),
               this.settingsBinding.removeObserver(l, this);
           },
-          hasUnreadNotifications: a.Ember.computed(
+          hasUnreadNotifications: s.Ember.computed(
             "sharedNotificationsService.hasUnreadTitleNotification",
             "sharedNotificationsService.hasUnreadIconNotification",
             "hasUnreadTokens",
@@ -17984,7 +17974,7 @@
               return e || t || n;
             },
           ),
-          hasUnreadTokens: a.Ember.computed(
+          hasUnreadTokens: s.Ember.computed(
             "tokenSettings",
             "lastChallengeLevelUpTimestamp",
             "challengeLevelUpSettings",
@@ -17993,10 +17983,10 @@
               if (!e || !e.lastVisitTime) return !1;
               const t = this.get("challengeLevelUpSettings"),
                 n = t ? t.lastLevelUpTime : 0,
-                a = this.get("lastChallengeLevelUpTimestamp");
-              if (!a && !n) return !1;
-              const s = e.lastVisitTime;
-              return a > s || (n && n > s);
+                s = this.get("lastChallengeLevelUpTimestamp");
+              if (!s && !n) return !1;
+              const a = e.lastVisitTime;
+              return s > a || (n && n > a);
             },
           ),
           _initObservers() {
@@ -18025,8 +18015,8 @@
                 .then((t) => {
                   if (t && t.data) {
                     const n = t.data,
-                      a = n.lastVisitTime;
-                    a && a < e && this._saveTokenUpdateTimestamp(e),
+                      s = n.lastVisitTime;
+                    s && s < e && this._saveTokenUpdateTimestamp(e),
                       this.set("tokenSettings", n);
                   }
                 }));
@@ -18044,12 +18034,12 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
+        var s = n(1);
         n(228);
-        var s = n(7);
-        const i = (0, a.EmberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        var a = n(7);
+        const i = (0, s.EmberDataBinding)({
+          Ember: s.Ember,
+          websocket: (0, s.getProvider)().getSocket(),
           basePaths: {
             platformConfig: "/lol-platform-config",
             summoner: "/lol-summoner",
@@ -18063,13 +18053,13 @@
             currentSummoner: { api: "summoner", path: "/v1/current-summoner" },
           },
         });
-        e.exports = a.Ember.Component.extend(i, {
+        e.exports = s.Ember.Component.extend(i, {
           classNames: ["ranked-reference-modal-button-component"],
           layout: n(229),
-          isRankedEligible: a.Ember.computed("currentSummoner", function () {
+          isRankedEligible: s.Ember.computed("currentSummoner", function () {
             return this.get("currentSummoner.summonerLevel") >= 30;
           }),
-          showingRankedReference: a.Ember.computed(
+          showingRankedReference: s.Ember.computed(
             "RankedReferenceModalEnabled",
             "isRankedEligible",
             "queueType",
@@ -18077,7 +18067,7 @@
               return (
                 this.get("RankedReferenceModalEnabled") &&
                 this.get("isRankedEligible") &&
-                !s.QUEUES.RANKED_AND_RATED_TFT_QUEUE_TYPES.includes(
+                !a.QUEUES.RANKED_AND_RATED_TFT_QUEUE_TYPES.includes(
                   this.get("queueType"),
                 )
               );
@@ -18086,15 +18076,15 @@
           actions: {
             OpenRankedReferenceModal: function () {
               const e = this.get("queueType");
-              return a.LeagueTierNames.getTiersForQueue(e).then((e) => {
-                a.AudioPlugin.getChannel("sfx-ui").playSound(
+              return s.LeagueTierNames.getTiersForQueue(e).then((e) => {
+                s.AudioPlugin.getChannel("sfx-ui").playSound(
                   "/fe/lol-uikit/sfx-uikit-click-generic.ogg",
                 );
-                const t = a.ComponentFactory.create(
+                const t = s.ComponentFactory.create(
                   "RankedReferenceModalComponent",
                   { queueType: this.get("queueType"), tiers: e },
                 );
-                a.ModalManager.add({
+                s.ModalManager.add({
                   type: "DialogAlert",
                   data: {
                     contents: t.domNode,
@@ -18105,7 +18095,7 @@
                     dismissibleType: "inside",
                   },
                 }).okPromise.then((e) => {
-                  "ok-button" === e && a.Parties.showGameSelectPreselected(420);
+                  "ok-button" === e && s.Parties.showGameSelectPreselected(420);
                 });
               });
             },
@@ -18117,40 +18107,40 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "cCR9KKI0",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "49207B7k",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showingRankedReference"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","ranked-reference-modal-question-mark"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"OpenRankedReferenceModal"],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showingRankedReference"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","ranked-reference-modal-question-mark"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"OpenRankedReferenceModal"],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1),
-          s = n(7);
+        var s = n(1),
+          a = n(7);
         n(231);
         var i = n(232);
         const r = 628,
-          o = (0, a.DataBinding)(
+          o = (0, s.DataBinding)(
             "/lol-ranked",
-            (0, a.getProvider)().getSocket(),
+            (0, s.getProvider)().getSocket(),
           ),
-          l = (0, a.DataBinding)(
+          l = (0, s.DataBinding)(
             "/lol-platform-config",
-            (0, a.getProvider)().getSocket(),
+            (0, s.getProvider)().getSocket(),
           ),
-          d = (0, a.DataBinding)(
+          d = (0, s.DataBinding)(
             "/lol-settings",
-            (0, a.getProvider)().getSocket(),
+            (0, s.getProvider)().getSocket(),
           ),
-          m = (0, a.DataBinding)(
+          m = (0, s.DataBinding)(
             "/riotclient",
-            (0, a.getProvider)().getSocket(),
+            (0, s.getProvider)().getSocket(),
           ),
-          _ = "/v1/account/lol-profiles",
-          u = s.QUEUES.RANKED_SOLO_5x5_QUEUE_TYPE;
-        e.exports = a.Ember.Component.extend({
+          u = "/v1/account/lol-profiles",
+          _ = a.QUEUES.RANKED_SOLO_5x5_QUEUE_TYPE;
+        e.exports = s.Ember.Component.extend({
           classNames: ["ranked-reference-modal-component"],
           layout: n(233),
           pageIndex: 0,
@@ -18165,14 +18155,14 @@
               this.set("numPages", Math.ceil(this.get("tiers").length / 3)),
               this.set("isScrolling", !1),
               this.set("rankedRewardConfig", n(234).SR_REWARDS);
-            const e = this.get("queueType") ? this.get("queueType") : u,
+            const e = this.get("queueType") ? this.get("queueType") : _,
               t = o.get("/v1/current-ranked-stats").then((t) => {
                 this.getRankedStats(t, e);
               }),
-              a = o.get("/v1/splits-config").then((e) => {
+              s = o.get("/v1/splits-config").then((e) => {
                 Boolean(e) && this.set("splitsConfig", e);
               }),
-              s = l
+              a = l
                 .get("/v1/namespaces/LeagueConfig/RankedRewardConfig")
                 .then((e) => {
                   this.getRewardConfig(e);
@@ -18180,13 +18170,13 @@
               i = m.get("/region-locale").then((e) => {
                 this.set("regionLocale", e);
               });
-            Promise.all([t, a, s, i]).then(() => {
+            Promise.all([t, s, a, i]).then(() => {
               d.get("/v2/ready").then((e) => {
                 this.updateSettingsReady(e);
               });
             });
           },
-          titleText: a.Ember.computed(
+          titleText: s.Ember.computed(
             "splitsConfig",
             "splitsConfig.currentSplitId",
             "splitsConfig.currentSplit.startTimeMillis",
@@ -18206,7 +18196,7 @@
               );
             },
           ),
-          victoriousRewardSplitPointRequirements: a.Ember.computed(
+          victoriousRewardSplitPointRequirements: s.Ember.computed(
             "splitsConfig",
             "splitsConfig.currentSeasonId",
             "splitsConfig.splits.@each.victoriousSkinRewardGroup.splitPointsByHighestSeasonEndTier",
@@ -18241,7 +18231,7 @@
             if (!Boolean(e)) return;
             return this.get("victoriousRewardSplitPointRequirements")[e];
           },
-          newCards: a.Ember.computed(
+          newCards: s.Ember.computed(
             "rankedStatsEntry",
             "rankedRewardConfig",
             "splitsConfig",
@@ -18250,7 +18240,7 @@
                 t = this.get("rankedRewardConfig");
               return t && 0 !== t.length && this.get("rankedStatsEntry")
                 ? ((this.get("tiers") || []).forEach((n) => {
-                    const s = [],
+                    const a = [],
                       i = [],
                       r = t.find((e) => e.tier.toUpperCase() === n);
                     if (r) {
@@ -18260,20 +18250,20 @@
                         const o = this.get("tra").formatString(
                           "ranked_reward_data_" + e,
                           {
-                            rank: a.LeagueTierNames.getTierName(n),
+                            rank: s.LeagueTierNames.getTierName(n),
                             spAmount:
                               this.getVictoriousSplitPointsByRequirementTier(
                                 n,
                               ) || "",
                           },
                         );
-                        t < 3 ? s.push(o) : i.push(o);
+                        t < 3 ? a.push(o) : i.push(o);
                       });
                       const t = {
                         ranked_tier: n,
-                        ranked_tra_tier: a.LeagueTierNames.getTierName(n),
+                        ranked_tra_tier: s.LeagueTierNames.getTierName(n),
                         rewards_after_hovered: i,
-                        rewards_before_hovered: s,
+                        rewards_before_hovered: a,
                         total_num_of_rewards: r.reward.length,
                         has_extra_rewards: i.length > 0,
                         extra_rewards_text: this.get("tra").formatString(
@@ -18283,7 +18273,7 @@
                         is_current_rank:
                           this.get("rankedStatsEntry.tier") === n.toUpperCase(),
                         is_apex_tier:
-                          a.LeagueTierNames.getConstants().APEX_TIERS.includes(
+                          s.LeagueTierNames.getConstants().APEX_TIERS.includes(
                             n,
                           ),
                         division_indicator: this.getDivisionContentArray(
@@ -18308,43 +18298,43 @@
             const t = document.querySelector(".carousel-body"),
               n = this.get("tiers") || [];
             if (!n.includes(e) || !t) return;
-            let a = 0;
+            let s = 0;
             for (let t = 0; t < n.length; t++) {
-              if ((t > 0 && t % 3 == 0 && a++, e === n[t])) break;
+              if ((t > 0 && t % 3 == 0 && s++, e === n[t])) break;
             }
-            let s = r * a;
-            this.get("numPages") - 1 === a && (s -= 20),
-              (t.style.transform = `translateX(-${s}px)`),
-              this.set("pageIndex", a);
+            let a = r * s;
+            this.get("numPages") - 1 === s && (a -= 20),
+              (t.style.transform = `translateX(-${a}px)`),
+              this.set("pageIndex", s);
           },
           getDivisionContentArray: function (e, t, n) {
-            const s = [],
+            const a = [],
               i = this.get("tiers") || [];
-            if (a.LeagueTierNames.getConstants().APEX_TIERS.includes(e))
-              return s;
+            if (s.LeagueTierNames.getConstants().APEX_TIERS.includes(e))
+              return a;
             if (t === e) {
-              const e = a.LeagueTierNames.getConstants().DIVISION_TO_ORDINAL[n],
-                t = a.LeagueTierNames.getConstants().DIVISIONS.length - e - 1;
-              for (let t = 0; t < e + 1; t++) s.push("current");
-              for (let e = 0; e < t; e++) s.push("future");
+              const e = s.LeagueTierNames.getConstants().DIVISION_TO_ORDINAL[n],
+                t = s.LeagueTierNames.getConstants().DIVISIONS.length - e - 1;
+              for (let t = 0; t < e + 1; t++) a.push("current");
+              for (let e = 0; e < t; e++) a.push("future");
             } else if (i.indexOf(t) > i.indexOf(e))
               for (
                 let e = 0;
-                e < a.LeagueTierNames.getConstants().DIVISIONS.length;
+                e < s.LeagueTierNames.getConstants().DIVISIONS.length;
                 e++
               )
-                s.push("completed");
+                a.push("completed");
             else if (i.indexOf(t) < i.indexOf(e) || "NONE" === t)
               for (
                 let e = 0;
-                e < a.LeagueTierNames.getConstants().DIVISIONS.length;
+                e < s.LeagueTierNames.getConstants().DIVISIONS.length;
                 e++
               )
-                s.push("future");
-            return s;
+                a.push("future");
+            return a;
           },
           getLPContent: function (e, t, n) {
-            return a.LeagueTierNames.getConstants().APEX_TIERS.includes(e) &&
+            return s.LeagueTierNames.getConstants().APEX_TIERS.includes(e) &&
               t === e
               ? this.get("tra").formatString("ranked_subtitle_lp", { lp: n })
               : "";
@@ -18352,10 +18342,10 @@
           setScrollingFalse: function () {
             this.set("isScrolling", !1);
           },
-          showLeftArrowButton: a.Ember.computed("pageIndex", function () {
+          showLeftArrowButton: s.Ember.computed("pageIndex", function () {
             return 0 !== this.get("pageIndex");
           }),
-          showRightArrowButton: a.Ember.computed(
+          showRightArrowButton: s.Ember.computed(
             "pageIndex",
             "numPages",
             function () {
@@ -18367,19 +18357,19 @@
               if (this.get("isScrolling")) return;
               const t = this.get("pageIndex");
               let n,
-                s = r * t;
+                a = r * t;
               -1 === e
                 ? ((n = r * (t - 1)), this.set("pageIndex", t - 1))
                 : 1 === e && ((n = r * (t + 1)), this.set("pageIndex", t + 1)),
                 1 === e && t + 1 === this.get("numPages") - 1
                   ? (n -= 20)
-                  : -1 === e && t === this.get("numPages") - 1 && (s -= 20),
+                  : -1 === e && t === this.get("numPages") - 1 && (a -= 20),
                 this.set("isScrolling", !0);
               (document
                 .getElementById("carousel-body")
                 .animate(
                   [
-                    { transform: `translateX(-${s}px)` },
+                    { transform: `translateX(-${a}px)` },
                     { transform: `translateX(-${n}px)` },
                   ],
                   {
@@ -18389,34 +18379,34 @@
                     fill: "forwards",
                   },
                 ).onfinish = this.setScrollingFalse.bind(this)),
-                a.AudioPlugin.getChannel("sfx-ui").playSound(
+                s.AudioPlugin.getChannel("sfx-ui").playSound(
                   "/fe/lol-uikit/sfx-uikit-click-and-slide.ogg",
                 ),
-                a.Telemetry.sendCustomData("ranked-reference-modal-events", {
+                s.Telemetry.sendCustomData("ranked-reference-modal-events", {
                   event: "press-arrow-buttons",
                 });
             },
             playHoverSound: function () {
-              a.AudioPlugin.getChannel("sfx-ui").playSound(
+              s.AudioPlugin.getChannel("sfx-ui").playSound(
                 "/fe/lol-uikit/sfx-uikit-arrow-button-hover.ogg",
               );
             },
           },
           _markSettingsSeen(e, t) {
             const n = e && void 0 !== e.schemaVersion ? e.schemaVersion : 0,
-              s = {};
+              a = {};
             return (
-              (s["ranked-reference-modal-login-seen-for-season"] = t),
-              a.Telemetry.sendCustomData("ranked-reference-modal-events", {
+              (a["ranked-reference-modal-login-seen-for-season"] = t),
+              s.Telemetry.sendCustomData("ranked-reference-modal-events", {
                 event: "show-modal",
               }),
-              d.patch(_, { data: s, schemaVersion: n }).then(
+              d.patch(u, { data: a, schemaVersion: n }).then(
                 () =>
-                  a.logger.trace(
+                  s.logger.trace(
                     "ranked-reference-modal -- updated settings successfully",
                   ),
                 () =>
-                  a.logger.trace(
+                  s.logger.trace(
                     "ranked-reference-modal -- failed to update settings",
                   ),
               )
@@ -18426,7 +18416,7 @@
             if ((e = Boolean(e))) {
               const e = this.get("splitsConfig");
               if (!Boolean(e)) return;
-              d.get(_).then((t) => {
+              d.get(u).then((t) => {
                 this._markSettingsSeen(t, e.currentSeasonId);
               });
             }
@@ -18445,16 +18435,16 @@
             t,
             n = { month: "long", day: "numeric", year: "numeric" },
           ) {
-            const a = ((t && t.locale) || "en_US").replace("_", "-");
-            return new Date(e).toLocaleString(a, n);
+            const s = ((t && t.locale) || "en_US").replace("_", "-");
+            return new Date(e).toLocaleString(s, n);
           });
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "Ir0o9+HL",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "uC+2tMi3",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","ranked-reference-modal-container"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","ranked-reference-modal-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","title-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-wing-left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["append",["unknown",["titleText"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-wing-right"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summary-body"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summary-title"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_summary_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summary-content"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_summary_content"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isOnProvisionalMatches"]]],null,9],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","visual"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","visual_caption_division"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_divisions"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","visual_content_container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","visual_tier"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_sizer"],["flush-element"],["text","\\n            "],["open-element","lol-regalia-emblem-element",[]],["static-attr","ranked-tier","SILVER"],["flush-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_caption"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_tier"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","visual_tier"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_sizer"],["flush-element"],["text","\\n            "],["open-element","lol-regalia-emblem-element",[]],["static-attr","ranked-tier","GOLD"],["flush-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_caption"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_tier"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","carousel-container"],["static-attr","class","carousel-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","id","carousel-body"],["static-attr","class","carousel-body"],["flush-element"],["text","\\n"],["block",["each"],[["get",["newCards"]]],null,8],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["carousel-left-arrow-mask ",["helper",["if"],[["get",["showLeftArrowButton"]],"reveal","hidden"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-left-arrow"],["modifier",["action"],[["get",[null]],"navigatePage",-1]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["carousel-right-arrow-mask ",["helper",["if"],[["get",["showRightArrowButton"]],"reveal","hidden"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-right-arrow"],["modifier",["action"],[["get",[null]],"navigatePage",1]],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","current-rank-overlay"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","current-rank-text"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_current_rank_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","more-rewards-text"],["flush-element"],["append",["unknown",["item","extra_rewards_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","reward-text-line"],["flush-element"],["text","\\n                    "],["open-element","font",[]],["static-attr","color","#F0E6D2"],["flush-element"],["text","•"],["close-element"],["text"," "],["append",["helper",["sanitize"],[["get",["reward"]]],null],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","reward-text-line"],["flush-element"],["text","\\n                    "],["open-element","font",[]],["static-attr","color","#F0E6D2"],["flush-element"],["text","•"],["close-element"],["text"," "],["append",["helper",["sanitize"],[["get",["reward"]]],null],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["division-icon ",["get",["indicator"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["indicator"]},{"statements":[["block",["each"],[["get",["item","division_indicator"]]],null,4]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","apex-lp-text"],["flush-element"],["append",["unknown",["item","lp_points_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["item","is_current_rank"]]],null,6]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","carousel-item-container"],["static-attr","id","carousel-item-container"],["modifier",["action"],[["get",[null]],"playHoverSound"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["regalia-crest-container ",["unknown",["item","ranked_tier"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","regalia-crest-emblem-container"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","regalia-emblem-sizer"],["flush-element"],["text","\\n                "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["unknown",["item","ranked_tier"]],null],["flush-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","carousel-item-text-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["anchor-",["unknown",["item","total_num_of_rewards"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","carousel-item-text-anchor"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","rank-tier-title-text"],["flush-element"],["text","\\n                "],["append",["unknown",["item","ranked_tra_tier"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","rank-division-indicator"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","is_apex_tier"]]],null,7,5],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-text-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_reward_text"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-text-container-upper-half"],["flush-element"],["text","\\n"],["block",["each"],[["get",["item","rewards_before_hovered"]]],null,3],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-text-container-bottom-half"],["flush-element"],["text","\\n"],["block",["each"],[["get",["item","rewards_after_hovered"]]],null,2],["text","                "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","has_extra_rewards"]]],null,1],["text","              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","is_current_rank"]]],null,0],["text","      "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","provisional-warning-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","provisional-warning-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","provisional-warning-text"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_unranked_warning"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\ranked-reference-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","ranked-reference-modal-container"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","ranked-reference-modal-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","title-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-wing-left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["append",["unknown",["titleText"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","title-wing-right"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summary-body"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summary-title"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_summary_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","summary-content"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_summary_content"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isOnProvisionalMatches"]]],null,9],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","visual"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","visual_caption_division"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_divisions"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","visual_content_container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","visual_tier"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_sizer"],["flush-element"],["text","\\n            "],["open-element","lol-regalia-emblem-element",[]],["static-attr","ranked-tier","SILVER"],["flush-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_caption"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_tier"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","visual_tier"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","visual_regalia_emblem_sizer"],["flush-element"],["text","\\n            "],["open-element","lol-regalia-emblem-element",[]],["static-attr","ranked-tier","GOLD"],["flush-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","visual_caption"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_visual_tier"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","carousel-container"],["static-attr","class","carousel-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","id","carousel-body"],["static-attr","class","carousel-body"],["flush-element"],["text","\\n"],["block",["each"],[["get",["newCards"]]],null,8],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["carousel-left-arrow-mask ",["helper",["if"],[["get",["showLeftArrowButton"]],"reveal","hidden"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-left-arrow"],["modifier",["action"],[["get",[null]],"navigatePage",-1]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["carousel-right-arrow-mask ",["helper",["if"],[["get",["showRightArrowButton"]],"reveal","hidden"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","carousel-right-arrow"],["modifier",["action"],[["get",[null]],"navigatePage",1]],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","current-rank-overlay"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","current-rank-text"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_current_rank_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","more-rewards-text"],["flush-element"],["append",["unknown",["item","extra_rewards_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","span",[]],["static-attr","class","reward-text-line"],["flush-element"],["text","\\n                    "],["open-element","font",[]],["static-attr","color","#F0E6D2"],["flush-element"],["text","•"],["close-element"],["text"," "],["append",["helper",["sanitize"],[["get",["reward"]]],null],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","reward-text-line"],["flush-element"],["text","\\n                    "],["open-element","font",[]],["static-attr","color","#F0E6D2"],["flush-element"],["text","•"],["close-element"],["text"," "],["append",["helper",["sanitize"],[["get",["reward"]]],null],false],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["division-icon ",["get",["indicator"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["indicator"]},{"statements":[["block",["each"],[["get",["item","division_indicator"]]],null,4]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","apex-lp-text"],["flush-element"],["append",["unknown",["item","lp_points_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["item","is_current_rank"]]],null,6]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","carousel-item-container"],["static-attr","id","carousel-item-container"],["modifier",["action"],[["get",[null]],"playHoverSound"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["regalia-crest-container ",["unknown",["item","ranked_tier"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","regalia-crest-emblem-container"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","regalia-emblem-sizer"],["flush-element"],["text","\\n                "],["open-element","lol-regalia-emblem-element",[]],["dynamic-attr","ranked-tier",["unknown",["item","ranked_tier"]],null],["flush-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","carousel-item-text-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["anchor-",["unknown",["item","total_num_of_rewards"]]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","carousel-item-text-anchor"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","rank-tier-title-text"],["flush-element"],["text","\\n                "],["append",["unknown",["item","ranked_tra_tier"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","rank-division-indicator"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","is_apex_tier"]]],null,7,5],["text","              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-text-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-title"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_reward_text"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-text-container-upper-half"],["flush-element"],["text","\\n"],["block",["each"],[["get",["item","rewards_before_hovered"]]],null,3],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","reward-text-container-bottom-half"],["flush-element"],["text","\\n"],["block",["each"],[["get",["item","rewards_after_hovered"]]],null,2],["text","                "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","has_extra_rewards"]]],null,1],["text","              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","is_current_rank"]]],null,0],["text","      "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","provisional-warning-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","provisional-warning-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","provisional-warning-text"],["flush-element"],["append",["unknown",["tra","ranked_reference_modal_unranked_warning"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18469,40 +18459,40 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t._makeBannerDataFlagKey = d),
           (t.default = void 0);
-        var a = n(1),
-          s = n(85);
+        var s = n(1),
+          a = n(85);
         n(236);
         var i = n(87);
-        const r = (0, a.EmberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        const r = (0, s.EmberDataBinding)({
+          Ember: s.Ember,
+          websocket: (0, s.getProvider)().getSocket(),
           basePaths: { banners: "/lol-banners" },
           boundProperties: {
             bannersConfigNamespace:
               "/lol-platform-config/v1/namespaces/Banners",
           },
         });
-        var o = a.Ember.Component.extend(r, {
+        var o = s.Ember.Component.extend(r, {
           layout: n(237),
           classNames: ["style-profile-clash-banner-picker-component"],
           isInitialized: !1,
           init: function () {
             this._super.apply(this, arguments),
               (this.initializedPromise = Promise.all([
-                a.GameDataClashBanners.getBannerGameDataPromise().then((e) => {
+                s.GameDataClashBanners.getBannerGameDataPromise().then((e) => {
                   var t, n;
                   !this.isDestroyed &&
                     e.BannerFlags &&
                     (this.set(
                       "bannerDataFlagMap",
                       ((n = e.BannerFlags),
-                      new Map(a.Lodash.map(n, (e) => [d(e), e]))),
+                      new Map(s.Lodash.map(n, (e) => [d(e), e]))),
                     ),
                     this.set(
                       "bannerDataFrameMap",
                       ((t = e.BannerFrames),
                       new Map(
-                        a.Lodash.map(t, (e) => [parseInt(e.level, 10), e]),
+                        s.Lodash.map(t, (e) => [parseInt(e.level, 10), e]),
                       )),
                     ));
                 }),
@@ -18529,8 +18519,8 @@
                   this.isDestroyed || this.set("isInitialized", !0);
                 })
                 .catch((e) => {
-                  a.logger.warning("Failed to load flag selection modal", e);
-                  a.ModalManager.add({
+                  s.logger.warning("Failed to load flag selection modal", e);
+                  s.ModalManager.add({
                     type: "DialogAlert",
                     data: {
                       contents: this.get(
@@ -18542,29 +18532,29 @@
                     },
                     owner: this.get("element"),
                   }).okPromise.then(() => {
-                    s.ClashBannerPickerHandler.hideModal();
+                    a.ClashBannerPickerHandler.hideModal();
                   });
                 }),
               (this._boundOnDialogDismissEvent =
                 this._handleDialogDismissEvent.bind(this));
           },
           _setSelectedFlag: function (e) {
-            a.logger.trace("Updating flag selection to", e),
+            s.logger.trace("Updating flag selection to", e),
               this.set("selectedFlag", e);
           },
-          onDidInsertElement: a.Ember.on("didInsertElement", function () {
+          onDidInsertElement: s.Ember.on("didInsertElement", function () {
             this.element.addEventListener(
               "dialogFrameDismissed",
               this._boundOnDialogDismissEvent,
             );
           }),
-          onWillDestroyElement: a.Ember.on("willDestroyElement", function () {
+          onWillDestroyElement: s.Ember.on("willDestroyElement", function () {
             this.element.removeEventListener(
               "dialogFrameDismissed",
               this._boundOnDialogDismissEvent,
             );
           }),
-          flags: a.Ember.computed(
+          flags: s.Ember.computed(
             "ownedFlags",
             "selectedFlag",
             "bannerDataFlagMap",
@@ -18572,10 +18562,10 @@
               const e = this.get("ownedFlags"),
                 t = this.get("selectedFlag"),
                 n = this.get("bannerDataFlagMap");
-              if (!e || !t || !n) return a.Ember.A([]);
-              const s = a.Lodash.chain(e)
+              if (!e || !t || !n) return s.Ember.A([]);
+              const a = s.Lodash.chain(e)
                 .map((e) => ({ ownedFlag: e, bannerDataFlag: l(e, n) }))
-                .filter(({ bannerDataFlag: e }) => a.Lodash.isObject(e))
+                .filter(({ bannerDataFlag: e }) => s.Lodash.isObject(e))
                 .map(({ ownedFlag: e, bannerDataFlag: n }) => ({
                   itemId: parseInt(e.itemId, 10),
                   theme: e.theme,
@@ -18594,10 +18584,10 @@
                   isSelected: parseInt(e.itemId, 10) === parseInt(t.itemId, 10),
                 }))
                 .value();
-              return a.Ember.A(s);
+              return s.Ember.A(a);
             },
           ),
-          frame: a.Ember.computed(
+          frame: s.Ember.computed(
             "equippedFrame",
             "bannerDataFrameMap",
             function () {
@@ -18618,7 +18608,7 @@
             );
           },
           _levelToLevelText: function (e, t) {
-            if (!a.Lodash.inRange(e, 1, 5)) return "";
+            if (!s.Lodash.inRange(e, 1, 5)) return "";
             let n = "banners_update_flag_level_" + e;
             return (
               n && i.CLASH_THEMES_EOS.includes(t) && (n += "_eos"),
@@ -18630,15 +18620,15 @@
             return e ? this.get("tra").moment(e).locale(t).format("LL") : "";
           },
           _handleDialogDismissEvent: function () {
-            a.logger.trace("Dismissing banner update modal"),
-              s.ClashBannerPickerHandler.hideModal();
+            s.logger.trace("Dismissing banner update modal"),
+              a.ClashBannerPickerHandler.hideModal();
           },
           _saveSelectedBanner: function () {
             const e = this.get("selectedFlag");
-            a.logger.trace("Saving selected flag", e);
+            s.logger.trace("Saving selected flag", e);
             const t = Object.assign({ event: "selected-clash-flag" }, e);
             return (
-              a.Telemetry.sendCustomData("profile-overview-events", t),
+              s.Telemetry.sendCustomData("profile-overview-events", t),
               this.get("api.banners").put(
                 "/v1/current-summoner/flags/equipped",
                 e,
@@ -18648,40 +18638,40 @@
           isCurrentlySaving: !1,
           actions: {
             hoverFlag() {
-              a.AudioPlugin.getChannel("sfx-ui").playSound(
+              s.AudioPlugin.getChannel("sfx-ui").playSound(
                 "/fe/lol-profiles/sounds/sfx-banners-update-list-item-hover.ogg",
               );
             },
-            selectFlag(e, t, n, s, i) {
+            selectFlag(e, t, n, a, i) {
               const r = {
                 itemId: e,
                 theme: t,
                 level: n,
-                seasonId: s,
+                seasonId: a,
                 earnedDateIso8601: i,
               };
               this._setSelectedFlag(r),
-                a.AudioPlugin.getChannel("sfx-ui").playSound(
+                s.AudioPlugin.getChannel("sfx-ui").playSound(
                   "/fe/lol-profiles/sounds/sfx-banners-update-list-item-select.ogg",
                 );
             },
             save() {
               this.get("isCurrentlySaving")
-                ? a.logger.trace("Flag selection is already being updated")
+                ? s.logger.trace("Flag selection is already being updated")
                 : (this.set("isCurrentlySaving", !0),
-                  a.logger.trace(
+                  s.logger.trace(
                     "Updating flag selection and dismissing banner update modal",
                   ),
                   this._saveSelectedBanner().then(
                     (e) => {
                       this.set("isCurrentlySaving", !1),
-                        a.logger.trace("Successfully saved flag", e),
-                        s.ClashBannerPickerHandler.hideModal();
+                        s.logger.trace("Successfully saved flag", e),
+                        a.ClashBannerPickerHandler.hideModal();
                     },
                     (e) => {
                       this.set("isCurrentlySaving", !1),
-                        a.logger.warning("Failed to save flag", e),
-                        a.ModalManager.add({
+                        s.logger.warning("Failed to save flag", e),
+                        s.ModalManager.add({
                           type: "DialogAlert",
                           data: {
                             contents: this.get(
@@ -18711,41 +18701,41 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "xoy3hMeG",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "ygctXtlP",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","dialog-frame"],["static-attr","dismissable",""],["static-attr","orientation","bottom"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","dialog-content style-profile-clash-banner-picker-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-content-block",[]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-title"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","banners_update_title"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,5,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCurrentlySaving"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-flat-button-group",[]],["static-attr","type","dialog-frame"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","button-accept"],["dynamic-attr","disabled",["unknown",["isCurrentlySaving"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"save"],null],null],["flush-element"],["text","\\n      "],["append",["helper",["if"],[["get",["isCurrentlySaving"]],["get",["tra","banners_update_save_button_saving"]],["get",["tra","banners_update_save_button"]]],null],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCurrentlySaving"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-saving-spinner"],["flush-element"],["text","\\n      "],["append",["unknown",["uikit-spinner"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-full-page-backdrop",[]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-loading-spinner"],["flush-element"],["text","\\n            "],["append",["unknown",["uikit-spinner"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-picker-frame-img"],["dynamic-attr","src",["concat",[["unknown",["frame","imgSrc"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-clash-banner-picker-list-item ",["helper",["if"],[["get",["flag","isSelected"]],"list-item-selected"],null]]]],["modifier",["action"],[["get",[null]],"hoverFlag"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"selectFlag",["get",["flag","itemId"]],["get",["flag","theme"]],["get",["flag","level"]],["get",["flag","seasonId"]],["get",["flag","earnedDateIso8601"]]],[["on"],["click"]]],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-picker-flag-img"],["dynamic-attr","src",["concat",[["unknown",["flag","imgSrc"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-details-group"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-theme"],["flush-element"],["append",["unknown",["flag","tournamentText"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-level"],["flush-element"],["append",["unknown",["flag","levelText"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-earned-date"],["flush-element"],["append",["unknown",["flag","earnedDateText"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"],["block",["if"],[["get",["flag","isSelected"]]],null,3],["text","              "],["close-element"],["text","\\n"]],"locals":["flag"]},{"statements":[["text","          "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["flags"]]],null,4],["text","          "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-emblems\\\\profile-emblem-clash-banner-component\\\\clash-banner-picker-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","dialog-frame"],["static-attr","dismissable",""],["static-attr","orientation","bottom"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","dialog-content style-profile-clash-banner-picker-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-content-block",[]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-title"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","banners_update_title"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,5,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCurrentlySaving"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-flat-button-group",[]],["static-attr","type","dialog-frame"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","button-accept"],["dynamic-attr","disabled",["unknown",["isCurrentlySaving"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"save"],null],null],["flush-element"],["text","\\n      "],["append",["helper",["if"],[["get",["isCurrentlySaving"]],["get",["tra","banners_update_save_button_saving"]],["get",["tra","banners_update_save_button"]]],null],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isCurrentlySaving"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-saving-spinner"],["flush-element"],["text","\\n      "],["append",["unknown",["uikit-spinner"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-full-page-backdrop",[]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-loading-spinner"],["flush-element"],["text","\\n            "],["append",["unknown",["uikit-spinner"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-picker-frame-img"],["dynamic-attr","src",["concat",[["unknown",["frame","imgSrc"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-clash-banner-picker-list-item ",["helper",["if"],[["get",["flag","isSelected"]],"list-item-selected"],null]]]],["modifier",["action"],[["get",[null]],"hoverFlag"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"selectFlag",["get",["flag","itemId"]],["get",["flag","theme"]],["get",["flag","level"]],["get",["flag","seasonId"]],["get",["flag","earnedDateIso8601"]]],[["on"],["click"]]],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","class","style-profile-clash-banner-picker-flag-img"],["dynamic-attr","src",["concat",[["unknown",["flag","imgSrc"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-details-group"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-theme"],["flush-element"],["append",["unknown",["flag","tournamentText"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-level"],["flush-element"],["append",["unknown",["flag","levelText"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","style-profile-clash-banner-picker-list-item-earned-date"],["flush-element"],["append",["unknown",["flag","earnedDateText"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"],["block",["if"],[["get",["flag","isSelected"]]],null,3],["text","              "],["close-element"],["text","\\n"]],"locals":["flag"]},{"statements":[["text","          "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["each"],[["get",["flags"]]],null,4],["text","          "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(239),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-backdrop-component"],
             layout: n(240),
-            profileService: s.Ember.inject.service("profile"),
-            backdrop: s.Ember.computed.alias("profileService.backdrop"),
-            potatoModeSettings: s.Ember.computed.alias(
+            profileService: a.Ember.inject.service("profile"),
+            backdrop: a.Ember.computed.alias("profileService.backdrop"),
+            potatoModeSettings: a.Ember.computed.alias(
               "profileService.potatoModeSettings",
             ),
-            animationsDisabled: s.Ember.computed.bool(
+            animationsDisabled: a.Ember.computed.bool(
               "profileService.potatoModeSettings.data.potatoModeEnabled",
             ),
-            defaultBackdrop: s.Ember.computed.equal(
+            defaultBackdrop: a.Ember.computed.equal(
               "backdrop.backdropType",
               "default",
             ),
-            sectionIdObserver: s.Ember.on(
+            sectionIdObserver: a.Ember.on(
               "init",
-              s.Ember.observer(
+              a.Ember.observer(
                 "subnavigationState.shownSectionId",
                 function () {
-                  s.Ember.run.once(this, "playVideoIfOnOverview");
+                  a.Ember.run.once(this, "playVideoIfOnOverview");
                 },
               ),
             ),
@@ -18761,7 +18751,7 @@
                 }
               }
             },
-            overlays: s.Ember.computed(
+            overlays: a.Ember.computed(
               "profileService.backdrop.backdropAugments.@each",
               function () {
                 return (
@@ -18769,14 +18759,14 @@
                 ).map((e) => e.centeredLCOverlayPath);
               },
             ),
-            isOverviewSection: s.Ember.computed(
+            isOverviewSection: a.Ember.computed(
               "subnavigationState.shownSectionId",
               function () {
                 const e = this.get("subnavigationState.shownSectionId");
                 return null === e || e === this.overviewSectionId;
               },
             ),
-            shouldShowVideo: s.Ember.computed(
+            shouldShowVideo: a.Ember.computed(
               "potatoModeSettings",
               "animationsDisabled",
               "isOverviewSection",
@@ -18800,21 +18790,21 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "cKxqySFU",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "urubVwSF",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-backdrop-container ",["helper",["unless"],[["get",["isOverviewSection"]],"style-profile-backdrop-dimmed"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-masked-image"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-background-switcher"],null,[["class","src","overlays"],["style-profile-background-image",["helper",["if"],[["get",["shouldShowVideo"]],["get",["backdrop","backdropVideo"]],["get",["backdrop","backdropImage"]]],null],["get",["overlays"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["defaultBackdrop"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","style-profile-backdrop-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-backdrop-magic",[]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-backdrop-container ",["helper",["unless"],[["get",["isOverviewSection"]],"style-profile-backdrop-dimmed"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","style-profile-masked-image"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-background-switcher"],null,[["class","src","overlays"],["style-profile-background-image",["helper",["if"],[["get",["shouldShowVideo"]],["get",["backdrop","backdropVideo"]],["get",["backdrop","backdropImage"]]],null],["get",["overlays"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["defaultBackdrop"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","style-profile-backdrop-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-backdrop-magic",[]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1);
+        var s = n(1);
         n(242);
-        const s = (0, a.EmberDataBinding)({
-          Ember: a.Ember,
-          websocket: (0, a.getProvider)().getSocket(),
+        const a = (0, s.EmberDataBinding)({
+          Ember: s.Ember,
+          websocket: (0, s.getProvider)().getSocket(),
           basePaths: {
             login: "/lol-login",
             platformConfig: "/lol-platform-config",
@@ -18833,10 +18823,10 @@
             },
           },
         });
-        e.exports = a.Ember.Component.extend(s, {
+        e.exports = s.Ember.Component.extend(a, {
           classNames: ["style-profile-backdrop-picker-component"],
           layout: n(243),
-          isOnOverviewPage: a.Ember.computed(
+          isOnOverviewPage: s.Ember.computed(
             "subnavigationState.shownSectionId",
             "overviewSectionId",
             function () {
@@ -18846,14 +18836,14 @@
               );
             },
           ),
-          isOnModalView: a.Ember.computed.equal("profileMode", "searched"),
-          isNotOnModalView: a.Ember.computed.not("isOnModalView"),
-          skinsPickerDisabled: a.Ember.computed.equal(
+          isOnModalView: s.Ember.computed.equal("profileMode", "searched"),
+          isNotOnModalView: s.Ember.computed.not("isOnModalView"),
+          skinsPickerDisabled: s.Ember.computed.equal(
             "jmxSkinsPickerEnabled",
             !1,
           ),
-          skinsPickerEnabled: a.Ember.computed.not("skinsPickerDisabled"),
-          showSkinsPickerButton: a.Ember.computed.and(
+          skinsPickerEnabled: s.Ember.computed.not("skinsPickerDisabled"),
+          showSkinsPickerButton: s.Ember.computed.and(
             "skinsPickerEnabled",
             "isOnOverviewPage",
             "isNotOnModalView",
@@ -18880,7 +18870,7 @@
               this._super(...arguments);
           },
           willDestroy() {
-            a.SkinsPicker.destroy(), this._super(...arguments);
+            s.SkinsPicker.destroy(), this._super(...arguments);
           },
           actions: {
             toggleSkinsPicker() {
@@ -18893,7 +18883,7 @@
               const e = this.get("selectedSkinUpdateHandler"),
                 t = this.get("resetBackdropHandler"),
                 n = this.get("skinsPickerReadyHandler");
-              a.SkinsPicker.selectSkin(e, t, n);
+              s.SkinsPicker.selectSkin(e, t, n);
             }
           },
           _onSelectedSkinChange(e, t) {
@@ -18910,11 +18900,11 @@
                 "/v1/current-summoner/summoner-profile",
                 { key: "backgroundSkinId", value: e },
               ),
-              a = this.get("api.summoner").post(
+              s = this.get("api.summoner").post(
                 "/v1/current-summoner/summoner-profile",
                 { key: "backgroundSkinAugments", value: t ?? "" },
               );
-            return Promise.all([n, a]);
+            return Promise.all([n, s]);
           },
         });
       },
@@ -18923,11 +18913,11 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "IH2IPcHo",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "9mm56t0t",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-skin-picker-button ",["helper",["unless"],[["get",["showSkinsPickerButton"]],"hide"],null]]]],["flush-element"],["text","\\n  "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","cog"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleSkinsPicker"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_backdrop_picker_button_tooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-backdrop-picker-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["style-profile-skin-picker-button ",["helper",["unless"],[["get",["showSkinsPickerButton"]],"hide"],null]]]],["flush-element"],["text","\\n  "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","cog"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleSkinsPicker"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","profile_backdrop_picker_button_tooltip"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18935,21 +18925,21 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a,
-          s = n(1),
-          i = (a = n(245)) && a.__esModule ? a : { default: a },
+        var s,
+          a = n(1),
+          i = (s = n(245)) && s.__esModule ? s : { default: s },
           r = n(37);
         n(246);
-        const o = (0, s.EmberDataBinding)({
-          Ember: s.Ember,
-          websocket: (0, s.getProvider)().getSocket(),
+        const o = (0, a.EmberDataBinding)({
+          Ember: a.Ember,
+          websocket: (0, a.getProvider)().getSocket(),
           basePaths: { summoner: "/lol-summoner" },
         });
-        var l = s.Ember.Component.extend(o, {
+        var l = a.Ember.Component.extend(o, {
           classNames: ["style-profile-search-input-component"],
           layout: i.default,
           disabled: !1,
-          isOnOverviewPage: s.Ember.computed(
+          isOnOverviewPage: a.Ember.computed(
             "subnavigationState.shownSectionId",
             "overviewSectionId",
             function () {
@@ -18960,22 +18950,22 @@
             },
           ),
           init() {
-            this._super(...arguments), (this._playerNames = s.playerNames);
+            this._super(...arguments), (this._playerNames = a.playerNames);
           },
           _showAlertSummonerNotFound(e) {
             const t = this.$("<div>").text(e).html(),
               n = this.get("tra.profile_search_hint_text"),
-              a = (0, r.translate)(this, "profile_search_error_not_found", {
+              s = (0, r.translate)(this, "profile_search_error_not_found", {
                 name: t,
               }),
               i = this.get("tra.lib_ui_dialog_alert_ok"),
-              o = s.TemplateHelper.contentBlockDialog(
+              o = a.TemplateHelper.contentBlockDialog(
                 n,
-                a,
+                s,
                 "dialog-small",
                 "profile-search-alert",
               );
-            s.ModalManager.add({
+            a.ModalManager.add({
               type: "DialogAlert",
               data: { contents: o, okText: i },
             });
@@ -18984,7 +18974,7 @@
             n ||
             (e && t
               ? `${e}#${t}`
-              : (s.logger.error(
+              : (a.logger.error(
                   "Profile Search received an empty gameName and tagLine or summonerName from the player name input component",
                 ),
                 !1)),
@@ -19003,14 +18993,14 @@
                         this.get("_playerNames").formatPlayerName(e)
                           .playerNameFull,
                       );
-                  const a = {
+                  const s = {
                     event: "search-for-summoner",
                     summonerName: t,
                     ...(n?.summonerId && { summonerId: n.summonerId }),
                   };
-                  s.Telemetry.sendCustomData("profile-overview-events", a);
+                  a.Telemetry.sendCustomData("profile-overview-events", s);
                 } catch (e) {
-                  s.logger.error("Error searching for summoner", e);
+                  a.logger.error("Error searching for summoner", e);
                 }
                 this.set("disabled", !1);
               }
@@ -19020,11 +19010,11 @@
         t.default = l;
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "KR41lyjQ",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "n/Fsefgw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isOnOverviewPage"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["player-name-input"],null,[["enterKeyPressHandler","disabled"],[["helper",["action"],[["get",[null]],"enterKeyPressHandler"],null],["get",["disabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-input-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isOnOverviewPage"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["player-name-input"],null,[["enterKeyPressHandler","disabled"],[["helper",["action"],[["get",[null]],"enterKeyPressHandler"],null],["get",["disabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -19034,28 +19024,28 @@
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
-          i = (a = n(27)) && a.__esModule ? a : { default: a };
+        var s,
+          a = n(1),
+          i = (s = n(27)) && s.__esModule ? s : { default: s };
         n(248),
-          (e.exports = s.Ember.Component.extend(i.default, {
+          (e.exports = a.Ember.Component.extend(i.default, {
             classNames: ["style-profile-search-trail-component"],
             layout: n(249),
-            profileService: s.Ember.inject.service("profile"),
-            bannerEnabled: s.Ember.computed.alias(
+            profileService: a.Ember.inject.service("profile"),
+            bannerEnabled: a.Ember.computed.alias(
               "profileService.bannerEnabled",
             ),
-            friend: s.Ember.computed.alias("profileService.friend"),
-            summonerIconPathObserver: s.Ember.on(
+            friend: a.Ember.computed.alias("profileService.friend"),
+            summonerIconPathObserver: a.Ember.on(
               "init",
-              s.Ember.observer(
+              a.Ember.observer(
                 "summoner.profileIconId",
                 "friend.icon",
                 function () {
                   let e = this.get("friend.icon");
                   (Number.isInteger(e) && -1 !== e) ||
                     (e = this.get("summoner.profileIconId")),
-                    s.GameDataProfileIcons.getIconUrlPromise(e).then((e) => {
+                    a.GameDataProfileIcons.getIconUrlPromise(e).then((e) => {
                       this.set("summonerIconPath", e);
                     });
                 },
@@ -19068,68 +19058,68 @@
         n.r(t);
       },
       (e, t, n) => {
-        const a = n(1).Ember;
-        e.exports = a.HTMLBars.template({
-          id: "K9V81aRL",
+        const s = n(1).Ember;
+        e.exports = s.HTMLBars.template({
+          id: "iOEtlDj/",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-search-trail-summoner-icon"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summonerIconPath"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","style-profile-search-trail-summoner-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["summoner","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["summonerIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,null,0]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-profiles\\\\src\\\\app\\\\components\\\\profile-search-trail-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","style-profile-search-trail-summoner-icon"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summonerIconPath"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","style-profile-search-trail-summoner-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["summoner","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["summonerIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
+        var s,
+          a = n(1),
           i = n(251),
           r = n(265),
-          o = (a = n(266)) && a.__esModule ? a : { default: a };
+          o = (s = n(266)) && s.__esModule ? s : { default: s };
         n(267),
           (e.exports = function () {
-            const e = new i.FullPageModalMediator({ Navigation: s.Navigation }),
+            const e = new i.FullPageModalMediator({ Navigation: a.Navigation }),
               t = e.getScreenNode(),
               n = document.createElement("div");
             n.classList.add("rcp-fe-lol-profiles-modal"), t.appendChild(n);
             const {
-                subnavigationApi: a,
+                subnavigationApi: s,
                 screenRoot: l,
                 subnavigationModel: d,
                 rootElement: m,
-                overviewSection: _,
+                overviewSection: u,
               } = (0, r.createOverviewSubnavigation)("searched", e, n),
-              u = new o.default();
+              _ = new o.default();
             return (
-              a.addEventListener("screenHidden", () => {
-                u.destroyWrapper("rcp-fe-lol-profiles-overview"),
-                  u.destroyWrapper("rcp-fe-lol-profiles-backdrop"),
-                  u.destroyWrapper("rcp-fe-lol-profiles-search-trail");
+              s.addEventListener("screenHidden", () => {
+                _.destroyWrapper("rcp-fe-lol-profiles-overview"),
+                  _.destroyWrapper("rcp-fe-lol-profiles-backdrop"),
+                  _.destroyWrapper("rcp-fe-lol-profiles-search-trail");
               }),
-              a.addEventListener("showSubsection", (e, t) => {
+              s.addEventListener("showSubsection", (e, t) => {
                 if (e !== r.overviewSectionId) return;
                 d.summonerId = t.summonerId;
-                const n = u.createWrapper(
+                const n = _.createWrapper(
                     "rcp-fe-lol-profiles-overview",
                     Object.assign({}, d),
                     m,
                   ),
-                  a = u.createWrapper(
+                  s = _.createWrapper(
                     "rcp-fe-lol-profiles-backdrop",
                     Object.assign({}, d),
                   );
-                l.insertBefore(a.domNode, l.firstChild);
-                const s = u.createWrapper(
+                l.insertBefore(s.domNode, l.firstChild);
+                const a = _.createWrapper(
                   "rcp-fe-lol-profiles-search-trail",
                   Object.assign({}, d),
                 );
-                l.appendChild(s.domNode), m.appendChild(n.domNode);
+                l.appendChild(a.domNode), m.appendChild(n.domNode);
               }),
-              { subnavigationApi: a, overviewSection: _ }
+              { subnavigationApi: s, overviewSection: u }
             );
           });
       },
       (e, t, n) => {
         "use strict";
-        var a = d(n(252)),
-          s = d(n(258)),
+        var s = d(n(252)),
+          a = d(n(258)),
           i = d(n(259)),
           r = d(n(262)),
           o = d(n(263)),
@@ -19138,8 +19128,8 @@
           return e && e.__esModule ? e : { default: e };
         }
         e.exports = {
-          SubnavigationApi: a.default,
-          NavigationBarMediator: s.default,
+          SubnavigationApi: s.default,
+          NavigationBarMediator: a.default,
           SectionControllerMediator: i.default,
           FullPageModalMediator: r.default,
           DialogFrameMediator: o.default,
@@ -19149,21 +19139,21 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a = (function () {
+        var s = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          s = d(n(253)),
+          a = d(n(253)),
           i = d(n(254)),
           r = d(n(256)),
           o = n(257),
@@ -19172,7 +19162,7 @@
           return e && e.__esModule ? e : { default: e };
         }
         var m = "riotclient-lib-subnavigation",
-          _ = (function (e) {
+          u = (function (e) {
             function t(e) {
               !(function (e, t) {
                 if (!(e instanceof t))
@@ -19219,7 +19209,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              a(t, [
+              s(t, [
                 {
                   key: "_registerEventListeners",
                   value: function () {
@@ -19459,8 +19449,8 @@
               ]),
               t
             );
-          })(s.default);
-        t.default = _;
+          })(a.default);
+        t.default = u;
       },
       (e, t) => {
         "use strict";
@@ -19468,18 +19458,18 @@
         var n = (function () {
           function e(e, t) {
             for (var n = 0; n < t.length; n++) {
-              var a = t[n];
-              (a.enumerable = a.enumerable || !1),
-                (a.configurable = !0),
-                "value" in a && (a.writable = !0),
-                Object.defineProperty(e, a.key, a);
+              var s = t[n];
+              (s.enumerable = s.enumerable || !1),
+                (s.configurable = !0),
+                "value" in s && (s.writable = !0),
+                Object.defineProperty(e, s.key, s);
             }
           }
-          return function (t, n, a) {
-            return n && e(t.prototype, n), a && e(t, a), t;
+          return function (t, n, s) {
+            return n && e(t.prototype, n), s && e(t, s), t;
           };
         })();
-        var a = (function () {
+        var s = (function () {
           function e() {
             !(function (e, t) {
               if (!(e instanceof t))
@@ -19500,10 +19490,10 @@
                 key: "removeEventListener",
                 value: function (e, t) {
                   var n = this._listeners.get(e),
-                    a = void 0;
+                    s = void 0;
                   return (
-                    !!(n && n.length && (a = n.indexOf(t)) > -1) &&
-                    (n.splice(a, 1), this._listeners.set(e, n), !0)
+                    !!(n && n.length && (s = n.indexOf(t)) > -1) &&
+                    (n.splice(s, 1), this._listeners.set(e, n), !0)
                   );
                 },
               },
@@ -19519,15 +19509,15 @@
                   for (
                     var t = arguments.length,
                       n = Array(t > 1 ? t - 1 : 0),
-                      a = 1;
-                    a < t;
-                    a++
+                      s = 1;
+                    s < t;
+                    s++
                   )
-                    n[a - 1] = arguments[a];
-                  var s = this._listeners.get(e);
+                    n[s - 1] = arguments[s];
+                  var a = this._listeners.get(e);
                   return (
-                    !(!s || !s.length) &&
-                    (s.forEach(function (e) {
+                    !(!a || !a.length) &&
+                    (a.forEach(function (e) {
                       e.apply(void 0, n);
                     }),
                     !0)
@@ -19538,28 +19528,28 @@
             e
           );
         })();
-        t.default = a;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a,
-          s = (function () {
+        var s,
+          a = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
           i = n(253),
-          r = (a = i) && a.__esModule ? a : { default: a },
+          r = (s = i) && s.__esModule ? s : { default: s },
           o = n(255);
         var l = (function () {
           function e(t) {
@@ -19578,7 +19568,7 @@
               this._setComponentListeners();
           }
           return (
-            s(e, [
+            a(e, [
               {
                 key: "setLibraryReference",
                 value: function (e) {
@@ -19696,21 +19686,21 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a = (function () {
+        var s = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          s = o(n(253)),
+          a = o(n(253)),
           i = o(n(252)),
           r = n(255);
         function o(e) {
@@ -19723,7 +19713,7 @@
                 if (!(e instanceof t))
                   throw new TypeError("Cannot call a class as a function");
               })(this, t);
-              var a = (function (e, t) {
+              var s = (function (e, t) {
                 if (!e)
                   throw new ReferenceError(
                     "this hasn't been initialised - super() hasn't been called",
@@ -19741,38 +19731,38 @@
                   l + " SubsectionAPI - libRef should be an instance of API",
                 );
               return (
-                (a._libRef = e),
-                (a._sectionId = n),
-                (a._showing = !1),
-                a._libRef.addEventListener(
+                (s._libRef = e),
+                (s._sectionId = n),
+                (s._showing = !1),
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SHOW_SUBSECTION,
-                  a._showSubsection.bind(a),
+                  s._showSubsection.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SCREEN_HIDDEN,
-                  a._deselected.bind(a),
+                  s._deselected.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SECTION_WILL_SHOW,
-                  a._sectionWillShow.bind(a),
+                  s._sectionWillShow.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SECTION_SHOW,
-                  a._sectionShow.bind(a),
+                  s._sectionShow.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SECTION_WILL_HIDE,
-                  a._sectionWillHide.bind(a),
+                  s._sectionWillHide.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_SECTION_HIDE,
-                  a._sectionHide.bind(a),
+                  s._sectionHide.bind(s),
                 ),
-                a._libRef.addEventListener(
+                s._libRef.addEventListener(
                   r.EVENT_OUT_DESTROY,
-                  a._onDestroy.bind(a),
+                  s._onDestroy.bind(s),
                 ),
-                a
+                s
               );
             }
             return (
@@ -19795,7 +19785,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              a(t, [
+              s(t, [
                 {
                   key: "_onDestroy",
                   value: function () {
@@ -19897,7 +19887,7 @@
               ]),
               t
             );
-          })(s.default);
+          })(a.default);
         t.default = d;
       },
       (e, t) => {
@@ -19905,14 +19895,14 @@
         function n(e, t) {
           return e ? (isNaN(e) ? t : parseInt(e, 10)) : t;
         }
-        function a(e, t) {
+        function s(e, t) {
           return null == e ? t : !0 === e;
         }
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.sanitizeInteger = n),
-          (t.sanitizeBoolean = a);
-        var s = { sanitizeInteger: n, sanitizeBoolean: a };
-        t.default = s;
+          (t.sanitizeBoolean = s);
+        var a = { sanitizeInteger: n, sanitizeBoolean: s };
+        t.default = a;
       },
       (e, t, n) => {
         "use strict";
@@ -19924,40 +19914,40 @@
             t.NAVIGATION_ITEM_ATTR_ID =
             t.EVENT_NAVIGATION_CLICKED =
               void 0);
-        var a,
-          s = (function () {
+        var s,
+          a = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          i = function e(t, n, a) {
+          i = function e(t, n, s) {
             null === t && (t = Function.prototype);
-            var s = Object.getOwnPropertyDescriptor(t, n);
-            if (void 0 === s) {
+            var a = Object.getOwnPropertyDescriptor(t, n);
+            if (void 0 === a) {
               var i = Object.getPrototypeOf(t);
-              return null === i ? void 0 : e(i, n, a);
+              return null === i ? void 0 : e(i, n, s);
             }
-            if ("value" in s) return s.value;
-            var r = s.get;
-            return void 0 !== r ? r.call(a) : void 0;
+            if ("value" in a) return a.value;
+            var r = a.get;
+            return void 0 !== r ? r.call(s) : void 0;
           },
           r = n(254),
-          o = (a = r) && a.__esModule ? a : { default: a },
+          o = (s = r) && s.__esModule ? s : { default: s },
           l = n(255),
           d = n(257);
         var m = (t.EVENT_NAVIGATION_CLICKED =
             "lol-uikit-navigation-item-click-event"),
-          _ = (t.NAVIGATION_ITEM_ATTR_ID = "item-id"),
-          u = (t.NAVIGATION_ITEM_ATTR_PRIORITY = "priority"),
+          u = (t.NAVIGATION_ITEM_ATTR_ID = "item-id"),
+          _ = (t.NAVIGATION_ITEM_ATTR_PRIORITY = "priority"),
           c = (t.NAVIGATION_ITEM_ATTR_DISABLED = "disabled"),
           p = (t.NAVIGATION_ITEM_ATTR_ALERT = "alert"),
           h = (t.NAVIGATION_BAR_INDEX_ATTR = "selectedindex"),
@@ -19976,7 +19966,7 @@
                 throw new Error(
                   "NavigationBarMediator expects the component to be a tag lol-uikit-navigation-bar",
                 );
-              var a = (function (e, t) {
+              var s = (function (e, t) {
                 if (!e)
                   throw new ReferenceError(
                     "this hasn't been initialised - super() hasn't been called",
@@ -19985,7 +19975,7 @@
                   ? e
                   : t;
               })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, n));
-              return (a._options = e), a;
+              return (s._options = e), s;
             }
             return (
               (function (e, t) {
@@ -20007,11 +19997,11 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              s(t, [
+              a(t, [
                 {
                   key: "_onNavigationItemClicked",
                   value: function (e) {
-                    var t = e.target.getAttribute(_);
+                    var t = e.target.getAttribute(u);
                     t &&
                       this._library.dispatchEvent(
                         l.EVENT_IN_SUBNAVIGATION_SUBSECTION_SELECTED,
@@ -20038,9 +20028,9 @@
                       return "LOL-UIKIT-NAVIGATION-ITEM" === e.tagName;
                     });
                     for (var n = 0; n < t.length; n++) {
-                      var a = t[n];
-                      if (a.getAttribute(_) === e)
-                        return { element: a, index: n };
+                      var s = t[n];
+                      if (s.getAttribute(u) === e)
+                        return { element: s, index: n };
                     }
                   },
                 },
@@ -20057,22 +20047,22 @@
                   key: "_onApiRegisterSubsection",
                   value: function (e) {
                     var t = document.createElement("lol-uikit-navigation-item");
-                    t.setAttribute(_, e.id),
-                      t.setAttribute(u, e.priority),
+                    t.setAttribute(u, e.id),
+                      t.setAttribute(_, e.priority),
                       (t.innerHTML = e.title),
                       !1 === e.enabled && t.setAttribute(c, "");
                     for (
-                      var n = this._component.childNodes, a = 0;
-                      a < n.length;
-                      a++
+                      var n = this._component.childNodes, s = 0;
+                      s < n.length;
+                      s++
                     ) {
-                      var s = n[a];
-                      if ("LOL-UIKIT-NAVIGATION-ITEM" === s.tagName)
+                      var a = n[s];
+                      if ("LOL-UIKIT-NAVIGATION-ITEM" === a.tagName)
                         if (
-                          (0, d.sanitizeInteger)(s.getAttribute(u), 1) >
+                          (0, d.sanitizeInteger)(a.getAttribute(_), 1) >
                           e.priority
                         )
-                          return void this._component.insertBefore(t, s);
+                          return void this._component.insertBefore(t, a);
                     }
                     this._component.appendChild(t);
                   },
@@ -20098,21 +20088,21 @@
                   key: "_onApiSetTooltipSubsection",
                   value: function (e, t) {
                     var n = this._options,
-                      a = n.TooltipManager,
-                      s = n.TemplateHelper;
-                    if (a && s) {
+                      s = n.TooltipManager,
+                      a = n.TemplateHelper;
+                    if (s && a) {
                       var i = this._getSectionDataById(e);
                       if (i)
                         if ("string" == typeof t && t.length > 0) {
-                          var r = s.contentBlockTooltipSystem(t),
+                          var r = a.contentBlockTooltipSystem(t),
                             o = document.createElement("lol-uikit-tooltip");
                           o.appendChild(r);
-                          a.assign(i.element, o, null, {
+                          s.assign(i.element, o, null, {
                             type: "system",
                             targetAnchor: { x: "center", y: "bottom" },
                             tooltipAnchor: { x: "center", y: "top" },
                           });
-                        } else a.unassign(i.element);
+                        } else s.unassign(i.element);
                     } else
                       console.warn(
                         "NavigationBarMediator requires TooltipManager and TemplateHelper dependencies to run setTooltip",
@@ -20158,30 +20148,30 @@
             t.EVENT_SECTION_SHOW =
             t.EVENT_SECTION_WILL_SHOW =
               void 0);
-        var a = (function () {
+        var s = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          s = function e(t, n, a) {
+          a = function e(t, n, s) {
             null === t && (t = Function.prototype);
-            var s = Object.getOwnPropertyDescriptor(t, n);
-            if (void 0 === s) {
+            var a = Object.getOwnPropertyDescriptor(t, n);
+            if (void 0 === a) {
               var i = Object.getPrototypeOf(t);
-              return null === i ? void 0 : e(i, n, a);
+              return null === i ? void 0 : e(i, n, s);
             }
-            if ("value" in s) return s.value;
-            var r = s.get;
-            return void 0 !== r ? r.call(a) : void 0;
+            if ("value" in a) return a.value;
+            var r = a.get;
+            return void 0 !== r ? r.call(s) : void 0;
           },
           i = l(n(254)),
           r = l(n(260)),
@@ -20191,8 +20181,8 @@
         }
         var d = (t.EVENT_SECTION_WILL_SHOW = "elementWillShow"),
           m = (t.EVENT_SECTION_SHOW = "elementShow"),
-          _ = (t.EVENT_SECTION_WILL_HIDE = "elementWillHide"),
-          u = (t.EVENT_SECTION_HIDE = "elementHide"),
+          u = (t.EVENT_SECTION_WILL_HIDE = "elementWillHide"),
+          _ = (t.EVENT_SECTION_HIDE = "elementHide"),
           c = (t.SECTION_CONTROLLER_ATTR_SELECTED_ITEM = "selected-item"),
           p = (t.SECTION_ATTR_DISABLED = "disabled"),
           h = (t.SECTION_ATTR_ID = "section-id"),
@@ -20211,7 +20201,7 @@
                 throw new Error(
                   "SectionControllerMediator expected component with tag lol-uikit-section-controller",
                 );
-              var a = (function (e, t) {
+              var s = (function (e, t) {
                 if (!e)
                   throw new ReferenceError(
                     "this hasn't been initialised - super() hasn't been called",
@@ -20221,10 +20211,10 @@
                   : t;
               })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, n));
               return (
-                (a._options = e),
-                (a.sectionsRenders = {}),
-                (a._currentSectionId = a._component.getAttribute(c)),
-                a
+                (s._options = e),
+                (s.sectionsRenders = {}),
+                (s._currentSectionId = s._component.getAttribute(c)),
+                s
               );
             }
             return (
@@ -20247,7 +20237,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              a(t, [
+              s(t, [
                 {
                   key: "_getSectionById",
                   value: function (e) {
@@ -20259,7 +20249,7 @@
                 {
                   key: "_onDestroy",
                   value: function () {
-                    s(
+                    a(
                       t.prototype.__proto__ ||
                         Object.getPrototypeOf(t.prototype),
                       "_onDestroy",
@@ -20323,11 +20313,11 @@
                         this._onSectionShow.bind(this),
                       ),
                       this._component.addEventListener(
-                        _,
+                        u,
                         this._onSectionWillHide.bind(this),
                       ),
                       this._component.addEventListener(
-                        u,
+                        _,
                         this._onSectionHide.bind(this),
                       );
                   },
@@ -20336,9 +20326,9 @@
                   key: "_renderSection",
                   value: function (e, t, n) {
                     for (
-                      var a = this.sectionsRenders[t],
-                        s = r.default.create(a, n),
-                        i = r.default.getDOMNode(s);
+                      var s = this.sectionsRenders[t],
+                        a = r.default.create(s, n),
+                        i = r.default.getDOMNode(a);
                       e.firstChild;
 
                     )
@@ -20386,30 +20376,30 @@
       },
       (e, t, n) => {
         "use strict";
-        const a = n(261);
-        e.exports = new a();
+        const s = n(261);
+        e.exports = new s();
       },
       (e) => {
         "use strict";
         const t = "use_public_only",
           n = new WeakMap();
-        function a(e) {
+        function s(e) {
           return n.has(e) || n.set(e, {}), n.get(e);
         }
-        function s(e) {
+        function a(e) {
           return null !== e && "object" == typeof e;
         }
         const i = function () {
           this.factories = {};
         };
         (i.prototype.setFactory = function (e, t) {
-          if (s(e)) {
+          if (a(e)) {
             const n = "Component";
-            let a = e.name ? e.name : Object.keys(e)[0];
-            (t = e.create ? e.create : e[a]),
-              -1 !== a.indexOf(n, a.length - n.length) &&
-                (a = a.substring(0, a.length - n.length)),
-              (e = a);
+            let s = e.name ? e.name : Object.keys(e)[0];
+            (t = e.create ? e.create : e[s]),
+              -1 !== s.indexOf(n, s.length - n.length) &&
+                (s = s.substring(0, s.length - n.length)),
+              (e = s);
           } else if ("function" == typeof e) {
             throw new Error(
               "ComponentFactory.setFactory: type needs to be an object or a string, not a function!",
@@ -20418,7 +20408,7 @@
           this.factories[e] = t;
         }),
           (i.prototype.setPrivateFactory = function (e, t) {
-            a(this)[e] = t;
+            s(this)[e] = t;
           }),
           (i.prototype.getFactory = function (e) {
             const t = this.getPublicFactory(e);
@@ -20430,7 +20420,7 @@
           }),
           (i.prototype.getPrivateFactory = function (e) {
             e instanceof Object && (e = e.type);
-            return a(this)[e];
+            return s(this)[e];
           }),
           (i.prototype.getFactories = function () {
             return Object.assign({}, this.factories);
@@ -20447,11 +20437,11 @@
             if ("string" == typeof e) return this.createByName(e, t, n);
             if ("function" == typeof e) return e(t);
             if (
-              (s((a = e)) && a instanceof HTMLElement && 1 === a.nodeType) ||
+              (a((s = e)) && s instanceof HTMLElement && 1 === s.nodeType) ||
               e.domNode
             )
               return e;
-            var a;
+            var s;
             const i = this.create(e.type, t || e.data);
             return (
               (e.domNode = this.getDOMNode(i)),
@@ -20463,8 +20453,8 @@
             );
           }),
           (i.prototype.createByName = function (e, t, n) {
-            const a = this.findFactory(e, n);
-            return a ? this.create(a, t) : this.buildDummy(e);
+            const s = this.findFactory(e, n);
+            return s ? this.create(s, t) : this.buildDummy(e);
           }),
           (i.prototype.findFactory = function (e, n) {
             return n === t ? this.getPublicFactory(e) : this.getFactory(e);
@@ -20488,8 +20478,8 @@
           (i.prototype.exportable = function () {
             const e = this;
             return {
-              create: function (n, a) {
-                return e.create(n, a, t);
+              create: function (n, s) {
+                return e.create(n, s, t);
               },
               getFactories: function () {
                 return e.getFactories.apply(e, arguments);
@@ -20504,34 +20494,34 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a,
-          s = (function () {
+        var s,
+          a = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          i = function e(t, n, a) {
+          i = function e(t, n, s) {
             null === t && (t = Function.prototype);
-            var s = Object.getOwnPropertyDescriptor(t, n);
-            if (void 0 === s) {
+            var a = Object.getOwnPropertyDescriptor(t, n);
+            if (void 0 === a) {
               var i = Object.getPrototypeOf(t);
-              return null === i ? void 0 : e(i, n, a);
+              return null === i ? void 0 : e(i, n, s);
             }
-            if ("value" in s) return s.value;
-            var r = s.get;
-            return void 0 !== r ? r.call(a) : void 0;
+            if ("value" in a) return a.value;
+            var r = a.get;
+            return void 0 !== r ? r.call(s) : void 0;
           },
           r = n(254),
-          o = (a = r) && a.__esModule ? a : { default: a },
+          o = (s = r) && s.__esModule ? s : { default: s },
           l = n(255);
         var d = ["Navigation"],
           m = (function (e) {
@@ -20592,7 +20582,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              s(t, [
+              a(t, [
                 {
                   key: "getScreenNode",
                   value: function () {
@@ -20648,34 +20638,34 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a,
-          s = (function () {
+        var s,
+          a = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          i = function e(t, n, a) {
+          i = function e(t, n, s) {
             null === t && (t = Function.prototype);
-            var s = Object.getOwnPropertyDescriptor(t, n);
-            if (void 0 === s) {
+            var a = Object.getOwnPropertyDescriptor(t, n);
+            if (void 0 === a) {
               var i = Object.getPrototypeOf(t);
-              return null === i ? void 0 : e(i, n, a);
+              return null === i ? void 0 : e(i, n, s);
             }
-            if ("value" in s) return s.value;
-            var r = s.get;
-            return void 0 !== r ? r.call(a) : void 0;
+            if ("value" in a) return a.value;
+            var r = a.get;
+            return void 0 !== r ? r.call(s) : void 0;
           },
           r = n(254),
-          o = (a = r) && a.__esModule ? a : { default: a },
+          o = (s = r) && s.__esModule ? s : { default: s },
           l = n(255);
         var d = ["UIKit"],
           m = (function (e) {
@@ -20735,7 +20725,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              s(t, [
+              a(t, [
                 {
                   key: "getScreenNode",
                   value: function () {
@@ -20798,34 +20788,34 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 });
-        var a,
-          s = (function () {
+        var s,
+          a = (function () {
             function e(e, t) {
               for (var n = 0; n < t.length; n++) {
-                var a = t[n];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
+                var s = t[n];
+                (s.enumerable = s.enumerable || !1),
+                  (s.configurable = !0),
+                  "value" in s && (s.writable = !0),
+                  Object.defineProperty(e, s.key, s);
               }
             }
-            return function (t, n, a) {
-              return n && e(t.prototype, n), a && e(t, a), t;
+            return function (t, n, s) {
+              return n && e(t.prototype, n), s && e(t, s), t;
             };
           })(),
-          i = function e(t, n, a) {
+          i = function e(t, n, s) {
             null === t && (t = Function.prototype);
-            var s = Object.getOwnPropertyDescriptor(t, n);
-            if (void 0 === s) {
+            var a = Object.getOwnPropertyDescriptor(t, n);
+            if (void 0 === a) {
               var i = Object.getPrototypeOf(t);
-              return null === i ? void 0 : e(i, n, a);
+              return null === i ? void 0 : e(i, n, s);
             }
-            if ("value" in s) return s.value;
-            var r = s.get;
-            return void 0 !== r ? r.call(a) : void 0;
+            if ("value" in a) return a.value;
+            var r = a.get;
+            return void 0 !== r ? r.call(s) : void 0;
           },
           r = n(254),
-          o = (a = r) && a.__esModule ? a : { default: a },
+          o = (s = r) && s.__esModule ? s : { default: s },
           l = n(255);
         var d = [
             "screenName",
@@ -20863,14 +20853,14 @@
                   );
               }),
                 (n._options = Object.assign({ alignment: "left" }, e));
-              var a = e.Viewport,
-                s = e.Navigation;
+              var s = e.Viewport,
+                a = e.Navigation;
               return (
                 e.defaultSectionIdOnShow &&
                   (n.defaultSectionIdOnShow = e.defaultSectionIdOnShow),
-                (n.screenRoot = a.main().getScreenRoot(e.screenName)),
+                (n.screenRoot = s.main().getScreenRoot(e.screenName)),
                 (n.screenNode = n.screenRoot.getElement()),
-                (n.navigationItem = s.addItem(
+                (n.navigationItem = a.addItem(
                   {
                     show: n._onMainNavigationShow.bind(n),
                     hide: n._onMainNavigationHide.bind(n),
@@ -20928,7 +20918,7 @@
                       ? Object.setPrototypeOf(e, t)
                       : (e.__proto__ = t));
               })(t, e),
-              s(t, [
+              a(t, [
                 {
                   key: "getScreenNode",
                   value: function () {
@@ -20983,8 +20973,8 @@
       },
       (e, t, n) => {
         "use strict";
-        var a = n(1),
-          s = n(251);
+        var s = n(1),
+          a = n(251);
         const i = "profile_overview_subsection";
         e.exports = {
           overviewSectionId: i,
@@ -21002,36 +20992,36 @@
                 o.setAttribute("type", "nav-bar-secondary"),
                   o.classList.add("style-profile-sub-nav"),
                   n.appendChild(o);
-                const l = new s.NavigationBarMediator({
-                    TooltipManager: a.TooltipManager,
-                    TemplateHelper: a.TemplateHelper,
+                const l = new a.NavigationBarMediator({
+                    TooltipManager: s.TooltipManager,
+                    TemplateHelper: s.TemplateHelper,
                     component: o,
                   }),
-                  d = new s.SectionControllerMediator({ component: r }),
-                  m = new s.SubnavigationApi([t, l, d]),
-                  _ = a.Ember.Object.create({ shownSectionId: null }),
-                  u = {
+                  d = new a.SectionControllerMediator({ component: r }),
+                  m = new a.SubnavigationApi([t, l, d]),
+                  u = s.Ember.Object.create({ shownSectionId: null }),
+                  _ = {
                     profileMode: e,
-                    subnavigationState: _,
+                    subnavigationState: u,
                     overviewSectionId: i,
                   };
                 return (
                   m.addEventListener("showSubsection", (t, n) => {
-                    _.set("shownSectionId", t);
-                    const s = {};
-                    e && (s.profileMode = e),
-                      t && (s.sectionId = t),
-                      n && n.summonerId && (s.summonerId = n.summonerId),
-                      a.Telemetry.sendCustomData("profiles-subnav", s);
+                    u.set("shownSectionId", t);
+                    const a = {};
+                    e && (a.profileMode = e),
+                      t && (a.sectionId = t),
+                      n && n.summonerId && (a.summonerId = n.summonerId),
+                      s.Telemetry.sendCustomData("profiles-subnav", a);
                   }),
-                  { subnavigationApi: m, screenRoot: n, subnavigationModel: u }
+                  { subnavigationApi: m, screenRoot: n, subnavigationModel: _ }
                 );
               })(e, t, n),
               d = document.createElement("div"),
               m = (function (e, t) {
                 const n = () =>
-                    a.traService.get("profile_navigation_overview") || "_",
-                  s = e.registerSection({
+                    s.traService.get("profile_navigation_overview") || "_",
+                  a = e.registerSection({
                     id: i,
                     title: n(),
                     priority: 1,
@@ -21039,10 +21029,10 @@
                     enabled: !0,
                   });
                 return (
-                  a.tra.observe(() => {
-                    s.setTitle(n());
+                  s.tra.observe(() => {
+                    a.setTitle(n());
                   }),
-                  s
+                  a
                 );
               })(r, d);
             return {
@@ -21059,7 +21049,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
             this._wrapperInstances = {};
@@ -21072,8 +21062,8 @@
           }
           createWrapper(e, t, n) {
             this.destroyWrapper(e);
-            const s = a.ComponentFactory.create(e, t);
-            return this._setInstance(e, s), n && (s.parentElement = n), s;
+            const a = s.ComponentFactory.create(e, t);
+            return this._setInstance(e, a), n && (a.parentElement = n), a;
           }
           destroyWrapper(e) {
             const t = this._getInstance(e);
@@ -21093,16 +21083,16 @@
       },
       (e, t, n) => {
         "use strict";
-        var a,
-          s = n(1),
+        var s,
+          a = n(1),
           i = n(251),
           r = n(265),
-          o = (a = n(266)) && a.__esModule ? a : { default: a };
+          o = (s = n(266)) && s.__esModule ? s : { default: s };
         n(267),
           (e.exports = function (e) {
             const t = new i.MainNavigationMediator({
-                Navigation: s.Navigation,
-                Viewport: s.Viewport,
+                Navigation: a.Navigation,
+                Viewport: a.Viewport,
                 screenName: "rcp-fe-lol-profiles-main",
                 displayPriority: 20,
                 displayNameLocKey: "navbar_profile",
@@ -21111,15 +21101,15 @@
                 iconPath: "/fe/lol-static-assets/images/nav-icon-profile.svg",
               }),
               n = t.getScreenNode(),
-              a = document.createElement("div");
-            a.classList.add("rcp-fe-lol-profiles-main"), n.appendChild(a);
+              s = document.createElement("div");
+            s.classList.add("rcp-fe-lol-profiles-main"), n.appendChild(s);
             const {
                 subnavigationApi: l,
                 screenRoot: d,
                 subnavigationModel: m,
-                rootElement: _,
-                overviewSection: u,
-              } = (0, r.createOverviewSubnavigation)("main", t, a),
+                rootElement: u,
+                overviewSection: _,
+              } = (0, r.createOverviewSubnavigation)("main", t, s),
               c = new o.default();
             let p = null;
             return (
@@ -21149,17 +21139,17 @@
               l.addEventListener("showSubsection", (e) => {
                 if (e !== r.overviewSectionId)
                   return void c.destroyWrapper("rcp-fe-lol-profiles-overview");
-                s.Telemetry.startTracingEvent("profile-overview-rendered");
+                a.Telemetry.startTracingEvent("profile-overview-rendered");
                 const t = c.createWrapper(
                   "rcp-fe-lol-profiles-overview",
                   Object.assign({}, m),
-                  _,
+                  u,
                 );
-                _.appendChild(t.domNode);
+                u.appendChild(t.domNode);
               }),
               {
                 subnavigationApi: l,
-                overviewSection: u,
+                overviewSection: _,
                 mainNavigationItem: t.getMainNavigationItem(),
               }
             );
@@ -21169,16 +21159,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
             let e = null;
             (this.dataPromise = new Promise((t) => {
               e = t;
             })),
-              (this._gameDataBinding = (0, a.DataBinding)(
+              (this._gameDataBinding = (0, s.DataBinding)(
                 "/lol-game-data",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
               this._gameDataBinding
                 .get("assets/v1/champion-summary.json")
@@ -21195,16 +21185,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
             let e = null;
             (this.dataPromise = new Promise((t) => {
               e = t;
             })),
-              (this._gameDataBinding = (0, a.DataBinding)(
+              (this._gameDataBinding = (0, s.DataBinding)(
                 "/lol-game-data",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
               this._gameDataBinding
                 .get("assets/v1/summoner-banners.json")
@@ -21217,16 +21207,16 @@
           }
           getBannerFlagPromise(e, t) {
             return this.dataPromise.then((n) => {
-              let s = null;
+              let a = null;
               return (
                 n &&
-                  (s = a.Lodash.find(
+                  (a = s.Lodash.find(
                     n.BannerFlags,
                     (n) =>
                       n.theme.toLowerCase() === e.toLowerCase() &&
                       parseInt(n.level, 10) === parseInt(t, 10),
                   )),
-                s
+                a
               );
             });
           }
@@ -21235,7 +21225,7 @@
               let t = null;
               return (
                 e &&
-                  (t = a.Lodash.find(
+                  (t = s.Lodash.find(
                     e.BannerFrames,
                     (e) => 1 === parseInt(e.level, 10),
                   )),
@@ -21249,16 +21239,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
             let e = null;
             (this.dataPromise = new Promise((t) => {
               e = t;
             })),
-              (this._gameDataBinding = (0, a.DataBinding)(
+              (this._gameDataBinding = (0, s.DataBinding)(
                 "/lol-game-data",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
               this._gameDataBinding
                 .get("assets/v1/summoner-trophies.json")
@@ -21268,16 +21258,16 @@
           }
           getTrophyPromise(e, t) {
             return this.dataPromise.then((n) => {
-              let s = null;
+              let a = null;
               return (
                 n &&
-                  (s = a.Lodash.find(
+                  (a = s.Lodash.find(
                     n.Trophies,
                     (n) =>
                       n.theme.toLowerCase() === e.toLowerCase() &&
                       parseInt(n.bracket, 10) === parseInt(t, 10),
                   )),
-                s
+                a
               );
             });
           }
@@ -21286,7 +21276,7 @@
               let n = null;
               return (
                 t &&
-                  (n = a.Lodash.find(
+                  (n = s.Lodash.find(
                     t.TrophyPedestals,
                     (t) => parseInt(t.tier, 10) === parseInt(e, 10),
                   )),
@@ -21300,12 +21290,12 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
-            (this._gameDataBinding = (0, a.DataBinding)(
+            (this._gameDataBinding = (0, s.DataBinding)(
               "/lol-game-data",
-              (0, a.getProvider)().getSocket(),
+              (0, s.getProvider)().getSocket(),
             )),
               (this.dataPromise = new Promise((e) => {
                 this._gameDataBinding
@@ -21316,8 +21306,8 @@
           _lookupProfileIconPath(e, t) {
             if (!Number.isInteger(e) || !t) return "";
             const n = (e) => t.find((t) => t.id === e),
-              a = n(e) || n(0);
-            return a ? a.imagePath : "";
+              s = n(e) || n(0);
+            return s ? s.imagePath : "";
           }
           getIconUrlPromise(e) {
             return this.dataPromise.then((t) =>
@@ -21330,16 +21320,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {
             let e = null;
             (this.dataPromise = new Promise((t) => {
               e = t;
             })),
-              (this._gameDataBinding = (0, a.DataBinding)(
+              (this._gameDataBinding = (0, s.DataBinding)(
                 "/lol-game-data",
-                (0, a.getProvider)().getSocket(),
+                (0, s.getProvider)().getSocket(),
               )),
               this._gameDataBinding.get("assets/v1/skins.json").then((t) => {
                 e(t);
@@ -21354,55 +21344,55 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(1);
+        var s = n(1);
         t.default = class {
           constructor() {}
           mainSection() {
-            return a.PrivateAPI.mainProfile.subnavigationApi;
+            return s.PrivateAPI.mainProfile.subnavigationApi;
           }
           overlaySection() {
-            return a.PrivateAPI.modalProfile.subnavigationApi;
+            return s.PrivateAPI.modalProfile.subnavigationApi;
           }
           showOverlay(e) {
-            a.PrivateAPI.showOverlay(e);
+            s.PrivateAPI.showOverlay(e);
           }
           showOverlayForSummoner(e) {
-            a.PrivateAPI.showOverlayForSummoner(e);
+            s.PrivateAPI.showOverlayForSummoner(e);
           }
           setActive(e) {
-            return a.Navigation.setActive(
-              a.PrivateAPI.mainProfile.mainNavigationItem,
+            return s.Navigation.setActive(
+              s.PrivateAPI.mainProfile.mainNavigationItem,
               e,
             );
           }
           setShowAlert(e) {
-            return a.Navigation.setItemAlert(
-              a.PrivateAPI.mainProfile.mainNavigationItem,
+            return s.Navigation.setItemAlert(
+              s.PrivateAPI.mainProfile.mainNavigationItem,
               e,
             );
           }
           enabled() {
-            return a.PrivateAPI.profilesEnabled;
+            return s.PrivateAPI.profilesEnabled;
           }
           addConfigObserver(e) {
             "function" == typeof e &&
-              (a.PrivateAPI.platformConfigListeners.add(e),
-              e({ Enabled: a.PrivateAPI.profilesEnabled }));
+              (s.PrivateAPI.platformConfigListeners.add(e),
+              e({ Enabled: s.PrivateAPI.profilesEnabled }));
           }
           removeConfigObserver(e) {
-            a.PrivateAPI.platformConfigListeners.delete(e);
+            s.PrivateAPI.platformConfigListeners.delete(e);
           }
           registerComponent(e, t, n) {
-            return a.PrivateAPI.registerComponent(e, t, n);
+            return s.PrivateAPI.registerComponent(e, t, n);
           }
           getRankedReferenceButton() {
-            return a.PrivateAPI.getRankedReferenceModalButton();
+            return s.PrivateAPI.getRankedReferenceModalButton();
           }
           showAlertSummonerIsPrivate(e) {
-            a.PrivateAPI.showAlertSummonerIsPrivate(e);
+            s.PrivateAPI.showAlertSummonerIsPrivate(e);
           }
           hasPrivateProfile(e) {
-            return a.PrivateAPI.hasPrivateProfile(e);
+            return s.PrivateAPI.hasPrivateProfile(e);
           }
         };
       },
@@ -21435,11 +21425,11 @@
       },
     ],
     t = {};
-  function n(a) {
-    var s = t[a];
-    if (void 0 !== s) return s.exports;
-    var i = (t[a] = { id: a, loaded: !1, exports: {} });
-    return e[a].call(i.exports, i, i.exports, n), (i.loaded = !0), i.exports;
+  function n(s) {
+    var a = t[s];
+    if (void 0 !== a) return a.exports;
+    var i = (t[s] = { id: s, loaded: !1, exports: {} });
+    return e[s].call(i.exports, i, i.exports, n), (i.loaded = !0), i.exports;
   }
   (n.o = (e, t) => Object.prototype.hasOwnProperty.call(e, t)),
     (n.r = (e) => {
@@ -21453,10 +21443,10 @@
       "use strict";
       var e,
         t = (e = n(1)) && e.__esModule ? e : { default: e };
-      const a = "rcp-fe-lol-profiles",
-        s = document.currentScript.ownerDocument;
-      const i = window.getPluginAnnounceEventName(a);
-      s.addEventListener(
+      const s = "rcp-fe-lol-profiles",
+        a = document.currentScript.ownerDocument;
+      const i = window.getPluginAnnounceEventName(s);
+      a.addEventListener(
         i,
         function (e) {
           (0, e.registrationHandler)(function (e) {
@@ -21484,7 +21474,7 @@
                     .getApi_LeagueTierNames(),
                 lockAndLoadPlugin: (e) => e.get("rcp-fe-lol-lock-and-load"),
                 Lodash: (e) => e.get("rcp-fe-common-libs").getLodash(4),
-                logger: (e) => e.get("rcp-fe-common-libs").logging.create(a),
+                logger: (e) => e.get("rcp-fe-common-libs").logging.create(s),
                 ModalManager: (e) =>
                   e.get("rcp-fe-lol-uikit").getModalManager(),
                 moment: (e) => e.get("rcp-fe-lol-l10n").moment(),
@@ -21541,28 +21531,28 @@
                     .overlay("/fe/lol-profiles/trans.json")
                     .overlay("/fe/lol-shared-components/trans.json")
                     .overlay("/fe/lol-shared-components/trans-challenges.json"),
-                  a = t.default.emberl10n(t.default.Ember, n);
-                return t.default.add({ tra: n, traService: a });
+                  s = t.default.emberl10n(t.default.Ember, n);
+                return t.default.add({ tra: n, traService: s });
               })
               .then(() => {
                 const e = n(2).default;
                 t.default.add({ PrivateAPI: () => new e() });
-                const a = n(269).default,
-                  s = n(270).default,
+                const s = n(269).default,
+                  a = n(270).default,
                   i = n(271).default,
                   r = n(272).default,
                   o = n(273).default,
-                  l = new a(),
-                  d = new s(),
+                  l = new s(),
+                  d = new a(),
                   m = new i(),
-                  _ = new r(),
-                  u = new o();
+                  u = new r(),
+                  _ = new o();
                 t.default.add({
                   GameDataChampionSummary: l,
                   GameDataClashBanners: d,
                   GameDataClashTrophies: m,
-                  GameDataProfileIcons: _,
-                  GameDataSkins: u,
+                  GameDataProfileIcons: u,
+                  GameDataSkins: _,
                 });
                 const c = new (0, n(274).default)();
                 return (
@@ -21572,12 +21562,12 @@
                 );
               })
               .catch((e) => {
-                const a = n(275).default,
-                  s = e && e.message ? e.message : "unknown";
+                const s = n(275).default,
+                  a = e && e.message ? e.message : "unknown";
                 return (
-                  t.default.logger.error(`init API creation error: ${s}`),
-                  t.default.add({ PrivateAPI: () => new a() }),
-                  new a()
+                  t.default.logger.error(`init API creation error: ${a}`),
+                  t.default.add({ PrivateAPI: () => new s() }),
+                  new s()
                 );
               });
           });
