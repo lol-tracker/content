@@ -6727,7 +6727,7 @@
           (t.default = void 0);
         var n = a(1),
           s = n.Ember.Component.extend({
-            classNames: ["scoreboard-header-component"],
+            classNames: ["strawberry-scoreboard-header-component"],
             classNameBindings: ["team.isPlayerTeam"],
             showScoreboardColumnIcons: n.Ember.computed.equal("index", 0),
             teamGoldLoc: n.Ember.computed(
@@ -6764,7 +6764,7 @@
           l = a(108),
           i = (n = a(14)) && n.__esModule ? n : { default: n };
         var r = s.Ember.Component.extend(i.default, {
-          classNames: ["scoreboard-row-component"],
+          classNames: ["strawberry-scoreboard-row-component"],
           classNameBindings: [
             "player.isLocalPlayer",
             "player.leaver",
