@@ -63962,7 +63962,7 @@
           { Ember: c, l10n: p } = r,
           h = "component-factory-application",
           f = "ember-application-factory",
-          d = n(183).default;
+          d = n(189).default;
         function m() {}
         (m.prototype.createEmberAppDefinition = function (t, e, n, r) {
           e = e || {};
@@ -64045,6 +64045,7 @@
                             "/fe/ember-libs/trans-patcher-and-play-button.json",
                             "/fe/ember-libs/trans-loot-table.json",
                             "/fe/ember-libs/trans-icon-rarity.json",
+                            "/fe/ember-libs/trans-loadouts-modal.json",
                           ])
                         : (r = i(
                             c,
@@ -64056,7 +64057,10 @@
                                 "/fe/ember-libs/trans-patcher-and-play-button.json",
                               )
                               .overlay("/fe/ember-libs/trans-loot-table.json")
-                              .overlay("/fe/ember-libs/trans-icon-rarity.json"),
+                              .overlay("/fe/ember-libs/trans-icon-rarity.json")
+                              .overlay(
+                                "/fe/ember-libs/trans-loadouts-modal.json",
+                              ),
                           ));
                     const s = "service:tra";
                     (o = "tra"),
@@ -64195,17 +64199,19 @@
           o = n(33),
           { UIKIT_COMPONENTS: s, UIKIT_TEMPLATES: a } = n(118),
           { LOOT_TABLE_OBJECTS: u, LOOT_TABLE_TEMPLATES: l } = n(139),
-          { SVG_LOADER_COMPONENTS: c, SVG_LOADER_TEMPLATES: p } = n(149),
-          { ICON_RARITY_COMPONENTS: h, ICON_RARITY_TEMPLATES: f } = n(152),
-          d = "Component";
-        function m(t) {
+          { LOADOUTS_MODAL_COMPONENTS: c, LOADOUTS_MODAL_TEMPLATES: p } =
+            n(149),
+          { SVG_LOADER_COMPONENTS: h, SVG_LOADER_TEMPLATES: f } = n(155),
+          { ICON_RARITY_COMPONENTS: d, ICON_RARITY_TEMPLATES: m } = n(158),
+          g = "Component";
+        function y(t) {
           if (!t) return;
           if ("name" in t) return t.name;
           const e = Object.keys(t)[0];
           return (
-            (r = d),
+            (r = g),
             (n = e) && r && -1 !== n.indexOf(r, n.length - r.length)
-              ? e.substring(0, e.length - d.length)
+              ? e.substring(0, e.length - g.length)
               : e
           );
           var n, r;
@@ -64218,7 +64224,7 @@
             let n = "{{component model.componentName";
             const o = (function (t) {
                 if (!t) return;
-                let e = m(t);
+                let e = y(t);
                 return (
                   (e = e.replace(/([A-Z])/g, function (t) {
                     return "-" + t.toLowerCase();
@@ -64256,7 +64262,7 @@
             }
             return (n += "}}"), n;
           },
-          getModulesComponentName: m,
+          getModulesComponentName: y,
           buildDefaultEmberAppDefinition: function (t, e) {
             const n = {
               name: t,
@@ -64287,6 +64293,8 @@
               Object.assign(n.TEMPLATES, p),
               Object.assign(n, h),
               Object.assign(n.TEMPLATES, f),
+              Object.assign(n, d),
+              Object.assign(n.TEMPLATES, m),
               Object.assign(n, o)
             );
           },
@@ -64308,9 +64316,9 @@
               },
               {
                 PATCHER_COMPONENTS: i,
-                PATCHER_SERVICES: d,
-                PATCHER_TEMPLATES: m,
-              } = n(157);
+                PATCHER_SERVICES: g,
+                PATCHER_TEMPLATES: y,
+              } = n(163);
             return (
               Object.assign(r, s),
               Object.assign(r.TEMPLATES, a),
@@ -64318,11 +64326,13 @@
               Object.assign(r.TEMPLATES, l),
               Object.assign(r, c),
               Object.assign(r.TEMPLATES, p),
-              Object.assign(r, i),
-              Object.assign(r, d),
-              Object.assign(r.TEMPLATES, m),
               Object.assign(r, h),
               Object.assign(r.TEMPLATES, f),
+              Object.assign(r, i),
+              Object.assign(r, g),
+              Object.assign(r.TEMPLATES, y),
+              Object.assign(r, d),
+              Object.assign(r.TEMPLATES, m),
               (r.TEMPLATES["template-not-found"] = e.Handlebars.compile(
                 "<h1>Template Not Found</h1>{{log 'ERROR: Ember template not found.'}}",
               )),
@@ -73586,81 +73596,81 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "D1HLtJBC",
+          id: "q4MCa3H0",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-spinner.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-spinner.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["lol-uikit-spinner-image ",["unknown",["defaultSize"]]," ",["unknown",["class"]]]]],["dynamic-attr","src",["unknown",["s"]],null],["dynamic-attr","width",["unknown",["w"]],null],["dynamic-attr","height",["unknown",["h"]],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-spinner.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-spinner.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["lol-uikit-spinner-image ",["unknown",["defaultSize"]]," ",["unknown",["class"]]]]],["dynamic-attr","src",["unknown",["s"]],null],["dynamic-attr","width",["unknown",["w"]],null],["dynamic-attr","height",["unknown",["h"]],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "atWUBRjA",
+          id: "QC8KDUMX",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["renderContent"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["renderContent"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "dmnyFZtX",
+          id: "PN2vEIEH",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-modal.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-modal.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-modal.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-modal.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "QZBW+oN8",
+          id: "4a4gRYck",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-framed-icon.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-framed-icon.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["outer-mask ",["unknown",["interactiveStyle"]]," ",["unknown",["zoomStyle"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["frame-color ",["unknown",["cursorStyle"]]]]],["dynamic-attr","style",["unknown",["frameDynamicStyle"]],null],["flush-element"],["text","\\n    "],["yield","default"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["inner-mask ",["unknown",["innerShadowStyle"]]]]],["dynamic-attr","style",["unknown",["innerMaskDynamicStyle"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-framed-icon.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-framed-icon.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["outer-mask ",["unknown",["interactiveStyle"]]," ",["unknown",["zoomStyle"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["frame-color ",["unknown",["cursorStyle"]]]]],["dynamic-attr","style",["unknown",["frameDynamicStyle"]],null],["flush-element"],["text","\\n    "],["yield","default"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["inner-mask ",["unknown",["innerShadowStyle"]]]]],["dynamic-attr","style",["unknown",["innerMaskDynamicStyle"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "/lpotP/Q",
+          id: "g3un1IBr",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-background-switcher.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-background-switcher.js\\" "],["text","\\n"],["block",["if"],[["get",["src"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["get",["overlay"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-overlay ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["overlay"]},{"statements":[["block",["each"],[["get",["overlays"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","src",["unknown",["src"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["dynamic-attr","src",["unknown",["src"]],null],["static-attr","autoplay","true"],["static-attr","loop","true"],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isVideoSrc"]]],null,3,2],["block",["if"],[["get",["overlays"]]],null,1]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-background-switcher.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-background-switcher.js\\" "],["text","\\n"],["block",["if"],[["get",["src"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["get",["overlay"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-overlay ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["overlay"]},{"statements":[["block",["each"],[["get",["overlays"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","src",["unknown",["src"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["dynamic-attr","src",["unknown",["src"]],null],["static-attr","autoplay","true"],["static-attr","loop","true"],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isVideoSrc"]]],null,3,2],["block",["if"],[["get",["overlays"]]],null,1]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "QLymSjQ5",
+          id: "qnoeKaKp",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-error-page.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-error-page.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","uikit-error-page__group"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__wrench"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","p",[]],["static-attr","class","uikit-error-page__content"],["flush-element"],["text","\\n        "],["append",["unknown",["renderedContent"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRetrying"]]],null,1,0],["text","    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","uikit-error-page__button"],["modifier",["action"],[["get",[null]],"buttonCallback"]],["flush-element"],["text","\\n                "],["append",["unknown",["renderedButtonText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","uikit-error-page__retry-spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-error-page.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-error-page.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","uikit-error-page__group"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__wrench"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","p",[]],["static-attr","class","uikit-error-page__content"],["flush-element"],["text","\\n        "],["append",["unknown",["renderedContent"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRetrying"]]],null,1,0],["text","    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","uikit-error-page__button"],["modifier",["action"],[["get",[null]],"buttonCallback"]],["flush-element"],["text","\\n                "],["append",["unknown",["renderedButtonText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","uikit-error-page__retry-spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "Ps3pppAr",
+          id: "kVWtE7hN",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-lottie.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-lottie.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","lottie-render-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lottieErrorMessage"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["lottieErrorMessage"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-lottie.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-lottie.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","lottie-render-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lottieErrorMessage"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["lottieErrorMessage"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "+CZsgQvN",
+          id: "ITa1wbZh",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-vignette.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-vignette.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","header bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["header"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","main-content"],["flush-element"],["text","\\n  "],["yield","default",[["helper",["hash"],null,[["content"],["blank-template"]]]]],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","footer bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["footer"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-vignette.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-vignette.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","header bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["header"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","main-content"],["flush-element"],["text","\\n  "],["yield","default",[["helper",["hash"],null,[["content"],["blank-template"]]]]],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","footer bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["footer"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "SDiz29UR",
+          id: "xNnjJfd+",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\blank-template.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["yield","default"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\blank-template.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["yield","default"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -74188,34 +74198,677 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "5WMdP8Fa",
+          id: "ae8nXM0j",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-table-window"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,7,1],["close-element"],["text","\\n\\n"],["block",["uikit-modal"],null,[["type","displayModal","okText","dismissable"],["DialogAlert",["get",["showLoadError"]],"Okay!",true]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-small"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_title"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","classname","loot-table-loading"],["flush-element"],["append",["helper",["uikit-spinner"],null,[["class","width","height"],["loading-spinner","50px","50px"]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-no-results"],["flush-element"],["append",["unknown",["tra","loot_odds_no_results"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["chanceList"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-subtitle ",["helper",["unless"],[["get",["guaranteedItem","isVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["guaranteedItem","subHeader"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["guaranteedItem","children"]]]]],false],["text","\\n"]],"locals":["guaranteedItem"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","style","padding:18px"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__title-container"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon loot-table-variable-odds-tooltip__badge-icon--tooltip ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                      "],["open-element","h3",[]],["static-attr","class","loot-table-variable-odds-tooltip__title"],["flush-element"],["append",["unknown",["disclaimer","title"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","loot-table-variable-odds-tooltip__disclaimer"],["flush-element"],["text","\\n                      "],["append",["helper",["sanitize"],[["get",["disclaimer","description"]]],null],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__toggle-button"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["disclaimer","badgeTitle"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],5],["text","            "],["close-element"],["text","\\n"]],"locals":["disclaimer"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-table-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-header-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header"],["flush-element"],["text","\\n          "],["append",["unknown",["lootItemName"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds"],["flush-element"],["text","\\n"],["block",["each"],[["get",["disclaimers"]]],null,6],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header-subtext"],["flush-element"],["append",["unknown",["disclaimerSubtitle"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","loot-table-search"],["flush-element"],["text","\\n          "],["open-element","input",[]],["static-attr","class","loot-table-search-input"],["static-attr","type","search"],["dynamic-attr","value",["unknown",["searchTerm"]],null],["dynamic-attr","oninput",["helper",["action"],[["get",[null]],"onSearchInput"],null],null],["dynamic-attr","placeholder",["unknown",["tra","loot_odds_filter_searchbox_placeholder_text"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-scrollable-wrapper"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-table-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-title ",["helper",["unless"],[["get",["hasVisibleGuaranteedList"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_guaranteed_title"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["each"],[["get",["guaranteedList"]]],null,4],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["unless"],[["get",["chanceListVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-title"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_title"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-subtitle"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_subtitle"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["chanceList"]]],null,3],["block",["if"],[["get",["noResults"]]],null,2],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-table-window"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,7,1],["close-element"],["text","\\n\\n"],["block",["uikit-modal"],null,[["type","displayModal","okText","dismissable"],["DialogAlert",["get",["showLoadError"]],"Okay!",true]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-small"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_title"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","classname","loot-table-loading"],["flush-element"],["append",["helper",["uikit-spinner"],null,[["class","width","height"],["loading-spinner","50px","50px"]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-no-results"],["flush-element"],["append",["unknown",["tra","loot_odds_no_results"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["chanceList"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-subtitle ",["helper",["unless"],[["get",["guaranteedItem","isVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["guaranteedItem","subHeader"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["guaranteedItem","children"]]]]],false],["text","\\n"]],"locals":["guaranteedItem"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","style","padding:18px"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__title-container"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon loot-table-variable-odds-tooltip__badge-icon--tooltip ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                      "],["open-element","h3",[]],["static-attr","class","loot-table-variable-odds-tooltip__title"],["flush-element"],["append",["unknown",["disclaimer","title"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","loot-table-variable-odds-tooltip__disclaimer"],["flush-element"],["text","\\n                      "],["append",["helper",["sanitize"],[["get",["disclaimer","description"]]],null],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__toggle-button"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["disclaimer","badgeTitle"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],5],["text","            "],["close-element"],["text","\\n"]],"locals":["disclaimer"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-table-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-header-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header"],["flush-element"],["text","\\n          "],["append",["unknown",["lootItemName"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds"],["flush-element"],["text","\\n"],["block",["each"],[["get",["disclaimers"]]],null,6],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header-subtext"],["flush-element"],["append",["unknown",["disclaimerSubtitle"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","loot-table-search"],["flush-element"],["text","\\n          "],["open-element","input",[]],["static-attr","class","loot-table-search-input"],["static-attr","type","search"],["dynamic-attr","value",["unknown",["searchTerm"]],null],["dynamic-attr","oninput",["helper",["action"],[["get",[null]],"onSearchInput"],null],null],["dynamic-attr","placeholder",["unknown",["tra","loot_odds_filter_searchbox_placeholder_text"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-scrollable-wrapper"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-table-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-title ",["helper",["unless"],[["get",["hasVisibleGuaranteedList"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_guaranteed_title"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["each"],[["get",["guaranteedList"]]],null,4],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["unless"],[["get",["chanceListVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-title"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_title"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-subtitle"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_subtitle"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["chanceList"]]],null,3],["block",["if"],[["get",["noResults"]]],null,2],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "hiboT9Q+",
+          id: "Zh7faG/T",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-list.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-list.js\\" "],["text","\\n"],["block",["each"],[["get",["sortedItemList"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-table-item"],null,[["item"],[["get",["item"]]]]],false],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-list.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-list.js\\" "],["text","\\n"],["block",["each"],[["get",["sortedItemList"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-table-item"],null,[["item"],[["get",["item"]]]]],false],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "MfJaEeFt",
+          id: "t7uMy4oL",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-item.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-item.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-list-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-list-item-details"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"collapseNode"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-list-item-background-holder"],["flush-element"],["open-element","div",[]],["static-attr","class","loot-list-item-row-background"],["flush-element"],["close-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isCollapsable"]]],null,7,6],["text","    "],["open-element","div",[]],["static-attr","class","loot-odd-name"],["flush-element"],["append",["unknown",["displayLabel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-table-drop-rate"],["flush-element"],["append",["unknown",["percentage"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasQueryEvaluation"]]],null,5],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChildren"]]],null,3,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","loot-table-query-child-item"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["append",["unknown",["queryItem","localizedName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["queryItem"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-query-children ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["queryEvaluatedItemsToShow"]]],null,0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showEvaluationItems"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-child-list ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["item","children"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["childQueryDisplayText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-query-wrapper"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["item","isLoadingQueryEvaluation"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-chevron-wrapper"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","loot-table-chevron"],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 20 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M13.3 10L12.3 9L12 8.7L8.3 5L7 6.4L10.6 10L7 13.7L8.3 15L13.3 10Z"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-item.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-item.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-list-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-list-item-details"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"collapseNode"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-list-item-background-holder"],["flush-element"],["open-element","div",[]],["static-attr","class","loot-list-item-row-background"],["flush-element"],["close-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isCollapsable"]]],null,7,6],["text","    "],["open-element","div",[]],["static-attr","class","loot-odd-name"],["flush-element"],["append",["unknown",["displayLabel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-table-drop-rate"],["flush-element"],["append",["unknown",["percentage"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasQueryEvaluation"]]],null,5],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChildren"]]],null,3,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","loot-table-query-child-item"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["append",["unknown",["queryItem","localizedName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["queryItem"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-query-children ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["queryEvaluatedItemsToShow"]]],null,0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showEvaluationItems"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-child-list ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["item","children"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["childQueryDisplayText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-query-wrapper"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["item","isLoadingQueryEvaluation"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-chevron-wrapper"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","loot-table-chevron"],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 20 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M13.3 10L12.3 9L12 8.7L8.3 5L7 6.4L10.6 10L7 13.7L8.3 15L13.3 10Z"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         "use strict";
-        const r = { SvgLoaderComponent: n(150) },
-          i = { "components/svg-loader": n(151) };
+        const r = { LoadoutsModalRootComponent: n(150) },
+          i = { "components/loadouts-modal-root": n(154) };
+        t.exports = {
+          LOADOUTS_MODAL_COMPONENTS: r,
+          LOADOUTS_MODAL_TEMPLATES: i,
+        };
+      },
+      (t, e, n) => {
+        "use strict";
+        var r = (function (t, e) {
+          if (!e && t && t.__esModule) return t;
+          if (null === t || ("object" != typeof t && "function" != typeof t))
+            return { default: t };
+          var n = i(e);
+          if (n && n.has(t)) return n.get(t);
+          var r = {},
+            o = Object.defineProperty && Object.getOwnPropertyDescriptor;
+          for (var s in t)
+            if ("default" !== s && Object.prototype.hasOwnProperty.call(t, s)) {
+              var a = o ? Object.getOwnPropertyDescriptor(t, s) : null;
+              a && (a.get || a.set)
+                ? Object.defineProperty(r, s, a)
+                : (r[s] = t[s]);
+            }
+          (r.default = t), n && n.set(t, r);
+          return r;
+        })(n(1));
+        function i(t) {
+          if ("function" != typeof WeakMap) return null;
+          var e = new WeakMap(),
+            n = new WeakMap();
+          return (i = function (t) {
+            return t ? n : e;
+          })(t);
+        }
+        const o = "sfx-ui",
+          s = {
+            SFX_STAR_SHARDS_SUCCESS:
+              "/fe/lol-parties/sfx-starshards-success.ogg",
+            SFX_STAR_SHARDS_PURCHASE:
+              "/fe/lol-parties/sfx-starshards-button-release.ogg",
+          },
+          a = "ENABLED",
+          u = "DISABLED",
+          l = "UNSET",
+          c = r.default.getProvider().getSocket(),
+          p = "SUCCESS",
+          h = "tft_star_fragments",
+          f = "EnableStarShardsUpgradeFlow",
+          d = {
+            companions: "/fe/lol-parties/little_legends_icon.svg",
+            tft_map_skins: "/fe/lol-parties/arena_skins_icon.svg",
+            tft_damage_skins: "/fe/lol-parties/damage_skins_icon.svg",
+            emotes: "/fe/lol-parties/party_panel_header_icon.png",
+          },
+          m = {
+            companions: {
+              root: "/lol-cosmetics",
+              default: "/v1/inventories/default/companions",
+              tft: "/v1/inventories/tft/companions",
+              selection: "/v1/selection/companion",
+              component: "lol-parties-cosmetics-panel",
+              "component-reference": null,
+              "binding-type": "cosmetics",
+              title: "tft_companions_label",
+              purchase: "/v3/purchaseOffer",
+              purchaseCurrencyType: "tft_star_fragments",
+              purchaseStatus: "/v3/purchase-offer-order-statuses",
+              favorite: "/v1/favorites/tft/companions",
+            },
+            tft_map_skins: {
+              root: "/lol-cosmetics",
+              tft: "/v1/inventories/tft/map-skins",
+              selection: "/v1/selection/tft-map-skin",
+              component: "lol-parties-cosmetics-panel",
+              "binding-type": "cosmetics",
+              title: "tft_map_skins_label",
+              favorite: "/v1/favorites/tft/map-skins",
+            },
+            tft_damage_skins: {
+              root: "/lol-cosmetics",
+              tft: "/v1/inventories/tft/damage-skins",
+              selection: "/v1/selection/tft-damage-skin",
+              component: "lol-parties-cosmetics-panel",
+              "binding-type": "cosmetics",
+              title: "tft_damage_skins_label",
+              favorite: "/v1/favorites/tft/damage-skins",
+            },
+            emotes: {
+              root: "/lol-inventory",
+              default: "/v1/inventory/emotes",
+              "binding-type": "inventory",
+            },
+          },
+          g = r.uikit.getModalManager(),
+          y = r.uikit.getVignetteCelebrationManager();
+        t.exports = r.Ember.Component.extend({
+          classNames: ["loadouts-modal-root-component"],
+          init() {
+            this._super(...arguments),
+              (this._activeTypes = []),
+              (this._cosmeticsDataBinding = (0, r.DataBinding)(
+                "/lol-cosmetics",
+                c,
+              )),
+              (this._purchaseWidgetDataBinding = (0, r.DataBinding)(
+                "/lol-purchase-widget",
+                c,
+              )),
+              (this._starShardsWalletBinding = (0, r.DataBinding)(
+                "/lol-inventory",
+                c,
+              )),
+              (this._starShardsTogglesBinding = (0, r.DataBinding)(
+                "/lol-platform-config/v1/namespaces/Loadouts",
+                c,
+              )),
+              (this._rewardsProgramBinding = (0, r.DataBinding)(
+                "/lol-client-config/v3/client-config/lol.client_settings.navigation.enableRewardsProgram",
+                c,
+              )),
+              (this._starShardsAmount = 0),
+              (this._isShardShardsEnabled = !1),
+              (this._currentPurchaseTransactionId = null),
+              (this._currentPurchaseItemId = null),
+              (this._purchasePromiseResolve = null),
+              (this._purchaseDialogContentWrapper = null),
+              (this._purchaseDialogButtonWrapper = null),
+              (this._celebrationActive = !1),
+              (this._isRewardsProgramEnabled = l),
+              this._loadStarShardsToggles(),
+              this._loadRewardsProgramStatus();
+          },
+          didInsertElement() {
+            this._super(...arguments), this._updateTypes(this.get("types"));
+            this._getNavigationBar().setAttribute(
+              "selectedindex",
+              this._activeTypes.indexOf(this.get("activeType")),
+            ),
+              this._setSelectedLoadoutItem(this.get("activeType")),
+              this._updateNoneOption(this._component),
+              this._setNavigationBarTypes(this._activeTypes),
+              this._initStarShardsObserver(),
+              (this._onLoadoutGroupSelectedBinding =
+                this._onLoadoutGroupSelected.bind(this)),
+              (this._onLoadoutItemSelectedBinding =
+                this._onLoadoutItemSelected.bind(this)),
+              (this._onLoadoutItemFavoritedBinding =
+                this._onLoadoutItemFavorited.bind(this)),
+              (this._onLoadoutItemPurchaseBinding =
+                this._onLoadoutItemPurchase.bind(this)),
+              this._getNavigationBar().addEventListener(
+                "lol-uikit-navigation-item-click-event",
+                this._onLoadoutGroupSelectedBinding,
+              ),
+              this._getActiveContent().addEventListener(
+                "lol-parties-cosmetics-item-select-event",
+                this._onLoadoutItemSelectedBinding,
+                !0,
+              ),
+              this._getActiveContent().addEventListener(
+                "lol-parties-cosmetics-item-favorite-event",
+                this._onLoadoutItemFavoritedBinding,
+                !0,
+              ),
+              this._getActiveContent().addEventListener(
+                "lol-parties-cosmetics-item-purchase-event",
+                this._onLoadoutItemPurchaseBinding,
+                !0,
+              );
+          },
+          willDestroyElement() {
+            this._super(...arguments),
+              this._cosmeticsDataBinding.put("/v1/favorites/tft/save"),
+              this._cosmeticsDataBinding.unobserve(this),
+              this._starShardsWalletBinding.unobserve(this),
+              this._getNavigationBar().removeEventListener(
+                "lol-uikit-navigation-item-click-event",
+                this._onLoadoutGroupSelectedBinding,
+              ),
+              this._getActiveContent().removeEventListener(
+                "lol-parties-cosmetics-item-select-event",
+                this._onLoadoutItemSelectedBinding,
+                !0,
+              ),
+              this._getActiveContent().removeEventListener(
+                "lol-parties-cosmetics-item-favorite-event",
+                this._onLoadoutItemFavoritedBinding,
+                !0,
+              ),
+              this._getActiveContent().removeEventListener(
+                "lol-parties-cosmetics-item-purchase-event",
+                this._onLoadoutItemPurchaseBinding,
+                !0,
+              );
+          },
+          _initStarShardsObserver() {
+            this._starShardsWalletBinding.observe(
+              "/v1/wallet/" + h,
+              this,
+              (t) => {
+                t &&
+                  ((this._starShardsAmount = t[h]),
+                  this._component &&
+                    null === this._currentPurchaseItemId &&
+                    !this._celebrationActive &&
+                    this._component.setStarShardsAmount(
+                      this._starShardsAmount,
+                    ));
+              },
+            );
+          },
+          _loadStarShardsToggles() {
+            this._starShardsTogglesBinding.get().then((t) => {
+              t &&
+                t[f] &&
+                ((this._isShardShardsEnabled = t[f]),
+                this._component &&
+                  this._component.setStarShardsEnabled(
+                    this._isShardShardsEnabled,
+                  ));
+            });
+          },
+          _loadRewardsProgramStatus() {
+            this._rewardsProgramBinding.get().then((t) => {
+              (this._isRewardsProgramEnabled = t ? a : u),
+                this._component &&
+                  this._component.setRewardsProgramEnabled(
+                    this._isRewardsProgramEnabled,
+                  );
+            });
+          },
+          getBaseLayoutItem(t, e) {
+            if (!t) return;
+            if (
+              t &&
+              (t.itemId === e.defaultItemId ||
+                (t.upgrades && t.upgrades.length > 0))
+            )
+              return t;
+            const n = r.lodash.find(e.groups, { groupId: t.groupId });
+            if (!n) return t;
+            let i;
+            return (
+              r.lodash.forEach(n.items, (e) =>
+                e.itemId === t.itemId ||
+                r.lodash.find(e.upgrades, { itemId: t.itemId })
+                  ? ((i = e), !1)
+                  : void 0,
+              ),
+              i || t
+            );
+          },
+          _displayUpgradeCelebration(t) {
+            this._celebrationActive = !0;
+            const e = document.createElement(
+                "lol-parties-cosmetics-upgrade-celebration",
+              ),
+              n = this.getBaseLayoutItem(t, this._inventory),
+              r = {},
+              i = n.upgrades.findIndex((e) => e.itemId === t.itemId);
+            0 === i
+              ? ((r.previousItem = n), (r.newItem = n.upgrades[0]))
+              : ((r.previousItem = n.upgrades[i - 1]),
+                (r.newItem = n.upgrades[i])),
+              e.setData(r),
+              y.add({
+                id: "upgrade-celebration",
+                data: {
+                  header: {
+                    title: this.get("tra.tft_upgrade_celebration_title"),
+                  },
+                  nextButtonEnabled: !0,
+                  nextButtonText: this.get(
+                    "tra.tft_upgrade_celebration_button",
+                  ),
+                },
+                content: { domNode: e },
+                behindVignette: !0,
+                height: "LARGE",
+                onVignetteClose: () => {
+                  (this._celebrationActive = !1),
+                    this._component.setStarShardsAmount(this._starShardsAmount);
+                },
+              });
+          },
+          _onLoadoutItemSelected(t) {
+            const e = t.detail.item;
+            e.owned &&
+              (0 === e.itemId || e.itemId === this._inventory.defaultItemId
+                ? this._cosmeticsDataBinding.delete(
+                    m[this._selectedLoadoutId].selection,
+                    e.itemId,
+                  )
+                : e.selected ||
+                  this._cosmeticsDataBinding.put(
+                    m[this._selectedLoadoutId].selection,
+                    e.itemId,
+                  ));
+          },
+          _onLoadoutItemFavorited(t) {
+            const e = t.detail.item,
+              n =
+                (t.detail.type,
+                this._favorites?.favoriteItems.some(
+                  (t) => t.contentId === e.contentId,
+                ));
+            n
+              ? this._cosmeticsDataBinding.delete(
+                  m[this._selectedLoadoutId].favorite.concat("/", e.contentId),
+                )
+              : this._cosmeticsDataBinding.put(
+                  m[this._selectedLoadoutId].favorite.concat("/", e.contentId),
+                );
+          },
+          _onLoadoutItemPurchase(t) {
+            const e = t.detail.item;
+            e &&
+              !e.owned &&
+              e.offerData &&
+              this._displayPurchaseConfirmationDialog(e);
+          },
+          _onLoadoutGroupSelected(t) {
+            const e = t.detail.node;
+            this._setSelectedLoadoutItem(e.id);
+          },
+          _setSelectedLoadoutItem(t) {
+            (this._selectedLoadoutId = t),
+              (this._component = document.createElement(
+                m[this._selectedLoadoutId].component,
+              ));
+            const e = this._getActiveContent();
+            for (; e.firstChild; ) e.removeChild(e.firstChild);
+            e.appendChild(this._component),
+              this._component.setStarShardsEnabled(this._isShardShardsEnabled),
+              this._component.setRewardsProgramEnabled(
+                this._isRewardsProgramEnabled,
+              ),
+              this._component.setStarShardsAmount(this._starShardsAmount),
+              this._component.enableFavorites("tft" === this.get("setName")),
+              this._refreshInventoryBinding_modal(),
+              this._refreshPurchaseStatusBinding_modal(),
+              this._updateNoneOption(this._component);
+          },
+          _displayPurchaseConfirmationDialog(t) {
+            let e;
+            (e = g.add({
+              type: "DialogConfirm",
+              data: {
+                contents: this._generatePurchaseModalContents(t),
+                acceptText: this._getItemOfferPrice(t),
+                closeButton: !0,
+                dismissibleType: "inside",
+                acceptButtonType: "purchase",
+                acceptHandler: () =>
+                  new Promise((n) => {
+                    e.disableAcceptButton(),
+                      (this._purchasePromiseResolve = n),
+                      this._purchaseDialogButtonWrapper.classList.add(
+                        "parties-purchase-loading",
+                      );
+                    const r = {
+                      offerId: t.offerData.id,
+                      currencyType:
+                        m[this._selectedLoadoutId].purchaseCurrencyType,
+                    };
+                    this._purchaseWidgetDataBinding
+                      .post(m[this._selectedLoadoutId].purchase, r)
+                      .then((e) => {
+                        (this._currentPurchaseTransactionId =
+                          e.orderDto.data.id),
+                          (this._currentPurchaseItemId = t.itemId);
+                      }),
+                      (this._purchaseTransactionTimeout = setTimeout(() => {
+                        this._purchaseDialogButtonWrapper.classList.remove(
+                          "parties-purchase-loading",
+                        ),
+                          this._displayErrorMessageInPurchaseDialog();
+                      }, 1e4)),
+                      this._playSound(s.SFX_STAR_SHARDS_PURCHASE);
+                  }),
+              },
+              show: !0,
+            })),
+              e.acceptPromise.then(
+                () => {
+                  this._displayUpgradeCelebration(t),
+                    this._clearPurchaseTransaction();
+                },
+                () => {
+                  this._clearPurchaseTransaction();
+                },
+              ),
+              this._applyAdditionalButtonStyles(e);
+          },
+          _generatePurchaseModalContents(t) {
+            const e = document.createElement(
+              "lol-parties-loadouts-purchase-dialog-content",
+            );
+            return e.setData(t), (this._purchaseDialogContentWrapper = e), e;
+          },
+          _displayErrorMessageInPurchaseDialog() {
+            this._purchaseDialogContentWrapper.shadowRoot.querySelector(
+              ".lol-parties-purchase-dialog-error-message",
+            ).innerText = this.get(
+              "tra.tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
+            );
+          },
+          _applyAdditionalButtonStyles(t) {
+            const e = t.domNode.querySelector(
+                "lol-uikit-flat-button.button-accept",
+              ),
+              r = document.createElement("style"),
+              i = n(151);
+            (r.textContent = i),
+              e.shadowRoot.insertBefore(r, e.shadowRoot.firstChild),
+              (this._purchaseDialogButtonWrapper = e.shadowRoot.querySelector(
+                ".lol-uikit-flat-button",
+              ));
+            const o = document.createElement("div");
+            o.classList.add("lol-parties-purchase-dialog-button-spinner"),
+              this._purchaseDialogButtonWrapper.appendChild(o);
+            const s = e.shadowRoot.querySelector(
+                ".lol-uikit-flat-button-content-wrapper",
+              ),
+              a = document.createElement("div");
+            a.classList.add(
+              "lol-parties-purchase-dialog-button-currency-icon",
+              "icon-star-shards",
+            ),
+              s.appendChild(a);
+          },
+          _getItemOfferPrice: (t) =>
+            t.offerData.payload[0].itemPriceMap[
+              "33fe7291-2082-5b1d-be4a-8848d8a1eef8"
+            ],
+          _updateTypes(t) {
+            this._setNavigationBarTypes(t),
+              (this._activeTypes = t),
+              t.length > 0 &&
+                -1 === t.indexOf(this.get("activeType")) &&
+                this.set("activeType", t[0]);
+          },
+          _updateNoneOption(t) {
+            t &&
+              (this.get("showNone")
+                ? t.setAttribute("show-none", "")
+                : t.removeAttribute("show-none"));
+          },
+          _refreshInventoryBinding_modal() {
+            this._cosmeticsDataBinding.unobserve(this);
+            const t = m[this._selectedLoadoutId];
+            t &&
+              "cosmetics" === t["binding-type"] &&
+              (this._cosmeticsDataBinding.observe(
+                t.favorite,
+                this,
+                this._handleFavoritesChanged,
+              ),
+              this._cosmeticsDataBinding.observe(
+                t[this.get("setName")],
+                this,
+                this._handleInventoryChanged,
+              ));
+          },
+          _handleInventoryChanged(t) {
+            (this._inventory = t),
+              this._updateNoneOption(this._component),
+              this._component &&
+                (this._component.setInventory(this._inventory),
+                this._component.setAttribute("type", this._selectedLoadoutId));
+          },
+          _handleFavoritesChanged(t) {
+            (this._favorites = t),
+              this._component &&
+                this._component._updateFavorites(t.favoriteItems);
+          },
+          _refreshPurchaseStatusBinding_modal() {
+            this._purchaseWidgetDataBinding.unobserve(this);
+            const t = m[this._selectedLoadoutId];
+            t &&
+              t.purchaseStatus &&
+              this._purchaseWidgetDataBinding.observe(
+                t.purchaseStatus,
+                this,
+                this._handlePurchaseStatusUpdated,
+              );
+          },
+          _handlePurchaseStatusUpdated(t) {
+            if (
+              !this._currentPurchaseTransactionId ||
+              !this._purchasePromiseResolve
+            )
+              return;
+            const e = t.statuses[this._currentPurchaseTransactionId];
+            e &&
+              ((e.orderState !== p && "FAIL" !== e.orderState) ||
+                (e.orderState === p
+                  ? (this._purchasePromiseResolve(!0),
+                    this._refreshInventoryBinding_modal(),
+                    this._playSound(s.SFX_STAR_SHARDS_SUCCESS))
+                  : (this._purchasePromiseResolve(!1),
+                    this._purchaseDialogButtonWrapper.classList.remove(
+                      "parties-purchase-loading",
+                    ),
+                    this._displayErrorMessageInPurchaseDialog()),
+                this._purchaseTransactionTimeout &&
+                  (clearTimeout(this._purchaseTransactionTimeout),
+                  (this._purchaseTransactionTimeout = null))));
+          },
+          _clearPurchaseTransaction() {
+            (this._currentPurchaseTransactionId = null),
+              (this._currentPurchaseItemId = null),
+              (this._purchasePromiseResolve = null),
+              (this._purchaseDialogContentWrapper = null),
+              (this._purchaseDialogButtonWrapper = null),
+              this._purchaseTransactionTimeout &&
+                (clearTimeout(this._purchaseTransactionTimeout),
+                (this._purchaseTransactionTimeout = null));
+          },
+          _playSound(t) {
+            r.Audio.getChannel(o).playSound(t);
+          },
+          _getNavigationBar() {
+            return this.element.querySelector(".loadouts-selectable-items");
+          },
+          _getActiveContent() {
+            return this.element.querySelector(".loadouts-modal-active-item");
+          },
+          _clearNavigationBar() {
+            const t = this._getNavigationBar();
+            for (; t.firstChild; ) t.removeChild(t.firstChild);
+          },
+          _setNavigationBarTypes(t) {
+            this._clearNavigationBar();
+            const e = this._getNavigationBar();
+            for (let n = 0; n < t.length; n++) {
+              const r = document.createElement("lol-uikit-navigation-item");
+              r.id = t[n];
+              const i = document.createElement("div");
+              (i.className += "loadouts-modal-navigation-title"),
+                (i.innerHTML = this.get("tra").get(m[t[n]].title));
+              const o = document.createElement("div");
+              (o.className += "loadouts-modal-navigation-img"),
+                (o.style.backgroundImage = `url("${d[t[n]]}")`),
+                r.appendChild(o),
+                r.appendChild(i),
+                (r.className += "loadouts-modal-navigation-item"),
+                e.appendChild(r);
+            }
+          },
+        });
+      },
+      (t, e, n) => {
+        var r = n(152),
+          i = n(153)(r);
+        i.push([
+          t.id,
+          '.lol-uikit-flat-button.parties-purchase-loading .lol-uikit-flat-button-content-wrapper {\n  opacity: 0;\n  visibility: hidden;\n}\n.lol-uikit-flat-button.parties-purchase-loading .lol-parties-purchase-dialog-button-spinner {\n  opacity: 1;\n  visibility: visible;\n}\n.lol-uikit-flat-button-content-wrapper {\n  position: relative;\n  padding-left: 18px;\n  line-height: 22px;\n  transition: opacity 0.3s ease, visibility 0.3s ease;\n}\n.lol-parties-purchase-dialog-button-currency-icon {\n  position: absolute;\n  top: 2px;\n  left: -2px;\n  width: 18px;\n  height: 18px;\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n}\n.lol-parties-purchase-dialog-button-currency-icon.icon-star-shards {\n  background-image: url("/fe/lol-static-assets/images/icon-star-shards-36.png");\n}\n.lol-parties-purchase-dialog-button-spinner {\n  background-image: url("/fe/lol-static-assets/images/spinner.png");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 24px;\n  height: 24px;\n  margin: -12px 0 0 -12px;\n  animation: loader-spin 4000ms infinite linear;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.3s ease, visibility 0.3s ease;\n}\n@-moz-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n',
+          "",
+        ]),
+          (t.exports = i);
+      },
+      (t) => {
+        "use strict";
+        t.exports = function (t) {
+          return t[1];
+        };
+      },
+      (t) => {
+        "use strict";
+        t.exports = function (t) {
+          var e = [];
+          return (
+            (e.toString = function () {
+              return this.map(function (e) {
+                var n = "",
+                  r = void 0 !== e[5];
+                return (
+                  e[4] && (n += "@supports (".concat(e[4], ") {")),
+                  e[2] && (n += "@media ".concat(e[2], " {")),
+                  r &&
+                    (n += "@layer".concat(
+                      e[5].length > 0 ? " ".concat(e[5]) : "",
+                      " {",
+                    )),
+                  (n += t(e)),
+                  r && (n += "}"),
+                  e[2] && (n += "}"),
+                  e[4] && (n += "}"),
+                  n
+                );
+              }).join("");
+            }),
+            (e.i = function (t, n, r, i, o) {
+              "string" == typeof t && (t = [[null, t, void 0]]);
+              var s = {};
+              if (r)
+                for (var a = 0; a < this.length; a++) {
+                  var u = this[a][0];
+                  null != u && (s[u] = !0);
+                }
+              for (var l = 0; l < t.length; l++) {
+                var c = [].concat(t[l]);
+                (r && s[c[0]]) ||
+                  (void 0 !== o &&
+                    (void 0 === c[5] ||
+                      (c[1] = "@layer"
+                        .concat(c[5].length > 0 ? " ".concat(c[5]) : "", " {")
+                        .concat(c[1], "}")),
+                    (c[5] = o)),
+                  n &&
+                    (c[2]
+                      ? ((c[1] = "@media "
+                          .concat(c[2], " {")
+                          .concat(c[1], "}")),
+                        (c[2] = n))
+                      : (c[2] = n)),
+                  i &&
+                    (c[4]
+                      ? ((c[1] = "@supports ("
+                          .concat(c[4], ") {")
+                          .concat(c[1], "}")),
+                        (c[4] = i))
+                      : (c[4] = "".concat(i))),
+                  e.push(c));
+              }
+            }),
+            e
+          );
+        };
+      },
+      (t, e, n) => {
+        const r = n(1).Ember;
+        t.exports = r.HTMLBars.template({
+          id: "bqilphjE",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\templates\\\\components\\\\loadouts-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\components\\\\loadouts-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loadouts-modal-content"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-navigation-bar",[]],["static-attr","type","tabbed"],["static-attr","direction","down"],["static-attr","selectedindex","0"],["static-attr","class","loadouts-selectable-items"],["flush-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," This should have the content of the active selection"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loadouts-modal-active-item"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (t, e, n) => {
+        "use strict";
+        const r = { SvgLoaderComponent: n(156) },
+          i = { "components/svg-loader": n(157) };
         t.exports = { SVG_LOADER_COMPONENTS: r, SVG_LOADER_TEMPLATES: i };
       },
       (t, e, n) => {
@@ -74275,21 +74928,21 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "XTtgoVlx",
+          id: "XZW4RTBH",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\templates\\\\svg-loader.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\styles\\\\svg-loader.styl\\" js-path=\\"null\\" "],["text","\\n\\n"],["block",["if"],[["get",["guideMode"]]],null,2,1]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["shouldFadeOutSvg"]],"fade-out"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["content ",["helper",["unless"],[["get",["showContent"]],"display-none"],null]]]],["flush-element"],["text","\\n        "],["yield","default"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showContent"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["guideMode"]],"guide-mode"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\templates\\\\svg-loader.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\styles\\\\svg-loader.styl\\" js-path=\\"null\\" "],["text","\\n\\n"],["block",["if"],[["get",["guideMode"]]],null,2,1]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["shouldFadeOutSvg"]],"fade-out"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["content ",["helper",["unless"],[["get",["showContent"]],"display-none"],null]]]],["flush-element"],["text","\\n        "],["yield","default"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showContent"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["guideMode"]],"guide-mode"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         "use strict";
         const r = {
-            IconRarityComponent: n(153).default,
-            CollectionsTooltipComponent: n(154).default,
+            IconRarityComponent: n(159).default,
+            CollectionsTooltipComponent: n(160).default,
           },
           i = {
-            "components/icon-rarity": n(155),
-            "components/collections-tooltip": n(156),
+            "components/icon-rarity": n(161),
+            "components/collections-tooltip": n(162),
           };
         t.exports = { ICON_RARITY_COMPONENTS: r, ICON_RARITY_TEMPLATES: i };
       },
@@ -74386,47 +75039,47 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "sXuBULaE",
+          id: "qTbELR2j",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\icon-rarity.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\icon-rarity.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","icon-rarity__tooltip-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipOn"]]],null,1],["text","    "],["open-element","img",[]],["static-attr","class","icon-rarity__image"],["dynamic-attr","src",["unknown",["rarityData","gemIcon"]],null],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["static-attr","class","icon-rarity__tooltip-content"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["rarityData","tooltipTraKey"]]],null],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["collections-tooltip"],null,null,0]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\icon-rarity.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\icon-rarity.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","icon-rarity__tooltip-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipOn"]]],null,1],["text","    "],["open-element","img",[]],["static-attr","class","icon-rarity__image"],["dynamic-attr","src",["unknown",["rarityData","gemIcon"]],null],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["static-attr","class","icon-rarity__tooltip-content"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["rarityData","tooltipTraKey"]]],null],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["collections-tooltip"],null,null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "Eny+Vo2W",
+          id: "x0Ut5eLo",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\collections-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\collections-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\collections-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\collections-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         "use strict";
         const r = {
-            PatcherAndPlayButtonComponent: n(158),
-            PatcherBarComponent: n(160),
-            PatcherVideoStateComponent: n(162),
-            PatcherProgressTooltipComponent: n(163),
-            PatcherBasicButtonComponent: n(164),
-            PatcherPlayButtonComponent: n(165),
-            GamePatcherBarComponent: n(166),
-            LeagueClientLogoComponent: n(167),
-            ProgressBarComponent: n(168),
-            PatchingProgressBarComponent: n(169),
+            PatcherAndPlayButtonComponent: n(164),
+            PatcherBarComponent: n(166),
+            PatcherVideoStateComponent: n(168),
+            PatcherProgressTooltipComponent: n(169),
+            PatcherBasicButtonComponent: n(170),
+            PatcherPlayButtonComponent: n(171),
+            GamePatcherBarComponent: n(172),
+            LeagueClientLogoComponent: n(173),
+            ProgressBarComponent: n(174),
+            PatchingProgressBarComponent: n(175),
           },
-          i = { PatcherService: n(170), PlayButtonService: n(171) },
+          i = { PatcherService: n(176), PlayButtonService: n(177) },
           o = {
-            "components/patcher-and-play-button": n(173),
-            "components/patcher-bar": n(174),
-            "components/patcher-video-state": n(175),
-            "components/patcher-progress-tooltip": n(176),
-            "components/patcher-basic-button": n(177),
-            "components/patcher-play-button": n(178),
-            "components/game-patcher-bar": n(179),
-            "components/league-client-logo": n(180),
-            "components/progress-bar": n(181),
-            "components/patching-progress-bar": n(182),
+            "components/patcher-and-play-button": n(179),
+            "components/patcher-bar": n(180),
+            "components/patcher-video-state": n(181),
+            "components/patcher-progress-tooltip": n(182),
+            "components/patcher-basic-button": n(183),
+            "components/patcher-play-button": n(184),
+            "components/game-patcher-bar": n(185),
+            "components/league-client-logo": n(186),
+            "components/progress-bar": n(187),
+            "components/patching-progress-bar": n(188),
           };
         t.exports = {
           PATCHER_COMPONENTS: r,
@@ -74441,7 +75094,7 @@
             PATCHER_STATE_PATCHING: o,
             PATCHER_STATE_REPAIRING: s,
             PATCHER_STATE_CORRUPTED: a,
-          } = n(159);
+          } = n(165);
         t.exports = r.Component.extend({
           tagName: "",
           patcher: r.inject.service("patcher"),
@@ -74492,13 +75145,13 @@
             Telemetry: a,
             logger: u,
           } = n(1),
-          l = n(161),
+          l = n(167),
           {
             PATCHER_STATE_PATCHING: c,
             PATCHER_STATE_UNDETERMINED: p,
             NOT_PATCHING: h,
             PATCHING: f,
-          } = n(159),
+          } = n(165),
           { RunMixin: d } = o.EmberLifeline,
           m = { info: 1, warn: 2, error: 3 },
           g = "/fe/lol-static-assets/videos",
@@ -75216,11 +75869,12 @@
       },
       (t, e, n) => {
         "use strict";
-        const { Ember: r } = n(1),
-          i = "/fe/lol-static-assets/images",
-          o = "/fe/lol-static-assets/sounds",
-          s = "/fe/lol-static-assets/videos";
-        t.exports = r.Component.extend({
+        const { Ember: r, EmberAddons: i } = n(1),
+          { RunMixin: o } = i.EmberLifeline,
+          s = "/fe/lol-static-assets/images",
+          a = "/fe/lol-static-assets/sounds",
+          u = "/fe/lol-static-assets/videos";
+        t.exports = r.Component.extend(o, {
           classNames: ["play-button-component", "patcher-play-button"],
           classNameBindings: ["isEnabled:enabled:disabled"],
           playButton: r.inject.service("play-button"),
@@ -75246,53 +75900,55 @@
             "isDisabled",
             "isNotShowingLobby",
             "isNotRepairing",
+            "hasWaitedBeforeShowingTooltip",
           ),
           playVideos: {
-            disabledIntro: `${s}/button-disabled-intro.webm`,
-            enabledIntro: `${s}/play-button-enabled-intro.webm`,
-            hoverIntro: `${s}/play-button-hover-intro.webm`,
-            hoverOutro: `${s}/play-button-hover-outro.webm`,
-            hoverIdle: `${s}/play-button-hover-loop.webm`,
-            magicRelease: `${s}/play-button-magic-release.webm`,
-            patcherIntro: `${s}/patcher-to-play-button-enabled.webm`,
-            releaseIntro: `${s}/play-button-release.webm`,
-            leagueLogoIdle: `${s}/league-logo-loop-idle.webm`,
-            leagueLogoMagicIntro: `${s}/league-logo-magic.webm`,
+            disabledIntro: `${u}/button-disabled-intro.webm`,
+            enabledIntro: `${u}/play-button-enabled-intro.webm`,
+            hoverIntro: `${u}/play-button-hover-intro.webm`,
+            hoverOutro: `${u}/play-button-hover-outro.webm`,
+            hoverIdle: `${u}/play-button-hover-loop.webm`,
+            magicRelease: `${u}/play-button-magic-release.webm`,
+            patcherIntro: `${u}/patcher-to-play-button-enabled.webm`,
+            releaseIntro: `${u}/play-button-release.webm`,
+            leagueLogoIdle: `${u}/league-logo-loop-idle.webm`,
+            leagueLogoMagicIntro: `${u}/league-logo-magic.webm`,
           },
           lobbyVideos: {
-            disabledIntro: `${s}/button-disabled-intro.webm`,
-            enabledIntro: `${s}/lobby-button-intro.webm`,
-            hoverIntro: `${s}/lobby-button-hover-intro.webm`,
-            hoverOutro: `${s}/lobby-button-hover-outro.webm`,
-            hoverIdle: `${s}/lobby-button-hover-loop.webm`,
-            magicRelease: `${s}/lobby-button-magic-release.webm`,
-            releaseIntro: `${s}/lobby-button-release.webm`,
-            leagueLogoIdle: `${s}/league-logo-loop-idle.webm`,
+            disabledIntro: `${u}/button-disabled-intro.webm`,
+            enabledIntro: `${u}/lobby-button-intro.webm`,
+            hoverIntro: `${u}/lobby-button-hover-intro.webm`,
+            hoverOutro: `${u}/lobby-button-hover-outro.webm`,
+            hoverIdle: `${u}/lobby-button-hover-loop.webm`,
+            magicRelease: `${u}/lobby-button-magic-release.webm`,
+            releaseIntro: `${u}/lobby-button-release.webm`,
+            leagueLogoIdle: `${u}/league-logo-loop-idle.webm`,
             leagueLogoMagicIntro: "",
           },
           playSounds: {
-            click: `${o}/sfx-nav-button-play-click.ogg`,
-            hover: `${o}/sfx-nav-button-play-hover.ogg`,
+            click: `${a}/sfx-nav-button-play-click.ogg`,
+            hover: `${a}/sfx-nav-button-play-hover.ogg`,
           },
           lobbySounds: {
-            click: `${o}/sfx-nav-button-lobby-click.ogg`,
-            hover: `${o}/sfx-nav-button-lobby-hover.ogg`,
+            click: `${a}/sfx-nav-button-lobby-click.ogg`,
+            hover: `${a}/sfx-nav-button-lobby-hover.ogg`,
           },
           playImages: {
-            default: `${i}/play-button-default.png`,
-            disabled: `${i}/play-button-disabled.png`,
-            hover: `${i}/play-button-hover.png`,
-            pressed: `${i}/play-button-hover.png`,
+            default: `${s}/play-button-default.png`,
+            disabled: `${s}/play-button-disabled.png`,
+            hover: `${s}/play-button-hover.png`,
+            pressed: `${s}/play-button-hover.png`,
           },
           lobbyImages: {
-            default: `${i}/play-button-lobby-default.png`,
-            disabled: `${i}/play-button-disabled.png`,
-            hover: `${i}/play-button-lobby-hover.png`,
-            pressed: `${i}/play-button-lobby-hover.png`,
+            default: `${s}/play-button-lobby-default.png`,
+            disabled: `${s}/play-button-disabled.png`,
+            hover: `${s}/play-button-lobby-hover.png`,
+            pressed: `${s}/play-button-lobby-hover.png`,
           },
           videoStateMachine: null,
           playedPatcherIntro: !1,
           wasRepairing: !1,
+          hasWaitedBeforeShowingTooltip: !1,
           tooltipMessage: r.computed(
             "tra.metadata",
             "isDisabled",
@@ -75411,6 +76067,12 @@
               ? this.get("wasRepairing") || this.set("wasRepairing", !0)
               : this.get("wasRepairing") && this.set("wasRepairing", !1);
           }),
+          init() {
+            this._super(...arguments),
+              this.runTask(() => {
+                this.set("hasWaitedBeforeShowingTooltip", !0);
+              }, 7500);
+          },
           didInsertElement: function () {
             this._super(...arguments);
             const t = this.element.querySelector(
@@ -75492,7 +76154,7 @@
       (t, e, n) => {
         "use strict";
         const { Ember: r } = n(1),
-          i = n(160),
+          i = n(166),
           o = "/fe/lol-static-assets/videos",
           s = {
             progressBarMainLoop: `${o}/long-progress-bar-main-loop.webm`,
@@ -75539,7 +76201,7 @@
             PATCHER_STATE_PATCHING: d,
             PATCHER_STATE_REPAIRING: m,
             PATCHER_STATE_UNDETERMINED: g,
-          } = n(159),
+          } = n(165),
           { RunMixin: y } = i.EmberLifeline,
           v = "lol_game_client_sln",
           b = { league_client_sln: 33 };
@@ -75955,7 +76617,7 @@
             emberDataBinding: s,
             PatcherEvents: a,
           } = n(1),
-          u = n(172),
+          u = n(178),
           l = ["Lobby", "Matchmaking", "ReadyCheck", "ChampSelect"],
           c = s({
             Ember: i,
@@ -76467,90 +77129,90 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "VnrAmjWz",
+          id: "X/468zuV",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-and-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-and-play-button.js\\" "],["text","\\n"],["append",["unknown",["patcher-play-button"]],false],["text","\\n"],["append",["unknown",["patching-progress-bar"]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","patcher-tooltip-holder"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isProgressTooltipAttached"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["patcher-progress-tooltip"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-and-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-and-play-button.js\\" "],["text","\\n"],["append",["unknown",["patcher-play-button"]],false],["text","\\n"],["append",["unknown",["patching-progress-bar"]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","patcher-tooltip-holder"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isProgressTooltipAttached"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["patcher-progress-tooltip"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "HC461KLw",
+          id: "FVbxCPuh",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-bar.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-bar.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "B3Lktyh/",
+          id: "8k5sw8Tk",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-video-state.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-video-state.js\\" "],["text","\\n"],["block",["if"],[["get",["isIntro"]]],null,2],["block",["if"],[["get",["isLoop"]]],null,1],["block",["if"],[["get",["playOutro"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["outro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcOutro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["loop",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcLoop"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["static-attr","loop","true"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["intro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcIntro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-video-state.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-video-state.js\\" "],["text","\\n"],["block",["if"],[["get",["isIntro"]]],null,2],["block",["if"],[["get",["isLoop"]]],null,1],["block",["if"],[["get",["playOutro"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["outro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcOutro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["loop",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcLoop"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["static-attr","loop","true"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["intro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcIntro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "7aTXwk12",
+          id: "LxCu1OJ0",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-progress-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-progress-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["static-attr","id","patcher-progress-tooltip"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n    "],["open-element","h1",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayText"]],false],["text"," | "],["append",["unknown",["productName"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","info"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDownloading"]]],null,7,4],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayDetailText"]],false],["close-element"],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isRepairing"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["filesScanned"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isScanningFiles"]]],null,3,2]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","patcher_hanging_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["isHanging"]]],null,6,5]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-progress-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-progress-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["static-attr","id","patcher-progress-tooltip"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n    "],["open-element","h1",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayText"]],false],["text"," | "],["append",["unknown",["productName"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","info"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDownloading"]]],null,7,4],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayDetailText"]],false],["close-element"],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isRepairing"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["filesScanned"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isScanningFiles"]]],null,3,2]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","patcher_hanging_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["isHanging"]]],null,6,5]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "B1tC3hBh",
+          id: "lqSEa90A",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-basic-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-basic-button.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-frame"],["dynamic-attr","data-is-logged-in",["unknown",["playButton","isLoggedIn"]],null],["dynamic-attr","data-is-not-patching",["unknown",["playButton","isNotPatching"]],null],["dynamic-attr","data-patcher-state",["unknown",["patcher","patcherState"]],null],["flush-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-container"],["dynamic-attr","style",["helper",["sanitize"],[["get",["buttonContainerStyle"]]],null],null],["flush-element"],["text","\\n\\n  "],["append",["helper",["league-client-logo"],null,[["videoSource"],[["get",["videoSource"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","play-button-content"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","play-button-text"],["flush-element"],["text","\\n      "],["append",["unknown",["buttonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["text","\\n        "],["append",["unknown",["tooltipMessage"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-basic-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-basic-button.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-frame"],["dynamic-attr","data-is-logged-in",["unknown",["playButton","isLoggedIn"]],null],["dynamic-attr","data-is-not-patching",["unknown",["playButton","isNotPatching"]],null],["dynamic-attr","data-patcher-state",["unknown",["patcher","patcherState"]],null],["flush-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-container"],["dynamic-attr","style",["helper",["sanitize"],[["get",["buttonContainerStyle"]]],null],null],["flush-element"],["text","\\n\\n  "],["append",["helper",["league-client-logo"],null,[["videoSource"],[["get",["videoSource"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","play-button-content"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","play-button-text"],["flush-element"],["text","\\n      "],["append",["unknown",["buttonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["text","\\n        "],["append",["unknown",["tooltipMessage"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "9T/5p+q6",
+          id: "cVfuIi/E",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-play-button.js\\" "],["text","\\n"],["append",["helper",["patcher-basic-button"],null,[["isHidden","buttonText","buttonState","imageSource","soundSource","videoSource","isLobby","play","tooltipMessage","showTooltip"],[["get",["isHidden"]],["get",["buttonText"]],["get",["buttonState"]],["get",["imageSource"]],["get",["soundSource"]],["get",["videoSource"]],["get",["isLobbyBtn"]],"play",["get",["tooltipMessage"]],["get",["showTooltip"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-play-button.js\\" "],["text","\\n"],["append",["helper",["patcher-basic-button"],null,[["isHidden","buttonText","buttonState","imageSource","soundSource","videoSource","isLobby","play","tooltipMessage","showTooltip"],[["get",["isHidden"]],["get",["buttonText"]],["get",["buttonState"]],["get",["imageSource"]],["get",["soundSource"]],["get",["videoSource"]],["get",["isLobbyBtn"]],"play",["get",["tooltipMessage"]],["get",["showTooltip"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "IezTASIL",
+          id: "AJE28GQY",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\game-patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\game-patcher-bar.js\\" "],["text","\\n"],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","type","video/webm"],["flush-element"],["text","\\n  "],["open-element","source",[]],["static-attr","src","/fe/lol-static-assets/videos/league-logo-loop-idle.webm"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\game-patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\game-patcher-bar.js\\" "],["text","\\n"],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","type","video/webm"],["flush-element"],["text","\\n  "],["open-element","source",[]],["static-attr","src","/fe/lol-static-assets/videos/league-logo-loop-idle.webm"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "ivMRpzkO",
+          id: "2N2s4mOd",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\league-client-logo.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\league-client-logo.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["flush-element"],["text","\\n  "],["comment"," BUTTON BACKGROUND VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-video"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","patcherIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","disabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","releaseIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","hoverIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","hoverOutro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," BUTTON MAGIC VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-hover-magic"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","magicRelease"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","hoverIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," LOGO VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","refresh"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoMagicIntro"]],null],["static-attr","fade-out","400"],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\league-client-logo.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\league-client-logo.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["flush-element"],["text","\\n  "],["comment"," BUTTON BACKGROUND VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-video"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","patcherIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","disabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","releaseIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","hoverIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","hoverOutro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," BUTTON MAGIC VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-hover-magic"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","magicRelease"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","hoverIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," LOGO VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","refresh"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoMagicIntro"]],null],["static-attr","fade-out","400"],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "8zA9naUk",
+          id: "bsKFZfPi",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\progress-bar.js\\" "],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["global-mask ",["helper",["if"],[["get",["endPointMask"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","progress-bar-mask"],["dynamic-attr","style",["helper",["sanitize"],[["get",["progressBarStyle"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["main",["get",["srcMainLoop"]]]]],false],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["border",["get",["srcBorderLoop"]]]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","endpoint-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","action"],["endpoint",["get",["srcTipIntro"]],["get",["srcTipLoop"]],"endpointState"]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n    "],["yield","default"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\progress-bar.js\\" "],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["global-mask ",["helper",["if"],[["get",["endPointMask"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","progress-bar-mask"],["dynamic-attr","style",["helper",["sanitize"],[["get",["progressBarStyle"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["main",["get",["srcMainLoop"]]]]],false],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["border",["get",["srcBorderLoop"]]]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","endpoint-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","action"],["endpoint",["get",["srcTipIntro"]],["get",["srcTipLoop"]],"endpointState"]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n    "],["yield","default"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "lpMwjxfC",
+          id: "pAiJ2eUO",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patching-progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_10\\\\LeagueClientContent_Release\\\\15682\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patching-progress-bar.js\\" "],["text","\\n"],["comment"," need currentPatchPercentComplete in the template to ensure it fires updates "],["text","\\n"],["open-element","div",[]],["dynamic-attr","data-video-state",["unknown",["videoState"]],null],["dynamic-attr","data-current-progress",["unknown",["patcher","currentPatchPercentComplete"]],null],["dynamic-attr","class",["concat",["animated-progress-bar main ",["unknown",["patchingStatus"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","patcher-bar-proxy"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLongPatcherBar"]]],null,6,5],["text","\\n"],["block",["if"],[["get",["isPatching"]]],null,4],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","id","lol-patcher-client-patch-modal-holder"],["static-attr","class","lol-patcher-modal-holder"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","lol-patcher-client-patch-modal-body"],["static-attr","type","dialog-medium"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["text"," "],["append",["unknown",["clientPatchMessageText"]],false],["text"," "],["close-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","timer"],["flush-element"],["append",["unknown",["clientPatchModalTimerText"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["open-element","span",[]],["static-attr","class","phase"],["flush-element"],["append",["unknown",["phase"]],false],["close-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","long_patcher_bar_text"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLongPatcherBar"]]],null,1,0]],"locals":[]},{"statements":[["text","\\n"],["block",["progress-bar"],null,[["progressPercent","srcMainLoop","srcBorderLoop","srcTipIntro","srcTipLoop"],[["get",["patcher","currentPatchPercentComplete"]],["get",["progressBarAssets","progressBarMainLoop"]],["get",["progressBarAssets","progressBarBorder"]],["get",["progressBarAssets","progressBarTipIntro"]],["get",["progressBarAssets","progressBarTipLoop"]]]],2],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressing"]]],null,3],["text","\\n    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","srcWidth","srcHeight"],["logo",["get",["leagueLogoIntro"]],["get",["leagueLogoLoop"]],"64","54"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro"],["frame",["get",["progressBarAssets","patcherFrameIntro"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","frame"],["dynamic-attr","src",["unknown",["progressBarAssets","patcherFrame"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patching-progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patching-progress-bar.js\\" "],["text","\\n"],["comment"," need currentPatchPercentComplete in the template to ensure it fires updates "],["text","\\n"],["open-element","div",[]],["dynamic-attr","data-video-state",["unknown",["videoState"]],null],["dynamic-attr","data-current-progress",["unknown",["patcher","currentPatchPercentComplete"]],null],["dynamic-attr","class",["concat",["animated-progress-bar main ",["unknown",["patchingStatus"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","patcher-bar-proxy"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLongPatcherBar"]]],null,6,5],["text","\\n"],["block",["if"],[["get",["isPatching"]]],null,4],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","id","lol-patcher-client-patch-modal-holder"],["static-attr","class","lol-patcher-modal-holder"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","lol-patcher-client-patch-modal-body"],["static-attr","type","dialog-medium"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["text"," "],["append",["unknown",["clientPatchMessageText"]],false],["text"," "],["close-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","timer"],["flush-element"],["append",["unknown",["clientPatchModalTimerText"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["open-element","span",[]],["static-attr","class","phase"],["flush-element"],["append",["unknown",["phase"]],false],["close-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","long_patcher_bar_text"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLongPatcherBar"]]],null,1,0]],"locals":[]},{"statements":[["text","\\n"],["block",["progress-bar"],null,[["progressPercent","srcMainLoop","srcBorderLoop","srcTipIntro","srcTipLoop"],[["get",["patcher","currentPatchPercentComplete"]],["get",["progressBarAssets","progressBarMainLoop"]],["get",["progressBarAssets","progressBarBorder"]],["get",["progressBarAssets","progressBarTipIntro"]],["get",["progressBarAssets","progressBarTipLoop"]]]],2],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressing"]]],null,3],["text","\\n    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","srcWidth","srcHeight"],["logo",["get",["leagueLogoIntro"]],["get",["leagueLogoLoop"]],"64","54"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro"],["frame",["get",["progressBarAssets","patcherFrameIntro"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","frame"],["dynamic-attr","src",["unknown",["progressBarAssets","patcherFrame"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -76758,7 +77420,8 @@
                 .overlay("/fe/lol-l10n/trans.json")
                 .overlay("/fe/ember-libs/trans.json")
                 .overlay("/fe/ember-libs/trans-patcher-and-play-button.json")
-                .overlay("/fe/ember-libs/trans-loot-table.json");
+                .overlay("/fe/ember-libs/trans-loot-table.json")
+                .overlay("/fe/ember-libs/trans-loadouts-modal.json");
             await e.default.init(t, {
               Audio: (t) => t.get("rcp-fe-audio"),
               componentFactory: (t) =>

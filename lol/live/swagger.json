@@ -13928,23 +13928,6 @@
       },
       "type": "object"
     },
-    "LolCollectionsCollectionsChestEligibility": {
-      "properties": {
-        "earnableChests": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "maximumChests": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "nextChestRechargeTime": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "LolCollectionsCollectionsOwnership": {
       "properties": {
         "loyaltyReward": {
@@ -15080,6 +15063,10 @@
         "numOwned": {
           "format": "int32",
           "type": "integer"
+        },
+        "purchaseDate": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -15966,6 +15953,10 @@
         "numOwned": {
           "format": "int32",
           "type": "integer"
+        },
+        "purchaseDate": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -16020,6 +16011,10 @@
         },
         "numOwned": {
           "format": "int32",
+          "type": "integer"
+        },
+        "purchaseDate": {
+          "format": "int64",
           "type": "integer"
         }
       },
@@ -18120,6 +18115,9 @@
     },
     "LolEventHubBundledItemUIData": {
       "properties": {
+        "decoratorBadgeURL": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
@@ -18783,7 +18781,8 @@
     "LolEventHubEventHubType": {
       "enum": [
         "EventShop",
-        "HallOfLegends"
+        "HallOfLegends",
+        "SeasonPass"
       ],
       "type": "string"
     },
@@ -27035,6 +27034,7 @@
         "TFTNewPlayerRestriction",
         "SeasonVersionLockout",
         "UnknownRestriction",
+        "LOLNewPlayerRestriction",
         "QPPlayerScarcePositionCoverageRestriction",
         "QPPartyPositionCoverageRestriction",
         "QPPlayerPositionCoverageRestriction",
@@ -34535,6 +34535,9 @@
           },
           "type": "array"
         },
+        "source": {
+          "type": "string"
+        },
         "storeId": {
           "type": "string"
         }
@@ -34661,6 +34664,20 @@
           "type": "integer"
         },
         "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolMarketplaceRotationalShopItemData": {
+      "properties": {
+        "backgroundTextureLCU": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "descriptionTraKey": {
           "type": "string"
         }
       },
@@ -36773,170 +36790,6 @@
         "unlockTime": {
           "format": "int64",
           "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolMissionsTftPaidBattlepass": {
-      "properties": {
-        "activeMilestone": {
-          "$ref": "#/definitions/LolMissionsTftPaidBattlepassMilestone"
-        },
-        "bonuses": {
-          "items": {
-            "$ref": "#/definitions/LolMissionsTftPaidBattlepassMilestone"
-          },
-          "type": "array"
-        },
-        "currentLevel": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "info": {
-          "$ref": "#/definitions/LolMissionsTftPaidBattlepassInfo"
-        },
-        "lastViewedMilestone": {
-          "$ref": "#/definitions/LolMissionsTftPaidBattlepassMilestone"
-        },
-        "lastViewedProgress": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "milestones": {
-          "items": {
-            "$ref": "#/definitions/LolMissionsTftPaidBattlepassMilestone"
-          },
-          "type": "array"
-        },
-        "progressMissionId": {
-          "type": "string"
-        },
-        "totalPointsEarned": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolMissionsTftPaidBattlepassInfo": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "endDate": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "media": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "passId": {
-          "type": "string"
-        },
-        "pcPurchaseRequirement": {
-          "type": "string"
-        },
-        "premium": {
-          "type": "boolean"
-        },
-        "premiumEntitlementId": {
-          "type": "string"
-        },
-        "premiumTitle": {
-          "type": "string"
-        },
-        "startDate": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "title": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "LolMissionsTftPaidBattlepassMilestone": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "iconImageUrl": {
-          "type": "string"
-        },
-        "iconNeedsFrame": {
-          "type": "boolean"
-        },
-        "internalName": {
-          "type": "string"
-        },
-        "isBonus": {
-          "type": "boolean"
-        },
-        "isClaimRequestPending": {
-          "type": "boolean"
-        },
-        "isKeystone": {
-          "type": "boolean"
-        },
-        "isLocked": {
-          "type": "boolean"
-        },
-        "isPaid": {
-          "type": "boolean"
-        },
-        "level": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "missionId": {
-          "type": "string"
-        },
-        "pointsEarnedForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "pointsNeededForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "rewards": {
-          "items": {
-            "$ref": "#/definitions/LolMissionsTftPaidBattlepassReward"
-          },
-          "type": "array"
-        },
-        "state": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "totalPointsForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolMissionsTftPaidBattlepassReward": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "iconNeedsFrame": {
-          "type": "boolean"
-        },
-        "iconUrl": {
-          "type": "string"
-        },
-        "rewardGroup": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -39278,6 +39131,17 @@
       },
       "type": "object"
     },
+    "LolPerksRecommendedPositionsMapResource": {
+      "properties": {
+        "recommendedPositions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "LolPerksRuneRecommendationGDSResource": {
       "properties": {
         "isDefaultPosition": {
@@ -39997,6 +39861,82 @@
           "type": "string"
         },
         "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlements": {
+      "properties": {
+        "authorization": {
+          "$ref": "#/definitions/LolPftPftEntitlementsAuthorization"
+        },
+        "entitlements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsAccessToken": {
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "expiry": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsAuthorization": {
+      "properties": {
+        "accessToken": {
+          "$ref": "#/definitions/LolPftPftEntitlementsAccessToken"
+        },
+        "idToken": {
+          "$ref": "#/definitions/LolPftPftEntitlementsIdToken"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolPftPftEntitlementsIdToken": {
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "expiry": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "nonce": {
+          "type": "string"
+        },
+        "token": {
           "type": "string"
         }
       },
@@ -50755,6 +50695,9 @@
     },
     "LolTftEventLolTftEvent": {
       "properties": {
+        "dailyLoginSeriesId": {
+          "type": "string"
+        },
         "defaultLandingPage": {
           "type": "boolean"
         },
@@ -51345,170 +51288,6 @@
       },
       "type": "object"
     },
-    "LolTftEventTftPaidBattlepass": {
-      "properties": {
-        "activeMilestone": {
-          "$ref": "#/definitions/LolTftEventTftPaidBattlepassMilestone"
-        },
-        "bonuses": {
-          "items": {
-            "$ref": "#/definitions/LolTftEventTftPaidBattlepassMilestone"
-          },
-          "type": "array"
-        },
-        "currentLevel": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "info": {
-          "$ref": "#/definitions/LolTftEventTftPaidBattlepassInfo"
-        },
-        "lastViewedMilestone": {
-          "$ref": "#/definitions/LolTftEventTftPaidBattlepassMilestone"
-        },
-        "lastViewedProgress": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "milestones": {
-          "items": {
-            "$ref": "#/definitions/LolTftEventTftPaidBattlepassMilestone"
-          },
-          "type": "array"
-        },
-        "progressMissionId": {
-          "type": "string"
-        },
-        "totalPointsEarned": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolTftEventTftPaidBattlepassInfo": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "endDate": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "media": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "passId": {
-          "type": "string"
-        },
-        "pcPurchaseRequirement": {
-          "type": "string"
-        },
-        "premium": {
-          "type": "boolean"
-        },
-        "premiumEntitlementId": {
-          "type": "string"
-        },
-        "premiumTitle": {
-          "type": "string"
-        },
-        "startDate": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "title": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "LolTftEventTftPaidBattlepassMilestone": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "iconImageUrl": {
-          "type": "string"
-        },
-        "iconNeedsFrame": {
-          "type": "boolean"
-        },
-        "internalName": {
-          "type": "string"
-        },
-        "isBonus": {
-          "type": "boolean"
-        },
-        "isClaimRequestPending": {
-          "type": "boolean"
-        },
-        "isKeystone": {
-          "type": "boolean"
-        },
-        "isLocked": {
-          "type": "boolean"
-        },
-        "isPaid": {
-          "type": "boolean"
-        },
-        "level": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "missionId": {
-          "type": "string"
-        },
-        "pointsEarnedForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "pointsNeededForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "rewards": {
-          "items": {
-            "$ref": "#/definitions/LolTftEventTftPaidBattlepassReward"
-          },
-          "type": "array"
-        },
-        "state": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "totalPointsForMilestone": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolTftEventTftPaidBattlepassReward": {
-      "properties": {
-        "description": {
-          "type": "string"
-        },
-        "iconNeedsFrame": {
-          "type": "boolean"
-        },
-        "iconUrl": {
-          "type": "string"
-        },
-        "rewardGroup": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "LolTftEventTftWeeklyMissions": {
       "properties": {
         "missions": {
@@ -51591,6 +51370,9 @@
     },
     "LolTftLolTftEvent": {
       "properties": {
+        "dailyLoginSeriesId": {
+          "type": "string"
+        },
         "defaultLandingPage": {
           "type": "boolean"
         },
@@ -52846,14 +52628,14 @@
       },
       "type": "object"
     },
-    "LolTftPassTftPaidBattlepass": {
+    "LolTftPassTftBattlepass": {
       "properties": {
         "activeMilestone": {
-          "$ref": "#/definitions/LolTftPassTftPaidBattlepassMilestone"
+          "$ref": "#/definitions/LolTftPassTftBattlepassMilestone"
         },
         "bonuses": {
           "items": {
-            "$ref": "#/definitions/LolTftPassTftPaidBattlepassMilestone"
+            "$ref": "#/definitions/LolTftPassTftBattlepassMilestone"
           },
           "type": "array"
         },
@@ -52862,10 +52644,10 @@
           "type": "integer"
         },
         "info": {
-          "$ref": "#/definitions/LolTftPassTftPaidBattlepassInfo"
+          "$ref": "#/definitions/LolTftPassTftBattlepassInfo"
         },
         "lastViewedMilestone": {
-          "$ref": "#/definitions/LolTftPassTftPaidBattlepassMilestone"
+          "$ref": "#/definitions/LolTftPassTftBattlepassMilestone"
         },
         "lastViewedProgress": {
           "format": "int32",
@@ -52873,12 +52655,9 @@
         },
         "milestones": {
           "items": {
-            "$ref": "#/definitions/LolTftPassTftPaidBattlepassMilestone"
+            "$ref": "#/definitions/LolTftPassTftBattlepassMilestone"
           },
           "type": "array"
-        },
-        "progressMissionId": {
-          "type": "string"
         },
         "totalPointsEarned": {
           "format": "int32",
@@ -52887,7 +52666,7 @@
       },
       "type": "object"
     },
-    "LolTftPassTftPaidBattlepassInfo": {
+    "LolTftPassTftBattlepassInfo": {
       "properties": {
         "description": {
           "type": "string"
@@ -52927,7 +52706,7 @@
       },
       "type": "object"
     },
-    "LolTftPassTftPaidBattlepassMilestone": {
+    "LolTftPassTftBattlepassMilestone": {
       "properties": {
         "description": {
           "type": "string"
@@ -52937,9 +52716,6 @@
         },
         "iconNeedsFrame": {
           "type": "boolean"
-        },
-        "internalName": {
-          "type": "string"
         },
         "isBonus": {
           "type": "boolean"
@@ -52960,7 +52736,7 @@
           "format": "int32",
           "type": "integer"
         },
-        "missionId": {
+        "milestoneId": {
           "type": "string"
         },
         "pointsEarnedForMilestone": {
@@ -52973,12 +52749,9 @@
         },
         "rewards": {
           "items": {
-            "$ref": "#/definitions/LolTftPassTftPaidBattlepassReward"
+            "$ref": "#/definitions/LolTftPassTftBattlepassReward"
           },
           "type": "array"
-        },
-        "state": {
-          "type": "string"
         },
         "status": {
           "type": "string"
@@ -52993,7 +52766,7 @@
       },
       "type": "object"
     },
-    "LolTftPassTftPaidBattlepassReward": {
+    "LolTftPassTftBattlepassReward": {
       "properties": {
         "description": {
           "type": "string"
@@ -53002,9 +52775,6 @@
           "type": "boolean"
         },
         "iconUrl": {
-          "type": "string"
-        },
-        "rewardGroup": {
           "type": "string"
         }
       },
@@ -56753,10 +56523,6 @@
           "type": "integer"
         },
         "chainSize": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "level": {
           "format": "int32",
           "type": "integer"
         },
@@ -60850,7 +60616,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -60920,7 +60686,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -60951,129 +60717,6 @@
         "summary": "Retrieves details on the current state of an asynchronous operation.",
         "tags": [
           "builtin"
-        ]
-      }
-    },
-    "/client-config/v1/config": {
-      "get": {
-        "operationId": "GetClientConfigV1Config",
-        "parameters": [
-          {
-            "enum": [
-              "public",
-              "player"
-            ],
-            "in": "query",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "app",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "version",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "patchline",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "region",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "namespace",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": {
-                "additionalProperties": true,
-                "type": "object"
-              },
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin client-config"
-        ]
-      }
-    },
-    "/client-config/v1/config/{name}": {
-      "get": {
-        "operationId": "GetClientConfigV1ConfigByName",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "enum": [
-              "public",
-              "player"
-            ],
-            "in": "query",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "app",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "version",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "patchline",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "region",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "additionalProperties": true,
-              "type": "object"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin client-config"
         ]
       }
     },
@@ -68432,24 +68075,6 @@
         "tags": [
           "Plugins",
           "Plugin lol-client-config"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/chest-eligibility": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesChestEligibility",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolCollectionsCollectionsChestEligibility"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
         ]
       }
     },
@@ -76085,6 +75710,30 @@
         ]
       }
     },
+    "/lol-lobby/v2/lobby/strawberryMapId": {
+      "put": {
+        "operationId": "PutLolLobbyV2LobbyStrawberryMapId",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "mapId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-lobby"
+        ]
+      }
+    },
     "/lol-lobby/v2/lobby/subteamData": {
       "put": {
         "operationId": "PutLolLobbyV2LobbySubteamData",
@@ -79727,6 +79376,27 @@
             "description": "Successful response",
             "schema": {
               "type": "string"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-perks"
+        ]
+      }
+    },
+    "/lol-perks/v1/recommended-champion-positions": {
+      "get": {
+        "operationId": "GetLolPerksV1RecommendedChampionPositions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "additionalProperties": {
+                "$ref": "#/definitions/LolPerksRecommendedPositionsMapResource"
+              },
+              "type": "object"
             }
           }
         },
@@ -86475,7 +86145,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/LolTftPassTftPaidBattlepass"
+              "$ref": "#/definitions/LolTftPassTftBattlepass"
             }
           }
         },
@@ -86493,7 +86163,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/LolTftPassTftPaidBattlepass"
+              "$ref": "#/definitions/LolTftPassTftBattlepass"
             }
           }
         },
@@ -86529,7 +86199,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/LolTftPassTftPaidBattlepass"
+              "$ref": "#/definitions/LolTftPassTftBattlepass"
             }
           }
         },
@@ -87355,24 +87025,6 @@
         "tags": [
           "Plugins",
           "Plugin lol-tft"
-        ]
-      }
-    },
-    "/lol-tft/v2/tft/battlepass": {
-      "get": {
-        "operationId": "GetLolTftV2TftBattlepass",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolMissionsTftPaidBattlepass"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-missions"
         ]
       }
     },
@@ -89911,6 +89563,28 @@
         ]
       }
     },
+    "/services-api/game-session/v1/game-session-token": {
+      "put": {
+        "operationId": "PutServicesApiGameSessionV1GameSessionToken",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gameSessionToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/swagger/v1/api-docs": {
       "get": {
         "operationId": "HttpApiDocsV1",
@@ -89966,7 +89640,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "Http2ApiDocsV2",
+        "operationId": "HttpApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {
@@ -89985,7 +89659,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "Http2ApiDocsV3",
+        "operationId": "HttpApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

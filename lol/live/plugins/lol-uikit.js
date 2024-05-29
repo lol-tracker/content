@@ -12714,10 +12714,8 @@
           m = "player-name__tooltip__tag-line",
           g = "player-name__error",
           f = "alias",
-          b = "summoner",
-          A = "ar-AE" === document.documentElement.lang,
-          v = A ? "‏" : "‎";
-        class y extends o.webComponents.ShadowElement {
+          b = "summoner";
+        class A extends o.webComponents.ShadowElement {
           static get observedAttributes() {
             return d;
           }
@@ -12733,8 +12731,8 @@
               (this._tooltipElement = null),
               (this._destroyCurrentPlayerObserver = null),
               (this._computer = new a(o.playerNames)),
-              (this._isUsingArabic = A),
-              (this._directionCharacter = v);
+              (this._directionCharacter =
+                o.localeDirectionOverrides.localeDirectionMark);
           }
           connectedCallback() {
             this._compute();
@@ -12923,9 +12921,9 @@
             });
           }
         }
-        y.tagName = "lol-uikit-player-name";
-        var w = y;
-        e.default = w;
+        A.tagName = "lol-uikit-player-name";
+        var v = A;
+        e.default = v;
       },
       (t, e, n) => {
         "use strict";
@@ -20818,6 +20816,8 @@
                         .get("rcp-fe-lol-l10n")
                         .tra()
                         .overlay("/fe/lol-l10n/trans.json"),
+                    localeDirectionOverrides: (t) =>
+                      t.get("rcp-fe-common-libs").localeDirectionOverrides,
                     Lodash: (t) => t.get("rcp-fe-common-libs").getLodash(4),
                     logger: (t) =>
                       t.get("rcp-fe-common-libs").logging.create(o),
