@@ -5738,6 +5738,7 @@
               borderRarity: "legendary",
               tooltipTraKey: "skin_rarity_tooltip_cn_5",
               traKeySingular: "skin_rarity_cn_5_singular",
+              breakLineAfterRarity: !0,
             },
             7: {
               id: 7,

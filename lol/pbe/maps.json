@@ -105,6 +105,7 @@
       "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check.TFT_Set11.jpg",
       "set-announcement-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/set-announcement-background.TFT_Set11.png",
       "set-announcement-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/TFT_Set11_Logo/en_US/Set11_Logo.png",
+      "set-event-5YA-Title-Logo": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/TFT_5YA_Eventhub/en_US/TFTm-5YA_Hub_Title_Bash.png",
       "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-set11.ogg"
     },
     "categorizedContentBundles": {
@@ -490,6 +491,70 @@
         "footer": "",
         "header": "GALAXY PORTALS",
         "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_LNY24_Modal_3.png"
+      }
+    ]
+  },
+  {
+    "assets": {
+      "champ-select-skip-bg": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-active.png",
+      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-active.webm",
+      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-default.png",
+      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-disabled.png",
+      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/game-select-icon-hover.png",
+      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/video/game-select-icon-intro.webm",
+      "gameflow-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/gameflow.jpg",
+      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-defeat.png",
+      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-empty.png",
+      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/img/icon-victory.png",
+      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/music-inqueue-loop-teamfighttactics.ogg",
+      "parties-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/lobby-background-TFT-5YA.jpg",
+      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-5yr.ogg",
+      "ready-check-background": "lol-game-data/assets/ASSETS/UX/TFT/OutOfGame/Backgrounds/ready-check-TFT-5YA.png",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/TFT/sound/sfx-ambience-loop-tft-5yr.ogg"
+    },
+    "categorizedContentBundles": {},
+    "description": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
+    "gameMode": "TFT",
+    "gameModeDescription": "Assemble a squad of champions that battle on your behalf. Outlast all seven of your opponents and become the last person standing.",
+    "gameModeName": "Teamfight Tactics",
+    "gameModeShortName": "",
+    "gameMutator": "TFT_Event_5YR",
+    "id": 22,
+    "isDefault": false,
+    "isRGM": false,
+    "locStrings": {
+      "tutorial_subheader": "It's our 5th anniversary, let's party!",
+      "tutorial_title": "Welcome to Pengu's Party!"
+    },
+    "mapStringId": "TFT",
+    "name": "Teamfight Tactics",
+    "perPositionDisallowedSummonerSpells": {},
+    "perPositionRequiredSummonerSpells": {},
+    "platformId": "",
+    "platformName": "",
+    "properties": {
+      "suppressRunesMasteriesPerks": true
+    },
+    "tutorialCards": [
+      {
+        "description": "Get crazy with the Cupcakes and Party Crabs! They give more loot - and vibes - than your standard monsters.",
+        "footer": "",
+        "header": "SWEET TREATS",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_5YA_Modal_1.png"
+      },
+      {
+        "description": "Blast to the past with 20 historic traits to try out, like The Boss, Mech Pilot, Disco, and, yes, Phantom!",
+        "footer": "",
+        "header": "ANNIVERSARY TRAITS",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_5YA_Modal_2.png"
+      },
+      {
+        "description": "After picking 2 anniversary traits, upgrade 1 to its ultimate form! The possibilities are positively prismatic!",
+        "footer": "",
+        "header": "PRISMATIC PERFORMANCE",
+        "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/TFT/TFT_5YA_Modal_3.png"
       }
     ]
   },

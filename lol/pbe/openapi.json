@@ -5965,9 +5965,6 @@
           "loyaltyReward": {
             "type": "boolean"
           },
-          "masteryChestGranted": {
-            "type": "boolean"
-          },
           "masteryLevel": {
             "format": "int32",
             "type": "integer"
@@ -6572,6 +6569,23 @@
         ],
         "type": "string"
       },
+      "LolChampSelectChampionMastery": {
+        "properties": {
+          "championId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "championLevel": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "championPoints": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "LolChampSelectChampionQuestSkinInfo": {
         "properties": {
           "productType": {
@@ -6691,27 +6705,10 @@
           "ownership": {
             "$ref": "#/components/schemas/LolChampSelectCollectionsOwnership"
           },
+          "skinAugments": {
+            "$ref": "#/components/schemas/LolChampSelectChampionSkinAugments"
+          },
           "stillObtainable": {
-            "type": "boolean"
-          }
-        },
-        "type": "object"
-      },
-      "LolChampSelectCollectionsChampionMastery": {
-        "properties": {
-          "championId": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "championLevel": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "championPoints": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "chestGranted": {
             "type": "boolean"
           }
         },
@@ -8213,6 +8210,10 @@
           },
           "type": {
             "type": "string"
+          },
+          "value": {
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -8457,6 +8458,9 @@
           },
           "ownership": {
             "$ref": "#/components/schemas/LolChampionsCollectionsOwnership"
+          },
+          "skinAugments": {
+            "$ref": "#/components/schemas/LolChampionsCollectionsChampionSkinAugments"
           },
           "stillObtainable": {
             "type": "boolean"
@@ -8953,6 +8957,9 @@
           "id": {
             "format": "int32",
             "type": "integer"
+          },
+          "skinAugments": {
+            "$ref": "#/components/schemas/LolChampionsCollectionsChampionSkinAugments"
           }
         },
         "type": "object"
@@ -18772,8 +18779,7 @@
       "LolEventHubEventHubType": {
         "enum": [
           "EventShop",
-          "HallOfLegends",
-          "SeasonPass"
+          "HallOfLegends"
         ],
         "type": "string"
       },
@@ -27026,6 +27032,7 @@
           "SeasonVersionLockout",
           "UnknownRestriction",
           "LOLNewPlayerRestriction",
+          "MinNormalGamesForRankedRestriction",
           "QPPlayerScarcePositionCoverageRestriction",
           "QPPartyPositionCoverageRestriction",
           "QPPlayerPositionCoverageRestriction",
@@ -33318,6 +33325,9 @@
           },
           "displayCategories": {
             "type": "string"
+          },
+          "hasVisibleLootOdds": {
+            "type": "boolean"
           },
           "imagePath": {
             "type": "string"
@@ -46213,8 +46223,8 @@
             "type": "string"
           },
           "minutesUntilReplayConsideredLost": {
-            "format": "double",
-            "type": "number"
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -46225,8 +46235,8 @@
             "type": "string"
           },
           "MinutesUntilReplayConsideredLost": {
-            "format": "double",
-            "type": "number"
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -60739,7 +60749,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -78910,35 +78920,6 @@
           "Plugins",
           "Plugin lol-login"
         ]
-      },
-      "post": {
-        "operationId": "PostLolLoginV1Session",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LolLoginUsernameAndPassword"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LolLoginLoginSession"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-login"
-        ]
       }
     },
     "/lol-login/v1/session/invoke": {
@@ -90270,6 +90251,38 @@
         ]
       }
     },
+    "/lol-tft-team-planner/v1/set": {
+      "patch": {
+        "operationId": "PatchLolTftTeamPlannerV1Set",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-tft-team-planner"
+        ]
+      }
+    },
     "/lol-tft-team-planner/v1/team": {
       "put": {
         "operationId": "PutLolTftTeamPlannerV1Team",
@@ -93925,7 +93938,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "HttpApiDeclarationV1",
+        "operationId": "Http2ApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -93986,7 +93999,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

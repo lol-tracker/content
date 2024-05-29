@@ -46,10 +46,10 @@
               n = this;
             return (
               Object.keys(e).forEach(function (a) {
-                const s = e[a],
-                  l = n._getValue(a, s);
-                l && l.then
-                  ? (l.then(function (e) {
+                const l = e[a],
+                  s = n._getValue(a, l);
+                s && s.then
+                  ? (s.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
@@ -59,8 +59,8 @@
                         ),
                         n._addValue(a, e);
                     }),
-                    t.push(l))
-                  : n._addValue(a, l);
+                    t.push(s))
+                  : n._addValue(a, s);
               }),
               Promise.all(t)
             );
@@ -88,11 +88,11 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = function () {
             const e = new a.default();
-            return new s.default(e);
+            return new l.default(e);
           });
-        var a = l(n(3)),
-          s = l(n(111));
-        function l(e) {
+        var a = s(n(3)),
+          l = s(n(112));
+        function s(e) {
           return e && e.__esModule ? e : { default: e };
         }
       },
@@ -101,28 +101,28 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = (function (e, t) {
+          l = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
               return { default: e };
             var n = o(t);
             if (n && n.has(e)) return n.get(e);
             var a = {},
-              s = Object.defineProperty && Object.getOwnPropertyDescriptor;
-            for (var l in e)
+              l = Object.defineProperty && Object.getOwnPropertyDescriptor;
+            for (var s in e)
               if (
-                "default" !== l &&
-                Object.prototype.hasOwnProperty.call(e, l)
+                "default" !== s &&
+                Object.prototype.hasOwnProperty.call(e, s)
               ) {
-                var r = s ? Object.getOwnPropertyDescriptor(e, l) : null;
+                var r = l ? Object.getOwnPropertyDescriptor(e, s) : null;
                 r && (r.get || r.set)
-                  ? Object.defineProperty(a, l, r)
-                  : (a[l] = e[l]);
+                  ? Object.defineProperty(a, s, r)
+                  : (a[s] = e[s]);
               }
             (a.default = e), n && n.set(e, a);
             return a;
           })(n(4)),
-          l = n(5);
+          s = n(5);
         function o(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -137,28 +137,28 @@
               (this.application = null),
               (this.applicationRegistered = !1),
               (this.eventHubDataBinding = (0, a.dataBinding)(
-                l.EVENT_HUB_API,
+                s.EVENT_HUB_API,
                 a.socket,
               ));
           }
           getScreenRoot() {
-            const e = a.Viewport.getApiKey(s.APP_NAME);
-            return a.Viewport.main().getScreenRoot(e, s.APP_NAME);
+            const e = a.Viewport.getApiKey(l.APP_NAME);
+            return a.Viewport.main().getScreenRoot(e, l.APP_NAME);
           }
           show(e) {
             return (
               this.applicationRegistered ||
-                ((0, s.default)(), (this.applicationRegistered = !0)),
+                ((0, l.default)(), (this.applicationRegistered = !0)),
               this.screenRoot.bump().then(() => {
                 this.application ||
-                  ((this.application = a.ComponentFactory.create(s.APP_NAME)),
+                  ((this.application = a.ComponentFactory.create(l.APP_NAME)),
                   this.screenRoot
                     .getElement()
                     .appendChild(this.application.domNode)),
                   a.externalModel.set("isVisible", !0),
                   a.externalModel.set("navOptions", e),
-                  a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
-                    eventName: l.TELEMETRY.SHOW_EVENT,
+                  a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
+                    eventName: s.TELEMETRY.SHOW_EVENT,
                     eventId: e?.eventId,
                     showPip: e?.showPip,
                     showGlow: e?.showGlow,
@@ -178,155 +178,157 @@
           (t.default = function () {
             const e = {
               ComponentFactory: a.ComponentFactory,
-              Router: l.default,
+              Router: s.default,
               ApplicationRoute: o.default,
               IndexRoute: r.default,
               EventShopRoute: i.default,
               HallOfLegendsRoute: c.default,
               EventHubService: p.default,
-              PlayerSettingsService: u.default,
-              RewardsService: d.default,
-              RiotclientService: m.default,
+              MarketingPreferencesService: u.default,
+              PlayerSettingsService: d.default,
+              RewardsService: m.default,
+              RiotclientService: h.default,
               tra: a.traService,
-              HelpModalComponent: h.default,
-              PageHeaderComponent: v.default,
-              PageHeaderSystemControlsComponent: f.default,
-              PurchaseBundlesModalComponent: _.default,
-              PurchaseLevelsModalComponent: g.default,
-              EventShopCardMultiPurchaseModalComponent: b.default,
-              EventShopCategoryNavBarComponent: E.default,
-              EventShopCategoryNavBarTabComponent: x.default,
-              EventShopCategoryOffersComponent: T.default,
-              EventShopFallbackComponent: y.default,
-              EventShopMainViewComponent: k.default,
-              EventShopOfferCardComponent: C.default,
-              EventShopProgressionComponent: P.default,
-              EventShopRewardTrackWrapperComponent: w.default,
+              HelpModalComponent: v.default,
+              PageHeaderComponent: f.default,
+              PageHeaderSystemControlsComponent: _.default,
+              PurchaseBundlesModalComponent: g.default,
+              PurchaseLevelsModalComponent: b.default,
+              EventShopCardMultiPurchaseModalComponent: E.default,
+              EventShopCategoryNavBarComponent: x.default,
+              EventShopCategoryNavBarTabComponent: T.default,
+              EventShopCategoryOffersComponent: y.default,
+              EventShopFallbackComponent: k.default,
+              EventShopMainViewComponent: C.default,
+              EventShopOfferCardComponent: P.default,
+              EventShopProgressionComponent: w.default,
+              EventShopRewardTrackWrapperComponent: S.default,
               EventShopTokenBalanceAmountComponent: R.default,
-              EventShopTokenShopComponent: S.default,
-              EventShopXpComponent: L.default,
-              HolClaimButtonComponent: O.default,
-              HolLevelIconFlamesComponent: A.default,
-              HolNarrativeComponent: D.default,
-              HolPromotionBannerComponent: I.default,
-              HolRewardDetailsComponent: M.default,
-              HolXpComponent: N.default,
-              RemainingTimeTextComponent: _e,
+              EventShopTokenShopComponent: L.default,
+              EventShopXpComponent: A.default,
+              HolClaimButtonComponent: I.default,
+              HolLevelIconFlamesComponent: O.default,
+              HolNarrativeComponent: M.default,
+              HolPromotionBannerComponent: N.default,
+              HolRewardDetailsComponent: D.default,
+              HolXpComponent: B.default,
+              RemainingTimeTextComponent: ge,
               ...a.RewardTrackerEmberComponents,
               ...a.MultiPurchaseSliderEmberComponents,
-              ApplicationController: B.default,
-              IndexController: H.default,
-              EventShopController: U.default,
-              HallOfLegendsController: V.default,
-              EqHelper: j.default,
-              InventoryTypeNameHelper: F.default,
-              SafeImagePathHelper: Y.default,
+              ApplicationController: H.default,
+              IndexController: U.default,
+              EventShopController: V.default,
+              HallOfLegendsController: j.default,
+              EqHelper: F.default,
+              InventoryTypeNameHelper: Y.default,
+              SafeImagePathHelper: K.default,
               TEMPLATES: {
-                application: K.default,
-                index: G.default,
-                [s.ROUTES.EVENT_SHOP]: W.default,
-                [s.ROUTES.HALL_OF_LEGENDS]: X.default,
+                application: G.default,
+                index: W.default,
+                [l.ROUTES.EVENT_SHOP]: X.default,
+                [l.ROUTES.HALL_OF_LEGENDS]: z.default,
                 "components/help-modal": Q.default,
-                "components/page-header-system-controls": z.default,
-                "components/page-header": q.default,
-                "components/purchase-bundles-modal": $.default,
-                "components/purchase-levels-modal": Z.default,
-                "components/event-shop-card-multi-purchase-modal": J.default,
-                "components/event-shop-category-nav-bar-tab": ee.default,
-                "components/event-shop-category-nav-bar": te.default,
-                "components/event-shop-category-offers": ne.default,
-                "components/event-shop-fallback": ae.default,
+                "components/page-header-system-controls": q.default,
+                "components/page-header": $.default,
+                "components/purchase-bundles-modal": Z.default,
+                "components/purchase-levels-modal": J.default,
+                "components/event-shop-card-multi-purchase-modal": ee.default,
+                "components/event-shop-category-nav-bar-tab": te.default,
+                "components/event-shop-category-nav-bar": ne.default,
+                "components/event-shop-category-offers": ae.default,
+                "components/event-shop-fallback": le.default,
                 "components/event-shop-main-view": se.default,
-                "components/event-shop-offer-card": le.default,
-                "components/event-shop-progression": oe.default,
-                "components/event-shop-reward-track-wrapper": re.default,
-                "components/event-shop-token-shop": ie.default,
-                "components/event-shop-xp": ce.default,
-                "components/hol-claim-button": pe.default,
-                "components/hol-level-icon-flames": ue.default,
-                "components/hol-narrative": de.default,
-                "components/hol-promotion-banner": me.default,
-                "components/hol-reward-details": he.default,
-                "components/hol-xp": ve.default,
+                "components/event-shop-offer-card": oe.default,
+                "components/event-shop-progression": re.default,
+                "components/event-shop-reward-track-wrapper": ie.default,
+                "components/event-shop-token-shop": ce.default,
+                "components/event-shop-xp": pe.default,
+                "components/hol-claim-button": ue.default,
+                "components/hol-level-icon-flames": de.default,
+                "components/hol-narrative": me.default,
+                "components/hol-promotion-banner": he.default,
+                "components/hol-reward-details": ve.default,
+                "components/hol-xp": fe.default,
               },
             };
-            a.emberApplicationFactory.setFactoryDefinition(ge, e, {
+            a.emberApplicationFactory.setFactoryDefinition(be, e, {
               EMBER_CLI_COMPAT: !0,
             });
           });
         var a = n(1),
-          s = n(5),
-          l = fe(n(6)),
-          o = fe(n(7)),
-          r = fe(n(8)),
-          i = fe(n(9)),
-          c = fe(n(10)),
-          p = fe(n(11)),
-          u = fe(n(12)),
-          d = fe(n(13)),
-          m = fe(n(14)),
-          h = fe(n(15)),
-          v = fe(n(16)),
-          f = fe(n(17)),
-          _ = fe(n(18)),
-          g = fe(n(19)),
-          b = fe(n(20)),
-          E = fe(n(22)),
-          x = fe(n(23)),
-          T = fe(n(24)),
-          y = fe(n(25)),
-          k = fe(n(26)),
-          C = fe(n(27)),
-          P = fe(n(48)),
-          w = fe(n(49)),
-          R = fe(n(68)),
-          S = fe(n(69)),
-          L = fe(n(70)),
-          O = fe(n(71)),
-          A = fe(n(72)),
-          D = fe(n(73)),
-          I = fe(n(74)),
-          M = fe(n(75)),
-          N = fe(n(76)),
-          B = fe(n(77)),
-          H = fe(n(79)),
-          U = fe(n(80)),
-          V = fe(n(81)),
-          j = fe(n(82)),
-          F = fe(n(83)),
-          Y = fe(n(84)),
-          K = fe(n(85)),
-          G = fe(n(86)),
-          W = fe(n(87)),
-          X = fe(n(88)),
-          Q = fe(n(89)),
-          z = fe(n(90)),
-          q = fe(n(91)),
-          $ = fe(n(92)),
-          Z = fe(n(93)),
-          J = fe(n(94)),
-          ee = fe(n(95)),
-          te = fe(n(96)),
-          ne = fe(n(97)),
-          ae = fe(n(98)),
-          se = fe(n(99)),
-          le = fe(n(100)),
-          oe = fe(n(101)),
-          re = fe(n(102)),
-          ie = fe(n(103)),
-          ce = fe(n(104)),
-          pe = fe(n(105)),
-          ue = fe(n(106)),
-          de = fe(n(107)),
-          me = fe(n(108)),
-          he = fe(n(109)),
-          ve = fe(n(110));
-        function fe(e) {
+          l = n(5),
+          s = _e(n(6)),
+          o = _e(n(7)),
+          r = _e(n(8)),
+          i = _e(n(9)),
+          c = _e(n(10)),
+          p = _e(n(11)),
+          u = _e(n(12)),
+          d = _e(n(13)),
+          m = _e(n(14)),
+          h = _e(n(15)),
+          v = _e(n(16)),
+          f = _e(n(17)),
+          _ = _e(n(18)),
+          g = _e(n(19)),
+          b = _e(n(20)),
+          E = _e(n(21)),
+          x = _e(n(23)),
+          T = _e(n(24)),
+          y = _e(n(25)),
+          k = _e(n(26)),
+          C = _e(n(27)),
+          P = _e(n(28)),
+          w = _e(n(49)),
+          S = _e(n(50)),
+          R = _e(n(69)),
+          L = _e(n(70)),
+          A = _e(n(71)),
+          I = _e(n(72)),
+          O = _e(n(73)),
+          M = _e(n(74)),
+          N = _e(n(75)),
+          D = _e(n(76)),
+          B = _e(n(77)),
+          H = _e(n(78)),
+          U = _e(n(80)),
+          V = _e(n(81)),
+          j = _e(n(82)),
+          F = _e(n(83)),
+          Y = _e(n(84)),
+          K = _e(n(85)),
+          G = _e(n(86)),
+          W = _e(n(87)),
+          X = _e(n(88)),
+          z = _e(n(89)),
+          Q = _e(n(90)),
+          q = _e(n(91)),
+          $ = _e(n(92)),
+          Z = _e(n(93)),
+          J = _e(n(94)),
+          ee = _e(n(95)),
+          te = _e(n(96)),
+          ne = _e(n(97)),
+          ae = _e(n(98)),
+          le = _e(n(99)),
+          se = _e(n(100)),
+          oe = _e(n(101)),
+          re = _e(n(102)),
+          ie = _e(n(103)),
+          ce = _e(n(104)),
+          pe = _e(n(105)),
+          ue = _e(n(106)),
+          de = _e(n(107)),
+          me = _e(n(108)),
+          he = _e(n(109)),
+          ve = _e(n(110)),
+          fe = _e(n(111));
+        function _e(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        const { RemainingTimeTextComponent: _e } = a.SharedComponents,
-          ge = "rcp-fe-lol-event-hub";
-        t.APP_NAME = ge;
+        const { RemainingTimeTextComponent: ge } = a.SharedComponents,
+          be = "rcp-fe-lol-event-hub";
+        t.APP_NAME = be;
       },
       (e, t) => {
         "use strict";
@@ -366,19 +368,19 @@
         t.PROGRESSION_PURCHASE_DATA_PATH = "/progression-purchase-data";
         t.PURCHASE_ITEM_PATH = "/purchase-item";
         t.PURCHASE_OFFER_PATH = "/purchase-offer";
-        const s = "/reward-track/claim-all";
-        t.CLAIM_ALL_REWARDS_PATH = s;
+        const l = "/reward-track/claim-all";
+        t.CLAIM_ALL_REWARDS_PATH = l;
         t.REWARDS_API = "/lol-rewards/v1";
         t.REPLAY_FULLSCREEN_CELEBRATION_PATH = "/reward/replay";
         t.REWARD_CELEBRATION_TYPE_FULLSCREEN = "FULLSCREEN";
         t.RIOTCLIENT_API = "/riotclient";
         t.REGION_LOCALE_PATH = "/region-locale";
-        const l = {
+        const s = {
           INDEX: "/",
           EVENT_SHOP: "event-shop",
           HALL_OF_LEGENDS: "hall-of-legends",
         };
-        t.ROUTES = l;
+        t.ROUTES = s;
         const o = {
           EVENT_SHOP: "kEventShop",
           HALL_OF_LEGENDS: "kHallOfLegends",
@@ -499,13 +501,13 @@
         const v = "event-shop-offer-card";
         t.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME = v;
         var f = {
-          CLAIM_ALL_REWARDS_PATH: s,
+          CLAIM_ALL_REWARDS_PATH: l,
           EVENT_HUB_API: n,
           EVENT_OBSERVERS_BY_TYPE: h,
           PASS_OWNERSHIP_TYPES: r,
           REWARD_TRACK_ITEM_STATE: i,
           EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME: v,
-          ROUTES: l,
+          ROUTES: s,
           EVENT_HUB_TYPES: o,
         };
         t.default = f;
@@ -515,12 +517,12 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5);
-        const l = a.Ember.Router.extend({ location: "none" });
-        l.map(function () {
-          this.route(s.ROUTES.EVENT_SHOP), this.route(s.ROUTES.HALL_OF_LEGENDS);
+          l = n(5);
+        const s = a.Ember.Router.extend({ location: "none" });
+        s.map(function () {
+          this.route(l.ROUTES.EVENT_SHOP), this.route(l.ROUTES.HALL_OF_LEGENDS);
         });
-        var o = l;
+        var o = s;
         t.default = o;
       },
       (e, t, n) => {
@@ -528,55 +530,55 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Route.extend({ model: () => a.externalModel });
-        t.default = s;
+          l = a.Ember.Route.extend({ model: () => a.externalModel });
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Route.extend({ model: () => a.externalModel });
-        t.default = s;
+          l = a.Ember.Route.extend({ model: () => a.externalModel });
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Route.extend({
+          l = a.Ember.Route.extend({
             model: () => a.externalModel,
             setupController(e, t) {
               this._super(...arguments), e.set("model", t);
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Route.extend({
+          l = a.Ember.Route.extend({
             model: () => a.externalModel,
             setupController(e, t) {
               this._super(...arguments), e.set("model", t);
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(5),
-          s = n(1),
-          l = s.Ember.Service.extend({
+          l = n(1),
+          s = l.Ember.Service.extend({
             init() {
               this._super(...arguments),
-                (this.eventHubDataBinding = (0, s.dataBinding)(
+                (this.eventHubDataBinding = (0, l.dataBinding)(
                   a.EVENT_HUB_API,
-                  s.socket,
+                  l.socket,
                 )),
                 (this.eventSpecificObservers = []),
                 this.getEvents();
@@ -669,6 +671,27 @@
                 this.eventHubDataBinding.unobserve(this);
             },
           });
+        t.default = s;
+      },
+      (e, t, n) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var a = n(1);
+        var l = a.Ember.Service.extend({
+          init() {
+            this._super(...arguments),
+              (this.mpsApi = (0, a.dataBinding)(
+                "/lol-marketing-preferences/v1",
+                a.socket,
+              ));
+          },
+          setFromEventShopForHolPartition() {
+            return this.mpsApi.post("/partition/hall_of_legends_embed_2024", {
+              fromEventShop: "true",
+            });
+          },
+        });
         t.default = l;
       },
       (e, t, n) => {
@@ -676,8 +699,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const s = "/account/LCUPreferences/event-hub",
-          l = "/local/event-hub",
+        const l = "/account/LCUPreferences/event-hub",
+          s = "/local/event-hub",
           o = { animationsEnabled: !0 };
         var r = a.Ember.Service.extend({
           init() {
@@ -693,7 +716,7 @@
                   this.set("potatoModeEnabled", e?.data?.potatoModeEnabled);
                 },
               ),
-              this.settingsDataBinding.observe(l, this, (e) => {
+              this.settingsDataBinding.observe(s, this, (e) => {
                 const t = e?.data || o;
                 this.set("localSettings", t);
               });
@@ -705,7 +728,7 @@
             this.settingsDataBinding.observe("/ready", this, (n) => {
               n &&
                 (this.settingsDataBinding.unobserve("/ready", this),
-                this.settingsDataBinding.patch(s, {
+                this.settingsDataBinding.patch(l, {
                   data: {
                     lastTimeSeen: new Date().toISOString(),
                     lastSeenTokenBalance: e,
@@ -716,10 +739,10 @@
             });
           },
           getAccountSettings() {
-            return this.settingsDataBinding.get(s);
+            return this.settingsDataBinding.get(l);
           },
           updateLocalSettings(e) {
-            this.settingsDataBinding.patch(l, { data: e, schemaVersion: 1 });
+            this.settingsDataBinding.patch(s, { data: e, schemaVersion: 1 });
           },
           toggleAnimationsEnabled() {
             if (this.get("potatoModeEnabled")) return;
@@ -747,11 +770,11 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(5),
-          s = n(1),
-          l = s.Ember.Service.extend({
+          l = n(1),
+          s = l.Ember.Service.extend({
             init() {
               this._super(...arguments),
-                (this.rewardsApi = (0, s.dataBinding)(a.REWARDS_API, s.socket));
+                (this.rewardsApi = (0, l.dataBinding)(a.REWARDS_API, l.socket));
             },
             replayFullscreenCelebration(e) {
               return this.rewardsApi.post(
@@ -760,20 +783,20 @@
               );
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(5),
-          s = n(1),
-          l = s.Ember.Service.extend({
+          l = n(1),
+          s = l.Ember.Service.extend({
             init() {
               this._super(...arguments),
-                (this.riotclientBinding = (0, s.dataBinding)(
+                (this.riotclientBinding = (0, l.dataBinding)(
                   a.RIOTCLIENT_API,
-                  s.socket,
+                  l.socket,
                 )),
                 this.observeRegionData();
             },
@@ -787,15 +810,15 @@
               );
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = a.Ember.Component.extend({
+          l = n(5),
+          s = a.Ember.Component.extend({
             eventHubService: a.Ember.inject.service("event-hub"),
             eventDetailsData: a.Ember.computed.alias(
               "eventHubService.eventDetailsData",
@@ -804,7 +827,7 @@
               "eventHubService.activeEventType",
             ),
             firstColumnTopic: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? a.tra.get("hol_help_modal_cinmatic_experience")
                 : a.tra.get("event_shop_help_modal_earn_tokens");
             }),
@@ -813,7 +836,7 @@
               "eventDetailsData",
               function () {
                 if (
-                  this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+                  this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ) {
                   const e = this.get("eventDetailsData.inducteeName");
                   return a.tra.formatString(
@@ -827,7 +850,7 @@
               },
             ),
             secondColumnTopic: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? a.tra.get("hol_help_modal_exclusive_skins")
                 : a.tra.get("event_shop_help_modal_redeem_tokens");
             }),
@@ -835,42 +858,43 @@
               "eventType",
               "eventDetailsData",
               function () {
-                if (
-                  this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
-                ) {
-                  const e = this.get("eventDetailsData.inducteeName");
-                  return a.tra.formatString(
-                    "hol_help_modal_exclusive_skins_description",
-                    { inducteeName: e },
-                  );
-                }
-                return a.tra.get(
-                  "event_shop_help_modal_redeem_tokens_description",
-                );
+                return this.get("eventType") ===
+                  l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+                  ? a.tra.get("hol_help_modal_exclusive_skins_description")
+                  : a.tra.get(
+                      "event_shop_help_modal_redeem_tokens_description",
+                    );
               },
             ),
             thirdColumnTopic: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? a.tra.get("hol_help_modal_rewards")
                 : a.tra.get("event_shop_help_modal_upgrade_pass");
             }),
             thirdColumnDescription: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
-                ? a.tra.get("hol_help_modal_rewards_description")
-                : a.tra.get("event_shop_help_modal_upgrade_pass_description");
+              if (this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS) {
+                const e = this.get("eventDetailsData.inducteeName");
+                return a.tra.formatString(
+                  "hol_help_modal_rewards_description",
+                  { inducteeName: e },
+                );
+              }
+              return a.tra.get(
+                "event_shop_help_modal_upgrade_pass_description",
+              );
             }),
             firstColumnIconClass: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? "eh-help-modal-icon-scroll"
                 : "eh-help-modal-icon-loot";
             }),
             secondColumnIconClass: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? "eh-help-modal-icon-skin"
                 : "eh-help-modal-icon-currency";
             }),
             thirdColumnIconClass: a.Ember.computed("eventType", function () {
-              return this.get("eventType") === s.EVENT_HUB_TYPES.HALL_OF_LEGENDS
+              return this.get("eventType") === l.EVENT_HUB_TYPES.HALL_OF_LEGENDS
                 ? "eh-help-modal-icon-loot"
                 : "eh-help-modal-icon-boost";
             }),
@@ -880,15 +904,15 @@
               },
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = a.Ember.Component.extend({
+          l = n(5),
+          s = a.Ember.Component.extend({
             classNames: ["eh-page-header"],
             classNameBindings: [
               "showBottomBorder:eh-page-header-show-bottom-border",
@@ -1007,15 +1031,15 @@
               e.toLowerCase().replace("_", "-"),
             getEndTimerTooltipText(e, t) {
               const n = new Date(e),
-                s = n.toLocaleDateString(t, { dateStyle: "medium" }),
-                l = n.toLocaleTimeString(t, {
+                l = n.toLocaleDateString(t, { dateStyle: "medium" }),
+                s = n.toLocaleTimeString(t, {
                   timeZoneName: "short",
                   hour: "numeric",
                   minute: "numeric",
                 });
               return a.tra.formatString(
                 "event_shop_page_header_time_tooltip_date_string",
-                { dateText: s, timeText: l },
+                { dateText: l, timeText: s },
               );
             },
             headerTitleImageSrc: a.Ember.computed.alias(
@@ -1033,8 +1057,8 @@
                 this.set("showHelpModal", !0);
               },
               navigateToStore() {
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.PURCHASE_TOKENS_CLICK_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.PURCHASE_TOKENS_CLICK_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   lockedTokens: this.get(
                     "eventHubService.info.lockedTokenCount",
@@ -1054,14 +1078,14 @@
               },
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Component.extend({
+          l = a.Ember.Component.extend({
             classNames: ["eh-page-header-system-controls"],
             playerSettingsService: a.Ember.inject.service("player-settings"),
             animationsEnabled: a.Ember.computed.alias(
@@ -1073,15 +1097,15 @@
               },
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5);
-        const l = {
+          l = n(5);
+        const s = {
           1: {
             CSS_CLASS: "eh-purchase-bundles-modal-option-single",
             LOCATIONS: [0],
@@ -1152,15 +1176,15 @@
           options: a.Ember.computed("bundles", function () {
             const e = this.get("bundles");
             if (!e) return [];
-            if (!Object.keys(l).includes(e.length.toString())) {
-              const t = Object.keys(l).join(", ");
+            if (!Object.keys(s).includes(e.length.toString())) {
+              const t = Object.keys(s).join(", ");
               a.logger.error(
                 `Pass Purchase Modal - expected number of bundles to be ${t}; but got: ${e.length}`,
               );
             }
-            const t = l[e.length] || {},
+            const t = s[e.length] || {},
               n = t.CSS_CLASS || "",
-              s = t.LOCATIONS || [],
+              l = t.LOCATIONS || [],
               o = e.map(
                 (e, t) => (
                   e.bundledItems.forEach((e) => {
@@ -1174,7 +1198,7 @@
                   e.finalPrice <= 0 &&
                     ((e.isOwned = !0),
                     (e.ownedClass = "eh-purchase-bundles-modal-option-owned")),
-                  { ...e, optionTypeCssClass: s.includes(t) ? n : "" }
+                  { ...e, optionTypeCssClass: l.includes(t) ? n : "" }
                 ),
               );
             let r;
@@ -1414,8 +1438,8 @@
               if (this.get("unlockButtonDisabled")) return;
               this.set("isExecutingPurchase", !0);
               const e = this.get("selectedOption");
-              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                eventName: s.TELEMETRY.PURCHASE_PASS_UNLOCK_CLICK_EVENT,
+              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                eventName: l.TELEMETRY.PURCHASE_PASS_UNLOCK_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
                 selectedOption: e.details.itemId,
               }),
@@ -1453,14 +1477,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = t.SOUNDS = void 0);
         var a = n(1),
-          s = n(5);
-        const { RunMixin: l } = a.EmberAddons.EmberLifeline,
+          l = n(5);
+        const { RunMixin: s } = a.EmberAddons.EmberLifeline,
           o = {
             STEP: "/fe/lol-static-assets/sounds/sfx-uikit-generic-click-small.ogg",
             MAX: "/fe/lol-static-assets/sounds/sfx-uikit-generic-click-big.ogg",
           };
         t.SOUNDS = o;
-        var r = a.Ember.Component.extend(l, {
+        var r = a.Ember.Component.extend(s, {
           tag: null,
           eventHubService: a.Ember.inject.service("event-hub"),
           playerSettingsService: a.Ember.inject.service("player-settings"),
@@ -1607,8 +1631,8 @@
           observeShowPurchaseModal() {
             this.get("showPurchaseModal") &&
               (this.fetchProgressionPurchaseData(),
-              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                eventName: s.TELEMETRY.OPEN_PURCHASE_LEVELS_EVENT,
+              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                eventName: l.TELEMETRY.OPEN_PURCHASE_LEVELS_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
                 playerCurrentLevel: this.get("currentLevel"),
                 selectedRewardLevel:
@@ -1735,8 +1759,8 @@
               if (!this.get("purchaseButtonDisabled"))
                 return (
                   this.set("purchaseInProgress", !0),
-                  a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                    eventName: s.TELEMETRY.PURCHASE_LEVELS_CLICK_EVENT,
+                  a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                    eventName: l.TELEMETRY.PURCHASE_LEVELS_CLICK_EVENT,
                     eventId: this.get("eventHubService.info.eventId"),
                     playerCurrentLevel: this.get("currentLevel"),
                     levelsToBuy: this.get("levelsToBuy"),
@@ -1768,8 +1792,8 @@
             },
             openRPPurchaseModal() {
               this.set("rpPurchaseInProgress", !0),
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.PURCHASE_LEVELS_RP_TOP_UP_CLICK_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.PURCHASE_LEVELS_RP_TOP_UP_CLICK_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   playerCurrentLevel: this.get("currentLevel"),
                   levelsToBuy: this.get("levelsToBuy"),
@@ -1806,8 +1830,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = n(21),
+          l = n(5),
+          s = n(22),
           o = a.Ember.Component.extend({
             classNames: ["event-shop-card-multi-purchase-modal"],
             eventHubService: a.Ember.inject.service("event-hub"),
@@ -1834,7 +1858,7 @@
               },
             ),
             purchaseConstraints: a.Ember.computed("offer", function () {
-              return (0, l.getOfferPurchaseConstraints)(this.get("offer"));
+              return (0, s.getOfferPurchaseConstraints)(this.get("offer"));
             }),
             minPurchasableQuantity: a.Ember.computed.alias(
               "purchaseConstraints.min",
@@ -1881,13 +1905,13 @@
             init() {
               this._super(...arguments),
                 (this.notEnoughRp =
-                  this.get("offer.offerState") === s.OFFER_STATES.UNAVAILABLE),
+                  this.get("offer.offerState") === l.OFFER_STATES.UNAVAILABLE),
                 (this.offerPurchased =
-                  this.get("offer.offerState") === s.OFFER_STATES.OWNED),
+                  this.get("offer.offerState") === l.OFFER_STATES.OWNED),
                 (this.disableButtonState =
                   this.notEnoughRp || this.offerPurchased),
                 (this.purchaseInProgress =
-                  this.get("offer.offerState") === s.OFFER_STATES.PURCHASING);
+                  this.get("offer.offerState") === l.OFFER_STATES.PURCHASING);
             },
             showPostPurchaseConfirmation() {
               const e = a.UIKit.getTemplateHelper().contentBlockDialog(
@@ -1914,8 +1938,8 @@
             },
             executePurchase({ id: e }) {
               return (
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.PURCHASE_OFFER_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.PURCHASE_OFFER_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   clickedOffer: e,
                   tokenBalance: this.get("currentTokenBalance"),
@@ -1961,9 +1985,9 @@
             t.default =
               void 0);
         var a = n(5);
-        const s = (e) => `event_shop_offers_category_${e.toLowerCase()}`;
-        t.getCategoryOffersId = s;
-        const l = (e) => {
+        const l = (e) => `event_shop_offers_category_${e.toLowerCase()}`;
+        t.getCategoryOffersId = l;
+        const s = (e) => {
           if (1 === e.items.length) {
             const t = e.items[0];
             return {
@@ -1981,7 +2005,7 @@
             price: e.price,
           };
         };
-        t.getOfferPurchaseConstraints = l;
+        t.getOfferPurchaseConstraints = s;
         const o = (e) => {
           switch (e) {
             case a.EVENT_HUB_TYPES.EVENT_SHOP:
@@ -1994,8 +2018,8 @@
         };
         t.getRouteByEventHubType = o;
         var r = {
-          getCategoryOffersId: s,
-          getOfferPurchaseConstraints: l,
+          getCategoryOffersId: l,
+          getOfferPurchaseConstraints: s,
           getRouteByEventHubType: o,
         };
         t.default = r;
@@ -2014,8 +2038,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = n(21),
+          l = n(5),
+          s = n(22),
           o = a.Ember.Component.extend({
             classNames: ["event-shop-nav-bar-tab"],
             classNameBindings: [
@@ -2027,13 +2051,13 @@
             }),
             categoryTra: a.Ember.computed("category", function () {
               return this.get(
-                `tra.${(0, l.getCategoryOffersId)(this.category)}_tooltip`,
+                `tra.${(0, s.getCategoryOffersId)(this.category)}_tooltip`,
               );
             }),
             click() {
               this.scrollToCategory(this.get("category")),
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.CATEGORY_NAV_BAR_CLICK_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.CATEGORY_NAV_BAR_CLICK_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   clickedCategory: this.get("category"),
                 });
@@ -2046,14 +2070,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = n(21),
+          l = n(5),
+          s = n(22),
           o = a.Ember.Component.extend({
             classNames: ["event-shop-category-offers"],
             categoryOffersId: a.Ember.computed(
               "categoryOffers.category",
               function () {
-                return (0, l.getCategoryOffersId)(
+                return (0, s.getCategoryOffersId)(
                   this.get("categoryOffers.category"),
                 );
               },
@@ -2061,7 +2085,7 @@
             didInsertElement() {
               this._super(...arguments);
               const e = this.element.querySelectorAll(
-                `.${s.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME}`,
+                `.${l.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME}`,
               );
               this.configureOfferCardsObservers(e);
             },
@@ -2082,7 +2106,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Component.extend({
+          l = a.Ember.Component.extend({
             classNames: ["event-shop-fallback"],
             tra: a.tra,
             error: null,
@@ -2095,7 +2119,7 @@
               };
             }),
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -2117,10 +2141,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5);
-        const l = n(28);
+          l = n(5);
+        const s = n(29);
         var o = a.Ember.Component.extend({
-          classNames: [s.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME],
+          classNames: [l.EVENT_SHOP_OFFER_CARD_CONTAINER_CLASSNAME],
           classNameBindings: [
             "offer.highlighted:event-shop-token-shop-highlighted-card",
             "isOfferOwned:event-shop-token-shop-card-owned",
@@ -2143,19 +2167,19 @@
             },
           ),
           isPurchasing: a.Ember.computed("offer.offerState", function () {
-            return this.get("offer.offerState") === s.OFFER_STATES.PURCHASING;
+            return this.get("offer.offerState") === l.OFFER_STATES.PURCHASING;
           }),
           isOfferRevealed: a.Ember.computed("offer.offerState", function () {
-            return this.get("offer.offerState") !== s.OFFER_STATES.UNREVEALED;
+            return this.get("offer.offerState") !== l.OFFER_STATES.UNREVEALED;
           }),
           isOfferOwned: a.Ember.computed("offer.offerState", function () {
-            return this.get("offer.offerState") === s.OFFER_STATES.OWNED;
+            return this.get("offer.offerState") === l.OFFER_STATES.OWNED;
           }),
           isOfferAvailable: a.Ember.computed("offer.offerState", function () {
-            return this.get("offer.offerState") === s.OFFER_STATES.AVAILABLE;
+            return this.get("offer.offerState") === l.OFFER_STATES.AVAILABLE;
           }),
           isOfferUnavailable: a.Ember.computed("offer.offerState", function () {
-            return this.get("offer.offerState") === s.OFFER_STATES.UNAVAILABLE;
+            return this.get("offer.offerState") === l.OFFER_STATES.UNAVAILABLE;
           }),
           shouldRenderOfferItemsCount: a.Ember.computed("offer", function () {
             return this.get("offer.items.length") > 1;
@@ -2193,7 +2217,7 @@
               (this.get("tooltipManager").unassign(this.priceDivTarget),
               this.get("isOfferUnavailable"))
             ) {
-              const e = this.renderTooltipContainer(l);
+              const e = this.renderTooltipContainer(s);
               this.get("tooltipManager").assign(
                 this.priceDivTarget,
                 e,
@@ -2243,8 +2267,8 @@
           },
           showModal(e) {
             return (
-              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                eventName: s.TELEMETRY.OPEN_OFFER_CARD_EVENT,
+              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                eventName: l.TELEMETRY.OPEN_OFFER_CARD_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
                 clickedOffer: e.id,
                 tokenBalance: this.get(
@@ -2263,11 +2287,11 @@
         t.default = o;
       },
       (e, t, n) => {
-        var a = n(29);
+        var a = n(30);
         e.exports = (a.default || a).template({
           compiler: [7, ">= 4.0.0"],
-          main: function (e, t, n, a, s) {
-            var l,
+          main: function (e, t, n, a, l) {
+            var s,
               o = null != t ? t : e.nullContext || {},
               r = n.helperMissing,
               i = "function",
@@ -2275,41 +2299,41 @@
             return (
               '<lol-uikit-tooltip>\r\n  <lol-uikit-content-block class="event-shop-xp-tooltip-content" type="tooltip-system">\r\n    <div class="event-shop-progression-tooltip-block">\r\n      <p>\r\n        ' +
               c(
-                typeof (l =
-                  null != (l = n.youNeedText || (null != t ? t.youNeedText : t))
-                    ? l
+                typeof (s =
+                  null != (s = n.youNeedText || (null != t ? t.youNeedText : t))
+                    ? s
                     : r) === i
-                  ? l.call(o, { name: "youNeedText", hash: {}, data: s })
-                  : l,
+                  ? s.call(o, { name: "youNeedText", hash: {}, data: l })
+                  : s,
               ) +
               "<span class='event-shop-progression-tooltip-block-bold'> " +
               c(
-                typeof (l =
+                typeof (s =
                   null !=
-                  (l = n.requiredTokens || (null != t ? t.requiredTokens : t))
-                    ? l
+                  (s = n.requiredTokens || (null != t ? t.requiredTokens : t))
+                    ? s
                     : r) === i
-                  ? l.call(o, { name: "requiredTokens", hash: {}, data: s })
-                  : l,
+                  ? s.call(o, { name: "requiredTokens", hash: {}, data: l })
+                  : s,
               ) +
               " " +
               c(
-                typeof (l =
+                typeof (s =
                   null !=
-                  (l = n.moreTokensText || (null != t ? t.moreTokensText : t))
-                    ? l
+                  (s = n.moreTokensText || (null != t ? t.moreTokensText : t))
+                    ? s
                     : r) === i
-                  ? l.call(o, { name: "moreTokensText", hash: {}, data: s })
-                  : l,
+                  ? s.call(o, { name: "moreTokensText", hash: {}, data: l })
+                  : s,
               ) +
               " </span>" +
               c(
-                typeof (l =
-                  null != (l = n.unlockText || (null != t ? t.unlockText : t))
-                    ? l
+                typeof (s =
+                  null != (s = n.unlockText || (null != t ? t.unlockText : t))
+                    ? s
                     : r) === i
-                  ? l.call(o, { name: "unlockText", hash: {}, data: s })
-                  : l,
+                  ? s.call(o, { name: "unlockText", hash: {}, data: l })
+                  : s,
               ) +
               "\r\n      </p>\r\n    </div>\r\n  </lol-uikit-content-block>\r\n</lol-uikit-tooltip>"
             );
@@ -2318,14 +2342,14 @@
         });
       },
       (e, t, n) => {
-        e.exports = n(30).default;
+        e.exports = n(31).default;
       },
       (e, t, n) => {
         "use strict";
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        function s(e) {
+        function l(e) {
           if (e && e.__esModule) return e;
           var t = {};
           if (null != e)
@@ -2334,16 +2358,16 @@
           return (t.default = e), t;
         }
         t.__esModule = !0;
-        var l = s(n(31)),
-          o = a(n(45)),
-          r = a(n(33)),
-          i = s(n(32)),
-          c = s(n(46)),
-          p = a(n(47));
+        var s = l(n(32)),
+          o = a(n(46)),
+          r = a(n(34)),
+          i = l(n(33)),
+          c = l(n(47)),
+          p = a(n(48));
         function u() {
-          var e = new l.HandlebarsEnvironment();
+          var e = new s.HandlebarsEnvironment();
           return (
-            i.extend(e, l),
+            i.extend(e, s),
             (e.SafeString = o.default),
             (e.Exception = r.default),
             (e.Utils = i),
@@ -2368,11 +2392,11 @@
           return e && e.__esModule ? e : { default: e };
         }
         (t.__esModule = !0), (t.HandlebarsEnvironment = p);
-        var s = n(32),
-          l = a(n(33)),
-          o = n(34),
-          r = n(42),
-          i = a(n(44));
+        var l = n(33),
+          s = a(n(34)),
+          o = n(35),
+          r = n(43),
+          i = a(n(45));
         t.VERSION = "4.1.2";
         t.COMPILER_REVISION = 7;
         t.REVISION_CHANGES = {
@@ -2397,20 +2421,20 @@
           logger: i.default,
           log: i.default.log,
           registerHelper: function (e, t) {
-            if (s.toString.call(e) === c) {
+            if (l.toString.call(e) === c) {
               if (t)
-                throw new l.default("Arg not supported with multiple helpers");
-              s.extend(this.helpers, e);
+                throw new s.default("Arg not supported with multiple helpers");
+              l.extend(this.helpers, e);
             } else this.helpers[e] = t;
           },
           unregisterHelper: function (e) {
             delete this.helpers[e];
           },
           registerPartial: function (e, t) {
-            if (s.toString.call(e) === c) s.extend(this.partials, e);
+            if (l.toString.call(e) === c) l.extend(this.partials, e);
             else {
               if (void 0 === t)
-                throw new l.default(
+                throw new s.default(
                   'Attempting to register a partial called "' +
                     e +
                     '" as undefined',
@@ -2422,12 +2446,12 @@
             delete this.partials[e];
           },
           registerDecorator: function (e, t) {
-            if (s.toString.call(e) === c) {
+            if (l.toString.call(e) === c) {
               if (t)
-                throw new l.default(
+                throw new s.default(
                   "Arg not supported with multiple decorators",
                 );
-              s.extend(this.decorators, e);
+              l.extend(this.decorators, e);
             } else this.decorators[e] = t;
           },
           unregisterDecorator: function (e) {
@@ -2435,7 +2459,7 @@
           },
         };
         var u = i.default.log;
-        (t.log = u), (t.createFrame = s.createFrame), (t.logger = i.default);
+        (t.log = u), (t.createFrame = l.createFrame), (t.logger = i.default);
       },
       (e, t) => {
         "use strict";
@@ -2452,8 +2476,8 @@
               if (!e) return e + "";
               e = "" + e;
             }
-            if (!s.test(e)) return e;
-            return e.replace(a, l);
+            if (!l.test(e)) return e;
+            return e.replace(a, s);
           }),
           (t.isEmpty = function (e) {
             return (!e && 0 !== e) || !(!c(e) || 0 !== e.length);
@@ -2478,8 +2502,8 @@
             "=": "&#x3D;",
           },
           a = /[&<>"'`=]/g,
-          s = /[&<>"'`=]/;
-        function l(e) {
+          l = /[&<>"'`=]/;
+        function s(e) {
           return n[e];
         }
         function o(e) {
@@ -2524,10 +2548,10 @@
           "stack",
         ];
         function a(e, t) {
-          var s = t && t.loc,
-            l = void 0,
+          var l = t && t.loc,
+            s = void 0,
             o = void 0;
-          s && (e += " - " + (l = s.start.line) + ":" + (o = s.start.column));
+          l && (e += " - " + (s = l.start.line) + ":" + (o = l.start.column));
           for (
             var r = Error.prototype.constructor.call(this, e), i = 0;
             i < n.length;
@@ -2536,8 +2560,8 @@
             this[n[i]] = r[n[i]];
           Error.captureStackTrace && Error.captureStackTrace(this, a);
           try {
-            s &&
-              ((this.lineNumber = l),
+            l &&
+              ((this.lineNumber = s),
               Object.defineProperty
                 ? Object.defineProperty(this, "column", {
                     value: o,
@@ -2555,42 +2579,42 @@
         }
         (t.__esModule = !0),
           (t.registerDefaultHelpers = function (e) {
-            s.default(e),
-              l.default(e),
+            l.default(e),
+              s.default(e),
               o.default(e),
               r.default(e),
               i.default(e),
               c.default(e),
               p.default(e);
           });
-        var s = a(n(35)),
-          l = a(n(36)),
-          o = a(n(37)),
-          r = a(n(38)),
-          i = a(n(39)),
-          c = a(n(40)),
-          p = a(n(41));
+        var l = a(n(36)),
+          s = a(n(37)),
+          o = a(n(38)),
+          r = a(n(39)),
+          i = a(n(40)),
+          c = a(n(41)),
+          p = a(n(42));
       },
       (e, t, n) => {
         "use strict";
         t.__esModule = !0;
-        var a = n(32);
+        var a = n(33);
         (t.default = function (e) {
           e.registerHelper("blockHelperMissing", function (t, n) {
-            var s = n.inverse,
-              l = n.fn;
-            if (!0 === t) return l(this);
-            if (!1 === t || null == t) return s(this);
+            var l = n.inverse,
+              s = n.fn;
+            if (!0 === t) return s(this);
+            if (!1 === t || null == t) return l(this);
             if (a.isArray(t))
               return t.length > 0
                 ? (n.ids && (n.ids = [n.name]), e.helpers.each(t, n))
-                : s(this);
+                : l(this);
             if (n.data && n.ids) {
               var o = a.createFrame(n.data);
               (o.contextPath = a.appendContextPath(n.data.contextPath, n.name)),
                 (n = { data: o });
             }
-            return l(t, n);
+            return s(t, n);
           });
         }),
           (e.exports = t.default);
@@ -2599,49 +2623,49 @@
         "use strict";
         t.__esModule = !0;
         var a,
-          s = n(32),
           l = n(33),
-          o = (a = l) && a.__esModule ? a : { default: a };
+          s = n(34),
+          o = (a = s) && a.__esModule ? a : { default: a };
         (t.default = function (e) {
           e.registerHelper("each", function (e, t) {
             if (!t) throw new o.default("Must pass iterator to #each");
             var n = t.fn,
               a = t.inverse,
-              l = 0,
+              s = 0,
               r = "",
               i = void 0,
               c = void 0;
-            function p(t, a, l) {
+            function p(t, a, s) {
               i &&
                 ((i.key = t),
                 (i.index = a),
                 (i.first = 0 === a),
-                (i.last = !!l),
+                (i.last = !!s),
                 c && (i.contextPath = c + t)),
                 (r += n(e[t], {
                   data: i,
-                  blockParams: s.blockParams([e[t], t], [c + t, null]),
+                  blockParams: l.blockParams([e[t], t], [c + t, null]),
                 }));
             }
             if (
               (t.data &&
                 t.ids &&
-                (c = s.appendContextPath(t.data.contextPath, t.ids[0]) + "."),
-              s.isFunction(e) && (e = e.call(this)),
-              t.data && (i = s.createFrame(t.data)),
+                (c = l.appendContextPath(t.data.contextPath, t.ids[0]) + "."),
+              l.isFunction(e) && (e = e.call(this)),
+              t.data && (i = l.createFrame(t.data)),
               e && "object" == typeof e)
             )
-              if (s.isArray(e))
-                for (var u = e.length; l < u; l++)
-                  l in e && p(l, l, l === e.length - 1);
+              if (l.isArray(e))
+                for (var u = e.length; s < u; s++)
+                  s in e && p(s, s, s === e.length - 1);
               else {
                 var d = void 0;
                 for (var m in e)
                   e.hasOwnProperty(m) &&
-                    (void 0 !== d && p(d, l - 1), (d = m), l++);
-                void 0 !== d && p(d, l - 1, !0);
+                    (void 0 !== d && p(d, s - 1), (d = m), s++);
+                void 0 !== d && p(d, s - 1, !0);
               }
-            return 0 === l && (r = a(this)), r;
+            return 0 === s && (r = a(this)), r;
           });
         }),
           (e.exports = t.default);
@@ -2650,12 +2674,12 @@
         "use strict";
         t.__esModule = !0;
         var a,
-          s = n(33),
-          l = (a = s) && a.__esModule ? a : { default: a };
+          l = n(34),
+          s = (a = l) && a.__esModule ? a : { default: a };
         (t.default = function (e) {
           e.registerHelper("helperMissing", function () {
             if (1 !== arguments.length)
-              throw new l.default(
+              throw new s.default(
                 'Missing helper: "' +
                   arguments[arguments.length - 1].name +
                   '"',
@@ -2667,7 +2691,7 @@
       (e, t, n) => {
         "use strict";
         t.__esModule = !0;
-        var a = n(32);
+        var a = n(33);
         (t.default = function (e) {
           e.registerHelper("if", function (e, t) {
             return (
@@ -2698,11 +2722,11 @@
                 a++
               )
                 t.push(arguments[a]);
-              var s = 1;
+              var l = 1;
               null != n.hash.level
-                ? (s = n.hash.level)
-                : n.data && null != n.data.level && (s = n.data.level),
-                (t[0] = s),
+                ? (l = n.hash.level)
+                : n.data && null != n.data.level && (l = n.data.level),
+                (t[0] = l),
                 e.log.apply(e, t);
             });
           }),
@@ -2725,23 +2749,23 @@
       (e, t, n) => {
         "use strict";
         t.__esModule = !0;
-        var a = n(32);
+        var a = n(33);
         (t.default = function (e) {
           e.registerHelper("with", function (e, t) {
             a.isFunction(e) && (e = e.call(this));
             var n = t.fn;
             if (a.isEmpty(e)) return t.inverse(this);
-            var s = t.data;
+            var l = t.data;
             return (
               t.data &&
                 t.ids &&
-                ((s = a.createFrame(t.data)).contextPath = a.appendContextPath(
+                ((l = a.createFrame(t.data)).contextPath = a.appendContextPath(
                   t.data.contextPath,
                   t.ids[0],
                 )),
               n(e, {
-                data: s,
-                blockParams: a.blockParams([e], [s && s.contextPath]),
+                data: l,
+                blockParams: a.blockParams([e], [l && l.contextPath]),
               })
             );
           });
@@ -2752,30 +2776,30 @@
         "use strict";
         (t.__esModule = !0),
           (t.registerDefaultDecorators = function (e) {
-            l.default(e);
+            s.default(e);
           });
         var a,
-          s = n(43),
-          l = (a = s) && a.__esModule ? a : { default: a };
+          l = n(44),
+          s = (a = l) && a.__esModule ? a : { default: a };
       },
       (e, t, n) => {
         "use strict";
         t.__esModule = !0;
-        var a = n(32);
+        var a = n(33);
         (t.default = function (e) {
-          e.registerDecorator("inline", function (e, t, n, s) {
-            var l = e;
+          e.registerDecorator("inline", function (e, t, n, l) {
+            var s = e;
             return (
               t.partials ||
                 ((t.partials = {}),
-                (l = function (s, l) {
+                (s = function (l, s) {
                   var o = n.partials;
                   n.partials = a.extend({}, o, t.partials);
-                  var r = e(s, l);
+                  var r = e(l, s);
                   return (n.partials = o), r;
                 })),
-              (t.partials[s.args[0]] = s.fn),
-              l
+              (t.partials[l.args[0]] = l.fn),
+              s
             );
           });
         }),
@@ -2784,35 +2808,35 @@
       (e, t, n) => {
         "use strict";
         t.__esModule = !0;
-        var a = n(32),
-          s = {
+        var a = n(33),
+          l = {
             methodMap: ["debug", "info", "warn", "error"],
             level: "info",
             lookupLevel: function (e) {
               if ("string" == typeof e) {
-                var t = a.indexOf(s.methodMap, e.toLowerCase());
+                var t = a.indexOf(l.methodMap, e.toLowerCase());
                 e = t >= 0 ? t : parseInt(e, 10);
               }
               return e;
             },
             log: function (e) {
               if (
-                ((e = s.lookupLevel(e)),
-                "undefined" != typeof console && s.lookupLevel(s.level) <= e)
+                ((e = l.lookupLevel(e)),
+                "undefined" != typeof console && l.lookupLevel(l.level) <= e)
               ) {
-                var t = s.methodMap[e];
+                var t = l.methodMap[e];
                 console[t] || (t = "log");
                 for (
-                  var n = arguments.length, a = Array(n > 1 ? n - 1 : 0), l = 1;
-                  l < n;
-                  l++
+                  var n = arguments.length, a = Array(n > 1 ? n - 1 : 0), s = 1;
+                  s < n;
+                  s++
                 )
-                  a[l - 1] = arguments[l];
+                  a[s - 1] = arguments[s];
                 console[t].apply(console, a);
               }
             },
           };
-        (t.default = s), (e.exports = t.default);
+        (t.default = l), (e.exports = t.default);
       },
       (e, t) => {
         "use strict";
@@ -2836,12 +2860,12 @@
             if (t !== n) {
               if (t < n) {
                 var a = r.REVISION_CHANGES[n],
-                  s = r.REVISION_CHANGES[t];
+                  l = r.REVISION_CHANGES[t];
                 throw new o.default(
                   "Template was precompiled with an older version of Handlebars than the current runtime. Please update your precompiler to a newer version (" +
                     a +
                     ") or downgrade your runtime to an older version (" +
-                    s +
+                    l +
                     ").",
                 );
               }
@@ -2870,33 +2894,33 @@
               lambda: function (e, t) {
                 return "function" == typeof e ? e.call(t) : e;
               },
-              escapeExpression: s.escapeExpression,
-              invokePartial: function (n, a, l) {
-                l.hash &&
-                  ((a = s.extend({}, a, l.hash)), l.ids && (l.ids[0] = !0)),
-                  (n = t.VM.resolvePartial.call(this, n, a, l));
-                var r = t.VM.invokePartial.call(this, n, a, l);
+              escapeExpression: l.escapeExpression,
+              invokePartial: function (n, a, s) {
+                s.hash &&
+                  ((a = l.extend({}, a, s.hash)), s.ids && (s.ids[0] = !0)),
+                  (n = t.VM.resolvePartial.call(this, n, a, s));
+                var r = t.VM.invokePartial.call(this, n, a, s);
                 if (
                   (null == r &&
                     t.compile &&
-                    ((l.partials[l.name] = t.compile(n, e.compilerOptions, t)),
-                    (r = l.partials[l.name](a, l))),
+                    ((s.partials[s.name] = t.compile(n, e.compilerOptions, t)),
+                    (r = s.partials[s.name](a, s))),
                   null != r)
                 ) {
-                  if (l.indent) {
+                  if (s.indent) {
                     for (
                       var i = r.split("\n"), c = 0, p = i.length;
                       c < p && (i[c] || c + 1 !== p);
                       c++
                     )
-                      i[c] = l.indent + i[c];
+                      i[c] = s.indent + i[c];
                     r = i.join("\n");
                   }
                   return r;
                 }
                 throw new o.default(
                   "The partial " +
-                    l.name +
+                    s.name +
                     " could not be compiled when running in runtime-only mode",
                 );
               },
@@ -2905,14 +2929,14 @@
                 return (n.decorator = e[t + "_d"]), n;
               },
               programs: [],
-              program: function (e, t, n, a, s) {
-                var l = this.programs[e],
+              program: function (e, t, n, a, l) {
+                var s = this.programs[e],
                   o = this.fn(e);
                 return (
-                  t || s || a || n
-                    ? (l = i(this, e, o, t, n, a, s))
-                    : l || (l = this.programs[e] = i(this, e, o)),
-                  l
+                  t || l || a || n
+                    ? (s = i(this, e, o, t, n, a, l))
+                    : s || (s = this.programs[e] = i(this, e, o)),
+                  s
                 );
               },
               data: function (e, t) {
@@ -2921,39 +2945,39 @@
               },
               merge: function (e, t) {
                 var n = e || t;
-                return e && t && e !== t && (n = s.extend({}, t, e)), n;
+                return e && t && e !== t && (n = l.extend({}, t, e)), n;
               },
               nullContext: Object.seal({}),
               noop: t.VM.noop,
               compilerInfo: e.compiler,
             };
             function a(t) {
-              var s =
+              var l =
                   arguments.length <= 1 || void 0 === arguments[1]
                     ? {}
                     : arguments[1],
-                l = s.data;
-              a._setup(s),
-                !s.partial &&
+                s = l.data;
+              a._setup(l),
+                !l.partial &&
                   e.useData &&
-                  (l = (function (e, t) {
+                  (s = (function (e, t) {
                     (t && "root" in t) ||
                       ((t = t ? r.createFrame(t) : {}).root = e);
                     return t;
-                  })(t, l));
+                  })(t, s));
               var o = void 0,
                 i = e.useBlockParams ? [] : void 0;
               function c(t) {
-                return "" + e.main(n, t, n.helpers, n.partials, l, i, o);
+                return "" + e.main(n, t, n.helpers, n.partials, s, i, o);
               }
               return (
                 e.useDepths &&
-                  (o = s.depths
-                    ? t != s.depths[0]
-                      ? [t].concat(s.depths)
-                      : s.depths
+                  (o = l.depths
+                    ? t != l.depths[0]
+                      ? [t].concat(l.depths)
+                      : l.depths
                     : [t]),
-                (c = p(e.main, c, n, s.depths || [], l, i))(t, s)
+                (c = p(e.main, c, n, l.depths || [], s, i))(t, l)
               );
             }
             return (
@@ -2969,12 +2993,12 @@
                     (e.usePartial || e.useDecorators) &&
                       (n.decorators = n.merge(a.decorators, t.decorators)));
               }),
-              (a._child = function (t, a, s, l) {
-                if (e.useBlockParams && !s)
+              (a._child = function (t, a, l, s) {
+                if (e.useBlockParams && !l)
                   throw new o.default("must pass block params");
-                if (e.useDepths && !l)
+                if (e.useDepths && !s)
                   throw new o.default("must pass parent depths");
-                return i(n, t, e[t], a, 0, s, l);
+                return i(n, t, e[t], a, 0, l, s);
               }),
               a
             );
@@ -2993,13 +3017,13 @@
             var a = n.data && n.data["partial-block"];
             (n.partial = !0),
               n.ids && (n.data.contextPath = n.ids[0] || n.data.contextPath);
-            var l = void 0;
+            var s = void 0;
             n.fn &&
               n.fn !== c &&
               (function () {
                 n.data = r.createFrame(n.data);
                 var e = n.fn;
-                (l = n.data["partial-block"] =
+                (s = n.data["partial-block"] =
                   function (t) {
                     var n =
                       arguments.length <= 1 || void 0 === arguments[1]
@@ -3012,9 +3036,9 @@
                     );
                   }),
                   e.partials &&
-                    (n.partials = s.extend({}, n.partials, e.partials));
+                    (n.partials = l.extend({}, n.partials, e.partials));
               })();
-            void 0 === e && l && (e = l);
+            void 0 === e && s && (e = s);
             if (void 0 === e)
               throw new o.default(
                 "The partial " + n.name + " could not be found",
@@ -3023,20 +3047,20 @@
           }),
           (t.noop = c);
         var a,
-          s = (function (e) {
+          l = (function (e) {
             if (e && e.__esModule) return e;
             var t = {};
             if (null != e)
               for (var n in e)
                 Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
             return (t.default = e), t;
-          })(n(32)),
-          l = n(33),
-          o = (a = l) && a.__esModule ? a : { default: a },
-          r = n(31);
-        function i(e, t, n, a, s, l, o) {
+          })(n(33)),
+          s = n(34),
+          o = (a = s) && a.__esModule ? a : { default: a },
+          r = n(32);
+        function i(e, t, n, a, l, s, o) {
           function r(t) {
-            var s =
+            var l =
                 arguments.length <= 1 || void 0 === arguments[1]
                   ? {}
                   : arguments[1],
@@ -3051,26 +3075,26 @@
                 t,
                 e.helpers,
                 e.partials,
-                s.data || a,
-                l && [s.blockParams].concat(l),
+                l.data || a,
+                s && [l.blockParams].concat(s),
                 r,
               )
             );
           }
           return (
-            ((r = p(n, r, e, o, a, l)).program = t),
+            ((r = p(n, r, e, o, a, s)).program = t),
             (r.depth = o ? o.length : 0),
-            (r.blockParams = s || 0),
+            (r.blockParams = l || 0),
             r
           );
         }
         function c() {
           return "";
         }
-        function p(e, t, n, a, l, o) {
+        function p(e, t, n, a, s, o) {
           if (e.decorator) {
             var r = {};
-            (t = e.decorator(t, r, n, a && a[0], l, o, a)), s.extend(t, r);
+            (t = e.decorator(t, r, n, a && a[0], s, o, a)), l.extend(t, r);
           }
           return t;
         }
@@ -3092,8 +3116,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = a.Ember.Component.extend({
+          l = n(5),
+          s = a.Ember.Component.extend({
             classNames: ["event-shop-progression"],
             eventHubService: a.Ember.inject.service("event-hub"),
             failureLoadingRewardTrack: a.Ember.computed.alias(
@@ -3169,8 +3193,8 @@
             },
             actions: {
               passPurchaseClick() {
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.PURCHASE_PASS_CLICK_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.PURCHASE_PASS_CLICK_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   lockedTokens: this.get(
                     "eventHubService.info.lockedTokenCount",
@@ -3183,16 +3207,16 @@
               },
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(50),
-          l = n(5);
-        const { TRACKER_SIZE: o } = s.REWARD_TRACKER;
+          l = n(51),
+          s = n(5);
+        const { TRACKER_SIZE: o } = l.REWARD_TRACKER;
         var r = a.Ember.Component.extend({
           classNames: ["event-shop-reward-track-wrapper"],
           eventHubService: a.Ember.inject.service("event-hub"),
@@ -3223,7 +3247,7 @@
           },
           trackItemHasUnclaimedRewards: ({ rewardOptions: e }) =>
             e.some(
-              ({ state: e }) => e === l.REWARD_TRACK_ITEM_STATE.UNSELECTED,
+              ({ state: e }) => e === s.REWARD_TRACK_ITEM_STATE.UNSELECTED,
             ),
           actions: {
             clickItem(e) {
@@ -3251,13 +3275,13 @@
           Object.defineProperty(t, "QUEUES", {
             enumerable: !0,
             get: function () {
-              return s.default;
+              return l.default;
             },
           }),
           Object.defineProperty(t, "REWARD_TRACKER", {
             enumerable: !0,
             get: function () {
-              return l.default;
+              return s.default;
             },
           }),
           Object.defineProperty(t, "SETTINGS", {
@@ -3278,13 +3302,13 @@
               return c.default;
             },
           });
-        var a = p(n(51)),
-          s = p(n(62)),
+        var a = p(n(52)),
           l = p(n(63)),
-          o = p(n(64)),
-          r = p(n(65)),
-          i = p(n(66)),
-          c = p(n(67));
+          s = p(n(64)),
+          o = p(n(65)),
+          r = p(n(66)),
+          i = p(n(67)),
+          c = p(n(68));
         function p(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -3293,23 +3317,23 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = m(n(52)),
-          s = m(n(53)),
+        var a = m(n(53)),
           l = m(n(54)),
-          o = m(n(55)),
-          r = m(n(56)),
-          i = m(n(57)),
-          c = m(n(58)),
-          p = m(n(59)),
-          u = m(n(60)),
-          d = m(n(61));
+          s = m(n(55)),
+          o = m(n(56)),
+          r = m(n(57)),
+          i = m(n(58)),
+          c = m(n(59)),
+          p = m(n(60)),
+          u = m(n(61)),
+          d = m(n(62));
         function m(e) {
           return e && e.__esModule ? e : { default: e };
         }
         var h = {
           COMPONENT_TYPES: a.default,
-          CURRENCY_TYPES: s.default,
-          INVENTORY_TYPES: l.default,
+          CURRENCY_TYPES: l.default,
+          INVENTORY_TYPES: s.default,
           MEDIA_TYPES: o.default,
           MEDIA_LOAD_TYPES: r.default,
           MODAL_TYPES: i.default,
@@ -3441,15 +3465,15 @@
           (t.default = void 0);
         const n = "RANKED_SOLO_5x5",
           a = "RANKED_FLEX_SR",
-          s = "RANKED_FLEX_TT",
-          l = "CHERRY",
+          l = "RANKED_FLEX_TT",
+          s = "CHERRY",
           o = "RANKED_TFT",
           r = "RANKED_TFT_DOUBLE_UP",
           i = "RANKED_TFT_TURBO",
           c = "RANKED_TFT_PAIRS",
           p = [n, a],
-          u = [...p, s],
-          d = [l],
+          u = [...p, l],
+          d = [s],
           m = [o, r],
           h = [i, c],
           v = [...m, ...h],
@@ -3458,8 +3482,8 @@
         var g = {
           RANKED_SOLO_5x5_QUEUE_TYPE: n,
           RANKED_FLEX_SR_QUEUE_TYPE: a,
-          RANKED_FLEX_TT_QUEUE_TYPE: s,
-          RANKED_CHERRY_QUEUE_TYPE: l,
+          RANKED_FLEX_TT_QUEUE_TYPE: l,
+          RANKED_CHERRY_QUEUE_TYPE: s,
           RANKED_TFT_QUEUE_TYPE: o,
           RANKED_TFT_DOUBLE_UP_QUEUE_TYPE: r,
           RANKED_TFT_TURBO_QUEUE_TYPE: i,
@@ -3534,7 +3558,7 @@
             DISABLED: "DISABLED",
           },
           a = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
-        var s = {
+        var l = {
           ProfilePrivacyEnabledState: n,
           ProfilePrivacySetting: a,
           DEFAULT_PROFILE_PRIVACY: {
@@ -3542,7 +3566,7 @@
             setting: a.PUBLIC,
           },
         };
-        t.default = s;
+        t.default = l;
       },
       (e, t) => {
         "use strict";
@@ -3560,14 +3584,14 @@
         };
         t.TIME_UNITS = n;
         const a = 36e5,
-          s = 864e5,
-          l = 6048e5,
+          l = 864e5,
+          s = 6048e5,
           o = {
             MILLISECONDS_IN_A_SECOND: 1e3,
             MILLISECONDS_IN_A_MINUTE: 6e4,
             MILLISECONDS_IN_A_HOUR: a,
-            MILLISECONDS_IN_A_DAY: s,
-            MILLISECONDS_IN_A_WEEK: l,
+            MILLISECONDS_IN_A_DAY: l,
+            MILLISECONDS_IN_A_WEEK: s,
             MILLISECONDS_IN_A_YEAR: 314496e5,
           };
         t.TIME_CONVERSIONS = o;
@@ -3579,7 +3603,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Component.extend({
+          l = a.Ember.Component.extend({
             classNames: ["event-shop-token-shop-balance-amount"],
             eventHubService: a.Ember.inject.service("event-hub"),
             init() {
@@ -3603,15 +3627,15 @@
               );
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(21);
-        var l = a.Ember.Component.extend({
+          l = n(22);
+        var s = a.Ember.Component.extend({
           classNames: ["event-shop-token-shop"],
           eventHubService: a.Ember.inject.service("event-hub"),
           categoriesOffers: a.Ember.computed(
@@ -3620,7 +3644,7 @@
               const e = this.get("eventHubService.categoriesOffers");
               return e?.length
                 ? e.map((e) => {
-                    const t = (0, s.getCategoryOffersId)(e.category);
+                    const t = (0, l.getCategoryOffersId)(e.category);
                     return { ...e, categoryTitle: a.tra.get(t) };
                   })
                 : [];
@@ -3648,7 +3672,7 @@
           actions: {
             scrollToCategory(e) {
               const t = this.element.querySelector(
-                `#${(0, s.getCategoryOffersId)(e)}`,
+                `#${(0, l.getCategoryOffersId)(e)}`,
               );
               this.element.querySelector(
                 "#token-shop-scrollable-container",
@@ -3656,14 +3680,14 @@
             },
           },
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Component.extend({
+          l = a.Ember.Component.extend({
             classNames: ["event-shop-xp"],
             eventHubService: a.Ember.inject.service("event-hub"),
             rewardTrackXP: a.Ember.computed.alias(
@@ -3700,14 +3724,14 @@
               );
             }),
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = a.Ember.Component.extend({
+          l = a.Ember.Component.extend({
             classNames: ["hol-claim-button"],
             classNameBindings: [
               "claimingInProgress:hol-claim-button-claiming-in-progress",
@@ -3756,16 +3780,16 @@
               },
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(50),
-          l = n(5);
-        const { MILESTONE_STAGES: o, REWARD_STATE: r } = s.REWARD_TRACKER;
+          l = n(51),
+          s = n(5);
+        const { MILESTONE_STAGES: o, REWARD_STATE: r } = l.REWARD_TRACKER;
         var i = a.Ember.Component.extend({
           classNames: ["hol-level-icon-flames"],
           classNameBindings: [
@@ -3863,11 +3887,11 @@
             const e = this.get("reward");
             this.get("itemClick") && this.get("itemClick")(e, 0);
             const t = e.rewardOptions.find(
-              (e) => e.celebrationType === l.REWARD_CELEBRATION_TYPE_FULLSCREEN,
+              (e) => e.celebrationType === s.REWARD_CELEBRATION_TYPE_FULLSCREEN,
             ).rewardGroupId;
             this.get("rewardsService").replayFullscreenCelebration(t),
-              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
-                eventName: l.TELEMETRY.REPLAY_BUTTON_NODE_LEVEL_CLICK_EVENT,
+              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
+                eventName: s.TELEMETRY.REPLAY_BUTTON_NODE_LEVEL_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
                 isPassPurchased: this.get(
                   "eventHubService.info.isPassPurchased",
@@ -3886,8 +3910,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = a.Ember.Component.extend({
+          l = n(5),
+          s = a.Ember.Component.extend({
             classNames: ["hol-narrative"],
             eventHubService: a.Ember.inject.service("event-hub"),
             playerCurrentLevel: a.Ember.computed.alias(
@@ -3963,8 +3987,8 @@
               playNarrativeButtonClick() {
                 if (this.get("playButtonDisabled")) return;
                 const e = this.get("narrativeElementInView");
-                a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                  eventName: s.TELEMETRY.HOL_PLAY_NARRATIVE_EVENT,
+                a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                  eventName: l.TELEMETRY.HOL_PLAY_NARRATIVE_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                   videoTitle: this.get("playNarrativeButtonLabel"),
                 });
@@ -3980,18 +4004,21 @@
               },
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5);
-        var l = a.Ember.Component.extend({
+          l = n(5);
+        var s = a.Ember.Component.extend({
           classNames: ["hol-promotion-banner"],
           selectedReward: null,
           eventHubService: a.Ember.inject.service("event-hub"),
+          marketingPreferencesService: a.Ember.inject.service(
+            "marketing-preferences",
+          ),
           promotionBannerImgSrc: a.Ember.computed.alias(
             "eventHubService.eventDetailsData.promotionBannerImage",
           ),
@@ -4007,23 +4034,27 @@
           ),
           actions: {
             bannerClick() {
-              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                eventName: s.TELEMETRY.HOL_PROMOTION_BANNER_CLICK_EVENT,
+              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                eventName: l.TELEMETRY.HOL_PROMOTION_BANNER_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
               }),
+                this.get(
+                  "marketingPreferencesService",
+                ).setFromEventShopForHolPartition(),
+                a.Navigation.showSubnavTab("hol-collections"),
                 a.Navigation.showHome();
             },
           },
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5),
-          l = a.Ember.Component.extend({
+          l = n(5),
+          s = a.Ember.Component.extend({
             classNames: ["hol-reward-details"],
             eventHubService: a.Ember.inject.service("event-hub"),
             rewardsService: a.Ember.inject.service("rewards"),
@@ -4051,7 +4082,7 @@
               const e = this.get("selectedReward")?.item;
               return !!e?.rewardOptions?.some(
                 (e) =>
-                  e.celebrationType === s.REWARD_CELEBRATION_TYPE_FULLSCREEN,
+                  e.celebrationType === l.REWARD_CELEBRATION_TYPE_FULLSCREEN,
               );
             }),
             isReplayButtonDisabled: a.Ember.computed(
@@ -4070,18 +4101,18 @@
                   t = e.rewardOptions.find(
                     (e) =>
                       e.celebrationType ===
-                      s.REWARD_CELEBRATION_TYPE_FULLSCREEN,
+                      l.REWARD_CELEBRATION_TYPE_FULLSCREEN,
                   ).rewardGroupId;
                 this.get("rewardsService").replayFullscreenCelebration(t),
-                  a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
-                    eventName: s.TELEMETRY.REPLAY_BUTTON_CLICK_EVENT,
+                  a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
+                    eventName: l.TELEMETRY.REPLAY_BUTTON_CLICK_EVENT,
                     eventId: this.get("eventHubService.info.eventId"),
                     milestoneLevel: e.threshold,
                   });
               },
             },
           });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
@@ -4089,7 +4120,7 @@
           (t.default = t.PERCENTAGE_ANIMATION_STEP = void 0);
         var a = n(1);
         t.PERCENTAGE_ANIMATION_STEP = 5;
-        var s = a.Ember.Component.extend({
+        var l = a.Ember.Component.extend({
           classNames: ["hol-xp"],
           eventHubService: a.Ember.inject.service("event-hub"),
           isGracePeriod: a.Ember.computed.alias(
@@ -4159,16 +4190,16 @@
               requestAnimationFrame(this.updateRadialPercentage);
           },
         });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(5);
-        n(78);
-        var l = a.Ember.Controller.extend({
+          l = n(5);
+        n(79);
+        var s = a.Ember.Controller.extend({
           isVisible: a.Ember.computed.alias("model.isVisible"),
           eventHubService: a.Ember.inject.service("event-hub"),
           backgroundImageStyle: a.Ember.computed(
@@ -4177,7 +4208,7 @@
             function () {
               if (
                 this.get("eventHubService.activeEventType") ===
-                  s.EVENT_HUB_TYPES.EVENT_SHOP &&
+                  l.EVENT_HUB_TYPES.EVENT_SHOP &&
                 this.get("eventHubService.backgroundData.backgroundImagePath")
               )
                 return a.Ember.String.htmlSafe(
@@ -4186,7 +4217,7 @@
             },
           ),
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
@@ -4197,8 +4228,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(21),
-          l = n(5),
+          l = n(22),
+          s = n(5),
           o = a.Ember.Controller.extend({
             eventHubService: a.Ember.inject.service("event-hub"),
             isVisible: a.Ember.computed.alias("model.isVisible"),
@@ -4213,7 +4244,7 @@
                     eventId: e,
                     eventType: n,
                     eventName: t,
-                    route: (0, s.getRouteByEventHubType)(n),
+                    route: (0, l.getRouteByEventHubType)(n),
                   }),
                 );
               },
@@ -4239,7 +4270,7 @@
                 this.removeObserver("availableEvents");
             },
             handleIsVisibleChanged() {
-              this.transitionToRoute(l.ROUTES.INDEX),
+              this.transitionToRoute(s.ROUTES.INDEX),
                 this.handleAvailableEventsChanged();
             },
             handleAvailableEventsChanged() {
@@ -4261,9 +4292,9 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0),
-          n(78);
+          n(79);
         var a = n(1),
-          s = a.Ember.Controller.extend({
+          l = a.Ember.Controller.extend({
             init() {
               this._super(...arguments),
                 this.addObserver("isVisible", this, "updatePlayerSettings"),
@@ -4309,17 +4340,17 @@
               },
             },
           });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(50),
-          l = n(5);
-        n(78);
-        const { TRACKER_SIZE: o } = s.REWARD_TRACKER;
+          l = n(51),
+          s = n(5);
+        n(79);
+        const { TRACKER_SIZE: o } = l.REWARD_TRACKER;
         var r = a.Ember.Controller.extend({
           eventHubService: a.Ember.inject.service("event-hub"),
           playerSettingsService: a.Ember.inject.service("player-settings"),
@@ -4500,8 +4531,8 @@
           actions: {
             passPurchaseClick() {
               this.get("passPurchased") ||
-                (a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
-                  eventName: l.TELEMETRY.PURCHASE_PASS_CLICK_EVENT,
+                (a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
+                  eventName: s.TELEMETRY.PURCHASE_PASS_CLICK_EVENT,
                   eventId: this.get("eventHubService.info.eventId"),
                 }),
                 this.set("showPassPurchaseModal", !0));
@@ -4514,8 +4545,8 @@
               this.set("showPurchaseLevelsModal", !0);
             },
             rewardItemClick(e, t) {
-              a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
-                eventName: l.TELEMETRY.REWARD_CLICK_EVENT,
+              a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
+                eventName: s.TELEMETRY.REWARD_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
                 milestoneLevel: e.threshold,
               }),
@@ -4552,7 +4583,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = t.INVENTORY_TYPE_TRA_KEY = void 0);
         var a = n(1);
-        const s = {
+        const l = {
           ACHIEVEMENT_TITLE: "event_hub_inventory_type_name_achievement_title",
           BOOST: "event_hub_inventory_type_name_boost",
           BUNDLES: "event_hub_inventory_type_name_bundles",
@@ -4579,13 +4610,13 @@
           TFT_MAP_SKIN: "event_hub_inventory_type_name_tft_map_skin",
           WARD_SKIN: "event_hub_inventory_type_name_ward_skin",
         };
-        t.INVENTORY_TYPE_TRA_KEY = s;
-        var l = a.Ember.Helper.helper(function (e) {
+        t.INVENTORY_TYPE_TRA_KEY = l;
+        var s = a.Ember.Helper.helper(function (e) {
           const t = e[0],
-            n = s[t];
+            n = l[t];
           return a.tra.get(n);
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         "use strict";
@@ -4605,234 +4636,234 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "T7N777HL",
+          id: "JTitz1ev",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\application.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["isVisible"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","rcp-fe-lol-event-hub-application"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["outlet"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\application.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["isVisible"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","rcp-fe-lol-event-hub-application"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n    "],["append",["unknown",["outlet"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "HMJ5AwL2",
+          id: "+k2D/OgR",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\index.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-hub-index"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableEvents"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-hub-navigation-item"],["modifier",["action"],[["get",[null]],"selectEvent",["get",["event"]]]],["flush-element"],["text","\\n          "],["append",["unknown",["event","route"]],false],["text","\\n          "],["append",["unknown",["event","eventName"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["event"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\index.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-hub-index"],["flush-element"],["text","\\n"],["block",["each"],[["get",["availableEvents"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-hub-navigation-item"],["modifier",["action"],[["get",[null]],"selectEvent",["get",["event"]]]],["flush-element"],["text","\\n          "],["append",["unknown",["event","route"]],false],["text","\\n          "],["append",["unknown",["event","eventName"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["event"]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "9rR/rJ17",
+          id: "v+yfJ4AG",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\event-shop.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-root"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n  "],["append",["helper",["page-header"],null,[["showBottomBorder","showHelpIcon","showTokenBalance"],[true,true,true]]],false],["text","\\n"],["block",["if"],[["get",["isEventShopReady"]]],null,1,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["event-shop-main-view"],null,[["isRewardTrackMinimized","toggleMinimizeRewardTrack","model"],[["get",["isRewardTrackMinimized"]],["helper",["action"],[["get",[null]],"toggleMinimizeRewardTrack"],null],["get",["model"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\event-shop.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-root"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n  "],["append",["helper",["page-header"],null,[["showBottomBorder","showHelpIcon","showTokenBalance"],[true,true,true]]],false],["text","\\n"],["block",["if"],[["get",["isEventShopReady"]]],null,1,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["event-shop-main-view"],null,[["isRewardTrackMinimized","toggleMinimizeRewardTrack","model"],[["get",["isRewardTrackMinimized"]],["helper",["action"],[["get",[null]],"toggleMinimizeRewardTrack"],null],["get",["model"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "3hxxF6h2",
+          id: "sNxEEr1w",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\hall-of-legends.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-root"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["parallaxEnabled"]]],null,4],["text","  "],["open-element","div",[]],["static-attr","class","hol-root-reward-highlight"],["flush-element"],["text","\\n    "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["selectedRewardImage"]]]]],["static-attr","class","hol-root-reward-highlight-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-root-content-shroud"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-root-reward-framming"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","src","/fe/lol-event-hub/images/hol-reward-framing.png"],["static-attr","class","hol-root-reward-framming-image"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-root-header"],["flush-element"],["text","\\n      "],["append",["helper",["page-header"],null,[["showHelpModal","showHelpIcon","showSystemControls","gracePeriodTooltipTextsOverride","gracePeriodRemainingTimeTextOverride","tooltipProgressTextOverride"],[["get",["showHelpModal"]],true,true,["get",["gracePeriodTooltipTextsOverride"]],["get",["gracePeriodRemainingTimeTextOverride"]],["get",["tooltipProgressTextOverride"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["rewardTrackItems"]]],null,3,0],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["purchase-levels-modal"],null,[["showPurchaseModal","titleTraKey","selectedReward"],[["get",["showPurchaseLevelsModal"]],"hol_purchase_levels_modal_title",["get",["selectedReward"]]]]],false],["text","\\n  "],["append",["helper",["purchase-bundles-modal"],null,[["showPurchaseModal"],[["get",["showPassPurchaseModal"]]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle hol-root-reward-track-cta"],["modifier",["action"],[["get",[null]],"passPurchaseClick"]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-upgrade-pass-cta"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["static-attr","class","hol-root-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_pass"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle hol-root-reward-track-cta"],["dynamic-attr","disabled",["unknown",["noMoreLevelsToBuy"]],null],["modifier",["action"],[["get",[null]],"purchaseLevelsClick"]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-upgrade-pass-cta"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["static-attr","class","hol-root-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_lvl"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","hol-root-center-area"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-center-area-left-column"],["flush-element"],["text","\\n          "],["append",["helper",["hol-narrative"],null,[["narrativeElementInView"],[["get",["narrativeElementInView"]]]]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-center-area-right-column"],["flush-element"],["text","\\n          "],["append",["helper",["hol-promotion-banner"],null,[["selectedReward"],[["get",["selectedReward"]]]]],false],["text","\\n          "],["append",["helper",["hol-reward-details"],null,[["selectedReward"],[["get",["selectedReward"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-root-reward-track"],["flush-element"],["text","\\n        "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","trackerSize","shouldScrollToUnclaimedReward","rewardItemTooltipComponent","rewardsInViewChanged","itemClick","isBorderlessTrack","scrollingArrowsEnabled","selectedItemThreshold","rewardItemLevelIconComponent","onScroll","disableAnimations"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["trackerSize"]],true,"",["helper",["action"],[["get",[null]],"rewardsInViewChanged"],null],["helper",["action"],[["get",[null]],"rewardItemClick"],null],true,true,["get",["selectedReward","item","threshold"]],"hol-level-icon-flames",["helper",["action"],[["get",[null]],"onRewardTrackerScroll"],null],["get",["disableRewardTrackerAnimations"]]]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-second-row"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","hol-root-xp"],["flush-element"],["text","\\n            "],["append",["unknown",["hol-xp"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-cta-group"],["flush-element"],["text","\\n            "],["append",["unknown",["hol-claim-button"]],false],["text","\\n"],["block",["if"],[["get",["passPurchased"]]],null,2,1],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","hol-root-parallax"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-background"],["static-attr","src","/fe/lol-event-hub/images/parallax/background.png"],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-midground"],["static-attr","src","/fe/lol-event-hub/images/parallax/midground.png"],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-foreground"],["static-attr","src","/fe/lol-event-hub/images/parallax/foreground.png"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\hall-of-legends.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-root"],["dynamic-attr","style",["unknown",["backgroundImageStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["parallaxEnabled"]]],null,4],["text","  "],["open-element","div",[]],["static-attr","class","hol-root-reward-highlight"],["flush-element"],["text","\\n    "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["selectedRewardImage"]]]]],["static-attr","class","hol-root-reward-highlight-image"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-root-content-shroud"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-root-reward-framming"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","src","/fe/lol-event-hub/images/hol-reward-framing.png"],["static-attr","class","hol-root-reward-framming-image"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-root-header"],["flush-element"],["text","\\n      "],["append",["helper",["page-header"],null,[["showHelpModal","showHelpIcon","showSystemControls","gracePeriodTooltipTextsOverride","gracePeriodRemainingTimeTextOverride","tooltipProgressTextOverride"],[["get",["showHelpModal"]],true,true,["get",["gracePeriodTooltipTextsOverride"]],["get",["gracePeriodRemainingTimeTextOverride"]],["get",["tooltipProgressTextOverride"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["rewardTrackItems"]]],null,3,0],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["purchase-levels-modal"],null,[["showPurchaseModal","titleTraKey","selectedReward"],[["get",["showPurchaseLevelsModal"]],"hol_purchase_levels_modal_title",["get",["selectedReward"]]]]],false],["text","\\n  "],["append",["helper",["purchase-bundles-modal"],null,[["showPurchaseModal"],[["get",["showPassPurchaseModal"]]]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle hol-root-reward-track-cta"],["modifier",["action"],[["get",[null]],"passPurchaseClick"]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-upgrade-pass-cta"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["static-attr","class","hol-root-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_pass"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle hol-root-reward-track-cta"],["dynamic-attr","disabled",["unknown",["noMoreLevelsToBuy"]],null],["modifier",["action"],[["get",[null]],"purchaseLevelsClick"]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-upgrade-pass-cta"],["flush-element"],["text","\\n                  "],["open-element","img",[]],["static-attr","class","hol-root-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_lvl"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","hol-root-center-area"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-center-area-left-column"],["flush-element"],["text","\\n          "],["append",["helper",["hol-narrative"],null,[["narrativeElementInView"],[["get",["narrativeElementInView"]]]]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-center-area-right-column"],["flush-element"],["text","\\n          "],["append",["helper",["hol-promotion-banner"],null,[["selectedReward"],[["get",["selectedReward"]]]]],false],["text","\\n          "],["append",["helper",["hol-reward-details"],null,[["selectedReward"],[["get",["selectedReward"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-root-reward-track"],["flush-element"],["text","\\n        "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","trackerSize","shouldScrollToUnclaimedReward","rewardItemTooltipComponent","rewardsInViewChanged","itemClick","isBorderlessTrack","scrollingArrowsEnabled","selectedItemThreshold","rewardItemLevelIconComponent","onScroll","disableAnimations"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["trackerSize"]],true,"",["helper",["action"],[["get",[null]],"rewardsInViewChanged"],null],["helper",["action"],[["get",[null]],"rewardItemClick"],null],true,true,["get",["selectedReward","item","threshold"]],"hol-level-icon-flames",["helper",["action"],[["get",[null]],"onRewardTrackerScroll"],null],["get",["disableRewardTrackerAnimations"]]]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-second-row"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","hol-root-xp"],["flush-element"],["text","\\n            "],["append",["unknown",["hol-xp"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","hol-root-reward-track-cta-group"],["flush-element"],["text","\\n            "],["append",["unknown",["hol-claim-button"]],false],["text","\\n"],["block",["if"],[["get",["passPurchased"]]],null,2,1],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","hol-root-parallax"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-background"],["static-attr","src","/fe/lol-event-hub/images/parallax/background.png"],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-midground"],["static-attr","src","/fe/lol-event-hub/images/parallax/midground.png"],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","hol-root-parallax-layer hol-root-parallax-foreground"],["static-attr","src","/fe/lol-event-hub/images/parallax/foreground.png"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "wxApj7pL",
+          id: "aZ8C5pKf",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\help-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\help-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\help-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","okText","dismissible","dismissibleType","onClose"],[["get",["showHelpModal"]],"DialogAlert",["get",["tra","event_hub_help_modal_explore_button"]],true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-large"],["static-attr","id","eh-help-modal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-title"],["flush-element"],["append",["unknown",["tra","event_hub_help_modal_title"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-event-name"],["flush-element"],["text","\\n        "],["append",["unknown",["eventDetailsData","eventName"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-mid"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","eh-help-modal-image"],["dynamic-attr","src",["unknown",["eventDetailsData","helpModalImagePath"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["firstColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["firstColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["firstColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["secondColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["secondColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["secondColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["thirdColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["thirdColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["thirdColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\help-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\help-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\help-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","okText","dismissible","dismissibleType","onClose"],[["get",["showHelpModal"]],"DialogAlert",["get",["tra","event_hub_help_modal_explore_button"]],true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-large"],["static-attr","id","eh-help-modal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-title"],["flush-element"],["append",["unknown",["tra","event_hub_help_modal_title"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-event-name"],["flush-element"],["text","\\n        "],["append",["unknown",["eventDetailsData","eventName"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-mid"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","eh-help-modal-image"],["dynamic-attr","src",["unknown",["eventDetailsData","helpModalImagePath"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["firstColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["firstColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["firstColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["secondColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["secondColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["secondColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-help-modal-bot-containers"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-help-modal-icons ",["unknown",["thirdColumnIconClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-modal-topic"],["flush-element"],["append",["unknown",["thirdColumnTopic"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-help-description"],["flush-element"],["append",["unknown",["thirdColumnDescription"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "j07O561D",
+          id: "JGgqt7ia",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\page-header-system-controls.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\page-header-system-controls.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\page-header-system-controls.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-system-controls-icon-wrapper eh-page-header-animation-control"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleAnimationEnabled"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,3,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-system-controls-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_hub_page_header_system_controls_tooltip_animation_off"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0],["text","    "],["open-element","svg",[]],["static-attr","width","24"],["static-attr","height","24"],["static-attr","viewBox","0 0 24 24"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","circle",[]],["static-attr","class","eh-page-header-system-controls-icon-circle"],["static-attr","cx","12"],["static-attr","cy","12"],["static-attr","r","11.5"],["static-attr","stroke","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.01022 11.7118C8.00345 11.807 8 11.9031 8 12C8 14.2091 9.79086 16 12 16C12.0969 16 12.193 15.9966 12.2882 15.9898L8.01022 11.7118ZM14.2251 15.3245C15.2955 14.6067 16 13.3856 16 12C16 9.79086 14.2091 8 12 8C10.6144 8 9.39332 8.70453 8.6755 9.77491L14.2251 15.3245Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","d","M6.3999 7.70166L7.70098 6.40058L17.5994 16.299L16.2983 17.6001L6.3999 7.70166Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-system-controls-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_hub_page_header_system_controls_tooltip_animation_on"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],2],["text","    "],["open-element","svg",[]],["static-attr","width","24"],["static-attr","height","24"],["static-attr","viewBox","0 0 24 24"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","circle",[]],["static-attr","class","eh-page-header-system-controls-icon-circle"],["static-attr","cx","12"],["static-attr","cy","12"],["static-attr","r","11.5"],["static-attr","stroke","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","g",[]],["static-attr","clip-path","url(#clip0_3016_32270)"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.0006 8.08015C7.74191 8.02759 7.47416 8 7.19995 8C4.99081 8 3.19995 9.79086 3.19995 12C3.19995 14.2091 4.99081 16 7.19995 16C7.47415 16 7.74191 15.9724 8.0006 15.9199C7.01047 14.9098 6.39995 13.5262 6.39995 12C6.39995 10.4738 7.01047 9.09024 8.0006 8.08015ZM9.59995 8.79971C8.62839 9.52947 7.99995 10.6913 7.99995 12C7.99995 13.3087 8.62839 14.4705 9.59995 15.2003C10.5715 14.4705 11.2 13.3087 11.2 12C11.2 10.6913 10.5715 9.52947 9.59995 8.79971Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M12.8007 8.08015C12.542 8.02759 12.2742 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C12.2742 16 12.542 15.9724 12.8007 15.9199C11.8105 14.9098 11.2 13.5262 11.2 12C11.2 10.4738 11.8105 9.09023 12.8007 8.08015ZM14.4 8.79971C13.4284 9.52947 12.8 10.6913 12.8 12C12.8 13.3087 13.4284 14.4705 14.4 15.2003C15.3716 14.4705 16 13.3087 16 12C16 10.6913 15.3716 9.52947 14.4 8.79971Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","d","M20.7999 12C20.7999 14.2091 19.0091 16 16.7999 16C14.5908 16 12.7999 14.2091 12.7999 12C12.7999 9.79086 14.5908 8 16.7999 8C19.0091 8 20.7999 9.79086 20.7999 12Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","defs",[]],["flush-element"],["text","\\n        "],["open-element","clipPath",[]],["static-attr","id","clip0_3016_32270"],["flush-element"],["text","\\n          "],["open-element","rect",[]],["static-attr","width","17.6"],["static-attr","height","17.6"],["static-attr","fill","white"],["static-attr","transform","translate(3.19995 3.2002)"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\page-header-system-controls.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\page-header-system-controls.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\page-header-system-controls.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-system-controls-icon-wrapper eh-page-header-animation-control"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleAnimationEnabled"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,3,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-system-controls-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_hub_page_header_system_controls_tooltip_animation_off"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],0],["text","    "],["open-element","svg",[]],["static-attr","width","24"],["static-attr","height","24"],["static-attr","viewBox","0 0 24 24"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","circle",[]],["static-attr","class","eh-page-header-system-controls-icon-circle"],["static-attr","cx","12"],["static-attr","cy","12"],["static-attr","r","11.5"],["static-attr","stroke","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.01022 11.7118C8.00345 11.807 8 11.9031 8 12C8 14.2091 9.79086 16 12 16C12.0969 16 12.193 15.9966 12.2882 15.9898L8.01022 11.7118ZM14.2251 15.3245C15.2955 14.6067 16 13.3856 16 12C16 9.79086 14.2091 8 12 8C10.6144 8 9.39332 8.70453 8.6755 9.77491L14.2251 15.3245Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","d","M6.3999 7.70166L7.70098 6.40058L17.5994 16.299L16.2983 17.6001L6.3999 7.70166Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-system-controls-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_hub_page_header_system_controls_tooltip_animation_on"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],2],["text","    "],["open-element","svg",[]],["static-attr","width","24"],["static-attr","height","24"],["static-attr","viewBox","0 0 24 24"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","circle",[]],["static-attr","class","eh-page-header-system-controls-icon-circle"],["static-attr","cx","12"],["static-attr","cy","12"],["static-attr","r","11.5"],["static-attr","stroke","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["open-element","g",[]],["static-attr","clip-path","url(#clip0_3016_32270)"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.0006 8.08015C7.74191 8.02759 7.47416 8 7.19995 8C4.99081 8 3.19995 9.79086 3.19995 12C3.19995 14.2091 4.99081 16 7.19995 16C7.47415 16 7.74191 15.9724 8.0006 15.9199C7.01047 14.9098 6.39995 13.5262 6.39995 12C6.39995 10.4738 7.01047 9.09024 8.0006 8.08015ZM9.59995 8.79971C8.62839 9.52947 7.99995 10.6913 7.99995 12C7.99995 13.3087 8.62839 14.4705 9.59995 15.2003C10.5715 14.4705 11.2 13.3087 11.2 12C11.2 10.6913 10.5715 9.52947 9.59995 8.79971Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M12.8007 8.08015C12.542 8.02759 12.2742 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C12.2742 16 12.542 15.9724 12.8007 15.9199C11.8105 14.9098 11.2 13.5262 11.2 12C11.2 10.4738 11.8105 9.09023 12.8007 8.08015ZM14.4 8.79971C13.4284 9.52947 12.8 10.6913 12.8 12C12.8 13.3087 13.4284 14.4705 14.4 15.2003C15.3716 14.4705 16 13.3087 16 12C16 10.6913 15.3716 9.52947 14.4 8.79971Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n        "],["open-element","path",[]],["static-attr","class","eh-page-header-system-controls-icon-path"],["static-attr","d","M20.7999 12C20.7999 14.2091 19.0091 16 16.7999 16C14.5908 16 12.7999 14.2091 12.7999 12C12.7999 9.79086 14.5908 8 16.7999 8C19.0091 8 20.7999 9.79086 20.7999 12Z"],["static-attr","fill","#A09B8C"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","defs",[]],["flush-element"],["text","\\n        "],["open-element","clipPath",[]],["static-attr","id","clip0_3016_32270"],["flush-element"],["text","\\n          "],["open-element","rect",[]],["static-attr","width","17.6"],["static-attr","height","17.6"],["static-attr","fill","white"],["static-attr","transform","translate(3.19995 3.2002)"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "TcYcLDl7",
+          id: "9DEuw1Sw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\page-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\page-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\page-header.js\\" "],["text","\\n"],["open-element","img",[]],["static-attr","class","eh-page-header-logo"],["dynamic-attr","src",["unknown",["eventDetailsData","eventIconPath"]],null],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-title"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasHeaderTitleImage"]]],null,11,10],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-end-timer"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],9],["text","  "],["open-element","img",[]],["static-attr","class","eh-page-header-clock-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/clock-icon-gold3.svg"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","eh-page-header-end-timer-text"],["flush-element"],["text","\\n    "],["append",["helper",["remaining-time-text"],null,[["endDateTime","almostEndingText","timeHasExpiredText","longTimeText","wrappingText"],[["get",["remainingTimeTextProps","endDateTime"]],["get",["remainingTimeTextProps","almostEndingText"]],["get",["tra","event_shop_page_header_event_ended"]],"",["get",["remainingTimeTextProps","wrappingText"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showHelpIcon"]]],null,3],["block",["if"],[["get",["showTokenBalance"]]],null,2],["block",["if"],[["get",["showSystemControls"]]],null,0],["open-element","div",[]],["static-attr","class","eh-help-modal-root"],["flush-element"],["text","\\n  "],["append",["helper",["help-modal"],null,[["showHelpModal"],[["get",["showHelpModal"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["unknown",["page-header-system-controls"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-buy-tokens-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","event_shop_page_header_buy_tokens_tooltip"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance-label"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_shop_page_header_balance_you_have"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","eh-page-header-token-balance-icon"],["dynamic-attr","src",["unknown",["tokenImage"]],null],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["event-shop-token-balance-amount"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-page-header-buy-tokens-link"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","plus"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"navigateToStore"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-page-header-help-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","eh-page-header-help-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showHelpModal"],null],null],["flush-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-bottom"],["flush-element"],["text","\\n            "],["open-element","h6",[]],["static-attr","class","eh-page-header-time-tooltip-bot-title"],["flush-element"],["append",["unknown",["tooltipProgressText","tooltipTitleBottom"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-bot-date"],["flush-element"],["append",["unknown",["shopEndDateFullText"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["shopEndDateFullText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["progressEndDateFullText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-top"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-page-header-time-tooltip-top-title"],["flush-element"],["text","\\n            "],["append",["unknown",["tooltipProgressText","tooltipTitleTop"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-top-date"],["flush-element"],["text","\\n"],["block",["if"],[["get",["progressEndDateFullText"]]],null,6,5],["text","          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description"],["flush-element"],["append",["unknown",["tooltipProgressText","tooltipTitleDescription"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["progressEndDateFullText"]]],null,4]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-top"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-page-header-time-tooltip-top-title"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipTitleTop"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-top-date"],["flush-element"],["append",["unknown",["shopEndDateFullText"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description-top"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipDescriptionTop"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-bottom"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","eh-page-header-time-tooltip-bot-title"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipTitleBottom"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipDescriptionBottom"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-tooltip-content"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,8,7],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","eh-page-header-title-text"],["flush-element"],["append",["unknown",["eventDetailsData","eventName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","eh-page-header-title-image"],["dynamic-attr","src",["unknown",["headerTitleImageSrc"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\page-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\page-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\page-header.js\\" "],["text","\\n"],["open-element","img",[]],["static-attr","class","eh-page-header-logo"],["dynamic-attr","src",["unknown",["eventDetailsData","eventIconPath"]],null],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-title"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasHeaderTitleImage"]]],null,11,10],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","eh-page-header-end-timer"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],9],["text","  "],["open-element","img",[]],["static-attr","class","eh-page-header-clock-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/clock-icon-gold3.svg"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","eh-page-header-end-timer-text"],["flush-element"],["text","\\n    "],["append",["helper",["remaining-time-text"],null,[["endDateTime","almostEndingText","timeHasExpiredText","longTimeText","wrappingText"],[["get",["remainingTimeTextProps","endDateTime"]],["get",["remainingTimeTextProps","almostEndingText"]],["get",["tra","event_shop_page_header_event_ended"]],"",["get",["remainingTimeTextProps","wrappingText"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showHelpIcon"]]],null,3],["block",["if"],[["get",["showTokenBalance"]]],null,2],["block",["if"],[["get",["showSystemControls"]]],null,0],["open-element","div",[]],["static-attr","class","eh-help-modal-root"],["flush-element"],["text","\\n  "],["append",["helper",["help-modal"],null,[["showHelpModal"],[["get",["showHelpModal"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["unknown",["page-header-system-controls"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-buy-tokens-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","event_shop_page_header_buy_tokens_tooltip"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","eh-page-header-token-balance-label"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_shop_page_header_balance_you_have"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","eh-page-header-token-balance-icon"],["dynamic-attr","src",["unknown",["tokenImage"]],null],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["event-shop-token-balance-amount"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-page-header-buy-tokens-link"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","plus"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"navigateToStore"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-page-header-help-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-info-icon",[]],["static-attr","class","eh-page-header-help-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showHelpModal"],null],null],["flush-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-bottom"],["flush-element"],["text","\\n            "],["open-element","h6",[]],["static-attr","class","eh-page-header-time-tooltip-bot-title"],["flush-element"],["append",["unknown",["tooltipProgressText","tooltipTitleBottom"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-bot-date"],["flush-element"],["append",["unknown",["shopEndDateFullText"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["shopEndDateFullText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["unknown",["progressEndDateFullText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-top"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-page-header-time-tooltip-top-title"],["flush-element"],["text","\\n            "],["append",["unknown",["tooltipProgressText","tooltipTitleTop"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-top-date"],["flush-element"],["text","\\n"],["block",["if"],[["get",["progressEndDateFullText"]]],null,6,5],["text","          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description"],["flush-element"],["append",["unknown",["tooltipProgressText","tooltipTitleDescription"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["progressEndDateFullText"]]],null,4]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-top"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-page-header-time-tooltip-top-title"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipTitleTop"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-time-tooltip-top-date"],["flush-element"],["append",["unknown",["shopEndDateFullText"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description-top"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipDescriptionTop"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-page-header-tooltip-block eh-page-header-tooltip-block-bottom"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","eh-page-header-time-tooltip-bot-title"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipTitleBottom"]],false],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","eh-page-header-description"],["flush-element"],["text","\\n            "],["append",["unknown",["gracePeriodTooltipsText","tooltipDescriptionBottom"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","class","eh-page-header-tooltip-content"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,8,7],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","eh-page-header-title-text"],["flush-element"],["append",["unknown",["eventDetailsData","eventName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","eh-page-header-title-image"],["dynamic-attr","src",["unknown",["headerTitleImageSrc"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "VuJ2jt8/",
+          id: "Ti+lSkX2",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\purchase-bundles-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\purchase-bundles-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\purchase-bundles-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["showPurchaseModal"]],"DialogAlert",true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],26],["block",["if"],[["get",["showDropRatesModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["dropRatesLootItemName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeDropRatesModal"],null]]],0]],"locals":[]},{"statements":[["text","              "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-choose-text"],["flush-element"],["append",["unknown",["tra","event_hub_purchase_modal_summary_choose"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_modal_buy_rp"]],false],["text","\\n                              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance-not-enough-rp"],["flush-element"],["text","\\n                        "],["append",["unknown",["tra","event_hub_purchase_modal_not_enough_rp"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openRPPurchaseModal"],null],null],["dynamic-attr","disabled",["unknown",["rpPurchaseInProgress"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["rpPurchaseInProgress"]]],null,4,3],["text","                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance"],["flush-element"],["text","\\n                      "],["append",["unknown",["tra","event_hub_purchase_modal_balance"]],false],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["append",["unknown",["newBalance"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-tos"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-checkbox",[]],["flush-element"],["text","\\n                        "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","id","tosChecked"],["static-attr","name","tosChecked"],["static-attr","type","checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleTosChecked"],null],null],["dynamic-attr","disabled",["unknown",["tosDisabled"]],null],["dynamic-attr","checked",["unknown",["tosChecked"]],null],["flush-element"],["close-element"],["text","\\n                        "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","tosChecked"],["static-attr","class","eh-purchase-bundles-modal-tos-text"],["flush-element"],["text","\\n                          "],["append",["unknown",["tosText"]],false],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["dynamic-attr","disabled",["unknown",["unlockButtonDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"unlockPass"],null],null],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                          "],["append",["unknown",["tra","event_hub_purchase_modal_unlock_now"]],false],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-discount"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-discount-text"],["flush-element"],["append",["unknown",["discountPercentage"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-initial-price"],["flush-element"],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-initial-price-text"],["flush-element"],["append",["unknown",["initialPrice"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                              "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openDropRatesModal",["get",["item"]]],null],null],["static-attr","class","eh-purchase-bundles-modal-summary-item-drop-rates"],["flush-element"],["text","\\n                                "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-dice-icon"],["flush-element"],["close-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_modal_see_drop_rates"]],false],["text","\\n                              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["inventory-type-name"],[["get",["item","inventoryType"]]],null],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-summary-item\\n                          ",["helper",["if"],[["get",["item","owned"]],"eh-purchase-bundles-modal-summary-item-owned"],null]]]],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-img-wrapper"],["flush-element"],["text","\\n                          "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-img"],["dynamic-attr","src",["helper",["safe-image-path"],[["get",["item","splashImage"]]],null],null],["flush-element"],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-details"],["flush-element"],["text","\\n                          "],["open-element","p",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-name"],["flush-element"],["text","\\n                            "],["append",["unknown",["item","displayName"]],false],["text","\\n                          "],["close-element"],["text","\\n                          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-description"],["flush-element"],["text","\\n                            "],["open-element","p",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-inventory-type"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","owned"]]],null,11,10],["text","                            "],["close-element"],["text","\\n"],["block",["if"],[["helper",["eq"],[["get",["item","subInventoryType"]],"CHEST"],null]],null,9],["text","                          "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","                        "],["append",["unknown",["tra","event_shop_see_more"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["tra","event_shop_see_less"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["static-attr","class","eh-purchase-bundles-modal-summary-scrollable-area"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","id","eh-purchase-bundles-modal-summary-description"],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-summary-description\\n                    ",["unknown",["descriptionElementAdditionalClassName"]],"\\n                    ",["helper",["if"],[["get",["isDescriptionExpanded"]],"eh-purchase-bundles-modal-summary-description-expanded"],null]]]],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","id","eh-purchase-bundles-modal-summary-description-text"],["static-attr","class","eh-purchase-bundles-modal-summary-description-text"],["flush-element"],["text","\\n                    "],["append",["unknown",["selectedOption","details","description"]],true],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"expandOrCollapseDescription"],null],null],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDescriptionExpanded"]]],null,14,13],["text","                    "],["close-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more-chevron"],["flush-element"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-items"],["flush-element"],["text","\\n                  "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-items-header"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","event_hub_purchase_modal_purchse_summary"]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["selectedOption","bundledItems"]]],null,12],["text","                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-price"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-final-price"],["flush-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-final-price-text"],["flush-element"],["append",["unknown",["finalPrice"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"],["block",["if"],[["get",["initialPrice"]]],null,8],["block",["if"],[["get",["discountPercentage"]]],null,7],["text","                "],["close-element"],["text","\\n"],["block",["if"],[["get",["selectedOption","isPurchasable"]]],null,6,5],["text","              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-details"],["flush-element"],["text","\\n"],["block",["if"],[["get",["selectedOption"]]],null,15,2],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-spinner"],["flush-element"],["text","\\n            "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-header"],["flush-element"],["text","\\n          "],["open-element","h4",[]],["static-attr","class","eh-purchase-bundles-modal-summary-title"],["flush-element"],["append",["unknown",["summaryTitle"]],false],["close-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-subtitle"],["flush-element"],["append",["unknown",["summarySubtitle"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isExecutingPurchase"]]],null,17,16]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-header"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-lock-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-text"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","event_hub_purchase_modal_success_header"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-item-name"],["flush-element"],["text","\\n              "],["append",["unknown",["summaryTitle"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-message"],["flush-element"],["text","\\n              "],["append",["unknown",["successMessage"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-footer"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n              "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_modal_awesome"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-spinner"],["flush-element"],["text","\\n          "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-details"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-title"],["flush-element"],["append",["unknown",["option","details","name"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-bottom-row"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-price"],["flush-element"],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-price-text"],["flush-element"],["append",["unknown",["option","finalPrice"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-quantity"],["flush-element"],["append",["unknown",["option","bundledItems","length"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-owned-text"],["flush-element"],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-decorator-badge"],["dynamic-attr","src",["unknown",["option","details","decoratorBadgeURL"]],null],["static-attr","onerror","this.onerror=null; this.remove();"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-option\\n                ",["unknown",["option","optionTypeCssClass"]],"\\n                ",["unknown",["option","selectedCssClass"]],"\\n                ",["unknown",["option","ownedClass"]],"\\n                ",["unknown",["optionsPointerClass"]],"\\n                ",["unknown",["optionsExecutingPurchaseClass"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectOption",["get",["option"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-image-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["option","details","decoratorBadgeURL"]]],null,23],["text","                "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-option-image"],["dynamic-attr","src",["unknown",["option","details","splashImage"]],null],["dynamic-attr","alt",["unknown",["option","details","name"]],null],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-details-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["option","isOwned"]]],null,22,21],["text","              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-options-wrapper ",["unknown",["numberOfOptionsWrapperCssClass"]]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["options"]]],null,24],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-options"],["flush-element"],["text","\\n"],["block",["if"],[["get",["options","length"]]],null,25,20],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary"],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseCompleted"]]],null,19,18],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\purchase-bundles-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\purchase-bundles-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\purchase-bundles-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["showPurchaseModal"]],"DialogAlert",true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],26],["block",["if"],[["get",["showDropRatesModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["dropRatesLootItemName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeDropRatesModal"],null]]],0]],"locals":[]},{"statements":[["text","              "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-choose-text"],["flush-element"],["append",["unknown",["tra","event_hub_purchase_modal_summary_choose"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_modal_buy_rp"]],false],["text","\\n                              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance-not-enough-rp"],["flush-element"],["text","\\n                        "],["append",["unknown",["tra","event_hub_purchase_modal_not_enough_rp"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openRPPurchaseModal"],null],null],["dynamic-attr","disabled",["unknown",["rpPurchaseInProgress"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["rpPurchaseInProgress"]]],null,4,3],["text","                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-balance"],["flush-element"],["text","\\n                      "],["append",["unknown",["tra","event_hub_purchase_modal_balance"]],false],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["append",["unknown",["newBalance"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-tos"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-checkbox",[]],["flush-element"],["text","\\n                        "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","id","tosChecked"],["static-attr","name","tosChecked"],["static-attr","type","checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleTosChecked"],null],null],["dynamic-attr","disabled",["unknown",["tosDisabled"]],null],["dynamic-attr","checked",["unknown",["tosChecked"]],null],["flush-element"],["close-element"],["text","\\n                        "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","tosChecked"],["static-attr","class","eh-purchase-bundles-modal-tos-text"],["flush-element"],["text","\\n                          "],["append",["unknown",["tosText"]],false],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n                      "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["dynamic-attr","disabled",["unknown",["unlockButtonDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"unlockPass"],null],null],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                          "],["append",["unknown",["tra","event_hub_purchase_modal_unlock_now"]],false],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-discount"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-discount-text"],["flush-element"],["append",["unknown",["discountPercentage"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-initial-price"],["flush-element"],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-initial-price-text"],["flush-element"],["append",["unknown",["initialPrice"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                              "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openDropRatesModal",["get",["item"]]],null],null],["static-attr","class","eh-purchase-bundles-modal-summary-item-drop-rates"],["flush-element"],["text","\\n                                "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-dice-icon"],["flush-element"],["close-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_modal_see_drop_rates"]],false],["text","\\n                              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["inventory-type-name"],[["get",["item","inventoryType"]]],null],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-summary-item\\n                          ",["helper",["if"],[["get",["item","owned"]],"eh-purchase-bundles-modal-summary-item-owned"],null]]]],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-img-wrapper"],["flush-element"],["text","\\n                          "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-img"],["dynamic-attr","src",["helper",["safe-image-path"],[["get",["item","splashImage"]]],null],null],["flush-element"],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-details"],["flush-element"],["text","\\n                          "],["open-element","p",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-name"],["flush-element"],["text","\\n                            "],["append",["unknown",["item","displayName"]],false],["text","\\n                          "],["close-element"],["text","\\n                          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-description"],["flush-element"],["text","\\n                            "],["open-element","p",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-inventory-type"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","owned"]]],null,11,10],["text","                            "],["close-element"],["text","\\n"],["block",["if"],[["helper",["eq"],[["get",["item","subInventoryType"]],"CHEST"],null]],null,9],["text","                          "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                      "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","                        "],["append",["unknown",["tra","event_shop_see_more"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["tra","event_shop_see_less"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-scrollable",[]],["static-attr","overflow-masks","enabled"],["static-attr","class","eh-purchase-bundles-modal-summary-scrollable-area"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","id","eh-purchase-bundles-modal-summary-description"],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-summary-description\\n                    ",["unknown",["descriptionElementAdditionalClassName"]],"\\n                    ",["helper",["if"],[["get",["isDescriptionExpanded"]],"eh-purchase-bundles-modal-summary-description-expanded"],null]]]],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","id","eh-purchase-bundles-modal-summary-description-text"],["static-attr","class","eh-purchase-bundles-modal-summary-description-text"],["flush-element"],["text","\\n                    "],["append",["unknown",["selectedOption","details","description"]],true],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"expandOrCollapseDescription"],null],null],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDescriptionExpanded"]]],null,14,13],["text","                    "],["close-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-summary-description-see-more-chevron"],["flush-element"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-items"],["flush-element"],["text","\\n                  "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-items-header"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","event_hub_purchase_modal_purchse_summary"]],false],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-item-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["selectedOption","bundledItems"]]],null,12],["text","                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-price"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-final-price"],["flush-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-final-price-text"],["flush-element"],["append",["unknown",["finalPrice"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"],["block",["if"],[["get",["initialPrice"]]],null,8],["block",["if"],[["get",["discountPercentage"]]],null,7],["text","                "],["close-element"],["text","\\n"],["block",["if"],[["get",["selectedOption","isPurchasable"]]],null,6,5],["text","              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-details"],["flush-element"],["text","\\n"],["block",["if"],[["get",["selectedOption"]]],null,15,2],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-spinner"],["flush-element"],["text","\\n            "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-header"],["flush-element"],["text","\\n          "],["open-element","h4",[]],["static-attr","class","eh-purchase-bundles-modal-summary-title"],["flush-element"],["append",["unknown",["summaryTitle"]],false],["close-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","eh-purchase-bundles-modal-summary-subtitle"],["flush-element"],["append",["unknown",["summarySubtitle"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isExecutingPurchase"]]],null,17,16]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-header"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-lock-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-text"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","event_hub_purchase_modal_success_header"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-item-name"],["flush-element"],["text","\\n              "],["append",["unknown",["summaryTitle"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-message"],["flush-element"],["text","\\n              "],["append",["unknown",["successMessage"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-success-footer"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button"],["flush-element"],["text","\\n              "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary-unlock-button-content"],["flush-element"],["text","\\n                  "],["append",["unknown",["tra","event_hub_purchase_modal_awesome"]],false],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-spinner"],["flush-element"],["text","\\n          "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-details"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-title"],["flush-element"],["append",["unknown",["option","details","name"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-bottom-row"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-price"],["flush-element"],["text","\\n                      "],["open-element","span",[]],["static-attr","class","eh-purchase-bundles-modal-rp-icon"],["flush-element"],["close-element"],["text","\\n                      "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-price-text"],["flush-element"],["append",["unknown",["option","finalPrice"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-quantity"],["flush-element"],["append",["unknown",["option","bundledItems","length"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-owned-text"],["flush-element"],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-decorator-badge"],["dynamic-attr","src",["unknown",["option","details","decoratorBadgeURL"]],null],["static-attr","onerror","this.onerror=null; this.remove();"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-option\\n                ",["unknown",["option","optionTypeCssClass"]],"\\n                ",["unknown",["option","selectedCssClass"]],"\\n                ",["unknown",["option","ownedClass"]],"\\n                ",["unknown",["optionsPointerClass"]],"\\n                ",["unknown",["optionsExecutingPurchaseClass"]]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectOption",["get",["option"]]],null],null],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-image-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["option","details","decoratorBadgeURL"]]],null,23],["text","                "],["open-element","img",[]],["static-attr","class","eh-purchase-bundles-modal-option-image"],["dynamic-attr","src",["unknown",["option","details","splashImage"]],null],["dynamic-attr","alt",["unknown",["option","details","name"]],null],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-option-details-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["option","isOwned"]]],null,22,21],["text","              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["option"]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-bundles-modal-options-wrapper ",["unknown",["numberOfOptionsWrapperCssClass"]]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["options"]]],null,24],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-options"],["flush-element"],["text","\\n"],["block",["if"],[["get",["options","length"]]],null,25,20],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","eh-purchase-bundles-modal-summary"],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseCompleted"]]],null,19,18],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "Km+XW8Bk",
+          id: "Aivm0UBc",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\purchase-levels-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\purchase-levels-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\purchase-levels-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["showPurchaseModal"]],"DialogAlert",true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],12]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                                "],["append",["unknown",["levelsButtonTra"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","eh-purchase-levels-modal-price-button"],["dynamic-attr","disabled",["unknown",["purchaseButtonDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"purchaseLevels"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseInProgress"]]],null,1,0],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["tra","event_hub_purchase_modal_buy_rp"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","eh-purchase-levels-modal-rp-button"],["static-attr","primary","true"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openRPPurchaseModal"],null],null],["dynamic-attr","disabled",["unknown",["rpPurchaseInProgress"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["rpPurchaseInProgress"]]],null,4,3],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","es-purchase-levels-modal-error"],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","event_hub_purchase_levels_modal_error_loading_offer"]],false],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-new-balance"],["flush-element"],["append",["unknown",["tra","event_hub_purchase_levels_modal_new_balance"]],false],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/rp-small.svg"],["flush-element"],["close-element"],["append",["unknown",["newBalanceTra"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","es-purchase-levels-modal-error"],["flush-element"],["text","\\n                        "],["append",["unknown",["tra","event_hub_purchase_modal_not_enough_rp"]],false],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","eh-multi-purchase-slider-container"],["flush-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-number"],["flush-element"],["text","\\n                                "],["append",["unknown",["minNumberOfLevelsToBuy"]],false],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","lol-uikit-slider",[]],["static-attr","class","multi-purchase-uikit-slider eh-multi-purchase-slider"],["static-attr","step","1"],["static-attr","min","1"],["dynamic-attr","max",["unknown",["numberOfLevelsToBuy"]],null],["dynamic-attr","value",["unknown",["levelsToBuy"]],null],["static-attr","clickSet","true"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"updateLevelsToBuy"],null],null],["flush-element"],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-number"],["flush-element"],["text","\\n                                "],["append",["unknown",["numberOfLevelsToBuy"]],false],["text","\\n                            "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                            "],["open-element","uikit-state-machine",[]],["static-attr","state","hidden"],["dynamic-attr","showPurchaseModal",["helper",["if"],[["get",["showPurchaseModal"]],"true","false"],null],null],["dynamic-attr","isDataLoading",["helper",["if"],[["get",["isDataLoading"]],"true","false"],null],null],["static-attr","class","eh-purchase-levels-modal-selection-next-level-animation"],["flush-element"],["text","\\n                                "],["open-element","uikit-states",[]],["flush-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","hidden"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","name","showPurchaseModal"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","name","isDataLoading"],["static-attr","value","false"],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#hidden"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#hidden"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#loop"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","loop"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#hidden"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#loop"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#hidden"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","loop"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","hidden"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","next-state","hidden"],["static-attr","name","isDataLoading"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#loop"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                                "],["open-element","uikit-switch",[]],["static-attr","id","hidden"],["static-attr","visible-state","intro"],["flush-element"],["text","\\n                                    "],["open-element","uikit-video",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/level-ring-fast.webm"],["static-attr","visible-value","*"],["flush-element"],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                                "],["open-element","uikit-switch",[]],["static-attr","id","loop"],["static-attr","visible-state","loop"],["flush-element"],["text","\\n                                    "],["open-element","uikit-video",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/level-ring.webm"],["static-attr","visible-value","*"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","video",[]],["static-attr","id","level-increase"],["static-attr","class","eh-purchase-levels-modal-selection-next-level-animation"],["static-attr","src","/fe/lol-static-assets/images/event-hub/union-animated.webm#t=50"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-spinner"],["flush-element"],["text","\\n                    "],["append",["helper",["uikit-spinner"],null,[["width","height"],["40px","40px"]]],false],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/ticket.svg"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header-title"],["flush-element"],["text","\\n                    "],["append",["unknown",["titleTra"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header-subtitle"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","event_hub_purchase_levels_modal_subtitle"]],false],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isDataLoading"]]],null,11],["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-levels-modal-content-container ",["helper",["if"],[["get",["isDataLoading"]],"eh-purchase-levels-modal-content-container--hidden"],null]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection"],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,10],["text","                        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-levels-modal-selection-next-level ",["helper",["unless"],[["get",["animationsEnabled"]],"low-spec"],null]]]],["flush-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-title"],["flush-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_levels_modal_new_level_text"]],false],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-black-box"],["flush-element"],["text","\\n                                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-new-level"],["flush-element"],["text","\\n                                    "],["append",["unknown",["newLevel"]],false],["text","\\n                                "],["close-element"],["text","\\n                            "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSlider"]]],null,9],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-container"],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer"],["flush-element"],["text","\\n                            "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","remove"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"decreaseLevelsToBuy"],null],null],["dynamic-attr","disabled",["helper",["if"],[["helper",["eq"],[["get",["minNumberOfLevelsToBuy"]],["get",["levelsToBuy"]]],null],"true",null],null],null],["flush-element"],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-current"],["flush-element"],["append",["unknown",["levelsToBuy"]],false],["close-element"],["text","\\n                            "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","add"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"increaseLevelsToBuy"],null],null],["dynamic-attr","disabled",["helper",["if"],[["helper",["eq"],[["get",["numberOfLevelsToBuy"]],["get",["levelsToBuy"]]],null],"true",null],null],null],["flush-element"],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-caption"],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","event_hub_purchase_levels_modal_slider_caption"]],false],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-rp"],["flush-element"],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/rp.svg"],["flush-element"],["close-element"],["append",["unknown",["totalPriceTra"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,8,7],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-confirmation-container"],["flush-element"],["text","\\n                    "],["open-element","lol-uikit-flat-checkbox",[]],["flush-element"],["text","\\n                        "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","id","tosChecked"],["static-attr","name","tosChecked"],["static-attr","type","checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleTosChecked"],null],null],["dynamic-attr","disabled",["unknown",["tosDisabled"]],null],["dynamic-attr","checked",["unknown",["tosChecked"]],null],["flush-element"],["close-element"],["text","\\n                        "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","tosChecked"],["static-attr","class","eh-purchase-levels-modal-price-confirmation-text"],["flush-element"],["text","\\n                            "],["append",["unknown",["purchaseTosTra"]],false],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["errorLoadingPurchaseData"]]],null,6],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-buttons-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,5,2],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\purchase-levels-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\purchase-levels-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\purchase-levels-modal.js\\" "],["text","\\n"],["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["showPurchaseModal"]],"DialogAlert",true,"inside",["helper",["action"],[["get",[null]],"handleCloseModalClick"],null]]],12]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                                "],["append",["unknown",["levelsButtonTra"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","eh-purchase-levels-modal-price-button"],["dynamic-attr","disabled",["unknown",["purchaseButtonDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"purchaseLevels"],null],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseInProgress"]]],null,1,0],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["tra","event_hub_purchase_modal_buy_rp"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","eh-purchase-levels-modal-rp-button"],["static-attr","primary","true"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openRPPurchaseModal"],null],null],["dynamic-attr","disabled",["unknown",["rpPurchaseInProgress"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["rpPurchaseInProgress"]]],null,4,3],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","es-purchase-levels-modal-error"],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","event_hub_purchase_levels_modal_error_loading_offer"]],false],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-new-balance"],["flush-element"],["append",["unknown",["tra","event_hub_purchase_levels_modal_new_balance"]],false],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/rp-small.svg"],["flush-element"],["close-element"],["append",["unknown",["newBalanceTra"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","es-purchase-levels-modal-error"],["flush-element"],["text","\\n                        "],["append",["unknown",["tra","event_hub_purchase_modal_not_enough_rp"]],false],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","eh-multi-purchase-slider-container"],["flush-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-number"],["flush-element"],["text","\\n                                "],["append",["unknown",["minNumberOfLevelsToBuy"]],false],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","lol-uikit-slider",[]],["static-attr","class","multi-purchase-uikit-slider eh-multi-purchase-slider"],["static-attr","step","1"],["static-attr","min","1"],["dynamic-attr","max",["unknown",["numberOfLevelsToBuy"]],null],["dynamic-attr","value",["unknown",["levelsToBuy"]],null],["static-attr","clickSet","true"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"updateLevelsToBuy"],null],null],["flush-element"],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-number"],["flush-element"],["text","\\n                                "],["append",["unknown",["numberOfLevelsToBuy"]],false],["text","\\n                            "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                            "],["open-element","uikit-state-machine",[]],["static-attr","state","hidden"],["dynamic-attr","showPurchaseModal",["helper",["if"],[["get",["showPurchaseModal"]],"true","false"],null],null],["dynamic-attr","isDataLoading",["helper",["if"],[["get",["isDataLoading"]],"true","false"],null],null],["static-attr","class","eh-purchase-levels-modal-selection-next-level-animation"],["flush-element"],["text","\\n                                "],["open-element","uikit-states",[]],["flush-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","hidden"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","name","showPurchaseModal"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","name","isDataLoading"],["static-attr","value","false"],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#hidden"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#hidden"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#loop"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","loop"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#hidden"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n                                            "],["open-element","uikit-condition-media",[]],["static-attr","selector","#loop"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#hidden"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                    "],["open-element","uikit-state",[]],["static-attr","name","loop"],["flush-element"],["text","\\n                                        "],["open-element","uikit-transition",[]],["static-attr","next-state","hidden"],["flush-element"],["text","\\n                                            "],["open-element","uikit-condition-parameter",[]],["static-attr","next-state","hidden"],["static-attr","name","isDataLoading"],["static-attr","value","true"],["flush-element"],["close-element"],["text","\\n                                        "],["close-element"],["text","\\n                                        "],["open-element","uikit-behavior-media",[]],["static-attr","selector","#loop"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n                                    "],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                                "],["open-element","uikit-switch",[]],["static-attr","id","hidden"],["static-attr","visible-state","intro"],["flush-element"],["text","\\n                                    "],["open-element","uikit-video",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/level-ring-fast.webm"],["static-attr","visible-value","*"],["flush-element"],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                                "],["open-element","uikit-switch",[]],["static-attr","id","loop"],["static-attr","visible-state","loop"],["flush-element"],["text","\\n                                    "],["open-element","uikit-video",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/level-ring.webm"],["static-attr","visible-value","*"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n                                "],["close-element"],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","video",[]],["static-attr","id","level-increase"],["static-attr","class","eh-purchase-levels-modal-selection-next-level-animation"],["static-attr","src","/fe/lol-static-assets/images/event-hub/union-animated.webm#t=50"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-spinner"],["flush-element"],["text","\\n                    "],["append",["helper",["uikit-spinner"],null,[["width","height"],["40px","40px"]]],false],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header"],["flush-element"],["text","\\n                "],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/ticket.svg"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header-title"],["flush-element"],["text","\\n                    "],["append",["unknown",["titleTra"]],false],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-header-subtitle"],["flush-element"],["text","\\n                    "],["append",["unknown",["tra","event_hub_purchase_levels_modal_subtitle"]],false],["text","\\n                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isDataLoading"]]],null,11],["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-levels-modal-content-container ",["helper",["if"],[["get",["isDataLoading"]],"eh-purchase-levels-modal-content-container--hidden"],null]]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection"],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,10],["text","                        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eh-purchase-levels-modal-selection-next-level ",["helper",["unless"],[["get",["animationsEnabled"]],"low-spec"],null]]]],["flush-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-title"],["flush-element"],["text","\\n                                "],["append",["unknown",["tra","event_hub_purchase_levels_modal_new_level_text"]],false],["text","\\n                            "],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-black-box"],["flush-element"],["text","\\n                                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-selection-next-level-new-level"],["flush-element"],["text","\\n                                    "],["append",["unknown",["newLevel"]],false],["text","\\n                                "],["close-element"],["text","\\n                            "],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSlider"]]],null,9],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-container"],["flush-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer"],["flush-element"],["text","\\n                            "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","remove"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"decreaseLevelsToBuy"],null],null],["dynamic-attr","disabled",["helper",["if"],[["helper",["eq"],[["get",["minNumberOfLevelsToBuy"]],["get",["levelsToBuy"]]],null],"true",null],null],null],["flush-element"],["close-element"],["text","\\n                            "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-current"],["flush-element"],["append",["unknown",["levelsToBuy"]],false],["close-element"],["text","\\n                            "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","add"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"increaseLevelsToBuy"],null],null],["dynamic-attr","disabled",["helper",["if"],[["helper",["eq"],[["get",["numberOfLevelsToBuy"]],["get",["levelsToBuy"]]],null],"true",null],null],null],["flush-element"],["close-element"],["text","\\n                        "],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","eh-slider-incrementer-caption"],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","event_hub_purchase_levels_modal_slider_caption"]],false],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-breakdown-rp"],["flush-element"],["open-element","img",[]],["static-attr","src","/fe/lol-static-assets/images/event-hub/rp.svg"],["flush-element"],["close-element"],["append",["unknown",["totalPriceTra"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,8,7],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-price-confirmation-container"],["flush-element"],["text","\\n                    "],["open-element","lol-uikit-flat-checkbox",[]],["flush-element"],["text","\\n                        "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","id","tosChecked"],["static-attr","name","tosChecked"],["static-attr","type","checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleTosChecked"],null],null],["dynamic-attr","disabled",["unknown",["tosDisabled"]],null],["dynamic-attr","checked",["unknown",["tosChecked"]],null],["flush-element"],["close-element"],["text","\\n                        "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","tosChecked"],["static-attr","class","eh-purchase-levels-modal-price-confirmation-text"],["flush-element"],["text","\\n                            "],["append",["unknown",["purchaseTosTra"]],false],["text","\\n                        "],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["errorLoadingPurchaseData"]]],null,6],["text","                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eh-purchase-levels-modal-buttons-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,5,2],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "YW7ARRUQ",
+          id: "Vv5T6iuB",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-card-multi-purchase-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-card-multi-purchase-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-card-multi-purchase-modal.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-large"],["static-attr","class","event-shop-card-multi-purchase-content-block"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-modal-preview-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-modal-image-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","event-shop-card-multi-purchase-modal-image"],["dynamic-attr","src",["unknown",["offer","image"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-item-title"],["flush-element"],["append",["unknown",["offer","localizedTitle"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-item-details"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["offer","localizedDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderMultiPurchaseSlider"]]],null,3],["text","  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-details"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-purchase-button",[]],["dynamic-attr","disabled",["unknown",["isPurchaseDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"purchaseOffer",["get",["offer"]]],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-currency-wrapper"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","event-shop-card-multi-purchase-currency-icon"],["dynamic-attr","src",["unknown",["tokenImageSrc"]],null],["flush-element"],["close-element"],["text","\\n        "],["append",["unknown",["purchasePrice"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,2],["block",["if"],[["get",["offerPurchased"]]],null,1],["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-future-balance"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isPurchaseDisabled"]]],null,0],["text","    "],["close-element"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["unknown",["tra","event_hub_purchase_modal_balance"]],false],["text"," "],["append",["unknown",["futureTokenBalance"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-not-enough-tokens"],["flush-element"],["append",["unknown",["tra","event_shop_card_purchase_offer_already_owned"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-not-enough-tokens"],["flush-element"],["append",["unknown",["tra","event_shop_card_purchase_not_enough_tokens"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["multi-purchase-slider"],null,[["min","max","onValidationChange","onSelectedQuantityChange","disabled"],[["get",["minPurchasableQuantity"]],["get",["maxPurchasableQuantity"]],["helper",["action"],[["get",[null]],"handleValidationChange"],null],["helper",["action"],[["get",[null]],"handleSelectedQuantityChange"],null],["get",["purchaseInProgress"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-card-multi-purchase-modal.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-card-multi-purchase-modal.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-card-multi-purchase-modal.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-large"],["static-attr","class","event-shop-card-multi-purchase-content-block"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-modal-preview-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-modal-image-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","event-shop-card-multi-purchase-modal-image"],["dynamic-attr","src",["unknown",["offer","image"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-item-title"],["flush-element"],["append",["unknown",["offer","localizedTitle"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-item-details"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["offer","localizedDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderMultiPurchaseSlider"]]],null,3],["text","  "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-details"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-purchase-button",[]],["dynamic-attr","disabled",["unknown",["isPurchaseDisabled"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"purchaseOffer",["get",["offer"]]],null],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-currency-wrapper"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","event-shop-card-multi-purchase-currency-icon"],["dynamic-attr","src",["unknown",["tokenImageSrc"]],null],["flush-element"],["close-element"],["text","\\n        "],["append",["unknown",["purchasePrice"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["notEnoughRp"]]],null,2],["block",["if"],[["get",["offerPurchased"]]],null,1],["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-future-balance"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["isPurchaseDisabled"]]],null,0],["text","    "],["close-element"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["unknown",["tra","event_hub_purchase_modal_balance"]],false],["text"," "],["append",["unknown",["futureTokenBalance"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-not-enough-tokens"],["flush-element"],["append",["unknown",["tra","event_shop_card_purchase_offer_already_owned"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-card-multi-purchase-not-enough-tokens"],["flush-element"],["append",["unknown",["tra","event_shop_card_purchase_not_enough_tokens"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["multi-purchase-slider"],null,[["min","max","onValidationChange","onSelectedQuantityChange","disabled"],[["get",["minPurchasableQuantity"]],["get",["maxPurchasableQuantity"]],["helper",["action"],[["get",[null]],"handleValidationChange"],null],["helper",["action"],[["get",[null]],"handleSelectedQuantityChange"],null],["get",["purchaseInProgress"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "IvqG0d7s",
+          id: "FpB3kkPW",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-nav-bar-tab.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-nav-bar-tab.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-nav-bar-tab.js\\" "],["text","\\n"],["open-element","img",[]],["static-attr","class","event-shop-nav-bar-tab-icon"],["dynamic-attr","src",["unknown",["categoryIconPath"]],null],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["categoryTra"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-nav-bar-tab.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-nav-bar-tab.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-nav-bar-tab.js\\" "],["text","\\n"],["open-element","img",[]],["static-attr","class","event-shop-nav-bar-tab-icon"],["dynamic-attr","src",["unknown",["categoryIconPath"]],null],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["categoryTra"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "OmDDrX0K",
+          id: "1M/mdIqu",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-nav-bar.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-nav-bar.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-nav-bar.js\\" "],["text","\\n"],["block",["each"],[["get",["categoriesOffers"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["event-shop-category-nav-bar-tab"],null,[["scrollToCategory","category","categoryIconPath","currentCategory"],[["get",["scrollToCategory"]],["get",["categoryOffers","category"]],["get",["categoryOffers","categoryIconPath"]],["get",["currentCategory"]]]]],false],["text","\\n"]],"locals":["categoryOffers"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-nav-bar.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-nav-bar.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-nav-bar.js\\" "],["text","\\n"],["block",["each"],[["get",["categoriesOffers"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["event-shop-category-nav-bar-tab"],null,[["scrollToCategory","category","categoryIconPath","currentCategory"],[["get",["scrollToCategory"]],["get",["categoryOffers","category"]],["get",["categoryOffers","categoryIconPath"]],["get",["currentCategory"]]]]],false],["text","\\n"]],"locals":["categoryOffers"]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "tj2q4TBv",
+          id: "ShveJusy",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-offers.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-offers.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-offers.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","id",["unknown",["categoryOffersId"]],null],["static-attr","class","event-shop-token-shop-category-offers"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoryOffers","offers"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["event-shop-offer-card"],null,[["offer"],[["get",["offer"]]]]],false],["text","\\n"]],"locals":["offer"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-category-offers.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-category-offers.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-category-offers.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","id",["unknown",["categoryOffersId"]],null],["static-attr","class","event-shop-token-shop-category-offers"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoryOffers","offers"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["event-shop-offer-card"],null,[["offer"],[["get",["offer"]]]]],false],["text","\\n"]],"locals":["offer"]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "S8sxo18r",
+          id: "gGUMBjzT",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-fallback.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-fallback.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-fallback.js\\" "],["text","\\n"],["block",["if"],[["get",["error","errorMessage"]]],null,1,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-spinner"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["width","height"],["40px","40px"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","event-shop-unavailable-error-image"],["static-attr","src","/fe/lol-static-assets/images/event-shop/icon-shocked-poro-clear.png"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message-title"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","event-shop-unavailable-message-title-warning"],["static-attr","src","/fe/lol-static-assets/images/event-shop/red-warning.png"],["flush-element"],["close-element"],["append",["unknown",["errorMessageTra","title"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message-description"],["flush-element"],["text","\\n        "],["append",["unknown",["errorMessageTra","description"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-fallback.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-fallback.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-fallback.js\\" "],["text","\\n"],["block",["if"],[["get",["error","errorMessage"]]],null,1,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-spinner"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["width","height"],["40px","40px"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","event-shop-unavailable-error-image"],["static-attr","src","/fe/lol-static-assets/images/event-shop/icon-shocked-poro-clear.png"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message-title"],["flush-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","event-shop-unavailable-message-title-warning"],["static-attr","src","/fe/lol-static-assets/images/event-shop/red-warning.png"],["flush-element"],["close-element"],["append",["unknown",["errorMessageTra","title"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-unavailable-message-description"],["flush-element"],["text","\\n        "],["append",["unknown",["errorMessageTra","description"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "hvrJGit2",
+          id: "ESR5HFFv",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-main-view.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-main-view.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-main-view.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-token-shop ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"event-shop-main-view-token-shop-maximized",""],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["event-shop-token-shop"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-progression ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"event-shop-main-view-progression-minimized",""],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-container"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"minimizeRewardTrack"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-trapezoid-border"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-trapezoid"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-progression-minimize-button-chevron ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"rotate-up",""],null]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["append",["helper",["event-shop-progression"],null,[["model"],[["get",["model"]]]]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-main-view.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-main-view.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-main-view.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-token-shop ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"event-shop-main-view-token-shop-maximized",""],null]]]],["flush-element"],["text","\\n  "],["append",["unknown",["event-shop-token-shop"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-progression ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"event-shop-main-view-progression-minimized",""],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-container"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"minimizeRewardTrack"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-trapezoid-border"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-main-view-progression-minimize-button-trapezoid"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-main-view-progression-minimize-button-chevron ",["helper",["if"],[["get",["isRewardTrackMinimized"]],"rotate-up",""],null]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["append",["helper",["event-shop-progression"],null,[["model"],[["get",["model"]]]]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "5MIA/7A0",
+          id: "K4M13wZF",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-offer-card.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-offer-card.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-offer-card.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["offerImage"]]]]],["static-attr","class","event-shop-token-shop-offer-card-image"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-title"],["flush-element"],["text","\\n    "],["append",["unknown",["offer","localizedTitle"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-price"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOfferOwned"]]],null,7,6],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderOfferItemsCount"]]],null,2],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["displayMultiPurchaseModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["event-shop-card-multi-purchase-modal"],null,[["closeModal","offer"],[["helper",["action"],[["get",[null]],"closeModal"],null],["get",["offer"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["displayMultiPurchaseModal"]],"DialogDismiss",true,"outside",["helper",["action"],[["get",[null]],"closeModal"],null]]],0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-items-size"],["flush-element"],["text","\\n      "],["append",["unknown",["offer","items","length"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","event-shop-token-shop-offer-card-price-currency-icon"],["dynamic-attr","src",["unknown",["tokenShopData","tokenImage"]],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-price-value"],["flush-element"],["append",["unknown",["offer","price"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["isOfferRevealed"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-spinner"],["flush-element"],["text","\\n        "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","event_shop_offer_card_purchasing"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,5,4]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","event-shop-token-shop-offer-card-owned-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/check_mask.png"],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-offer-card.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-offer-card.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-offer-card.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["offerImage"]]]]],["static-attr","class","event-shop-token-shop-offer-card-image"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-title"],["flush-element"],["text","\\n    "],["append",["unknown",["offer","localizedTitle"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-price"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isOfferOwned"]]],null,7,6],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderOfferItemsCount"]]],null,2],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["displayMultiPurchaseModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["event-shop-card-multi-purchase-modal"],null,[["closeModal","offer"],[["helper",["action"],[["get",[null]],"closeModal"],null],["get",["offer"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["displayModal","type","dismissible","dismissibleType","onClose"],[["get",["displayMultiPurchaseModal"]],"DialogDismiss",true,"outside",["helper",["action"],[["get",[null]],"closeModal"],null]]],0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-items-size"],["flush-element"],["text","\\n      "],["append",["unknown",["offer","items","length"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","event-shop-token-shop-offer-card-price-currency-icon"],["dynamic-attr","src",["unknown",["tokenShopData","tokenImage"]],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-price-value"],["flush-element"],["append",["unknown",["offer","price"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["isOfferRevealed"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offer-card-spinner"],["flush-element"],["text","\\n        "],["append",["helper",["uikit-spinner"],null,[["width","height"],["15px","15px"]]],false],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","event_shop_offer_card_purchasing"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,5,4]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","event-shop-token-shop-offer-card-owned-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/check_mask.png"],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["tra","event_shop_offer_card_owned"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "DC3mWD0s",
+          id: "H/0LzVVS",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-progression.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-progression.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-progression.js\\" "],["text","\\n"],["block",["if"],[["get",["rewardTrackItems","length"]]],null,10,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-progression-fallback"],["flush-element"],["text","\\n    "],["append",["helper",["event-shop-fallback"],null,[["error"],[["get",["failureLoadingRewardTrack"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-upgrade-button"],["flush-element"],["text","\\n          "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle"],["modifier",["action"],[["get",[null]],"passPurchaseClick"]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-progression-button-content"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","event-shop-progression-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n              "],["append",["unknown",["tra","event_hub_purchase_pass"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["passUnavailable"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","event-shop-progression-check-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/check_mask.png"],["flush-element"],["close-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_purchased"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["eventShopProgressionData","passPurchased"]]],null,4,3]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_loading"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-wrapper"],["flush-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","event-shop-progression-label"],["flush-element"],["append",["unknown",["tra","event_shop_progression_label_instantly_get"]],false],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","event-shop-progression-token-icon"],["dynamic-attr","src",["unknown",["eventShopProgressionData","tokenImage"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","event-shop-progression-label-tokens"],["flush-element"],["append",["unknown",["lockedTokens"]],false],["text","\\n            "],["append",["unknown",["tra","event_shop_progression_label_tokens"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["lockedTokens"]]],null,7]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-unclaimed-wrapper"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-progression-unclaimed-box"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["unclaimedRewards"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_progression_label_unclaimed_rewards"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-progression-info"],["flush-element"],["text","\\n    "],["append",["unknown",["event-shop-xp"]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-progression-pass-purchase"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasUnclaimedRewards"]]],null,9,8],["block",["if"],[["get",["isLoadingPassAvailability"]]],null,6,5],["text","      "],["append",["helper",["purchase-bundles-modal"],null,[["showPurchaseModal"],[["get",["showPassPurchaseModal"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-progression-track"],["flush-element"],["text","\\n    "],["append",["unknown",["event-shop-reward-track-wrapper"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-progression.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-progression.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-progression.js\\" "],["text","\\n"],["block",["if"],[["get",["rewardTrackItems","length"]]],null,10,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-progression-fallback"],["flush-element"],["text","\\n    "],["append",["helper",["event-shop-fallback"],null,[["error"],[["get",["failureLoadingRewardTrack"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-upgrade-button"],["flush-element"],["text","\\n          "],["open-element","lol-uikit-flat-button",[]],["static-attr","primary","true"],["static-attr","class","idle"],["modifier",["action"],[["get",[null]],"passPurchaseClick"]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-progression-button-content"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","event-shop-progression-ticket-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/ticket-gold2.svg"],["flush-element"],["close-element"],["text","\\n              "],["append",["unknown",["tra","event_hub_purchase_pass"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_unavailable"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["passUnavailable"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","event-shop-progression-check-icon"],["static-attr","src","/fe/lol-static-assets/images/event-shop/check_mask.png"],["flush-element"],["close-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_purchased"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["eventShopProgressionData","passPurchased"]]],null,4,3]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-pass-message"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","event_shop_progression_label_pass_loading"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-label-wrapper"],["flush-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","event-shop-progression-label"],["flush-element"],["append",["unknown",["tra","event_shop_progression_label_instantly_get"]],false],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","event-shop-progression-token-icon"],["dynamic-attr","src",["unknown",["eventShopProgressionData","tokenImage"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","event-shop-progression-label-tokens"],["flush-element"],["append",["unknown",["lockedTokens"]],false],["text","\\n            "],["append",["unknown",["tra","event_shop_progression_label_tokens"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["lockedTokens"]]],null,7]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-unclaimed-wrapper"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-progression-unclaimed-box"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["unclaimedRewards"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_progression_label_unclaimed_rewards"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","event-shop-progression-info"],["flush-element"],["text","\\n    "],["append",["unknown",["event-shop-xp"]],false],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-progression-pass-purchase"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasUnclaimedRewards"]]],null,9,8],["block",["if"],[["get",["isLoadingPassAvailability"]]],null,6,5],["text","      "],["append",["helper",["purchase-bundles-modal"],null,[["showPurchaseModal"],[["get",["showPassPurchaseModal"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","event-shop-progression-track"],["flush-element"],["text","\\n    "],["append",["unknown",["event-shop-reward-track-wrapper"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "vmCF5Rut",
+          id: "i+L8e1qP",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-reward-track-wrapper.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-reward-track-wrapper.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-reward-track-wrapper.js\\" "],["text","\\n"],["block",["if"],[["get",["rewardTrackItems"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","displayCurrentBonusIteration","rewardTrackBonusItems","rewardTrackBonusProgress","itemClick","bonusItemClick","trackerSize","useDefaultTooltipComponent","isDisabled","shouldScrollToUnclaimedReward","scrollingArrowsEnabled"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["displayCurrentBonusIteration"]],["get",["rewardTrackBonusItems"]],["get",["rewardTrackBonusProgress"]],["helper",["action"],[["get",[null]],"clickItem"],null],["helper",["action"],[["get",[null]],"clickItem"],null],["get",["trackerSize"]],true,["get",["isGracePeriod"]],true,["get",["scrollingArrowsEnabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-reward-track-wrapper.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-reward-track-wrapper.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-reward-track-wrapper.js\\" "],["text","\\n"],["block",["if"],[["get",["rewardTrackItems"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","displayCurrentBonusIteration","rewardTrackBonusItems","rewardTrackBonusProgress","itemClick","bonusItemClick","trackerSize","useDefaultTooltipComponent","isDisabled","shouldScrollToUnclaimedReward","scrollingArrowsEnabled"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["displayCurrentBonusIteration"]],["get",["rewardTrackBonusItems"]],["get",["rewardTrackBonusProgress"]],["helper",["action"],[["get",[null]],"clickItem"],null],["helper",["action"],[["get",[null]],"clickItem"],null],["get",["trackerSize"]],true,["get",["isGracePeriod"]],true,["get",["scrollingArrowsEnabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "De1O3MOL",
+          id: "W5y1Ewv0",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-token-shop.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-token-shop.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-token-shop.js\\" "],["text","\\n"],["block",["if"],[["get",["categoriesOffers","length"]]],null,2,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-section-header-title-text"],["flush-element"],["append",["unknown",["categoryOffers","categoryTitle"]],false],["close-element"],["text","\\n          "],["open-element","hr",[]],["static-attr","class","event-shop-token-shop-section-header-line"],["flush-element"],["close-element"],["text","\\n          "],["append",["helper",["event-shop-category-offers"],null,[["categoryOffers","headerTxtObserver"],[["get",["categoryOffers"]],["get",["headerTxtObserver"]]]]],false],["text","\\n"]],"locals":["categoryOffers"]},{"statements":[["text","  "],["append",["helper",["event-shop-category-nav-bar"],null,[["currentCategory","categoriesOffers","scrollToCategory"],[["get",["currentCategory"]],["get",["categoriesOffers"]],["helper",["action"],[["get",[null]],"scrollToCategory"],null]]]],false],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","id","token-shop-scrollable-container"],["static-attr","class","event-shop-token-shop-scrollable-section"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offers"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoriesOffers"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-token-shop.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-token-shop.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-token-shop.js\\" "],["text","\\n"],["block",["if"],[["get",["categoriesOffers","length"]]],null,2,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["unknown",["event-shop-fallback"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-section-header-title-text"],["flush-element"],["append",["unknown",["categoryOffers","categoryTitle"]],false],["close-element"],["text","\\n          "],["open-element","hr",[]],["static-attr","class","event-shop-token-shop-section-header-line"],["flush-element"],["close-element"],["text","\\n          "],["append",["helper",["event-shop-category-offers"],null,[["categoryOffers","headerTxtObserver"],[["get",["categoryOffers"]],["get",["headerTxtObserver"]]]]],false],["text","\\n"]],"locals":["categoryOffers"]},{"statements":[["text","  "],["append",["helper",["event-shop-category-nav-bar"],null,[["currentCategory","categoriesOffers","scrollToCategory"],[["get",["currentCategory"]],["get",["categoriesOffers"]],["helper",["action"],[["get",[null]],"scrollToCategory"],null]]]],false],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","id","token-shop-scrollable-container"],["static-attr","class","event-shop-token-shop-scrollable-section"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-token-shop-offers"],["flush-element"],["text","\\n"],["block",["each"],[["get",["categoriesOffers"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "hc0b1bCd",
+          id: "eLPucwG6",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-xp.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-xp.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-xp.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-header-pass-track"],["flush-element"],["text","\\n  "],["append",["unknown",["tra","event_shop_xp_header_pass_track"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-level-tooltip ",["helper",["if"],[["get",["rewardTrackXP","isBonusPhase"]],"is-completed"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],10],["text","  "],["open-element","div",[]],["static-attr","class","event-shop-xp-level"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,5,4],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,1,0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-label-xp-wrapper ",["helper",["if"],[["get",["xpOverflow"]]," xp-overflow"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-xp"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-current"],["flush-element"],["append",["unknown",["rewardTrackXP","currentLevelXP"]],false],["close-element"],["text","\\n         / \\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-total"],["flush-element"],["text"," "],["append",["unknown",["rewardTrackXP","totalLevelXP"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level-xp"],["flush-element"],["append",["unknown",["tra","event_hub_xp_label"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-label-xp-wrapper ",["helper",["if"],[["get",["hasUnclaimedRewards"]]," unclaimed"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-xp"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-current"],["flush-element"],["append",["unknown",["rewardTrackXP","currentLevel"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level-xp"],["flush-element"],["append",["unknown",["tra","event_shop_reward_description_level_completed"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level"],["flush-element"],["text","\\n        "],["append",["unknown",["levelLabel"]],false],["text","\\n      "],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-repeat"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","event-shop-xp-repeat-icon"],["static-attr","viewBox","0 0 10 7"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","class","event-shop-xp-repeat-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M6.38908 1.77185V0.399902L3.9833 2.31037L6.38956 4.22084V2.85168C6.81026 2.85942 7.21055 3.02847 7.50237 3.32164C7.79419 3.61481 7.95364 4.00809 7.94565 4.41496C7.93765 4.82183 7.76286 5.20897 7.45972 5.4912C7.15659 5.77343 6.74995 5.92765 6.32925 5.91991H3.33337C2.91248 5.91991 2.50883 5.75821 2.21121 5.47037C1.9136 5.18254 1.7464 4.79215 1.7464 4.3851C1.7464 3.97804 1.9136 3.58765 2.21121 3.29982C2.50883 3.01199 2.91248 2.85028 3.33337 2.85028V1.77045C2.61636 1.77045 1.92872 2.04593 1.42171 2.53627C0.914713 3.02661 0.629883 3.69165 0.629883 4.3851C0.629883 5.07854 0.914713 5.74359 1.42171 6.23393C1.92872 6.72427 2.61636 6.99974 3.33337 6.99974H6.32925C6.68409 7.00357 7.03623 6.93977 7.36557 6.81198C7.69491 6.68419 7.995 6.49492 8.24871 6.25496C8.50242 6.01501 8.70477 5.72907 8.84422 5.41349C8.98367 5.0979 9.05748 4.75884 9.06144 4.41566C9.0654 4.07249 8.99943 3.73192 8.8673 3.4134C8.73517 3.09488 8.53947 2.80465 8.29136 2.55928C8.04325 2.31391 7.7476 2.1182 7.42129 1.98334C7.09498 1.84847 6.7444 1.77708 6.38956 1.77325L6.38908 1.77185Z"],["static-attr","fill","#5b5a56"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-iteration"],["flush-element"],["text","\\n          "],["append",["unknown",["rewardTrackXP","iteration"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level"],["flush-element"],["text","\\n        "],["append",["unknown",["levelLabel"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["rewardTrackXP","isBonusPhase"]]],null,3,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-progress-locked"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_shop_xp_label_level_progress_locked"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_label_event_xp"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_tooltip_complete_top"]],false],["open-element","br",[]],["flush-element"],["close-element"],["append",["unknown",["tra","event_shop_xp_tooltip_complete_bottom"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block-repeat"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-xp-tooltip-block-description"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["static-attr","class","event-shop-xp-tooltip-block-description-header"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","event_shop_xp_tooltip_looping_description_header"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["static-attr","class","event-shop-xp-tooltip-block-description-content"],["flush-element"],["text","\\n              "],["append",["helper",["sanitize"],[["get",["tra","event_shop_xp_tooltip_looping_description_content$html"]]],null],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block-loop"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-xp-tooltip-repeat"],["flush-element"],["text","\\n              "],["open-element","svg",[]],["static-attr","class","event-shop-xp-tooltip-repeat-icon"],["static-attr","viewBox","0 0 10 7"],["flush-element"],["text","\\n                "],["open-element","path",[]],["static-attr","class","event-shop-xp-repeat-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M6.38908 1.77185V0.399902L3.9833 2.31037L6.38956 4.22084V2.85168C6.81026 2.85942 7.21055 3.02847 7.50237 3.32164C7.79419 3.61481 7.95364 4.00809 7.94565 4.41496C7.93765 4.82183 7.76286 5.20897 7.45972 5.4912C7.15659 5.77343 6.74995 5.92765 6.32925 5.91991H3.33337C2.91248 5.91991 2.50883 5.75821 2.21121 5.47037C1.9136 5.18254 1.7464 4.79215 1.7464 4.3851C1.7464 3.97804 1.9136 3.58765 2.21121 3.29982C2.50883 3.01199 2.91248 2.85028 3.33337 2.85028V1.77045C2.61636 1.77045 1.92872 2.04593 1.42171 2.53627C0.914713 3.02661 0.629883 3.69165 0.629883 4.3851C0.629883 5.07854 0.914713 5.74359 1.42171 6.23393C1.92872 6.72427 2.61636 6.99974 3.33337 6.99974H6.32925C6.68409 7.00357 7.03623 6.93977 7.36557 6.81198C7.69491 6.68419 7.995 6.49492 8.24871 6.25496C8.50242 6.01501 8.70477 5.72907 8.84422 5.41349C8.98367 5.0979 9.05748 4.75884 9.06144 4.41566C9.0654 4.07249 8.99943 3.73192 8.8673 3.4134C8.73517 3.09488 8.53947 2.80465 8.29136 2.55928C8.04325 2.31391 7.7476 2.1182 7.42129 1.98334C7.09498 1.84847 6.7444 1.77708 6.38956 1.77325L6.38908 1.77185Z"],["static-attr","fill","#5b5a56"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","event-shop-xp-iteration"],["flush-element"],["text","\\n                "],["append",["unknown",["rewardTrackXP","iteration"]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_tooltip_looping_loop_header"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-xp-horizontal-divider"],["flush-element"],["close-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["completedLoops"]],false],["text"," "],["append",["unknown",["tra","event_shop_xp_tooltip_looping_loop_footer"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["rewardTrackXP","isBonusPhase"]]],null,7,6]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_label_level_progress_locked"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["tra","event_shop_xp_tooltip_progress_locked_description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","class","event-shop-xp-tooltip-content"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,9,8],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\event-shop-xp.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\event-shop-xp.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\event-shop-xp.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-header-pass-track"],["flush-element"],["text","\\n  "],["append",["unknown",["tra","event_shop_xp_header_pass_track"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-level-tooltip ",["helper",["if"],[["get",["rewardTrackXP","isBonusPhase"]],"is-completed"],null]]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],10],["text","  "],["open-element","div",[]],["static-attr","class","event-shop-xp-level"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,5,4],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,1,0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-label-xp-wrapper ",["helper",["if"],[["get",["xpOverflow"]]," xp-overflow"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-xp"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-current"],["flush-element"],["append",["unknown",["rewardTrackXP","currentLevelXP"]],false],["close-element"],["text","\\n         / \\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-total"],["flush-element"],["text"," "],["append",["unknown",["rewardTrackXP","totalLevelXP"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level-xp"],["flush-element"],["append",["unknown",["tra","event_hub_xp_label"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["event-shop-xp-label-xp-wrapper ",["helper",["if"],[["get",["hasUnclaimedRewards"]]," unclaimed"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-xp"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-label-xp-current"],["flush-element"],["append",["unknown",["rewardTrackXP","currentLevel"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level-xp"],["flush-element"],["append",["unknown",["tra","event_shop_reward_description_level_completed"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level"],["flush-element"],["text","\\n        "],["append",["unknown",["levelLabel"]],false],["text","\\n      "],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-repeat"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","event-shop-xp-repeat-icon"],["static-attr","viewBox","0 0 10 7"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","class","event-shop-xp-repeat-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M6.38908 1.77185V0.399902L3.9833 2.31037L6.38956 4.22084V2.85168C6.81026 2.85942 7.21055 3.02847 7.50237 3.32164C7.79419 3.61481 7.95364 4.00809 7.94565 4.41496C7.93765 4.82183 7.76286 5.20897 7.45972 5.4912C7.15659 5.77343 6.74995 5.92765 6.32925 5.91991H3.33337C2.91248 5.91991 2.50883 5.75821 2.21121 5.47037C1.9136 5.18254 1.7464 4.79215 1.7464 4.3851C1.7464 3.97804 1.9136 3.58765 2.21121 3.29982C2.50883 3.01199 2.91248 2.85028 3.33337 2.85028V1.77045C2.61636 1.77045 1.92872 2.04593 1.42171 2.53627C0.914713 3.02661 0.629883 3.69165 0.629883 4.3851C0.629883 5.07854 0.914713 5.74359 1.42171 6.23393C1.92872 6.72427 2.61636 6.99974 3.33337 6.99974H6.32925C6.68409 7.00357 7.03623 6.93977 7.36557 6.81198C7.69491 6.68419 7.995 6.49492 8.24871 6.25496C8.50242 6.01501 8.70477 5.72907 8.84422 5.41349C8.98367 5.0979 9.05748 4.75884 9.06144 4.41566C9.0654 4.07249 8.99943 3.73192 8.8673 3.4134C8.73517 3.09488 8.53947 2.80465 8.29136 2.55928C8.04325 2.31391 7.7476 2.1182 7.42129 1.98334C7.09498 1.84847 6.7444 1.77708 6.38956 1.77325L6.38908 1.77185Z"],["static-attr","fill","#5b5a56"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","event-shop-xp-iteration"],["flush-element"],["text","\\n          "],["append",["unknown",["rewardTrackXP","iteration"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-level"],["flush-element"],["text","\\n        "],["append",["unknown",["levelLabel"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["rewardTrackXP","isBonusPhase"]]],null,3,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","event-shop-xp-label-progress-locked"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","event_shop_xp_label_level_progress_locked"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_label_event_xp"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_tooltip_complete_top"]],false],["open-element","br",[]],["flush-element"],["close-element"],["append",["unknown",["tra","event_shop_xp_tooltip_complete_bottom"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block-repeat"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-xp-tooltip-block-description"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["static-attr","class","event-shop-xp-tooltip-block-description-header"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","event_shop_xp_tooltip_looping_description_header"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["static-attr","class","event-shop-xp-tooltip-block-description-content"],["flush-element"],["text","\\n              "],["append",["helper",["sanitize"],[["get",["tra","event_shop_xp_tooltip_looping_description_content$html"]]],null],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-xp-vertical-divider"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block-loop"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-xp-tooltip-repeat"],["flush-element"],["text","\\n              "],["open-element","svg",[]],["static-attr","class","event-shop-xp-tooltip-repeat-icon"],["static-attr","viewBox","0 0 10 7"],["flush-element"],["text","\\n                "],["open-element","path",[]],["static-attr","class","event-shop-xp-repeat-icon-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M6.38908 1.77185V0.399902L3.9833 2.31037L6.38956 4.22084V2.85168C6.81026 2.85942 7.21055 3.02847 7.50237 3.32164C7.79419 3.61481 7.95364 4.00809 7.94565 4.41496C7.93765 4.82183 7.76286 5.20897 7.45972 5.4912C7.15659 5.77343 6.74995 5.92765 6.32925 5.91991H3.33337C2.91248 5.91991 2.50883 5.75821 2.21121 5.47037C1.9136 5.18254 1.7464 4.79215 1.7464 4.3851C1.7464 3.97804 1.9136 3.58765 2.21121 3.29982C2.50883 3.01199 2.91248 2.85028 3.33337 2.85028V1.77045C2.61636 1.77045 1.92872 2.04593 1.42171 2.53627C0.914713 3.02661 0.629883 3.69165 0.629883 4.3851C0.629883 5.07854 0.914713 5.74359 1.42171 6.23393C1.92872 6.72427 2.61636 6.99974 3.33337 6.99974H6.32925C6.68409 7.00357 7.03623 6.93977 7.36557 6.81198C7.69491 6.68419 7.995 6.49492 8.24871 6.25496C8.50242 6.01501 8.70477 5.72907 8.84422 5.41349C8.98367 5.0979 9.05748 4.75884 9.06144 4.41566C9.0654 4.07249 8.99943 3.73192 8.8673 3.4134C8.73517 3.09488 8.53947 2.80465 8.29136 2.55928C8.04325 2.31391 7.7476 2.1182 7.42129 1.98334C7.09498 1.84847 6.7444 1.77708 6.38956 1.77325L6.38908 1.77185Z"],["static-attr","fill","#5b5a56"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","event-shop-xp-iteration"],["flush-element"],["text","\\n                "],["append",["unknown",["rewardTrackXP","iteration"]],false],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_tooltip_looping_loop_header"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","event-shop-xp-horizontal-divider"],["flush-element"],["close-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["completedLoops"]],false],["text"," "],["append",["unknown",["tra","event_shop_xp_tooltip_looping_loop_footer"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["rewardTrackXP","isBonusPhase"]]],null,7,6]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","event-shop-progression-tooltip-block"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","event_shop_xp_label_level_progress_locked"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["tra","event_shop_xp_tooltip_progress_locked_description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","class","event-shop-xp-tooltip-content"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,9,8],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "bt5QneaW",
+          id: "MBVjiXkm",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-claim-button.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-claim-button.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-claim-button.js\\" "],["text","\\n"],["open-element","lol-uikit-flat-button",[]],["static-attr","class","idle hol-claim-button-uikit-flat-button"],["dynamic-attr","disabled",["unknown",["claimButtonDisabled"]],null],["modifier",["action"],[["get",[null]],"claimAllRewards"]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-claim-button-uikit-flat-button-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["unclaimedRewards"]]],null,1],["text","    "],["append",["unknown",["tra","event_shop_reward_button_claim_reward"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowAnimations"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","hol-claim-button-animations"],["flush-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-idle"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-default.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-hover"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-hover.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-active"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-pressed.webm"],["static-attr","preload",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","hol-claim-button-unclaimed-rewards-label"],["flush-element"],["text","\\n        "],["append",["unknown",["unclaimedRewards"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-claim-button.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-claim-button.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-claim-button.js\\" "],["text","\\n"],["open-element","lol-uikit-flat-button",[]],["static-attr","class","idle hol-claim-button-uikit-flat-button"],["dynamic-attr","disabled",["unknown",["claimButtonDisabled"]],null],["modifier",["action"],[["get",[null]],"claimAllRewards"]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-claim-button-uikit-flat-button-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["unclaimedRewards"]]],null,1],["text","    "],["append",["unknown",["tra","event_shop_reward_button_claim_reward"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowAnimations"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","hol-claim-button-animations"],["flush-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-idle"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-default.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-hover"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-hover.webm"],["static-attr","preload",""],["static-attr","autoplay",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","video",[]],["static-attr","class","hol-claim-button-animation-active"],["static-attr","src","/fe/lol-event-hub/videos/CLAIM_BTN_Claimable-particles-pressed.webm"],["static-attr","preload",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","hol-claim-button-unclaimed-rewards-label"],["flush-element"],["text","\\n        "],["append",["unknown",["unclaimedRewards"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "ZIh9nRu7",
+          id: "fU2vWTPN",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-level-icon-flames.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-level-icon-flames.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-level-icon-flames.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["reward-level-icon-flames ",["unknown",["iconCursorClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,1,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","svg",[]],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","width","32"],["static-attr","height","33"],["static-attr","viewBox","0 0 32 33"],["static-attr","fill","none"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","d","M25.7129 18.1384C25.6949 18.0782 25.6409 18.0391 25.5809 18.0331C25.518 18.0271 25.461 18.0632 25.434 18.1173C24.9031 19.224 23.6854 19.8404 22.6596 19.9066C23.3075 19.1488 23.5804 17.8677 23.3915 16.3852C23.1545 14.5297 22.0718 11.9796 19.7863 10.9C16.4211 9.31224 15.3354 7.8327 15.3084 4.81648C15.3084 4.75333 15.2664 4.69619 15.2094 4.67514C15.1494 4.65409 15.0835 4.67514 15.0445 4.72325C12.1352 8.2928 12.888 10.04 13.5508 11.5827C13.6918 11.9105 13.8268 12.2232 13.9197 12.542C14.1837 13.4351 14.0037 14.4004 13.4429 15.1312C12.987 15.7236 12.3511 16.0484 11.6973 16.0303C11.2804 16.0153 10.9954 15.889 10.8305 15.6394C10.5066 15.1492 10.6235 14.1568 11.1814 12.6863C11.2054 12.6262 11.1874 12.56 11.1394 12.5179C11.0914 12.4758 11.0224 12.4698 10.9684 12.5029C6.9884 14.7914 6.89242 19.1939 7.03639 20.9802C7.15036 22.4026 8.69199 25.8188 11.7693 27.587C14.3516 29.0725 18.1367 28.6816 19.1085 28.4049C25.0501 26.7179 26.7597 21.4794 25.7099 18.1384H25.7129ZM17.135 21.338C18.5296 21.6748 19.4864 22.6041 19.5704 23.7077C19.6484 24.7271 18.9795 25.6263 17.7828 26.1135C16.4631 26.6517 13.7248 26.1074 12.3091 24.6279C11.6523 23.9423 11.3494 23.1484 11.4063 22.2703C11.5053 20.7486 12.657 19.0646 14.8345 17.2573C14.6006 18.9263 14.5016 20.7035 17.138 21.338H17.135Z"],["dynamic-attr","fill",["concat",["url(#paint0_linear_4086_42312",["unknown",["itemIndex"]],")"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","defs",[]],["flush-element"],["text","\\n        "],["open-element","linearGradient",[]],["dynamic-attr","id",["concat",["paint0_linear_4086_42312",["unknown",["itemIndex"]]]]],["static-attr","x1","16.5"],["static-attr","y1","28.667"],["static-attr","x2","16.5"],["static-attr","y2","4.66699"],["static-attr","gradientUnits","userSpaceOnUse"],["flush-element"],["text","\\n          "],["open-element","stop",[]],["dynamic-attr","class",["concat",["reward-level-icon-flames-gradient-start reward-level-flames-state-",["unknown",["stateClass"]]," ",["unknown",["levelClass"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","stop",[]],["static-attr","offset","1"],["dynamic-attr","class",["concat",["reward-level-icon-flames-gradient-finish reward-level-flames-state-",["unknown",["stateClass"]]," ",["unknown",["levelClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","reward-level-icon-flames-animations"],["flush-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-idle"],["dynamic-attr","src",["unknown",["animationIdleSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-hover"],["dynamic-attr","src",["unknown",["animationHoverSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-click"],["dynamic-attr","src",["unknown",["animationClickSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-level-icon-flames.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-level-icon-flames.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-level-icon-flames.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["reward-level-icon-flames ",["unknown",["iconCursorClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["animationsEnabled"]]],null,1,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","svg",[]],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","width","32"],["static-attr","height","33"],["static-attr","viewBox","0 0 32 33"],["static-attr","fill","none"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","d","M25.7129 18.1384C25.6949 18.0782 25.6409 18.0391 25.5809 18.0331C25.518 18.0271 25.461 18.0632 25.434 18.1173C24.9031 19.224 23.6854 19.8404 22.6596 19.9066C23.3075 19.1488 23.5804 17.8677 23.3915 16.3852C23.1545 14.5297 22.0718 11.9796 19.7863 10.9C16.4211 9.31224 15.3354 7.8327 15.3084 4.81648C15.3084 4.75333 15.2664 4.69619 15.2094 4.67514C15.1494 4.65409 15.0835 4.67514 15.0445 4.72325C12.1352 8.2928 12.888 10.04 13.5508 11.5827C13.6918 11.9105 13.8268 12.2232 13.9197 12.542C14.1837 13.4351 14.0037 14.4004 13.4429 15.1312C12.987 15.7236 12.3511 16.0484 11.6973 16.0303C11.2804 16.0153 10.9954 15.889 10.8305 15.6394C10.5066 15.1492 10.6235 14.1568 11.1814 12.6863C11.2054 12.6262 11.1874 12.56 11.1394 12.5179C11.0914 12.4758 11.0224 12.4698 10.9684 12.5029C6.9884 14.7914 6.89242 19.1939 7.03639 20.9802C7.15036 22.4026 8.69199 25.8188 11.7693 27.587C14.3516 29.0725 18.1367 28.6816 19.1085 28.4049C25.0501 26.7179 26.7597 21.4794 25.7099 18.1384H25.7129ZM17.135 21.338C18.5296 21.6748 19.4864 22.6041 19.5704 23.7077C19.6484 24.7271 18.9795 25.6263 17.7828 26.1135C16.4631 26.6517 13.7248 26.1074 12.3091 24.6279C11.6523 23.9423 11.3494 23.1484 11.4063 22.2703C11.5053 20.7486 12.657 19.0646 14.8345 17.2573C14.6006 18.9263 14.5016 20.7035 17.138 21.338H17.135Z"],["dynamic-attr","fill",["concat",["url(#paint0_linear_4086_42312",["unknown",["itemIndex"]],")"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","defs",[]],["flush-element"],["text","\\n        "],["open-element","linearGradient",[]],["dynamic-attr","id",["concat",["paint0_linear_4086_42312",["unknown",["itemIndex"]]]]],["static-attr","x1","16.5"],["static-attr","y1","28.667"],["static-attr","x2","16.5"],["static-attr","y2","4.66699"],["static-attr","gradientUnits","userSpaceOnUse"],["flush-element"],["text","\\n          "],["open-element","stop",[]],["dynamic-attr","class",["concat",["reward-level-icon-flames-gradient-start reward-level-flames-state-",["unknown",["stateClass"]]," ",["unknown",["levelClass"]]]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","stop",[]],["static-attr","offset","1"],["dynamic-attr","class",["concat",["reward-level-icon-flames-gradient-finish reward-level-flames-state-",["unknown",["stateClass"]]," ",["unknown",["levelClass"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","reward-level-icon-flames-animations"],["flush-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-idle"],["dynamic-attr","src",["unknown",["animationIdleSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-hover"],["dynamic-attr","src",["unknown",["animationHoverSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","video",[]],["static-attr","class","reward-level-icon-flames-animation reward-level-icon-flames-animation-click"],["dynamic-attr","src",["unknown",["animationClickSrc"]],null],["static-attr","loop",""],["static-attr","autoplay",""],["static-attr","muted",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "eCdXcGfM",
+          id: "kRGeIJJ1",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-narrative.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-narrative.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-narrative.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-narrative-title"],["flush-element"],["append",["unknown",["narrativeTitle"]],false],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","hol-narrative-description"],["dynamic-attr","overflow-masks",["helper",["if"],[["get",["descriptionTextElementAdditionalClass"]],"enabled","disabled"],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","hol-narrative-description-text"],["dynamic-attr","class",["concat",["hol-narrative-description-text ",["unknown",["descriptionTextElementAdditionalClass"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["narrativeDescription"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showPlayNarrativeVideoButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","hol-narrative-video-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"playNarrativeButtonClick"],null],null],["dynamic-attr","disabled",["unknown",["playButtonDisabled"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-narrative-video-button-content"],["flush-element"],["text","\\n      "],["append",["unknown",["playNarrativeButtonLabel"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-narrative.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-narrative.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-narrative.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-narrative-title"],["flush-element"],["append",["unknown",["narrativeTitle"]],false],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","hol-narrative-description"],["dynamic-attr","overflow-masks",["helper",["if"],[["get",["descriptionTextElementAdditionalClass"]],"enabled","disabled"],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","hol-narrative-description-text"],["dynamic-attr","class",["concat",["hol-narrative-description-text ",["unknown",["descriptionTextElementAdditionalClass"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["narrativeDescription"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showPlayNarrativeVideoButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","hol-narrative-video-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"playNarrativeButtonClick"],null],null],["dynamic-attr","disabled",["unknown",["playButtonDisabled"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-narrative-video-button-content"],["flush-element"],["text","\\n      "],["append",["unknown",["playNarrativeButtonLabel"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "AVeBrZKC",
+          id: "cLlNYjff",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-promotion-banner.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-promotion-banner.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-promotion-banner.js\\" "],["text","\\n"],["block",["if"],[["get",["showBanner"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","hol-promotion-banner-img"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"bannerClick"],null],null],["dynamic-attr","src",["unknown",["promotionBannerImgSrc"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-promotion-banner.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-promotion-banner.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-promotion-banner.js\\" "],["text","\\n"],["block",["if"],[["get",["showBanner"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","hol-promotion-banner-img"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"bannerClick"],null],null],["dynamic-attr","src",["unknown",["promotionBannerImgSrc"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "gDSzzNtm",
+          id: "nAgKtgi2",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-reward-details.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-reward-details.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-reward-details.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-reward-details-level"],["flush-element"],["text","\\n  "],["append",["unknown",["level"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-reward-details-title"],["flush-element"],["text","\\n  "],["append",["unknown",["title"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","hol-reward-details-description"],["flush-element"],["text","\\n  "],["append",["unknown",["description"]],false],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showReplayButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","idle hol-reward-details-replay-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"replayButtonClick"],null],null],["dynamic-attr","disabled",["unknown",["isReplayButtonDisabled"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-reward-details-replay-button-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-reward-details-replay-button-icon"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","width","16"],["static-attr","height","16"],["static-attr","viewBox","0 0 16 16"],["static-attr","fill","none"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","d","M13.4308 8.88263C13.4202 8.84654 13.3884 8.82309 13.353 8.81948C13.3159 8.81587 13.2823 8.83752 13.2664 8.87C12.9534 9.53399 12.2356 9.90387 11.631 9.94357C12.0129 9.48888 12.1737 8.72024 12.0624 7.83071C11.9227 6.71745 11.2844 5.18738 9.93723 4.53963C7.95354 3.58695 7.31352 2.69923 7.29761 0.889495C7.29761 0.851605 7.27286 0.817323 7.23927 0.804692C7.20391 0.792062 7.16501 0.804692 7.14203 0.833561C5.42707 2.97529 5.87084 4.0236 6.26156 4.94921C6.34466 5.14588 6.42422 5.33353 6.47903 5.52479C6.63461 6.06067 6.52853 6.63986 6.19792 7.07831C5.92918 7.43376 5.55436 7.62863 5.16894 7.6178C4.92319 7.60878 4.75523 7.533 4.65799 7.38324C4.46705 7.08914 4.536 6.49371 4.86485 5.6114C4.87899 5.57531 4.86838 5.53562 4.84009 5.51036C4.81181 5.4851 4.77114 5.48149 4.73932 5.50134C2.39318 6.87442 2.33661 9.51595 2.42147 10.5877C2.48866 11.4412 3.39741 13.4909 5.21137 14.5518C6.73362 15.4431 8.96483 15.2086 9.53766 15.0426C13.0401 14.0304 14.0478 10.8872 13.429 8.88263H13.4308ZM8.37432 10.8024C9.19644 11.0045 9.76043 11.562 9.80994 12.2242C9.8559 12.8359 9.46164 13.3754 8.75621 13.6677C7.97829 13.9907 6.36411 13.6641 5.52961 12.7763C5.14242 12.365 4.96385 11.8886 4.99745 11.3618C5.05579 10.4488 5.7347 9.43836 7.01827 8.35396C6.88036 9.35536 6.82202 10.4217 8.37609 10.8024H8.37432Z"],["static-attr","fill","#CDBE91"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","hol_cutscene_button_label"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-reward-details.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-reward-details.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-reward-details.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-reward-details-level"],["flush-element"],["text","\\n  "],["append",["unknown",["level"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-reward-details-title"],["flush-element"],["text","\\n  "],["append",["unknown",["title"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","hol-reward-details-description"],["flush-element"],["text","\\n  "],["append",["unknown",["description"]],false],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showReplayButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","idle hol-reward-details-replay-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"replayButtonClick"],null],null],["dynamic-attr","disabled",["unknown",["isReplayButtonDisabled"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hol-reward-details-replay-button-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-reward-details-replay-button-icon"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","width","16"],["static-attr","height","16"],["static-attr","viewBox","0 0 16 16"],["static-attr","fill","none"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","d","M13.4308 8.88263C13.4202 8.84654 13.3884 8.82309 13.353 8.81948C13.3159 8.81587 13.2823 8.83752 13.2664 8.87C12.9534 9.53399 12.2356 9.90387 11.631 9.94357C12.0129 9.48888 12.1737 8.72024 12.0624 7.83071C11.9227 6.71745 11.2844 5.18738 9.93723 4.53963C7.95354 3.58695 7.31352 2.69923 7.29761 0.889495C7.29761 0.851605 7.27286 0.817323 7.23927 0.804692C7.20391 0.792062 7.16501 0.804692 7.14203 0.833561C5.42707 2.97529 5.87084 4.0236 6.26156 4.94921C6.34466 5.14588 6.42422 5.33353 6.47903 5.52479C6.63461 6.06067 6.52853 6.63986 6.19792 7.07831C5.92918 7.43376 5.55436 7.62863 5.16894 7.6178C4.92319 7.60878 4.75523 7.533 4.65799 7.38324C4.46705 7.08914 4.536 6.49371 4.86485 5.6114C4.87899 5.57531 4.86838 5.53562 4.84009 5.51036C4.81181 5.4851 4.77114 5.48149 4.73932 5.50134C2.39318 6.87442 2.33661 9.51595 2.42147 10.5877C2.48866 11.4412 3.39741 13.4909 5.21137 14.5518C6.73362 15.4431 8.96483 15.2086 9.53766 15.0426C13.0401 14.0304 14.0478 10.8872 13.429 8.88263H13.4308ZM8.37432 10.8024C9.19644 11.0045 9.76043 11.562 9.80994 12.2242C9.8559 12.8359 9.46164 13.3754 8.75621 13.6677C7.97829 13.9907 6.36411 13.6641 5.52961 12.7763C5.14242 12.365 4.96385 11.8886 4.99745 11.3618C5.05579 10.4488 5.7347 9.43836 7.01827 8.35396C6.88036 9.35536 6.82202 10.4217 8.37609 10.8024H8.37432Z"],["static-attr","fill","#CDBE91"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","hol_cutscene_button_label"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "J1B98Jak",
+          id: "yqD9I+m4",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-xp.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-xp.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-xp.js\\" "],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,3],["open-element","div",[]],["static-attr","class","hol-xp-radial"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","hol-xp-radial-component"],["static-attr","start-angle","270"],["static-attr","end-angle","-90"],["static-attr","type","custom"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","bottom"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-xp-radial-component-outer-ring"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle"],["dynamic-attr","percent",["unknown",["radialPercentage"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle hol-xp-radial-component-remaining-xp"],["dynamic-attr","percent",["unknown",["remainingPercentage"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-xp-radial-component-label"],["flush-element"],["append",["unknown",["rewardTrackProgress","level"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-xp-text-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-xp-level-progress"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showXpText"]]],null,1,0],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["tra","event_hub_pass_complete"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["rewardTrackProgress","currentLevelXP"]],false],["text"," / "],["append",["unknown",["rewardTrackProgress","totalLevelXP"]],false],["text","\\n      "],["open-element","span",[]],["static-attr","class","hol-xp-label"],["flush-element"],["append",["unknown",["tra","event_hub_xp_label"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-xp-grace-period-tooltip-container"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","hol_xp_label_level_progress_locked"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["tra","hol_shop_xp_tooltip_progress_locked_description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\templates\\\\components\\\\hol-xp.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\styles\\\\components\\\\hol-xp.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-event-hub\\\\src\\\\app\\\\components\\\\hol-xp.js\\" "],["text","\\n"],["block",["if"],[["get",["isGracePeriod"]]],null,3],["open-element","div",[]],["static-attr","class","hol-xp-radial"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","hol-xp-radial-component"],["static-attr","start-angle","270"],["static-attr","end-angle","-90"],["static-attr","type","custom"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","bottom"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-xp-radial-component-outer-ring"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle"],["dynamic-attr","percent",["unknown",["radialPercentage"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle hol-xp-radial-component-remaining-xp"],["dynamic-attr","percent",["unknown",["remainingPercentage"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","hol-xp-radial-component-label"],["flush-element"],["append",["unknown",["rewardTrackProgress","level"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","hol-xp-text-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","hol-xp-level-progress"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showXpText"]]],null,1,0],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["tra","event_hub_pass_complete"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["rewardTrackProgress","currentLevelXP"]],false],["text"," / "],["append",["unknown",["rewardTrackProgress","totalLevelXP"]],false],["text","\\n      "],["open-element","span",[]],["static-attr","class","hol-xp-label"],["flush-element"],["append",["unknown",["tra","event_hub_xp_label"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","hol-xp-grace-period-tooltip-container"],["flush-element"],["text","\\n          "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","hol_xp_label_level_progress_locked"]],false],["close-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["tra","hol_shop_xp_tooltip_progress_locked_description"]]],null],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4855,10 +4886,10 @@
     ],
     t = {};
   function n(a) {
-    var s = t[a];
-    if (void 0 !== s) return s.exports;
-    var l = (t[a] = { exports: {} });
-    return e[a](l, l.exports, n), l.exports;
+    var l = t[a];
+    if (void 0 !== l) return l.exports;
+    var s = (t[a] = { exports: {} });
+    return e[a](s, s.exports, n), s.exports;
   }
   (n.g = (function () {
     if ("object" == typeof globalThis) return globalThis;
@@ -4879,10 +4910,10 @@
       var e,
         t = (e = n(1)) && e.__esModule ? e : { default: e };
       const a = "rcp-fe-lol-event-hub",
-        s = window.testsSandboxDoc || document.currentScript.ownerDocument;
-      const l = window.getPluginAnnounceEventName(a);
-      s.addEventListener(
-        l,
+        l = window.testsSandboxDoc || document.currentScript.ownerDocument;
+      const s = window.getPluginAnnounceEventName(a);
+      l.addEventListener(
+        s,
         function (e) {
           (0, e.registrationHandler)((e) =>
             t.default
@@ -4932,12 +4963,12 @@
                     .overlay("/fe/lol-loot/trans.json")
                     .overlay("/fe/lol-event-hub/trans.json"),
                   a = t.default.emberL10n(t.default.Ember, n),
-                  s = t.default.Ember.Object.create({ isVisible: !1 });
+                  l = t.default.Ember.Object.create({ isVisible: !1 });
                 return t.default.add({
                   emberApplicationFactory: e
                     .get("rcp-fe-ember-libs")
                     .getEmberApplicationFactory(),
-                  externalModel: s,
+                  externalModel: l,
                   tra: n,
                   traService: a,
                 });
