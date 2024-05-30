@@ -6029,7 +6029,6 @@
             layout: n(152),
             deltas: null,
             tftMatchListData: null,
-            finalPointDrivenLevel: 5,
             acsAccountInfo: null,
             atLeastOneTftMatch: m.gt("tftMatches.length", 0),
             fullMatchHistoryUrl: m(

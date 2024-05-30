@@ -64400,6 +64400,7 @@
               "a",
               "hr",
               "img",
+              "u",
             ],
             allowedAttributes: {
               "*": ["class", "style"],

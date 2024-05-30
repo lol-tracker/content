@@ -26533,13 +26533,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const s = [
-          {
-            name: "isLegendaryChampionMasteryEnabled",
-            path: "lol.client_settings.champ_mastery.lcm_enabled",
-            default: !1,
-          },
-        ];
+        const s = [];
         var i = a.Ember.Service.extend({
           init: function () {
             this._super(...arguments),
@@ -28741,9 +28735,6 @@
               "shared-notifications",
             ),
             clientConfig: a.Ember.inject.service("client-config"),
-            isLegendaryChampionMasteryEnabled: a.Ember.computed.oneWay(
-              "clientConfig.isLegendaryChampionMasteryEnabled",
-            ),
             lastVisitTime: a.Ember.computed.alias(
               "titleSettings.lastVisitTime",
             ),
@@ -28780,33 +28771,30 @@
             selectedFilterOption: i.PLAYER_TITLE_FILTER_TYPES.ALL,
             filterOptions: a.Ember.computed(
               "selectedFilterOption",
-              "isLegendaryChampionMasteryEnabled",
               function () {
                 const e = this.get("selectedFilterOption"),
                   t = [];
-                if (
-                  (Object.keys(i.PLAYER_TITLE_FILTER_TYPES).forEach((n) => {
-                    const a = i.PLAYER_TITLE_FILTER_TYPES[n];
-                    t.push({
-                      name: this.get(
-                        `tra.player_title_filter_type_option_${a.toLowerCase()}`,
-                      ),
-                      value: a,
-                      isSelected: e === a,
-                    });
-                  }),
-                  this.get("isLegendaryChampionMasteryEnabled"))
-                ) {
-                  const n = i.OPTIONAL_TITLE_FILTER_TYPES.CHAMPION_MASTERY;
+                Object.keys(i.PLAYER_TITLE_FILTER_TYPES).forEach((n) => {
+                  const a = i.PLAYER_TITLE_FILTER_TYPES[n];
+                  t.push({
+                    name: this.get(
+                      `tra.player_title_filter_type_option_${a.toLowerCase()}`,
+                    ),
+                    value: a,
+                    isSelected: e === a,
+                  });
+                });
+                const n = i.OPTIONAL_TITLE_FILTER_TYPES.CHAMPION_MASTERY;
+                return (
                   t.push({
                     name: this.get(
                       `tra.player_title_filter_type_option_${n.toLowerCase()}`,
                     ),
                     value: n,
                     isSelected: e === n,
-                  });
-                }
-                return t;
+                  }),
+                  t
+                );
               },
             ),
             selectedSortOption: s.CHALLENGE_TITLE_SORT_TYPES.RARITY,
@@ -28846,7 +28834,6 @@
               "locale",
               "selectedSortOption",
               "selectedFilterOption",
-              "isLegendaryChampionMasteryEnabled",
               function () {
                 if (!this.get("allTitles") || !this.get("challenges"))
                   return [];
@@ -28863,12 +28850,6 @@
                 )),
                   n !== i.PLAYER_TITLE_FILTER_TYPES.ALL &&
                     (a = a.filter((e) => e.titleAcquisitionType === n)),
-                  this.get("isLegendaryChampionMasteryEnabled") ||
-                    (a = a.filter(
-                      (e) =>
-                        e.titleAcquisitionType !==
-                        i.OPTIONAL_TITLE_FILTER_TYPES.CHAMPION_MASTERY,
-                    )),
                   this.get("isUnownedShown") ||
                     (a = a.filter((e) => e.isOwned));
                 const r = this.get("searchFilter");

@@ -7924,9 +7924,6 @@
           "format": "int32",
           "type": "integer"
         },
-        "chestGranted": {
-          "type": "boolean"
-        },
         "highestGrade": {
           "type": "string"
         },
@@ -13883,7 +13880,7 @@
       },
       "type": "object"
     },
-    "LolCollectionsCollectionsChampionMastery": {
+    "LolCollectionsChampionMastery": {
       "properties": {
         "championId": {
           "format": "int32",
@@ -13905,14 +13902,9 @@
           "format": "int32",
           "type": "integer"
         },
-        "chestGranted": {
-          "type": "boolean"
-        },
-        "formattedChampionPoints": {
-          "type": "string"
-        },
-        "formattedMasteryGoal": {
-          "type": "string"
+        "championSeasonMilestone": {
+          "format": "int32",
+          "type": "integer"
         },
         "highestGrade": {
           "type": "string"
@@ -13921,9 +13913,18 @@
           "format": "int64",
           "type": "integer"
         },
-        "playerId": {
-          "format": "int64",
+        "markRequiredForNextLevel": {
+          "format": "int32",
           "type": "integer"
+        },
+        "milestoneGrades": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nextSeasonMilestone": {
+          "$ref": "#/definitions/LolCollectionsSeasonMilestoneRequireAndRewards"
         },
         "puuid": {
           "type": "string"
@@ -14042,28 +14043,6 @@
             "type": "integer"
           },
           "type": "array"
-        },
-        "summonerId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolCollectionsCollectionsTopChampionMasteries": {
-      "properties": {
-        "masteries": {
-          "items": {
-            "$ref": "#/definitions/LolCollectionsCollectionsChampionMastery"
-          },
-          "type": "array"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "score": {
-          "format": "int64",
-          "type": "integer"
         },
         "summonerId": {
           "format": "int64",
@@ -14539,6 +14518,38 @@
       },
       "type": "object"
     },
+    "LolCollectionsRewardConfigurationEntry": {
+      "properties": {
+        "maximumReward": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rewardValue": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolCollectionsSeasonMilestoneRequireAndRewards": {
+      "properties": {
+        "bonus": {
+          "type": "boolean"
+        },
+        "requireGradeCounts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "rewardConfig": {
+          "$ref": "#/definitions/LolCollectionsRewardConfigurationEntry"
+        },
+        "rewardMarks": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "LolCollectionsSummoner": {
       "properties": {
         "accountId": {
@@ -14587,8 +14598,21 @@
       },
       "type": "object"
     },
-    "LolContentTargetingAccountIdAndSummonerId": {
+    "LolCollectionsTopChampionMasteries": {
       "properties": {
+        "masteries": {
+          "items": {
+            "$ref": "#/definitions/LolCollectionsChampionMastery"
+          },
+          "type": "array"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "score": {
+          "format": "int64",
+          "type": "integer"
+        },
         "summonerId": {
           "format": "int64",
           "type": "integer"
@@ -14596,25 +14620,9 @@
       },
       "type": "object"
     },
-    "LolContentTargetingCollectionsChampionMastery": {
+    "LolContentTargetingAccountIdAndSummonerId": {
       "properties": {
-        "championId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championLevel": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championPoints": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "lastPlayTime": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "playerId": {
+        "summonerId": {
           "format": "int64",
           "type": "integer"
         }
@@ -16490,6 +16498,9 @@
             "$ref": "#/definitions/LolEndOfGameChampionMasteryGrade"
           },
           "type": "array"
+        },
+        "mvpPuuid": {
+          "type": "string"
         },
         "pointsBeforeGame": {
           "format": "int64",
@@ -24040,9 +24051,37 @@
       },
       "type": "object"
     },
+    "LolHonorV2ApiHonorPlayerServerRequestV3": {
+      "properties": {
+        "honorType": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolHonorV2ApiSubmitBallotRequest": {
+      "properties": {
+        "honoredPlayers": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "LolHonorV2Ballot": {
       "properties": {
-        "eligiblePlayers": {
+        "eligibleAllies": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2EligiblePlayer"
+          },
+          "type": "array"
+        },
+        "eligibleOpponents": {
           "items": {
             "$ref": "#/definitions/LolHonorV2EligiblePlayer"
           },
@@ -24050,6 +24089,16 @@
         },
         "gameId": {
           "format": "int64",
+          "type": "integer"
+        },
+        "honoredPlayers": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+          },
+          "type": "array"
+        },
+        "numVotes": {
+          "format": "int32",
           "type": "integer"
         }
       },
@@ -24240,6 +24289,9 @@
         "SecondsToVote": {
           "format": "int32",
           "type": "integer"
+        },
+        "ceremonyV3Enabled": {
+          "type": "boolean"
         },
         "honorEndpointsV2Enabled": {
           "type": "boolean"
@@ -28289,6 +28341,9 @@
         },
         "showGhostedBanner": {
           "type": "boolean"
+        },
+        "strawberryMapId": {
+          "type": "string"
         },
         "subteamIndex": {
           "type": "integer"
@@ -60696,7 +60751,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -68088,124 +68143,6 @@
         ]
       }
     },
-    "/lol-collections/v1/inventories/local-player/champion-mastery-score": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesLocalPlayerChampionMasteryScore",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/scouting": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesScouting",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "puuids",
-            "required": true,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "items": {
-                "$ref": "#/definitions/RankedScoutingDTO"
-              },
-              "type": "array"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMastery",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "puuid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "items": {
-                "$ref": "#/definitions/LolCollectionsCollectionsChampionMastery"
-              },
-              "type": "array"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery/top": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMasteryTop",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "puuid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "sortRule",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolCollectionsCollectionsTopChampionMasteries"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
     "/lol-collections/v1/inventories/{summonerId}/backdrop": {
       "get": {
         "operationId": "GetLolCollectionsV1InventoriesBySummonerIdBackdrop",
@@ -72216,6 +72153,48 @@
             "schema": {
               "$ref": "#/definitions/LolHonorV2VoteCompletion"
             }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-honor-v2"
+        ]
+      }
+    },
+    "/lol-honor/v1/ballot": {
+      "post": {
+        "operationId": "PostLolHonorV1Ballot",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-honor-v2"
+        ]
+      }
+    },
+    "/lol-honor/v1/honor": {
+      "post": {
+        "operationId": "PostLolHonorV1Honor",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "honorPlayerRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
           }
         },
         "tags": [
@@ -89576,6 +89555,28 @@
         ]
       }
     },
+    "/services-api/config/v1/client-config": {
+      "post": {
+        "operationId": "PostServicesApiConfigV1ClientConfig",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "clientConfigData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/services-api/game-session/v1/game-session-token": {
       "put": {
         "operationId": "PutServicesApiGameSessionV1GameSessionToken",
@@ -89672,7 +89673,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "Http2ApiDocsV3",
+        "operationId": "HttpApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

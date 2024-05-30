@@ -718,10 +718,10 @@
           (t.default = void 0);
         var s = n(1),
           o = n(41),
-          i = c(n(265)),
-          l = c(n(271)),
-          a = c(n(278)),
-          r = c(n(375));
+          i = c(n(263)),
+          l = c(n(269)),
+          a = c(n(276)),
+          r = c(n(373));
         function c(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -866,7 +866,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.APP_NAME = void 0),
           (t.createEmberApplication = function () {
-            return s.ComponentFactory.create(pt);
+            return s.ComponentFactory.create(dt);
           }),
           (t.registerEmberApplication = function () {
             const e = {
@@ -888,242 +888,238 @@
               SummonerIconsController: _.default,
               WardsController: y.default,
               ChromasController: b.default,
-              LegacyAppMountComponent: v.default,
-              ChampionItemComponent: S.default,
-              ChampionItemLcmComponent: k.default,
-              InventoryItemComponent: I.default,
-              SkinItemHeaderComponent: E.default,
-              SummonerIconHeaderComponent: x.default,
-              CollectionsSubNavComponent: w.default,
-              CollectionCmHeaderComponent: P.default,
-              NumberFanfareComponent: C.default,
-              RenderTelemetrySenderComponent: rt,
+              LegacyAppMountComponent: k.default,
+              ChampionItemLcmComponent: S.default,
+              InventoryItemComponent: x.default,
+              SkinItemHeaderComponent: v.default,
+              SummonerIconHeaderComponent: E.default,
+              CollectionsSubNavComponent: I.default,
+              CollectionCmHeaderComponent: w.default,
+              NumberFanfareComponent: P.default,
+              RenderTelemetrySenderComponent: lt,
               CollectionDetailsComponent: T.default,
-              CollectionControlsComponent: M.default,
-              CollectionGroupHeaderComponent: O.default,
-              ReplayButtonComponent: A.default,
-              VideoWrapperComponent: D.default,
-              StyleFilterComponent: ve.default,
-              InventoryCardsComponent: Se.default,
-              InventoryCardComponent: be.default,
-              InventoryPageComponent: ke.default,
-              HextechLoadingAnimationComponent: at,
-              EmoteRootComponent: re.default,
-              EmoteInventoryComponent: ce.default,
-              EmoteWheelComponent: de.default,
-              EmoteWheelSlotComponent: me.default,
-              EmoteDeleteSlotComponent: pe.default,
-              EmoteReactionsComponent: ue.default,
-              ChampionSelectorComponent: H.default,
-              CircleButtonComponent: V.default,
-              ItemBuildTreeComponent: G.default,
-              ItemFilterPanelComponent: W.default,
-              ItemGridComponent: K.default,
-              ItemSetEditorComponent: Y.default,
-              ItemSetImportModalComponent: q.default,
-              ItemSetMenuComponent: X.default,
-              ItemSetModalRootComponent: $.default,
-              ItemTooltipComponent: z.default,
-              ItemsRootComponent: Q.default,
-              PreferredSlotsMenuComponent: J.default,
-              RecommendedSetViewerComponent: Z.default,
-              GradeDisplayComponent: ct,
-              MasteryFtuxComponent: R.default,
-              MasteryCrestComponent: dt,
-              MilestoneTooltipComponent: mt,
+              CollectionControlsComponent: C.default,
+              CollectionGroupHeaderComponent: M.default,
+              ReplayButtonComponent: O.default,
+              VideoWrapperComponent: A.default,
+              StyleFilterComponent: ke.default,
+              InventoryCardsComponent: be.default,
+              InventoryCardComponent: ye.default,
+              InventoryPageComponent: Se.default,
+              HextechLoadingAnimationComponent: it,
+              EmoteRootComponent: ae.default,
+              EmoteInventoryComponent: re.default,
+              EmoteWheelComponent: ce.default,
+              EmoteWheelSlotComponent: de.default,
+              EmoteDeleteSlotComponent: me.default,
+              EmoteReactionsComponent: pe.default,
+              ChampionSelectorComponent: U.default,
+              CircleButtonComponent: H.default,
+              ItemBuildTreeComponent: V.default,
+              ItemFilterPanelComponent: G.default,
+              ItemGridComponent: W.default,
+              ItemSetEditorComponent: K.default,
+              ItemSetImportModalComponent: Y.default,
+              ItemSetMenuComponent: q.default,
+              ItemSetModalRootComponent: X.default,
+              ItemTooltipComponent: $.default,
+              ItemsRootComponent: z.default,
+              PreferredSlotsMenuComponent: Q.default,
+              RecommendedSetViewerComponent: J.default,
+              GradeDisplayComponent: at,
+              MasteryFtuxComponent: D.default,
+              MasteryCrestComponent: rt,
+              MilestoneTooltipComponent: ct,
               tra: s.traService,
-              ClientConfigService: L.default,
-              PipNotificationsService: N.default,
-              PlatformConfigService: B.default,
-              RiotclientService: j.default,
-              SettingsPreferencesService: F.default,
-              SummonerService: U.default,
-              StoreService: Pe.default,
-              TutorialService: Ce.default,
-              PlatformSettingsService: Ie.default,
-              SettingsService: we.default,
-              AudioService: xe.default,
-              EmotesService: he.default,
-              LoadoutsService: ge.default,
-              ErrorsHandlerService: _e.default,
-              EmoteSoundsService: fe.default,
-              ItemSetsService: te.default,
-              ExportItemSetHelper: ee.default,
-              EqHelper: Ee.default,
-              VirtualListHelper: ye.default,
-              BlockEntity: ne.default,
-              ItemSetEntity: se.default,
-              ItemEntity: oe.default,
-              KeyDisplaysEntity: se.default,
-              ModalMixin: ie.default,
-              SortableMixin: le.default,
-              TelemetryMixin: ae.default,
+              ClientConfigService: R.default,
+              PipNotificationsService: L.default,
+              PlatformConfigService: N.default,
+              RiotclientService: B.default,
+              SettingsPreferencesService: j.default,
+              SummonerService: F.default,
+              StoreService: we.default,
+              TutorialService: Pe.default,
+              PlatformSettingsService: xe.default,
+              SettingsService: Ie.default,
+              AudioService: Ee.default,
+              EmotesService: ue.default,
+              LoadoutsService: he.default,
+              ErrorsHandlerService: fe.default,
+              EmoteSoundsService: ge.default,
+              ItemSetsService: ee.default,
+              ExportItemSetHelper: Z.default,
+              EqHelper: ve.default,
+              VirtualListHelper: _e.default,
+              BlockEntity: te.default,
+              ItemSetEntity: ne.default,
+              ItemEntity: se.default,
+              KeyDisplaysEntity: ne.default,
+              ModalMixin: oe.default,
+              SortableMixin: ie.default,
+              TelemetryMixin: le.default,
               TEMPLATES: {
                 application: Te.default,
-                index: Me.default,
-                loading: Oe.default,
-                runes: Re.default,
-                champions: Ae.default,
-                skins: De.default,
-                emotes: Le.default,
-                spells: Ne.default,
-                items: Be.default,
-                "summoner-icons": je.default,
-                wards: Fe.default,
-                chromas: Ue.default,
-                "components/champion-item": Ve.default,
-                "components/champion-item-lcm": Ge.default,
-                "components/legacy-app-mount": He.default,
-                "components/inventory-item": We.default,
-                "components/skin-item-header": Ke.default,
-                "components/summoner-icon-header": Ye.default,
-                "components/collection-cm-header": Xe.default,
-                "components/collections-sub-nav": qe.default,
-                "components/number-fanfare": $e.default,
-                "components/collection-details": ze.default,
-                "components/collection-controls": Qe.default,
-                "components/collection-group-header": Je.default,
-                "components/replay-button": Ze.default,
-                "components/video-wrapper": et.default,
-                "components/mastery-ftux": it.default,
-                "components/style-filter": tt.default,
-                "components/inventory-cards": nt.default,
-                "components/inventory-card": st.default,
-                "components/inventory-page": ot.default,
+                index: Ce.default,
+                loading: Me.default,
+                runes: De.default,
+                champions: Oe.default,
+                skins: Ae.default,
+                emotes: Re.default,
+                spells: Le.default,
+                items: Ne.default,
+                "summoner-icons": Be.default,
+                wards: je.default,
+                chromas: Fe.default,
+                "components/champion-item-lcm": He.default,
+                "components/legacy-app-mount": Ue.default,
+                "components/inventory-item": Ve.default,
+                "components/skin-item-header": Ge.default,
+                "components/summoner-icon-header": We.default,
+                "components/collection-cm-header": Ye.default,
+                "components/collections-sub-nav": Ke.default,
+                "components/number-fanfare": qe.default,
+                "components/collection-details": Xe.default,
+                "components/collection-controls": $e.default,
+                "components/collection-group-header": ze.default,
+                "components/replay-button": Qe.default,
+                "components/video-wrapper": Je.default,
+                "components/mastery-ftux": st.default,
+                "components/style-filter": Ze.default,
+                "components/inventory-cards": et.default,
+                "components/inventory-card": tt.default,
+                "components/inventory-page": nt.default,
               },
             };
             s.SharedComponents.getSharedEmberComponents().EmberCollectionApi.registerToFactoryDefinition(
               e,
             ),
-              s.EmberApplicationFactory.setFactoryDefinition(pt, e, {
+              s.EmberApplicationFactory.setFactoryDefinition(dt, e, {
                 EMBER_CLI_COMPAT: !0,
               });
           });
         var s = n(1),
-          o = lt(n(42)),
-          i = lt(n(43)),
-          l = lt(n(44)),
-          a = lt(n(45)),
-          r = lt(n(50)),
-          c = lt(n(51)),
-          d = lt(n(52)),
-          m = lt(n(54)),
-          p = lt(n(56)),
-          u = lt(n(58)),
-          h = lt(n(60)),
-          g = lt(n(62)),
-          f = lt(n(81)),
-          _ = lt(n(83)),
-          y = lt(n(84)),
-          b = lt(n(85)),
-          S = lt(n(86)),
-          k = lt(n(87)),
-          v = lt(n(89)),
-          E = lt(n(90)),
-          x = lt(n(91)),
-          I = lt(n(92)),
-          w = lt(n(93)),
-          P = lt(n(94)),
-          C = lt(n(96)),
-          T = lt(n(99)),
-          M = lt(n(100)),
-          O = lt(n(101)),
-          A = lt(n(102)),
-          D = lt(n(103)),
-          R = lt(n(104)),
-          L = lt(n(105)),
-          N = lt(n(106)),
-          B = lt(n(107)),
-          j = lt(n(108)),
-          F = lt(n(109)),
-          U = lt(n(110)),
-          H = lt(n(111)),
-          V = lt(n(117)),
-          G = lt(n(120)),
-          W = lt(n(126)),
-          K = lt(n(129)),
-          Y = lt(n(133)),
-          q = lt(n(144)),
-          X = lt(n(147)),
-          $ = lt(n(150)),
-          z = lt(n(153)),
-          Q = lt(n(156)),
-          J = lt(n(160)),
-          Z = lt(n(163)),
-          ee = lt(n(142)),
-          te = lt(n(166)),
-          ne = lt(n(137)),
-          se = lt(n(138)),
-          oe = lt(n(136)),
-          ie = lt(n(139)),
-          le = lt(n(121)),
-          ae = lt(n(140)),
-          re = lt(n(182)),
-          ce = lt(n(187)),
-          de = lt(n(191)),
-          me = lt(n(194)),
-          pe = lt(n(197)),
-          ue = lt(n(200)),
-          he = lt(n(203)),
-          ge = lt(n(204)),
-          fe = lt(n(184)),
-          _e = lt(n(205)),
-          ye = lt(n(206)),
-          be = lt(n(208)),
-          Se = lt(n(209)),
-          ke = lt(n(210)),
-          ve = lt(n(214)),
-          Ee = lt(n(215)),
-          xe = lt(n(216)),
-          Ie = lt(n(218)),
-          we = lt(n(220)),
-          Pe = lt(n(221)),
-          Ce = lt(n(233)),
-          Te = lt(n(234)),
-          Me = lt(n(235)),
-          Oe = lt(n(236)),
-          Ae = lt(n(237)),
-          De = lt(n(238)),
-          Re = lt(n(239)),
-          Le = lt(n(240)),
-          Ne = lt(n(241)),
-          Be = lt(n(242)),
-          je = lt(n(243)),
-          Fe = lt(n(244)),
-          Ue = lt(n(245)),
-          He = lt(n(246)),
-          Ve = lt(n(247)),
-          Ge = lt(n(248)),
-          We = lt(n(249)),
-          Ke = lt(n(250)),
-          Ye = lt(n(251)),
-          qe = lt(n(252)),
-          Xe = lt(n(253)),
-          $e = lt(n(254)),
-          ze = lt(n(255)),
-          Qe = lt(n(256)),
-          Je = lt(n(257)),
-          Ze = lt(n(258)),
-          et = lt(n(259)),
-          tt = lt(n(260)),
-          nt = lt(n(261)),
-          st = lt(n(262)),
-          ot = lt(n(263)),
-          it = lt(n(264));
-        function lt(e) {
+          o = ot(n(42)),
+          i = ot(n(43)),
+          l = ot(n(44)),
+          a = ot(n(45)),
+          r = ot(n(50)),
+          c = ot(n(51)),
+          d = ot(n(52)),
+          m = ot(n(54)),
+          p = ot(n(56)),
+          u = ot(n(58)),
+          h = ot(n(60)),
+          g = ot(n(62)),
+          f = ot(n(81)),
+          _ = ot(n(83)),
+          y = ot(n(84)),
+          b = ot(n(85)),
+          S = ot(n(86)),
+          k = ot(n(88)),
+          v = ot(n(89)),
+          E = ot(n(90)),
+          x = ot(n(91)),
+          I = ot(n(92)),
+          w = ot(n(93)),
+          P = ot(n(95)),
+          T = ot(n(98)),
+          C = ot(n(99)),
+          M = ot(n(100)),
+          O = ot(n(101)),
+          A = ot(n(102)),
+          D = ot(n(103)),
+          R = ot(n(104)),
+          L = ot(n(105)),
+          N = ot(n(106)),
+          B = ot(n(107)),
+          j = ot(n(108)),
+          F = ot(n(109)),
+          U = ot(n(110)),
+          H = ot(n(116)),
+          V = ot(n(119)),
+          G = ot(n(125)),
+          W = ot(n(128)),
+          K = ot(n(132)),
+          Y = ot(n(143)),
+          q = ot(n(146)),
+          X = ot(n(149)),
+          $ = ot(n(152)),
+          z = ot(n(155)),
+          Q = ot(n(159)),
+          J = ot(n(162)),
+          Z = ot(n(141)),
+          ee = ot(n(165)),
+          te = ot(n(136)),
+          ne = ot(n(137)),
+          se = ot(n(135)),
+          oe = ot(n(138)),
+          ie = ot(n(120)),
+          le = ot(n(139)),
+          ae = ot(n(181)),
+          re = ot(n(186)),
+          ce = ot(n(190)),
+          de = ot(n(193)),
+          me = ot(n(196)),
+          pe = ot(n(199)),
+          ue = ot(n(202)),
+          he = ot(n(203)),
+          ge = ot(n(183)),
+          fe = ot(n(204)),
+          _e = ot(n(205)),
+          ye = ot(n(207)),
+          be = ot(n(208)),
+          Se = ot(n(209)),
+          ke = ot(n(213)),
+          ve = ot(n(214)),
+          Ee = ot(n(215)),
+          xe = ot(n(217)),
+          Ie = ot(n(219)),
+          we = ot(n(220)),
+          Pe = ot(n(232)),
+          Te = ot(n(233)),
+          Ce = ot(n(234)),
+          Me = ot(n(235)),
+          Oe = ot(n(236)),
+          Ae = ot(n(237)),
+          De = ot(n(238)),
+          Re = ot(n(239)),
+          Le = ot(n(240)),
+          Ne = ot(n(241)),
+          Be = ot(n(242)),
+          je = ot(n(243)),
+          Fe = ot(n(244)),
+          Ue = ot(n(245)),
+          He = ot(n(246)),
+          Ve = ot(n(247)),
+          Ge = ot(n(248)),
+          We = ot(n(249)),
+          Ke = ot(n(250)),
+          Ye = ot(n(251)),
+          qe = ot(n(252)),
+          Xe = ot(n(253)),
+          $e = ot(n(254)),
+          ze = ot(n(255)),
+          Qe = ot(n(256)),
+          Je = ot(n(257)),
+          Ze = ot(n(258)),
+          et = ot(n(259)),
+          tt = ot(n(260)),
+          nt = ot(n(261)),
+          st = ot(n(262));
+        function ot(e) {
           return e && e.__esModule ? e : { default: e };
         }
         const {
-            HextechLoadingAnimationComponent: at,
-            RenderTelemetrySenderComponent: rt,
+            HextechLoadingAnimationComponent: it,
+            RenderTelemetrySenderComponent: lt,
           } = s.SharedComponents.getSharedEmberComponents(),
           {
-            GradeDisplayComponent: ct,
-            MasteryCrestComponent: dt,
-            MilestoneTooltipComponent: mt,
+            GradeDisplayComponent: at,
+            MasteryCrestComponent: rt,
+            MilestoneTooltipComponent: ct,
           } = s.SharedComponents.getApi_SharedChampionMasteryComponents(),
-          pt = "rcp-fe-lol-collections-ember";
-        t.APP_NAME = pt;
+          dt = "rcp-fe-lol-collections-ember";
+        t.APP_NAME = dt;
       },
       (e, t, n) => {
         "use strict";
@@ -1180,92 +1176,73 @@
             const e = (0, s.dataBinding)("/lol-login", s.socket).get(
                 "/v1/session",
               ),
-              t = this.get("platformConfig").getEternalsConfig(),
-              n = (0, s.dataBinding)("/lol-client-config", s.socket).get(
-                "/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
-              );
-            return Promise.all([e, t, n])
+              t = this.get("platformConfig").getEternalsConfig();
+            return Promise.all([e, t])
               .then((e) => {
-                const [t, o, i] = e;
+                const [t, n] = e;
                 if (!t || !t.summonerId || !t.puuid) return null;
-                const l = o
+                const o = n
                     ? (0, s.dataBinding)("/lol-statstones", s.socket).get(
                         "/v2/player-summary-self",
                       )
                     : Promise.resolve(),
-                  a = i
-                    ? Promise.resolve()
-                    : (0, s.dataBinding)("/lol-collections", s.socket).get(
-                        `v1/inventories/${t.puuid}/champion-mastery`,
-                      ),
-                  r = i
-                    ? (0, s.dataBinding)("/lol-champion-mastery", s.socket).get(
-                        "/v1/local-player/champion-mastery-sets-and-rewards",
-                        { skipCache: !0 },
-                      )
-                    : Promise.resolve(),
-                  c = this.get("showMasteryFtux")
+                  i = (0, s.dataBinding)("/lol-champion-mastery", s.socket).get(
+                    "/v1/local-player/champion-mastery-sets-and-rewards",
+                    { skipCache: !0 },
+                  ),
+                  l = this.get("showMasteryFtux")
                     ? (0, s.dataBinding)(
                         "/lol-champion-mastery",
                         s.socket,
                       ).post(`/v1/${t.puuid}/champion-mastery/top?count=1`)
                     : Promise.resolve(),
-                  d = this.championsObservationPromise(t.summonerId),
-                  m = (0, s.dataBinding)("/lol-seasons", s.socket).get(
+                  a = this.championsObservationPromise(t.summonerId),
+                  r = (0, s.dataBinding)("/lol-seasons", s.socket).get(
                     "/v1/season/product/LOL",
                   );
-                return Promise.all([n, d, a, r, l, m, c]);
+                return Promise.all([a, i, o, r, l]);
               })
               .then((e) => {
-                const [t, n, i, l, a, r, c] = e,
-                  d = s.ChampionStatistics.getPlayRates(),
-                  m = this.mapChampionIdToChampionData(n),
+                const [t, n, i, l, a] = e,
+                  r = s.ChampionStatistics.getPlayRates(),
+                  c = this.mapChampionIdToChampionData(t),
                   {
-                    championMasteries: p,
-                    championSet: u,
-                    championSetRewards: h,
-                    seasonMilestoneRequireAndRewards: g,
-                    defaultChampionMastery: f,
-                    customRewards: _,
-                    championCountByMilestone: y,
-                  } = l || {},
-                  b =
+                    championMasteries: d,
+                    championSet: m,
+                    championSetRewards: p,
+                    seasonMilestoneRequireAndRewards: u,
+                    defaultChampionMastery: h,
+                    customRewards: g,
+                    championCountByMilestone: f,
+                  } = n || {},
+                  _ =
                     s.SharedChampionMasteryConstants
                       .MINIMUM_MASTERY_MILESTONE_LEVEL + 1,
-                  S = g ? g[b] : {},
-                  k = n.filter((e) => e.id > 0),
-                  v = this.mapMasteryById(i),
-                  E = this.mapMasteryById(p),
-                  x = this.mapPositionsById(d),
-                  I = this.mapEternalsById(a);
-                let w, P;
-                return (
-                  t
-                    ? ((w = this.combineLcmChampionData(
-                        Object.values(m),
-                        E,
-                        x,
-                        I,
-                        S,
-                        f,
-                      )),
-                      (P = E))
-                    : ((w = this.combineChampionData(k, v, x, I)), (P = v)),
-                  {
-                    champions: w,
-                    renderEventName: o,
-                    championMasteries: p,
-                    champIdToMasteriesMap: P,
-                    championIdToChampionDataMap: m,
-                    championSetData: u,
-                    seasonData: r,
-                    championSetMilestoneToReward: h,
-                    topChampionMasteries: c,
-                    masteryRewardData: g,
-                    customRewards: _,
-                    championCountByMilestone: y,
-                  }
-                );
+                  y = u ? u[_] : {},
+                  b = this.mapMasteryById(d),
+                  S = this.mapPositionsById(r),
+                  k = this.mapEternalsById(i);
+                return {
+                  champions: this.combineLcmChampionData(
+                    Object.values(c),
+                    b,
+                    S,
+                    k,
+                    y,
+                    h,
+                  ),
+                  renderEventName: o,
+                  championMasteries: d,
+                  champIdToMasteriesMap: b,
+                  championIdToChampionDataMap: c,
+                  championSetData: m,
+                  seasonData: l,
+                  championSetMilestoneToReward: p,
+                  topChampionMasteries: a,
+                  masteryRewardData: u,
+                  customRewards: g,
+                  championCountByMilestone: f,
+                };
               });
           },
           setupController(e, t) {
@@ -1343,10 +1320,12 @@
               t
             );
           },
+          isChampionIdValid: (e) => e < 1e3,
           combineLcmChampionData(e, t, n, o, i, l) {
             const a = [];
             return (
               e.forEach((e) => {
+                if (!1 === this.isChampionIdValid(e.id)) return;
                 const r = Object.assign({}, e),
                   c = t.get(r.id),
                   d = o.get(r.id);
@@ -1423,7 +1402,6 @@
                         )
                       : "0"),
                     (r.lastPlayedTime = 0),
-                    (r.chestGranted = 0),
                     (r.highestGrade = ""),
                     (r.masteryGoal = 0),
                     (r.masteryPercent = 0),
@@ -1453,6 +1431,7 @@
             const o = [];
             return (
               e.forEach((e) => {
+                if (!1 === this.isChampionIdValid(e.id)) return;
                 const i = Object.assign({}, e),
                   l = t.get(i.id),
                   a = s.get(i.id);
@@ -3616,9 +3595,6 @@
           isEternalsEnabled: s.Ember.computed.oneWay(
             "platformConfig.isEternalsEnabled",
           ),
-          isLegendaryChampionMasteryEnabled: s.Ember.computed.oneWay(
-            "clientConfig.isLegendaryChampionMasteryEnabled",
-          ),
           isLegendaryChampionMasterySetsEnabled: s.Ember.computed(
             "clientConfig.isLegendaryChampionMasterySetsEnabled",
             function () {
@@ -3627,10 +3603,6 @@
                 this.get("clientConfig.isLegendaryChampionMasterySetsEnabled")
               );
             },
-          ),
-          shouldShowChampionMasterySetsHeader: s.Ember.computed.and(
-            "isLegendaryChampionMasteryEnabled",
-            "isLegendaryChampionMasterySetsEnabled",
           ),
           isGroupByAll: s.Ember.computed.equal("groupBy", "allChampions"),
           isGroupByPosition: s.Ember.computed.equal("groupBy", "position"),
@@ -5695,333 +5667,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(63);
-        const i = s.AudioPlugin.getChannel("sfx-ui"),
-          l =
-            "/lol-client-config/v3/client-config/lol.client_settings.navigation.enableRewardsProgram",
-          a = s.dataBinding.bindTo(s.socket);
-        var r = s.Ember.Component.extend({
-          classNames: ["rcp-fe-lol-collections-champion-item"],
-          classNameBindings: ["isPlayable:unlocked:locked"],
-          didPurchaseChampion: !1,
-          platformConfig: s.Ember.inject.service("platform-config"),
-          milestonesForSetCompletion: 15,
-          isEternalsEnabled: s.Ember.computed.oneWay(
-            "platformConfig.isEternalsEnabled",
-          ),
-          hasMastery: s.Ember.computed.gt("champion.masteryLevel", 0),
-          isChestGranted: s.Ember.computed.equal("champion.chestGranted", 1),
-          isFreeToPlay: s.Ember.computed.bool("champion.freeToPlay"),
-          isRented: s.Ember.computed.bool("champion.ownership.rental.rented"),
-          isOwned: s.Ember.computed.bool("champion.ownership.owned"),
-          isLoyaltyReward: s.Ember.computed.bool(
-            "champion.ownership.loyaltyReward",
-          ),
-          isXboxGPReward: s.Ember.computed.bool(
-            "champion.ownership.xboxGPReward",
-          ),
-          hasEternals: s.Ember.computed.gt("champion.eternalsOwned", 0),
-          isRewardsProgramEnabled: null,
-          hasMasteryBorder: s.Ember.computed(
-            "isOwned",
-            "isFreeToPlay",
-            "isRented",
-            "isLoyaltyReward",
-            "isXboxGPReward",
-            function () {
-              return (
-                this.get("isOwned") ||
-                this.get("isFreeToPlay") ||
-                this.get("isRented") ||
-                this.get("isLoyaltyReward") ||
-                this.get("isXboxGPReward")
-              );
-            },
-          ),
-          rentalExplanation: s.Ember.computed(
-            "champion.ownership.rental",
-            function () {
-              const e = this.get("champion.ownership.rental");
-              if (!e || !e.rented) return null;
-              const t = e.endDate - Date.now(),
-                n = {
-                  wins: e.winCountRemaining || 0,
-                  days: Math.floor(t / 864e5),
-                  hours: Math.floor((t / 36e5) % 24),
-                };
-              return this.get("tra").formatString(
-                this.getRentalExplanationLocKey(n.days, n.hours, n.wins),
-                n,
-              );
-            },
-          ),
-          loyaltyExplanation: s.Ember.computed(
-            "champion.ownership",
-            "isRewardsProgramEnabled",
-            function () {
-              const e = this.get("champion.ownership.loyaltyReward"),
-                t = this.get("isRewardsProgramEnabled");
-              return e
-                ? t
-                  ? this.get(
-                      "tra.collections_champion_grid_mastery_tooltip_rental_expl_loyalty_reward",
-                    )
-                  : this.get(
-                      "tra.collections_champion_grid_mastery_tooltip_rental_expl_free_to_play_reward",
-                    )
-                : null;
-            },
-          ),
-          xboxExplanation: s.Ember.computed(
-            "champion.ownership",
-            "isRewardsProgramEnabled",
-            function () {
-              const { isXGPReward: e } = this.returnBadgeInformation(),
-                t = this.get("isRewardsProgramEnabled");
-              return e && t
-                ? this.get(
-                    "tra.collections_champion_grid_mastery_tooltip_rental_expl_xbox_game_pass",
-                  )
-                : null;
-            },
-          ),
-          infoBadgePaths: s.Ember.computed(
-            "isOwned",
-            "isFreeToPlay",
-            "isRented",
-            "isChestGranted",
-            "isXboxGPReward",
-            "isLoyaltyReward",
-            "champion",
-            "isRewardsProgramEnabled",
-            function () {
-              const {
-                  isFreeToPlay: e,
-                  isRented: t,
-                  isOwned: n,
-                  isChestGranted: s,
-                  isLoyaltyReward: o,
-                  isXGPReward: i,
-                } = this.returnBadgeInformation(),
-                l = this.get("isRewardsProgramEnabled"),
-                a = [];
-              return (
-                (o || i) &&
-                  l &&
-                  a.push(
-                    "/fe/lol-collections/images/item-element/rewards-program-icon.svg",
-                  ),
-                o &&
-                  !l &&
-                  a.push("/fe/lol-collections/images/item-element/Loyalty.png"),
-                t &&
-                  a.push("/fe/lol-collections/images/item-element/Rental.png"),
-                e &&
-                  a.push(
-                    "/fe/lol-collections/images/item-element/Free-Rotation.png",
-                  ),
-                s &&
-                  a.push(
-                    "/fe/lol-collections/images/item-element/Hextech-Chest.png",
-                  ),
-                a
-              );
-            },
-          ),
-          tooltipId: s.Ember.computed("champion.id", function () {
-            return "champion-" + this.get("champion.id");
-          }),
-          masteryLevelString: s.Ember.computed(
-            "champion.masteryLevel",
-            "tra",
-            function () {
-              const e = this.get("champion.masteryLevel");
-              return this.get(`tra.collectibles_mastery_level_${e}`);
-            },
-          ),
-          masteryBadgeImgPath: s.Ember.computed(
-            "champion.masteryLevel",
-            function () {
-              return `/fe/lol-collections/images/item-element/mastery-${this.get("champion.masteryLevel")}.png`;
-            },
-          ),
-          masteryScore: s.Ember.computed(
-            "champion.masteryLevel",
-            "champion.formattedMasteryScore",
-            "champion.formattedMasteryGoal",
-            "tra",
-            function () {
-              return this.get("champion.masteryLevel") < 5
-                ? this.get("tra").formatString(
-                    "collections_champion_grid_mastery_tooltip_points",
-                    {
-                      current: this.get("champion.formattedMasteryScore"),
-                      next: this.get("champion.formattedMasteryGoal"),
-                    },
-                  )
-                : this.get("tra").formatString(
-                    "collections_champion_grid_mastery_tooltip_points_max",
-                    { points: this.get("champion.formattedMasteryScore") },
-                  );
-            },
-          ),
-          masteryTitle: s.Ember.computed(
-            "champion.masteryLevel",
-            "champion.roles",
-            "tra",
-            function () {
-              const e = this.get("champion.masteryLevel"),
-                t = this.get("champion.roles");
-              return e <= 0
-                ? ""
-                : this.get(`tra.champion_mastery_role_title_${t[0]}_${e}`);
-            },
-          ),
-          highestGrade: s.Ember.computed("champion.highestGrade", function () {
-            let e = this.get("champion.highestGrade");
-            return (
-              e ||
-                (e = this.get(
-                  "tra.collections_champion_grid_mastery_tooltip_season_no_grade",
-                )),
-              this.get("tra").formatString(
-                "collections_champion_grid_mastery_tooltip_season_highest_grade",
-                { grade: e },
-              )
-            );
-          }),
-          eternalsSets: s.Ember.computed(
-            "champion.eternalsSets.[]",
-            function () {
-              const e = this.get("champion.eternalsSets"),
-                t = [];
-              return (
-                e.forEach((e) => {
-                  const n = {
-                    name: e.name,
-                    noneOwned: 0 === e.stonesOwned,
-                    milestonesPassed: e.milestonesPassed,
-                    complete: e.milestonesPassed >= 15,
-                  };
-                  t.push(n);
-                }),
-                t
-              );
-            },
-          ),
-          init() {
-            this._super(...arguments),
-              (this.playSoundOnEvent = this.playSoundOnEvent.bind(this)),
-              (this.handlePAWPurchased = this.handlePAWPurchased.bind(this)),
-              (this.handlePAWClosed = this.handlePAWClosed.bind(this)),
-              (this.handleChampionDetailsClosed =
-                this.handleChampionDetailsClosed.bind(this)),
-              a.observe(l, (e) => {
-                this.set("isRewardsProgramEnabled", e);
-              });
-          },
-          didInsertElement() {
-            this._super(...arguments);
-            const e = this.element.querySelector(".champion-image-container");
-            e.addEventListener("click", this.playSoundOnEvent),
-              e.addEventListener("mouseenter", this.playSoundOnEvent);
-          },
-          willDestroy() {
-            this._super(...arguments), a.unobserve(l);
-          },
-          willDestroyElement() {
-            this._super(...arguments);
-            const e = this.element.querySelector(".champion-image-container");
-            e.removeEventListener("click", this.playSoundOnEvent),
-              e.removeEventListener("mouseenter", this.playSoundOnEvent);
-          },
-          handlePAWClosed() {
-            this.isDestroying ||
-              this.isDestroyed ||
-              (this.set("isPAWOpen", !1),
-              this.get("didPurchaseChampion") &&
-                this.sendAction("refreshCurrentRoute"));
-          },
-          handlePAWPurchased() {
-            this.isDestroying ||
-              this.isDestroyed ||
-              this.set("didPurchaseChampion", !0);
-          },
-          handleChampionDetailsClosed() {
-            this.isDestroying ||
-              this.isDestroyed ||
-              this.sendAction("refreshCurrentRoute");
-          },
-          playSoundOnEvent(e) {
-            let t = "";
-            switch (e.type) {
-              case "click":
-                t = "/fe/lol-collections/audio/sfx-uikit-grid-click.ogg";
-                break;
-              case "mouseenter":
-                t = "/fe/lol-collections/audio/sfx-uikit-grid-hover.ogg";
-                break;
-              default:
-                t = "";
-            }
-            i.playSound(t);
-          },
-          getRentalExplanationLocKey(e, t, n) {
-            let s = "collections_champion_grid_mastery_tooltip_rental_expl";
-            return (
-              e > 0 ? (s += "_days_hours") : t > 0 && (s += "_hours"),
-              n > 0 && (s += "_wins"),
-              s
-            );
-          },
-          returnBadgeInformation() {
-            return {
-              isFreeToPlay: this.get("isFreeToPlay"),
-              isRented: this.get("isRented"),
-              isOwned: this.get("isOwned"),
-              isChestGranted: this.get("isChestGranted"),
-              isLoyaltyReward: this.get("isLoyaltyReward"),
-              isXGPReward: this.get("isXboxGPReward"),
-            };
-          },
-          actions: {
-            openDetails() {
-              const e = this.get("champion.id"),
-                t = this.get("isPAWOpen"),
-                n = this.handleChampionDetailsClosed;
-              e &&
-                !t &&
-                s.ChampionDetails.show({ championId: e, onCloseCallback: n });
-            },
-            openPAW() {
-              const e = this.get("champion.id"),
-                t = o.PAW.INVENTORY_TYPES.CHAMPION,
-                n = o.PAW.MODAL_TYPES.CHAMPION_MODAL,
-                i = this.handlePAWPurchased,
-                l = this.handlePAWClosed;
-              if (e) {
-                const o = s.pawApi.createPAWModal(
-                  { itemId: e, inventoryType: t },
-                  "champions",
-                  n,
-                  null,
-                  i,
-                  l,
-                );
-                this.set("isPAWOpen", o);
-              }
-            },
-          },
-        });
-        t.default = r;
-      },
-      (e, t, n) => {
-        "use strict";
-        Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.default = void 0);
-        var s = n(1),
           o = n(63),
-          i = n(88);
+          i = n(87);
         const l = s.AudioPlugin.getChannel("sfx-ui"),
           a =
             "/lol-client-config/v3/client-config/lol.client_settings.navigation.enableRewardsProgram",
@@ -6036,7 +5683,6 @@
             "platformConfig.isEternalsEnabled",
           ),
           hasMastery: s.Ember.computed.gt("champion.masteryLevel", 0),
-          isChestGranted: s.Ember.computed.equal("champion.chestGranted", 1),
           isFreeToPlay: s.Ember.computed.bool("champion.freeToPlay"),
           isRented: s.Ember.computed.bool("champion.ownership.rental.rented"),
           isOwned: s.Ember.computed.bool("champion.ownership.owned"),
@@ -6131,7 +5777,6 @@
             "isOwned",
             "isFreeToPlay",
             "isRented",
-            "isChestGranted",
             "isXboxGPReward",
             "isLoyaltyReward",
             "champion",
@@ -6141,32 +5786,27 @@
                   isFreeToPlay: e,
                   isRented: t,
                   isOwned: n,
-                  isChestGranted: s,
-                  isLoyaltyReward: o,
-                  isXGPReward: i,
+                  isLoyaltyReward: s,
+                  isXGPReward: o,
                 } = this.returnBadgeInformation(),
-                l = this.get("isRewardsProgramEnabled"),
-                a = [];
+                i = this.get("isRewardsProgramEnabled"),
+                l = [];
               return (
-                (o || i) &&
-                  l &&
-                  a.push(
+                (s || o) &&
+                  i &&
+                  l.push(
                     "/fe/lol-collections/images/item-element/rewards-program-icon.svg",
                   ),
-                o &&
-                  !l &&
-                  a.push("/fe/lol-collections/images/item-element/Loyalty.png"),
+                s &&
+                  !i &&
+                  l.push("/fe/lol-collections/images/item-element/Loyalty.png"),
                 t &&
-                  a.push("/fe/lol-collections/images/item-element/Rental.png"),
+                  l.push("/fe/lol-collections/images/item-element/Rental.png"),
                 e &&
-                  a.push(
+                  l.push(
                     "/fe/lol-collections/images/item-element/Free-Rotation.png",
                   ),
-                s &&
-                  a.push(
-                    "/fe/lol-collections/images/item-element/Hextech-Chest.png",
-                  ),
-                a
+                l
               );
             },
           ),
@@ -6410,7 +6050,6 @@
               isFreeToPlay: this.get("isFreeToPlay"),
               isRented: this.get("isRented"),
               isOwned: this.get("isOwned"),
-              isChestGranted: this.get("isChestGranted"),
               isLoyaltyReward: this.get("isLoyaltyReward"),
               isXGPReward: this.get("isXboxGPReward"),
             };
@@ -6449,9 +6088,9 @@
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.MASTERY_SET_REWARD_TYPES = void 0),
           (t.getImagePathFromSetReward = function (e) {
-            if (!e) return "";
-            return a[e.type] || "";
+            return r[e?.type] || "";
           }),
           (t.getMasteryBannerBackgroundPath = function (e = 0) {
             return 0 === e
@@ -6481,11 +6120,14 @@
             10: "/fe/lol-collections/images/item-element/mastery-banner-red-max.png",
           };
         const a = {
-          HEXTECH_CHEST:
-            "/fe/lol-collections/images/mastery-header/reward-hextech-chest.svg",
-          MASTERWORK_CHEST:
+          MASTERWORK_CHEST: "MASTERWORK_CHEST",
+          BLUE_ESSENCE: "BLUE_ESSENCE",
+        };
+        t.MASTERY_SET_REWARD_TYPES = a;
+        const r = {
+          [a.MASTERWORK_CHEST]:
             "/fe/lol-collections/images/mastery-header/reward-masterwork-chest.png",
-          BLUE_ESSENCE:
+          [a.BLUE_ESSENCE]:
             "/fe/lol-collections/images/mastery-header/reward-blue-essence.svg",
         };
       },
@@ -7106,8 +6748,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(88),
-          i = n(95);
+          o = n(87),
+          i = n(94);
         const l = s.AudioPlugin.getChannel("sfx-ui"),
           a = 80,
           r = ".champion-icon",
@@ -7151,6 +6793,12 @@
                 e.removeEventListener("mouseenter", this.playSoundOnEvent);
             });
           },
+          locale: s.Ember.computed("tra.metadata.locale.id", function () {
+            return (this.get("tra.metadata.locale.id") || "en_US").replace(
+              "_",
+              "-",
+            );
+          }),
           seasonInfo: s.Ember.computed("tra", "seasonData", function () {
             const e = this.get("seasonData");
             if (e) {
@@ -7195,16 +6843,19 @@
           ),
           allSetRewards: s.Ember.computed(
             "championSetMilestoneToReward",
+            "locale",
             function () {
-              const e = this.get("championSetMilestoneToReward");
+              const e = this.get("championSetMilestoneToReward"),
+                t = this.get("locale");
               if (e) {
-                const t = [];
-                for (const [n, s] of Object.entries(e))
-                  t.push({
-                    requiredMilestone: n,
-                    iconPath: (0, o.getImagePathFromSetReward)(s),
+                const n = [];
+                for (const [s, i] of Object.entries(e))
+                  n.push({
+                    requiredMilestone: s,
+                    iconPath: (0, o.getImagePathFromSetReward)(i),
+                    value: this.generateRewardValueString(i, t),
                   });
-                return t;
+                return n;
               }
             },
           ),
@@ -7305,6 +6956,10 @@
               this.isDestroyed ||
               this.sendAction("refreshCurrentRoute");
           },
+          generateRewardValueString(e, t) {
+            const { value: n, type: s } = e;
+            return `${s === o.MASTERY_SET_REWARD_TYPES.MASTERWORK_CHEST ? "x" : "+"}${n.toLocaleString(t)}`;
+          },
           actions: {
             startScrolling(e) {
               const t = this.element.querySelector(".set-tracker-scrollable");
@@ -7353,7 +7008,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(97),
+          o = n(96),
           i = s.Ember.Component.extend({
             numberCounter: "",
             total: null,
@@ -7367,7 +7022,7 @@
       },
       (e, t, n) => {
         "use strict";
-        e.exports = { CountingElement: n(98) };
+        e.exports = { CountingElement: n(97) };
       },
       (e) => {
         "use strict";
@@ -7844,11 +7499,6 @@
             name: "tieredSkins",
             path: "lol.client_settings.tieredSkins",
             default: {},
-          },
-          {
-            name: "isLegendaryChampionMasteryEnabled",
-            path: "lol.client_settings.champ_mastery.lcm_enabled",
-            default: !1,
           },
           {
             name: "isLegendaryChampionMasterySetsEnabled",
@@ -8349,11 +7999,11 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(112)) && s.__esModule ? s : { default: s };
-        n(113);
-        var l = n(114),
-          a = n(115);
-        const r = n(116);
+          i = (s = n(111)) && s.__esModule ? s : { default: s };
+        n(112);
+        var l = n(113),
+          a = n(114);
+        const r = n(115);
         var c = o.Ember.Component.extend({
           classNames: ["item-set-champion-selector"],
           classNameBindings: ["isSingleSelect"],
@@ -8800,10 +8450,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1);
-        n(118);
+        n(117);
         const o = s.UIKit.getTooltipManager();
         var i = s.Ember.Component.extend({
-          layout: n(119),
+          layout: n(118),
           tagName: "lol-uikit-close-button",
           tooltipManager: o,
           attributeBindings: [
@@ -8844,15 +8494,15 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(121)) && s.__esModule ? s : { default: s };
-        n(123);
-        var l = n(114),
-          a = n(115),
-          r = n(124);
+          i = (s = n(120)) && s.__esModule ? s : { default: s };
+        n(122);
+        var l = n(113),
+          a = n(114),
+          r = n(123);
         const { RunMixin: c } = o.EmberAddons.EmberLifeline,
           d = "hasTooltip";
         var m = o.Ember.Component.extend(c, i.default, {
-          layout: n(125),
+          layout: n(124),
           classNames: ["item-build-tree-component"],
           itemSetsService: o.Ember.inject.service("itemSets"),
           indexedItems: o.Ember.computed.readOnly(
@@ -9017,7 +8667,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(122)) && s.__esModule ? s : { default: s };
+          i = (s = n(121)) && s.__esModule ? s : { default: s };
         var l = o.Ember.Mixin.create({
           _sortablejs: i.default,
           init() {
@@ -9075,8 +8725,8 @@
             I,
             w,
             P,
-            C = [],
-            T = !1,
+            T = [],
+            C = !1,
             M = !1,
             O = !1,
             A = [],
@@ -9253,42 +8903,42 @@
                     (k =
                       E &&
                       (te(O - m) <= i && I + L < _) - (te(M - m) <= i && !!I)),
-                    !C[h])
+                    !T[h])
                   )
-                    for (var N = 0; N <= h; N++) C[N] || (C[N] = {});
-                  (C[h].vx == b && C[h].vy == k && C[h].el === w) ||
-                    ((C[h].el = w),
-                    (C[h].vx = b),
-                    (C[h].vy = k),
-                    clearInterval(C[h].pid),
+                    for (var N = 0; N <= h; N++) T[N] || (T[N] = {});
+                  (T[h].vx == b && T[h].vy == k && T[h].el === w) ||
+                    ((T[h].el = w),
+                    (T[h].vx = b),
+                    (T[h].vy = k),
+                    clearInterval(T[h].pid),
                     !w ||
                       (0 == b && 0 == k) ||
                       ((u = !0),
-                      (C[h].pid = setInterval(
+                      (T[h].pid = setInterval(
                         function () {
                           s &&
                             0 === this.layer &&
                             (_e.active._emulateDragOver(!0),
                             _e.active._onTouchMove(S, !0));
-                          var t = C[this.layer].vy ? C[this.layer].vy * l : 0,
-                            n = C[this.layer].vx ? C[this.layer].vx * l : 0;
+                          var t = T[this.layer].vy ? T[this.layer].vy * l : 0,
+                            n = T[this.layer].vx ? T[this.layer].vx * l : 0;
                           ("function" == typeof c &&
                             "continue" !==
-                              c.call(o, n, t, e, S, C[this.layer].el)) ||
-                            re(C[this.layer].el, n, t);
+                              c.call(o, n, t, e, S, T[this.layer].el)) ||
+                            re(T[this.layer].el, n, t);
                         }.bind({ layer: h }),
                         24,
                       )))),
                     h++;
                 } while (t.bubbleScroll && g !== p && (g = le(g, !1)));
-                T = u;
+                C = u;
               }
             }, 30),
             de = function () {
-              C.forEach(function (e) {
+              T.forEach(function (e) {
                 clearInterval(e.pid);
               }),
-                (C = []);
+                (T = []);
             },
             me = function (e) {
               function t(e, n) {
@@ -9553,10 +9203,10 @@
               c
             );
           }
-          function Ce(e) {
+          function Te(e) {
             e.draggable = !1;
           }
-          function Te() {
+          function Ce() {
             Z = !1;
           }
           function Me(t, s, o) {
@@ -9835,7 +9485,7 @@
                   if (n || Y || K || X) {
                     ce(t, l.options, i, n);
                     var a = le(i, !0);
-                    !T ||
+                    !C ||
                       (f && s === _ && o === y) ||
                       (f && clearInterval(f),
                       (f = setInterval(function () {
@@ -9887,7 +9537,7 @@
                       ve(e, f.chosenClass, !0);
                   }),
                   f.ignore.split(",").forEach(function (t) {
-                    Ie(e, t.trim(), Ce);
+                    Ie(e, t.trim(), Te);
                   }),
                   Se(_, "dragover", fe),
                   Se(_, "mousemove", fe),
@@ -9921,7 +9571,7 @@
                   ) && this._disableDelayedDrag();
               },
               _disableDelayedDrag: function () {
-                e && Ce(e),
+                e && Te(e),
                   clearTimeout(this._dragStartTimer),
                   this._disableDelayedDragEvents();
               },
@@ -10179,15 +9829,15 @@
                           r.appendChild(e), (t = r), (P = null), K(), W(!0)
                         );
                     } else if (c && c !== e && c.parentNode === r) {
-                      var C,
-                        T = 0,
+                      var T,
+                        C = 0,
                         M = c.sortableMouseAligned,
                         A = e.parentNode !== r,
                         L = "vertical" === S ? "top" : "left",
                         N = Ve(c, "top") || Ve(e, "top"),
                         j = N ? N.scrollTop : void 0;
                       if (
-                        (v !== c && ((x = null), (C = He(c)[L]), (D = !1)),
+                        (v !== c && ((x = null), (T = He(c)[L]), (D = !1)),
                         ((function (t, n, s) {
                           var o = (t === e && P) || He(t),
                             i = (n === e && P) || He(n),
@@ -10206,7 +9856,7 @@
                         "insert" === x ||
                         "swap" === x
                           ? ("swap" !== x && (R = m.invertSwap || A),
-                            (T = (function (t, n, s, o, i, l, a) {
+                            (C = (function (t, n, s, o, i, l, a) {
                               var r = He(n),
                                 c = "vertical" === s ? t.clientY : t.clientX,
                                 d = "vertical" === s ? r.height : r.width,
@@ -10254,26 +9904,26 @@
                               v === c,
                             )),
                             (x = "swap"))
-                          : ((T = Ae(c)), (x = "insert")),
-                        0 === T)
+                          : ((C = Ae(c)), (x = "insert")),
+                        0 === C)
                       )
                         return W(!1);
-                      (P = null), (v = c), (E = T), (l = He(c));
+                      (P = null), (v = c), (E = C), (l = He(c));
                       var U = c.nextElementSibling,
                         V = !1,
-                        G = Pe(o, r, e, s, c, l, n, (V = 1 === T));
+                        G = Pe(o, r, e, s, c, l, n, (V = 1 === C));
                       if (!1 !== G)
                         return (
                           (1 !== G && -1 !== G) || (V = 1 === G),
                           (Z = !0),
-                          H(Te, 30),
+                          H(Ce, 30),
                           _ ? f._hideClone() : f._showClone(this),
                           V && !U
                             ? r.appendChild(e)
                             : c.parentNode.insertBefore(e, V ? U : c),
                           N && re(N, 0, j - N.scrollTop),
                           (t = e.parentNode),
-                          void 0 === C || R || (I = te(C - He(c)[L])),
+                          void 0 === T || R || (I = te(T - He(c)[L])),
                           K(),
                           W(!0)
                         );
@@ -10394,7 +10044,7 @@
                 var a = this.el,
                   r = this.options;
                 (M = !1),
-                  (T = !1),
+                  (C = !1),
                   (R = !1),
                   (D = !1),
                   clearInterval(this._loopId),
@@ -10425,7 +10075,7 @@
                       s.parentNode.removeChild(s),
                     e &&
                       (this.nativeDraggable && ke(e, "dragend", this),
-                      Ce(e),
+                      Te(e),
                       (e.style["will-change"] = ""),
                       ve(
                         e,
@@ -10465,7 +10115,7 @@
                   l =
                   a =
                   r =
-                  C.length =
+                  T.length =
                   f =
                   _ =
                   y =
@@ -10660,10 +10310,10 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(127)) && s.__esModule ? s : { default: s };
-        n(128);
-        var l = n(114),
-          a = n(115);
+          i = (s = n(126)) && s.__esModule ? s : { default: s };
+        n(127);
+        var l = n(113),
+          a = n(114);
         var r = o.Ember.Component.extend({
           classNames: ["item-set-item-filter-panel"],
           layout: i.default,
@@ -10732,13 +10382,13 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = d(n(121)),
-          i = d(n(130)),
-          l = d(n(131));
-        n(132);
-        var a = n(114),
-          r = n(115),
-          c = n(124);
+          o = d(n(120)),
+          i = d(n(129)),
+          l = d(n(130));
+        n(131);
+        var a = n(113),
+          r = n(114),
+          c = n(123);
         function d(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -11036,7 +10686,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(116)) && s.__esModule ? s : { default: s };
+          i = (s = n(115)) && s.__esModule ? s : { default: s };
         var l = {
           filterItems: function (e, t = {}) {
             t.itemsFilter && (e = e.filter((e) => t.itemsFilter.has(e.id)));
@@ -11115,19 +10765,19 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = f(n(134));
-        n(135);
-        var i = f(n(136)),
-          l = f(n(137)),
-          a = f(n(138)),
-          r = f(n(139)),
-          c = f(n(121)),
-          d = f(n(140)),
-          m = n(114),
-          p = n(115),
-          u = n(124),
-          h = n(141),
-          g = f(n(142));
+          o = f(n(133));
+        n(134);
+        var i = f(n(135)),
+          l = f(n(136)),
+          a = f(n(137)),
+          r = f(n(138)),
+          c = f(n(120)),
+          d = f(n(139)),
+          m = n(113),
+          p = n(114),
+          u = n(123),
+          h = n(140),
+          g = f(n(141));
         function f(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -11212,7 +10862,7 @@
                 );
               },
             ),
-            helmetIcon: n(143),
+            helmetIcon: n(142),
             _currentBlock: null,
             currentBlock: s.Ember.computed("_currentBlock", "currentSet", {
               get() {
@@ -12196,7 +11846,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(115),
+          o = n(114),
           i = s.Ember.Object.extend({
             count: 1,
             hasNoPreferredSlot: s.Ember.computed("preferredSlot", function () {
@@ -12232,8 +11882,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(136)) && s.__esModule ? s : { default: s },
-          l = n(115);
+          i = (s = n(135)) && s.__esModule ? s : { default: s },
+          l = n(114);
         var a = o.Ember.Object.extend({
           addItem: function (e) {
             return (
@@ -12276,8 +11926,8 @@
           (t.getNewItemSet = t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(137)) && s.__esModule ? s : { default: s },
-          l = n(115);
+          i = (s = n(136)) && s.__esModule ? s : { default: s },
+          l = n(114);
         var a = o.Ember.Object.extend({
           itemDict: {},
           championDisplays: o.Ember.computed(
@@ -12509,7 +12159,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(115);
+          o = n(114);
         const i = (0, s.dataBinding)("/telemetry"),
           l = `/v1/events/${o.TELEMETRY_EVENT_NAME}`;
         var a = s.Ember.Mixin.create({
@@ -12618,9 +12268,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = l(n(145));
-        n(146);
-        var i = l(n(140));
+          o = l(n(144));
+        n(145);
+        var i = l(n(139));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -12704,9 +12354,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1);
-        n(148);
+        n(147);
         var o = s.Ember.Component.extend({
-          layout: n(149),
+          layout: n(148),
           classNames: ["item-set-menu-component"],
           actions: {
             triggerAction: function (e) {
@@ -12735,8 +12385,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(151)) && s.__esModule ? s : { default: s };
-        n(152);
+          i = (s = n(150)) && s.__esModule ? s : { default: s };
+        n(151);
         var l = o.Ember.Component.extend({
           classNames: ["item-set-modal-root-component"],
           layout: i.default,
@@ -12798,9 +12448,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1);
-        n(154);
+        n(153);
         var o = s.Ember.Component.extend({
-          layout: n(155),
+          layout: n(154),
           classNames: ["item-sets-item-tooltip"],
         });
         t.default = o;
@@ -12823,14 +12473,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = m(n(157));
-        n(158);
-        var i = n(114),
-          l = n(115),
-          a = m(n(139)),
-          r = m(n(140)),
-          c = m(n(116)),
-          d = m(n(142));
+          o = m(n(156));
+        n(157);
+        var i = n(113),
+          l = n(114),
+          a = m(n(138)),
+          r = m(n(139)),
+          c = m(n(115)),
+          d = m(n(141));
         function m(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -12881,7 +12531,7 @@
                 if (!t || !e)
                   return s.Ember.Object.create({
                     id: "none",
-                    iconPath: n(159),
+                    iconPath: n(158),
                   });
                 const o = e[t];
                 return s.Ember.Object.create({
@@ -13320,10 +12970,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(115);
-        n(161);
+          o = n(114);
+        n(160);
         var i = s.Ember.Component.extend({
-          layout: n(162),
+          layout: n(161),
           classNames: ["preferred-slots-menu-component"],
           slotDisplays: s.Ember.computed(
             "selectedSlot",
@@ -13373,11 +13023,11 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(164)) && s.__esModule ? s : { default: s };
-        n(165);
-        var l = n(114),
-          a = n(115),
-          r = n(124);
+          i = (s = n(163)) && s.__esModule ? s : { default: s };
+        n(164);
+        var l = n(113),
+          a = n(114),
+          r = n(123);
         const { RunMixin: c } = o.EmberAddons.EmberLifeline;
         var d = o.Ember.Component.extend(c, o.EmberAddons, {
           classNameBindings: ["isLoaded"],
@@ -13564,15 +13214,15 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(115),
-          i = r(n(140)),
-          l = n(138),
-          a = r(n(167));
+          o = n(114),
+          i = r(n(139)),
+          l = n(137),
+          a = r(n(166));
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        const c = new (n(168).Validator)(),
-          d = n(179),
+        const c = new (n(167).Validator)(),
+          d = n(178),
           m = (0, s.emberDataBinding)({
             Ember: s.Ember,
             websocket: (0, s.getProvider)().getSocket(),
@@ -14268,22 +13918,22 @@
       },
       (e, t, n) => {
         "use strict";
-        var s = (e.exports.Validator = n(169));
-        (e.exports.ValidatorResult = n(177).ValidatorResult),
-          (e.exports.ValidationError = n(177).ValidationError),
-          (e.exports.SchemaError = n(177).SchemaError),
-          (e.exports.SchemaScanResult = n(178).SchemaScanResult),
-          (e.exports.scan = n(178).scan),
+        var s = (e.exports.Validator = n(168));
+        (e.exports.ValidatorResult = n(176).ValidatorResult),
+          (e.exports.ValidationError = n(176).ValidationError),
+          (e.exports.SchemaError = n(176).SchemaError),
+          (e.exports.SchemaScanResult = n(177).SchemaScanResult),
+          (e.exports.scan = n(177).scan),
           (e.exports.validate = function (e, t, n) {
             return new s().validate(e, t, n);
           });
       },
       (e, t, n) => {
         "use strict";
-        var s = n(170),
-          o = n(176),
-          i = n(177),
-          l = n(178).scan,
+        var s = n(169),
+          o = n(175),
+          i = n(176),
+          l = n(177).scan,
           a = i.ValidatorResult,
           r = i.SchemaError,
           c = i.SchemaContext,
@@ -14459,12 +14109,12 @@
       },
       (e, t, n) => {
         "use strict";
-        const s = n(171);
+        const s = n(170);
         (s.URL = URL), (e.exports = s);
       },
       (e, t, n) => {
         "use strict";
-        var s = n(172);
+        var s = n(171);
         function o() {
           (this.protocol = null),
             (this.slashes = null),
@@ -14511,7 +14161,7 @@
             "gopher:": !0,
             "file:": !0,
           },
-          _ = n(173);
+          _ = n(172);
         function y(e, t, n) {
           if (e && "object" == typeof e && e instanceof o) return e;
           var s = new o();
@@ -14571,22 +14221,22 @@
               (y = y.slice(I)),
               this.parseHost(),
               (this.hostname = this.hostname || "");
-            var C =
+            var T =
               "[" === this.hostname[0] &&
               "]" === this.hostname[this.hostname.length - 1];
-            if (!C)
+            if (!T)
               for (
-                var T = this.hostname.split(/\./), M = ((w = 0), T.length);
+                var C = this.hostname.split(/\./), M = ((w = 0), C.length);
                 w < M;
                 w++
               ) {
-                var O = T[w];
+                var O = C[w];
                 if (O && !O.match(p)) {
                   for (var A = "", D = 0, R = O.length; D < R; D++)
                     O.charCodeAt(D) > 127 ? (A += "x") : (A += O[D]);
                   if (!A.match(p)) {
-                    var L = T.slice(0, w),
-                      N = T.slice(w + 1),
+                    var L = C.slice(0, w),
+                      N = C.slice(w + 1),
                       B = O.match(u);
                     B && (L.push(B[1]), N.unshift(B[2])),
                       N.length && (y = "/" + N.join(".") + y),
@@ -14598,12 +14248,12 @@
             this.hostname.length > 255
               ? (this.hostname = "")
               : (this.hostname = this.hostname.toLowerCase()),
-              C || (this.hostname = s.toASCII(this.hostname));
+              T || (this.hostname = s.toASCII(this.hostname));
             var j = this.port ? ":" + this.port : "",
               F = this.hostname || "";
             (this.host = F + j),
               (this.href += this.host),
-              C &&
+              T &&
                 ((this.hostname = this.hostname.substr(
                   1,
                   this.hostname.length - 2,
@@ -14788,11 +14438,11 @@
               if (E)
                 (n.host = v.shift()),
                   (n.hostname = n.host),
-                  (C =
+                  (T =
                     !!(n.host && n.host.indexOf("@") > 0) &&
                     n.host.split("@")) &&
-                    ((n.auth = C.shift()),
-                    (n.hostname = C.shift()),
+                    ((n.auth = T.shift()),
+                    (n.hostname = T.shift()),
                     (n.host = n.hostname));
               return (
                 (n.search = e.search),
@@ -14834,18 +14484,18 @@
               (v[0] && "/" === v[0].charAt(0)) ||
               v.unshift(""),
               I && "/" !== v.join("/").substr(-1) && v.push("");
-            var C,
-              T = "" === v[0] || (v[0] && "/" === v[0].charAt(0));
+            var T,
+              C = "" === v[0] || (v[0] && "/" === v[0].charAt(0));
             E &&
-              ((n.hostname = T ? "" : v.length ? v.shift() : ""),
+              ((n.hostname = C ? "" : v.length ? v.shift() : ""),
               (n.host = n.hostname),
-              (C =
+              (T =
                 !!(n.host && n.host.indexOf("@") > 0) && n.host.split("@")) &&
-                ((n.auth = C.shift()),
-                (n.hostname = C.shift()),
+                ((n.auth = T.shift()),
+                (n.hostname = T.shift()),
                 (n.host = n.hostname)));
             return (
-              (S = S || (n.host && v.length)) && !T && v.unshift(""),
+              (S = S || (n.host && v.length)) && !C && v.unshift(""),
               v.length > 0
                 ? (n.pathname = v.join("/"))
                 : ((n.pathname = null), (n.path = null)),
@@ -14944,10 +14594,10 @@
                 );
               }).join("");
             }
-            function C(e, t) {
+            function T(e, t) {
               return e + 22 + 75 * (e < 26) - ((0 != t) << 5);
             }
-            function T(e, t, n) {
+            function C(e, t, n) {
               var s = 0;
               for (
                 e = n ? k(e / p) : e >> 1, e += k(e / t);
@@ -14996,7 +14646,7 @@
                   m += r
                 )
                   l > k(a / (_ = r - f)) && E("overflow"), (l *= _);
-                (I = T(v - i, (t = b.length + 1), 0 == i)),
+                (I = C(v - i, (t = b.length + 1), 0 == i)),
                   k(v / t) > a - x && E("overflow"),
                   (x += k(v / t)),
                   (v %= t),
@@ -15046,9 +14696,9 @@
                     )
                       (I = p - _),
                         (x = r - _),
-                        P.push(v(C(_ + (I % x), 0))),
+                        P.push(v(T(_ + (I % x), 0))),
                         (p = k(I / x));
-                    P.push(v(C(p, 0))), (i = T(n, S, s == o)), (n = 0), ++s;
+                    P.push(v(T(p, 0))), (i = C(n, S, s == o)), (n = 0), ++s;
                   }
                 ++n, ++t;
               }
@@ -15078,7 +14728,7 @@
       },
       (e, t, n) => {
         "use strict";
-        (t.decode = t.parse = n(174)), (t.encode = t.stringify = n(175));
+        (t.decode = t.parse = n(173)), (t.encode = t.stringify = n(174));
       },
       (e) => {
         "use strict";
@@ -15156,7 +14806,7 @@
       },
       (e, t, n) => {
         "use strict";
-        var s = n(177),
+        var s = n(176),
           o = s.ValidatorResult,
           i = s.SchemaError,
           l = {
@@ -15736,7 +15386,7 @@
       },
       (e, t, n) => {
         "use strict";
-        var s = n(170),
+        var s = n(169),
           o = (t.ValidationError = function (e, t, n, s, o, i) {
             s && (this.property = s),
               e && (this.message = e),
@@ -15967,8 +15617,8 @@
           });
       },
       (e, t, n) => {
-        var s = n(170),
-          o = n(177);
+        var s = n(169),
+          o = n(176);
         function i(e, t) {
           (this.id = e), (this.ref = t);
         }
@@ -16032,8 +15682,8 @@
       (e, t, n) => {
         var s,
           o,
-          i = n(180),
-          l = n(181),
+          i = n(179),
+          l = n(180),
           a = 0,
           r = 0;
         e.exports = function (e, t, n) {
@@ -16128,13 +15778,13 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(183);
+          o = n(182);
+        n(183);
         n(184);
-        n(185);
         const i = { EMOTE_WHEEL: "emotewheel", REACTIONS: "reactions" };
         e.exports = s.Ember.Component.extend({
           classNames: ["emote-root-component"],
-          layout: n(186),
+          layout: n(185),
           emotesService: s.Ember.inject.service("emotes"),
           loadoutsService: s.Ember.inject.service("loadouts"),
           errorsHandler: s.Ember.inject.service("errors-handler"),
@@ -16286,14 +15936,14 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(184);
-        n(188);
+          o = n(183);
+        n(187);
         var i,
-          l = (i = n(189)) && i.__esModule ? i : { default: i },
-          a = n(183);
+          l = (i = n(188)) && i.__esModule ? i : { default: i },
+          a = n(182);
         const r = s.UIKit.getTooltipManager();
         e.exports = s.Ember.Component.extend({
-          layout: n(190),
+          layout: n(189),
           classNames: ["emote-inventory"],
           classNameBindings: ["isEmotesInventoryLoaded:emote-inventory-loaded"],
           loadoutsService: s.Ember.inject.service("loadouts"),
@@ -16620,10 +16270,10 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(192);
-        var o = n(183);
+        n(191);
+        var o = n(182);
         e.exports = s.Ember.Component.extend({
-          layout: n(193),
+          layout: n(192),
           emotesService: s.Ember.inject.service("emotes"),
           loadoutsService: s.Ember.inject.service("loadouts"),
           emotesLoadout: s.Ember.computed.alias(
@@ -16747,11 +16397,11 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(184),
-          i = n(183);
-        n(195),
+          o = n(183),
+          i = n(182);
+        n(194),
           (e.exports = s.Ember.Component.extend({
-            layout: n(196),
+            layout: n(195),
             classNames: ["emote-dropzone"],
             classNameBindings: [
               "emoteTrayPosition",
@@ -16854,11 +16504,11 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(183),
-          i = n(184);
-        n(198),
+          o = n(182),
+          i = n(183);
+        n(197),
           (e.exports = s.Ember.Component.extend({
-            layout: n(199),
+            layout: n(198),
             loadoutsService: s.Ember.inject.service("loadouts"),
             emotesService: s.Ember.inject.service("emotes"),
             emotesLoadout: s.Ember.computed.alias(
@@ -16897,11 +16547,11 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(183);
-        n(201),
+          o = n(182);
+        n(200),
           (e.exports = s.Ember.Component.extend({
             classNames: ["emote-reaction-wrapper"],
-            layout: n(202),
+            layout: n(201),
             emotesService: s.Ember.inject.service("emotes"),
             loadoutsService: s.Ember.inject.service("loadouts"),
             emotesLoadout: s.Ember.computed.alias(
@@ -17095,7 +16745,7 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(183);
+          o = n(182);
         const i = (0, s.emberDataBinding)({
           Ember: s.Ember,
           websocket: (0, s.getProvider)().getSocket(),
@@ -17274,7 +16924,7 @@
         var s = n(1);
         class o extends s.webComponents.ShadowElement {
           templateMarkup() {
-            return n(207);
+            return n(206);
           }
           constructor() {
             super(),
@@ -17693,7 +17343,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(122)) && s.__esModule ? s : { default: s };
+          i = (s = n(121)) && s.__esModule ? s : { default: s };
         const { RunMixin: l } = o.EmberAddons.EmberLifeline,
           a = o.Ember.Component.extend(l, {
             classNames: ["inventory-cards"],
@@ -17799,8 +17449,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(211);
-        n(213);
+          o = n(210);
+        n(212);
         const { RunMixin: i } = s.EmberAddons.EmberLifeline,
           l = s.UIKit.getContextualNotificationManager(),
           a = s.UIKit.getTemplateHelper();
@@ -18089,7 +17739,7 @@
             }
             return t;
           });
-        var s = n(212);
+        var s = n(211);
         const o = {
           PerkSelectionValid: { code: 0, trakey: "perks_perk_selection_valid" },
           PerkDoesNotExist: { code: 1, trakey: "perks_perk_does_not_exist" },
@@ -18187,7 +17837,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(211);
+          o = n(210);
         const i = s.Ember.Component.extend({
           classNames: ["perks-style-filter"],
           store: s.Ember.inject.service(),
@@ -18248,7 +17898,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(217)) && s.__esModule ? s : { default: s };
+          i = (s = n(216)) && s.__esModule ? s : { default: s };
         const l = o.AudioPlugin.getChannel("sfx-ui"),
           a = o.AudioPlugin.getChannel("sfx-ambience-perks");
         var r = o.Ember.Service.extend({
@@ -18742,7 +18392,7 @@
             (s.default = e), n && n.set(e, s);
             return s;
           })(n(1)),
-          i = (s = n(219)) && s.__esModule ? s : { default: s };
+          i = (s = n(218)) && s.__esModule ? s : { default: s };
         function l(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -18899,10 +18549,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = r(n(222)),
-          i = r(n(225)),
-          l = n(229),
-          a = n(230);
+          o = r(n(221)),
+          i = r(n(224)),
+          l = n(228),
+          a = n(229);
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -18984,9 +18634,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(212),
-          i = a(n(223)),
-          l = a(n(225));
+          o = n(211),
+          i = a(n(222)),
+          l = a(n(224));
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -19382,10 +19032,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(211),
-          i = n(212),
-          l = r(n(224)),
-          a = r(n(225));
+          o = n(210),
+          i = n(211),
+          l = r(n(223)),
+          a = r(n(224));
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -20114,7 +19764,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(212);
+          o = n(211);
         var i = s.Ember.Object.extend({
           type: null,
           perks: null,
@@ -20150,9 +19800,9 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var s = c(n(226)),
-          o = c(n(227)),
-          i = c(n(224)),
+        var s = c(n(225)),
+          o = c(n(226)),
+          i = c(n(223)),
           l = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
@@ -20174,7 +19824,7 @@
             (s.default = e), n && n.set(e, s);
             return s;
           })(n(1)),
-          a = c(n(228));
+          a = c(n(227));
         function r(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -20332,7 +19982,7 @@
         var s,
           o = n(1);
         var i = (
-          (s = n(226)) && s.__esModule ? s : { default: s }
+          (s = n(225)) && s.__esModule ? s : { default: s }
         ).default.extend({
           slots: o.Ember.A(),
           slotObjects: o.Ember.A(),
@@ -20417,8 +20067,8 @@
           });
         var s,
           o = n(1),
-          i = n(230),
-          l = (s = n(232)) && s.__esModule ? s : { default: s };
+          i = n(229),
+          l = (s = n(231)) && s.__esModule ? s : { default: s };
       },
       (e, t, n) => {
         "use strict";
@@ -20431,18 +20081,18 @@
           }),
           (t.interpolateResourceName = s),
           (t.requireEntity = void 0);
-        const o = n(231);
+        const o = n(230);
         t.requireEntity = o;
       },
       (e, t, n) => {
         var s = {
-          "./page.js": 223,
-          "./perk.js": 226,
-          "./perks-book.js": 222,
-          "./perks-static-data.js": 225,
-          "./slot.js": 224,
-          "./style.js": 227,
-          "./utils.js": 211,
+          "./page.js": 222,
+          "./perk.js": 225,
+          "./perks-book.js": 221,
+          "./perks-static-data.js": 224,
+          "./slot.js": 223,
+          "./style.js": 226,
+          "./utils.js": 210,
         };
         function o(e) {
           var t = i(e);
@@ -20460,7 +20110,7 @@
         }),
           (o.resolve = i),
           (e.exports = o),
-          (o.id = 231);
+          (o.id = 230);
       },
       (e, t, n) => {
         "use strict";
@@ -20500,7 +20150,7 @@
             (s.default = e), n && n.set(e, s);
             return s;
           })(n(1)),
-          i = (s = n(219)) && s.__esModule ? s : { default: s };
+          i = (s = n(218)) && s.__esModule ? s : { default: s };
         function l(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -20671,9 +20321,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "pjbPb0/K",
+          id: "Se6pzZF7",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\champions.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champions-route"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["control-panel ",["helper",["if"],[["get",["shouldShowChampionMasterySetsHeader"]],"lcm-sets-enabled"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","collection-details"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","top-frame champions-frame"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","collection-totals"],["flush-element"],["text","\\n        "],["append",["helper",["number-fanfare"],null,[["total","class"],[["get",["totalMasteryPoints"]],"total-owned total-count"]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","total-label"],["flush-element"],["append",["unknown",["tra","control_panel_total_champion_mastery"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,18],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","bottom-frame champions-frame"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","collection-search-panel"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n        "],["append",["helper",["input"],null,[["type","maxlength","class","value","placeholder"],["search","50","collection-search-text",["get",["searchTerm"]],["get",["tra","control_panel_search_placeholder"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"],["block",["unless"],[["get",["isGroupByOwnership"]]],null,17],["text","      "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","collection-grouping-options"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByAll"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","allChampions"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_all_champions"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByPosition"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","position"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_lane"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByRole"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","role"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_role"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByOwnership"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","ownership"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_ownership"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","collection-sort-options"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByAlphabetical"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","firstLetterAscending"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_alphabetical_ascending"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["dynamic-attr","selected",["unknown",["isSortByRecentlyPlayed"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","recentlyPlayed"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_recently_played"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByChampionMastery"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","championMastery"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_champion_mastery"]],false],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isLegendaryChampionMasteryEnabled"]]],null,16],["block",["if"],[["get",["isEternalsEnabled"]]],null,15],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowChampionMasterySetsHeader"]]],null,14],["text","\\n"],["block",["if"],[["get",["isGroupByOwnership"]]],null,13],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-grid ",["helper",["if"],[["get",["shouldShowChampionMasterySetsHeader"]],"lcm-sets-enabled"],null]]]],["flush-element"],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName"],[["get",["model","renderEventName"]]]],11],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["isLegendaryChampionMasteryEnabled"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["mastery-ftux"],null,[["championIdToChampionDataMap","topChampionMasteries","onCloseAction"],[["get",["model","championIdToChampionDataMap"]],["get",["model","topChampionMasteries"]],["helper",["action"],[["get",[null]],"closedMasteryFtux"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showMasteryFtux"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","no-matching-champions"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","message"],["flush-element"],["append",["unknown",["noMatchingChampionsString"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["append",["helper",["champion-item"],null,[["champion","refreshCurrentRoute"],[["get",["championOrGroup"]],"refreshCurrentRoute"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["append",["helper",["champion-item-lcm"],null,[["champion","refreshCurrentRoute","sortBy"],[["get",["championOrGroup"]],"refreshCurrentRoute",["get",["sortBy"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLegendaryChampionMasteryEnabled"]]],null,4,3]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","group-breakdown"],["flush-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","group-owned-count"],["flush-element"],["append",["unknown",["championOrGroup","numItemsOwned"]],false],["text"," / "],["append",["unknown",["championOrGroup","totalItems"]],false],["close-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","group-total-count"],["flush-element"],["text","("],["append",["unknown",["championOrGroup","totalItems"]],false],["text",")"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","group-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["index"]]],null,7],["text","              "],["open-element","div",[]],["static-attr","class","group-wrapper"],["flush-element"],["text","\\n                "],["open-element","h4",[]],["static-attr","class","group-name"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["championOrGroup","id"]]],null],false],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowOwnershipCount"]]],null,6],["text","              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOrGroup","isGroup"]]],null,8,5]],"locals":["championOrGroup","index"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","item-grid"],["flush-element"],["text","\\n"],["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable",["get",["groupedChampions"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],9],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasMatchingChamps"]]],null,10,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","ownership-count"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","owned-count"],["flush-element"],["append",["unknown",["totalOwnedChampions"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","total-count"],["flush-element"],["text","/ "],["append",["unknown",["totalChampions"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowOwnershipCount"]]],null,12]],"locals":[]},{"statements":[["text","    "],["append",["helper",["collection-cm-header"],null,[["seasonData","championMastery","championSetMilestoneToReward","champIdToMasteriesMap","championSetData","championIdToChampionDataMap","masteryRewardData","customRewards","championCountByMilestone","refreshCurrentRoute"],[["get",["model","seasonData"]],["get",["model","championMasteries"]],["get",["model","championSetMilestoneToReward"]],["get",["model","champIdToMasteriesMap"]],["get",["model","championSetData"]],["get",["model","championIdToChampionDataMap"]],["get",["model","masteryRewardData"]],["get",["model","customRewards"]],["get",["model","championCountByMilestone"]],"refreshCurrentRoute"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByMilestonesPassed"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","milestonesPassed"],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["tra","control_panel_sorting_eternals_milestones_passed"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortBySeasonalChampionMastery"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","seasonalChampionMastery"],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["tra","control_panel_sorting_seasonal_champion_mastery"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","class","collection-ownership-filter"],["flush-element"],["text","\\n          "],["append",["helper",["input"],null,[["slot","type","name","checked"],["input","checkbox","isUnowned",["get",["isUnownedShown"]]]]],false],["text","\\n          "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","class","collection-checkbox-label"],["static-attr","for","isUnowned"],["flush-element"],["append",["unknown",["tra","control_panel_show_unowned"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["helper",["number-fanfare"],null,[["total","class"],[["get",["totalEternalsMilestonesPassed"]],"total-owned eternals-count"]]],false],["text","\\n          "],["open-element","div",[]],["static-attr","class","total-label"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","control_panel_total_eternals_milestones_passed"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\champions.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champions-route"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["control-panel ",["helper",["if"],[["get",["isLegendaryChampionMasterySetsEnabled"]],"lcm-sets-enabled"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","collection-details"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","top-frame champions-frame"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","collection-totals"],["flush-element"],["text","\\n        "],["append",["helper",["number-fanfare"],null,[["total","class"],[["get",["totalMasteryPoints"]],"total-owned total-count"]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","total-label"],["flush-element"],["append",["unknown",["tra","control_panel_total_champion_mastery"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,14],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","bottom-frame champions-frame"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","collection-search-panel"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n        "],["append",["helper",["input"],null,[["type","maxlength","class","value","placeholder"],["search","50","collection-search-text",["get",["searchTerm"]],["get",["tra","control_panel_search_placeholder"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"],["block",["unless"],[["get",["isGroupByOwnership"]]],null,13],["text","      "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","collection-grouping-options"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByAll"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","allChampions"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_all_champions"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByPosition"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","position"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_lane"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByRole"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","role"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_role"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isGroupByOwnership"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setGroupBy","ownership"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_grouping_ownership"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","collection-sort-options"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByAlphabetical"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","firstLetterAscending"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_alphabetical_ascending"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["dynamic-attr","selected",["unknown",["isSortByRecentlyPlayed"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","recentlyPlayed"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_recently_played"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByChampionMastery"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","championMastery"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_champion_mastery"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortBySeasonalChampionMastery"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","seasonalChampionMastery"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","control_panel_sorting_seasonal_champion_mastery"]],false],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,12],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLegendaryChampionMasterySetsEnabled"]]],null,11],["text","\\n"],["block",["if"],[["get",["isGroupByOwnership"]]],null,10],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-grid ",["helper",["if"],[["get",["isLegendaryChampionMasterySetsEnabled"]],"lcm-sets-enabled"],null]]]],["flush-element"],["text","\\n"],["block",["render-telemetry-sender"],null,[["renderEventName"],[["get",["model","renderEventName"]]]],8],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showMasteryFtux"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["mastery-ftux"],null,[["championIdToChampionDataMap","topChampionMasteries","onCloseAction"],[["get",["model","championIdToChampionDataMap"]],["get",["model","topChampionMasteries"]],["helper",["action"],[["get",[null]],"closedMasteryFtux"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","no-matching-champions"],["flush-element"],["text","\\n          "],["open-element","span",[]],["static-attr","class","message"],["flush-element"],["append",["unknown",["noMatchingChampionsString"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["helper",["champion-item-lcm"],null,[["champion","refreshCurrentRoute","sortBy"],[["get",["championOrGroup"]],"refreshCurrentRoute",["get",["sortBy"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","group-breakdown"],["flush-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","group-owned-count"],["flush-element"],["append",["unknown",["championOrGroup","numItemsOwned"]],false],["text"," / "],["append",["unknown",["championOrGroup","totalItems"]],false],["close-element"],["text","\\n                    "],["open-element","span",[]],["static-attr","class","group-total-count"],["flush-element"],["text","("],["append",["unknown",["championOrGroup","totalItems"]],false],["text",")"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","group-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["index"]]],null,4],["text","              "],["open-element","div",[]],["static-attr","class","group-wrapper"],["flush-element"],["text","\\n                "],["open-element","h4",[]],["static-attr","class","group-name"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["championOrGroup","id"]]],null],false],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowOwnershipCount"]]],null,3],["text","              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["championOrGroup","isGroup"]]],null,5,2]],"locals":["championOrGroup","index"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","item-grid"],["flush-element"],["text","\\n"],["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable",["get",["groupedChampions"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],6],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasMatchingChamps"]]],null,7,1]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","ownership-count"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","owned-count"],["flush-element"],["append",["unknown",["totalOwnedChampions"]],false],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","total-count"],["flush-element"],["text","/ "],["append",["unknown",["totalChampions"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowOwnershipCount"]]],null,9]],"locals":[]},{"statements":[["text","    "],["append",["helper",["collection-cm-header"],null,[["seasonData","championMastery","championSetMilestoneToReward","champIdToMasteriesMap","championSetData","championIdToChampionDataMap","masteryRewardData","customRewards","championCountByMilestone","refreshCurrentRoute"],[["get",["model","seasonData"]],["get",["model","championMasteries"]],["get",["model","championSetMilestoneToReward"]],["get",["model","champIdToMasteriesMap"]],["get",["model","championSetData"]],["get",["model","championIdToChampionDataMap"]],["get",["model","masteryRewardData"]],["get",["model","customRewards"]],["get",["model","championCountByMilestone"]],"refreshCurrentRoute"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","selected",["unknown",["isSortByMilestonesPassed"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortOrder","milestonesPassed"],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["tra","control_panel_sorting_eternals_milestones_passed"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","class","collection-ownership-filter"],["flush-element"],["text","\\n          "],["append",["helper",["input"],null,[["slot","type","name","checked"],["input","checkbox","isUnowned",["get",["isUnownedShown"]]]]],false],["text","\\n          "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","class","collection-checkbox-label"],["static-attr","for","isUnowned"],["flush-element"],["append",["unknown",["tra","control_panel_show_unowned"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["helper",["number-fanfare"],null,[["total","class"],[["get",["totalEternalsMilestonesPassed"]],"total-owned eternals-count"]]],false],["text","\\n          "],["open-element","div",[]],["static-attr","class","total-label"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","control_panel_total_eternals_milestones_passed"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20761,18 +20411,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "1DLjJHDx",
+          id: "NLDGFt5x",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\components\\\\champion-item.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\styles\\\\components\\\\champion-item.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\components\\\\champion-item.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-thumbnail"],["modifier",["action"],[["get",[null]],"openDetails"]],["flush-element"],["text","\\n"],["block",["collections-tooltip"],null,[["tooltipId"],[["get",["tooltipId"]]]],16],["text","  "],["open-element","div",[]],["static-attr","class","champion-image-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","champion-image"],["dynamic-attr","src",["unknown",["champion","baseLoadScreenPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["each"],[["get",["infoBadgePaths"]]],null,4],["block",["if"],[["get",["hasMasteryBorder"]]],null,3,0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-name-container"],["flush-element"],["text","\\n  "],["open-element","p",[]],["static-attr","class","champion-name"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","name"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","lock-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","lock-icon"],["modifier",["action"],[["get",[null]],"openPAW",["get",["champion","id"]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n          "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["dynamic-attr","src",["unknown",["masteryBadgeImgPath"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-mastery-description-container"],["flush-element"],["text","\\n          "],["open-element","p",[]],["static-attr","class","champion-mastery-description"],["flush-element"],["append",["unknown",["masteryLevelString"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n          "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["dynamic-attr","src",["unknown",["masteryBadgeImgPath"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eternals-description-container ",["helper",["if"],[["get",["hasEternals"]],"owned","unowned"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-icon"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-description"],["flush-element"],["append",["unknown",["champion","milestonesPassed"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEternalsEnabled"]]],null,2,1]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["info-badge-wrapper badge-",["get",["index"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","info-badge"],["dynamic-attr","src",["get",["path"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["path","index"]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon incomplete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-count"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["text"," / "],["append",["unknown",["milestonesForSetCompletion"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon complete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","set-complete"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["set","complete"]]],null,6,5]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-lock"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","eternals-set"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-set-name"],["flush-element"],["append",["unknown",["set","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["set","noneOwned"]]],null,8,7],["text","              "],["close-element"],["text","\\n"]],"locals":["set"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eternals-container"],["flush-element"],["text","\\n            "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","collectibles_champion_tooltip_eternal_series"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["eternalsSets"]]],null,9],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge chest-granted-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon chest-granted-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["tra","collections_champion_grid_mastery_tooltip_chest_acquired"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge free-to-play-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon free-to-play-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["tra","collections_champion_grid_mastery_tooltip_rental_expl_free_to_play"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon rental-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["rentalExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon xbox-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["xboxExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon loyalty-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["loyaltyExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","champion-item-tooltip-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","top-content"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","name-progress-container"],["flush-element"],["text","\\n          "],["open-element","lol-uikit-radial-progress",[]],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["champion","masteryPercent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n              "],["open-element","h4",[]],["static-attr","class","mastery-level"],["flush-element"],["append",["unknown",["champion","masteryLevel"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","h4",[]],["static-attr","class","champion-name"],["flush-element"],["append",["unknown",["champion","name"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","info-container separator"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","mastery-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","mastery-score"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","mastery-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","mastery-score"],["flush-element"],["append",["unknown",["masteryScore"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","mastery-title"],["flush-element"],["append",["unknown",["masteryTitle"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","mastery-grade"],["flush-element"],["append",["unknown",["highestGrade"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["loyaltyExplanation"]]],null,15],["text","\\n"],["block",["if"],[["get",["xboxExplanation"]]],null,14],["text","\\n"],["block",["if"],[["get",["rentalExplanation"]]],null,13],["text","\\n"],["block",["if"],[["get",["isFreeToPlay"]]],null,12],["text","\\n"],["block",["if"],[["get",["chestGranted"]]],null,11],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,10],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
-          meta: {},
-        });
-      },
-      (e, t, n) => {
-        const s = n(1).Ember;
-        e.exports = s.HTMLBars.template({
-          id: "9l7gohYf",
-          block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\components\\\\champion-item-lcm.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\styles\\\\components\\\\champion-item-lcm.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\components\\\\champion-item-lcm.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-thumbnail"],["modifier",["action"],[["get",[null]],"openDetails"]],["flush-element"],["text","\\n"],["block",["collections-tooltip"],null,[["tooltipId","tooltipOptions"],[["get",["tooltipId"]],["get",["tooltipOptions"]]]],21],["text","  "],["open-element","div",[]],["static-attr","class","champion-image-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","champion-image"],["dynamic-attr","src",["unknown",["champion","baseLoadScreenPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["each"],[["get",["infoBadgePaths"]]],null,8],["block",["if"],[["get",["hasMasteryBorder"]]],null,7,0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-name-container"],["flush-element"],["text","\\n  "],["open-element","p",[]],["static-attr","class","champion-name"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","name"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","lock-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","lock-icon"],["modifier",["action"],[["get",[null]],"openPAW",["get",["champion","id"]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["dynamic-attr","class",["concat",["mastery-crest-banner-display ",["helper",["unless"],[["get",["hasMastery"]],"no-mastery"],null]]]],["dynamic-attr","src",["concat",[["unknown",["masteryCrestAndBannerImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasSeasonalMastery"]],"is-flag","no-seasonal-mastery"],null]]]],["dynamic-attr","src",["unknown",["masteryBannerBackgroundPath"]],null],["flush-element"],["close-element"],["text","\\n              "],["open-element","lol-uikit-radial-progress",[]],["dynamic-attr","class",["concat",["mastery-progress ",["helper",["unless"],[["get",["hasSeasonalMastery"]],"hidden"],null]]]],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["seasonalMastery","percent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n                   "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","mastery-level"],["flush-element"],["append",["unknown",["seasonalMastery","milestoneLevel"]],false],["close-element"],["text","\\n                   "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","background"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isSeasonalMasterySelected"]]],null,2,1],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-mastery-description-container"],["flush-element"],["text","\\n          "],["open-element","p",[]],["dynamic-attr","class",["concat",["champion-mastery-description ",["helper",["if"],[["get",["isSeasonalMasterySelected"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["masteryLevelString"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["dynamic-attr","class",["concat",["mastery-crest-banner-display ",["helper",["unless"],[["get",["hasMastery"]],"no-mastery"],null]]]],["dynamic-attr","src",["concat",[["unknown",["masteryCrestAndBannerImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasSeasonalMastery"]],"is-flag","no-seasonal-mastery"],null]]]],["dynamic-attr","src",["unknown",["masteryBannerBackgroundPath"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-radial-progress",[]],["dynamic-attr","class",["concat",["mastery-progress ",["helper",["unless"],[["get",["hasSeasonalMastery"]],"hidden"],null]]]],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["seasonalMastery","percent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","mastery-level"],["flush-element"],["append",["unknown",["seasonalMastery","milestoneLevel"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","background"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isSeasonalMasterySelected"]]],null,5,4],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eternals-description-container ",["helper",["if"],[["get",["hasEternals"]],"owned","unowned"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-icon"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-description"],["flush-element"],["append",["unknown",["champion","milestonesPassed"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEternalsEnabled"]]],null,6,3]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["info-badge-wrapper badge-",["get",["index"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","info-badge"],["dynamic-attr","src",["get",["path"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["path","index"]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon incomplete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-count"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["text"," / "],["append",["unknown",["milestonesForSetCompletion"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon complete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","set-complete"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["set","complete"]]],null,10,9]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-lock"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","eternals-set"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-set-name"],["flush-element"],["append",["unknown",["set","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["set","noneOwned"]]],null,12,11],["text","              "],["close-element"],["text","\\n"]],"locals":["set"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eternals-container"],["flush-element"],["text","\\n            "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","collectibles_champion_tooltip_eternal_series"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["eternalsSets"]]],null,13],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge chest-granted-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon chest-granted-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["tra","collections_champion_grid_mastery_tooltip_chest_acquired"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge free-to-play-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon free-to-play-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["tra","collections_champion_grid_mastery_tooltip_rental_expl_free_to_play"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon rental-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["rentalExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon xbox-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["xboxExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon loyalty-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["loyaltyExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","mark-score-container"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","mark-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","mark-score"],["flush-element"],["append",["unknown",["markScore"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","champion-item-tooltip-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","top-content"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","name-progress-container"],["flush-element"],["text","\\n           "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","mastery-radial-progress"],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["champion","masteryPercent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n              "],["open-element","h4",[]],["dynamic-attr","class",["concat",["mastery-level ",["helper",["if"],[["get",["isMilestoneLevelOverflowing"]],"is-overflow"],null]]]],["flush-element"],["append",["unknown",["displayedMasteryLevel"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","h4",[]],["static-attr","class","champion-name"],["flush-element"],["append",["unknown",["champion","name"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","info-container separator"],["flush-element"],["text","\\n         "],["open-element","div",[]],["static-attr","class","mastery-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","mastery-score"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","mastery-crest"],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","mastery-score"],["flush-element"],["append",["unknown",["masteryScore"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowMarkTooltipDisplay"]]],null,20],["text","\\n          "],["open-element","div",[]],["static-attr","class","season-highest-mastery-grade"],["flush-element"],["append",["unknown",["highestGrade"]],false],["close-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","seasonal-milestone-string"],["flush-element"],["append",["unknown",["seasonalMilestoneString"]],false],["close-element"],["text","\\n          "],["append",["helper",["grade-display"],null,[["milestoneProgressMap"],[["get",["champion","gradesCompletedMap"]]]]],false],["text","\\n        "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["loyaltyExplanation"]]],null,19],["text","\\n"],["block",["if"],[["get",["xboxExplanation"]]],null,18],["text","\\n"],["block",["if"],[["get",["rentalExplanation"]]],null,17],["text","\\n"],["block",["if"],[["get",["isFreeToPlay"]]],null,16],["text","\\n"],["block",["if"],[["get",["chestGranted"]]],null,15],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,14],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\components\\\\champion-item-lcm.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\styles\\\\components\\\\champion-item-lcm.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\components\\\\champion-item-lcm.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-thumbnail"],["modifier",["action"],[["get",[null]],"openDetails"]],["flush-element"],["text","\\n"],["block",["collections-tooltip"],null,[["tooltipId","tooltipOptions"],[["get",["tooltipId"]],["get",["tooltipOptions"]]]],20],["text","  "],["open-element","div",[]],["static-attr","class","champion-image-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","champion-image"],["dynamic-attr","src",["unknown",["champion","baseLoadScreenPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["each"],[["get",["infoBadgePaths"]]],null,8],["block",["if"],[["get",["hasMasteryBorder"]]],null,7,0],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-name-container"],["flush-element"],["text","\\n  "],["open-element","p",[]],["static-attr","class","champion-name"],["flush-element"],["text","\\n    "],["append",["unknown",["champion","name"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","lock-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","lock-icon"],["modifier",["action"],[["get",[null]],"openPAW",["get",["champion","id"]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["dynamic-attr","class",["concat",["mastery-crest-banner-display ",["helper",["unless"],[["get",["hasMastery"]],"no-mastery"],null]]]],["dynamic-attr","src",["concat",[["unknown",["masteryCrestAndBannerImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasSeasonalMastery"]],"is-flag","no-seasonal-mastery"],null]]]],["dynamic-attr","src",["unknown",["masteryBannerBackgroundPath"]],null],["flush-element"],["close-element"],["text","\\n              "],["open-element","lol-uikit-radial-progress",[]],["dynamic-attr","class",["concat",["mastery-progress ",["helper",["unless"],[["get",["hasSeasonalMastery"]],"hidden"],null]]]],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["seasonalMastery","percent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n                   "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","mastery-level"],["flush-element"],["append",["unknown",["seasonalMastery","milestoneLevel"]],false],["close-element"],["text","\\n                   "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","background"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isSeasonalMasterySelected"]]],null,2,1],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-mastery-description-container"],["flush-element"],["text","\\n          "],["open-element","p",[]],["dynamic-attr","class",["concat",["champion-mastery-description ",["helper",["if"],[["get",["isSeasonalMasterySelected"]],"hidden"],null]]]],["flush-element"],["append",["unknown",["masteryLevelString"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["dynamic-attr","class",["concat",["mastery-crest-banner-display ",["helper",["unless"],[["get",["hasMastery"]],"no-mastery"],null]]]],["dynamic-attr","src",["concat",[["unknown",["masteryCrestAndBannerImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["dynamic-attr","class",["concat",["champion-mastery-badge ",["helper",["if"],[["get",["hasSeasonalMastery"]],"is-flag","no-seasonal-mastery"],null]]]],["dynamic-attr","src",["unknown",["masteryBannerBackgroundPath"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-radial-progress",[]],["dynamic-attr","class",["concat",["mastery-progress ",["helper",["unless"],[["get",["hasSeasonalMastery"]],"hidden"],null]]]],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["seasonalMastery","percent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","mastery-level"],["flush-element"],["append",["unknown",["seasonalMastery","milestoneLevel"]],false],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","background"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","champion-mastery-info"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-mastery-badge-container ",["helper",["if"],[["get",["hasMastery"]],"is-flag"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isSeasonalMasterySelected"]]],null,5,4],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["eternals-description-container ",["helper",["if"],[["get",["hasEternals"]],"owned","unowned"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-icon"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","eternals-description"],["flush-element"],["append",["unknown",["champion","milestonesPassed"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isEternalsEnabled"]]],null,6,3]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["info-badge-wrapper badge-",["get",["index"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","info-badge"],["dynamic-attr","src",["get",["path"]],null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["path","index"]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon incomplete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-count"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["text"," / "],["append",["unknown",["milestonesForSetCompletion"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-complete-wrapper"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","eternals-set-icon complete"],["flush-element"],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","set-complete"],["flush-element"],["append",["unknown",["set","milestonesPassed"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["set","complete"]]],null,10,9]],"locals":[]},{"statements":[["text","                  "],["open-element","div",[]],["static-attr","class","eternals-set-lock"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","eternals-set"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","eternals-set-name"],["flush-element"],["append",["unknown",["set","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["set","noneOwned"]]],null,12,11],["text","              "],["close-element"],["text","\\n"]],"locals":["set"]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","eternals-container"],["flush-element"],["text","\\n            "],["open-element","h6",[]],["flush-element"],["append",["unknown",["tra","collectibles_champion_tooltip_eternal_series"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["eternalsSets"]]],null,13],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge free-to-play-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon free-to-play-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["tra","collections_champion_grid_mastery_tooltip_rental_expl_free_to_play"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon rental-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["rentalExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon xbox-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["xboxExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","info-badge rental-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-icon loyalty-icon"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","info-badge-text"],["flush-element"],["append",["unknown",["loyaltyExplanation"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","mark-score-container"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","mark-icon"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","mark-score"],["flush-element"],["append",["unknown",["markScore"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","champion-item-tooltip-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","top-content"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","name-progress-container"],["flush-element"],["text","\\n           "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","mastery-radial-progress"],["static-attr","type","blue"],["dynamic-attr","percent",["concat",[["unknown",["champion","masteryPercent"]]]]],["static-attr","start-angle","270deg"],["static-attr","end-angle","-90deg"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n              "],["open-element","h4",[]],["dynamic-attr","class",["concat",["mastery-level ",["helper",["if"],[["get",["isMilestoneLevelOverflowing"]],"is-overflow"],null]]]],["flush-element"],["append",["unknown",["displayedMasteryLevel"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","h4",[]],["static-attr","class","champion-name"],["flush-element"],["append",["unknown",["champion","name"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","info-container separator"],["flush-element"],["text","\\n         "],["open-element","div",[]],["static-attr","class","mastery-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","mastery-score"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","mastery-crest"],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","mastery-score"],["flush-element"],["append",["unknown",["masteryScore"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowMarkTooltipDisplay"]]],null,19],["text","\\n          "],["open-element","div",[]],["static-attr","class","season-highest-mastery-grade"],["flush-element"],["append",["unknown",["highestGrade"]],false],["close-element"],["text","\\n          "],["open-element","h5",[]],["static-attr","class","seasonal-milestone-string"],["flush-element"],["append",["unknown",["seasonalMilestoneString"]],false],["close-element"],["text","\\n          "],["append",["helper",["grade-display"],null,[["milestoneProgressMap"],[["get",["champion","gradesCompletedMap"]]]]],false],["text","\\n        "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["loyaltyExplanation"]]],null,18],["text","\\n"],["block",["if"],[["get",["xboxExplanation"]]],null,17],["text","\\n"],["block",["if"],[["get",["rentalExplanation"]]],null,16],["text","\\n"],["block",["if"],[["get",["isFreeToPlay"]]],null,15],["text","\\n"],["block",["if"],[["get",["isEternalsEnabled"]]],null,14],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20815,9 +20456,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "27GaYnTD",
+          id: "7k+vx2Md",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\components\\\\collection-cm-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\styles\\\\components\\\\collection-cm-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\components\\\\collection-cm-header.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","legendary-champion-mastery-collection-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-progression-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","reward-progression"],["static-attr","type","custom"],["dynamic-attr","percent",["concat",[["unknown",["nextMilestoneReward","nextMilestonePercentage"]]]]],["static-attr","start-angle","-127"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","reward-item-radial bottom"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","reward-item-radial middle"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","reward-info-container"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","next-reward-icon"],["dynamic-attr","src",["concat",[["unknown",["nextMilestoneReward","nextMilestoneRewardImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isSetCompleted"]]],null,7],["text","            "],["open-element","div",[]],["static-attr","class","next-reward-progress"],["flush-element"],["append",["unknown",["milestonesCompletedInSet"]],false],["text","/"],["append",["unknown",["nextMilestoneReward","nextMilestoneOrMaxMileStone"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","next-reward-requirement-text"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_milestone_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition","offsetX"],["system","right",-15]],6],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champion-sets-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","set-overlay left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","set-overlay right"],["flush-element"],["close-element"],["text","            \\n        "],["open-element","div",[]],["static-attr","class","champion-sets"],["flush-element"],["text","\\n            "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","set-tracker-scrollable"],["static-attr","scrolled-bottom","false"],["static-attr","scrolled-top","false"],["static-attr","direction","horizontal"],["static-attr","side-scroll-wheel",""],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","champion-set-row"],["flush-element"],["text","\\n"],["block",["each"],[["get",["championSetList"]]],null,4],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","left"],["static-attr","class","set-tracker-scrollable-arrow set-tracker-scrollable-arrow-left"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"startScrolling","left"],null],null],["dynamic-attr","disabled",["unknown",["isLeftArrowDisabled"]],null],["flush-element"],["text","\\n            "],["close-element"],["text","\\n\\n            "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","right"],["static-attr","class","set-tracker-scrollable-arrow set-tracker-scrollable-arrow-right"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"startScrolling","right"],null],null],["dynamic-attr","disabled",["unknown",["isRightArrowDisabled"]],null],["flush-element"],["text","\\n            "],["close-element"],["text","\\n\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","season-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","current-season-split"],["flush-element"],["append",["unknown",["seasonInfo","splitNumberTra"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","season-clock"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","season-bg"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","left"]],0],["text","        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","padding","small"],["static-attr","class","season-end-tooltip"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text title"],["flush-element"],["append",["unknown",["tra","collectibles_season_split_tooltip_title"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text date-time"],["flush-element"],["append",["unknown",["seasonInfo","seasonEndTra"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text description"],["flush-element"],["append",["unknown",["tra","collectibles_season_split_tooltip_description"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["helper",["milestone-tooltip"],null,[["masteryRewardData","milestoneProgressMap","seasonMilestone","customRewards","championCountByMilestone"],[["get",["masteryRewardData"]],["get",["champion","milestoneProgressMap"]],["get",["champion","championSeasonMilestone"]],["get",["customRewards"]],["get",["championCountByMilestone"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["champion","milestoneRomanDisplay"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["dynamic-attr","class",["concat",["milestone-number ",["helper",["unless"],[["get",["champion","championSeasonMilestone"]],"no-mastery"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["champion","championSeasonMilestone"]]],null,2],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-border ",["helper",["if"],[["get",["champion","isCompleted"]],"completed"],null]]]],["flush-element"],["text","\\n                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["roman-milestone-display ",["helper",["if"],[["get",["champion","isCompleted"]],"completed"],null]," ",["helper",["unless"],[["get",["champion","championSeasonMilestone"]],"no-mastery"],null]]]],["flush-element"],["text","\\n"],["block",["unless"],[["get",["champion","isCompleted"]]],null,3],["text","                    "],["close-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","class","champion-icon"],["dynamic-attr","src",["concat",[["unknown",["champion","championIconPath"]]]]],["modifier",["action"],[["get",[null]],"openDetails",["get",["champion","championId"]]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","bottom"]],1],["text","                    "],["close-element"],["text","\\n"]],"locals":["champion"]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","mastery-set-rewards-row"],["flush-element"],["text","\\n                        "],["open-element","img",[]],["static-attr","class","set-reward-icon"],["dynamic-attr","src",["concat",[["unknown",["reward","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","set-milestone-text"],["flush-element"],["append",["unknown",["reward","requiredMilestone"]],false],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","set-milestone-text"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_milestone_text"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","reward-info-container-tooltip"],["flush-element"],["text"," \\n                "],["open-element","div",[]],["static-attr","class","reward-info-title"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_reward_tooltip"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","mastery-set-rewards"],["flush-element"],["text","\\n"],["block",["each"],[["get",["allSetRewards"]]],null,5],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","set-completed-overlay"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","all-set-completed-checkmark"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\templates\\\\components\\\\collection-cm-header.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\styles\\\\components\\\\collection-cm-header.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-collections\\\\src\\\\app\\\\components\\\\collection-cm-header.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","legendary-champion-mastery-collection-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-progression-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","reward-progression"],["static-attr","type","custom"],["dynamic-attr","percent",["concat",[["unknown",["nextMilestoneReward","nextMilestonePercentage"]]]]],["static-attr","start-angle","-127"],["static-attr","end-angle","-405"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","reward-item-radial bottom"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","reward-item-radial middle"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","reward-info-container"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","next-reward-icon"],["dynamic-attr","src",["concat",[["unknown",["nextMilestoneReward","nextMilestoneRewardImgPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isSetCompleted"]]],null,7],["text","            "],["open-element","div",[]],["static-attr","class","next-reward-progress"],["flush-element"],["append",["unknown",["milestonesCompletedInSet"]],false],["text","/"],["append",["unknown",["nextMilestoneReward","nextMilestoneOrMaxMileStone"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","next-reward-requirement-text"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_milestone_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition","offsetX"],["system","right",-15]],6],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champion-sets-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","set-overlay left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","set-overlay right"],["flush-element"],["close-element"],["text","            \\n        "],["open-element","div",[]],["static-attr","class","champion-sets"],["flush-element"],["text","\\n            "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","set-tracker-scrollable"],["static-attr","scrolled-bottom","false"],["static-attr","scrolled-top","false"],["static-attr","direction","horizontal"],["static-attr","side-scroll-wheel",""],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","champion-set-row"],["flush-element"],["text","\\n"],["block",["each"],[["get",["championSetList"]]],null,4],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","left"],["static-attr","class","set-tracker-scrollable-arrow set-tracker-scrollable-arrow-left"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"startScrolling","left"],null],null],["dynamic-attr","disabled",["unknown",["isLeftArrowDisabled"]],null],["flush-element"],["text","\\n            "],["close-element"],["text","\\n\\n            "],["open-element","lol-uikit-arrow-button",[]],["static-attr","direction","right"],["static-attr","class","set-tracker-scrollable-arrow set-tracker-scrollable-arrow-right"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"startScrolling","right"],null],null],["dynamic-attr","disabled",["unknown",["isRightArrowDisabled"]],null],["flush-element"],["text","\\n            "],["close-element"],["text","\\n\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","season-container"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","current-season-split"],["flush-element"],["append",["unknown",["seasonInfo","splitNumberTra"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","season-clock"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","season-bg"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","left"]],0],["text","        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","padding","small"],["static-attr","class","season-end-tooltip"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text title"],["flush-element"],["append",["unknown",["tra","collectibles_season_split_tooltip_title"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text date-time"],["flush-element"],["append",["unknown",["seasonInfo","seasonEndTra"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","season-tooltip-text description"],["flush-element"],["append",["unknown",["tra","collectibles_season_split_tooltip_description"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["append",["helper",["milestone-tooltip"],null,[["masteryRewardData","milestoneProgressMap","seasonMilestone","customRewards","championCountByMilestone"],[["get",["masteryRewardData"]],["get",["champion","milestoneProgressMap"]],["get",["champion","championSeasonMilestone"]],["get",["customRewards"]],["get",["championCountByMilestone"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                                "],["append",["unknown",["champion","milestoneRomanDisplay"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["dynamic-attr","class",["concat",["milestone-number ",["helper",["unless"],[["get",["champion","championSeasonMilestone"]],"no-mastery"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["champion","championSeasonMilestone"]]],null,2],["text","                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-border ",["helper",["if"],[["get",["champion","isCompleted"]],"completed"],null]]]],["flush-element"],["text","\\n                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["roman-milestone-display ",["helper",["if"],[["get",["champion","isCompleted"]],"completed"],null]," ",["helper",["unless"],[["get",["champion","championSeasonMilestone"]],"no-mastery"],null]]]],["flush-element"],["text","\\n"],["block",["unless"],[["get",["champion","isCompleted"]]],null,3],["text","                    "],["close-element"],["text","\\n                    "],["open-element","img",[]],["static-attr","class","champion-icon"],["dynamic-attr","src",["concat",[["unknown",["champion","championIconPath"]]]]],["modifier",["action"],[["get",[null]],"openDetails",["get",["champion","championId"]]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","bottom"]],1],["text","                    "],["close-element"],["text","\\n"]],"locals":["champion"]},{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","mastery-set-rewards-row"],["flush-element"],["text","\\n                        "],["open-element","img",[]],["static-attr","class","set-reward-icon"],["dynamic-attr","src",["concat",[["unknown",["reward","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","set-milestone-text value"],["flush-element"],["append",["unknown",["reward","value"]],false],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","set-milestone-text"],["flush-element"],["append",["unknown",["reward","requiredMilestone"]],false],["close-element"],["text","\\n                        "],["open-element","div",[]],["static-attr","class","set-milestone-text"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_milestone_text"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["static-attr","class","reward-info-container-tooltip"],["flush-element"],["text"," \\n                "],["open-element","div",[]],["static-attr","class","reward-info-title"],["flush-element"],["append",["unknown",["tra","collectibles_champion_mastery_reward_tooltip"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","mastery-set-rewards"],["flush-element"],["text","\\n"],["block",["each"],[["get",["allSetRewards"]]],null,5],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","set-completed-overlay"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","all-set-completed-checkmark"],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20928,7 +20569,7 @@
             return s.default.add({ ItemSetsApi: e }), e;
           });
         var s = i(n(1)),
-          o = i(n(266));
+          o = i(n(264));
         function i(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -20938,7 +20579,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s,
-          o = (s = n(267)) && s.__esModule ? s : { default: s };
+          o = (s = n(265)) && s.__esModule ? s : { default: s };
         t.default = class {
           constructor() {
             this._privateApi = (0, o.default)();
@@ -20969,8 +20610,8 @@
           });
         var s,
           o = n(1),
-          i = n(269),
-          l = (s = n(270)) && s.__esModule ? s : { default: s };
+          i = n(267),
+          l = (s = n(268)) && s.__esModule ? s : { default: s };
         class a {
           constructor() {
             (this._tra = o.tra),
@@ -21008,7 +20649,7 @@
                   Promise.resolve()
                     .then(
                       (() => {
-                        e(n(268).default);
+                        e(n(266).default);
                       }).bind(null, n),
                     )
                     .catch(n.oe);
@@ -21024,25 +20665,25 @@
               name: "ItemTooltipComponent",
               ComponentFactory: o.ComponentFactory,
               tra: e,
-              ItemTooltipComponent: n(153).default,
+              ItemTooltipComponent: n(152).default,
             }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "ItemSetMenuComponent",
                 ComponentFactory: o.ComponentFactory,
                 tra: e,
-                ItemSetMenuComponent: n(147).default,
+                ItemSetMenuComponent: n(146).default,
               }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "PreferredSlotsMenuComponent",
                 ComponentFactory: o.ComponentFactory,
                 tra: e,
-                ItemSetMenuComponent: n(160).default,
+                ItemSetMenuComponent: n(159).default,
               }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "rcp-fe-lol-item-set-import-modal",
                 tra: e,
                 ComponentFactory: o.ComponentFactory,
-                RcpFeLolItemSetImportModalComponent: n(144).default,
+                RcpFeLolItemSetImportModalComponent: n(143).default,
               });
           }
         }
@@ -21114,15 +20755,15 @@
                 name: "ItemSetModalRootComponent",
                 tra: e,
                 ComponentFactory: s.ComponentFactory,
-                ItemSetModalRootComponent: n(150).default,
-                ItemBuildTreeComponent: n(120).default,
-                ItemSetEditorComponent: n(133).default,
-                RecommendedSetViewerComponent: n(163).default,
-                ItemFilterPanelComponent: n(126).default,
-                ItemGridComponent: n(129).default,
-                ChampionSelectorComponent: n(111).default,
-                CircleButtonComponent: n(117).default,
-                ItemSetsService: n(166).default,
+                ItemSetModalRootComponent: n(149).default,
+                ItemBuildTreeComponent: n(119).default,
+                ItemSetEditorComponent: n(132).default,
+                RecommendedSetViewerComponent: n(162).default,
+                ItemFilterPanelComponent: n(125).default,
+                ItemGridComponent: n(128).default,
+                ChampionSelectorComponent: n(110).default,
+                CircleButtonComponent: n(116).default,
+                ItemSetsService: n(165).default,
               }),
               (this._componentParams = s.Ember.Object.create()),
               this._subscribeNavigationEvents();
@@ -21155,10 +20796,10 @@
             });
           });
         var s = n(1),
-          o = r(n(156)),
-          i = r(n(111)),
-          l = r(n(117)),
-          a = r(n(166));
+          o = r(n(155)),
+          i = r(n(110)),
+          l = r(n(116)),
+          a = r(n(165));
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -21240,8 +20881,8 @@
           (t.mergeBlocksAndItems = l),
           (t.suffixDuplicateName = r);
         var s = n(1),
-          o = n(115);
-        const i = n(179);
+          o = n(114);
+        const i = n(178);
         function l(e, t, n) {
           const o = s.Lodash.isNil(t) ? [] : t;
           return (
@@ -21330,9 +20971,9 @@
             );
           });
         var s = a(n(1)),
-          o = a(n(272)),
-          i = a(n(277)),
-          l = a(n(206));
+          o = a(n(270)),
+          i = a(n(275)),
+          l = a(n(205));
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -21364,7 +21005,7 @@
               }
             (s.default = e), n && n.set(e, s);
             return s;
-          })(n(273));
+          })(n(271));
         function i(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -21446,17 +21087,17 @@
                 tra: s.traService,
                 ComponentFactory: s.ComponentFactory,
                 Router: e,
-                EmoteRootComponent: n(182),
-                EmoteInventoryComponent: n(187),
-                EmoteWheelComponent: n(191),
-                EmoteWheelSlotComponent: n(194),
-                EmoteDeleteSlotComponent: n(197),
-                EmoteReactionsComponent: n(200),
-                EmotesService: n(203),
-                LoadoutsService: n(204),
-                ErrorsHandlerService: n(205),
-                IndexRoute: n(274),
-                TEMPLATES: { application: n(275), index: n(276) },
+                EmoteRootComponent: n(181),
+                EmoteInventoryComponent: n(186),
+                EmoteWheelComponent: n(190),
+                EmoteWheelSlotComponent: n(193),
+                EmoteDeleteSlotComponent: n(196),
+                EmoteReactionsComponent: n(199),
+                EmotesService: n(202),
+                LoadoutsService: n(203),
+                ErrorsHandlerService: n(204),
+                IndexRoute: n(272),
+                TEMPLATES: { application: n(273), index: n(274) },
               };
             })();
           });
@@ -21590,8 +21231,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = n(279),
-          l = (s = n(374)) && s.__esModule ? s : { default: s };
+          i = n(277),
+          l = (s = n(372)) && s.__esModule ? s : { default: s };
         t.default = class {
           app = void 0;
           domNode = void 0;
@@ -21682,60 +21323,60 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.registerEmberApplication = t.createEmberApplication = void 0);
         var s = n(1),
-          o = oe(n(280)),
-          i = oe(n(281)),
-          l = oe(n(284)),
-          a = oe(n(285)),
-          r = oe(n(287)),
-          c = oe(n(288)),
-          d = oe(n(290)),
-          m = oe(n(291)),
-          p = oe(n(292)),
-          u = oe(n(216)),
-          h = (oe(n(105)), oe(n(218))),
-          g = oe(n(220)),
-          f = oe(n(221)),
-          _ = oe(n(233)),
-          y = oe(n(293)),
-          b = oe(n(294)),
-          S = oe(n(296)),
-          k = oe(n(297)),
-          v = oe(n(299)),
-          E = oe(n(300)),
-          x = oe(n(302)),
-          I = oe(n(304)),
-          w = oe(n(305)),
-          P = oe(n(306)),
-          C = oe(n(307)),
-          T = oe(n(308)),
-          M = oe(n(309)),
-          O = oe(n(310)),
-          A = oe(n(311)),
-          D = oe(n(312)),
-          R = oe(n(313)),
-          L = oe(n(314)),
-          N = oe(n(315)),
-          B = oe(n(316)),
-          j = oe(n(317)),
-          F = oe(n(318)),
-          U = oe(n(319)),
-          H = oe(n(320)),
-          V = oe(n(321)),
-          G = oe(n(322)),
-          W = oe(n(323)),
-          K = oe(n(324)),
-          Y = oe(n(325)),
-          q = oe(n(326)),
-          X = oe(n(327)),
-          $ = oe(n(328)),
-          z = oe(n(329)),
-          Q = oe(n(330)),
-          J = oe(n(331)),
-          Z = oe(n(332)),
-          ee = oe(n(333)),
-          te = oe(n(334)),
-          ne = oe(n(215)),
-          se = oe(n(335));
+          o = oe(n(278)),
+          i = oe(n(279)),
+          l = oe(n(282)),
+          a = oe(n(283)),
+          r = oe(n(285)),
+          c = oe(n(286)),
+          d = oe(n(288)),
+          m = oe(n(289)),
+          p = oe(n(290)),
+          u = oe(n(215)),
+          h = (oe(n(104)), oe(n(217))),
+          g = oe(n(219)),
+          f = oe(n(220)),
+          _ = oe(n(232)),
+          y = oe(n(291)),
+          b = oe(n(292)),
+          S = oe(n(294)),
+          k = oe(n(295)),
+          v = oe(n(297)),
+          E = oe(n(298)),
+          x = oe(n(300)),
+          I = oe(n(302)),
+          w = oe(n(303)),
+          P = oe(n(304)),
+          T = oe(n(305)),
+          C = oe(n(306)),
+          M = oe(n(307)),
+          O = oe(n(308)),
+          A = oe(n(309)),
+          D = oe(n(310)),
+          R = oe(n(311)),
+          L = oe(n(312)),
+          N = oe(n(313)),
+          B = oe(n(314)),
+          j = oe(n(315)),
+          F = oe(n(316)),
+          U = oe(n(317)),
+          H = oe(n(318)),
+          V = oe(n(319)),
+          G = oe(n(320)),
+          W = oe(n(321)),
+          K = oe(n(322)),
+          Y = oe(n(323)),
+          q = oe(n(324)),
+          X = oe(n(325)),
+          $ = oe(n(326)),
+          z = oe(n(327)),
+          Q = oe(n(328)),
+          J = oe(n(329)),
+          Z = oe(n(330)),
+          ee = oe(n(331)),
+          te = oe(n(332)),
+          ne = oe(n(214)),
+          se = oe(n(333));
         function oe(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -21804,9 +21445,9 @@
                 LinkToPageComponent: I.default,
                 LongDescriptionsCheckboxComponent: w.default,
                 NameTextFieldComponent: P.default,
-                PageEditorComponent: C.default,
+                PageEditorComponent: T.default,
                 PagesDropdownComponent: M.default,
-                PagesDropdownOptionComponent: T.default,
+                PagesDropdownOptionComponent: C.default,
                 PerkIconButtonComponent: O.default,
                 PerkOptionComponent: A.default,
                 PerksTooltipComponent: D.default,
@@ -21836,44 +21477,44 @@
                 EqHelper: ne.default,
                 ValueFromArrayHelper: se.default,
                 TEMPLATES: {
-                  application: n(336),
-                  "style-picker": n(337),
-                  "runes-recommender": n(338),
-                  "page-create": n(339),
-                  "page-edit": n(340),
-                  "components/circle-button": n(341),
-                  "components/clickable-icon-label": n(342),
-                  "components/delete-page-button": n(343),
-                  "components/framed-perk-icon": n(344),
-                  "components/keystone-icon": n(345),
-                  "components/link-to-page": n(346),
-                  "components/long-descriptions-checkbox": n(347),
-                  "components/page-editor": n(348),
-                  "components/pages-dropdown-option": n(349),
-                  "components/pages-dropdown": n(350),
-                  "components/perk-icon-button": n(351),
-                  "components/perk-option": n(352),
-                  "components/perks-tooltip": n(353),
-                  "components/primary-perk-selector": n(354),
-                  "components/primary-selected-perk": n(355),
-                  "components/primary-style-selector": n(356),
-                  "components/runes-recommender-controls": n(357),
-                  "components/runes-recommender-page": n(358),
-                  "components/runes-recommender-page-summary": n(359),
-                  "components/runes-recommender-position-filters": n(360),
-                  "components/runes-recommender-spell": n(361),
-                  "components/save-page-button": n(362),
-                  "components/splashed-perk-option": n(363),
-                  "components/splashed-perk-selector": n(364),
-                  "components/splashed-selected-perk-icon": n(365),
-                  "components/splashed-style-selector": n(366),
-                  "components/style-keystones": n(367),
-                  "components/style-option": n(368),
-                  "components/style-picker-column": n(369),
-                  "components/toggle-button": n(370),
-                  "components/progress-bar": n(371),
-                  "components/runes-drawer": n(372),
-                  "components/construct-minspec": n(373),
+                  application: n(334),
+                  "style-picker": n(335),
+                  "runes-recommender": n(336),
+                  "page-create": n(337),
+                  "page-edit": n(338),
+                  "components/circle-button": n(339),
+                  "components/clickable-icon-label": n(340),
+                  "components/delete-page-button": n(341),
+                  "components/framed-perk-icon": n(342),
+                  "components/keystone-icon": n(343),
+                  "components/link-to-page": n(344),
+                  "components/long-descriptions-checkbox": n(345),
+                  "components/page-editor": n(346),
+                  "components/pages-dropdown-option": n(347),
+                  "components/pages-dropdown": n(348),
+                  "components/perk-icon-button": n(349),
+                  "components/perk-option": n(350),
+                  "components/perks-tooltip": n(351),
+                  "components/primary-perk-selector": n(352),
+                  "components/primary-selected-perk": n(353),
+                  "components/primary-style-selector": n(354),
+                  "components/runes-recommender-controls": n(355),
+                  "components/runes-recommender-page": n(356),
+                  "components/runes-recommender-page-summary": n(357),
+                  "components/runes-recommender-position-filters": n(358),
+                  "components/runes-recommender-spell": n(359),
+                  "components/save-page-button": n(360),
+                  "components/splashed-perk-option": n(361),
+                  "components/splashed-perk-selector": n(362),
+                  "components/splashed-selected-perk-icon": n(363),
+                  "components/splashed-style-selector": n(364),
+                  "components/style-keystones": n(365),
+                  "components/style-option": n(366),
+                  "components/style-picker-column": n(367),
+                  "components/toggle-button": n(368),
+                  "components/progress-bar": n(369),
+                  "components/runes-drawer": n(370),
+                  "components/construct-minspec": n(371),
                 },
               },
               { EMBER_CLI_COMPAT: !0 },
@@ -21899,7 +21540,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(282);
+          o = n(280);
         const { RunMixin: i } = s.EmberAddons.EmberLifeline;
         var l = s.Ember.Route.extend(i, {
           store: s.Ember.inject.service(),
@@ -22143,8 +21784,8 @@
             );
           });
         var s = n(1),
-          o = n(283),
-          i = n(212);
+          o = n(281),
+          i = n(211);
         const l = "support",
           a = 8214,
           r = "URF",
@@ -22332,8 +21973,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(282),
-          i = n(286);
+          o = n(280),
+          i = n(284);
         var l = s.Ember.Route.extend({
           getSettingOrDefault(e, t, n) {
             let s = n;
@@ -22649,7 +22290,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1);
-        n(289);
+        n(287);
         var o = s.Ember.Controller.extend({});
         t.default = o;
       },
@@ -22662,7 +22303,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(282),
+          o = n(280),
           i = s.Ember.Controller.extend({
             createPerksPage: (e) =>
               (0, s.dataBinding)("/lol-perks").post("/v1/pages", e),
@@ -22724,7 +22365,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(282);
+          o = n(280);
         var i = s.Ember.Controller.extend({
           getSummonerSpells(e) {
             const t = (e.summonerSpells || []).map((e) => e.id),
@@ -22842,9 +22483,9 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(228)) && s.__esModule ? s : { default: s },
-          l = n(211),
-          a = n(212);
+          i = (s = n(227)) && s.__esModule ? s : { default: s },
+          l = n(210),
+          a = n(211);
         var r = o.Ember.Controller.extend({
           store: o.Ember.inject.service(),
           tutorial: o.Ember.inject.service(),
@@ -22928,7 +22569,7 @@
         var s,
           o = n(1);
         var i = (
-          (s = n(294)) && s.__esModule ? s : { default: s }
+          (s = n(292)) && s.__esModule ? s : { default: s }
         ).default.extend({
           classNames: ["add-page"],
           layoutName: "components/circle-button",
@@ -22973,7 +22614,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(295)) && s.__esModule ? s : { default: s };
+          i = (s = n(293)) && s.__esModule ? s : { default: s };
         var l = o.Ember.Component.extend((0, i.default)("disabled"), {
           tagName: "lol-uikit-close-button",
           attributeBindings: ["click-sfx-src", "disabled", "isLoading:loading"],
@@ -23041,8 +22682,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(298)) && s.__esModule ? s : { default: s },
-          l = n(212);
+          i = (s = n(296)) && s.__esModule ? s : { default: s },
+          l = n(211);
         const a = 8e3,
           r = 8100,
           c = 8200,
@@ -24721,7 +24362,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(301)) && s.__esModule ? s : { default: s };
+          i = (s = n(299)) && s.__esModule ? s : { default: s };
         var l = o.Ember.Component.extend({
           classNames: ["framed-perk-icon-component"],
           classNameBindings: ["styleIdName", "isStatMod:stat-shard"],
@@ -24765,8 +24406,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = l(n(301)),
-          i = l(n(303));
+          o = l(n(299)),
+          i = l(n(301));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -25125,9 +24766,9 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = n(211),
-          l = n(212),
-          a = (s = n(223)) && s.__esModule ? s : { default: s };
+          i = n(210),
+          l = n(211),
+          a = (s = n(222)) && s.__esModule ? s : { default: s };
         const { RunMixin: r } = o.EmberAddons.EmberLifeline,
           c = o.UIKit.getContextualNotificationManager(),
           d = o.UIKit.getTemplateHelper(),
@@ -25936,8 +25577,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(122)) && s.__esModule ? s : { default: s },
-          l = n(211);
+          i = (s = n(121)) && s.__esModule ? s : { default: s },
+          l = n(210);
         const a = o.Ember.Component.extend({
           classNames: ["perks-panel-perks-pages-dropdown"],
           tutorial: o.Ember.inject.service(),
@@ -26035,7 +25676,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(295)) && s.__esModule ? s : { default: s };
+          i = (s = n(293)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend(
           (0, i.default)("isDisabled", "disabled"),
           {
@@ -26090,7 +25731,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(303)) && s.__esModule ? s : { default: s };
+          i = (s = n(301)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend(i.default, {
           tagName: "",
           isSelected: o.Ember.computed(
@@ -26122,7 +25763,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(301)) && s.__esModule ? s : { default: s };
+          i = (s = n(299)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend({
           sanitizeOverride: (0, i.default)(),
           unlockText: o.Ember.computed("unlockedLevel", function () {
@@ -26164,8 +25805,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = n(211),
-          l = (s = n(301)) && s.__esModule ? s : { default: s };
+          i = n(210),
+          l = (s = n(299)) && s.__esModule ? s : { default: s };
         const a = o.Ember.Component.extend({
           platformSettings: o.Ember.inject.service(),
           store: o.Ember.inject.service(),
@@ -26373,7 +26014,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(303)) && s.__esModule ? s : { default: s };
+          i = (s = n(301)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend(i.default, {
           tagName: "",
           perkImagePath: o.Ember.computed.alias("perk.iconPath"),
@@ -26659,7 +26300,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(212),
+          o = n(211),
           i = s.Ember.Component.extend({
             classNames: ["runes-recommender-page-summary-component"],
             primaryStylePerks: s.Ember.computed(
@@ -26766,7 +26407,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(212),
+          o = n(211),
           i = s.Ember.Component.extend({
             classNames: ["runes-recommender-position-filters-component"],
             audio: s.Ember.inject.service(),
@@ -26836,8 +26477,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = l(n(295)),
-          i = l(n(303));
+          o = l(n(293)),
+          i = l(n(301));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -26906,7 +26547,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(212);
+          o = n(211);
         const i = s.Ember.Component.extend({
           sfxAudioChannel: null,
           audio: s.Ember.inject.service(),
@@ -27025,9 +26666,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = a(n(301)),
-          i = n(211),
-          l = a(n(303));
+          o = a(n(299)),
+          i = n(210),
+          l = a(n(301));
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -27117,7 +26758,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(301)) && s.__esModule ? s : { default: s };
+          i = (s = n(299)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend({
           splashedStyles: [],
           attributeBindings: ["data-style-id"],
@@ -27189,10 +26830,10 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = n(211),
-          l = n(212);
+          i = n(210),
+          l = n(211);
         var a = (
-          (s = n(313)) && s.__esModule ? s : { default: s }
+          (s = n(311)) && s.__esModule ? s : { default: s }
         ).default.extend({
           classNames: ["stat-mod-perk-selector"],
           layoutName: "components/primary-perk-selector",
@@ -27313,8 +26954,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = l(n(301)),
-          i = l(n(295));
+          o = l(n(299)),
+          i = l(n(293));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -27397,7 +27038,7 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = (s = n(295)) && s.__esModule ? s : { default: s };
+          i = (s = n(293)) && s.__esModule ? s : { default: s };
         const l = o.Ember.Component.extend(
           (0, i.default)("isInspirationPlaceholder", "disabled"),
           {
@@ -27483,7 +27124,7 @@
         var s,
           o = n(1);
         var i = (
-          (s = n(294)) && s.__esModule ? s : { default: s }
+          (s = n(292)) && s.__esModule ? s : { default: s }
         ).default.extend({
           classNames: ["perks-edit-btn"],
           layoutName: "components/circle-button",
@@ -27914,25 +27555,25 @@
               name: "ShowcaseComponent",
               ComponentFactory: o.ComponentFactory,
               tra: o.traService,
-              ShowcaseComponent: n(380),
-              SkinPurchaseButtonComponent: n(397),
-              SkinCarouselComponent: n(400),
-              TieredTransformationsComponent: n(403),
-              EqHelper: n(406).eqHelper,
-              ClientConfigService: n(105).default,
-              EventHubService: n(407).default,
+              ShowcaseComponent: n(378),
+              SkinPurchaseButtonComponent: n(395),
+              SkinCarouselComponent: n(398),
+              TieredTransformationsComponent: n(401),
+              EqHelper: n(404).eqHelper,
+              ClientConfigService: n(104).default,
+              EventHubService: n(405).default,
             }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "SkinLinePopup",
                 ComponentFactory: o.ComponentFactory,
                 tra: o.traService,
-                SkinLinePopupComponent: n(408),
+                SkinLinePopupComponent: n(406),
               }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "ChromaPopup",
                 ComponentFactory: o.ComponentFactory,
                 tra: o.traService,
-                ChromaPopupComponent: n(412),
+                ChromaPopupComponent: n(410),
               }),
               o.EmberApplicationFactory.setFactoryDefinition({
                 name: "QuestFormsPopup",
@@ -27941,24 +27582,24 @@
                 QuestFormsPopupComponent: i.default,
                 ConcatTraHelper:
                   o.SharedComponents.getApi_traTemplateHelpers().ConcatTra,
-                EqHelper: n(406).eqHelper,
+                EqHelper: n(404).eqHelper,
               });
           });
         var s,
           o = n(1),
-          i = (s = n(376)) && s.__esModule ? s : { default: s };
+          i = (s = n(374)) && s.__esModule ? s : { default: s };
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          o = n(377);
-        n(378);
+          o = n(375);
+        n(376);
         var i = s.Ember.Component.extend({
           classNames: ["quest-forms-flyout"],
           isShow: !1,
-          layout: n(379),
+          layout: n(377),
           selectedSkinIndex: s.Ember.computed.alias(
             "showcaseComponent.selectedQuestFormIndex",
           ),
@@ -28076,18 +27717,18 @@
         "use strict";
         var s = n(1),
           o = n(46),
-          i = n(381);
-        n(382);
-        var l = n(377),
-          a = n(383),
-          r = _(n(384)),
-          c = _(n(385)),
-          d = _(n(386)),
-          m = _(n(387)),
-          p = _(n(390)),
-          u = _(n(391)),
-          h = _(n(394)),
-          g = n(392),
+          i = n(379);
+        n(380);
+        var l = n(375),
+          a = n(381),
+          r = _(n(382)),
+          c = _(n(383)),
+          d = _(n(384)),
+          m = _(n(385)),
+          p = _(n(388)),
+          u = _(n(389)),
+          h = _(n(392)),
+          g = n(390),
           f = n(63);
         function _(e) {
           return e && e.__esModule ? e : { default: e };
@@ -28104,9 +27745,9 @@
           } = s.Ember,
           w = s.Ember.A,
           P = s.UIKit.getFlyoutManager(),
-          C = "showcase-view",
-          T = "splash-view",
-          M = [C, T];
+          T = "showcase-view",
+          C = "splash-view",
+          M = [T, C];
         e.exports = S.extend(y, d.default, c.default, m.default, {
           eventHubService: s.Ember.inject.service("event-hub"),
           skinsFromActiveEvents: s.Ember.computed.alias(
@@ -28116,8 +27757,8 @@
           currentSkinId: -1,
           rp: 0,
           ip: 0,
-          currentlyDisplayedSection: C,
-          layout: n(396),
+          currentlyDisplayedSection: T,
+          layout: n(394),
           isPotatoModeEnabled: b.bool("userExperience.data.potatoModeEnabled"),
           selectedQuestFormIndex: null,
           disableSkinsViewer: b.bool(
@@ -28671,11 +28312,11 @@
           },
           actions: {
             moveToLeft(e = -1, t = !0) {
-              k(this, "currentlyDisplayedSection") === C &&
+              k(this, "currentlyDisplayedSection") === T &&
                 (this._switchSkin(e), t && l.SFX.browseLeftSfx.play());
             },
             moveToRight(e = 1, t = !0) {
-              k(this, "currentlyDisplayedSection") === C &&
+              k(this, "currentlyDisplayedSection") === T &&
                 (this._switchSkin(e), t && l.SFX.browseRightSfx.play());
             },
             toggleQuestFormsFlyout() {
@@ -28706,7 +28347,7 @@
               this._focusOnHiddenInput();
             },
             toggleUi() {
-              this._switchSection(T),
+              this._switchSection(C),
                 this._registerMouseMoveEventListener(),
                 l.SFX.showcaseEnlargeClick.play(),
                 r.default.addUserBehavior(a.USER_ACTIVITIES.SHOW_SPLASH_VIEW);
@@ -28950,7 +28591,7 @@
             );
           },
           _mouseMoveEventHandler() {
-            this._switchSection(C), this._clearMouseMoveEventListener();
+            this._switchSection(T), this._clearMouseMoveEventListener();
           },
           _clearMouseMoveEventListener() {
             this.element.removeEventListener(
@@ -29165,7 +28806,7 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(383);
+          o = n(381);
         const i = `/v1/events/${o.TELEMETRY_EVENT_NAME}`;
         const l = new (class {
           constructor() {
@@ -29298,8 +28939,8 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(388),
-          i = n(389);
+          o = n(386),
+          i = n(387);
         const { Mixin: l, computed: a, get: r, isArray: c, run: d } = s.Ember,
           m = l.create({
             skinOwnershipById: a(
@@ -29457,7 +29098,7 @@
               void 0),
           (t.getSkinRarity = g);
         var s = n(1),
-          o = n(381);
+          o = n(379);
         const i = s.RarityManager.agregatedSkinRarityInformationByTier,
           { set: l, get: a } = s.Ember,
           r = function (e) {
@@ -29830,8 +29471,8 @@
           (t.default = void 0);
         var s,
           o = n(1),
-          i = n(392),
-          l = (s = n(393)) && s.__esModule ? s : { default: s };
+          i = n(390),
+          l = (s = n(391)) && s.__esModule ? s : { default: s };
         class a {
           static isChroma(e) {
             return Boolean(
@@ -30032,7 +29673,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var s = n(395);
+        var s = n(393);
         const o = new Set([
           s.LOOT_ITEM_TYPES.SKIN,
           s.LOOT_ITEM_TYPES.SUMMONER_ICON,
@@ -30108,14 +29749,14 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(398);
-        var o = n(389),
-          i = n(383),
+        n(396);
+        var o = n(387),
+          i = n(381),
           l = n(63);
         const { Component: a, computed: r } = s.Ember;
         e.exports = a.extend({
           classNames: ["skin-purchase"],
-          layout: n(399),
+          layout: n(397),
           showSkinPurchaseButton: r.not("viewSkin.ownership.owned"),
           enabled: r.not("disabled"),
           disabled: r(
@@ -30166,9 +29807,9 @@
             void 0);
         var s,
           o = n(1),
-          i = n(383),
-          l = (s = n(384)) && s.__esModule ? s : { default: s };
-        n(401);
+          i = n(381),
+          l = (s = n(382)) && s.__esModule ? s : { default: s };
+        n(399);
         const {
           computed: a,
           Component: r,
@@ -30182,7 +29823,7 @@
             classNames: ["skin-carousel-component"],
             activeSkinVirtualIndex: 0,
             maxThumbnailsVisible: 5,
-            layout: n(402),
+            layout: n(400),
             longCarousel: a(
               "skins.length",
               "maxThumbnailsVisible",
@@ -30338,11 +29979,11 @@
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          o = n(377);
-        n(404),
+          o = n(375);
+        n(402),
           (e.exports = s.Ember.Component.extend({
             classNames: ["tiered-transformations"],
-            layout: n(405),
+            layout: n(403),
             showcaseComponent: null,
             selectedSkinIndex: s.Ember.computed.alias(
               "showcaseComponent.selectedQuestFormIndex",
@@ -30446,11 +30087,11 @@
       (e, t, n) => {
         "use strict";
         var s = r(n(1));
-        n(409);
-        var o = n(377),
-          i = n(410),
-          l = r(n(384)),
-          a = n(383);
+        n(407);
+        var o = n(375),
+          i = n(408),
+          l = r(n(382)),
+          a = n(381);
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -30459,7 +30100,7 @@
           u = m.extend({
             classNames: ["skin-line-flyout"],
             isShow: !1,
-            layout: n(411),
+            layout: n(409),
             skins: d("skinLine.skins", function () {
               const e = p(this, "skinLine.skins");
               return e?.map(
@@ -30535,19 +30176,19 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(413);
+        n(411);
         var o,
-          i = n(377),
-          l = n(410),
-          a = n(383),
-          r = (o = n(391)) && o.__esModule ? o : { default: o },
-          c = n(392),
+          i = n(375),
+          l = n(408),
+          a = n(381),
+          r = (o = n(389)) && o.__esModule ? o : { default: o },
+          c = n(390),
           d = n(63);
         const { computed: m, Component: p, get: u } = s.Ember,
           h = p.extend({
             classNames: ["chroma-flyout"],
             isShow: !1,
-            layout: n(414),
+            layout: n(412),
             parentSkinOwned: m.alias("skin.ownership.owned"),
             chromas: m.alias("skin.chromas"),
             chromaBundlePurchaseDisabled: m.or(

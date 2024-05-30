@@ -117,7 +117,7 @@
             "polygon-generator.js",
           ],
           s = n(5),
-          a = n(224);
+          a = n(221);
         let l = !1;
         var d = {
           registerCustomElements: function (t = document) {
@@ -159,66 +159,65 @@
           "./arrow-button/index.js": 14,
           "./backdrop-magic/index.js": 25,
           "./behavior-media/index.js": 28,
-          "./champion-mastery-banner/index.js": 38,
-          "./champion-mastery-tooltip/index.js": 41,
-          "./champion-thumbnail/index.js": 44,
-          "./close-button/index.js": 47,
-          "./comet-border/index.js": 50,
-          "./condition-all/index.js": 53,
-          "./condition-any/index.js": 55,
-          "./condition-delay/index.js": 57,
-          "./condition-media/index.js": 59,
-          "./condition-parameter/index.js": 61,
-          "./content-block/index.js": 63,
-          "./context-menu/index.js": 65,
-          "./dialog-frame/index.js": 69,
-          "./dropdown-optgroup/index.js": 73,
-          "./dropdown-option/index.js": 76,
-          "./flat-button-group/index.js": 82,
-          "./flat-button-secondary/index.js": 85,
+          "./champion-mastery-tooltip/index.js": 38,
+          "./champion-thumbnail/index.js": 41,
+          "./close-button/index.js": 44,
+          "./comet-border/index.js": 47,
+          "./condition-all/index.js": 50,
+          "./condition-any/index.js": 52,
+          "./condition-delay/index.js": 54,
+          "./condition-media/index.js": 56,
+          "./condition-parameter/index.js": 58,
+          "./content-block/index.js": 60,
+          "./context-menu/index.js": 62,
+          "./dialog-frame/index.js": 66,
+          "./dropdown-optgroup/index.js": 70,
+          "./dropdown-option/index.js": 73,
+          "./flat-button-group/index.js": 79,
+          "./flat-button-secondary/index.js": 82,
           "./flat-button/index.js": 15,
-          "./flat-checkbox/index.js": 88,
-          "./flat-dropdown/index.js": 91,
-          "./flat-input/index.js": 100,
-          "./flat-textarea/index.js": 102,
-          "./flyout-frame/index.js": 105,
-          "./framed-dropdown/index.js": 110,
-          "./full-page-backdrop/index.js": 113,
-          "./game-data-markup/index.js": 116,
-          "./info-icon/index.js": 118,
-          "./lottie/index.js": 124,
-          "./navigation-bar/index.js": 126,
-          "./navigation-item/index.js": 129,
-          "./parallax-background/Animation.js": 132,
-          "./parallax-background/Layer.js": 133,
-          "./parallax-background/Parallax.js": 134,
-          "./parallax-background/index.js": 135,
-          "./perfect-scrollable/index.js": 138,
-          "./player-name/index.js": 164,
-          "./primary-magic-button/index.js": 176,
-          "./purchase-button/index.js": 179,
-          "./radial-progress/index.js": 182,
-          "./radial-progress/polygon-generator.js": 183,
-          "./radio-input-option/index.js": 186,
-          "./radio-input/index.js": 190,
-          "./resizing-text-field/canvas-singleton.js": 193,
-          "./resizing-text-field/index.js": 194,
-          "./scrollable/index.js": 196,
-          "./section-controller/index.js": 199,
-          "./slider/index.js": 201,
+          "./flat-checkbox/index.js": 85,
+          "./flat-dropdown/index.js": 88,
+          "./flat-input/index.js": 97,
+          "./flat-textarea/index.js": 99,
+          "./flyout-frame/index.js": 102,
+          "./framed-dropdown/index.js": 107,
+          "./full-page-backdrop/index.js": 110,
+          "./game-data-markup/index.js": 113,
+          "./info-icon/index.js": 115,
+          "./lottie/index.js": 121,
+          "./navigation-bar/index.js": 123,
+          "./navigation-item/index.js": 126,
+          "./parallax-background/Animation.js": 129,
+          "./parallax-background/Layer.js": 130,
+          "./parallax-background/Parallax.js": 131,
+          "./parallax-background/index.js": 132,
+          "./perfect-scrollable/index.js": 135,
+          "./player-name/index.js": 161,
+          "./primary-magic-button/index.js": 173,
+          "./purchase-button/index.js": 176,
+          "./radial-progress/index.js": 179,
+          "./radial-progress/polygon-generator.js": 180,
+          "./radio-input-option/index.js": 183,
+          "./radio-input/index.js": 187,
+          "./resizing-text-field/canvas-singleton.js": 190,
+          "./resizing-text-field/index.js": 191,
+          "./scrollable/index.js": 193,
+          "./section-controller/index.js": 196,
+          "./slider/index.js": 198,
           "./state-machine/index.js": 29,
           "./subdoc-proxy.js": 2,
           "./switch/index.js": 30,
-          "./themed-level-ring-v2/index.js": 204,
-          "./themed-level-ring/index.js": 207,
-          "./tooltip/index.js": 210,
-          "./tooltipped-keyword/index.js": 213,
-          "./transition/index.js": 215,
+          "./themed-level-ring-v2/index.js": 201,
+          "./themed-level-ring/index.js": 204,
+          "./tooltip/index.js": 207,
+          "./tooltipped-keyword/index.js": 210,
+          "./transition/index.js": 212,
           "./uikit-video/index.js": 34,
-          "./video-state-machine/index.js": 217,
-          "./video/index.js": 220,
-          "./video/state-observer.js": 222,
-          "./video/video-handler.js": 221,
+          "./video-state-machine/index.js": 214,
+          "./video/index.js": 217,
+          "./video/state-observer.js": 219,
+          "./video/video-handler.js": 218,
         };
         function o(t) {
           var e = r(t);
@@ -7731,56 +7730,20 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1);
-        class o extends i.webComponents.ShadowElement {
+        const o = "name",
+          r = "title",
+          s = "score",
+          a = "chest-status",
+          l = "chest-as-core";
+        class d extends i.webComponents.ShadowElement {
           static get observedAttributes() {
-            return ["level"];
+            return [o, r, s, a, l];
           }
           templateMarkup() {
             return n(39);
           }
           stylesheetMarkup() {
             return n(40);
-          }
-        }
-        o.tagName = "lol-uikit-champion-mastery-banner";
-        var r = o;
-        e.default = r;
-      },
-      (t) => {
-        "use strict";
-        t.exports =
-          '<template>\r\n  <div class="banner-size">\r\n    <div class="champion-mastery-banner"></div>\r\n  </div>\r\n</template>\r\n';
-      },
-      (t, e, n) => {
-        var i = n(9),
-          o = n(10)(i);
-        o.push([
-          t.id,
-          ':host {\n  display: block;\n}\n.banner-size {\n  position: relative;\n  padding-bottom: 158.730158730159%;\n}\n.champion-mastery-banner {\n  position: absolute;\n  width: 100%;\n  height: 124%;\n  background-repeat: no-repeat;\n  background-position: center top;\n  background-size: 100% auto;\n  animation: banner-unfurl 0.3s;\n}\n:host(:not([level])) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-locked.png");\n  -webkit-filter: brightness(0.65);\n}\n:host([level]) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-0.png");\n}\n:host([level=\'1\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-1.png");\n}\n:host([level=\'2\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-2.png");\n}\n:host([level=\'3\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-3.png");\n}\n:host([level=\'4\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-4.png");\n}\n:host([level=\'5\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-5.png");\n}\n:host([level=\'6\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-6.png");\n}\n:host([level=\'7\']) .champion-mastery-banner {\n  background-image: url("/fe/lol-static-assets/images/uikit/champion-mastery-banner/mastery-banner-7.png");\n}\n@-moz-keyframes banner-unfurl {\n  from {\n    opacity: 0;\n    top: -8%;\n  }\n  to {\n    opacity: 1;\n    top: 0;\n  }\n}\n@-webkit-keyframes banner-unfurl {\n  from {\n    opacity: 0;\n    top: -8%;\n  }\n  to {\n    opacity: 1;\n    top: 0;\n  }\n}\n@-o-keyframes banner-unfurl {\n  from {\n    opacity: 0;\n    top: -8%;\n  }\n  to {\n    opacity: 1;\n    top: 0;\n  }\n}\n@keyframes banner-unfurl {\n  from {\n    opacity: 0;\n    top: -8%;\n  }\n  to {\n    opacity: 1;\n    top: 0;\n  }\n}\n',
-          "",
-        ]),
-          (t.exports = o);
-      },
-      (t, e, n) => {
-        "use strict";
-        Object.defineProperty(e, "__esModule", { value: !0 }),
-          (e.default = void 0);
-        var i = n(1);
-        const o = "name",
-          r = "title",
-          s = "score",
-          a = "chest-status",
-          l = "chest-as-core",
-          d = "is-lcm";
-        class c extends i.webComponents.ShadowElement {
-          static get observedAttributes() {
-            return [o, r, s, a, l, d];
-          }
-          templateMarkup() {
-            return n(42);
-          }
-          stylesheetMarkup() {
-            return n(43);
           }
           connectedCallback() {
             super.connectedCallback(),
@@ -7807,9 +7770,6 @@
                   break;
                 case l:
                   this.processChestAsCore();
-                  break;
-                case d:
-                  this.processScore();
               }
           }
           processName() {
@@ -7821,10 +7781,8 @@
             this.shadowRoot.querySelector(".title").textContent = t || "";
           }
           processScore() {
-            const t = this.getAttribute(s),
-              e = this.shadowRoot.querySelector(".score");
-            e.textContent = t || "";
-            "true" === this.getAttribute(d) && e.classList.add("lcm");
+            const t = this.getAttribute(s);
+            this.shadowRoot.querySelector(".score").textContent = t || "";
           }
           processChestStatus() {
             const t = this.getAttribute(a);
@@ -7839,9 +7797,9 @@
               : e.classList.remove("display-as-core");
           }
         }
-        c.tagName = "lol-uikit-champion-mastery-tooltip";
-        var u = c;
-        e.default = u;
+        d.tagName = "lol-uikit-champion-mastery-tooltip";
+        var c = d;
+        e.default = c;
       },
       (t) => {
         "use strict";
@@ -7853,7 +7811,7 @@
           o = n(10)(i);
         o.push([
           t.id,
-          'h4,\n::slotted(h4) {\n  font-family: var(--font-display);\n}\n:host {\n  font-family: var(--font-body);\n}\n:host,\nh4,\n::slotted(h4) {\n  -webkit-user-select: none;\n}\n:host,\nh4,\n::slotted(h4) {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nh4,\n::slotted(h4) {\n  text-transform: uppercase;\n}\nh4:lang(ko-kr),\n::slotted(h4):lang(ko-kr),\nh4:lang(ja-jp),\n::slotted(h4):lang(ja-jp),\nh4:lang(tr-tr),\n::slotted(h4):lang(tr-tr),\nh4:lang(el-gr),\n::slotted(h4):lang(el-gr),\nh4:lang(th-th),\n::slotted(h4):lang(th-th),\nh4:lang(zh-tw),\n::slotted(h4):lang(zh-tw) {\n  text-transform: none;\n}\nh4,\n::slotted(h4) {\n  color: #f0e6d2;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0.05em;\n}\nh4:lang(ar-ae),\n::slotted(h4):lang(ar-ae) {\n  letter-spacing: 0;\n}\n:host {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\n:host:lang(ja-jp) {\n  font-size: 13px;\n}\n:host:lang(ar-ae) {\n  letter-spacing: 0;\n}\n:host {\n  --champion-mastery-tooltip-name-text-align: initial;\n  --champion-mastery-tooltip-name-width: initial;\n  --champion-mastery-tooltip-name-font-size: 18px;\n  --champion-mastery-tooltip-name-line-height: 22px;\n  --champion-mastery-tooltip-name-letter-spacing: 0.05em;\n  --champion-mastery-tooltip-separator-display: block;\n  --champion-mastery-tooltip-separator-width: initial;\n  --champion-mastery-tooltip-separator-margin: 0 40px 0 0;\n  --champion-mastery-tooltip-separator-margin-rtl: 0 0 0 40px;\n  --champion-mastery-tooltip-separator-background-color: #463714;\n  --champion-mastery-tooltip-separator-background-size: initial;\n  --champion-mastery-tooltip-mastery-justify-content: initial;\n  --champion-mastery-tooltip-mastery-flex-direction: initial;\n  --champion-mastery-tooltip-mastery-flex-wrap: initial;\n  --champion-mastery-tooltip-mastery-score-padding: 0 7px 0 23px;\n  --champion-mastery-tooltip-mastery-score-padding-rtl: 0 23px 0 7px;\n  --champion-mastery-tooltip-mastery-score-before-right: initial;\n  --champion-mastery-tooltip-mastery-title-display: initial;\n  --champion-mastery-tooltip-detail-text-align: initial;\n  --champion-mastery-tooltip-detail-direction: initial;\n}\n:host {\n  padding: 12px 18px 12px 12px;\n  min-width: 255px;\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n  white-space: nowrap;\n}\n:host .name {\n  font-size: var(--champion-mastery-tooltip-name-font-size);\n  line-height: var(--champion-mastery-tooltip-name-line-height);\n  letter-spacing: var(--champion-mastery-tooltip-name-letter-spacing);\n  text-align: var(--champion-mastery-tooltip-name-text-align);\n  width: var(--champion-mastery-tooltip-name-width);\n}\n:host .separator {\n  display: var(--champion-mastery-tooltip-separator-display);\n  border: none;\n  width: var(--champion-mastery-tooltip-separator-width);\n  height: 1px;\n  margin: var(--champion-mastery-tooltip-separator-margin);\n  background-color: var(--champion-mastery-tooltip-separator-background-color);\n  background-size: var(--champion-mastery-tooltip-separator-background-size);\n}\n:host .separator:lang(ar-ae) {\n  margin: var(--champion-mastery-tooltip-separator-margin-rtl);\n}\n:host .mastery {\n  display: flex;\n  margin: 3px 0 0 0;\n  justify-content: var(--champion-mastery-tooltip-mastery-justify-content);\n  flex-direction: var(--champion-mastery-tooltip-mastery-flex-direction);\n  flex-wrap: var(--champion-mastery-tooltip-mastery-flex-wrap);\n}\n:host .mastery > .score {\n  padding: var(--champion-mastery-tooltip-mastery-score-padding);\n}\n:host .mastery > .score::before {\n  right: var(--champion-mastery-tooltip-mastery-score-before-right);\n  margin: 0 0 0 -25px;\n  content: \'\';\n  position: absolute;\n  width: 17px;\n  height: 14px;\n  background: url("/fe/lol-uikit/images/icon-champ-tooltip-mastery.png") center no-repeat;\n  background-size: 100%;\n}\n:host .mastery > .score.lcm::before {\n  background: url("/fe/lol-static-assets/images/champion-mastery/generic-mastery-icon.svg") center no-repeat;\n}\n:host .mastery > .score:lang(ar-ae) {\n  padding: var(--champion-mastery-tooltip-mastery-score-padding-rtl);\n}\n:host .mastery > .score:lang(ar-ae)::before {\n  right: 45px;\n  margin: 0 -45px 0 0;\n}\n:host .mastery > .title {\n  display: var(--champion-mastery-tooltip-mastery-title-display);\n  flex: 1 100%;\n  text-align: right;\n}\n:host .mastery > .title:lang(ar-ae) {\n  text-align: left;\n}\n:host .mastery:lang(ar-ae) {\n  position: relative;\n}\n:host .chest {\n  display: none;\n}\n:host .detail {\n  margin-top: 3px;\n  text-align: var(--champion-mastery-tooltip-detail-text-align);\n  direction: var(--champion-mastery-tooltip-detail-direction);\n}\n:host(.separator-background-image) .separator {\n  background-image: url("/fe/lol-uikit/images/title_divider.png");\n}\n:host(:lang(ar-ae)) {\n  direction: rtl;\n}\nh4,\n::slotted(h4) {\n  margin: 0;\n}\n.info {\n  flex: 1 1 auto;\n}\n.info:lang {\n  direction: rtl;\n}\n:host([chest-acquired]) .chest {\n  display: block;\n  padding: 0 0 0 23px;\n}\n:host([chest-acquired]) .chest:before {\n  content: \'\';\n  position: absolute;\n  width: 21px;\n  height: 14px;\n  background: url("/fe/lol-uikit/images/icon-chest-acquired.png") center no-repeat;\n  background-size: 100%;\n  margin-left: -24px;\n}\n:host([chest-acquired]) .chest.display-as-core:before {\n  background: url("/fe/lol-uikit/images/icon-core-acquired.png") center no-repeat;\n  background-size: 100%;\n}\n:host([chest-acquired]) .chest:lang(ar-ae) {\n  position: relative;\n  padding: 0 23px 0 0;\n  margin-right: -5px;\n}\n:host([chest-acquired]) .chest:lang(ar-ae):before {\n  right: 0;\n}\n',
+          'h4,\n::slotted(h4) {\n  font-family: var(--font-display);\n}\n:host {\n  font-family: var(--font-body);\n}\n:host,\nh4,\n::slotted(h4) {\n  -webkit-user-select: none;\n}\n:host,\nh4,\n::slotted(h4) {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\nh4,\n::slotted(h4) {\n  text-transform: uppercase;\n}\nh4:lang(ko-kr),\n::slotted(h4):lang(ko-kr),\nh4:lang(ja-jp),\n::slotted(h4):lang(ja-jp),\nh4:lang(tr-tr),\n::slotted(h4):lang(tr-tr),\nh4:lang(el-gr),\n::slotted(h4):lang(el-gr),\nh4:lang(th-th),\n::slotted(h4):lang(th-th),\nh4:lang(zh-tw),\n::slotted(h4):lang(zh-tw) {\n  text-transform: none;\n}\nh4,\n::slotted(h4) {\n  color: #f0e6d2;\n  font-size: 18px;\n  font-weight: 700;\n  line-height: 22px;\n  letter-spacing: 0.05em;\n}\nh4:lang(ar-ae),\n::slotted(h4):lang(ar-ae) {\n  letter-spacing: 0;\n}\n:host {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\n:host:lang(ja-jp) {\n  font-size: 13px;\n}\n:host:lang(ar-ae) {\n  letter-spacing: 0;\n}\n:host {\n  --champion-mastery-tooltip-name-text-align: initial;\n  --champion-mastery-tooltip-name-width: initial;\n  --champion-mastery-tooltip-name-font-size: 18px;\n  --champion-mastery-tooltip-name-line-height: 22px;\n  --champion-mastery-tooltip-name-letter-spacing: 0.05em;\n  --champion-mastery-tooltip-separator-display: block;\n  --champion-mastery-tooltip-separator-width: initial;\n  --champion-mastery-tooltip-separator-margin: 0 40px 0 0;\n  --champion-mastery-tooltip-separator-margin-rtl: 0 0 0 40px;\n  --champion-mastery-tooltip-separator-background-color: #463714;\n  --champion-mastery-tooltip-separator-background-size: initial;\n  --champion-mastery-tooltip-mastery-justify-content: initial;\n  --champion-mastery-tooltip-mastery-flex-direction: initial;\n  --champion-mastery-tooltip-mastery-flex-wrap: initial;\n  --champion-mastery-tooltip-mastery-score-padding: 0 7px 0 23px;\n  --champion-mastery-tooltip-mastery-score-padding-rtl: 0 23px 0 7px;\n  --champion-mastery-tooltip-mastery-score-before-right: initial;\n  --champion-mastery-tooltip-mastery-title-display: initial;\n  --champion-mastery-tooltip-detail-text-align: initial;\n  --champion-mastery-tooltip-detail-direction: initial;\n}\n:host {\n  padding: 12px 18px 12px 12px;\n  min-width: 255px;\n  display: flex;\n  flex-direction: row;\n  box-sizing: border-box;\n  white-space: nowrap;\n}\n:host .name {\n  font-size: var(--champion-mastery-tooltip-name-font-size);\n  line-height: var(--champion-mastery-tooltip-name-line-height);\n  letter-spacing: var(--champion-mastery-tooltip-name-letter-spacing);\n  text-align: var(--champion-mastery-tooltip-name-text-align);\n  width: var(--champion-mastery-tooltip-name-width);\n}\n:host .separator {\n  display: var(--champion-mastery-tooltip-separator-display);\n  border: none;\n  width: var(--champion-mastery-tooltip-separator-width);\n  height: 1px;\n  margin: var(--champion-mastery-tooltip-separator-margin);\n  background-color: var(--champion-mastery-tooltip-separator-background-color);\n  background-size: var(--champion-mastery-tooltip-separator-background-size);\n}\n:host .separator:lang(ar-ae) {\n  margin: var(--champion-mastery-tooltip-separator-margin-rtl);\n}\n:host .mastery {\n  display: flex;\n  margin: 3px 0 0 0;\n  justify-content: var(--champion-mastery-tooltip-mastery-justify-content);\n  flex-direction: var(--champion-mastery-tooltip-mastery-flex-direction);\n  flex-wrap: var(--champion-mastery-tooltip-mastery-flex-wrap);\n}\n:host .mastery > .score {\n  padding: var(--champion-mastery-tooltip-mastery-score-padding);\n}\n:host .mastery > .score::before {\n  right: var(--champion-mastery-tooltip-mastery-score-before-right);\n  margin: 0 0 0 -25px;\n  content: \'\';\n  position: absolute;\n  width: 17px;\n  height: 14px;\n  background: url("/fe/lol-static-assets/images/champion-mastery/generic-mastery-icon.svg") center no-repeat;\n  background-size: 100%;\n}\n:host .mastery > .score:lang(ar-ae) {\n  padding: var(--champion-mastery-tooltip-mastery-score-padding-rtl);\n}\n:host .mastery > .score:lang(ar-ae)::before {\n  right: 45px;\n  margin: 0 -45px 0 0;\n}\n:host .mastery > .title {\n  display: var(--champion-mastery-tooltip-mastery-title-display);\n  flex: 1 100%;\n  text-align: right;\n}\n:host .mastery > .title:lang(ar-ae) {\n  text-align: left;\n}\n:host .mastery:lang(ar-ae) {\n  position: relative;\n}\n:host .chest {\n  display: none;\n}\n:host .detail {\n  margin-top: 3px;\n  text-align: var(--champion-mastery-tooltip-detail-text-align);\n  direction: var(--champion-mastery-tooltip-detail-direction);\n}\n:host(.separator-background-image) .separator {\n  background-image: url("/fe/lol-uikit/images/title_divider.png");\n}\n:host(:lang(ar-ae)) {\n  direction: rtl;\n}\nh4,\n::slotted(h4) {\n  margin: 0;\n}\n.info {\n  flex: 1 1 auto;\n}\n.info:lang {\n  direction: rtl;\n}\n:host([chest-acquired]) .chest {\n  display: block;\n  padding: 0 0 0 23px;\n}\n:host([chest-acquired]) .chest:before {\n  content: \'\';\n  position: absolute;\n  width: 21px;\n  height: 14px;\n  background: url("/fe/lol-uikit/images/icon-chest-acquired.png") center no-repeat;\n  background-size: 100%;\n  margin-left: -24px;\n}\n:host([chest-acquired]) .chest.display-as-core:before {\n  background: url("/fe/lol-uikit/images/icon-core-acquired.png") center no-repeat;\n  background-size: 100%;\n}\n:host([chest-acquired]) .chest:lang(ar-ae) {\n  position: relative;\n  padding: 0 23px 0 0;\n  margin-right: -5px;\n}\n:host([chest-acquired]) .chest:lang(ar-ae):before {\n  right: 0;\n}\n',
           "",
         ]),
           (t.exports = o);
@@ -7876,10 +7834,10 @@
             ];
           }
           templateMarkup() {
-            return n(45);
+            return n(42);
           }
           stylesheetMarkup() {
-            return n(46);
+            return n(43);
           }
         }
         o.tagName = "lol-uikit-champion-thumbnail";
@@ -7889,14 +7847,14 @@
       (t) => {
         "use strict";
         t.exports =
-          '<template>\r\n  <div class="champion-thumbnail">\r\n    <slot name="lol-uikit-champion-mastery-banner"></slot>\r\n    <div class="thumbnail-square">\r\n      <slot name="lol-uikit-thumbnail"></slot>\r\n    </div>\r\n    <div class="champion-achievements">\r\n      <div class="chest-acquired-frame"></div>\r\n    </div>\r\n    <div class="champion-availability"></div>\r\n    <slot />\r\n  </div>\r\n</template>\r\n';
+          '<template>\r\n  <div class="champion-thumbnail">\r\n    <div class="thumbnail-square">\r\n      <slot name="lol-uikit-thumbnail"></slot>\r\n    </div>\r\n    <div class="champion-achievements">\r\n      <div class="chest-acquired-frame"></div>\r\n    </div>\r\n    <div class="champion-availability"></div>\r\n    <slot />\r\n  </div>\r\n</template>\r\n';
       },
       (t, e, n) => {
         var i = n(9),
           o = n(10)(i);
         o.push([
           t.id,
-          ':host {\n  font-family: var(--font-body);\n}\n:host {\n  -webkit-user-select: none;\n}\n:host {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n:host {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.1em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\n:host:lang(ja-jp) {\n  font-size: 13px;\n}\n:host:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.champion-thumbnail {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n:host([name])::after {\n  white-space: nowrap;\n  position: relative;\n  top: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  display: inline-block;\n  content: attr(name);\n}\n:host(:lang(ar-ae)) {\n  left: auto;\n  right: 50%;\n  transform: translateX(50%);\n}\n.thumbnail-square {\n  order: -1;\n  position: relative;\n}\n::slotted(.lol-uikit-thumbnail) {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n::slotted(.lol-uikit-thumbnail):not([disabled]):not([active=\'false\']):hover {\n  cursor: pointer;\n}\n:host([locked]) ::slotted(.lol-uikit-thumbnail:not(:hover)) img {\n  -webkit-filter: brightness(0.3);\n}\n::slotted(lol-uikit-champion-mastery-banner) {\n  margin: 0 2px 0 2px;\n}\n.champion-availability {\n  position: absolute;\n  background-repeat: no-repeat;\n  background-size: contain;\n  background-position: center;\n  pointer-events: none;\n}\n:host([simple]) .champion-availability {\n  display: none;\n}\n:host([loyalty-reward]) .champion-availability {\n  width: 27px;\n  height: 32px;\n  top: -10px;\n  right: -13px;\n  background-image: url("/fe/lol-uikit/images/icon-free-to-play-reward.png");\n}\n:host([free-to-play]) .champion-availability {\n  width: 38px;\n  height: 38px;\n  top: -12px;\n  right: -18px;\n  background-image: url("/fe/lol-uikit/images/icon-free-to-play.png");\n}\n:host([rental]) .champion-availability {\n  width: 43px;\n  height: 43px;\n  top: -14px;\n  right: -21px;\n  background-image: url("/fe/lol-uikit/images/icon-rental.png");\n}\n:host([locked]) .champion-availability {\n  width: 100%;\n  height: 30px;\n  margin-top: 100%;\n  top: -14px;\n  left: 0;\n  background-image: url("/fe/lol-uikit/images/icon-lock-small.png");\n}\n.champion-achievements {\n  position: absolute;\n  pointer-events: none;\n  top: 0;\n  left: 0;\n}\n:host([chest-acquired]) .chest-acquired-frame {\n  width: 75px;\n  height: 75px;\n  margin-top: -6px;\n  margin-left: -4px;\n  background: url("/fe/lol-uikit/images/icon-chest-acquired-frame.png") no-repeat center;\n  background-size: contain;\n}\n',
+          ':host {\n  font-family: var(--font-body);\n}\n:host {\n  -webkit-user-select: none;\n}\n:host {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n:host {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.1em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\n:host:lang(ja-jp) {\n  font-size: 13px;\n}\n:host:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.champion-thumbnail {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n:host([name])::after {\n  white-space: nowrap;\n  position: relative;\n  top: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  display: inline-block;\n  content: attr(name);\n}\n:host(:lang(ar-ae)) {\n  left: auto;\n  right: 50%;\n  transform: translateX(50%);\n}\n.thumbnail-square {\n  order: -1;\n  position: relative;\n}\n::slotted(.lol-uikit-thumbnail) {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n::slotted(.lol-uikit-thumbnail):not([disabled]):not([active=\'false\']):hover {\n  cursor: pointer;\n}\n:host([locked]) ::slotted(.lol-uikit-thumbnail:not(:hover)) img {\n  -webkit-filter: brightness(0.3);\n}\n.champion-availability {\n  position: absolute;\n  background-repeat: no-repeat;\n  background-size: contain;\n  background-position: center;\n  pointer-events: none;\n}\n:host([simple]) .champion-availability {\n  display: none;\n}\n:host([loyalty-reward]) .champion-availability {\n  width: 27px;\n  height: 32px;\n  top: -10px;\n  right: -13px;\n  background-image: url("/fe/lol-uikit/images/icon-free-to-play-reward.png");\n}\n:host([free-to-play]) .champion-availability {\n  width: 38px;\n  height: 38px;\n  top: -12px;\n  right: -18px;\n  background-image: url("/fe/lol-uikit/images/icon-free-to-play.png");\n}\n:host([rental]) .champion-availability {\n  width: 43px;\n  height: 43px;\n  top: -14px;\n  right: -21px;\n  background-image: url("/fe/lol-uikit/images/icon-rental.png");\n}\n:host([locked]) .champion-availability {\n  width: 100%;\n  height: 30px;\n  margin-top: 100%;\n  top: -14px;\n  left: 0;\n  background-image: url("/fe/lol-uikit/images/icon-lock-small.png");\n}\n.champion-achievements {\n  position: absolute;\n  pointer-events: none;\n  top: 0;\n  left: 0;\n}\n:host([chest-acquired]) .chest-acquired-frame {\n  width: 75px;\n  height: 75px;\n  margin-top: -6px;\n  margin-left: -4px;\n  background: url("/fe/lol-uikit/images/icon-chest-acquired-frame.png") no-repeat center;\n  background-size: contain;\n}\n',
           "",
         ]),
           (t.exports = o);
@@ -7924,10 +7882,10 @@
             ];
           }
           templateMarkup() {
-            return n(48);
+            return n(45);
           }
           stylesheetMarkup() {
-            return n(49);
+            return n(46);
           }
           setCustomSounds() {
             const t = this.getAttribute("hover-sfx-src"),
@@ -8035,10 +7993,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(51);
+            return n(48);
           }
           stylesheetMarkup() {
-            return n(52);
+            return n(49);
           }
           connectedCallback() {
             super.connectedCallback(), this.init();
@@ -8081,7 +8039,7 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(54);
+            return n(51);
           }
           static get observedAttributes() {
             return ["nonsimultaneous"];
@@ -8170,7 +8128,7 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(56);
+            return n(53);
           }
           activate(t) {
             const e = {};
@@ -8208,7 +8166,7 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(58);
+            return n(55);
           }
           disconnectedCallback() {
             super.disconnectedCallback(), this.deactivate();
@@ -8258,7 +8216,7 @@
         });
         class l extends s.webComponents.ShadowElement {
           templateMarkup() {
-            return n(60);
+            return n(57);
           }
           static get observedAttributes() {
             return [
@@ -8375,7 +8333,7 @@
           r = (i = n(29)) && i.__esModule ? i : { default: i };
         class s extends o.webComponents.ShadowElement {
           templateMarkup() {
-            return n(62);
+            return n(59);
           }
           static get observedAttributes() {
             return ["name", "value", "not-value"];
@@ -8436,7 +8394,7 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(64);
+            return n(61);
           }
         }
         o.tagName = "lol-uikit-content-block";
@@ -8452,17 +8410,17 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = s(n(66)),
+          o = s(n(63)),
           r = s(n(20));
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
         class a extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(67);
+            return n(64);
           }
           stylesheetMarkup() {
-            return n(68);
+            return n(65);
           }
           constructor() {
             super(),
@@ -8866,7 +8824,7 @@
         var i,
           o = n(1),
           r = (i = n(19)) && i.__esModule ? i : { default: i },
-          s = n(70);
+          s = n(67);
         class a extends o.webComponents.ShadowElement {
           static get observedAttributes() {
             return [
@@ -8881,10 +8839,10 @@
             ];
           }
           templateMarkup() {
-            return n(71);
+            return n(68);
           }
           stylesheetMarkup() {
-            return n(72);
+            return n(69);
           }
           constructor() {
             super(), (this._closeEvent = this.dispatchCloseEvent.bind(this));
@@ -9036,10 +8994,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(74);
+            return n(71);
           }
           stylesheetMarkup() {
-            return n(75);
+            return n(72);
           }
         }
         o.tagName = "lol-uikit-dropdown-optgroup";
@@ -9074,10 +9032,10 @@
         }
         class l extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(77);
+            return n(74);
           }
           stylesheetMarkup() {
-            return n(78);
+            return n(75);
           }
           constructor() {
             super(),
@@ -9207,10 +9165,10 @@
           '<template>\r\n  <div class="ui-dropdown-option"><slot></slot></div>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(81),
+          r = n(77),
+          s = n(78),
           a = o(i),
           l = r(s);
         a.push([
@@ -9285,10 +9243,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(83);
+            return n(80);
           }
           stylesheetMarkup() {
-            return n(84);
+            return n(81);
           }
         }
         o.tagName = "lol-uikit-flat-button-group";
@@ -9323,10 +9281,10 @@
           d = "disabled";
         class c extends o.webComponents.ShadowElement {
           templateMarkup() {
-            return n(86);
+            return n(83);
           }
           stylesheetMarkup() {
-            return n(87);
+            return n(84);
           }
           constructor() {
             super(),
@@ -9443,10 +9401,10 @@
           r = (i = n(20)) && i.__esModule ? i : { default: i };
         class s extends o.webComponents.ShadowElement {
           templateMarkup() {
-            return n(89);
+            return n(86);
           }
           stylesheetMarkup() {
-            return n(90);
+            return n(87);
           }
           connectedCallback() {
             super.connectedCallback(),
@@ -9581,17 +9539,17 @@
         "use strict";
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
-        var i = r(n(92)),
+        var i = r(n(89)),
           o = r(n(2));
         function r(t) {
           return t && t.__esModule ? t : { default: t };
         }
         class s extends i.default {
           templateMarkup() {
-            return n(96);
+            return n(93);
           }
           stylesheetMarkup() {
-            return n(97);
+            return n(94);
           }
           template() {
             return o.default
@@ -9610,9 +9568,9 @@
         var i = n(17),
           o = n(1),
           r = c(n(19)),
-          s = c(n(93)),
+          s = c(n(90)),
           a = c(n(20)),
-          l = c(n(76)),
+          l = c(n(73)),
           d = n(18);
         function c(t) {
           return t && t.__esModule ? t : { default: t };
@@ -9698,7 +9656,7 @@
                 this.dispatchEvent(e),
                 this._updateSelected();
             }
-            this._close();
+            this.hasAttribute("data-should-stay-open") || this._close();
           }
           refreshSelected() {
             (this.updateSelectedRequired = !0),
@@ -9955,8 +9913,8 @@
               }, 0);
             });
           }),
-          n(94);
-        var i = n(95);
+          n(91);
+        var i = n(92);
         function o(t) {
           const e = t.getBoundingClientRect();
           return e.width > 0 || e.height > 0;
@@ -10031,11 +9989,11 @@
           '<template>\r\n  <div class="ui-dropdown">\r\n    <div class="ui-dropdown-options-container">\r\n      <lol-uikit-scrollable>\r\n        <div class="ui-dropdown-ungrouped-options">\r\n          <slot name="lol-uikit-dropdown-option"></slot>\r\n        </div>\r\n        <div class="ui-dropdown-optgroups">\r\n          <slot name="lol-uikit-dropdown-optgroup"></slot>\r\n        </div>\r\n        \x3c!--\r\n          This <slot> element used to invite in the host options list cannot include\r\n          the host\'s self-generated currently selected element (see base-dropdown.js\r\n          for the case where the stylablecontent attribute is set).\r\n        --\x3e\r\n        <slot></slot>\r\n      </lol-uikit-scrollable>\r\n    </div>\r\n    \x3c!-- \r\n      There\'s some subtlety in the way the slot elements are ordered and in the way\r\n      their invitations are triggered here. The currently selected element\r\n      must lie on top of the options list, otherwise when the options list is expanded,\r\n      the currently selected element will be covered up. This is why the \r\n      ui-dropdown-current section is AFTER the ui-dropdown-options-container section.\r\n    --\x3e\r\n    <div class="ui-dropdown-current">\r\n      <div class="ui-dropdown-current-content shadow"></div>\r\n      <slot name=".ui-dropdown-current-content.light"></slot>\r\n    </div>\r\n  </div>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(98),
-          a = n(99),
+          r = n(77),
+          s = n(95),
+          a = n(96),
           l = o(i),
           d = r(s),
           c = r(a);
@@ -10081,7 +10039,7 @@
           s = (i = n(20)) && i.__esModule ? i : { default: i };
         class a extends r.webComponents.ShadowElement {
           templateMarkup() {
-            return n(101);
+            return n(98);
           }
           connectedCallback() {
             super.connectedCallback();
@@ -10116,10 +10074,10 @@
             return [];
           }
           templateMarkup() {
-            return n(103);
+            return n(100);
           }
           stylesheetMarkup() {
-            return n(104);
+            return n(101);
           }
         }
         o.tagName = "lol-uikit-flat-textarea";
@@ -10147,10 +10105,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(106);
+            return n(103);
           }
           stylesheetMarkup() {
-            return n(107);
+            return n(104);
           }
           static get observedAttributes() {
             return [
@@ -10247,11 +10205,11 @@
           '<template>\r\n  <div class="lol-uikit-flyout-frame-wrapper">\r\n    <div class="border"></div>\r\n    <div class="sub-border"></div>\r\n    <div class="caret"></div>\r\n    <div class="lol-uikit-flyout-frame">\r\n      <slot></slot>\r\n    </div>\r\n    <div class="close-button-container">\r\n      <lol-uikit-close-button/>\r\n    </div>\r\n  </div>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(108),
-          a = n(109),
+          r = n(77),
+          s = n(105),
+          a = n(106),
           l = o(i),
           d = r(s),
           c = r(a);
@@ -10291,17 +10249,17 @@
         "use strict";
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
-        var i = r(n(92)),
+        var i = r(n(89)),
           o = r(n(2));
         function r(t) {
           return t && t.__esModule ? t : { default: t };
         }
         class s extends i.default {
           templateMarkup() {
-            return n(111);
+            return n(108);
           }
           stylesheetMarkup() {
-            return n(112);
+            return n(109);
           }
           template() {
             return o.default
@@ -10319,11 +10277,11 @@
           '<template>\r\n  <div class="ui-dropdown">\r\n    <dt class="ui-dropdown-current">\r\n      <div class="ui-dropdown-current-content shadow"></div>\r\n      <slot name=".ui-dropdown-current-content.light"></slot>\r\n    </dt>\r\n    <dd class="ui-dropdown-options-container">\r\n      <ul class="ui-dropdown-options">\r\n        <lol-uikit-scrollable>\r\n          <slot name="lol-uikit-dropdown-option"></slot>\r\n        </lol-uikit-scrollable>\r\n      </ul>\r\n    </dd>\r\n  </div>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(98),
-          a = n(99),
+          r = n(77),
+          s = n(95),
+          a = n(96),
           l = o(i),
           d = r(s),
           c = r(a);
@@ -10358,10 +10316,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(114);
+            return n(111);
           }
           stylesheetMarkup() {
-            return n(115);
+            return n(112);
           }
           constructor() {
             super(),
@@ -10460,7 +10418,7 @@
         };
         class r extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(117);
+            return n(114);
           }
           connectedCallback() {
             this.processAttributes();
@@ -10492,10 +10450,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(119);
+            return n(116);
           }
           stylesheetMarkup() {
-            return n(120);
+            return n(117);
           }
         }
         o.tagName = "lol-uikit-info-icon";
@@ -10508,12 +10466,12 @@
           '<template>\r\n  <div class="lol-uikit-info-icon"></div>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(121),
-          a = n(122),
-          l = n(123),
+          r = n(77),
+          s = n(118),
+          a = n(119),
+          l = n(120),
           d = o(i),
           c = r(s),
           u = r(a),
@@ -10619,7 +10577,7 @@
             return s;
           }
           templateMarkup() {
-            return n(125);
+            return n(122);
           }
           constructor() {
             super(),
@@ -10924,10 +10882,10 @@
             return ["type", "selectedindex", "direction"];
           }
           templateMarkup() {
-            return n(127);
+            return n(124);
           }
           stylesheetMarkup() {
-            return n(128);
+            return n(125);
           }
           constructor() {
             super(),
@@ -11006,10 +10964,10 @@
             return u;
           }
           templateMarkup() {
-            return n(130);
+            return n(127);
           }
           stylesheetMarkup() {
-            return n(131);
+            return n(128);
           }
           constructor() {
             super(),
@@ -11205,8 +11163,8 @@
         "use strict";
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
-        var i = r(n(132)),
-          o = r(n(133));
+        var i = r(n(129)),
+          o = r(n(130));
         function r(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -11252,7 +11210,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(134)) && i.__esModule ? i : { default: i },
+          o = (i = n(131)) && i.__esModule ? i : { default: i },
           r = n(1);
         const s = [
             "/fe/lol-uikit/images/parallax-smoke1.png",
@@ -11272,10 +11230,10 @@
             ];
           }
           templateMarkup() {
-            return n(136);
+            return n(133);
           }
           stylesheetMarkup() {
-            return n(137);
+            return n(134);
           }
           connectedCallback() {
             super.connectedCallback();
@@ -11373,9 +11331,9 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = a(n(139)),
-          r = a(n(160)),
-          s = a(n(161));
+          o = a(n(136)),
+          r = a(n(157)),
+          s = a(n(158));
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -11384,10 +11342,10 @@
             return [];
           }
           templateMarkup() {
-            return n(162);
+            return n(159);
           }
           stylesheetMarkup() {
-            const t = n(163);
+            const t = n(160);
             return r.default + "\n" + t.toString();
           }
           connectedCallback() {
@@ -11418,20 +11376,20 @@
       },
       (t, e, n) => {
         "use strict";
-        t.exports = n(140);
+        t.exports = n(137);
       },
       (t, e, n) => {
         "use strict";
-        var i = n(141),
-          o = n(149),
-          r = n(159);
+        var i = n(138),
+          o = n(146),
+          r = n(156);
         t.exports = { initialize: o, update: r, destroy: i };
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(144),
-          r = n(145);
+        var i = n(139),
+          o = n(141),
+          r = n(142);
         t.exports = function (t) {
           var e = r.get(t);
           e &&
@@ -11446,8 +11404,8 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(143),
-          o = n(144),
+        var i = n(140),
+          o = n(141),
           r = (e.toInt = function (t) {
             return parseInt(t, 10) || 0;
           }),
@@ -11596,12 +11554,12 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(143),
-          r = n(146),
-          s = n(144),
-          a = n(147),
-          l = n(148),
+        var i = n(139),
+          o = n(140),
+          r = n(143),
+          s = n(141),
+          a = n(144),
+          l = n(145),
           d = {};
         function c(t) {
           var e,
@@ -11819,19 +11777,19 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(143),
-          r = n(145),
-          s = n(150),
+        var i = n(139),
+          o = n(140),
+          r = n(142),
+          s = n(147),
           a = {
-            "click-rail": n(152),
-            "drag-scrollbar": n(153),
-            keyboard: n(154),
-            wheel: n(155),
-            touch: n(156),
-            selection: n(157),
+            "click-rail": n(149),
+            "drag-scrollbar": n(150),
+            keyboard: n(151),
+            wheel: n(152),
+            touch: n(153),
+            selection: n(154),
           },
-          l = n(158);
+          l = n(155);
         t.exports = function (t, e) {
           (e = "object" == typeof e ? e : {}), o.add(t, "ps-container");
           var n = r.add(t);
@@ -11846,11 +11804,11 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(143),
-          r = n(144),
-          s = n(145),
-          a = n(151);
+        var i = n(139),
+          o = n(140),
+          r = n(141),
+          s = n(142),
+          a = n(148);
         function l(t, e) {
           return (
             t.settings.minScrollbarLength &&
@@ -11973,7 +11931,7 @@
         "use strict";
         var i,
           o,
-          r = n(145),
+          r = n(142),
           s = function (t) {
             var e = document.createEvent("Event");
             return e.initEvent(t, !0, !0), e;
@@ -12018,9 +11976,9 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(145),
-          o = n(150),
-          r = n(151);
+        var i = n(142),
+          o = n(147),
+          r = n(148);
         t.exports = function (t) {
           !(function (t, e) {
             function n(t) {
@@ -12056,11 +12014,11 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(144),
-          r = n(145),
-          s = n(150),
-          a = n(151);
+        var i = n(139),
+          o = n(141),
+          r = n(142),
+          s = n(147),
+          a = n(148);
         function l(t, e) {
           var n = null,
             r = null;
@@ -12137,11 +12095,11 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(144),
-          r = n(145),
-          s = n(150),
-          a = n(151);
+        var i = n(139),
+          o = n(141),
+          r = n(142),
+          s = n(147),
+          a = n(148);
         function l(t, e) {
           var n = !1;
           e.event.bind(t, "mouseenter", function () {
@@ -12257,9 +12215,9 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(145),
-          o = n(150),
-          r = n(151);
+        var i = n(142),
+          o = n(147),
+          r = n(148);
         function s(t, e) {
           var n = !1;
           function i(i) {
@@ -12364,10 +12322,10 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(145),
-          r = n(150),
-          s = n(151);
+        var i = n(139),
+          o = n(142),
+          r = n(147),
+          s = n(148);
         function a(t, e, n, i) {
           function a(e, n) {
             s(t, "top", t.scrollTop - n), s(t, "left", t.scrollLeft - e), r(t);
@@ -12479,10 +12437,10 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(145),
-          r = n(150),
-          s = n(151);
+        var i = n(139),
+          o = n(142),
+          r = n(147),
+          s = n(148);
         function a(t, e) {
           var n = null,
             a = { top: 0, left: 0 };
@@ -12551,8 +12509,8 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(145),
-          o = n(150);
+        var i = n(142),
+          o = n(147);
         t.exports = function (t) {
           !(function (t, e) {
             e.event.bind(t, "scroll", function () {
@@ -12563,11 +12521,11 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = n(142),
-          o = n(144),
-          r = n(145),
-          s = n(150),
-          a = n(151);
+        var i = n(139),
+          o = n(141),
+          r = n(142),
+          s = n(147),
+          a = n(148);
         t.exports = function (t) {
           var e = r.get(t);
           e &&
@@ -12692,7 +12650,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(165)) && i.__esModule ? i : { default: i };
+          r = (i = n(162)) && i.__esModule ? i : { default: i };
         const { RenderMode: s, PlayerNameComputer: a } =
             o.playerNameComponentLogic,
           l = {
@@ -12720,10 +12678,10 @@
             return d;
           }
           templateMarkup() {
-            return n(174);
+            return n(171);
           }
           stylesheetMarkup() {
-            return n(175);
+            return n(172);
           }
           constructor() {
             super(),
@@ -12931,7 +12889,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(166)) && i.__esModule ? i : { default: i };
+          r = (i = n(163)) && i.__esModule ? i : { default: i };
         var s = new (class {
           assign(t, e, n, i = {}) {
             (i.ComponentFactory = i.ComponentFactory || o.componentFactory),
@@ -12961,10 +12919,10 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = a(n(167)),
+        var i = a(n(164)),
           o = n(1),
-          r = a(n(168)),
-          s = a(n(172));
+          r = a(n(165)),
+          s = a(n(169));
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -13440,9 +13398,9 @@
       (t, e, n) => {
         "use strict";
         var i,
-          o = (i = n(169)) && i.__esModule ? i : { default: i },
-          r = l(n(170)),
-          s = l(n(171));
+          o = (i = n(166)) && i.__esModule ? i : { default: i },
+          r = l(n(167)),
+          s = l(n(168));
         function a(t) {
           if ("function" != typeof WeakMap) return null;
           var e = new WeakMap(),
@@ -13481,8 +13439,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = a(n(170)),
-          r = a(n(171));
+          o = a(n(167)),
+          r = a(n(168));
         function s(t) {
           if ("function" != typeof WeakMap) return null;
           var e = new WeakMap(),
@@ -13677,7 +13635,7 @@
               }
             (i.default = t), n && n.set(t, i);
             return i;
-          })(n(170));
+          })(n(167));
         function r(t) {
           if ("function" != typeof WeakMap) return null;
           var e = new WeakMap(),
@@ -13736,8 +13694,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = s(n(168)),
-          r = s(n(173));
+          o = s(n(165)),
+          r = s(n(170));
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -13794,7 +13752,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = e.Screen = void 0);
         var i,
-          o = (i = n(66)) && i.__esModule ? i : { default: i };
+          o = (i = n(63)) && i.__esModule ? i : { default: i };
         class r {
           constructor() {
             const t = void 0 === window.riotInvoke;
@@ -13887,7 +13845,7 @@
           '<template>\r\n\r\n  \x3c!-- Render components are activated via css class ("renderMode <RenderMode> disabled")\r\n       * <RenderMode> is defined in playerNameComponentLogic.RenderMode\r\n       * disabled is added/removed when the corresponding renderMode is activated\r\n       * player-name__<type> classes identify elements whose text is set to the respective player name\r\n    --\x3e\r\n\r\n  <span class="renderMode fullAlias disabled">\x3c!--\r\n --\x3e<span class="player-name__alias player-name__force-gamename-tagline-order">\x3c!--\r\n   --\x3e<span class="player-name__game-name player-name__force-locale-text-direction"></span>\x3c!--\r\n   --\x3e<span class="player-name__tag-line-separator player-name__force-gamename-tagline-order">#</span>\x3c!--\r\n   --\x3e<span class="player-name__tag-line player-name__force-locale-text-direction"></span>\x3c!--\r\n --\x3e</span>\x3c!--\r\n--\x3e</span>\r\n\r\n  <span class="renderMode gameNameOnly disabled">\x3c!--\r\n --\x3e<span class="player-name__alias">\x3c!--\r\n   --\x3e<span class="player-name__game-name player-name__force-locale-text-direction"></span>\x3c!--\r\n --\x3e</span>\x3c!--\r\n--\x3e</span>\r\n\r\n  <span class="renderMode tagLineTooltip disabled">\x3c!--\r\n --\x3e<span class="player-name__alias">\x3c!--\r\n   --\x3e<span class="player-name__game-name player-name__force-locale-text-direction"></span>\x3c!--\r\n --\x3e</span>\x3c!--\r\n\r\n --\x3e<lol-uikit-tooltip>\x3c!--\r\n   --\x3e<lol-uikit-content-block type="tooltip-system" class="player-name__tooltip__alias">\x3c!--\r\n     --\x3e<span class="player-name__force-gamename-tagline-order">\x3c!--\r\n       --\x3e<span class="player-name__tooltip__game-name player-name__force-locale-text-direction"></span>\x3c!--\r\n       --\x3e<span class="player-name__tooltip__tag-line-separator player-name__force-gamename-tagline-order">#</span>\x3c!--\r\n       --\x3e<span class="player-name__tooltip__tag-line player-name__force-locale-text-direction"></span>\x3c!--\r\n     --\x3e</span>\x3c!--\r\n   --\x3e</lol-uikit-content-block>\x3c!--\r\n --\x3e</lol-uikit-tooltip>\x3c!--\r\n--\x3e</span>\r\n\r\n  <span class="renderMode summonerName disabled">\x3c!--\r\n --\x3e<span class="player-name__summoner player-name__force-locale-text-direction"></span>\x3c!--\r\n--\x3e</span>\r\n\r\n  <span class="renderMode error disabled">\r\n    <span class="player-name__error"></span>\r\n  </span>\r\n\r\n  <span class="renderMode component disabled">\r\n    <slot class="disabled" name="alias"></slot>\r\n    <slot class="disabled" name="summoner"></slot>\r\n  </span>\r\n\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10)(i);
         o.push([
           t.id,
@@ -13921,10 +13879,10 @@
         class l extends a.webComponents.ShadowElement {
           static initAnimationDelay = 100;
           templateMarkup() {
-            return n(177);
+            return n(174);
           }
           stylesheetMarkup() {
-            return n(178);
+            return n(175);
           }
           constructor() {
             super(),
@@ -14099,10 +14057,10 @@
             ];
           }
           templateMarkup() {
-            return n(180);
+            return n(177);
           }
           stylesheetMarkup() {
-            return n(181);
+            return n(178);
           }
           constructor() {
             super(), this.setMouseEvents();
@@ -14265,7 +14223,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(183)) && i.__esModule ? i : { default: i },
+          o = (i = n(180)) && i.__esModule ? i : { default: i },
           r = n(1);
         const s = "summoner",
           a = "champion",
@@ -14277,10 +14235,10 @@
           h = { percent: 0, animateFillDuration: 1, animateStartDelay: 0 };
         class m extends r.webComponents.ShadowElement {
           templateMarkup() {
-            return n(184);
+            return n(181);
           }
           stylesheetMarkup() {
-            return n(185);
+            return n(182);
           }
           constructor() {
             super(),
@@ -14558,10 +14516,10 @@
         var i = n(1);
         class o extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(187);
+            return n(184);
           }
           stylesheetMarkup() {
-            return n(188);
+            return n(185);
           }
           constructor() {
             super(), this.addEventListener("click", this._handleClick);
@@ -14599,10 +14557,10 @@
           '<template>\r\n    <li class="ui-radio-input-option"><slot></slot></li>\r\n</template>\r\n';
       },
       (t, e, n) => {
-        var i = n(79),
+        var i = n(76),
           o = n(10),
-          r = n(80),
-          s = n(189),
+          r = n(77),
+          s = n(186),
           a = o(i),
           l = r(s);
         a.push([
@@ -14640,10 +14598,10 @@
           r = (i = n(20)) && i.__esModule ? i : { default: i };
         class s extends o.webComponents.ShadowElement {
           templateMarkup() {
-            return n(191);
+            return n(188);
           }
           stylesheetMarkup() {
-            return n(192);
+            return n(189);
           }
           constructor() {
             super(),
@@ -14719,7 +14677,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(193)) && i.__esModule ? i : { default: i };
+          r = (i = n(190)) && i.__esModule ? i : { default: i };
         const s = "data-max-width",
           a = "data-max-height",
           l = "data-multiline",
@@ -14729,7 +14687,7 @@
             return [s, a, l];
           }
           templateMarkup() {
-            return n(195);
+            return n(192);
           }
           connectedCallback() {
             super.connectedCallback(),
@@ -14839,13 +14797,13 @@
           (e.default = void 0);
         var i = n(1),
           o = n(18),
-          r = n(171);
+          r = n(168);
         class s extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(197);
+            return n(194);
           }
           stylesheetMarkup() {
-            return n(198);
+            return n(195);
           }
           constructor() {
             super(),
@@ -15068,7 +15026,7 @@
             return ["animation", "selected-item"];
           }
           templateMarkup() {
-            return n(200);
+            return n(197);
           }
           constructor() {
             super(),
@@ -15210,7 +15168,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(165)) && i.__esModule ? i : { default: i },
+          o = (i = n(162)) && i.__esModule ? i : { default: i },
           r = n(1);
         const s = "horizontal",
           a = s,
@@ -15240,10 +15198,10 @@
           m = "value";
         class g extends r.webComponents.ShadowElement {
           templateMarkup() {
-            return n(202);
+            return n(199);
           }
           stylesheetMarkup() {
-            return n(203);
+            return n(200);
           }
           constructor() {
             super(),
@@ -15571,10 +15529,10 @@
           a = "is-identity-modal";
         class l extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(205);
+            return n(202);
           }
           stylesheetMarkup() {
-            return n(206);
+            return n(203);
           }
           static get observedAttributes() {
             return [o, s, r, a];
@@ -15635,10 +15593,10 @@
           c = "has-fresh-xp";
         class u extends i.webComponents.ShadowElement {
           templateMarkup() {
-            return n(208);
+            return n(205);
           }
           stylesheetMarkup() {
-            return n(209);
+            return n(206);
           }
           static get observedAttributes() {
             return [o, r, s, "simplified", "social", "solid", a, l];
@@ -15743,10 +15701,10 @@
             ];
           }
           templateMarkup() {
-            return n(211);
+            return n(208);
           }
           stylesheetMarkup() {
-            return n(212);
+            return n(209);
           }
           connectedCallback() {
             super.connectedCallback(),
@@ -15850,13 +15808,13 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(165)) && i.__esModule ? i : { default: i };
+          r = (i = n(162)) && i.__esModule ? i : { default: i };
         class s extends o.webComponents.ShadowElement {
           static get observedAttributes() {
             return ["key", "disabled"];
           }
           templateMarkup() {
-            return n(214);
+            return n(211);
           }
           connectedCallback() {
             super.connectedCallback(),
@@ -15925,10 +15883,10 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(53)) && i.__esModule ? i : { default: i };
+          o = (i = n(50)) && i.__esModule ? i : { default: i };
         class r extends o.default {
           templateMarkup() {
-            return n(216);
+            return n(213);
           }
           static get observedAttributes() {
             return ["next-state"];
@@ -15993,7 +15951,7 @@
             (i.default = t), n && n.set(t, i);
             return i;
           })(n(1)),
-          o = n(218);
+          o = n(215);
         function r(t) {
           if ("function" != typeof WeakMap) return null;
           var e = new WeakMap(),
@@ -16012,7 +15970,7 @@
           h = ["mousemove", "scroll", "keypress"];
         class m extends s.ShadowElement {
           templateMarkup() {
-            return n(219);
+            return n(216);
           }
           constructor() {
             super(),
@@ -16192,8 +16150,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = s(n(1)),
-          o = s(n(221)),
-          r = n(218);
+          o = s(n(218)),
+          r = n(215);
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -16207,7 +16165,7 @@
           m = "idle";
         class g extends a.ShadowElement {
           templateMarkup() {
-            return n(223);
+            return n(220);
           }
           static get observedAttributes() {
             return ["fade-in", "fade-out", "src", l, d, c, "alignment", u];
@@ -16370,7 +16328,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(222)) && i.__esModule ? i : { default: i };
+          r = (i = n(219)) && i.__esModule ? i : { default: i };
         const s = "fade-in",
           a = "fade-out",
           l = "interupt",
@@ -16556,14 +16514,14 @@
       },
       (t, e, n) => {
         var i = {
-          "./dialog-alert/index.js": 225,
-          "./dialog-celebration/index.js": 228,
-          "./dialog-confirm/index.js": 229,
-          "./dialog-dismiss/index.js": 230,
-          "./dialog-toast-celebration/index.js": 231,
-          "./dialog-toast/index.js": 233,
-          "./first-touch-modal/index.js": 235,
-          "./vignette-celebration/index.js": 236,
+          "./dialog-alert/index.js": 222,
+          "./dialog-celebration/index.js": 225,
+          "./dialog-confirm/index.js": 226,
+          "./dialog-dismiss/index.js": 227,
+          "./dialog-toast-celebration/index.js": 228,
+          "./dialog-toast/index.js": 230,
+          "./first-touch-modal/index.js": 232,
+          "./vignette-celebration/index.js": 233,
         };
         function o(t) {
           var e = r(t);
@@ -16581,7 +16539,7 @@
         }),
           (o.resolve = r),
           (t.exports = o),
-          (o.id = 224);
+          (o.id = 221);
       },
       (t, e, n) => {
         "use strict";
@@ -16589,8 +16547,8 @@
           (e.default = void 0);
         var i = l(n(2)),
           o = l(n(19)),
-          r = l(n(226)),
-          s = l(n(227)),
+          r = l(n(223)),
+          s = l(n(224)),
           a = n(16);
         function l(t) {
           return t && t.__esModule ? t : { default: t };
@@ -16708,7 +16666,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(167)) && i.__esModule ? i : { default: i },
+          o = (i = n(164)) && i.__esModule ? i : { default: i },
           r = (function (t, e) {
             if (!e && t && t.__esModule) return t;
             if (null === t || ("object" != typeof t && "function" != typeof t))
@@ -17152,7 +17110,7 @@
         var i = d(n(19)),
           o = n(1),
           r = d(n(2)),
-          s = d(n(226)),
+          s = d(n(223)),
           a = n(16),
           l = d(n(20));
         function d(t) {
@@ -17346,8 +17304,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = a(n(2)),
-          o = a(n(226)),
-          r = n(227),
+          o = a(n(223)),
+          r = n(224),
           s = n(16);
         function a(t) {
           return t && t.__esModule ? t : { default: t };
@@ -17532,8 +17490,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = s(n(2)),
-          o = s(n(226)),
-          r = n(227);
+          o = s(n(223)),
+          r = n(224);
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -17582,7 +17540,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = s(n(2)),
-          o = s(n(232)),
+          o = s(n(229)),
           r = n(1);
         function s(t) {
           return t && t.__esModule ? t : { default: t };
@@ -17670,10 +17628,10 @@
         "use strict";
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = e.MAX_PIPS_PER_PAGE = void 0);
-        var i = a(n(167)),
+        var i = a(n(164)),
           o = n(1),
           r = a(n(20)),
-          s = n(70);
+          s = n(67);
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -17885,7 +17843,7 @@
           (e.default = void 0);
         var i = s(n(2)),
           o = s(n(19)),
-          r = s(n(234));
+          r = s(n(231));
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -17920,7 +17878,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(167)) && i.__esModule ? i : { default: i };
+          r = (i = n(164)) && i.__esModule ? i : { default: i };
         var s = new (class {
           constructor() {
             (this.TOAST_SPEED = {
@@ -18138,22 +18096,22 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = y(n(165)),
-          r = y(n(238)),
-          s = y(n(239)),
-          a = y(n(240)),
-          l = y(n(242)),
-          d = y(n(243)),
-          c = y(n(245)),
-          u = y(n(246)),
-          p = y(n(248)),
-          h = y(n(250)),
-          m = y(n(167)),
-          g = y(n(253)),
-          f = y(n(227)),
+          o = y(n(162)),
+          r = y(n(235)),
+          s = y(n(236)),
+          a = y(n(237)),
+          l = y(n(239)),
+          d = y(n(240)),
+          c = y(n(242)),
+          u = y(n(243)),
+          p = y(n(245)),
+          h = y(n(247)),
+          m = y(n(164)),
+          g = y(n(250)),
+          f = y(n(224)),
           b = y(n(30)),
           A = y(n(35)),
-          v = y(n(255));
+          v = y(n(252));
         function y(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -18225,7 +18183,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(234)) && i.__esModule ? i : { default: i };
+          r = (i = n(231)) && i.__esModule ? i : { default: i };
         var s = new (class {
           constructor() {
             (this.type = "DialogToast"), (this.dismissableDefault = !0);
@@ -18252,7 +18210,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(232)) && i.__esModule ? i : { default: i };
+          r = (i = n(229)) && i.__esModule ? i : { default: i };
         const s = {
           type: "DialogToastCelebration",
           ComponentFactory: o.componentFactory,
@@ -18292,7 +18250,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(241)) && i.__esModule ? i : { default: i };
+          r = (i = n(238)) && i.__esModule ? i : { default: i };
         const s = {
           type: "VignetteCelebration",
           ComponentFactory: o.componentFactory,
@@ -18341,9 +18299,9 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = l(n(167)),
+          o = l(n(164)),
           r = n(16),
-          s = n(70),
+          s = n(67),
           a = l(n(20));
         function l(t) {
           return t && t.__esModule ? t : { default: t };
@@ -18740,7 +18698,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(65)) && i.__esModule ? i : { default: i };
+          o = (i = n(62)) && i.__esModule ? i : { default: i };
         class r {
           static document = window.testsSandboxDoc
             ? window.testsSandboxDoc
@@ -18829,7 +18787,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(244)) && i.__esModule ? i : { default: i };
+          o = (i = n(241)) && i.__esModule ? i : { default: i };
         var r = new (class {
           add(t, e) {
             return o.default.add(t, e);
@@ -18845,10 +18803,10 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = n(1),
-          o = l(n(167)),
-          r = l(n(227)),
-          s = l(n(172)),
-          a = l(n(168));
+          o = l(n(164)),
+          r = l(n(224)),
+          s = l(n(169)),
+          a = l(n(165));
         function l(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -19068,7 +19026,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(226)) && i.__esModule ? i : { default: i };
+          r = (i = n(223)) && i.__esModule ? i : { default: i };
         var s = new (class {
           constructor() {
             this.type = "Modal";
@@ -19113,7 +19071,7 @@
           (e.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(247)) && i.__esModule ? i : { default: i };
+          r = (i = n(244)) && i.__esModule ? i : { default: i };
         var s = new (class {
           assign(t, e, n, i) {
             (i.ComponentFactory = i.ComponentFactory || o.componentFactory),
@@ -19132,10 +19090,10 @@
       },
       (t, e, n) => {
         "use strict";
-        var i = a(n(167)),
-          o = a(n(93)),
+        var i = a(n(164)),
+          o = a(n(90)),
           r = n(1),
-          s = a(n(168));
+          s = a(n(165));
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -19310,7 +19268,7 @@
         "use strict";
         var i,
           o = n(1),
-          r = (i = n(249)) && i.__esModule ? i : { default: i };
+          r = (i = n(246)) && i.__esModule ? i : { default: i };
         t.exports = {
           assignFlyout: function (t, e, n, i) {
             (i.ComponentFactory = i.ComponentFactory || o.componentFactory),
@@ -19354,9 +19312,9 @@
             (i.default = t), n && n.set(t, i);
             return i;
           })(n(1)),
-          o = a(n(167)),
-          r = a(n(168)),
-          s = a(n(172));
+          o = a(n(164)),
+          r = a(n(165)),
+          s = a(n(169));
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -19660,9 +19618,9 @@
         "use strict";
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
-        var i = s(n(251)),
-          o = s(n(252)),
-          r = s(n(173));
+        var i = s(n(248)),
+          o = s(n(249)),
+          r = s(n(170));
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -19714,8 +19672,8 @@
           (e.inChrome = e.default = e.MockedWindow = void 0);
         var i = n(1),
           o = a(n(4)),
-          r = a(n(66)),
-          s = a(n(173));
+          r = a(n(63)),
+          s = a(n(170));
         function a(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -20167,7 +20125,7 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i,
-          o = (i = n(66)) && i.__esModule ? i : { default: i };
+          o = (i = n(63)) && i.__esModule ? i : { default: i };
         const r = {
           get rect() {
             return new o.default(
@@ -20342,7 +20300,7 @@
       (t, e, n) => {
         "use strict";
         var i,
-          o = (i = n(254)) && i.__esModule ? i : { default: i };
+          o = (i = n(251)) && i.__esModule ? i : { default: i };
         t.exports = {
           registerLayerWindow: function (t, e, n, i) {
             o.default.registerLayerWindow(t, e, n, i);
@@ -20390,8 +20348,8 @@
         Object.defineProperty(e, "__esModule", { value: !0 }),
           (e.default = void 0);
         var i = s(n(1)),
-          o = s(n(167)),
-          r = s(n(250));
+          o = s(n(164)),
+          r = s(n(247));
         function s(t) {
           return t && t.__esModule ? t : { default: t };
         }
@@ -20717,7 +20675,7 @@
           });
         var i,
           o = n(1),
-          r = (i = n(256)) && i.__esModule ? i : { default: i };
+          r = (i = n(253)) && i.__esModule ? i : { default: i };
         const s =
           "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QQYaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0NSA3OS4xNjM0OTksIDIwMTgvMDgvMTMtMTY6NDA6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcFJpZ2h0cz0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3JpZ2h0cy8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6NDA4MTQzMDktMGVhYS1lMTRiLTg3ZWItNzliZDViOGMwZDY1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3MzAzMTk0QkQ4QjExRUI5MDAzREE5MzQ4RUFERDlCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3MzAzMTkzQkQ4QjExRUI5MDAzREE5MzQ4RUFERDlCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSI+IDx4bXBSaWdodHM6VXNhZ2VUZXJtcz4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCIvPiA8L3JkZjpBbHQ+IDwveG1wUmlnaHRzOlVzYWdlVGVybXM+IDx4bXBNTTpEZXJpdmVk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";
         e.DEFAULT_ICON_URL = s;
@@ -20836,7 +20794,7 @@
                     (t.default.gameFlowBinding = e("/lol-gameflow", i));
                   const o = n(4).default;
                   o.registerCustomElements(), o.registerComponents();
-                  return n(237).default;
+                  return n(234).default;
                 });
             });
         },

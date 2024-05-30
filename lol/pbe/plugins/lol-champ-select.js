@@ -132,8 +132,8 @@
           f = d.Lodash,
           { EmberHelpers: S } = d,
           { Telemetry: _ } = d,
-          b = o.PositionAssignmentPreloadVideos;
-        var y = new (class {
+          y = o.PositionAssignmentPreloadVideos;
+        var b = new (class {
           constructor() {
             const e = d.getProvider();
             this.champSelectVideoCache =
@@ -205,7 +205,7 @@
               "Lobby" !== t &&
               this.largeAreaAnimationsEnabled &&
               (this.champSelectVideoCache.release(),
-              b.forEach(
+              y.forEach(
                 function (e) {
                   this.champSelectVideoCache.cache(e);
                 }.bind(this),
@@ -280,7 +280,7 @@
                           h = m && r !== l.TIMER_PHASES.planning,
                           g = c - (Date.now() - u),
                           f = c - g >= 0.2 * c,
-                          { accountId: S, puuid: b, summonerId: y } = n,
+                          { accountId: S, puuid: y, summonerId: b } = n,
                           v = Array.isArray(i) ? i.length : 0,
                           x = Array.isArray(o)
                             ? o.filter((e) => e.owned).length
@@ -289,8 +289,8 @@
                             internalNowInEpochMs: u,
                             timeRemainingForPlayerInMS: g,
                             accountId: S,
-                            puuid: b,
-                            summonerId: y,
+                            puuid: y,
+                            summonerId: b,
                             totalTimeInPhase: a,
                             phase: r,
                             queueId: d,
@@ -489,13 +489,13 @@
             return this._isShown;
           }
         })();
-        t.default = y;
+        t.default = b;
       },
       (e, t, n) => {
         "use strict";
         n.r(t),
           n.d(t, {
-            Breadcrumbs: () => R.Breadcrumbs,
+            Breadcrumbs: () => M.Breadcrumbs,
             BrowserClient: () => C.BrowserClient,
             BrowserProfilingIntegration: () => Y.BrowserProfilingIntegration,
             BrowserTracing: () => q.BrowserTracing,
@@ -527,7 +527,7 @@
             addGlobalEventProcessor: () => p.addGlobalEventProcessor,
             addIntegration: () => h.addIntegration,
             addTracingExtensions: () => g.addTracingExtensions,
-            breadcrumbsIntegration: () => R.breadcrumbsIntegration,
+            breadcrumbsIntegration: () => M.breadcrumbsIntegration,
             browserApiErrorsIntegration: () => U.browserApiErrorsIntegration,
             browserProfilingIntegration: () => Y.browserProfilingIntegration,
             browserTracingIntegration: () => W.browserTracingIntegration,
@@ -535,7 +535,7 @@
             captureException: () => m.captureException,
             captureMessage: () => m.captureMessage,
             captureSession: () => m.captureSession,
-            captureUserFeedback: () => M.captureUserFeedback,
+            captureUserFeedback: () => R.captureUserFeedback,
             chromeStackLineParser: () => A.chromeStackLineParser,
             close: () => m.close,
             configureScope: () => m.configureScope,
@@ -543,7 +543,7 @@
             createTransport: () => S.createTransport,
             createUserFeedbackEnvelope: () => D.createUserFeedbackEnvelope,
             dedupeIntegration: () => N.dedupeIntegration,
-            defaultIntegrations: () => M.defaultIntegrations,
+            defaultIntegrations: () => R.defaultIntegrations,
             defaultRequestInstrumentationOptions: () =>
               $.defaultRequestInstrumentationOptions,
             defaultStackLineParsers: () => A.defaultStackLineParsers,
@@ -555,7 +555,7 @@
             extractTraceparentData: () => _.extractTraceparentData,
             feedbackIntegration: () => G.feedbackIntegration,
             flush: () => m.flush,
-            forceLoad: () => M.forceLoad,
+            forceLoad: () => R.forceLoad,
             functionToStringIntegration: () => i.functionToStringIntegration,
             geckoStackLineParser: () => A.geckoStackLineParser,
             getActiveSpan: () => f.getActiveSpan,
@@ -563,26 +563,26 @@
             getClient: () => m.getClient,
             getCurrentHub: () => o.getCurrentHub,
             getCurrentScope: () => m.getCurrentScope,
-            getDefaultIntegrations: () => M.getDefaultIntegrations,
+            getDefaultIntegrations: () => R.getDefaultIntegrations,
             getHubFromCarrier: () => o.getHubFromCarrier,
             getReplay: () => H.getReplay,
-            getSpanStatusFromHttpCode: () => b.getSpanStatusFromHttpCode,
+            getSpanStatusFromHttpCode: () => y.getSpanStatusFromHttpCode,
             globalHandlersIntegration: () => B.globalHandlersIntegration,
             httpContextIntegration: () => O.httpContextIntegration,
             inboundFiltersIntegration: () => a.inboundFiltersIntegration,
-            init: () => M.init,
+            init: () => R.init,
             instrumentOutgoingRequests: () => $.instrumentOutgoingRequests,
             isInitialized: () => m.isInitialized,
             lastEventId: () => m.lastEventId,
             linkedErrorsIntegration: () => L.linkedErrorsIntegration,
             makeBrowserOfflineTransport: () => V.makeBrowserOfflineTransport,
-            makeFetchTransport: () => w.makeFetchTransport,
+            makeFetchTransport: () => I.makeFetchTransport,
             makeMain: () => o.makeMain,
-            makeMultiplexedTransport: () => y.makeMultiplexedTransport,
-            makeXHRTransport: () => I.makeXHRTransport,
+            makeMultiplexedTransport: () => b.makeMultiplexedTransport,
+            makeXHRTransport: () => w.makeXHRTransport,
             metrics: () => v.metrics,
             moduleMetadataIntegration: () => r.moduleMetadataIntegration,
-            onLoad: () => M.onLoad,
+            onLoad: () => R.onLoad,
             onProfilingStartRouteTransaction: () =>
               z.onProfilingStartRouteTransaction,
             opera10StackLineParser: () => A.opera10StackLineParser,
@@ -595,13 +595,13 @@
             setCurrentClient: () => k.setCurrentClient,
             setExtra: () => m.setExtra,
             setExtras: () => m.setExtras,
-            setHttpStatus: () => b.setHttpStatus,
+            setHttpStatus: () => y.setHttpStatus,
             setMeasurement: () => E.setMeasurement,
             setTag: () => m.setTag,
             setTags: () => m.setTags,
             setUser: () => m.setUser,
-            showReportDialog: () => M.showReportDialog,
-            spanStatusfromHttpCode: () => b.spanStatusfromHttpCode,
+            showReportDialog: () => R.showReportDialog,
+            spanStatusfromHttpCode: () => y.spanStatusfromHttpCode,
             startBrowserTracingNavigationSpan: () =>
               W.startBrowserTracingNavigationSpan,
             startBrowserTracingPageLoadSpan: () =>
@@ -615,7 +615,7 @@
             winjsStackLineParser: () => A.winjsStackLineParser,
             withIsolationScope: () => m.withIsolationScope,
             withScope: () => m.withScope,
-            wrap: () => M.wrap,
+            wrap: () => R.wrap,
           });
         var s = n(138),
           i = n(4),
@@ -633,21 +633,21 @@
           f = n(53),
           S = n(64),
           _ = n(62),
-          b = n(51),
-          y = n(67),
+          y = n(51),
+          b = n(67),
           v = n(68),
           x = n(72),
           k = n(73),
           E = n(74),
           T = n(75),
           C = n(76),
-          w = n(83),
-          I = n(86),
+          I = n(83),
+          w = n(86),
           A = n(87),
           P = n(79),
           D = n(81),
-          M = n(88),
-          R = n(90),
+          R = n(88),
+          M = n(90),
           N = n(101),
           B = n(98),
           O = n(102),
@@ -711,7 +711,7 @@
             fill: () => l,
             getOriginalFunction: () => m,
             markFunctionWrapped: () => u,
-            objectify: () => b,
+            objectify: () => y,
             urlEncode: () => d,
           });
         var s = n(10),
@@ -844,7 +844,7 @@
           }
           return e;
         }
-        function b(e) {
+        function y(e) {
           let t;
           switch (!0) {
             case null == e:
@@ -964,7 +964,7 @@
             isError: () => i,
             isErrorEvent: () => a,
             isEvent: () => p,
-            isInstanceOf: () => b,
+            isInstanceOf: () => y,
             isNaN: () => _,
             isParameterizedString: () => u,
             isPlainObject: () => d,
@@ -973,7 +973,7 @@
             isString: () => c,
             isSyntheticEvent: () => S,
             isThenable: () => f,
-            isVueViewModel: () => y,
+            isVueViewModel: () => b,
           });
         const s = Object.prototype.toString;
         function i(e) {
@@ -983,7 +983,7 @@
             case "[object DOMException]":
               return !0;
             default:
-              return b(e, Error);
+              return y(e, Error);
           }
         }
         function o(e, t) {
@@ -1020,10 +1020,10 @@
           return o(e, "Object");
         }
         function p(e) {
-          return "undefined" != typeof Event && b(e, Event);
+          return "undefined" != typeof Event && y(e, Event);
         }
         function h(e) {
-          return "undefined" != typeof Element && b(e, Element);
+          return "undefined" != typeof Element && y(e, Element);
         }
         function g(e) {
           return o(e, "RegExp");
@@ -1042,14 +1042,14 @@
         function _(e) {
           return "number" == typeof e && e != e;
         }
-        function b(e, t) {
+        function y(e, t) {
           try {
             return e instanceof t;
           } catch (e) {
             return !1;
           }
         }
-        function y(e) {
+        function b(e) {
           return !(
             "object" != typeof e ||
             null === e ||
@@ -1220,7 +1220,7 @@
         n.r(t),
           n.d(t, {
             addBreadcrumb: () => S,
-            captureCheckIn: () => I,
+            captureCheckIn: () => w,
             captureEvent: () => g,
             captureException: () => p,
             captureMessage: () => h,
@@ -1229,18 +1229,18 @@
             configureScope: () => f,
             endSession: () => L,
             flush: () => P,
-            getClient: () => R,
+            getClient: () => M,
             getCurrentScope: () => B,
             isInitialized: () => N,
-            lastEventId: () => M,
+            lastEventId: () => R,
             setContext: () => _,
-            setExtra: () => y,
-            setExtras: () => b,
+            setExtra: () => b,
+            setExtras: () => y,
             setTag: () => x,
             setTags: () => v,
             setUser: () => k,
             startSession: () => O,
-            startTransaction: () => w,
+            startTransaction: () => I,
             withActiveSpan: () => C,
             withIsolationScope: () => T,
             withMonitor: () => A,
@@ -1279,10 +1279,10 @@
         function _(e, t) {
           (0, u.getCurrentHub)().setContext(e, t);
         }
-        function b(e) {
+        function y(e) {
           (0, u.getCurrentHub)().setExtras(e);
         }
-        function y(e, t) {
+        function b(e, t) {
           (0, u.getCurrentHub)().setExtra(e, t);
         }
         function v(e) {
@@ -1312,12 +1312,12 @@
         function C(e, t) {
           return E((n) => (n.setSpan(e), t(n)));
         }
-        function w(e, t) {
+        function I(e, t) {
           return (0, u.getCurrentHub)().startTransaction({ ...e }, t);
         }
-        function I(e, t) {
+        function w(e, t) {
           const n = B(),
-            o = R();
+            o = M();
           if (o) {
             if (o.captureCheckIn) return o.captureCheckIn(e, t, n);
             c.DEBUG_BUILD &&
@@ -1330,10 +1330,10 @@
           return (0, i.uuid4)();
         }
         function A(e, t, n) {
-          const s = I({ monitorSlug: e, status: "in_progress" }, n),
+          const s = w({ monitorSlug: e, status: "in_progress" }, n),
             i = (0, o.timestampInSeconds)();
           function r(t) {
-            I({
+            w({
               monitorSlug: e,
               status: t,
               checkInId: s,
@@ -1361,7 +1361,7 @@
           );
         }
         async function P(e) {
-          const t = R();
+          const t = M();
           return t
             ? t.flush(e)
             : (c.DEBUG_BUILD &&
@@ -1369,7 +1369,7 @@
               Promise.resolve(!1));
         }
         async function D(e) {
-          const t = R();
+          const t = M();
           return t
             ? t.close(e)
             : (c.DEBUG_BUILD &&
@@ -1378,20 +1378,20 @@
                 ),
               Promise.resolve(!1));
         }
-        function M() {
+        function R() {
           return (0, u.getCurrentHub)().lastEventId();
         }
-        function R() {
+        function M() {
           return (0, u.getCurrentHub)().getClient();
         }
         function N() {
-          return !!R();
+          return !!M();
         }
         function B() {
           return (0, u.getCurrentHub)().getScope();
         }
         function O(e) {
-          const t = R(),
+          const t = M(),
             n = (0, u.getIsolationScope)(),
             s = B(),
             { release: i, environment: o = l.DEFAULT_ENVIRONMENT } =
@@ -1424,7 +1424,7 @@
         function U() {
           const e = (0, u.getIsolationScope)(),
             t = B(),
-            n = R(),
+            n = M(),
             s = t.getSession() || e.getSession();
           s && n && n.captureSession && n.captureSession(s);
         }
@@ -1441,7 +1441,7 @@
             ensureHubOnCarrier: () => v,
             getCurrentHub: () => _,
             getHubFromCarrier: () => T,
-            getIsolationScope: () => b,
+            getIsolationScope: () => y,
             getMainCarrier: () => f,
             makeMain: () => S,
             runWithAsyncContext: () => k,
@@ -1707,15 +1707,15 @@
             const t = e.__SENTRY__.acs.getCurrentHub();
             if (t) return t;
           }
-          return y(e);
+          return b(e);
         }
-        function b() {
+        function y() {
           return _().getIsolationScope();
         }
-        function y(e = f()) {
+        function b(e = f()) {
           return (E(e) && !T(e).isOlderThan(p)) || C(e, new g()), T(e);
         }
-        function v(e, t = y()) {
+        function v(e, t = b()) {
           if (!E(e) || T(e).isOlderThan(p)) {
             const n = t.getClient(),
               s = t.getScope(),
@@ -2915,12 +2915,12 @@
           d = n(20);
         function p(e, t, n, a, p, h) {
           const { normalizeDepth: S = 3, normalizeMaxBreadth: _ = 1e3 } = e,
-            b = {
+            y = {
               ...t,
               event_id: t.event_id || n.event_id || (0, s.uuid4)(),
               timestamp: t.timestamp || (0, i.dateTimestampInSeconds)(),
             },
-            y = n.integrations || e.integrations.map((e) => e.name);
+            b = n.integrations || e.integrations.map((e) => e.name);
           !(function (e, t) {
             const {
               environment: n,
@@ -2938,19 +2938,19 @@
             r && r.value && (r.value = (0, o.truncate)(r.value, a));
             const c = e.request;
             c && c.url && (c.url = (0, o.truncate)(c.url, a));
-          })(b, e),
+          })(y, e),
             (function (e, t) {
               t.length > 0 &&
                 ((e.sdk = e.sdk || {}),
                 (e.sdk.integrations = [...(e.sdk.integrations || []), ...t]));
-            })(b, y),
-            void 0 === t.type && g(b, e.stackParser);
+            })(y, b),
+            void 0 === t.type && g(y, e.stackParser);
           const v = (function (e, t) {
             if (!t) return e;
             const n = e ? e.clone() : new u.Scope();
             return n.update(t), n;
           })(a, n.captureContext);
-          n.mechanism && (0, s.addExceptionMechanism)(b, n.mechanism);
+          n.mechanism && (0, s.addExceptionMechanism)(y, n.mechanism);
           const x = p && p.getEventProcessors ? p.getEventProcessors() : [],
             k = (0, u.getGlobalScope)().getScopeData();
           if (h) {
@@ -2962,13 +2962,13 @@
             (0, m.mergeScopeData)(k, e);
           }
           const E = [...(n.attachments || []), ...k.attachments];
-          E.length && (n.attachments = E), (0, m.applyScopeDataToEvent)(b, k);
+          E.length && (n.attachments = E), (0, m.applyScopeDataToEvent)(y, k);
           const T = [
             ...x,
             ...(0, c.getGlobalEventProcessors)(),
             ...k.eventProcessors,
           ];
-          return (0, c.notifyEventProcessors)(T, b, n).then(
+          return (0, c.notifyEventProcessors)(T, y, n).then(
             (e) => (
               e && f(e),
               "number" == typeof S && S > 0
@@ -3991,8 +3991,8 @@
           f = n(44),
           S = n(16),
           _ = n(24),
-          b = n(29);
-        const y = "Not capturing exception because it's already been captured.";
+          y = n(29);
+        const b = "Not capturing exception because it's already been captured.";
         class v {
           constructor(e) {
             if (
@@ -4024,7 +4024,7 @@
           }
           captureException(e, t, n) {
             if ((0, o.checkOrSetAlreadyCaught)(e))
-              return void (m.DEBUG_BUILD && i.logger.log(y));
+              return void (m.DEBUG_BUILD && i.logger.log(b));
             let s = t && t.event_id;
             return (
               this._process(
@@ -4060,7 +4060,7 @@
               t.originalException &&
               (0, o.checkOrSetAlreadyCaught)(t.originalException)
             )
-              return void (m.DEBUG_BUILD && i.logger.log(y));
+              return void (m.DEBUG_BUILD && i.logger.log(b));
             let s = t && t.event_id;
             const a = (e.sdkProcessingMetadata || {}).capturedSpanScope;
             return (
@@ -4252,7 +4252,7 @@
             return (
               !t.integrations && o.length > 0 && (t.integrations = o),
               this.emit("preprocessEvent", e, t),
-              (0, b.prepareEvent)(i, e, t, n, this, s).then((e) => {
+              (0, y.prepareEvent)(i, e, t, n, this, s).then((e) => {
                 if (null === e) return e;
                 const t = {
                   ...s.getPropagationContext(),
@@ -5234,8 +5234,8 @@
           const i = (0, l.getCurrentHub)(),
             o = (0, r.getCurrentScope)(),
             a = o.getSpan(),
-            u = y(e),
-            m = b(i, a, u);
+            u = b(e),
+            m = y(i, a, u);
           return (
             o.setSpan(m),
             (0, c.handleCallbackErrors)(
@@ -5250,12 +5250,12 @@
           );
         }
         function p(e, t) {
-          const n = y(e);
+          const n = b(e);
           return (0, l.runWithAsyncContext)(() =>
             (0, r.withScope)(e.scope, (s) => {
               const i = (0, l.getCurrentHub)(),
                 o = s.getSpan(),
-                a = e.onlyIfParent && !o ? void 0 : b(i, o, n);
+                a = e.onlyIfParent && !o ? void 0 : y(i, o, n);
               return (
                 s.setSpan(a),
                 (0, c.handleCallbackErrors)(
@@ -5274,12 +5274,12 @@
         }
         const h = p;
         function g(e, t) {
-          const n = y(e);
+          const n = b(e);
           return (0, l.runWithAsyncContext)(() =>
             (0, r.withScope)(e.scope, (s) => {
               const i = (0, l.getCurrentHub)(),
                 o = s.getSpan(),
-                a = e.onlyIfParent && !o ? void 0 : b(i, o, n);
+                a = e.onlyIfParent && !o ? void 0 : y(i, o, n);
               function r() {
                 a && a.end();
               }
@@ -5300,7 +5300,7 @@
         }
         function f(e) {
           if (!(0, u.hasTracingEnabled)()) return;
-          const t = y(e),
+          const t = b(e),
             n = (0, l.getCurrentHub)(),
             s = e.scope ? e.scope.getSpan() : S();
           if (e.onlyIfParent && !s) return;
@@ -5345,7 +5345,7 @@
           };
           return n ? (0, l.runWithAsyncContext)(() => n(p)) : p;
         };
-        function b(e, t, n) {
+        function y(e, t, n) {
           if (!(0, u.hasTracingEnabled)()) return;
           const s = (0, l.getIsolationScope)(),
             i = (0, r.getCurrentScope)();
@@ -5368,7 +5368,7 @@
           }
           return k(o, i, s), o;
         }
-        function y(e) {
+        function b(e) {
           if (e.startTime) {
             const t = { ...e };
             return (
@@ -6692,7 +6692,7 @@
                       : a
                         ? "UnhandledRejection"
                         : "Error",
-                    value: b(t, { isUnhandledRejection: a }),
+                    value: y(t, { isUnhandledRejection: a }),
                   },
                 ],
               },
@@ -6801,7 +6801,7 @@
           }
           return (o.message = t), o;
         }
-        function b(e, { isUnhandledRejection: t }) {
+        function y(e, { isUnhandledRejection: t }) {
           const n = (0, l.extractExceptionKeysForMessage)(e),
             s = t ? "promise rejection" : "exception";
           if ((0, i.isErrorEvent)(e))
@@ -7073,7 +7073,7 @@
           n.d(t, {
             chromeStackLineParser: () => l,
             defaultStackLineParsers: () => _,
-            defaultStackParser: () => b,
+            defaultStackParser: () => y,
             geckoStackLineParser: () => m,
             opera10StackLineParser: () => g,
             opera11StackLineParser: () => S,
@@ -7099,7 +7099,7 @@
                   const e = r.exec(t[2]);
                   e && ((t[2] = e[1]), (t[3] = e[2]), (t[4] = e[3]));
                 }
-                const [e, n] = y(t[1] || i, t[2]);
+                const [e, n] = b(t[1] || i, t[2]);
                 return o(n, e, t[3] ? +t[3] : void 0, t[4] ? +t[4] : void 0);
               }
             },
@@ -7123,7 +7123,7 @@
                 let e = t[3],
                   n = t[1] || i;
                 return (
-                  ([n, e] = y(n, e)),
+                  ([n, e] = b(n, e)),
                   o(e, n, t[4] ? +t[4] : void 0, t[5] ? +t[5] : void 0)
                 );
               }
@@ -7158,8 +7158,8 @@
             },
           ],
           _ = [l, m, p],
-          b = (0, s.createStackParser)(..._),
-          y = (e, t) => {
+          y = (0, s.createStackParser)(..._),
+          b = (e, t) => {
             const n = -1 !== e.indexOf("safari-extension"),
               s = -1 !== e.indexOf("safari-web-extension");
             return n || s
@@ -7174,14 +7174,14 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            captureUserFeedback: () => R,
+            captureUserFeedback: () => M,
             defaultIntegrations: () => C,
             forceLoad: () => P,
-            getDefaultIntegrations: () => w,
-            init: () => I,
+            getDefaultIntegrations: () => I,
+            init: () => w,
             onLoad: () => D,
             showReportDialog: () => A,
-            wrap: () => M,
+            wrap: () => R,
           });
         var s = n(35),
           i = n(4),
@@ -7199,8 +7199,8 @@
           f = n(75),
           S = n(90),
           _ = n(101),
-          b = n(98),
-          y = n(102),
+          y = n(98),
+          b = n(102),
           v = n(99),
           x = n(89),
           k = n(87),
@@ -7211,16 +7211,16 @@
           (0, i.functionToStringIntegration)(),
           (0, x.browserApiErrorsIntegration)(),
           (0, S.breadcrumbsIntegration)(),
-          (0, b.globalHandlersIntegration)(),
+          (0, y.globalHandlersIntegration)(),
           (0, v.linkedErrorsIntegration)(),
           (0, _.dedupeIntegration)(),
-          (0, y.httpContextIntegration)(),
+          (0, b.httpContextIntegration)(),
         ];
-        function w(e) {
+        function I(e) {
           return [...C];
         }
-        function I(e = {}) {
-          void 0 === e.defaultIntegrations && (e.defaultIntegrations = w()),
+        function w(e = {}) {
+          void 0 === e.defaultIntegrations && (e.defaultIntegrations = I()),
             void 0 === e.release &&
               ("string" == typeof __SENTRY_RELEASE__ &&
                 (e.release = __SENTRY_RELEASE__),
@@ -7309,10 +7309,10 @@
         function D(e) {
           e();
         }
-        function M(e) {
+        function R(e) {
           return (0, f.wrap)(e)();
         }
-        function R(e) {
+        function M(e) {
           const t = (0, c.getClient)();
           t && t.captureUserFeedback(e);
         }
@@ -7505,7 +7505,7 @@
       (e, t, n) => {
         "use strict";
         n.r(t),
-          n.d(t, { Breadcrumbs: () => v, breadcrumbsIntegration: () => y });
+          n.d(t, { Breadcrumbs: () => v, breadcrumbsIntegration: () => b });
         var s = n(34),
           i = n(12),
           o = n(91),
@@ -7522,8 +7522,8 @@
           f = n(80),
           S = n(75);
         const _ = 1024,
-          b = "Breadcrumbs",
-          y = (0, s.defineIntegration)((e = {}) => {
+          y = "Breadcrumbs",
+          b = (0, s.defineIntegration)((e = {}) => {
             const t = {
               console: !0,
               dom: !0,
@@ -7534,7 +7534,7 @@
               ...e,
             };
             return {
-              name: b,
+              name: y,
               setupOnce() {},
               setup(e) {
                 t.console &&
@@ -7736,7 +7736,7 @@
               },
             };
           }),
-          v = (0, s.convertIntegrationFnToClass)(b, y);
+          v = (0, s.convertIntegrationFnToClass)(y, b);
       },
       (e, t, n) => {
         "use strict";
@@ -8553,21 +8553,21 @@
           f = n(17),
           S = n(7),
           _ = n(18),
-          b = n(93),
-          y = n(11),
+          y = n(93),
+          b = n(11),
           v = n(94),
           x = n(92),
           k = n(95),
           E = n(37),
           T = n(66),
           C = n(121),
-          w = n(106);
-        const I = d.GLOBAL_OBJ,
+          I = n(106);
+        const w = d.GLOBAL_OBJ,
           A = "sentryReplaySession",
           P = "replay_event",
           D = "Unable to send Replay",
-          M = 15e4,
-          R = 5e3,
+          R = 15e4,
+          M = 5e3,
           N = 2e7,
           B = 36e5;
         function O(e) {
@@ -8946,8 +8946,8 @@
               maskInputFn: f,
               dataURLOptions: S = {},
               inlineImages: _,
-              recordCanvas: b,
-              keepIframeSrcFn: y,
+              recordCanvas: y,
+              keepIframeSrcFn: b,
               newlyAddedElement: v = !1,
             } = t,
             x = (function (e, t) {
@@ -8988,8 +8988,8 @@
                     maskAllText: f,
                     maskTextClass: S,
                     unmaskTextClass: _,
-                    maskTextSelector: b,
-                    unmaskTextSelector: y,
+                    maskTextSelector: y,
+                    unmaskTextSelector: b,
                   } = t,
                   v = (function (e, t, n, s) {
                     try {
@@ -9051,9 +9051,9 @@
                     const e = fe(
                       t,
                       S,
-                      b,
-                      _,
                       y,
+                      _,
+                      b,
                       q({ type: n, tagName: V(x), maskInputOptions: r }),
                     );
                     k.value = W({
@@ -9166,8 +9166,8 @@
                 maskInputFn: f,
                 dataURLOptions: S,
                 inlineImages: _,
-                recordCanvas: b,
-                keepIframeSrcFn: y,
+                recordCanvas: y,
+                keepIframeSrcFn: b,
                 newlyAddedElement: v,
                 rootId: x,
                 maskAllText: r,
@@ -9275,7 +9275,7 @@
         function _e(e) {
           return null == e ? "" : e.toLowerCase();
         }
-        function be(e, t) {
+        function ye(e, t) {
           const {
             doc: n,
             mirror: s,
@@ -9294,16 +9294,16 @@
             maskTextFn: f,
             maskInputFn: S,
             slimDOMOptions: _,
-            dataURLOptions: b = {},
-            inlineImages: y = !1,
+            dataURLOptions: y = {},
+            inlineImages: b = !1,
             recordCanvas: v = !1,
             onSerialize: x,
             onIframeLoad: k,
             iframeLoadTimeout: E = 5e3,
             onStylesheetLoad: T,
             stylesheetLoadTimeout: C = 5e3,
-            keepIframeSrcFn: w = () => !1,
-            newlyAddedElement: I = !1,
+            keepIframeSrcFn: I = () => !1,
+            newlyAddedElement: w = !1,
           } = t;
           let { preserveWhiteSpace: A = !0 } = t;
           const P = Se(e, {
@@ -9322,11 +9322,11 @@
             maskAttributeFn: g,
             maskTextFn: f,
             maskInputFn: S,
-            dataURLOptions: b,
-            inlineImages: y,
+            dataURLOptions: y,
+            inlineImages: b,
             recordCanvas: v,
-            keepIframeSrcFn: w,
-            newlyAddedElement: I,
+            keepIframeSrcFn: I,
+            newlyAddedElement: w,
           });
           if (!P) return console.warn(e, "not serialized"), null;
           let D;
@@ -9420,19 +9420,19 @@
                   P.textContent.replace(/^\s+|\s+$/gm, "").length)
               ? Z()
               : Q;
-          const M = Object.assign(P, { id: D });
-          if ((s.add(e, M), D === Q)) return null;
+          const R = Object.assign(P, { id: D });
+          if ((s.add(e, R), D === Q)) return null;
           x && x(e);
-          let R = !d;
-          if (M.type === L.Element) {
-            (R = R && !M.needBlock), delete M.needBlock;
+          let M = !d;
+          if (R.type === L.Element) {
+            (M = M && !R.needBlock), delete R.needBlock;
             const t = e.shadowRoot;
-            t && F(t) && (M.isShadowHost = !0);
+            t && F(t) && (R.isShadowHost = !0);
           }
-          if ((M.type === L.Document || M.type === L.Element) && R) {
+          if ((R.type === L.Document || R.type === L.Element) && M) {
             _.headWhitespace &&
-              M.type === L.Element &&
-              "head" === M.tagName &&
+              R.type === L.Element &&
+              "head" === R.tagName &&
               (A = !1);
             const t = {
               doc: n,
@@ -9452,8 +9452,8 @@
               maskTextFn: f,
               maskInputFn: S,
               slimDOMOptions: _,
-              dataURLOptions: b,
-              inlineImages: y,
+              dataURLOptions: y,
+              inlineImages: b,
               recordCanvas: v,
               preserveWhiteSpace: A,
               onSerialize: x,
@@ -9461,11 +9461,11 @@
               iframeLoadTimeout: E,
               onStylesheetLoad: T,
               stylesheetLoadTimeout: C,
-              keepIframeSrcFn: w,
+              keepIframeSrcFn: I,
             };
             for (const n of Array.from(e.childNodes)) {
-              const e = be(n, t);
-              e && M.childNodes.push(e);
+              const e = ye(n, t);
+              e && R.childNodes.push(e);
             }
             if (
               (function (e) {
@@ -9474,18 +9474,18 @@
               e.shadowRoot
             )
               for (const n of Array.from(e.shadowRoot.childNodes)) {
-                const s = be(n, t);
+                const s = ye(n, t);
                 s &&
-                  (F(e.shadowRoot) && (s.isShadow = !0), M.childNodes.push(s));
+                  (F(e.shadowRoot) && (s.isShadow = !0), R.childNodes.push(s));
               }
           }
           return (
             e.parentNode &&
               U(e.parentNode) &&
               F(e.parentNode) &&
-              (M.isShadow = !0),
-            M.type === L.Element &&
-              "iframe" === M.tagName &&
+              (R.isShadow = !0),
+            R.type === L.Element &&
+              "iframe" === R.tagName &&
               (function (e, t, n) {
                 const s = e.contentWindow;
                 if (!s) return;
@@ -9513,7 +9513,7 @@
                 () => {
                   const t = e.contentDocument;
                   if (t && k) {
-                    const n = be(t, {
+                    const n = ye(t, {
                       doc: t,
                       mirror: s,
                       blockClass: i,
@@ -9531,8 +9531,8 @@
                       maskTextFn: f,
                       maskInputFn: S,
                       slimDOMOptions: _,
-                      dataURLOptions: b,
-                      inlineImages: y,
+                      dataURLOptions: y,
+                      inlineImages: b,
                       recordCanvas: v,
                       preserveWhiteSpace: A,
                       onSerialize: x,
@@ -9540,16 +9540,16 @@
                       iframeLoadTimeout: E,
                       onStylesheetLoad: T,
                       stylesheetLoadTimeout: C,
-                      keepIframeSrcFn: w,
+                      keepIframeSrcFn: I,
                     });
                     n && k(e, n);
                   }
                 },
                 E,
               ),
-            M.type === L.Element &&
-              "link" === M.tagName &&
-              "stylesheet" === M.attributes.rel &&
+            R.type === L.Element &&
+              "link" === R.tagName &&
+              "stylesheet" === R.attributes.rel &&
               (function (e, t, n) {
                 let s,
                   i = !1;
@@ -9569,7 +9569,7 @@
                 e,
                 () => {
                   if (T) {
-                    const t = be(e, {
+                    const t = ye(e, {
                       doc: n,
                       mirror: s,
                       blockClass: i,
@@ -9587,8 +9587,8 @@
                       maskTextFn: f,
                       maskInputFn: S,
                       slimDOMOptions: _,
-                      dataURLOptions: b,
-                      inlineImages: y,
+                      dataURLOptions: y,
+                      inlineImages: b,
                       recordCanvas: v,
                       preserveWhiteSpace: A,
                       onSerialize: x,
@@ -9596,17 +9596,17 @@
                       iframeLoadTimeout: E,
                       onStylesheetLoad: T,
                       stylesheetLoadTimeout: C,
-                      keepIframeSrcFn: w,
+                      keepIframeSrcFn: I,
                     });
                     t && T(e, t);
                   }
                 },
                 C,
               ),
-            M
+            R
           );
         }
-        function ye(e) {
+        function be(e) {
           let t,
             n = e[0],
             s = 1;
@@ -9712,8 +9712,8 @@
               "map" === t && console.error(xe), Reflect.get(e, t, n)
             ),
           }));
-        let we,
-          Ie = Date.now;
+        let Ie,
+          we = Date.now;
         function Ae(e) {
           const t = e.document;
           return {
@@ -9721,14 +9721,14 @@
               ? t.scrollingElement.scrollLeft
               : void 0 !== e.pageXOffset
                 ? e.pageXOffset
-                : ye([
+                : be([
                     t,
                     "optionalAccess",
                     (e) => e.documentElement,
                     "access",
                     (e) => e.scrollLeft,
                   ]) ||
-                  ye([
+                  be([
                     t,
                     "optionalAccess",
                     (e) => e.body,
@@ -9737,7 +9737,7 @@
                     "optionalAccess",
                     (e) => e.scrollLeft,
                   ]) ||
-                  ye([
+                  be([
                     t,
                     "optionalAccess",
                     (e) => e.body,
@@ -9749,14 +9749,14 @@
               ? t.scrollingElement.scrollTop
               : void 0 !== e.pageYOffset
                 ? e.pageYOffset
-                : ye([
+                : be([
                     t,
                     "optionalAccess",
                     (e) => e.documentElement,
                     "access",
                     (e) => e.scrollTop,
                   ]) ||
-                  ye([
+                  be([
                     t,
                     "optionalAccess",
                     (e) => e.body,
@@ -9765,7 +9765,7 @@
                     "optionalAccess",
                     (e) => e.scrollTop,
                   ]) ||
-                  ye([
+                  be([
                     t,
                     "optionalAccess",
                     (e) => e.body,
@@ -9791,7 +9791,7 @@
             (document.body && document.body.clientWidth)
           );
         }
-        function Me(e, t, n, s, i) {
+        function Re(e, t, n, s, i) {
           if (!e) return !1;
           const o = e.nodeType === e.ELEMENT_NODE ? e : e.parentElement;
           if (!o) return !1;
@@ -9807,7 +9807,7 @@
             (s && (l = he(o, ge(null, s))), (r > -1 && l < 0) || r < l)
           );
         }
-        function Re(e, t) {
+        function Me(e, t) {
           return t.getId(e) === Q;
         }
         function Ne(e, t) {
@@ -9835,10 +9835,10 @@
           );
         }
         function Ue(e) {
-          return Boolean(ye([e, "optionalAccess", (e) => e.shadowRoot]));
+          return Boolean(be([e, "optionalAccess", (e) => e.shadowRoot]));
         }
         /[1-9][0-9]{12}/.test(Date.now().toString()) ||
-          (Ie = () => new Date().getTime());
+          (we = () => new Date().getTime());
         class Fe {
           constructor() {
             (this.id = 1),
@@ -9876,7 +9876,7 @@
         function He(e) {
           let t = null;
           return (
-            ye([
+            be([
               e,
               "access",
               (e) => e.getRootNode,
@@ -9907,7 +9907,7 @@
         }
         function qe(...e) {
           return (function () {
-            if (we) return we;
+            if (Ie) return Ie;
             const e = window.document;
             let t = window.requestAnimationFrame;
             if (e && "function" == typeof e.createElement)
@@ -9918,7 +9918,7 @@
                 s && s.requestAnimationFrame && (t = s.requestAnimationFrame),
                   e.head.removeChild(n);
               } catch (e) {}
-            return (we = t.bind(window));
+            return (Ie = t.bind(window));
           })()(...e);
         }
         var We = ((e) => (
@@ -10078,7 +10078,7 @@
                         : this.mirror.getId(i.parentNode),
                       a = s(i);
                     if (-1 === o || -1 === a) return n.addNode(i);
-                    const r = be(i, {
+                    const r = ye(i, {
                       doc: this.doc,
                       mirror: this.mirror,
                       blockClass: this.blockClass,
@@ -10216,7 +10216,7 @@
                   this.mutationCb(a));
               }),
               (this.processMutation = (e) => {
-                if (Re(e.target, this.mirror)) return;
+                if (Me(e.target, this.mirror)) return;
                 let t;
                 try {
                   t = document.implementation.createHTMLDocument();
@@ -10226,7 +10226,7 @@
                 switch (e.type) {
                   case "characterData": {
                     const t = e.target.textContent;
-                    Me(
+                    Re(
                       e.target,
                       this.blockClass,
                       this.blockSelector,
@@ -10280,7 +10280,7 @@
                       });
                     }
                     if (
-                      Me(
+                      Re(
                         e.target,
                         this.blockClass,
                         this.blockSelector,
@@ -10341,7 +10341,7 @@
                   }
                   case "childList":
                     if (
-                      Me(
+                      Re(
                         e.target,
                         this.blockClass,
                         this.blockSelector,
@@ -10356,14 +10356,14 @@
                           s = U(e.target)
                             ? this.mirror.getId(e.target.host)
                             : this.mirror.getId(e.target);
-                        Me(
+                        Re(
                           e.target,
                           this.blockClass,
                           this.blockSelector,
                           this.unblockSelector,
                           !1,
                         ) ||
-                          Re(t, this.mirror) ||
+                          Me(t, this.mirror) ||
                           !(function (e, t) {
                             return -1 !== t.getId(e);
                           })(t, this.mirror) ||
@@ -10390,7 +10390,7 @@
                   !this.movedSet.has(e)
                 ) {
                   if (this.mirror.hasNode(e)) {
-                    if (Re(e, this.mirror)) return;
+                    if (Me(e, this.mirror)) return;
                     this.movedSet.add(e);
                     let n = null;
                     t && this.mirror.hasNode(t) && (n = this.mirror.getId(t)),
@@ -10398,7 +10398,7 @@
                         -1 !== n &&
                         (this.movedMap[Xe(this.mirror.getId(e), n)] = !0);
                   } else this.addedSet.add(e), this.droppedSet.delete(e);
-                  Me(
+                  Re(
                     e,
                     this.blockClass,
                     this.blockSelector,
@@ -10591,7 +10591,7 @@
                 let r = $(a);
                 const u = ((t) => (a) => {
                   const r = ut(a);
-                  if (Me(r, s, i, o, !0)) return;
+                  if (Re(r, s, i, o, !0)) return;
                   let l = null,
                     u = t;
                   if ("pointerType" in a) {
@@ -10661,7 +10661,7 @@
               Ee(
                 rt((a) => {
                   const r = ut(a);
-                  if (!r || Me(r, s, i, o, !0)) return;
+                  if (!r || Re(r, s, i, o, !0)) return;
                   const l = n.getId(r);
                   if (r === t && t.defaultView) {
                     const n = Ae(t.defaultView);
@@ -10700,26 +10700,26 @@
               f = n && V(n.tagName);
             if (
               ("OPTION" === f && (n = n.parentElement),
-              !n || !f || ht.indexOf(f) < 0 || Me(n, s, i, o, !0))
+              !n || !f || ht.indexOf(f) < 0 || Re(n, s, i, o, !0))
             )
               return;
             const _ = n;
             if (_.classList.contains(a) || (r && _.matches(r))) return;
-            const b = Y(n);
-            let y = K(_, f, b),
+            const y = Y(n);
+            let b = K(_, f, y),
               v = !1;
-            const x = q({ maskInputOptions: l, tagName: f, type: b }),
+            const x = q({ maskInputOptions: l, tagName: f, type: y }),
               k = fe(n, d, h, p, g, x);
-            ("radio" !== b && "checkbox" !== b) || (v = n.checked),
-              (y = W({ isMasked: k, element: n, value: y, maskInputFn: c })),
+            ("radio" !== y && "checkbox" !== y) || (v = n.checked),
+              (b = W({ isMasked: k, element: n, value: b, maskInputFn: c })),
               S(
                 n,
                 m
-                  ? { text: y, isChecked: v, userTriggered: u }
-                  : { text: y, isChecked: v },
+                  ? { text: b, isChecked: v, userTriggered: u }
+                  : { text: b, isChecked: v },
               );
             const E = n.name;
-            "radio" === b &&
+            "radio" === y &&
               E &&
               v &&
               t
@@ -10729,7 +10729,7 @@
                     const t = W({
                       isMasked: k,
                       element: e,
-                      value: K(e, f, b),
+                      value: K(e, f, y),
                       maskInputFn: c,
                     });
                     S(
@@ -10752,26 +10752,26 @@
           const _ = ("last" === u.input ? ["change"] : ["input", "change"]).map(
               (e) => ve(e, rt(f), t),
             ),
-            b = t.defaultView;
-          if (!b)
+            y = t.defaultView;
+          if (!y)
             return () => {
               _.forEach((e) => e());
             };
-          const y = b.Object.getOwnPropertyDescriptor(
-              b.HTMLInputElement.prototype,
+          const b = y.Object.getOwnPropertyDescriptor(
+              y.HTMLInputElement.prototype,
               "value",
             ),
             v = [
-              [b.HTMLInputElement.prototype, "value"],
-              [b.HTMLInputElement.prototype, "checked"],
-              [b.HTMLSelectElement.prototype, "value"],
-              [b.HTMLTextAreaElement.prototype, "value"],
-              [b.HTMLSelectElement.prototype, "selectedIndex"],
-              [b.HTMLOptionElement.prototype, "selected"],
+              [y.HTMLInputElement.prototype, "value"],
+              [y.HTMLInputElement.prototype, "checked"],
+              [y.HTMLSelectElement.prototype, "value"],
+              [y.HTMLTextAreaElement.prototype, "value"],
+              [y.HTMLSelectElement.prototype, "selectedIndex"],
+              [y.HTMLOptionElement.prototype, "selected"],
             ];
           return (
-            y &&
-              y.set &&
+            b &&
+              b.set &&
               _.push(
                 ...v.map((e) =>
                   Te(
@@ -10783,7 +10783,7 @@
                       },
                     },
                     !1,
-                    b,
+                    y,
                   ),
                 ),
               ),
@@ -10819,7 +10819,7 @@
               { styleId: i, id: s })
             : {};
         }
-        function bt({ mirror: e, stylesheetManager: t }, n) {
+        function yt({ mirror: e, stylesheetManager: t }, n) {
           let s = null;
           s = "#document" === n.nodeName ? e.getId(n) : e.getId(n.host);
           const i =
@@ -10888,7 +10888,7 @@
               }))
             : () => {};
         }
-        function yt(e, t = {}) {
+        function bt(e, t = {}) {
           const n = e.doc.defaultView;
           if (!n) return () => {};
           const s = mt(e, e.doc),
@@ -10920,12 +10920,12 @@
                         { clientX: n, clientY: i } = Be(e)
                           ? e.changedTouches[0]
                           : e;
-                      a || (a = Ie()),
+                      a || (a = we()),
                         r.push({
                           x: n,
                           y: i,
                           id: s.getId(t),
-                          timeOffset: Ie() - a,
+                          timeOffset: we() - a,
                         }),
                         l(
                           "undefined" != typeof DragEvent &&
@@ -10986,7 +10986,7 @@
                   Ee(
                     rt((o) => {
                       const r = ut(o);
-                      if (!r || Me(r, t, n, s, !0)) return;
+                      if (!r || Re(r, t, n, s, !0)) return;
                       const {
                         currentTime: l,
                         volume: c,
@@ -11139,7 +11139,7 @@
                 })
               );
             })(e, { win: n }),
-            m = bt(e, e.doc),
+            m = yt(e, e.doc),
             d = (function (
               {
                 styleDeclarationCb: e,
@@ -11287,8 +11287,8 @@
                       endContainer: u,
                       endOffset: m,
                     } = a;
-                  Me(r, s, i, o, !0) ||
-                    Me(u, s, i, o, !0) ||
+                  Re(r, s, i, o, !0) ||
+                    Re(u, s, i, o, !0) ||
                     l.push({
                       start: n.getId(r),
                       startOffset: c,
@@ -11643,13 +11643,13 @@
                 });
           }
         }
-        class wt {
+        class It {
           init() {}
           addShadowRoot() {}
           observeAttachShadow() {}
           reset() {}
         }
-        class It {
+        class wt {
           constructor(e) {
             (this.shadowDoms = new WeakSet()),
               (this.restoreHandlers = []),
@@ -11693,7 +11693,7 @@
                     this.mirror.getId(e.host),
                   ),
                   this.restoreHandlers.push(
-                    bt(
+                    yt(
                       {
                         mirror: this.mirror,
                         stylesheetManager: this.bypassOptions.stylesheetManager,
@@ -11818,11 +11818,11 @@
             this.loop = !1;
           }
         }
-        function Mt(e) {
+        function Rt(e) {
           const t = e;
-          return (t.timestamp = Ie()), t;
+          return (t.timestamp = we()), t;
         }
-        let Rt;
+        let Mt;
         const Nt = new G();
         function Bt(e = {}) {
           const {
@@ -11843,30 +11843,30 @@
             maskAllInputs: f,
             maskInputOptions: S,
             slimDOMOptions: _,
-            maskAttributeFn: b,
-            maskInputFn: y,
+            maskAttributeFn: y,
+            maskInputFn: b,
             maskTextFn: v,
             packFn: x,
             sampling: k = {},
             dataURLOptions: E = {},
             mousemoveWait: T,
             recordCanvas: C = !1,
-            recordCrossOriginIframes: w = !1,
-            recordAfter: I = "DOMContentLoaded" === e.recordAfter
+            recordCrossOriginIframes: I = !1,
+            recordAfter: w = "DOMContentLoaded" === e.recordAfter
               ? e.recordAfter
               : "load",
             userTriggeredOnInput: A = !1,
             collectFonts: P = !1,
             inlineImages: D = !1,
-            plugins: M,
-            keepIframeSrcFn: R = () => !1,
+            plugins: R,
+            keepIframeSrcFn: M = () => !1,
             ignoreCSSAttributes: N = new Set([]),
             errorHandler: B,
             onMutation: O,
             getCanvasManager: L,
           } = e;
           ot(B);
-          const U = !w || window.parent === window;
+          const U = !I || window.parent === window;
           let F = !1;
           if (!U)
             try {
@@ -11936,7 +11936,7 @@
           })();
           let W = 0;
           const $ = (e) => {
-              for (const t of M || [])
+              for (const t of R || [])
                 t.eventProcessor && (e = t.eventProcessor(e));
               return x && !F && (e = x(e)), e;
             },
@@ -11979,7 +11979,7 @@
             },
             z = (e) => {
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.Mutation, ...e },
                 }),
@@ -11987,14 +11987,14 @@
             },
             Y = (e) =>
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.Scroll, ...e },
                 }),
               ),
             K = (e) =>
               V(
-                Mt({
+                Rt({
                   type: We.IncrementalSnapshot,
                   data: { source: $e.CanvasMutation, ...e },
                 }),
@@ -12003,7 +12003,7 @@
               mutationCb: z,
               adoptedStyleSheetCb: (e) =>
                 V(
-                  Mt({
+                  Rt({
                     type: We.IncrementalSnapshot,
                     data: { source: $e.AdoptedStyleSheet, ...e },
                   }),
@@ -12017,10 +12017,10 @@
                     mirror: Nt,
                     mutationCb: z,
                     stylesheetManager: J,
-                    recordCrossOriginIframes: w,
+                    recordCrossOriginIframes: I,
                     wrappedEmit: V,
                   });
-          for (const e of M || [])
+          for (const e of R || [])
             e.getMirror &&
               e.getMirror({
                 nodeMirror: Nt,
@@ -12041,7 +12041,7 @@
               win: window,
               mutationCb: (e) =>
                 V(
-                  Mt({
+                  Rt({
                     type: We.IncrementalSnapshot,
                     data: { source: $e.CanvasMutation, ...e },
                   }),
@@ -12057,8 +12057,8 @@
             ee =
               "boolean" == typeof __RRWEB_EXCLUDE_SHADOW_DOM__ &&
               __RRWEB_EXCLUDE_SHADOW_DOM__
-                ? new wt()
-                : new It({
+                ? new It()
+                : new wt({
                     mutationCb: z,
                     scrollCb: Y,
                     bypassOptions: {
@@ -12074,9 +12074,9 @@
                       inlineStylesheet: g,
                       maskInputOptions: H,
                       dataURLOptions: E,
-                      maskAttributeFn: b,
+                      maskAttributeFn: y,
                       maskTextFn: v,
-                      maskInputFn: y,
+                      maskInputFn: b,
                       recordCanvas: C,
                       inlineImages: D,
                       sampling: k,
@@ -12084,14 +12084,14 @@
                       iframeManager: X,
                       stylesheetManager: J,
                       canvasManager: Z,
-                      keepIframeSrcFn: R,
+                      keepIframeSrcFn: M,
                       processedNodeManager: Q,
                     },
                     mirror: Nt,
                   }),
             te = (e = !1) => {
               V(
-                Mt({
+                Rt({
                   type: We.Meta,
                   data: {
                     href: window.location.href,
@@ -12123,8 +12123,8 @@
                   maskTextFn: f,
                   maskInputFn: S,
                   slimDOM: _ = !1,
-                  dataURLOptions: b,
-                  preserveWhiteSpace: y,
+                  dataURLOptions: y,
+                  preserveWhiteSpace: b,
                   onSerialize: v,
                   onIframeLoad: x,
                   iframeLoadTimeout: k,
@@ -12132,7 +12132,7 @@
                   stylesheetLoadTimeout: T,
                   keepIframeSrcFn: C = () => !1,
                 } = t || {};
-                return be(e, {
+                return ye(e, {
                   doc: e,
                   mirror: n,
                   blockClass: s,
@@ -12187,10 +12187,10 @@
                       : !1 === _
                         ? {}
                         : _,
-                  dataURLOptions: b,
+                  dataURLOptions: y,
                   inlineImages: d,
                   recordCanvas: p,
-                  preserveWhiteSpace: y,
+                  preserveWhiteSpace: b,
                   onSerialize: v,
                   onIframeLoad: x,
                   iframeLoadTimeout: k,
@@ -12211,8 +12211,8 @@
                 unmaskTextSelector: h,
                 inlineStylesheet: g,
                 maskAllInputs: H,
-                maskAttributeFn: b,
-                maskInputFn: y,
+                maskAttributeFn: y,
+                maskInputFn: b,
                 maskTextFn: v,
                 slimDOM: j,
                 dataURLOptions: E,
@@ -12229,11 +12229,11 @@
                 onStylesheetLoad: (e, t) => {
                   J.attachLinkElement(e, t);
                 },
-                keepIframeSrcFn: R,
+                keepIframeSrcFn: M,
               });
               if (!t) return console.warn("Failed to snapshot the document");
               V(
-                Mt({
+                Rt({
                   type: We.FullSnapshot,
                   data: { node: t, initialOffset: Ae(window) },
                 }),
@@ -12246,24 +12246,24 @@
                     Nt.getId(document),
                   );
             };
-          Rt = te;
+          Mt = te;
           try {
             const e = [],
               t = (e) =>
-                rt(yt)(
+                rt(bt)(
                   {
                     onMutation: O,
                     mutationCb: z,
                     mousemoveCb: (e, t) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: t, positions: e },
                         }),
                       ),
                     mouseInteractionCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.MouseInteraction, ...e },
                         }),
@@ -12271,35 +12271,35 @@
                     scrollCb: Y,
                     viewportResizeCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.ViewportResize, ...e },
                         }),
                       ),
                     inputCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Input, ...e },
                         }),
                       ),
                     mediaInteractionCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.MediaInteraction, ...e },
                         }),
                       ),
                     styleSheetRuleCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.StyleSheetRule, ...e },
                         }),
                       ),
                     styleDeclarationCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.StyleDeclaration, ...e },
                         }),
@@ -12307,14 +12307,14 @@
                     canvasMutationCb: K,
                     fontCb: (e) =>
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Font, ...e },
                         }),
                       ),
                     selectionCb: (e) => {
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.Selection, ...e },
                         }),
@@ -12322,7 +12322,7 @@
                     },
                     customElementCb: (e) => {
                       V(
-                        Mt({
+                        Rt({
                           type: We.IncrementalSnapshot,
                           data: { source: $e.CustomElement, ...e },
                         }),
@@ -12344,10 +12344,10 @@
                     userTriggeredOnInput: A,
                     collectFonts: P,
                     doc: e,
-                    maskAttributeFn: b,
-                    maskInputFn: y,
+                    maskAttributeFn: y,
+                    maskInputFn: b,
                     maskTextFn: v,
-                    keepIframeSrcFn: R,
+                    keepIframeSrcFn: M,
                     blockSelector: a,
                     unblockSelector: r,
                     slimDOMOptions: j,
@@ -12361,7 +12361,7 @@
                     ignoreCSSAttributes: N,
                     plugins:
                       (0, i._optionalChain)([
-                        M,
+                        R,
                         "optionalAccess",
                         (e) => e.filter,
                         "call",
@@ -12375,7 +12375,7 @@
                             options: e.options,
                             callback: (t) =>
                               V(
-                                Mt({
+                                Rt({
                                   type: We.Plugin,
                                   data: { plugin: e.name, payload: t },
                                 }),
@@ -12401,21 +12401,21 @@
                 ? n()
                 : (e.push(
                     ve("DOMContentLoaded", () => {
-                      V(Mt({ type: We.DomContentLoaded, data: {} })),
-                        "DOMContentLoaded" === I && n();
+                      V(Rt({ type: We.DomContentLoaded, data: {} })),
+                        "DOMContentLoaded" === w && n();
                     }),
                   ),
                   e.push(
                     ve(
                       "load",
                       () => {
-                        V(Mt({ type: We.Load, data: {} })), "load" === I && n();
+                        V(Rt({ type: We.Load, data: {} })), "load" === w && n();
                       },
                       window,
                     ),
                   )),
               () => {
-                e.forEach((e) => e()), Q.destroy(), (Rt = void 0), at();
+                e.forEach((e) => e()), Q.destroy(), (Mt = void 0), at();
               }
             );
           } catch (e) {
@@ -12424,11 +12424,11 @@
         }
         (Bt.mirror = Nt),
           (Bt.takeFullSnapshot = function (e) {
-            if (!Rt)
+            if (!Mt)
               throw new Error(
                 "please take full snapshot after start recording",
               );
-            Rt(e);
+            Mt(e);
           });
         const Ot = 3;
         function Lt(e) {
@@ -12476,13 +12476,13 @@
           return (
             Wt ||
               ((Wt = []),
-              (0, h.fill)(I, "open", function (e) {
+              (0, h.fill)(w, "open", function (e) {
                 return function (...t) {
                   if (Wt)
                     try {
                       Wt.forEach((e) => e());
                     } catch (e) {}
-                  return e.apply(I, t);
+                  return e.apply(w, t);
                 };
               })),
             Wt.push(e),
@@ -12621,7 +12621,7 @@
                   category: "ui.slowClickDetected",
                   data: {
                     ...a.data,
-                    url: I.location.href,
+                    url: w.location.href,
                     route: t.getCurrentRoute(),
                     timeAfterClickMs: n,
                     endReason: s,
@@ -12637,7 +12637,7 @@
                 category: "ui.multiClick",
                 data: {
                   ...a.data,
-                  url: I.location.href,
+                  url: w.location.href,
                   route: t.getCurrentRoute(),
                   clickCount: o,
                   metric: !0,
@@ -12903,7 +12903,7 @@
         }
         function an(e) {
           return (
-            ((f.browserPerformanceTimeOrigin || I.performance.timeOrigin) + e) /
+            ((f.browserPerformanceTimeOrigin || w.performance.timeOrigin) + e) /
             1e3
           );
         }
@@ -12917,10 +12917,10 @@
           const s = [];
           return (
             ["navigation", "paint", "resource"].forEach((e) => {
-              s.push((0, w.addPerformanceInstrumentationHandler)(e, n));
+              s.push((0, I.addPerformanceInstrumentationHandler)(e, n));
             }),
             s.push(
-              (0, w.addLcpInstrumentationHandler)(({ metric: t }) => {
+              (0, I.addLcpInstrumentationHandler)(({ metric: t }) => {
                 e.replayPerformanceEntries.push(
                   (function (e) {
                     const t = e.entries,
@@ -13217,18 +13217,18 @@
           }
           return un("[Replay] Using simple buffer"), new hn();
         }
-        function bn() {
+        function yn() {
           try {
-            return "sessionStorage" in I && !!I.sessionStorage;
+            return "sessionStorage" in w && !!w.sessionStorage;
           } catch (e) {
             return !1;
           }
         }
-        function yn(e) {
+        function bn(e) {
           !(function () {
-            if (!bn()) return;
+            if (!yn()) return;
             try {
-              I.sessionStorage.removeItem(A);
+              w.sessionStorage.removeItem(A);
             } catch (e) {}
           })(),
             (e.session = void 0);
@@ -13248,9 +13248,9 @@
           };
         }
         function kn(e) {
-          if (bn())
+          if (yn())
             try {
-              I.sessionStorage.setItem(A, JSON.stringify(e));
+              w.sessionStorage.setItem(A, JSON.stringify(e));
             } catch (e) {}
         }
         function En(
@@ -13276,13 +13276,13 @@
         ) {
           return Tn(e.started, t, s) || Tn(e.lastActivity, n, s);
         }
-        function wn(e, { sessionIdleExpire: t, maxReplayDuration: n }) {
+        function In(e, { sessionIdleExpire: t, maxReplayDuration: n }) {
           return (
             !!Cn(e, { sessionIdleExpire: t, maxReplayDuration: n }) &&
             ("buffer" !== e.sampled || 0 !== e.segmentId)
           );
         }
-        function In(
+        function wn(
           {
             traceInternals: e,
             sessionIdleExpire: t,
@@ -13294,9 +13294,9 @@
           const o =
             i.stickySession &&
             (function (e) {
-              if (!bn()) return null;
+              if (!yn()) return null;
               try {
-                const t = I.sessionStorage.getItem(A);
+                const t = w.sessionStorage.getItem(A);
                 if (!t) return null;
                 const n = JSON.parse(t);
                 return mn("[Replay] Loading existing session", e), xn(n);
@@ -13305,7 +13305,7 @@
               }
             })(e);
           return o
-            ? wn(o, { sessionIdleExpire: t, maxReplayDuration: n })
+            ? In(o, { sessionIdleExpire: t, maxReplayDuration: n })
               ? (mn(
                   "[Replay] Session in sessionStorage is expired, creating new one...",
                 ),
@@ -13369,10 +13369,10 @@
               !1))
           );
         }
-        function Mn(e) {
+        function Rn(e) {
           return !e.type;
         }
-        function Rn(e) {
+        function Mn(e) {
           return "transaction" === e.type;
         }
         function Nn(e) {
@@ -13387,10 +13387,10 @@
             return t.send.__sentry__baseTransport__ || !1;
           })();
           return (n, s) => {
-            if (!e.isEnabled() || (!Mn(n) && !Rn(n))) return;
+            if (!e.isEnabled() || (!Rn(n) && !Mn(n))) return;
             const i = s && s.statusCode;
             (t && (!i || i < 200 || i >= 300)) ||
-              (Rn(n)
+              (Mn(n)
                 ? (function (e, t) {
                     const n = e.getContext();
                     t.contexts &&
@@ -13421,7 +13421,7 @@
         function On(e) {
           return (t) => {
             e.isEnabled() &&
-              Mn(t) &&
+              Rn(t) &&
               (function (e, t) {
                 const n =
                   t.exception &&
@@ -13452,7 +13452,7 @@
                 })(t)
               )
                 return delete t.breadcrumbs, t;
-              if (!Mn(t) && !Rn(t) && !Nn(t)) return t;
+              if (!Rn(t) && !Mn(t) && !Nn(t)) return t;
               if (!e.checkAndHandleExpiredSession()) return t;
               if (Nn(t))
                 return (
@@ -13575,7 +13575,7 @@
             if (!e.isEnabled()) return;
             const n = (function (e) {
               const { startTimestamp: t, endTimestamp: n, xhr: s } = e,
-                i = s[b.SENTRY_XHR_DATA_KEY];
+                i = s[y.SENTRY_XHR_DATA_KEY];
               if (!t || !n || !i) return null;
               const { method: o, url: a, status_code: r } = i;
               return void 0 === a
@@ -13672,14 +13672,14 @@
           const s = { headers: e, size: t },
             { body: i, warnings: o } = (function (e) {
               if (!e || "string" != typeof e) return { body: e };
-              const t = e.length > M,
+              const t = e.length > R,
                 n = (function (e) {
                   const t = e[0],
                     n = e[e.length - 1];
                   return ("[" === t && "]" === n) || ("{" === t && "}" === n);
                 })(e);
               if (t) {
-                const t = e.slice(0, M);
+                const t = e.slice(0, R);
                 return n
                   ? { body: t, warnings: ["MAYBE_JSON_TRUNCATED"] }
                   : { body: `${t}…`, warnings: ["TEXT_TRUNCATED"] };
@@ -13704,11 +13704,11 @@
           return new URLSearchParams(e).toString();
         }
         function Xn(e, t) {
-          const n = (function (e, t = I.document.baseURI) {
+          const n = (function (e, t = w.document.baseURI) {
             if (
               e.startsWith("http://") ||
               e.startsWith("https://") ||
-              e.startsWith(I.location.origin)
+              e.startsWith(w.location.origin)
             )
               return e;
             const n = new URL(e, t);
@@ -13717,7 +13717,7 @@
             if (!e.endsWith("/") && s.endsWith("/")) return s.slice(0, -1);
             return s;
           })(e);
-          return (0, y.stringMatchesSomePattern)(n, t);
+          return (0, b.stringMatchesSomePattern)(n, t);
         }
         async function Qn(e, t, n) {
           try {
@@ -13923,7 +13923,7 @@
                     response: zn(d),
                   };
                 }
-                const p = r[b.SENTRY_XHR_DATA_KEY],
+                const p = r[y.SENTRY_XHR_DATA_KEY],
                   h = p ? Kn(p.request_headers, n.networkRequestHeaders) : {},
                   g = Kn(
                     (function (e) {
@@ -13937,7 +13937,7 @@
                     n.networkResponseHeaders,
                   ),
                   [f, _] = n.networkCaptureBodies ? Wn(a) : [void 0],
-                  [y, v] = n.networkCaptureBodies
+                  [b, v] = n.networkCaptureBodies
                     ? (function (e) {
                         const t = [];
                         try {
@@ -13987,7 +13987,7 @@
                       })(r)
                     : [void 0],
                   x = Yn(h, m, f),
-                  k = Yn(g, d, y);
+                  k = Yn(g, d, b);
                 return {
                   startTimestamp: i,
                   endTimestamp: o,
@@ -14110,7 +14110,7 @@
                     };
                   })(e),
                 ),
-                (0, b.addXhrInstrumentationHandler)(jn(e)));
+                (0, y.addXhrInstrumentationHandler)(jn(e)));
           } catch (e) {}
         }
         let os = null;
@@ -14138,13 +14138,13 @@
                 const s = t.map((e) => {
                   if (!e) return e;
                   if ("string" == typeof e)
-                    return e.length > R ? ((n = !0), `${e.slice(0, R)}…`) : e;
+                    return e.length > M ? ((n = !0), `${e.slice(0, M)}…`) : e;
                   if ("object" == typeof e)
                     try {
                       const t = (0, p.normalize)(e, 7);
-                      return JSON.stringify(t).length > R
+                      return JSON.stringify(t).length > M
                         ? ((n = !0),
-                          `${JSON.stringify(t, null, 2).slice(0, R)}…`)
+                          `${JSON.stringify(t, null, 2).slice(0, M)}…`)
                         : t;
                     } catch (e) {}
                   return e;
@@ -14303,7 +14303,7 @@
               segment_id: n,
               replay_type: a.sampled,
             },
-            b = await (async function ({
+            y = await (async function ({
               client: e,
               scope: t,
               replayId: n,
@@ -14340,15 +14340,15 @@
                 o
               );
             })({ scope: g, client: h, replayId: t, event: _ });
-          if (!b)
+          if (!y)
             return (
               h.recordDroppedEvent("event_processor", "replay", _),
               void un(
                 "An event processor returned `null`, will not send event.",
               )
             );
-          delete b.sdkProcessingMetadata;
-          const y = (function (e, t, n, s) {
+          delete y.sdkProcessingMetadata;
+          const b = (function (e, t, n, s) {
             return (0, E.createEnvelope)(
               (0, E.createEventEnvelopeHeaders)(
                 e,
@@ -14370,10 +14370,10 @@
                 ],
               ],
             );
-          })(b, r, S, h.getOptions().tunnel);
+          })(y, r, S, h.getOptions().tunnel);
           let v;
           try {
-            v = await f.send(y);
+            v = await f.send(b);
           } catch (e) {
             const t = new Error(D);
             try {
@@ -14583,7 +14583,7 @@
               "[Replay] Starting replay in session mode",
               this._options._experiments.traceInternals,
             );
-            const e = In(
+            const e = wn(
               {
                 maxReplayDuration: this._options.maxReplayDuration,
                 sessionIdleExpire: this.timeouts.sessionIdleExpire,
@@ -14604,7 +14604,7 @@
               "[Replay] Starting replay in buffer mode",
               this._options._experiments.traceInternals,
             );
-            const e = In(
+            const e = wn(
               {
                 sessionIdleExpire: this.timeouts.sessionIdleExpire,
                 maxReplayDuration: this._options.maxReplayDuration,
@@ -14668,7 +14668,7 @@
                   e && (await this._flush({ force: !0 })),
                   this.eventBuffer && this.eventBuffer.destroy(),
                   (this.eventBuffer = null),
-                  yn(this);
+                  bn(this);
               } catch (e) {
                 this._handleException(e);
               }
@@ -14760,8 +14760,8 @@
             this.pause();
           }
           setInitialState() {
-            const e = `${I.location.pathname}${I.location.hash}${I.location.search}`,
-              t = `${I.location.origin}${e}`;
+            const e = `${w.location.pathname}${w.location.hash}${w.location.search}`,
+              t = `${w.location.origin}${e}`;
             (this.performanceEntries = []),
               (this.replayPerformanceEntries = []),
               this._clearContext(),
@@ -14816,7 +14816,7 @@
           }
           _initializeSessionForSampling(e) {
             const t = this._options.errorSampleRate > 0,
-              n = In(
+              n = wn(
                 {
                   sessionIdleExpire: this.timeouts.sessionIdleExpire,
                   maxReplayDuration: this._options.maxReplayDuration,
@@ -14835,7 +14835,7 @@
             if (!this.session) return !1;
             const e = this.session;
             return (
-              !wn(e, {
+              !In(e, {
                 sessionIdleExpire: this.timeouts.sessionIdleExpire,
                 maxReplayDuration: this._options.maxReplayDuration,
               }) || (this._refreshSession(e), !1)
@@ -14848,13 +14848,13 @@
           }
           _addListeners() {
             try {
-              I.document.addEventListener(
+              w.document.addEventListener(
                 "visibilitychange",
                 this._handleVisibilityChange,
               ),
-                I.addEventListener("blur", this._handleWindowBlur),
-                I.addEventListener("focus", this._handleWindowFocus),
-                I.addEventListener("keydown", this._handleKeyboardEvent),
+                w.addEventListener("blur", this._handleWindowBlur),
+                w.addEventListener("focus", this._handleWindowFocus),
+                w.addEventListener("keydown", this._handleKeyboardEvent),
                 this.clickDetector && this.clickDetector.addListeners(),
                 this._hasInitializedCoreListeners ||
                   (!(function (e) {
@@ -14905,13 +14905,13 @@
           }
           _removeListeners() {
             try {
-              I.document.removeEventListener(
+              w.document.removeEventListener(
                 "visibilitychange",
                 this._handleVisibilityChange,
               ),
-                I.removeEventListener("blur", this._handleWindowBlur),
-                I.removeEventListener("focus", this._handleWindowFocus),
-                I.removeEventListener("keydown", this._handleKeyboardEvent),
+                w.removeEventListener("blur", this._handleWindowBlur),
+                w.removeEventListener("focus", this._handleWindowFocus),
+                w.removeEventListener("keydown", this._handleKeyboardEvent),
                 this.clickDetector && this.clickDetector.removeListeners(),
                 this._performanceCleanupCallback &&
                   this._performanceCleanupCallback();
@@ -14921,7 +14921,7 @@
           }
           __init() {
             this._handleVisibilityChange = () => {
-              "visible" === I.document.visibilityState
+              "visible" === w.document.visibilityState
                 ? this._doChangeToForegroundTasks()
                 : this._doChangeToBackgroundTasks();
             };
@@ -15018,7 +15018,7 @@
                   this.eventBuffer.hasEvents &&
                   (await (async function (e) {
                     try {
-                      return Promise.all(Un(e, [ls(I.performance.memory)]));
+                      return Promise.all(Un(e, [ls(w.performance.memory)]));
                     } catch (e) {
                       return [];
                     }
@@ -15147,8 +15147,8 @@
         }
         const _s =
             'img,image,svg,video,object,picture,embed,map,audio,link[rel="icon"],link[rel="apple-touch-icon"]',
-          bs = ["content-length", "content-type", "accept"];
-        let ys = !1;
+          ys = ["content-length", "content-type", "accept"];
+        let bs = !1;
         const vs = (e) => new xs(e);
         class xs {
           static __initStatic() {
@@ -15174,20 +15174,20 @@
             slowClickIgnoreSelectors: f = [],
             networkDetailAllowUrls: S = [],
             networkDetailDenyUrls: _ = [],
-            networkCaptureBodies: b = !0,
-            networkRequestHeaders: y = [],
+            networkCaptureBodies: y = !0,
+            networkRequestHeaders: b = [],
             networkResponseHeaders: v = [],
             mask: x = [],
             maskAttributes: k = ["title", "placeholder"],
             unmask: E = [],
             block: T = [],
-            unblock: w = [],
-            ignore: I = [],
+            unblock: I = [],
+            ignore: w = [],
             maskFn: A,
             beforeAddRecordingEvent: P,
             beforeErrorSampling: D,
-            blockClass: M,
-            blockSelector: R,
+            blockClass: R,
+            blockSelector: M,
             maskInputOptions: N,
             maskTextClass: O,
             maskTextSelector: L,
@@ -15246,10 +15246,10 @@
               mask: x,
               unmask: E,
               block: T,
-              unblock: w,
-              ignore: I,
-              blockClass: M,
-              blockSelector: R,
+              unblock: I,
+              ignore: w,
+              blockClass: R,
+              blockSelector: M,
               maskTextClass: O,
               maskTextSelector: L,
               ignoreClass: U,
@@ -15320,8 +15320,8 @@
                 slowClickIgnoreSelectors: f,
                 networkDetailAllowUrls: S,
                 networkDetailDenyUrls: _,
-                networkCaptureBodies: b,
-                networkRequestHeaders: ks(y),
+                networkCaptureBodies: y,
+                networkRequestHeaders: ks(b),
                 networkResponseHeaders: ks(v),
                 beforeAddRecordingEvent: P,
                 beforeErrorSampling: D,
@@ -15350,10 +15350,10 @@
             this._isInitialized = !0;
           }
           get _isInitialized() {
-            return ys;
+            return bs;
           }
           set _isInitialized(e) {
-            ys = e;
+            bs = e;
           }
           setupOnce() {
             (0, C.isBrowser)() &&
@@ -15431,7 +15431,7 @@
           }
         }
         function ks(e) {
-          return [...bs, ...e.map((e) => e.toLowerCase())];
+          return [...ys, ...e.map((e) => e.toLowerCase())];
         }
         function Es() {
           const e = (0, o.getClient)();
@@ -15491,7 +15491,7 @@
           m = {};
         let d, p, h;
         function g(e, t = !1) {
-          return k("cls", e, y, d, t);
+          return k("cls", e, b, d, t);
         }
         function f(e, t = !1) {
           return k("lcp", e, x, h, t);
@@ -15509,7 +15509,7 @@
                 (0, c.observe)(
                   e,
                   (t) => {
-                    b(e, { entries: t });
+                    y(e, { entries: t });
                   },
                   t,
                 );
@@ -15518,7 +15518,7 @@
             T(e, t)
           );
         }
-        function b(e, t) {
+        function y(e, t) {
           const n = u[e];
           if (n && n.length)
             for (const a of n)
@@ -15532,19 +15532,19 @@
                   );
               }
         }
-        function y() {
+        function b() {
           return (0, a.onCLS)((e) => {
-            b("cls", { metric: e }), (d = e);
+            y("cls", { metric: e }), (d = e);
           });
         }
         function v() {
           return (0, r.onFID)((e) => {
-            b("fid", { metric: e }), (p = e);
+            y("fid", { metric: e }), (p = e);
           });
         }
         function x() {
           return (0, l.onLCP)((e) => {
-            b("lcp", { metric: e }), (h = e);
+            y("lcp", { metric: e }), (h = e);
           });
         }
         function k(e, t, n, s, i = !1) {
@@ -15910,7 +15910,7 @@
       (e, t, n) => {
         "use strict";
         n.r(t),
-          n.d(t, { ReplayCanvas: () => R, replayCanvasIntegration: () => M });
+          n.d(t, { ReplayCanvas: () => M, replayCanvasIntegration: () => R });
         var s,
           i = n(105),
           o = n(34);
@@ -16073,14 +16073,14 @@
           };
         };
         for (
-          var b =
+          var y =
               "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
-            y = "undefined" == typeof Uint8Array ? [] : new Uint8Array(256),
+            b = "undefined" == typeof Uint8Array ? [] : new Uint8Array(256),
             v = 0;
           v < 64;
           v++
         )
-          y[b.charCodeAt(v)] = v;
+          b[y.charCodeAt(v)] = v;
         const x = new Map();
         const k = (e, t, n) => {
           if (!e || (!C(e, t) && "object" != typeof e)) return;
@@ -16119,10 +16119,10 @@
                   s = n.length,
                   i = "";
                 for (t = 0; t < s; t += 3)
-                  (i += b[n[t] >> 2]),
-                    (i += b[((3 & n[t]) << 4) | (n[t + 1] >> 4)]),
-                    (i += b[((15 & n[t + 1]) << 2) | (n[t + 2] >> 6)]),
-                    (i += b[63 & n[t + 2]]);
+                  (i += y[n[t] >> 2]),
+                    (i += y[((3 & n[t]) << 4) | (n[t + 1] >> 4)]),
+                    (i += y[((15 & n[t + 1]) << 2) | (n[t + 2] >> 6)]),
+                    (i += y[63 & n[t + 2]]);
                 return (
                   s % 3 == 2
                     ? (i = i.substring(0, i.length - 1) + "=")
@@ -16174,7 +16174,7 @@
             ].filter((e) => "function" == typeof t[e]);
             return Boolean(n.find((n) => e instanceof t[n]));
           };
-        function w(e, t, n, s, i) {
+        function I(e, t, n, s, i) {
           const o = [];
           try {
             const a = d(
@@ -16210,7 +16210,7 @@
             o.forEach((e) => e());
           };
         }
-        function I(e, t, n, s, i, o, a, r) {
+        function w(e, t, n, s, i, o, a, r) {
           const l = [],
             c = Object.getOwnPropertyNames(e);
           for (const a of c)
@@ -16314,7 +16314,7 @@
                 })();
           }
           initCanvasFPSObserver(e, t, n, s, i, o) {
-            const a = w(t, n, s, i, !0),
+            const a = I(t, n, s, i, !0),
               r = this.takeSnapshot(!1, e, t, n, s, i, o.dataURLOptions);
             this.resetObservers = () => {
               a(), cancelAnimationFrame(r);
@@ -16323,7 +16323,7 @@
           initCanvasMutationObserver(e, t, n, s) {
             this.startRAFTimestamping(),
               this.startPendingCanvasMutationFlusher();
-            const i = w(e, t, n, s, !1),
+            const i = I(e, t, n, s, !1),
               o = (function (e, t, n, s, i) {
                 const o = [],
                   a = Object.getOwnPropertyNames(
@@ -16378,7 +16378,7 @@
                 const a = [];
                 return (
                   a.push(
-                    ...I(
+                    ...w(
                       t.WebGLRenderingContext.prototype,
                       g.WebGL,
                       e,
@@ -16391,7 +16391,7 @@
                   ),
                   void 0 !== t.WebGL2RenderingContext &&
                     a.push(
-                      ...I(
+                      ...w(
                         t.WebGL2RenderingContext.prototype,
                         g.WebGL2,
                         e,
@@ -16569,7 +16569,7 @@
             },
           },
           D = "ReplayCanvas",
-          M = (0, o.defineIntegration)((e = {}) => {
+          R = (0, o.defineIntegration)((e = {}) => {
             const t = {
               quality: e.quality || "medium",
               enableManualSnapshot: e.enableManualSnapshot,
@@ -16596,7 +16596,7 @@
               },
             };
           }),
-          R = (0, o.convertIntegrationFnToClass)(D, M);
+          M = (0, o.convertIntegrationFnToClass)(D, R);
       },
       (e, t, n) => {
         "use strict";
@@ -16659,8 +16659,8 @@
             error: "#f55459",
           },
           _ = "widget",
-          b = "api";
-        async function y(
+          y = "api";
+        async function b(
           { feedback: { message: e, email: t, name: n, source: s, url: i } },
           { includeReplay: o = !0 } = {},
         ) {
@@ -16682,7 +16682,7 @@
           };
           return (0, c.withScope)(async (e) => {
             e.clearBreadcrumbs(),
-              [b, _].includes(String(s)) && e.setLevel("info");
+              [y, _].includes(String(s)) && e.setLevel("info");
             const t = await (async function ({
               client: e,
               scope: t,
@@ -16736,14 +16736,14 @@
             name: e,
             email: t,
             message: n,
-            source: s = b,
+            source: s = y,
             url: o = (0, i.getLocationHref)(),
           },
           a = {},
         ) {
           if (!n)
             throw new Error("Unable to submit feedback with empty message");
-          return y(
+          return b(
             { feedback: { name: e, email: t, message: n, url: o, source: s } },
             a,
           );
@@ -16810,7 +16810,7 @@
                 );
           }
         }
-        function w(e, t) {
+        function I(e, t) {
           return (
             Object.entries(t).forEach(([t, n]) => {
               e.setAttributeNS(null, t, n);
@@ -16818,7 +16818,7 @@
             e
           );
         }
-        const I = 20,
+        const w = 20,
           A = "http://www.w3.org/2000/svg";
         function P(e, t, ...n) {
           const s = m.document.createElement(e);
@@ -16849,7 +16849,7 @@
                     ? e.appendChild(t)
                     : e.appendChild(n.createTextNode(String(t))));
         }
-        function M({ buttonLabel: e, onClick: t }) {
+        function R({ buttonLabel: e, onClick: t }) {
           const n = P(
             "button",
             {
@@ -16860,25 +16860,25 @@
             },
             (function () {
               const e = (e) => m.document.createElementNS(A, e),
-                t = w(e("svg"), {
+                t = I(e("svg"), {
                   class: "feedback-icon",
-                  width: `${I}`,
-                  height: `${I}`,
-                  viewBox: `0 0 ${I} ${I}`,
+                  width: `${w}`,
+                  height: `${w}`,
+                  viewBox: `0 0 ${w} ${w}`,
                   fill: "none",
                 }),
-                n = w(e("g"), { clipPath: "url(#clip0_57_80)" }),
-                s = w(e("path"), {
+                n = I(e("g"), { clipPath: "url(#clip0_57_80)" }),
+                s = I(e("path"), {
                   "fill-rule": "evenodd",
                   "clip-rule": "evenodd",
                   d: "M15.6622 15H12.3997C12.2129 14.9959 12.031 14.9396 11.8747 14.8375L8.04965 12.2H7.49956V19.1C7.4875 19.3348 7.3888 19.5568 7.22256 19.723C7.05632 19.8892 6.83435 19.9879 6.59956 20H2.04956C1.80193 19.9968 1.56535 19.8969 1.39023 19.7218C1.21511 19.5467 1.1153 19.3101 1.11206 19.0625V12.2H0.949652C0.824431 12.2017 0.700142 12.1783 0.584123 12.1311C0.468104 12.084 0.362708 12.014 0.274155 11.9255C0.185602 11.8369 0.115689 11.7315 0.0685419 11.6155C0.0213952 11.4995 -0.00202913 11.3752 -0.00034808 11.25V3.75C-0.00900498 3.62067 0.0092504 3.49095 0.0532651 3.36904C0.0972798 3.24712 0.166097 3.13566 0.255372 3.04168C0.344646 2.94771 0.452437 2.87327 0.571937 2.82307C0.691437 2.77286 0.82005 2.74798 0.949652 2.75H8.04965L11.8747 0.1625C12.031 0.0603649 12.2129 0.00407221 12.3997 0H15.6622C15.9098 0.00323746 16.1464 0.103049 16.3215 0.278167C16.4966 0.453286 16.5964 0.689866 16.5997 0.9375V3.25269C17.3969 3.42959 18.1345 3.83026 18.7211 4.41679C19.5322 5.22788 19.9878 6.32796 19.9878 7.47502C19.9878 8.62209 19.5322 9.72217 18.7211 10.5333C18.1345 11.1198 17.3969 11.5205 16.5997 11.6974V14.0125C16.6047 14.1393 16.5842 14.2659 16.5395 14.3847C16.4948 14.5035 16.4268 14.6121 16.3394 14.7042C16.252 14.7962 16.147 14.8698 16.0307 14.9206C15.9144 14.9714 15.7891 14.9984 15.6622 15ZM1.89695 10.325H1.88715V4.625H8.33715C8.52423 4.62301 8.70666 4.56654 8.86215 4.4625L12.6872 1.875H14.7247V13.125H12.6872L8.86215 10.4875C8.70666 10.3835 8.52423 10.327 8.33715 10.325H2.20217C2.15205 10.3167 2.10102 10.3125 2.04956 10.3125C1.9981 10.3125 1.94708 10.3167 1.89695 10.325ZM2.98706 12.2V18.1625H5.66206V12.2H2.98706ZM16.5997 9.93612V5.01393C16.6536 5.02355 16.7072 5.03495 16.7605 5.04814C17.1202 5.13709 17.4556 5.30487 17.7425 5.53934C18.0293 5.77381 18.2605 6.06912 18.4192 6.40389C18.578 6.73866 18.6603 7.10452 18.6603 7.47502C18.6603 7.84552 18.578 8.21139 18.4192 8.54616C18.2605 8.88093 18.0293 9.17624 17.7425 9.41071C17.4556 9.64518 17.1202 9.81296 16.7605 9.90191C16.7072 9.91509 16.6536 9.9265 16.5997 9.93612Z",
                 });
               t.appendChild(n).appendChild(s);
               const i = e("defs"),
-                o = w(e("clipPath"), { id: "clip0_57_80" }),
-                a = w(e("rect"), {
-                  width: `${I}`,
-                  height: `${I}`,
+                o = I(e("clipPath"), { id: "clip0_57_80" }),
+                a = I(e("rect"), {
+                  width: `${w}`,
+                  height: `${w}`,
                   fill: "white",
                 });
               return (
@@ -16913,7 +16913,7 @@
             }
           );
         }
-        function R(e, t) {
+        function M(e, t) {
           const n = e.get(t);
           return "string" == typeof n ? n.trim() : "";
         }
@@ -16962,7 +16962,7 @@
               placeholder: t,
               value: d,
             }),
-            b = P("input", {
+            y = P("input", {
               id: "email",
               type: c ? "text" : "hidden",
               "aria-hidden": c ? "false" : "true",
@@ -16972,7 +16972,7 @@
               placeholder: s,
               value: p,
             }),
-            y = P("textarea", {
+            b = P("textarea", {
               id: "message",
               autoFocus: "true",
               rows: "5",
@@ -17003,9 +17003,9 @@
                       if (g) {
                         const t = new FormData(e.target),
                           n = {
-                            name: R(t, "name"),
-                            email: R(t, "email"),
-                            message: R(t, "message"),
+                            name: M(t, "name"),
+                            email: M(t, "email"),
+                            message: M(t, "message"),
                           };
                         g(n);
                       }
@@ -17043,9 +17043,9 @@
                           " (required)",
                         ),
                     ),
-                    b,
+                    y,
                   ]),
-                !c && b,
+                !c && y,
                 P("label", { htmlFor: "message", className: "form__label" }, [
                   P(
                     "span",
@@ -17057,7 +17057,7 @@
                       " (required)",
                     ),
                   ),
-                  y,
+                  b,
                 ]),
                 P("div", { className: "btn-group" }, [f, v]),
               ],
@@ -17147,14 +17147,14 @@
                       },
                       (function ({ colorScheme: e }) {
                         const t = (e) => m.document.createElementNS(B, e),
-                          n = w(t("svg"), {
+                          n = I(t("svg"), {
                             class: "sentry-logo",
                             width: "32",
                             height: "30",
                             viewBox: "0 0 72 66",
                             fill: "none",
                           }),
-                          s = w(t("path"), {
+                          s = I(t("path"), {
                             transform: "translate(11, 11)",
                             d: "M29,2.26a4.67,4.67,0,0,0-8,0L14.42,13.53A32.21,32.21,0,0,1,32.17,40.19H27.55A27.68,27.68,0,0,0,12.09,17.47L6,28a15.92,15.92,0,0,1,9.23,12.17H4.62A.76.76,0,0,1,4,39.06l2.94-5a10.74,10.74,0,0,0-3.36-1.9l-2.91,5a4.54,4.54,0,0,0,1.69,6.24A4.66,4.66,0,0,0,4.62,44H19.15a19.4,19.4,0,0,0-8-17.31l2.31-4A23.87,23.87,0,0,1,23.76,44H36.07a35.88,35.88,0,0,0-16.41-31.8l4.67-8a.77.77,0,0,1,1.05-.27c.53.29,20.29,34.77,20.66,35.17a.76.76,0,0,1-.68,1.13H40.6q.09,1.91,0,3.81h4.78A4.59,4.59,0,0,0,50,39.43a4.49,4.49,0,0,0-.62-2.28Z",
                           });
@@ -17208,26 +17208,26 @@
             { className: "success-message", onClick: n },
             (function () {
               const e = (e) => m.document.createElementNS(F, e),
-                t = w(e("svg"), {
+                t = I(e("svg"), {
                   class: "success-icon",
                   width: `${L}`,
                   height: `${U}`,
                   viewBox: `0 0 ${L} ${U}`,
                   fill: "none",
                 }),
-                n = w(e("g"), { clipPath: "url(#clip0_57_156)" }),
-                s = w(e("path"), {
+                n = I(e("g"), { clipPath: "url(#clip0_57_156)" }),
+                s = I(e("path"), {
                   "fill-rule": "evenodd",
                   "clip-rule": "evenodd",
                   d: "M3.55544 15.1518C4.87103 16.0308 6.41775 16.5 8 16.5C10.1217 16.5 12.1566 15.6571 13.6569 14.1569C15.1571 12.6566 16 10.6217 16 8.5C16 6.91775 15.5308 5.37103 14.6518 4.05544C13.7727 2.73985 12.5233 1.71447 11.0615 1.10897C9.59966 0.503466 7.99113 0.34504 6.43928 0.653721C4.88743 0.962403 3.46197 1.72433 2.34315 2.84315C1.22433 3.96197 0.462403 5.38743 0.153721 6.93928C-0.15496 8.49113 0.00346625 10.0997 0.608967 11.5615C1.21447 13.0233 2.23985 14.2727 3.55544 15.1518ZM4.40546 3.1204C5.46945 2.40946 6.72036 2.03 8 2.03C9.71595 2.03 11.3616 2.71166 12.575 3.92502C13.7883 5.13838 14.47 6.78405 14.47 8.5C14.47 9.77965 14.0905 11.0306 13.3796 12.0945C12.6687 13.1585 11.6582 13.9878 10.476 14.4775C9.29373 14.9672 7.99283 15.0953 6.73777 14.8457C5.48271 14.596 4.32987 13.9798 3.42502 13.075C2.52018 12.1701 1.90397 11.0173 1.65432 9.76224C1.40468 8.50718 1.5328 7.20628 2.0225 6.02404C2.5122 4.8418 3.34148 3.83133 4.40546 3.1204Z",
                 }),
-                i = w(e("path"), {
+                i = I(e("path"), {
                   d: "M6.68775 12.4297C6.78586 12.4745 6.89218 12.4984 7 12.5C7.11275 12.4955 7.22315 12.4664 7.32337 12.4145C7.4236 12.3627 7.51121 12.2894 7.58 12.2L12 5.63999C12.0848 5.47724 12.1071 5.28902 12.0625 5.11098C12.0178 4.93294 11.9095 4.77744 11.7579 4.67392C11.6064 4.57041 11.4221 4.52608 11.24 4.54931C11.0579 4.57254 10.8907 4.66173 10.77 4.79999L6.88 10.57L5.13 8.56999C5.06508 8.49566 4.98613 8.43488 4.89768 8.39111C4.80922 8.34735 4.713 8.32148 4.61453 8.31498C4.51605 8.30847 4.41727 8.32147 4.32382 8.35322C4.23038 8.38497 4.14413 8.43484 4.07 8.49999C3.92511 8.63217 3.83692 8.81523 3.82387 9.01092C3.81083 9.2066 3.87393 9.39976 4 9.54999L6.43 12.24C6.50187 12.3204 6.58964 12.385 6.68775 12.4297Z",
                 });
               t.appendChild(n).append(i, s);
               const o = e("defs"),
-                a = w(e("clipPath"), { id: "clip0_57_156" }),
-                r = w(e("rect"), {
+                a = I(e("clipPath"), { id: "clip0_57_156" }),
+                r = I(e("rect"), {
                   width: `${L}`,
                   height: `${L}`,
                   fill: "white",
@@ -17359,7 +17359,7 @@
             s
               ? s.addEventListener("click", g)
               : t &&
-                ((i = M({ buttonLabel: n.buttonLabel, onClick: g })),
+                ((i = R({ buttonLabel: n.buttonLabel, onClick: g })),
                 i.el && e.appendChild(i.el)),
             {
               get actor() {
@@ -17403,15 +17403,15 @@
             formTitle: h = "Report a Bug",
             emailPlaceholder: g = "your.email@example.org",
             emailLabel: _ = "Email",
-            messagePlaceholder: b = "What's the bug? What did you expect?",
-            messageLabel: y = "Description",
+            messagePlaceholder: y = "What's the bug? What did you expect?",
+            messageLabel: b = "Description",
             namePlaceholder: v = "Your Name",
             nameLabel: x = "Name",
             successMessageText: k = "Thank you for your report!",
             onFormClose: E,
             onFormOpen: T,
             onSubmitError: C,
-            onSubmitSuccess: w,
+            onSubmitSuccess: I,
           } = {}) {
             (this.name = W.id),
               (this._host = null),
@@ -17437,15 +17437,15 @@
                 formTitle: h,
                 emailLabel: _,
                 emailPlaceholder: g,
-                messageLabel: y,
-                messagePlaceholder: b,
+                messageLabel: b,
+                messagePlaceholder: y,
                 nameLabel: x,
                 namePlaceholder: v,
                 successMessageText: k,
                 onFormClose: E,
                 onFormOpen: T,
                 onSubmitError: C,
-                onSubmitSuccess: w,
+                onSubmitSuccess: I,
               });
           }
           setupOnce() {
@@ -17583,7 +17583,7 @@
           n.d(t, {
             BROWSER_TRACING_INTEGRATION_ID: () => f,
             BrowserTracing: () => _,
-            getMetaContent: () => b,
+            getMetaContent: () => y,
           });
         var s = n(57),
           i = n(48),
@@ -17699,8 +17699,8 @@
               m = "pageload" === e.op;
             let p;
             if (m) {
-              const t = m ? b("sentry-trace") : "",
-                n = m ? b("baggage") : void 0,
+              const t = m ? y("sentry-trace") : "",
+                n = m ? y("baggage") : void 0,
                 {
                   traceId: s,
                   dsc: i,
@@ -17828,7 +17828,7 @@
             });
           }
         }
-        function b(e) {
+        function y(e) {
           const t = (0, c.getDomElement)(`meta[name=${e}]`);
           return t ? t.getAttribute("content") : void 0;
         }
@@ -17886,8 +17886,8 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            DEFAULT_TRACE_PROPAGATION_TARGETS: () => b,
-            defaultRequestInstrumentationOptions: () => y,
+            DEFAULT_TRACE_PROPAGATION_TARGETS: () => y,
+            defaultRequestInstrumentationOptions: () => b,
             extractNetworkProtocol: () => k,
             instrumentOutgoingRequests: () => v,
             shouldAttachHeaders: () => T,
@@ -17909,13 +17909,13 @@
           f = n(22),
           S = n(128),
           _ = n(106);
-        const b = ["localhost", /^\/(?!\/)/],
-          y = {
+        const y = ["localhost", /^\/(?!\/)/],
+          b = {
             traceFetch: !0,
             traceXHR: !0,
             enableHTTPTimings: !0,
-            tracingOrigins: b,
-            tracePropagationTargets: b,
+            tracingOrigins: y,
+            tracePropagationTargets: y,
           };
         function v(e) {
           const {
@@ -17925,7 +17925,7 @@
               tracingOrigins: i,
               shouldCreateSpanForRequest: o,
               enableHTTPTimings: a,
-            } = { traceFetch: y.traceFetch, traceXHR: y.traceXHR, ...e },
+            } = { traceFetch: b.traceFetch, traceXHR: b.traceXHR, ...e },
             r = "function" == typeof o ? o : (e) => !0,
             l = (e) => T(e, s || i),
             c = {};
@@ -18020,7 +18020,7 @@
           );
         }
         function T(e, t) {
-          return (0, h.stringMatchesSomePattern)(e, t || b);
+          return (0, h.stringMatchesSomePattern)(e, t || y);
         }
         function C(e, t, n, m) {
           const p = e.xhr,
@@ -18044,8 +18044,8 @@
             );
           }
           const _ = (0, a.getCurrentScope)(),
-            b = (0, r.getIsolationScope)(),
-            y = S
+            y = (0, r.getIsolationScope)(),
+            b = S
               ? (0, l.startInactiveSpan)({
                   name: `${h.method} ${h.url}`,
                   onlyIfParent: !0,
@@ -18058,9 +18058,9 @@
                   op: "http.client",
                 })
               : void 0;
-          y &&
-            ((p.__sentry_xhr_span_id__ = y.spanContext().spanId),
-            (m[p.__sentry_xhr_span_id__] = y));
+          b &&
+            ((p.__sentry_xhr_span_id__ = b.spanContext().spanId),
+            (m[p.__sentry_xhr_span_id__] = b));
           const v = (0, a.getClient)();
           if (p.setRequestHeader && n(h.url) && v) {
             const {
@@ -18068,7 +18068,7 @@
               spanId: t,
               sampled: n,
               dsc: i,
-            } = { ...b.getPropagationContext(), ..._.getPropagationContext() };
+            } = { ...y.getPropagationContext(), ..._.getPropagationContext() };
             !(function (e, t, n) {
               try {
                 e.setRequestHeader("sentry-trace", t),
@@ -18076,18 +18076,18 @@
               } catch (e) {}
             })(
               p,
-              y
-                ? (0, s.spanToTraceHeader)(y)
+              b
+                ? (0, s.spanToTraceHeader)(b)
                 : (0, g.generateSentryTraceHeader)(e, t, n),
               (0, f.dynamicSamplingContextToSentryBaggageHeader)(
                 i ||
-                  (y
-                    ? (0, u.getDynamicSamplingContextFromSpan)(y)
+                  (b
+                    ? (0, u.getDynamicSamplingContextFromSpan)(b)
                     : (0, u.getDynamicSamplingContextFromClient)(e, v, _)),
               ),
             );
           }
-          return y;
+          return b;
         }
       },
       (e, t, n) => {
@@ -18178,35 +18178,35 @@
                   ? (0, u.getDynamicSamplingContextFromSpan)(o)
                   : (0, u.getDynamicSamplingContextFromClient)(r, t, n)),
             ),
-            b =
+            y =
               s.headers ||
               ("undefined" != typeof Request && (0, p.isInstanceOf)(e, Request)
                 ? e.headers
                 : void 0);
-          if (b) {
+          if (y) {
             if (
               "undefined" != typeof Headers &&
-              (0, p.isInstanceOf)(b, Headers)
+              (0, p.isInstanceOf)(y, Headers)
             ) {
-              const e = new Headers(b);
+              const e = new Headers(y);
               return (
                 e.append("sentry-trace", S),
                 _ && e.append(d.BAGGAGE_HEADER_NAME, _),
                 e
               );
             }
-            if (Array.isArray(b)) {
-              const e = [...b, ["sentry-trace", S]];
+            if (Array.isArray(y)) {
+              const e = [...y, ["sentry-trace", S]];
               return _ && e.push([d.BAGGAGE_HEADER_NAME, _]), e;
             }
             {
-              const e = "baggage" in b ? b.baggage : void 0,
+              const e = "baggage" in y ? y.baggage : void 0,
                 t = [];
               return (
                 Array.isArray(e) ? t.push(...e) : e && t.push(e),
                 _ && t.push(_),
                 {
-                  ...b,
+                  ...y,
                   "sentry-trace": S,
                   baggage: t.length > 0 ? t.join(",") : void 0,
                 }
@@ -18221,7 +18221,7 @@
         n.r(t),
           n.d(t, {
             _addMeasureSpans: () => C,
-            _addResourceSpans: () => I,
+            _addResourceSpans: () => w,
             _addTtfbToMeasurements: () => P,
             addPerformanceEntries: () => T,
             startTrackingInteractions: () => E,
@@ -18248,8 +18248,8 @@
           return d.WINDOW && d.WINDOW.addEventListener && d.WINDOW.performance;
         }
         let _,
-          b,
-          y = 0,
+          y,
+          b = 0,
           v = {};
         function x() {
           const e = S();
@@ -18269,7 +18269,7 @@
                 t &&
                   (u.DEBUG_BUILD && l.logger.log("[Measurements] Adding CLS"),
                   (v.cls = { value: e.value, unit: "" }),
-                  (b = t));
+                  (y = t));
               }, !0),
               s = (0, m.addLcpInstrumentationHandler)(({ metric: e }) => {
                 const t = e.entries[e.entries.length - 1];
@@ -18346,7 +18346,7 @@
           let c, m;
           const { op: g, start_timestamp: x } = (0, i.spanToJSON)(e);
           if (
-            (s.slice(y).forEach((t) => {
+            (s.slice(b).forEach((t) => {
               const s = f(t.startTime),
                 i = f(t.duration);
               if (!("navigation" === e.op && x && n + s < x))
@@ -18360,11 +18360,11 @@
                         "loadEvent",
                         "connect",
                       ].forEach((s) => {
-                        w(e, t, s, n);
+                        I(e, t, s, n);
                       }),
-                        w(e, t, "secureConnection", n, "TLS/SSL", "connectEnd"),
-                        w(e, t, "fetch", n, "cache", "domainLookupStart"),
-                        w(e, t, "domainLookup", n, "DNS"),
+                        I(e, t, "secureConnection", n, "TLS/SSL", "connectEnd"),
+                        I(e, t, "fetch", n, "cache", "domainLookupStart"),
+                        I(e, t, "domainLookup", n, "DNS"),
                         (function (e, t, n) {
                           t.responseEnd &&
                             ((0, h._startChild)(e, {
@@ -18405,10 +18405,10 @@
                     break;
                   }
                   case "resource":
-                    I(e, t, t.name, s, i, n);
+                    w(e, t, t.name, s, i, n);
                 }
             }),
-            (y = Math.max(s.length - 1, 0)),
+            (b = Math.max(s.length - 1, 0)),
             (function (e) {
               const t = d.WINDOW.navigator;
               if (!t) return;
@@ -18466,11 +18466,11 @@
                   _.id && e.setTag("lcp.id", _.id),
                   _.url && e.setTag("lcp.url", _.url.trim().slice(0, 200)),
                   e.setTag("lcp.size", _.size));
-                b &&
-                  b.sources &&
+                y &&
+                  y.sources &&
                   (u.DEBUG_BUILD &&
                     l.logger.log("[Measurements] Adding CLS Data"),
-                  b.sources.forEach((t, n) =>
+                  y.sources.forEach((t, n) =>
                     e.setTag(
                       `cls.source.${n + 1}`,
                       (0, r.htmlTreeAsString)(t.node),
@@ -18478,7 +18478,7 @@
                   ));
               })(e);
           }
-          (_ = void 0), (b = void 0), (v = {});
+          (_ = void 0), (y = void 0), (v = {});
         }
         function C(e, t, n, s, i) {
           const o = i + n,
@@ -18494,7 +18494,7 @@
             o
           );
         }
-        function w(e, t, n, s, i, o) {
+        function I(e, t, n, s, i, o) {
           const a = o ? t[o] : t[`${n}End`],
             r = t[`${n}Start`];
           r &&
@@ -18507,7 +18507,7 @@
               endTimestamp: s + f(a),
             });
         }
-        function I(e, t, n, s, i, o) {
+        function w(e, t, n, s, i, o) {
           if (
             "xmlhttprequest" === t.initiatorType ||
             "fetch" === t.initiatorType
@@ -18600,7 +18600,7 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            BROWSER_TRACING_INTEGRATION_ID: () => y,
+            BROWSER_TRACING_INTEGRATION_ID: () => b,
             browserTracingIntegration: () => x,
             getMetaContent: () => T,
             startBrowserTracingNavigationSpan: () => E,
@@ -18622,8 +18622,8 @@
           f = n(131),
           S = n(129),
           _ = n(127),
-          b = n(111);
-        const y = "BrowserTracing",
+          y = n(111);
+        const b = "BrowserTracing",
           v = {
             ...s.TRACING_DEFAULTS,
             instrumentNavigation: !0,
@@ -18672,12 +18672,12 @@
                   trimEnd: !0,
                 };
               } else _ = { trimEnd: !0, ...e };
-              const y = a ? a(_) : _;
-              (y.metadata =
-                y.name !== _.name
-                  ? { ...y.metadata, source: "custom" }
-                  : y.metadata),
-                (l = y.name),
+              const b = a ? a(_) : _;
+              (b.metadata =
+                b.name !== _.name
+                  ? { ...b.metadata, source: "custom" }
+                  : b.metadata),
+                (l = b.name),
                 (h = (function (e) {
                   const t =
                       e.attributes &&
@@ -18685,20 +18685,20 @@
                     n = e.data && e.data[r.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE],
                     s = e.metadata && e.metadata.source;
                   return t || n || s;
-                })(y)),
-                !1 === y.sampled &&
+                })(b)),
+                !1 === b.sampled &&
                   g.DEBUG_BUILD &&
                   m.logger.log(
-                    `[Tracing] Will not send ${y.op} transaction because of beforeNavigate.`,
+                    `[Tracing] Will not send ${b.op} transaction because of beforeNavigate.`,
                   ),
                 g.DEBUG_BUILD &&
                   m.logger.log(
-                    `[Tracing] Starting ${y.op} transaction on scope`,
+                    `[Tracing] Starting ${b.op} transaction on scope`,
                   );
-              const { location: v } = b.WINDOW,
+              const { location: v } = y.WINDOW,
                 x = (0, i.startIdleTransaction)(
                   t,
-                  y,
+                  b,
                   c,
                   d,
                   !0,
@@ -18708,16 +18708,16 @@
                 );
               return (
                 f &&
-                  (b.WINDOW.document.addEventListener(
+                  (y.WINDOW.document.addEventListener(
                     "readystatechange",
                     () => {
                       ["interactive", "complete"].includes(
-                        b.WINDOW.document.readyState,
+                        y.WINDOW.document.readyState,
                       ) && x.sendAutoFinishSignal();
                     },
                   ),
                   ["interactive", "complete"].includes(
-                    b.WINDOW.document.readyState,
+                    y.WINDOW.document.readyState,
                   ) && x.sendAutoFinishSignal()),
                 x.registerBeforeFinishCallback((e) => {
                   s(), (0, S.addPerformanceEntries)(e);
@@ -18730,28 +18730,28 @@
               n._experiments.enableInteractions &&
                 (0, S.startTrackingInteractions)(),
               {
-                name: y,
+                name: b,
                 setupOnce: () => {},
                 afterAllSetup(e) {
                   const s = e.getOptions(),
                     {
                       markBackgroundSpan: u,
                       traceFetch: S,
-                      traceXHR: y,
+                      traceXHR: b,
                       shouldCreateSpanForRequest: v,
                       enableHTTPTimings: T,
                       _experiments: C,
                     } = n,
-                    w = s && s.tracePropagationTargets,
-                    I = w || n.tracePropagationTargets;
+                    I = s && s.tracePropagationTargets,
+                    w = I || n.tracePropagationTargets;
                   let A;
                   g.DEBUG_BUILD &&
                     t &&
-                    w &&
+                    I &&
                     m.logger.warn(
                       "[Tracing] The `tracePropagationTargets` option was set in the BrowserTracing integration and top level `Sentry.init`. The top level `Sentry.init` value is being used.",
                     );
-                  let P = b.WINDOW.location.href;
+                  let P = y.WINDOW.location.href;
                   if (
                     (e.on &&
                       (e.on("startNavigationSpan", (e) => {
@@ -18775,7 +18775,7 @@
                     n.instrumentPageLoad && e.emit)
                   ) {
                     const t = {
-                      name: b.WINDOW.location.pathname,
+                      name: y.WINDOW.location.pathname,
                       startTimestamp: d.browserPerformanceTimeOrigin
                         ? d.browserPerformanceTimeOrigin / 1e3
                         : void 0,
@@ -18795,7 +18795,7 @@
                         else if (n !== t) {
                           P = void 0;
                           const t = {
-                            name: b.WINDOW.location.pathname,
+                            name: y.WINDOW.location.pathname,
                             origin: "auto.navigation.browser",
                             attributes: {
                               [r.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: "url",
@@ -18841,7 +18841,7 @@
                                 `[Tracing] Did not create ${d} transaction because _latestRouteName is missing.`,
                               )
                             );
-                          const { location: h } = b.WINDOW,
+                          const { location: h } = y.WINDOW,
                             f = {
                               name: t,
                               op: d,
@@ -18867,8 +18867,8 @@
                       })(n, l, h),
                     (0, _.instrumentOutgoingRequests)({
                       traceFetch: S,
-                      traceXHR: y,
-                      tracePropagationTargets: I,
+                      traceXHR: b,
+                      tracePropagationTargets: w,
                       shouldCreateSpanForRequest: v,
                       enableHTTPTimings: T,
                     });
@@ -19157,15 +19157,15 @@
         "use strict";
         n.r(t),
           n.d(t, {
-            MAX_PROFILE_DURATION_MS: () => R,
+            MAX_PROFILE_DURATION_MS: () => M,
             addProfileToGlobalCache: () => H,
-            addProfilesToEnvelope: () => w,
+            addProfilesToEnvelope: () => I,
             applyDebugMetadata: () => P,
             convertJSSelfProfileToSampledFormat: () => C,
             createProfilePayload: () => E,
             createProfilingEvent: () => O,
             enrichWithThreadInformation: () => k,
-            findProfiledTransactionsFromEnvelope: () => I,
+            findProfiledTransactionsFromEnvelope: () => w,
             getActiveProfilesCount: () => U,
             isAutomatedPageLoadTransaction: () => T,
             isValidSampleRate: () => D,
@@ -19189,8 +19189,8 @@
           f = "",
           S = "",
           _ = (m.WINDOW.navigator && m.WINDOW.navigator.userAgent) || "",
-          b = "";
-        const y =
+          y = "";
+        const b =
           (m.WINDOW.navigator && m.WINDOW.navigator.language) ||
           (m.WINDOW.navigator &&
             m.WINDOW.navigator.languages &&
@@ -19250,8 +19250,8 @@
             },
             os: { name: g, version: f, build_number: _ },
             device: {
-              locale: y,
-              model: b,
+              locale: b,
+              model: y,
               manufacturer: _,
               architecture: S,
               is_emulator: !1,
@@ -19328,12 +19328,12 @@
           }
           return s;
         }
-        function w(e, t) {
+        function I(e, t) {
           if (!t.length) return e;
           for (const n of t) e[1].push([{ type: "profile" }, n]);
           return e;
         }
-        function I(e) {
+        function w(e) {
           const t = [];
           return (
             (0, l.forEachEnvelopeItem)(e, (e, n) => {
@@ -19365,7 +19365,7 @@
               if (
                 ((g = e.platform || ""),
                 (S = e.architecture || ""),
-                (b = e.model || ""),
+                (y = e.model || ""),
                 (f = e.platformVersion || ""),
                 e.fullVersionList && e.fullVersionList.length > 0)
               ) {
@@ -19423,8 +19423,8 @@
                   ),
                 !1);
         }
-        let M = !1;
-        const R = 3e4;
+        let R = !1;
+        const M = 3e4;
         function N() {
           const e = m.WINDOW.Profiler;
           if ("function" != typeof e)
@@ -19434,7 +19434,7 @@
                 "[Profiling] Profiling is not supported by this browser, Profiler interface missing on window object.",
               )
             );
-          const t = Math.floor(R / 10);
+          const t = Math.floor(M / 10);
           try {
             return new e({ sampleInterval: 10, maxBufferSize: t });
           } catch (e) {
@@ -19445,11 +19445,11 @@
               o.logger.log(
                 "[Profiling] Disabling profiling for current user session.",
               )),
-              (M = !0);
+              (R = !0);
           }
         }
         function B(e) {
-          if (M)
+          if (R)
             return (
               u.DEBUG_BUILD &&
                 o.logger.log(
@@ -19620,7 +19620,7 @@
             LinkedErrors: () => W.LinkedErrors,
             ModuleMetadata: () => H.ModuleMetadata,
             RequestData: () => j.RequestData,
-            SDK_VERSION: () => w.SDK_VERSION,
+            SDK_VERSION: () => I.SDK_VERSION,
             SEMANTIC_ATTRIBUTE_SENTRY_OP: () => d.SEMANTIC_ATTRIBUTE_SENTRY_OP,
             SEMANTIC_ATTRIBUTE_SENTRY_ORIGIN: () =>
               d.SEMANTIC_ATTRIBUTE_SENTRY_ORIGIN,
@@ -19637,8 +19637,8 @@
             Transaction: () => a.Transaction,
             addBreadcrumb: () => h.addBreadcrumb,
             addEventProcessor: () => v.addEventProcessor,
-            addGlobalEventProcessor: () => b.addGlobalEventProcessor,
-            addIntegration: () => I.addIntegration,
+            addGlobalEventProcessor: () => y.addGlobalEventProcessor,
+            addIntegration: () => w.addIntegration,
             addTracingExtensions: () => s.addTracingExtensions,
             applyScopeDataToEvent: () => A.applyScopeDataToEvent,
             applySdkMetadata: () => U.applySdkMetadata,
@@ -19651,12 +19651,12 @@
             closeSession: () => f.closeSession,
             configureScope: () => h.configureScope,
             continueTrace: () => c.continueTrace,
-            convertIntegrationFnToClass: () => I.convertIntegrationFnToClass,
+            convertIntegrationFnToClass: () => w.convertIntegrationFnToClass,
             createCheckInEnvelope: () => D.createCheckInEnvelope,
             createEventEnvelope: () => p.createEventEnvelope,
             createSessionEnvelope: () => p.createSessionEnvelope,
             createTransport: () => E.createTransport,
-            defineIntegration: () => I.defineIntegration,
+            defineIntegration: () => w.defineIntegration,
             endSession: () => h.endSession,
             ensureHubOnCarrier: () => g.ensureHubOnCarrier,
             extractTraceparentData: () => r.extractTraceparentData,
@@ -19672,21 +19672,21 @@
             getDynamicSamplingContextFromSpan: () =>
               u.getDynamicSamplingContextFromSpan,
             getEnvelopeEndpointWithUrlEncodedAuth: () =>
-              y.getEnvelopeEndpointWithUrlEncodedAuth,
+              b.getEnvelopeEndpointWithUrlEncodedAuth,
             getGlobalScope: () => _.getGlobalScope,
             getHubFromCarrier: () => g.getHubFromCarrier,
-            getIntegrationsToSetup: () => I.getIntegrationsToSetup,
+            getIntegrationsToSetup: () => w.getIntegrationsToSetup,
             getIsolationScope: () => g.getIsolationScope,
             getMainCarrier: () => g.getMainCarrier,
-            getReportDialogEndpoint: () => y.getReportDialogEndpoint,
+            getReportDialogEndpoint: () => b.getReportDialogEndpoint,
             getRootSpan: () => L.getRootSpan,
             getSpanStatusFromHttpCode: () => l.getSpanStatusFromHttpCode,
             handleCallbackErrors: () => N.handleCallbackErrors,
-            hasTracingEnabled: () => M.hasTracingEnabled,
+            hasTracingEnabled: () => R.hasTracingEnabled,
             inboundFiltersIntegration: () => G.inboundFiltersIntegration,
             initAndBind: () => k.initAndBind,
             isInitialized: () => h.isInitialized,
-            isSentryRequestUrl: () => R.isSentryRequestUrl,
+            isSentryRequestUrl: () => M.isSentryRequestUrl,
             lastEventId: () => h.lastEventId,
             linkedErrorsIntegration: () => W.linkedErrorsIntegration,
             makeMain: () => g.makeMain,
@@ -19696,7 +19696,7 @@
             mergeScopeData: () => A.mergeScopeData,
             metrics: () => V.metrics,
             moduleMetadataIntegration: () => H.moduleMetadataIntegration,
-            notifyEventProcessors: () => b.notifyEventProcessors,
+            notifyEventProcessors: () => y.notifyEventProcessors,
             parameterize: () => B.parameterize,
             prepareEvent: () => P.prepareEvent,
             requestDataIntegration: () => j.requestDataIntegration,
@@ -19748,21 +19748,21 @@
           f = n(16),
           S = n(139),
           _ = n(15),
-          b = n(26),
-          y = n(42),
+          y = n(26),
+          b = n(42),
           v = n(41),
           x = n(140),
           k = n(73),
           E = n(64),
           T = n(134),
           C = n(67),
-          w = n(14),
-          I = n(34),
+          I = n(14),
+          w = n(34),
           A = n(19),
           P = n(29),
           D = n(143),
-          M = n(55),
-          R = n(120),
+          R = n(55),
+          M = n(120),
           N = n(54),
           B = n(72),
           O = n(20),
@@ -20804,7 +20804,6 @@
             t.GAME_MODES_WITH_SUBTEAMS =
             t.GAME_MODES_WITH_NO_BAN_DELAY_TIMERS =
             t.GAME_MODES_WITH_COMPANIONS =
-            t.GAME_MODES_WITH_CHEST_AVAILABILITY_ENABLED =
             t.GAMEFLOW_PHASE_CHAMP_SELECT =
             t.FINALIZATION_PHASE_CEREMONIES =
             t.DURATIONS =
@@ -20863,7 +20862,6 @@
         t.NEXUS_BLITZ_QUEUE_IDS = [1300, 1301, 1302, 1303, 1304];
         const i = Object.freeze({ ARAM: !0, KINGPORO: !0 });
         t.GAME_MODES_WITH_COMPANIONS = i;
-        t.GAME_MODES_WITH_CHEST_AVAILABILITY_ENABLED = ["ARAM"];
         const o = Object.freeze({ CHERRY: !0 });
         t.GAME_MODES_WITH_NO_BAN_DELAY_TIMERS = o;
         t.GAME_MODES_WITH_SUBTEAMS = {
@@ -21266,72 +21264,71 @@
                 ChampionShowcaseItemComponent: n(197),
                 ChampionBenchComponent: n(199),
                 ChampionBenchItemComponent: n(202),
-                ChampionChestAvailabilityComponent: n(205),
-                ChampionGridComponent: n(208),
-                ChampionGridChampionComponent: n(218),
-                ChampionSplashBackgroundComponent: n(220),
-                ChampionSplashRingComponent: n(224),
-                ChromaModalComponent: n(227),
-                DisconnectNotificationComponent: n(230),
-                EmotesEditComponent: n(233),
+                ChampionGridComponent: n(205),
+                ChampionGridChampionComponent: n(215),
+                ChampionSplashBackgroundComponent: n(217),
+                ChampionSplashRingComponent: n(221),
+                ChromaModalComponent: n(224),
+                DisconnectNotificationComponent: n(227),
+                EmotesEditComponent: n(230),
                 FramedIconButtonComponent: u,
-                FlyoutSelectorPopupButtonComponent: n(238),
-                FlyoutSelectorTriggerButtonComponent: n(241),
-                FullScreenModalComponent: n(234),
-                GameEventInfoCardComponent: n(244).default,
-                GameInfoComponent: n(247),
-                LockInButtonComponent: n(250),
-                LoadoutsEditComponent: n(253).default,
+                FlyoutSelectorPopupButtonComponent: n(235),
+                FlyoutSelectorTriggerButtonComponent: n(238),
+                FullScreenModalComponent: n(231),
+                GameEventInfoCardComponent: n(241).default,
+                GameInfoComponent: n(244),
+                LockInButtonComponent: n(247),
+                LoadoutsEditComponent: n(250).default,
                 PerkPageTooltipComponent: m,
-                PerksPageDropdownComponent: n(256),
-                PerksPageDropdownOptionComponent: n(259),
-                PhaseTransitionComponent: n(262),
-                PickBanRingComponent: n(265),
-                PickPhaseComponent: n(268),
+                PerksPageDropdownComponent: n(253),
+                PerksPageDropdownOptionComponent: n(256),
+                PhaseTransitionComponent: n(259),
+                PickBanRingComponent: n(262),
+                PickPhaseComponent: n(265),
                 PlayerNameComponent: d,
-                PlayerNameWrapperComponent: n(271),
+                PlayerNameWrapperComponent: n(268),
                 PositionAssignmentIntroComponent: n(151).default,
-                QuitButtonComponent: n(273),
-                RerollButtonComponent: n(276),
-                RingGearComponent: n(279),
-                RuneRecommenderButtonComponent: n(282).default,
-                SkinButtonComponent: n(284),
-                SkinCarouselComponent: n(287),
-                SkinNameComponent: n(290),
-                SkinPurchaseButtonComponent: n(293),
-                SkinSelectComponent: n(296),
-                SummonerArrayComponent: n(299),
-                SummonerOverlayComponent: n(302),
-                SummonerObjectComponent: n(308),
-                SummonerSpellPopupComponent: n(312),
-                SummonerSpellSelectComponent: n(314),
-                SummonerTimerComponent: n(317),
-                TeamBansComponent: n(320),
-                TeamBansItemComponent: n(323),
-                TeamBoostButtonComponent: n(326),
-                TeamBoostModalComponent: n(329),
-                TimerStatusComponent: n(332),
-                TradeButtonComponent: n(335),
+                QuitButtonComponent: n(270),
+                RerollButtonComponent: n(273),
+                RingGearComponent: n(276),
+                RuneRecommenderButtonComponent: n(279).default,
+                SkinButtonComponent: n(281),
+                SkinCarouselComponent: n(284),
+                SkinNameComponent: n(287),
+                SkinPurchaseButtonComponent: n(290),
+                SkinSelectComponent: n(293),
+                SummonerArrayComponent: n(296),
+                SummonerOverlayComponent: n(299),
+                SummonerObjectComponent: n(305),
+                SummonerSpellPopupComponent: n(309),
+                SummonerSpellSelectComponent: n(311),
+                SummonerTimerComponent: n(314),
+                TeamBansComponent: n(317),
+                TeamBansItemComponent: n(320),
+                TeamBoostButtonComponent: n(323),
+                TeamBoostModalComponent: n(326),
+                TimerStatusComponent: n(329),
+                TradeButtonComponent: n(332),
                 TradeDialogComponent: n(176).default,
-                SwapButtonComponent: n(338),
-                SwapDialogComponent: n(341).default,
-                WardSkinPopupComponent: n(344),
-                WardSkinSelectComponent: n(347),
+                SwapButtonComponent: n(335),
+                SwapDialogComponent: n(338).default,
+                WardSkinPopupComponent: n(341),
+                WardSkinSelectComponent: n(344),
                 MissionsButtonComponent: l.MissionsButtonComponent,
-                MissionsTrackerComponent: n(350),
-                VoteRevealComponent: n(353),
-                AnimationDispatcherService: n(221).default,
-                ChampSelectSfxService: n(356).default,
-                ChampSelectDisconnectService: n(358).default,
-                ChampSelectInventoryService: n(359).default,
-                InventoryService: n(360).default,
-                ChatPublisherService: n(361).default,
-                LoadoutsService: n(362).default,
-                SkinPurchaseService: n(363).default,
-                SummonerInfoService: n(382).default,
-                PlayerReportService: n(383).default,
+                MissionsTrackerComponent: n(347),
+                VoteRevealComponent: n(350),
+                AnimationDispatcherService: n(218).default,
+                ChampSelectSfxService: n(353).default,
+                ChampSelectDisconnectService: n(355).default,
+                ChampSelectInventoryService: n(356).default,
+                InventoryService: n(357).default,
+                ChatPublisherService: n(358).default,
+                LoadoutsService: n(359).default,
+                SkinPurchaseService: n(360).default,
+                SummonerInfoService: n(379).default,
+                PlayerReportService: n(380).default,
                 MissionsService: l.MissionsService,
-                TEMPLATES: { application: n(384), index: n(385) },
+                TEMPLATES: { application: n(381), index: n(382) },
               };
               return (
                 (h =
@@ -21448,8 +21445,8 @@
           f = s.Lodash,
           S = [0, 1, 2, 3, 4],
           _ = S.concat([5, 6, 7, 8, 9]),
-          b = [...Array(16).keys()],
-          y = [
+          y = [...Array(16).keys()],
+          b = [
             "name_visibility_type_team_hidden_gromp",
             "name_visibility_type_team_hidden_krug",
             "name_visibility_type_team_hidden_murk_wolf",
@@ -21476,7 +21473,6 @@
           layout: n(182),
           isShown: !1,
           isAnimatingIntro: !1,
-          showChestAvailabilityHintedPortraits: !1,
           sentGameStartingMessageId: null,
           animationDispatcher: s.Ember.inject.service("animation-dispatcher"),
           chatPublisherService: s.Ember.inject.service("chat-publisher"),
@@ -21567,11 +21563,6 @@
                 this,
                 this.handlePinDropNotification,
               ),
-              this._champSelectBinding.observe(
-                "/v1/all-grid-champions",
-                this,
-                this.handleGridChampionsUpdated,
-              ),
               this._initSummonerObservers();
           },
           handleChatObfuscatedSummonerIds(e) {
@@ -21586,7 +21577,7 @@
           },
           _initSummonerObservers: function () {
             (this.summonerBySlotId = {}),
-              b.forEach((e) => {
+              y.forEach((e) => {
                 (this.summonerBySlotId[e] = s.Ember.Object.create()),
                   this._champSelectBinding.observe(
                     `/v1/summoners/${e}`,
@@ -21626,8 +21617,8 @@
               t === r.NAME_VISIBILITY_TYPE.HIDDEN ||
               t === r.NAME_VISIBILITY_TYPE.UNHIDDEN
             ) {
-              const t = (e.slotId || 0) % y.length,
-                n = y[t] || "";
+              const t = (e.slotId || 0) % b.length,
+                n = b[t] || "";
               return s.get(n) || "";
             }
             return "";
@@ -22077,48 +22068,6 @@
                       )
                     );
                 });
-          },
-          shouldShowChestFilter: s.Ember.computed(
-            "queue.queueRewards.isChampionPointsEnabled",
-            "queue.isRanked",
-            function () {
-              return (
-                this.get("queue.queueRewards.isChampionPointsEnabled") &&
-                !this.get("queue.isRanked")
-              );
-            },
-          ),
-          shouldShowChestAvailability: s.Ember.computed(
-            "shouldShowChestFilter",
-            "queue.gameMode",
-            "session.timer.inFinalizationPhase",
-            "gameflow.gameData.isCustomGame",
-            "isLegendaryChampionMasteryEnabled",
-            function () {
-              return (
-                !this.get("isLegendaryChampionMasteryEnabled") &&
-                this.get("session.timer.inFinalizationPhase") &&
-                this.get("shouldShowChestFilter") &&
-                r.GAME_MODES_WITH_CHEST_AVAILABILITY_ENABLED.indexOf(
-                  this.get("queue.gameMode"),
-                ) > -1 &&
-                !this.get("gameflow.gameData.isCustomGame")
-              );
-            },
-          ),
-          handleGridChampionsUpdated: function (e) {
-            if (this.get("championChestAvailabilityMap")) {
-              const t = this.get("championChestAvailabilityMap");
-              e.forEach((e) => {
-                t.set(e.id + "", !e.masteryChestGranted && e.owned);
-              });
-            } else {
-              const t = s.Ember.Object.create({});
-              e.forEach((e) => {
-                t.set(e.id + "", !e.masteryChestGranted && e.owned);
-              }),
-                this.set("championChestAvailabilityMap", t);
-            }
           },
           isPlayingCeremony: s.Ember.computed.readOnly(
             "sessionActions.activeAction.isCeremony",
@@ -22697,9 +22646,6 @@
             closeBoostNotificationToast() {
               this.get("teamBoost").set("boostToastOpen", !1);
             },
-            updateChestAvailabilityHintedPortraits(e = !1) {
-              this.set("showChestAvailabilityHintedPortraits", e);
-            },
           },
           _recordDidRequestSucceed: function (e, t = null) {
             this.get(
@@ -22837,7 +22783,7 @@
                     ...t,
                     isLocalSubteam: t.cellIds.includes(e),
                   })),
-                  allSlotIds: b,
+                  allSlotIds: y,
                 };
               }
               return null;
@@ -23011,10 +22957,6 @@
             },
             unlockAllRunePageFunctionality: {
               path: "/client-config/v2/config/lol.client_settings.perks.unlockAllRunePageFunctionality",
-              default: !1,
-            },
-            isLegendaryChampionMasteryEnabled: {
-              path: "/lol-client-config/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
               default: !1,
             },
             spells: {
@@ -24942,9 +24884,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "N1hAlp4R",
+          id: "kifD/dvx",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["position-assignment-intro-container ",["helper",["if"],[["get",["showPositionAssignmentBackground"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["position-assignment-intro"],null,[["map","mapStaticPath","isShown","hidePins","shouldPlayVideos","showPositionAssignment","pinDropSummoners","mapSide","splashDefocus"],[["get",["map"]],["get",["champSelectBackground"]],["get",["isShown"]],["get",["isNexusBlitz"]],["get",["uxSettings","largeAreaAnimationsEnabled"]],["get",["showPositionAssignment"]],["get",["pinDropSummoners"]],["get",["pinDropNotification","mapSide"]],["get",["splashDefocus"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-splash-background"],null,[["pickJustLockedIn","splashUnlocked","splashDefocus","hasBans","splashPath","showPositionAssignment","sessionActions","currentSummoner","champSelectScreen","isDraftMode","isShowingGrid","emblems","uxSettings","jmxSettings","isShowingVoteReveal","skinAguments"],[["get",["pickJustLockedIn"]],["get",["splashUnlocked"]],["get",["splashDefocus"]],["get",["sessionActions","hasBans"]],["get",["splashPath"]],["get",["showPositionAssignment"]],["get",["sessionActions"]],["get",["currentSummoner"]],["get",["champSelectScreen"]],["get",["isDraftMode"]],["get",["isShowingGrid"]],["get",["viewSkin","emblems"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["isShowingVoteReveal"]],["get",["skinAguments"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","top-darken"],["flush-element"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-splash-ring"],null,[["currentActions","champSelectScreen","uxSettings","isHeaderExpanded","shouldPlayIntroAnimation"],[["get",["sessionActions","currentActions"]],["get",["champSelectScreen"]],["get",["uxSettings"]],["get",["isHeaderExpanded"]],["get",["shouldPlaySplashRingAnimation"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-select-summoner-array-container ",["helper",["if"],[["get",["session","timer","inFinalizationPhase"]],"in-finalization"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["summoner-array"],null,[["summoners","sessionActions","isUILockedForGameStart","uxSettings","showPositionAssignment","isLeft","showFirstPick","timer","currentSummoner","subteamDataList","timerDisabledPickOrderSwap","activeSwap","activeTrade","formattedTime","isPlayingSimulBanOutro","team","viewSkin","championChestAvailabilityMap","shouldShowChestAvailability","showChestAvailabilityHintedPortraits","boosterSummonerId","jmxSettings","PickOrderSwappingTooltipEnabled","ChampTradingTooltipEnabled","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["myTeamSummoners"]],["get",["sessionActions"]],["get",["isUILockedForGameStart"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],true,["get",["showLeftSideFirstPick"]],["get",["session","timer"]],["get",["currentSummoner"]],["get",["subteamDataList"]],["get",["timerDisabledPickOrderSwap"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["formattedTime"]],["get",["isPlayingSimulBanOutro"]],["get",["session","myTeam"]],["get",["viewSkin"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]],["get",["showChestAvailabilityHintedPortraits"]],["get",["boosterSummonerId"]],["get",["jmxSettings"]],["get",["PickOrderSwappingTooltipEnabled"]],["get",["ChampTradingTooltipEnabled"]],["get",["gameflow","gameData","isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queue","id"]]]]],false],["text","\\n\\n  "],["append",["helper",["summoner-array"],null,[["summoners","sessionActions","isUILockedForGameStart","uxSettings","showPositionAssignment","isLeft","showFirstPick","timer","currentSummoner","subteamDataList","timerDisabledPickOrderSwap","formattedTime","isPlayingSimulBanOutro","team","jmxSettings","isCustomGame","recordDidRequestSucceed"],[["get",["theirTeamSummoners"]],["get",["sessionActions"]],["get",["isUILockedForGameStart"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],false,["get",["showRightSideFirstPick"]],["get",["session","timer"]],["get",["currentSummoner"]],["get",["subteamDataList"]],["get",["timerDisabledPickOrderSwap"]],["get",["formattedTime"]],["get",["isPlayingSimulBanOutro"]],["get",["session","theirTeam"]],["get",["jmxSettings"]],["get",["gameflow","gameData","isCustomGame"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","champion-select-main-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["bans-container"],null,[["hasSimultaneousBans","myTeamBanActions","theirTeamBanActions","numBans","gameMode"],[["get",["session","hasSimultaneousBans"]],["get",["sessionActions","myTeamBanActions"]],["get",["sessionActions","theirTeamBanActions"]],["get",["session","bans","numBans"]],["get",["gameMode"]]]]],false],["text","\\n    "],["append",["helper",["timer-status"],null,[["timer","summoner","isDraftMode","activeAction","enemyActiveAction","alliedActiveAction","allPlayersActTogether","currentActions","activeActions","champSelectScreen","isShowingPositionAssignment","isSpectating","isPlayingCeremony","inFinalizationPhase","isShowingVoteCeremonies","isTeamBuilderGame","formattedTime","displayTimeAsMinuteSecond","minuteSecondTime","isHeaderExpanded","showChampionBench","inventory","benchChampions","championChestAvailabilityMap","shouldShowChestAvailability","showChestAvailabilityHintedPortraits","allowBattleBoost","isUILockedForGameStart","jmxSettings","isShowingPerksModal","boostableSkinCount","recordDidRequestSucceed"],[["get",["session","timer"]],["get",["currentSummoner"]],["get",["isDraftMode"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","enemyActiveAction"]],["get",["sessionActions","alliedActiveAction"]],["get",["sessionActions","allPlayersActTogether"]],["get",["sessionActions","currentActions"]],["get",["sessionActions","activeActions"]],["get",["champSelectScreen"]],["get",["showPositionAssignment"]],["get",["isSpectating"]],["get",["isPlayingCeremony"]],["get",["session","timer","inFinalizationPhase"]],["get",["isShowingVoteCeremonies"]],["get",["queue","isTeamBuilderManaged"]],["get",["formattedTime"]],["get",["displayTimeAsMinuteSecond"]],["get",["minuteSecondTime"]],["get",["isHeaderExpanded"]],["get",["showChampionBench"]],["get",["inventory"]],["get",["benchChampions"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]],["get",["showChestAvailabilityHintedPortraits"]],["get",["session","allowBattleBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["isShowingPerksModal"]],["get",["boostableSkinCount"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showPickPhaseComponent"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["pick-phase"],null,[["summoner","sessionActions","actionWasJustCompleted","waitingForBanAnimation","waitingForPickAnimation","map","isDraftMode","isSpectating","isPlayingSimulBanOutro","isPlayingCeremony","showVoteShowcase","champSelectScreen","splashPath","splashDefocus","splashUnlocked","timer","myTeam","theirTeam","gameId","uxSettings","jmxSettings","updateIsShowingGrid","updatePickJustLockedIn","shouldShowChestFilter","isRandomChampionEnabled","randomChampionRateLimitConfig","transitioningToSelectedScreen","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["currentSummoner"]],["get",["sessionActions"]],["get",["actionWasJustCompleted"]],["get",["waitingForBanAnimation"]],["get",["waitingForPickAnimation"]],["get",["map"]],["get",["isDraftMode"]],["get",["isSpectating"]],["get",["isPlayingSimulBanOutro"]],["get",["isPlayingCeremony"]],["get",["showVoteShowcase"]],["get",["champSelectScreen"]],["get",["pickSplashPath"]],["get",["pickSplashDefocus"]],["get",["pickSplashUnlocked"]],["get",["session","timer"]],["get",["session","myTeam"]],["get",["session","theirTeam"]],["get",["session","gameId"]],["get",["uxSettings"]],["get",["jmxSettings"]],["helper",["action"],[["get",[null]],["helper",["mut"],[["get",["isShowingGrid"]]],null]],null],["helper",["action"],[["get",[null]],["helper",["mut"],[["get",["pickJustLockedIn"]]],null]],null],["get",["shouldShowChestFilter"]],["get",["isRandomChampionEnabled"]],["get",["randomChampionRateLimitConfig"]],["get",["transitioningToSelectedScreen"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["vote-showcase-visibility-wrapper ",["helper",["if"],[["get",["showVoteShowcase"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["champion-showcase-team"],null,[["showcaseActions","introAnimation"],[["get",["sessionActions","myTeamVoteActions"]],["get",["localSummonerActionComplete"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["vote-reveal-visibility-wrapper ",["helper",["if"],[["get",["isShowingVoteReveal"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["vote-reveal"],null,[["visible","activeAction","summoner"],[["get",["isShowingVoteReveal"]],["get",["sessionActions","activeAction"]],["get",["currentSummoner"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowChestAvailability"]]],null,8],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showSkinSelectComponent"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["skin-select"],null,[["summoner","map","timeRemaining","inFinalization","rootViewSkin","selectViewSkin","allActions","rerollsDisabled","showRerollButton","tbAllowRerolling","tbRerollsRemaining","uxSettings","jmxSettings","rootComponentShown","allowSkinSelection","ip","rp","timer","isSkinSelectVisible","isShowingGrid","shouldShowChestAvailability","championChestAvailabilityMap","isUILockedForGameStart","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["currentSummoner"]],["get",["map"]],["get",["session","timer","timeRemaining"]],["get",["session","timer","inFinalizationPhase"]],["get",["viewSkin"]],"selectViewSkin",["get",["sessionActions","allActions"]],["get",["rerollsDisabled"]],["get",["showRerollButton"]],["get",["session","allowRerolling"]],["get",["session","rerollsRemaining"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["isShown"]],["get",["session","allowSkinSelection"]],["get",["ip"]],["get",["rp"]],["get",["session","timer"]],["get",["showSkinSelectComponent"]],["get",["isShowingGrid"]],["get",["shouldShowChestAvailability"]],["get",["championChestAvailabilityMap"]],["get",["isUILockedForGameStart"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loadouts-edit-wrapper ",["helper",["if"],[["get",["isSpectating"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["loadouts-edit"],null,[["localSummonerLevel","currentSummoner","champOrPickIntent","isUILockedForGameStart","showingPerksModalChanged","currentPerksPage","perksPages","perksSettings","perksTutorialSettings","gameModeSupportsPerks","map","queue","timer","jmxSettings","recordDidRequestSucceed","uxSettings","showPositionAssignment","availableSpells","perPositionRequiredSummonerSpells","perPositionDisallowedSummonerSpells","wardSkins","selectedWardSkin","accountLoadout","isCompanionsEnabled","isRuneRecommenderEnabled","unlockAllRunePageFunctionality","useRuneRecommenderAutoSelect"],[["get",["localSummoner","summonerLevel"]],["get",["currentSummoner"]],["get",["currentSummoner","champion","id"]],["get",["isUILockedForGameStart"]],"showingPerksModalChanged",["get",["currentPerksPage"]],["get",["perksPages"]],["get",["perksSettings"]],["get",["tutorial"]],["get",["gameModeSupportsPerks"]],["get",["map"]],["get",["queue"]],["get",["session","timer"]],["get",["jmxSettings"]],["get",["recordDidRequestSucceed"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],["get",["availableSpells"]],["get",["perPositionRequiredSummonerSpells"]],["get",["perPositionDisallowedSummonerSpells"]],["get",["wardSkins"]],["get",["selectedWardSkin"]],["get",["accountLoadout"]],["get",["isCompanionsEnabled"]],["get",["runeRecommenderEnabled"]],["get",["unlockAllRunePageFunctionality"]],["get",["useRuneRecommenderAutoSelect"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["game-info-container ",["helper",["if"],[["get",["isSpectating"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n        "],["append",["helper",["game-info"],null,[["teamSize","mutatorName"],[["get",["queue","numPlayersPerTeam"]],["get",["queue","gameTypeConfig","name"]]]]],false],["text","\\n        "],["append",["helper",["quit-button"],null,[["disabled","isSpectating","recordDidRequestSucceed"],[["get",["disableSpectatorQuitButton"]],["get",["isSpectating"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showGameEventInfoCard"]]],null,7],["text","\\n"],["block",["if"],[["get",["showChatRoom"]]],null,6],["text","\\n"],["open-element","div",[]],["static-attr","class","bottom-right-buttons"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showQuitButton"]]],null,5,4],["text","  "],["open-element","lol-social-chat-toggle-button",[]],["static-attr","position","inside"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"clickChat"],[["on"],["click"]]],null],["flush-element"],["close-element"],["text","\\n  "],["append",["helper",["missions-tracker"],null,[["jmxSettings","entitlements"],[["get",["jmxSettings"]],["get",["entitlements"]]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","champ-select-voice-button-wrapper"],["flush-element"],["append",["unknown",["voiceButton"]],false],["close-element"],["text","\\n\\n  "],["open-element","lc-toast",[]],["dynamic-attr","open",["unknown",["boostToastOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"closeBoostNotificationToast"],null],null],["flush-element"],["text","\\n    "],["open-element","lc-toast-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["boost-notification"],null,[["boostedSkinsMessage"],[["get",["boostToastData","boostedSkinsMessage"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["activeTrade"]]],null,2],["text","\\n"],["block",["if"],[["get",["activeSwap"]]],null,1],["text","\\n"],["block",["if"],[["get",["shouldShowDisconnectNotification"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["disconnect-notification"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lc-layer",[]],["static-attr","index","0"],["dynamic-attr","open",true,null],["flush-element"],["text","\\n      "],["open-element","lc-layer-content",[]],["flush-element"],["text","\\n        "],["append",["helper",["swap-dialog"],null,[["swap","summoners","subteamDataList","timeRemaining","inPlanningPhase","pickOrderSwapDisabledConfigurationInSeconds","recordDidRequestSucceed"],[["get",["activeSwap"]],["get",["myTeamSummoners"]],["get",["subteamDataList"]],["get",["session","timer","timeRemaining"]],["get",["session","timer","inPlanningPhase"]],["get",["pickOrderSwapDisabledConfigurationInSeconds"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lc-layer",[]],["static-attr","index","0"],["dynamic-attr","open",true,null],["flush-element"],["text","\\n      "],["open-element","lc-layer-content",[]],["flush-element"],["text","\\n        "],["append",["helper",["trade-dialog"],null,[["trade","summoners","recordDidRequestSucceed"],[["get",["activeTrade"]],["get",["myTeamSummoners"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","corner-game-info-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","team-size"],["flush-element"],["text","\\n        "],["append",["unknown",["teamSizeText"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","queue-name"],["flush-element"],["text","\\n        "],["append",["unknown",["queueNameText"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["queueNameText"]]],null,3]],"locals":[]},{"statements":[["text","    "],["append",["helper",["quit-button"],null,[["isSpectating","disabled","recordDidRequestSucceed"],[["get",["isSpectating"]],["get",["disableQuitButton"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["pregame-chat-box ",["helper",["if"],[["get",["isSpectating"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","lol-social-chat-room",[]],["static-attr","type","championSelect"],["dynamic-attr","summoner-ids-to-name-overrides-json",["unknown",["myTeamSummonerIdsToNameOverridesJson"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","game-event-info-card-container"],["flush-element"],["text","\\n    "],["append",["helper",["game-event-info-card"],null,[["map","eventIndex","shiftedToSide"],[["get",["map"]],["get",["lockedEventIndex"]],["get",["shiftGameEventInfoCard"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["champion-chest-availability"],null,[["championId","championChestAvailabilityMap","updateChestAvailabilityHintedPortraits","isShowingPerksModal","myTeamSummoners","benchChampions"],[["get",["currentSummoner","championId"]],["get",["championChestAvailabilityMap"]],"updateChestAvailabilityHintedPortraits",["get",["isShowingPerksModal"]],["get",["myTeamSummoners"]],["get",["benchChampions"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["position-assignment-intro-container ",["helper",["if"],[["get",["showPositionAssignmentBackground"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["position-assignment-intro"],null,[["map","mapStaticPath","isShown","hidePins","shouldPlayVideos","showPositionAssignment","pinDropSummoners","mapSide","splashDefocus"],[["get",["map"]],["get",["champSelectBackground"]],["get",["isShown"]],["get",["isNexusBlitz"]],["get",["uxSettings","largeAreaAnimationsEnabled"]],["get",["showPositionAssignment"]],["get",["pinDropSummoners"]],["get",["pinDropNotification","mapSide"]],["get",["splashDefocus"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-splash-background"],null,[["pickJustLockedIn","splashUnlocked","splashDefocus","hasBans","splashPath","showPositionAssignment","sessionActions","currentSummoner","champSelectScreen","isDraftMode","isShowingGrid","emblems","uxSettings","jmxSettings","isShowingVoteReveal","skinAguments"],[["get",["pickJustLockedIn"]],["get",["splashUnlocked"]],["get",["splashDefocus"]],["get",["sessionActions","hasBans"]],["get",["splashPath"]],["get",["showPositionAssignment"]],["get",["sessionActions"]],["get",["currentSummoner"]],["get",["champSelectScreen"]],["get",["isDraftMode"]],["get",["isShowingGrid"]],["get",["viewSkin","emblems"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["isShowingVoteReveal"]],["get",["skinAguments"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","top-darken"],["flush-element"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-splash-ring"],null,[["currentActions","champSelectScreen","uxSettings","isHeaderExpanded","shouldPlayIntroAnimation"],[["get",["sessionActions","currentActions"]],["get",["champSelectScreen"]],["get",["uxSettings"]],["get",["isHeaderExpanded"]],["get",["shouldPlaySplashRingAnimation"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-select-summoner-array-container ",["helper",["if"],[["get",["session","timer","inFinalizationPhase"]],"in-finalization"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["summoner-array"],null,[["summoners","sessionActions","isUILockedForGameStart","uxSettings","showPositionAssignment","isLeft","showFirstPick","timer","currentSummoner","subteamDataList","timerDisabledPickOrderSwap","activeSwap","activeTrade","formattedTime","isPlayingSimulBanOutro","team","viewSkin","boosterSummonerId","jmxSettings","PickOrderSwappingTooltipEnabled","ChampTradingTooltipEnabled","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["myTeamSummoners"]],["get",["sessionActions"]],["get",["isUILockedForGameStart"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],true,["get",["showLeftSideFirstPick"]],["get",["session","timer"]],["get",["currentSummoner"]],["get",["subteamDataList"]],["get",["timerDisabledPickOrderSwap"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["formattedTime"]],["get",["isPlayingSimulBanOutro"]],["get",["session","myTeam"]],["get",["viewSkin"]],["get",["boosterSummonerId"]],["get",["jmxSettings"]],["get",["PickOrderSwappingTooltipEnabled"]],["get",["ChampTradingTooltipEnabled"]],["get",["gameflow","gameData","isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queue","id"]]]]],false],["text","\\n\\n  "],["append",["helper",["summoner-array"],null,[["summoners","sessionActions","isUILockedForGameStart","uxSettings","showPositionAssignment","isLeft","showFirstPick","timer","currentSummoner","subteamDataList","timerDisabledPickOrderSwap","formattedTime","isPlayingSimulBanOutro","team","jmxSettings","isCustomGame","recordDidRequestSucceed"],[["get",["theirTeamSummoners"]],["get",["sessionActions"]],["get",["isUILockedForGameStart"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],false,["get",["showRightSideFirstPick"]],["get",["session","timer"]],["get",["currentSummoner"]],["get",["subteamDataList"]],["get",["timerDisabledPickOrderSwap"]],["get",["formattedTime"]],["get",["isPlayingSimulBanOutro"]],["get",["session","theirTeam"]],["get",["jmxSettings"]],["get",["gameflow","gameData","isCustomGame"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","champion-select-main-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["bans-container"],null,[["hasSimultaneousBans","myTeamBanActions","theirTeamBanActions","numBans","gameMode"],[["get",["session","hasSimultaneousBans"]],["get",["sessionActions","myTeamBanActions"]],["get",["sessionActions","theirTeamBanActions"]],["get",["session","bans","numBans"]],["get",["gameMode"]]]]],false],["text","\\n    "],["append",["helper",["timer-status"],null,[["timer","summoner","isDraftMode","activeAction","enemyActiveAction","alliedActiveAction","allPlayersActTogether","currentActions","activeActions","champSelectScreen","isShowingPositionAssignment","isSpectating","isPlayingCeremony","inFinalizationPhase","isShowingVoteCeremonies","isTeamBuilderGame","formattedTime","displayTimeAsMinuteSecond","minuteSecondTime","isHeaderExpanded","showChampionBench","inventory","benchChampions","allowBattleBoost","isUILockedForGameStart","jmxSettings","isShowingPerksModal","boostableSkinCount","recordDidRequestSucceed"],[["get",["session","timer"]],["get",["currentSummoner"]],["get",["isDraftMode"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","enemyActiveAction"]],["get",["sessionActions","alliedActiveAction"]],["get",["sessionActions","allPlayersActTogether"]],["get",["sessionActions","currentActions"]],["get",["sessionActions","activeActions"]],["get",["champSelectScreen"]],["get",["showPositionAssignment"]],["get",["isSpectating"]],["get",["isPlayingCeremony"]],["get",["session","timer","inFinalizationPhase"]],["get",["isShowingVoteCeremonies"]],["get",["queue","isTeamBuilderManaged"]],["get",["formattedTime"]],["get",["displayTimeAsMinuteSecond"]],["get",["minuteSecondTime"]],["get",["isHeaderExpanded"]],["get",["showChampionBench"]],["get",["inventory"]],["get",["benchChampions"]],["get",["session","allowBattleBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["isShowingPerksModal"]],["get",["boostableSkinCount"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showPickPhaseComponent"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["pick-phase"],null,[["summoner","sessionActions","actionWasJustCompleted","waitingForBanAnimation","waitingForPickAnimation","map","isDraftMode","isSpectating","isPlayingSimulBanOutro","isPlayingCeremony","showVoteShowcase","champSelectScreen","splashPath","splashDefocus","splashUnlocked","timer","myTeam","theirTeam","gameId","uxSettings","jmxSettings","updateIsShowingGrid","updatePickJustLockedIn","isRandomChampionEnabled","randomChampionRateLimitConfig","transitioningToSelectedScreen","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["currentSummoner"]],["get",["sessionActions"]],["get",["actionWasJustCompleted"]],["get",["waitingForBanAnimation"]],["get",["waitingForPickAnimation"]],["get",["map"]],["get",["isDraftMode"]],["get",["isSpectating"]],["get",["isPlayingSimulBanOutro"]],["get",["isPlayingCeremony"]],["get",["showVoteShowcase"]],["get",["champSelectScreen"]],["get",["pickSplashPath"]],["get",["pickSplashDefocus"]],["get",["pickSplashUnlocked"]],["get",["session","timer"]],["get",["session","myTeam"]],["get",["session","theirTeam"]],["get",["session","gameId"]],["get",["uxSettings"]],["get",["jmxSettings"]],["helper",["action"],[["get",[null]],["helper",["mut"],[["get",["isShowingGrid"]]],null]],null],["helper",["action"],[["get",[null]],["helper",["mut"],[["get",["pickJustLockedIn"]]],null]],null],["get",["isRandomChampionEnabled"]],["get",["randomChampionRateLimitConfig"]],["get",["transitioningToSelectedScreen"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["vote-showcase-visibility-wrapper ",["helper",["if"],[["get",["showVoteShowcase"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["champion-showcase-team"],null,[["showcaseActions","introAnimation"],[["get",["sessionActions","myTeamVoteActions"]],["get",["localSummonerActionComplete"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["vote-reveal-visibility-wrapper ",["helper",["if"],[["get",["isShowingVoteReveal"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["vote-reveal"],null,[["visible","activeAction","summoner"],[["get",["isShowingVoteReveal"]],["get",["sessionActions","activeAction"]],["get",["currentSummoner"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["showSkinSelectComponent"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["skin-select"],null,[["summoner","map","timeRemaining","inFinalization","rootViewSkin","selectViewSkin","allActions","rerollsDisabled","showRerollButton","tbAllowRerolling","tbRerollsRemaining","uxSettings","jmxSettings","rootComponentShown","allowSkinSelection","ip","rp","timer","isSkinSelectVisible","isShowingGrid","isUILockedForGameStart","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["currentSummoner"]],["get",["map"]],["get",["session","timer","timeRemaining"]],["get",["session","timer","inFinalizationPhase"]],["get",["viewSkin"]],"selectViewSkin",["get",["sessionActions","allActions"]],["get",["rerollsDisabled"]],["get",["showRerollButton"]],["get",["session","allowRerolling"]],["get",["session","rerollsRemaining"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["isShown"]],["get",["session","allowSkinSelection"]],["get",["ip"]],["get",["rp"]],["get",["session","timer"]],["get",["showSkinSelectComponent"]],["get",["isShowingGrid"]],["get",["isUILockedForGameStart"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loadouts-edit-wrapper ",["helper",["if"],[["get",["isSpectating"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n      "],["append",["helper",["loadouts-edit"],null,[["localSummonerLevel","currentSummoner","champOrPickIntent","isUILockedForGameStart","showingPerksModalChanged","currentPerksPage","perksPages","perksSettings","perksTutorialSettings","gameModeSupportsPerks","map","queue","timer","jmxSettings","recordDidRequestSucceed","uxSettings","showPositionAssignment","availableSpells","perPositionRequiredSummonerSpells","perPositionDisallowedSummonerSpells","wardSkins","selectedWardSkin","accountLoadout","isCompanionsEnabled","isRuneRecommenderEnabled","unlockAllRunePageFunctionality","useRuneRecommenderAutoSelect"],[["get",["localSummoner","summonerLevel"]],["get",["currentSummoner"]],["get",["currentSummoner","champion","id"]],["get",["isUILockedForGameStart"]],"showingPerksModalChanged",["get",["currentPerksPage"]],["get",["perksPages"]],["get",["perksSettings"]],["get",["tutorial"]],["get",["gameModeSupportsPerks"]],["get",["map"]],["get",["queue"]],["get",["session","timer"]],["get",["jmxSettings"]],["get",["recordDidRequestSucceed"]],["get",["uxSettings"]],["get",["showPositionAssignment"]],["get",["availableSpells"]],["get",["perPositionRequiredSummonerSpells"]],["get",["perPositionDisallowedSummonerSpells"]],["get",["wardSkins"]],["get",["selectedWardSkin"]],["get",["accountLoadout"]],["get",["isCompanionsEnabled"]],["get",["runeRecommenderEnabled"]],["get",["unlockAllRunePageFunctionality"]],["get",["useRuneRecommenderAutoSelect"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["game-info-container ",["helper",["if"],[["get",["isSpectating"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n        "],["append",["helper",["game-info"],null,[["teamSize","mutatorName"],[["get",["queue","numPlayersPerTeam"]],["get",["queue","gameTypeConfig","name"]]]]],false],["text","\\n        "],["append",["helper",["quit-button"],null,[["disabled","isSpectating","recordDidRequestSucceed"],[["get",["disableSpectatorQuitButton"]],["get",["isSpectating"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showGameEventInfoCard"]]],null,7],["text","\\n"],["block",["if"],[["get",["showChatRoom"]]],null,6],["text","\\n"],["open-element","div",[]],["static-attr","class","bottom-right-buttons"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showQuitButton"]]],null,5,4],["text","  "],["open-element","lol-social-chat-toggle-button",[]],["static-attr","position","inside"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"clickChat"],[["on"],["click"]]],null],["flush-element"],["close-element"],["text","\\n  "],["append",["helper",["missions-tracker"],null,[["jmxSettings","entitlements"],[["get",["jmxSettings"]],["get",["entitlements"]]]]],false],["text","\\n  "],["open-element","div",[]],["static-attr","class","champ-select-voice-button-wrapper"],["flush-element"],["append",["unknown",["voiceButton"]],false],["close-element"],["text","\\n\\n  "],["open-element","lc-toast",[]],["dynamic-attr","open",["unknown",["boostToastOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"closeBoostNotificationToast"],null],null],["flush-element"],["text","\\n    "],["open-element","lc-toast-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["boost-notification"],null,[["boostedSkinsMessage"],[["get",["boostToastData","boostedSkinsMessage"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["activeTrade"]]],null,2],["text","\\n"],["block",["if"],[["get",["activeSwap"]]],null,1],["text","\\n"],["block",["if"],[["get",["shouldShowDisconnectNotification"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["disconnect-notification"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lc-layer",[]],["static-attr","index","0"],["dynamic-attr","open",true,null],["flush-element"],["text","\\n      "],["open-element","lc-layer-content",[]],["flush-element"],["text","\\n        "],["append",["helper",["swap-dialog"],null,[["swap","summoners","subteamDataList","timeRemaining","inPlanningPhase","pickOrderSwapDisabledConfigurationInSeconds","recordDidRequestSucceed"],[["get",["activeSwap"]],["get",["myTeamSummoners"]],["get",["subteamDataList"]],["get",["session","timer","timeRemaining"]],["get",["session","timer","inPlanningPhase"]],["get",["pickOrderSwapDisabledConfigurationInSeconds"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lc-layer",[]],["static-attr","index","0"],["dynamic-attr","open",true,null],["flush-element"],["text","\\n      "],["open-element","lc-layer-content",[]],["flush-element"],["text","\\n        "],["append",["helper",["trade-dialog"],null,[["trade","summoners","recordDidRequestSucceed"],[["get",["activeTrade"]],["get",["myTeamSummoners"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","corner-game-info-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","team-size"],["flush-element"],["text","\\n        "],["append",["unknown",["teamSizeText"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","queue-name"],["flush-element"],["text","\\n        "],["append",["unknown",["queueNameText"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["queueNameText"]]],null,3]],"locals":[]},{"statements":[["text","    "],["append",["helper",["quit-button"],null,[["isSpectating","disabled","recordDidRequestSucceed"],[["get",["isSpectating"]],["get",["disableQuitButton"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["pregame-chat-box ",["helper",["if"],[["get",["isSpectating"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","lol-social-chat-room",[]],["static-attr","type","championSelect"],["dynamic-attr","summoner-ids-to-name-overrides-json",["unknown",["myTeamSummonerIdsToNameOverridesJson"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","game-event-info-card-container"],["flush-element"],["text","\\n    "],["append",["helper",["game-event-info-card"],null,[["map","eventIndex","shiftedToSide"],[["get",["map"]],["get",["lockedEventIndex"]],["get",["shiftGameEventInfoCard"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -25721,9 +25663,6 @@
           { RunMixin: u } = s.EmberAddons.EmberLifeline;
         e.exports = s.Ember.Component.extend(u, {
           classNames: ["champion-bench"],
-          classNameBindings: [
-            "showChestAvailabilityHintedPortraits:show-chest-availability-hinted-portraits",
-          ],
           layout: n(201),
           pendingRequest: !1,
           isPlayingSound: !1,
@@ -25797,9 +25736,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "IAkOPkcR",
+          id: "fH1PDaaG",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","bench-label"],["flush-element"],["text","\\n  "],["append",["unknown",["benchLabel"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["bottom","whole-window"]],1],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","bench-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["benchChampionsSize"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["champion-bench-item"],null,[["benchChampions","index","championClicked","benchSwapOnCooldown","inventory","championChestAvailabilityMap","shouldShowChestAvailability"],[["get",["benchChampions"]],["get",["champIndex"]],"championClicked",["get",["benchSwapOnCooldown"]],["get",["inventory"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]]]]],false],["text","\\n"]],"locals":["champIndex"]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","padding","small"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["benchInfoTooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","bench-label"],["flush-element"],["text","\\n  "],["append",["unknown",["benchLabel"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["bottom","whole-window"]],1],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","bench-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["benchChampionsSize"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["champion-bench-item"],null,[["benchChampions","index","championClicked","benchSwapOnCooldown","inventory"],[["get",["benchChampions"]],["get",["champIndex"]],"championClicked",["get",["benchSwapOnCooldown"]],["get",["inventory"]]]]],false],["text","\\n"]],"locals":["champIndex"]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","padding","small"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["benchInfoTooltip"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -25908,19 +25847,6 @@
               { championName: this.get("championName") },
             );
           }),
-          showChampionChestAvailable: s.Ember.computed(
-            "shouldShowChestAvailability",
-            "champion.id",
-            "championChestAvailabilityMap",
-            function () {
-              const e = this.get("champion.id"),
-                t = this.get("championChestAvailabilityMap");
-              return (
-                !!(this.get("shouldShowChestAvailability") && e && t) &&
-                t.get(e + "")
-              );
-            },
-          ),
           click() {
             this.get("isEmpty") ||
               !this.get("canPlay") ||
@@ -25947,66 +25873,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "xOoVPdZ2",
+          id: "eBiJrRni",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,3],["open-element","div",[]],["static-attr","class","bench-champion-icon"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","bench-champion-background"],["dynamic-attr","style",["helper",["sanitize"],[["get",["backgroundStyle"]]],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","cooldown-mask"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cooldown"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","left-half-mask"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","left-half"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","right-half"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","tooltip-champion-chest-available"],["flush-element"],["append",["unknown",["tra","tooltip_champion_chest_available"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,0],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["bottom","whole-window"]],1]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","bench-champion-icon-chest-available-glow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
-          meta: {},
-        });
-      },
-      (e, t, n) => {
-        "use strict";
-        var s = n(1);
-        n(206),
-          (e.exports = s.Ember.Component.extend({
-            classNames: ["champion-chest-availability"],
-            classNameBindings: [
-              "chestAvailable:available:unavailable",
-              "isShowingPerksModal:hidden",
-            ],
-            layout: n(207),
-            mouseEnter: function () {
-              this.sendAction("updateChestAvailabilityHintedPortraits", !0);
-            },
-            mouseLeave: function () {
-              this.sendAction("updateChestAvailabilityHintedPortraits", !1);
-            },
-            chestAvailable: s.Ember.computed(
-              "championId",
-              "championChestAvailabilityMap",
-              function () {
-                const e = this.get("championId"),
-                  t = this.get("championChestAvailabilityMap");
-                return !(!e || !t) && t.get(e + "");
-              },
-            ),
-            anyChampionsChestAvailable: s.Ember.computed(
-              "myTeamSummoners.@each.championId",
-              "benchChampions.[]",
-              "championChestAvailabilityMap",
-              function () {
-                if (this.get("chestAvailable")) return !0;
-                const e = this.get("championChestAvailabilityMap");
-                for (let t = 0; t < this.get("myTeamSummoners.length"); t++)
-                  if (e.get(this.get(`myTeamSummoners.${t}.championId`) + ""))
-                    return !0;
-                for (let t = 0; t < this.get("benchChampions.length"); t++)
-                  if (e.get(this.get(`benchChampions.${t}.championId`) + ""))
-                    return !0;
-                return !1;
-              },
-            ),
-          }));
-      },
-      (e, t, n) => {
-        "use strict";
-        n.r(t);
-      },
-      (e, t, n) => {
-        const s = n(1).Ember;
-        e.exports = s.HTMLBars.template({
-          id: "W4daj0Gu",
-          block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-chest-availability-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-chest-availability-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-chest-availability-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-chest-available-glow"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-chest-available-icon"],["flush-element"],["text","\\n  "],["open-element","svg",[]],["static-attr","width","16"],["static-attr","height","16"],["static-attr","viewBox","0 0 16 16"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n    "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M15 16H1L0 15V1L1 0H15L16 1V15L15 16ZM10 5L8 3L6 5V7L8 9L10 7V5ZM14 2L12 4V8L8 12L4 8V4L2 2V14H14V2Z"],["static-attr","fill","#5B5A56"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["bottom","whole-window"]],2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","tooltip_mastery_chest_no_champs_available_icon"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","tooltip_mastery_chest_available_icon"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["static-attr","padding","small"],["flush-element"],["text","\\n"],["block",["if"],[["get",["anyChampionsChestAvailable"]]],null,1,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\champion-bench-component\\\\champion-bench-item\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","bench-champion-icon"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","bench-champion-background"],["dynamic-attr","style",["helper",["sanitize"],[["get",["backgroundStyle"]]],null],null],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,1],["text","  "],["open-element","div",[]],["static-attr","class","cooldown-mask"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","cooldown"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","left-half-mask"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","left-half"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","right-half"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["bottom","whole-window"]],0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -26016,19 +25885,19 @@
           i = d(n(150)),
           o = d(n(158)),
           a = n(152),
-          r = n(209),
-          l = n(210),
-          c = n(212),
+          r = n(206),
+          l = n(207),
+          c = n(209),
           u = d(n(164)),
-          m = d(n(213));
+          m = d(n(210));
         function d(e) {
           return e && e.__esModule ? e : { default: e };
         }
         const { RunMixin: p, DomMixin: h } = s.EmberAddons.EmberLifeline,
           g = "championFilterPreferenceKey";
-        n(214),
-          n(215),
-          n(216),
+        n(211),
+          n(212),
+          n(213),
           (e.exports = s.Ember.Component.extend(p, h, u.default, {
             classNames: ["champion-grid"],
             classNameBindings: [
@@ -26039,7 +25908,7 @@
               "sortByFavorites:sort-by-favorites",
               "isAnimating:champion-grid-animating",
             ],
-            layout: n(217),
+            layout: n(214),
             gridEstimatedClientWidth: 622,
             gridEstimatedClientHeight: 440,
             largeAreaAnimationsEnabled: s.Ember.computed.bool(
@@ -26060,9 +25929,6 @@
             ),
             gridSortDisabled: s.Ember.computed.bool(
               "jmxSettings.LcuChampionSelect.DisableGridSort",
-            ),
-            chestFilterDisabled: s.Ember.computed.bool(
-              "jmxSettings.LcuChampionSelect.DisableChestFilter",
             ),
             hasChampionPicked: s.Ember.computed.alias(
               "summoner.pickAction.completed",
@@ -26243,42 +26109,10 @@
               );
               return s.Ember.A(e);
             }),
-            chestFilter: s.Ember.computed(function () {
-              return s.Ember.Object.create({
-                name: "chest",
-                value: !1,
-                displayName:
-                  this.get("tra.service").formatString("filter_by_chest"),
-                favoriteName:
-                  this.get("tra.service").formatString("favorite_by_chest"),
-                unfavoriteName: this.get("tra.service").formatString(
-                  "unfavorite_by_chest",
-                ),
-                canFavorite: !1,
-                matches: function (e) {
-                  return (
-                    !!e &&
-                    (e.id === a.RANDOM_CHAMP.championId ||
-                      (!e.masteryChestGranted && e.owned))
-                  );
-                },
-              });
+            filters: s.Ember.computed("positionFilters", function () {
+              const e = [].concat(this.get("positionFilters") || []);
+              return s.Ember.A(e);
             }),
-            filters: s.Ember.computed(
-              "positionFilters",
-              "chestFilter",
-              "chestFilterDisabled",
-              "shouldShowChestFilter",
-              function () {
-                const e = [].concat(this.get("positionFilters") || []);
-                return (
-                  !this.get("chestFilterDisabled") &&
-                    this.get("shouldShowChestFilter") &&
-                    e.push(this.get("chestFilter")),
-                  s.Ember.A(e)
-                );
-              },
-            ),
             activePositionFilter: s.Ember.computed(
               "positionFilters.@each.value",
               function () {
@@ -26733,7 +26567,7 @@
           (t.ViewChampionClass = void 0);
         var s = n(1),
           i = n(152);
-        const o = n(211),
+        const o = n(208),
           a = s.Ember.Object.extend({
             id: s.Ember.computed.alias("champion.id"),
             favoritesEnabled: s.Ember.computed.alias("grid.favoritesEnabled"),
@@ -26993,7 +26827,7 @@
             "championConfiguration.champion.id:data-id",
             "championConfiguration.disabledAttr:disabled",
           ],
-          layout: n(219),
+          layout: n(216),
           mouseEnter: function () {
             this.sendAction(
               "showDisabledTooltip",
@@ -27104,12 +26938,12 @@
       (e, t, n) => {
         "use strict";
         var s = n(152),
-          i = n(221);
+          i = n(218);
         const o = n(1),
           { Ember: a, EmberAddons: r } = o,
           { EmberHelpers: l } = o,
           { RunMixin: c } = r.EmberLifeline;
-        n(222),
+        n(219),
           (e.exports = a.Component.extend(c, {
             classNames: ["champion-splash-background"],
             classNameBindings: [
@@ -27124,7 +26958,7 @@
               "isNotPickingAndNotSelectedScreen:mask-splash",
               "currentNotification",
             ],
-            layout: n(223),
+            layout: n(220),
             animationDispatcher: a.inject.service("animation-dispatcher"),
             banLockedInAnimationState: a.computed.alias(
               "animationDispatcher.states.banLockedInAnimation",
@@ -27430,7 +27264,7 @@
       },
       (e, t, n) => {
         "use strict";
-        n(225);
+        n(222);
         const s = n(1),
           { Ember: i } = s;
         e.exports = i.Component.extend({
@@ -27442,7 +27276,7 @@
             "shouldPlayIntroAnimation:should-play-intro",
             "isHeaderExpanded:expanded-header",
           ],
-          layout: n(226),
+          layout: n(223),
           largeAreaAnimationsEnabled: i.computed.equal(
             "uxSettings.largeAreaAnimationsEnabled",
             !0,
@@ -27482,11 +27316,11 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(228);
+        n(225);
         const i = s.Ember.Component.extend({
           classNames: ["champ-select-chroma-modal"],
           classNameBindings: ["baseSkin.chromaPreviewPath:chroma-view"],
-          layout: n(229),
+          layout: n(226),
           didReceiveAttrs: function () {
             this._super(...arguments);
             const e = this.get("baseSkin"),
@@ -27580,9 +27414,9 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(231),
+        n(228),
           (e.exports = s.Ember.Component.extend({
-            layout: n(232),
+            layout: n(229),
             classNames: ["disconnect-notification"],
             champSelectDisconnectService: s.Ember.inject.service(
               "champ-select-disconnect",
@@ -27684,17 +27518,17 @@
         var s,
           i = n(1),
           o = (s = n(150)) && s.__esModule ? s : { default: s },
-          a = n(234),
+          a = n(231),
           r = n(155),
           l = n(152);
-        n(236);
+        n(233);
         const { DomMixin: c } = i.EmberAddons.EmberLifeline,
           u = i.UiKitPlugin.getLayerManager(),
           m = i.ViewportPlugin.fullScreen().getScreenRoot(
             "rcp-fe-lol-champ-select",
           );
         e.exports = i.Ember.Component.extend(c, {
-          layout: n(237),
+          layout: n(234),
           classNames: ["emotes-edit-button-container"],
           classNameBindings: ["disabled", "showingEmotes"],
           showingEmotes: !1,
@@ -27823,7 +27657,7 @@
             });
           });
         var s = n(1);
-        n(235);
+        n(232);
         s.ComponentFactory.setFactory("FullScreenModal", function (e) {
           const t = document.createElement("div");
           t.className = e.elementClassName;
@@ -27857,7 +27691,7 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(239);
+        n(236);
         const { RunMixin: i } = s.EmberAddons.EmberLifeline;
         let o;
         e.exports = s.Ember.Component.extend(i, {
@@ -27867,7 +27701,7 @@
             "isSelectedItem:selected-item",
           ],
           attributeBindings: ["data-id"],
-          layout: n(240),
+          layout: n(237),
           isItemVisible: !1,
           "data-id": s.Ember.computed.alias("item.id"),
           isSelectedItem: s.Ember.computed("selectedItem", "item", function () {
@@ -27921,9 +27755,9 @@
           o = n(152),
           a = (s = n(150)) && s.__esModule ? s : { default: s };
         const { RunMixin: r, DomMixin: l } = i.EmberAddons.EmberLifeline;
-        n(242),
+        n(239),
           (e.exports = i.Ember.Component.extend(r, l, {
-            layout: n(243),
+            layout: n(240),
             classNames: ["flyout-selector-trigger-button"],
             classNameBindings: ["disabled:disabled:enabled", "animateButton"],
             disabled: !1,
@@ -27997,14 +27831,14 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0),
-          n(245);
+          n(242);
         const s = n(1),
           { Ember: i, EmberAddons: o } = s,
           { RunMixin: a } = o.EmberLifeline,
           { gsap: r } = s;
         var l = i.Component.extend(a, {
           classNames: ["game-event-info-card"],
-          layout: n(246),
+          layout: n(243),
           animationTimeline: null,
           didInsertElement: function () {
             const e = this.get("element"),
@@ -28119,9 +27953,9 @@
             GAME_CFG_BLIND_DRAFT_ST: "blind_draft",
             GAME_MUTATOR_OVERRIDE_SHOWDOWN: "showdown",
           };
-        n(248),
+        n(245),
           (e.exports = i.Component.extend({
-            layout: n(249),
+            layout: n(246),
             classNameBindings: ["mutatorName::hidden"],
             teamSizeText: i.computed("teamSize", function () {
               return this.get("tra").formatString("map_size", {
@@ -28157,7 +27991,7 @@
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        n(251);
+        n(248);
         const r = "sfx-ui",
           l = i.default.createSound(
             r,
@@ -28179,7 +28013,7 @@
             "summoner.isVotingNow:picking",
             "summoner.isBanningNow:banning",
           ],
-          layout: n(252),
+          layout: n(249),
           requestPending: !1,
           disabled: s.EmberHelpers.computedGate(
             "summoner.activeAction.championId",
@@ -28393,13 +28227,13 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1),
-          i = n(212),
+          i = n(209),
           o = n(155),
           a = n(152);
-        n(254);
+        n(251);
         const r = [11, 21];
         var l = s.Ember.Component.extend({
-          layout: n(255),
+          layout: n(252),
           classNames: ["loadouts-edit-component"],
           init: function () {
             this._super(...arguments),
@@ -28605,9 +28439,9 @@
           ),
           { RunMixin: g } = u.EmberLifeline,
           f = l("/lol-perks", d().getSocket());
-        n(257),
+        n(254),
           (e.exports = c.Component.extend(g, {
-            layout: n(258),
+            layout: n(255),
             classNames: ["perks-page-dropdown-container"],
             classNameBindings: ["currentPerksPageInvalid"],
             shouldShowDropdownHighlight: !1,
@@ -28871,9 +28705,9 @@
         "use strict";
         const s = n(1),
           { Ember: i } = s;
-        n(260);
+        n(257);
         e.exports = i.Component.extend({
-          layout: n(261),
+          layout: n(258),
           tagName: "lol-uikit-dropdown-option",
           classNames: ["perks-page-dropdown-option"],
           attributeBindings: ["isSelected:selected", "tagName:slot"],
@@ -28957,14 +28791,14 @@
         "use strict";
         var s,
           i = (s = n(150)) && s.__esModule ? s : { default: s };
-        n(263);
+        n(260);
         const o = n(1),
           { Ember: a, EmberAddons: r } = o,
           { DomMixin: l } = r.EmberLifeline;
         e.exports = a.Component.extend(l, {
           classNames: ["phase-transition"],
           classNameBindings: ["visible:visible:removed"],
-          layout: n(264),
+          layout: n(261),
           phaseTransitionLabel: a.computed(
             "ceremonyStringSuffix",
             "tra.phase_transition_finalization",
@@ -29022,9 +28856,9 @@
         "use strict";
         var s,
           i = (s = n(150)) && s.__esModule ? s : { default: s },
-          o = n(221),
+          o = n(218),
           a = n(152);
-        n(266);
+        n(263);
         const r = n(1),
           { Ember: l, EmberAddons: c } = r,
           { EmberHelpers: u } = r,
@@ -29039,7 +28873,7 @@
             "shouldShowExpandedRing:expanded-ring",
             "largeAreaAnimationsEnabled:large-area-animations-enabled:large-area-animations-disabled",
           ],
-          layout: n(267),
+          layout: n(264),
           isAnimating: l.computed.equal(
             "banSlashAnimationState",
             o.ANIMATION_STATES.STARTED,
@@ -29201,7 +29035,7 @@
       (e, t, n) => {
         "use strict";
         var s = n(152);
-        n(269);
+        n(266);
         const i = n(1),
           { Ember: o, EmberAddons: a } = i,
           { EmberHelpers: r } = i,
@@ -29213,7 +29047,7 @@
             "shouldShow:pick-phase-visible:pick-phase-hidden",
             "shouldShowGrid:champion-grid-visible:champion-grid-hidden",
           ],
-          layout: n(270),
+          layout: n(267),
           gridRequested: void 0,
           shouldShowExpandedRing: o.computed.or(
             "shouldShowGrid",
@@ -29484,9 +29318,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "r47WHlor",
+          id: "gVGdMiO7",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\index.js\\" "],["text","\\n\\n"],["append",["helper",["pick-ban-ring"],null,[["sessionActions","activeActions","activeAction","nextActions","allActions","currentActions","isSimultaneousBans","champSelectScreen","shouldShowExpandedRing","isPlayingCeremony","allPlayersActTogether","isShowingBanShowcase","uxSettings","myTeamSize","theirTeamSize"],[["get",["sessionActions"]],["get",["sessionActions","activeActions"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","nextActions"]],["get",["sessionActions","allActions"]],["get",["sessionActions","currentActions"]],["get",["sessionActions","isSimultaneousBans"]],["get",["champSelectScreen"]],["get",["shouldShowExpandedRing"]],["get",["isPlayingCeremony"]],["get",["sessionActions","allPlayersActTogether"]],["get",["shouldShowBanShowcase"]],["get",["uxSettings"]],["get",["myTeamSize"]],["get",["theirTeamSize"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-showcase-visibility-wrapper ",["helper",["if"],[["get",["shouldShowGrid"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["ban-showcase"],null,[["visible","myTeamBans","theirTeamBans","isSimultaneousBans"],[["get",["shouldShowBanShowcase"]],["get",["sessionActions","myTeamBanActions"]],["get",["sessionActions","theirTeamBanActions"]],["get",["sessionActions","isSimultaneousBans"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["phase-transition-visibility-wrapper ",["helper",["if"],[["get",["shouldShowGrid"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["phase-transition"],null,[["visible","activeAction","nextActions","phaseTransitionStringsByActionId","allActions"],[["get",["shouldShowPhaseTransition"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","nextActions"]],["get",["sessionActions","phaseTransitionStringsByActionId"]],["get",["sessionActions","allActions"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-grid"],null,[["requestInProgress","summoner","isRGM","visible","gridRequested","uxSettings","jmxSettings","shouldShowChestFilter","isRandomChampionEnabled","randomChampionRateLimitConfig","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["requestInProgress"]],["get",["summoner"]],["get",["isRGM"]],["get",["shouldShowGrid"]],["get",["gridRequested"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["shouldShowChestFilter"]],["get",["isRandomChampionEnabled"]],["get",["randomChampionRateLimitConfig"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n"],["append",["helper",["lock-in-button"],null,[["requestInProgress","summoner","visible","gameId"],[["get",["requestInProgress"]],["get",["summoner"]],["get",["shouldShowLockIn"]],["get",["gameId"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowFooter"]]],null,0],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-name-wrapper ",["helper",["if"],[["get",["shouldShowLockedName"]],"visible","hidden"],null]," ",["helper",["if"],[["get",["shouldShowLockedName"]],"just-locked"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["skin-name"],null,[["skin"],[["get",["sessionActions","lastCompletedAction","champion","baseSkin"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","class",["concat",["champion-grid-toggle ",["helper",["unless"],[["get",["gridIsToggleable"]],"hidden"],null]]]],["dynamic-attr","click-sfx-src",["concat",[["unknown",["gridToggleClickSfx"]]]]],["static-attr","remove-min-height",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleGrid"],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","toggle-button-content"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-grid-footer"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\pick-phase-component\\\\index.js\\" "],["text","\\n\\n"],["append",["helper",["pick-ban-ring"],null,[["sessionActions","activeActions","activeAction","nextActions","allActions","currentActions","isSimultaneousBans","champSelectScreen","shouldShowExpandedRing","isPlayingCeremony","allPlayersActTogether","isShowingBanShowcase","uxSettings","myTeamSize","theirTeamSize"],[["get",["sessionActions"]],["get",["sessionActions","activeActions"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","nextActions"]],["get",["sessionActions","allActions"]],["get",["sessionActions","currentActions"]],["get",["sessionActions","isSimultaneousBans"]],["get",["champSelectScreen"]],["get",["shouldShowExpandedRing"]],["get",["isPlayingCeremony"]],["get",["sessionActions","allPlayersActTogether"]],["get",["shouldShowBanShowcase"]],["get",["uxSettings"]],["get",["myTeamSize"]],["get",["theirTeamSize"]]]]],false],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-showcase-visibility-wrapper ",["helper",["if"],[["get",["shouldShowGrid"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["ban-showcase"],null,[["visible","myTeamBans","theirTeamBans","isSimultaneousBans"],[["get",["shouldShowBanShowcase"]],["get",["sessionActions","myTeamBanActions"]],["get",["sessionActions","theirTeamBanActions"]],["get",["sessionActions","isSimultaneousBans"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["phase-transition-visibility-wrapper ",["helper",["if"],[["get",["shouldShowGrid"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["phase-transition"],null,[["visible","activeAction","nextActions","phaseTransitionStringsByActionId","allActions"],[["get",["shouldShowPhaseTransition"]],["get",["sessionActions","activeAction"]],["get",["sessionActions","nextActions"]],["get",["sessionActions","phaseTransitionStringsByActionId"]],["get",["sessionActions","allActions"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["champion-grid"],null,[["requestInProgress","summoner","isRGM","visible","gridRequested","uxSettings","jmxSettings","isRandomChampionEnabled","randomChampionRateLimitConfig","recordDidRequestSucceed","UseNewLoyaltyIcon"],[["get",["requestInProgress"]],["get",["summoner"]],["get",["isRGM"]],["get",["shouldShowGrid"]],["get",["gridRequested"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["isRandomChampionEnabled"]],["get",["randomChampionRateLimitConfig"]],["get",["recordDidRequestSucceed"]],["get",["UseNewLoyaltyIcon"]]]]],false],["text","\\n"],["append",["helper",["lock-in-button"],null,[["requestInProgress","summoner","visible","gameId"],[["get",["requestInProgress"]],["get",["summoner"]],["get",["shouldShowLockIn"]],["get",["gameId"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowFooter"]]],null,0],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-name-wrapper ",["helper",["if"],[["get",["shouldShowLockedName"]],"visible","hidden"],null]," ",["helper",["if"],[["get",["shouldShowLockedName"]],"just-locked"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["skin-name"],null,[["skin"],[["get",["sessionActions","lastCompletedAction","champion","baseSkin"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","class",["concat",["champion-grid-toggle ",["helper",["unless"],[["get",["gridIsToggleable"]],"hidden"],null]]]],["dynamic-attr","click-sfx-src",["concat",[["unknown",["gridToggleClickSfx"]]]]],["static-attr","remove-min-height",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"toggleGrid"],null],null],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","toggle-button-content"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-grid-footer"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -29495,7 +29329,7 @@
         var s = n(1),
           i = n(152);
         e.exports = s.Ember.Component.extend({
-          layout: n(272),
+          layout: n(269),
           classNames: ["player-name-wrapper"],
           classNameBindings: [],
           summonerInfoService: s.Ember.inject.service("summoner-info"),
@@ -29534,12 +29368,12 @@
           i = (s = n(158)) && s.__esModule ? s : { default: s };
         const o = n(1),
           { Ember: a } = o;
-        n(274),
+        n(271),
           (e.exports = a.Component.extend({
             classNameBindings: [
               "isSpectating:quit-spectate-button:quit-button",
             ],
-            layout: n(275),
+            layout: n(272),
             actions: {
               quitCustom: function () {
                 i.default
@@ -29580,13 +29414,13 @@
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        n(277);
+        n(274);
         const r = s.ViewportPlugin.fullScreen().getScreenRoot(
             "rcp-fe-lol-champ-select",
           ),
           l = "sfx-ui";
         e.exports = s.Ember.Component.extend({
-          layout: n(278),
+          layout: n(275),
           classNameBindings: [":reroll-button"],
           didInsertElement() {
             this._super(...arguments), this.setupResetHandler();
@@ -29709,8 +29543,8 @@
       },
       (e, t, n) => {
         "use strict";
-        var s = n(221);
-        n(280);
+        var s = n(218);
+        n(277);
         const i = n(1),
           { Ember: o } = i,
           { EmberHelpers: a } = i;
@@ -29727,7 +29561,7 @@
             "isBanCompleted:is-ban-completed",
             "largeAreaAnimationsEnabled:large-area-animations-enabled:large-area-animations-disabled",
           ],
-          layout: n(281),
+          layout: n(278),
           animationDispatcher: o.inject.service("animation-dispatcher"),
           isAnimating: o.computed.equal(
             "banLockedInAnimationState",
@@ -29809,7 +29643,7 @@
         const { RunMixin: i } = s.EmberAddons.EmberLifeline,
           o = s.UiKitPlugin.getTemplateHelper();
         var a = s.Ember.Component.extend(i, {
-          layout: n(283),
+          layout: n(280),
           classNames: ["rune-recommender-button-component"],
           didUpdateAttrs: function () {
             this._super(...arguments);
@@ -29856,7 +29690,7 @@
         const o = n(1),
           { Ember: a } = o,
           { EmberHelpers: r } = o;
-        n(285);
+        n(282);
         const l = o.EmberDataBinding({
           Ember: a,
           websocket: o.getProvider().getSocket(),
@@ -29864,7 +29698,7 @@
         });
         e.exports = a.Component.extend(l, {
           tagName: "div",
-          layout: n(286),
+          layout: n(283),
           skinPurchaseService: a.inject.service("skin-purchase"),
           meetsChampionRequirement: a.computed.alias("skin.isChampionUnlocked"),
           isSelected: a.computed("skin.id", "selectedSkinId", function () {
@@ -30002,7 +29836,7 @@
           a = n(152);
         const r = i.UiKitPlugin.getFlyoutManager(),
           { RunMixin: l } = i.EmberAddons.EmberLifeline;
-        n(227), n(288);
+        n(224), n(285);
         const c = i.Ember.Object.extend({
             containerStyle: i.Ember.computed("offset", "faded", function () {
               const e = this.get("offset");
@@ -30078,7 +29912,7 @@
             ),
           });
         e.exports = i.Ember.Component.extend(l, {
-          layout: n(289),
+          layout: n(286),
           classNames: ["skin-carousel"],
           classNameBindings: ["willTransition"],
           willTransition: !1,
@@ -30347,24 +30181,11 @@
         const s = n(1),
           { Ember: i } = s,
           { EmberHelpers: o } = s;
-        n(291),
+        n(288),
           (e.exports = i.Component.extend({
             classNames: ["champion-skin-name"],
-            layout: n(292),
+            layout: n(289),
             skinName: o.throttled("skin.name", 300),
-            showChampionChestAvailable: i.computed(
-              "skin.championId",
-              "shouldShowChestAvailability",
-              "championChestAvailabilityMap",
-              function () {
-                const e = this.get("skin.championId"),
-                  t = this.get("championChestAvailabilityMap");
-                return (
-                  !!(this.get("shouldShowChestAvailability") && e && t) &&
-                  t.get(e + "")
-                );
-              },
-            ),
           }));
       },
       (e, t, n) => {
@@ -30374,15 +30195,15 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "9AvsZoMz",
+          id: "p9yDG5oF",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","skin-name-text"],["flush-element"],["text","\\n  "],["append",["unknown",["skinName"]],false],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","tooltip_skin_name_chest_available"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","skin-name-chest-available"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["right","whole-window"]],0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-name-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","skin-name-text"],["flush-element"],["text","\\n  "],["append",["unknown",["skinName"]],false],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
-        n(294);
+        n(291);
         const s = n(1),
           { Ember: i } = s,
           { EmberHelpers: o } = s,
@@ -30395,7 +30216,7 @@
           });
         e.exports = i.Component.extend(a, {
           classNames: ["skin-purchase"],
-          layout: n(295),
+          layout: n(292),
           skinPurchaseService: i.inject.service("skin-purchase"),
           disabled: o.computedGate(
             "skinInfo.active",
@@ -30498,11 +30319,11 @@
           o = (s = n(158)) && s.__esModule ? s : { default: s },
           a = n(152);
         const { RunMixin: r } = i.EmberAddons.EmberLifeline;
-        n(297),
+        n(294),
           (e.exports = i.Ember.Component.extend(r, {
             classNames: ["skin-select"],
             classNameBindings: ["showRerollButton:has-reroll"],
-            layout: n(298),
+            layout: n(295),
             skinCarouselViewSkinId: void 0,
             parentSkinIdToSelectedChromaIdMap: {},
             skinLocked: i.Ember.computed("viewSkin.unlocked", function () {
@@ -30641,18 +30462,18 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "DWSWXgXj",
+          id: "i6wVNqpo",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\index.js\\" "],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["isShowingGrid"]],"hidden"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["skin-name"],null,[["skin","shouldShowChestAvailability","championChestAvailabilityMap"],[["get",["viewSkin"]],["get",["shouldShowChestAvailability"]],["get",["championChestAvailabilityMap"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-carousel-visibility-wrapper ",["helper",["if"],[["get",["skinSelectionDisabled"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["skin-carousel"],null,[["carouselSkins","selectedSkinId","selectedChampionId","championName","allowSkinSelection","isSkinGrantedFromBoost","disabled","jmxSettings","map","rootComponentShown","rootViewSkin","setSkinThroughScroll","setSkinThroughChromaModal","uxSettings","viewSkin","ip","rp","timer","isSkinSelectVisible","UseNewLoyaltyIcon","parentSkinIdToSelectedChromaIdMap"],[["get",["carouselSkins"]],["get",["selectedSkinId"]],["get",["selectedChampionId"]],["get",["championName"]],["get",["allowSkinSelection"]],["get",["isSkinGrantedFromBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["map"]],["get",["rootComponentShown"]],["get",["rootViewSkin"]],"setSkinThroughScroll","setSkinThroughChromaModal",["get",["uxSettings"]],["get",["viewSkin"]],["get",["ip"]],["get",["rp"]],["get",["timer"]],["get",["isSkinSelectVisible"]],["get",["UseNewLoyaltyIcon"]],["get",["parentSkinIdToSelectedChromaIdMap"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showRerollButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["reroll-button"],null,[["summoner","tbAllowRerolling","tbRerollsRemaining","disabled","recordDidRequestSucceed"],[["get",["summoner"]],["get",["tbAllowRerolling"]],["get",["tbRerollsRemaining"]],["get",["rerollsDisabled"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-select-component\\\\index.js\\" "],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["isShowingGrid"]],"hidden"],null]]]],["flush-element"],["text","\\n  "],["append",["helper",["skin-name"],null,[["skin"],[["get",["viewSkin"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-carousel-visibility-wrapper ",["helper",["if"],[["get",["skinSelectionDisabled"]],"hidden","visible"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["skin-carousel"],null,[["carouselSkins","selectedSkinId","selectedChampionId","championName","allowSkinSelection","isSkinGrantedFromBoost","disabled","jmxSettings","map","rootComponentShown","rootViewSkin","setSkinThroughScroll","setSkinThroughChromaModal","uxSettings","viewSkin","ip","rp","timer","isSkinSelectVisible","UseNewLoyaltyIcon","parentSkinIdToSelectedChromaIdMap"],[["get",["carouselSkins"]],["get",["selectedSkinId"]],["get",["selectedChampionId"]],["get",["championName"]],["get",["allowSkinSelection"]],["get",["isSkinGrantedFromBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["map"]],["get",["rootComponentShown"]],["get",["rootViewSkin"]],"setSkinThroughScroll","setSkinThroughChromaModal",["get",["uxSettings"]],["get",["viewSkin"]],["get",["ip"]],["get",["rp"]],["get",["timer"]],["get",["isSkinSelectVisible"]],["get",["UseNewLoyaltyIcon"]],["get",["parentSkinIdToSelectedChromaIdMap"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showRerollButton"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["reroll-button"],null,[["summoner","tbAllowRerolling","tbRerollsRemaining","disabled","recordDidRequestSucceed"],[["get",["summoner"]],["get",["tbAllowRerolling"]],["get",["tbRerollsRemaining"]],["get",["rerollsDisabled"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
         var s = n(1),
-          i = n(212),
+          i = n(209),
           o = n(152);
-        n(300);
+        n(297);
         const { RunMixin: a } = s.EmberAddons.EmberLifeline,
           r = s.UiKitPlugin.getTemplateHelper(),
           l = "championTradeToggleTooltipSeen",
@@ -30660,11 +30481,10 @@
           u = "positionSwapToggleTooltipSeen",
           m = ".position-swap-button";
         e.exports = s.Ember.Component.extend(a, {
-          layout: n(301),
+          layout: n(298),
           classNames: ["summoner-array"],
           classNameBindings: [
             "isLeft:your-party:enemy-party",
-            "showChestAvailabilityHintedPortraits:show-chest-availability-hinted-portraits",
             "shouldAlignTop:align-summoners-top",
           ],
           settingsService: (0, s.DataBinding)(
@@ -30986,9 +30806,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "HVkyHjeu",
+          id: "nkeUsVd/",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["first-pick ",["helper",["if"],[["get",["showFirstPick"]],"visible","removed"],null]]]],["flush-element"],["append",["unknown",["tra","first_pick"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["party ",["helper",["if"],[["get",["shouldShow"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldUseSubteamLayout"]]],null,6,1],["text","  "],["open-element","div",[]],["static-attr","class","summoner-timer-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["summoner-timer"],null,[["isInfinite","timerCellId","hideSummonerTimer","formattedTime","isMyTeam"],[["get",["timer","isInfinite"]],["get",["timerCellId"]],["get",["hideSummonerTimer"]],["get",["formattedTime"]],["get",["isLeft"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-wrapper ",["helper",["if"],[["get",["summoner","isPlaceholder"]],"removed","visible"],null]," ",["helper",["if"],[["get",["isLeft"]],"left","right"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["lines ",["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["summoner-object"],null,[["team","summoner","currentSummonerChampionName","pickOrderSwappingEnabled","inFinalizationPhase","activeSwap","activeTrade","summonerId","subteamDataList","uxSettings","jmxSettings","showPositionAssignment","isLeft","viewSkin","championChestAvailabilityMap","shouldShowChestAvailability","boosterSummonerId","isUILockedForGameStart","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["team"]],["get",["summoner"]],["get",["currentSummoner","champion","name"]],["get",["pickOrderSwappingEnabled"]],["get",["inFinalizationPhase"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["summoner","summonerId"]],["get",["subteamDataList"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["showPositionAssignment"]],["get",["isLeft"]],["get",["viewSkin"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]],["get",["boosterSummonerId"]],["get",["isUILockedForGameStart"]],["get",["isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["block",["each"],[["get",["summoners"]]],null,0]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-wrapper ",["helper",["if"],[["get",["summoner","isPlaceholder"]],"removed","visible"],null]," ",["helper",["if"],[["get",["isLeft"]],"left","right"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["lines ",["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["summoner-object"],null,[["team","summoner","currentSummonerChampionName","pickOrderSwappingEnabled","inFinalizationPhase","activeSwap","activeTrade","summonerId","subteamDataList","uxSettings","jmxSettings","showPositionAssignment","isLeft","showChampionIconTooltip","viewSkin","championChestAvailabilityMap","shouldShowChestAvailability","boosterSummonerId","isUILockedForGameStart","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["team"]],["get",["summoner"]],["get",["currentSummoner","champion","name"]],["get",["pickOrderSwappingEnabled"]],["get",["inFinalizationPhase"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["summoner","summonerId"]],["get",["subteamDataList"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["showPositionAssignment"]],["get",["isLeft"]],true,["get",["viewSkin"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]],["get",["boosterSummonerId"]],["get",["isUILockedForGameStart"]],["get",["isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["subteamSummonersData","subteamLabel"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","subteam-summoners-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-wrapper"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],3],["text","          "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-arrow"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["subteamSummonersData","subteamIconPath"]],");"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["each"],[["get",["subteamSummonersData","summoners"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":["subteamSummonersData"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","subteams-current-action-type-header"],["flush-element"],["append",["unknown",["subteamsCurrentActionTypeHeader"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["subteamsCurrentActionTypeHeader"]]],null,5],["block",["each"],[["get",["subteamsSummonersData"]]],null,4]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-array-component\\\\index.js\\" "],["text","\\n"],["open-element","span",[]],["dynamic-attr","class",["concat",["first-pick ",["helper",["if"],[["get",["showFirstPick"]],"visible","removed"],null]]]],["flush-element"],["append",["unknown",["tra","first_pick"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["party ",["helper",["if"],[["get",["shouldShow"]],"visible","hidden"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldUseSubteamLayout"]]],null,6,1],["text","  "],["open-element","div",[]],["static-attr","class","summoner-timer-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["summoner-timer"],null,[["isInfinite","timerCellId","hideSummonerTimer","formattedTime","isMyTeam"],[["get",["timer","isInfinite"]],["get",["timerCellId"]],["get",["hideSummonerTimer"]],["get",["formattedTime"]],["get",["isLeft"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-wrapper ",["helper",["if"],[["get",["summoner","isPlaceholder"]],"removed","visible"],null]," ",["helper",["if"],[["get",["isLeft"]],"left","right"],null]]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["lines ",["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["summoner-object"],null,[["team","summoner","currentSummonerChampionName","pickOrderSwappingEnabled","inFinalizationPhase","activeSwap","activeTrade","summonerId","subteamDataList","uxSettings","jmxSettings","showPositionAssignment","isLeft","viewSkin","boosterSummonerId","isUILockedForGameStart","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["team"]],["get",["summoner"]],["get",["currentSummoner","champion","name"]],["get",["pickOrderSwappingEnabled"]],["get",["inFinalizationPhase"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["summoner","summonerId"]],["get",["subteamDataList"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["showPositionAssignment"]],["get",["isLeft"]],["get",["viewSkin"]],["get",["boosterSummonerId"]],["get",["isUILockedForGameStart"]],["get",["isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["block",["each"],[["get",["summoners"]]],null,0]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-wrapper ",["helper",["if"],[["get",["summoner","isPlaceholder"]],"removed","visible"],null]," ",["helper",["if"],[["get",["isLeft"]],"left","right"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["lines ",["helper",["if"],[["get",["showPositionAssignment"]],"hidden","visible"],null]]]],["flush-element"],["close-element"],["text","\\n            "],["append",["helper",["summoner-object"],null,[["team","summoner","currentSummonerChampionName","pickOrderSwappingEnabled","inFinalizationPhase","activeSwap","activeTrade","summonerId","subteamDataList","uxSettings","jmxSettings","showPositionAssignment","isLeft","showChampionIconTooltip","viewSkin","boosterSummonerId","isUILockedForGameStart","isCustomGame","recordDidRequestSucceed","queueId"],[["get",["team"]],["get",["summoner"]],["get",["currentSummoner","champion","name"]],["get",["pickOrderSwappingEnabled"]],["get",["inFinalizationPhase"]],["get",["activeSwap"]],["get",["activeTrade"]],["get",["summoner","summonerId"]],["get",["subteamDataList"]],["get",["uxSettings"]],["get",["jmxSettings"]],["get",["showPositionAssignment"]],["get",["isLeft"]],true,["get",["viewSkin"]],["get",["boosterSummonerId"]],["get",["isUILockedForGameStart"]],["get",["isCustomGame"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n              "],["open-element","p",[]],["flush-element"],["append",["unknown",["subteamSummonersData","subteamLabel"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","subteam-summoners-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-wrapper"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],3],["text","          "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-arrow"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["subteamSummonersData","subteamIconPath"]],");"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"],["block",["each"],[["get",["subteamSummonersData","summoners"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":["subteamSummonersData"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","subteams-current-action-type-header"],["flush-element"],["append",["unknown",["subteamsCurrentActionTypeHeader"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["subteamsCurrentActionTypeHeader"]]],null,5],["block",["each"],[["get",["subteamsSummonersData"]]],null,4]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -31000,14 +30820,14 @@
         function a(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        n(303);
+        n(300);
         const { DomMixin: r } = s.EmberAddons.EmberLifeline,
           l = "COMMS_ABUSE_TEXT",
           c = [l, "SABOTAGING_TEAM", "DISRESPECTFUL_BEHAVIOR"],
-          u = n(304)[0][1],
+          u = n(301)[0][1],
           m = s.UiKitPlugin.getContextMenuManager();
         e.exports = s.Ember.Component.extend(r, o.default, {
-          layout: n(307),
+          layout: n(304),
           classNames: ["summoner-overlay"],
           classNameBindings: ["isContextMenuOpened:show"],
           chatPublisherService: s.Ember.inject.service("chat-publisher"),
@@ -31196,8 +31016,8 @@
         n.r(t);
       },
       (e, t, n) => {
-        var s = n(305),
-          i = n(306)(s);
+        var s = n(302),
+          i = n(303)(s);
         i.push([
           e.id,
           '.champ-select-reporting-menu .context-menu-header .title h5 {\n  font-family: var(--font-display);\n}\n.champ-select-reporting-menu .context-menu-header,\n.champ-select-reporting-menu .context-menu-item {\n  font-family: var(--font-body);\n}\n.champ-select-reporting-menu .context-menu-header,\n.champ-select-reporting-menu .context-menu-header .title h5,\n.champ-select-reporting-menu .context-menu-item {\n  -webkit-user-select: none;\n}\n.champ-select-reporting-menu .context-menu-header,\n.champ-select-reporting-menu .context-menu-header .title h5,\n.champ-select-reporting-menu .context-menu-item {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n.champ-select-reporting-menu .context-menu-header .title h5 {\n  text-transform: uppercase;\n}\n.champ-select-reporting-menu .context-menu-header .title h5:lang(ko-kr),\n.champ-select-reporting-menu .context-menu-header .title h5:lang(ja-jp),\n.champ-select-reporting-menu .context-menu-header .title h5:lang(tr-tr),\n.champ-select-reporting-menu .context-menu-header .title h5:lang(el-gr),\n.champ-select-reporting-menu .context-menu-header .title h5:lang(th-th),\n.champ-select-reporting-menu .context-menu-header .title h5:lang(zh-tw) {\n  text-transform: none;\n}\n.champ-select-reporting-menu .context-menu-header .title h5 {\n  color: #f0e6d2;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 18px;\n  letter-spacing: 0.075em;\n}\n.champ-select-reporting-menu .context-menu-header .title h5:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.champ-select-reporting-menu .context-menu-header,\n.champ-select-reporting-menu .context-menu-item {\n  color: #a09b8c;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 16px;\n  letter-spacing: 0.025em;\n  -webkit-font-smoothing: subpixel-antialiased;\n}\n.champ-select-reporting-menu .context-menu-header:lang(ja-jp),\n.champ-select-reporting-menu .context-menu-item:lang(ja-jp) {\n  font-size: 13px;\n}\n.champ-select-reporting-menu .context-menu-header:lang(ar-ae),\n.champ-select-reporting-menu .context-menu-item:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.champ-select-reporting-menu {\n  user-select: none;\n  -webkit-user-select: none;\n  cursor: default;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  min-width: 127px;\n  z-index: 10;\n  box-sizing: border-box;\n  background-color: #010a13;\n  box-shadow: 0 0 1px #000, 0 0 1px #000;\n  border: 1px solid #463714;\n  outline: none;\n}\n.champ-select-reporting-menu:lang(ar-ae) {\n  direction: rtl;\n}\n.champ-select-reporting-menu .context-menu-header {\n  padding-left: 10px;\n  min-width: calc(100% - 10px);\n  width: -webkit-max-content;\n}\n.champ-select-reporting-menu .context-menu-header:lang(ar-ae) {\n  padding-left: 0px;\n  padding-right: 10px;\n}\n.champ-select-reporting-menu .context-menu-header .title {\n  color: #f0e6d2;\n  display: inline-block;\n  padding: 10px 10px 2px 0;\n}\n.champ-select-reporting-menu .context-menu-header .title:lang(ar-ae) {\n  padding: 10px 0px 2px 10px;\n}\n.champ-select-reporting-menu .context-menu-header .title h5 {\n  margin: 0;\n  white-space: nowrap;\n}\n.champ-select-reporting-menu .context-menu-header .separator {\n  border: 0;\n  height: 1px;\n  background-color: #1e2328;\n  margin: 5px 0 0 -10px;\n}\n.champ-select-reporting-menu .context-menu-header .separator:lang(ar-ae) {\n  margin: 5px -10px 0 0;\n}\n.champ-select-reporting-menu .context-menu-item {\n  display: block;\n  outline: none;\n  min-width: 100%;\n  width: -webkit-max-content;\n  height: 30px;\n  line-height: 30px;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0 10px;\n  border: none;\n  background: none;\n  white-space: nowrap;\n  overflow: visible;\n  text-overflow: ellipsis;\n  text-align: left;\n  position: relative;\n}\n.champ-select-reporting-menu .context-menu-item:lang(ar-ae) {\n  text-align: right;\n}\n.champ-select-reporting-menu .context-menu-item .title {\n  color: #a09b8c;\n}\n.champ-select-reporting-menu .context-menu-item div {\n  vertical-align: middle;\n}\n.champ-select-reporting-menu .context-menu-item .separator {\n  border: 0;\n  height: 1px;\n  background-color: #1e2328;\n  margin: 0 -10px 0 -10px;\n}\n.champ-select-reporting-menu .context-menu-item:not(.disabled):hover {\n  background: #1e2328;\n  color: #f0e6d2;\n  cursor: pointer;\n}\n.champ-select-reporting-menu .context-menu-item:active {\n  color: #cdbe91;\n}\n',
@@ -31287,10 +31107,10 @@
         "use strict";
         var s,
           i = n(1),
-          o = (s = n(309)) && s.__esModule ? s : { default: s };
-        n(310);
+          o = (s = n(306)) && s.__esModule ? s : { default: s };
+        n(307);
         e.exports = i.Ember.Component.extend({
-          layout: n(311),
+          layout: n(308),
           classNames: ["summoner-object"],
           classNameBindings: [
             "isLeft:left:right",
@@ -31616,19 +31436,6 @@
               );
             },
           ),
-          showChampionChestAvailable: i.Ember.computed(
-            "shouldShowChestAvailability",
-            "summoner.championId",
-            "championChestAvailabilityMap",
-            function () {
-              const e = this.get("summoner.championId"),
-                t = this.get("championChestAvailabilityMap");
-              return (
-                !!(this.get("shouldShowChestAvailability") && e && t) &&
-                t.get(e + "")
-              );
-            },
-          ),
           _getSubteamData: function (e, t) {
             if (!e) return !1;
             const n = e.find((e) => e.cellIds.includes(t));
@@ -31866,9 +31673,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "X9fZLN16",
+          id: "/XF4bQAj",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showSubteamIcon"]]],null,13],["block",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]]],null,11,10],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["active-bar ",["helper",["if"],[["get",["summoner","shouldShowActingBar"]],"","hidden"],null]]]],["flush-element"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","active-bar-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["isUILockedForGameStart"]]],null,9],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-container-wrapper ",["helper",["if"],[["get",["showPickOrderSwapButton"]],"expanded","collapsed"],null]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-spells ",["helper",["if"],[["get",["summoner","shouldShowSpells"]],"","removed"],null]," ",["helper",["unless"],[["get",["bright"]],"dim"],null]]]],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1IconPath"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2IconPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-ban-item ",["helper",["if"],[["get",["summoner","shouldShowBanIntentIcon"]],"visible","removed"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champ-ban-icon"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["summoner","banIntentSquarePortratPath"]],")"]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","ban-icon-overlay"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","summoner-container-spacer"],["flush-element"],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-container ",["helper",["if"],[["get",["summoner","shouldShowExpanded"]],"expanded","collapsed"],null]]]],["flush-element"],["text","\\n    "],["open-element","lol-parties-comm-halo",[]],["dynamic-attr","puuid",["unknown",["summoner","puuid"]],null],["static-attr","size","medium"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-icon-container ",["helper",["unless"],[["get",["bright"]],"dim"],null]," "]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showChampionIconTooltip"]]],null,8],["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-pop-animation ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-shine-animation ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-glow-animation"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-magic-animation"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,5],["text","        "],["open-element","div",[]],["static-attr","class","champion-icons"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","champion-icons-bg"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["positionIconPath"]]],null,4],["text","          "],["open-element","div",[]],["static-attr","class","portrait-icon fit-icon"],["dynamic-attr","style",["helper",["sanitize"],[["get",["championIconStyle"]]],null],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["static-attr","class","champion-ring"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,3],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-ring-animation"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-magic-animation"],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-magic-animation-inner ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-magic-animation-outer ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["image-ring-spinner  ",["helper",["if"],[["get",["showSummonerActing"]],"visible","removed"],null]," ",["helper",["if"],[["get",["isLeft"]],"left-side","right-side"],null]," ",["helper",["if"],[["get",["summoner","isSelf"]],"is-self"],null]," ",["helper",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]],"animated","not-animated"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","class",["concat",["summoner-muted-icon ",["helper",["unless"],[["get",["summoner","showMuted"]],"removed"],null]]]],["static-attr","src","/fe/lol-champ-select/images/summoner-object/button-mute.svg"],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["isUILockedForGameStart"]]],null,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","player-details-spacer"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","player-details"],["dynamic-attr","style",["unknown",["playerDetailsStyle"]],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-vote-projection ",["helper",["unless"],[["get",["voteProjectionText"]],"no-vote-percent"],null]]]],["flush-element"],["text","\\n        "],["append",["unknown",["voteProjectionText"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-secondary-text ",["helper",["unless"],[["get",["summonerSecondaryText"]],"removed"],null]]]],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","summoner-secondary-text-inner"],["flush-element"],["append",["unknown",["summonerSecondaryText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-primary-text ",["helper",["unless"],[["get",["summonerPrimaryText"]],"hidden"],null]]]],["flush-element"],["text","\\n        "],["append",["unknown",["summonerPrimaryText"]],false],["text","\\n"],["text","        "],["open-element","div",[]],["static-attr","class","summoner-primary-text-glow"],["flush-element"],["append",["unknown",["summonerPrimaryText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-name ",["helper",["if"],[["get",["showTeamBoostIcon"]],"showing-summoner-booster-icon"],null]]]],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","name-text"],["flush-element"],["text","\\n          "],["append",["helper",["player-name-wrapper"],null,[["displayName","hiddenName","isSummonerInMyTeam","isOnPlayersTeam","nameVisibilityType","puuid"],[["get",["summoner","displayName"]],["get",["summoner","hiddenName"]],["get",["summoner","isSummonerInMyTeam"]],["get",["summoner","isOnPlayersTeam"]],["get",["summoner","nameVisibilityType"]],["get",["summoner","puuid"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamBoostIcon"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowOverlay"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["summoner-overlay"],null,[["displayName","puuid","summonerId","obfuscatedPuuid","obfuscatedSummonerId","isMuted","isReportingEnabled","jmxSettings","recordDidRequestSucceed","queueId"],[["get",["displayName"]],["get",["summoner","puuid"]],["get",["summoner","summonerId"]],["get",["summoner","obfuscatedPuuid"]],["get",["summoner","obfuscatedSummonerId"]],["get",["summoner","showMuted"]],["get",["isReportingEnabled"]],["get",["jmxSettings"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","summoner-name-booster-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["helper",["trade-button"],null,[["tradeId","summonerToTradeChampionName","currentSummonerChampionName","uxSettings","displayName","recordDidRequestSucceed","summonerHasActiveTrade","showChampionTradeButton","showValidTrade","showChampionChestAvailable"],[["get",["summoner","tradeId"]],["get",["summoner","championName"]],["get",["currentSummonerChampionName"]],["get",["uxSettings"]],["get",["displayName"]],["get",["recordDidRequestSucceed"]],["get",["summonerHasActiveTrade"]],["get",["showChampionTradeButton"]],["get",["summoner","showTrades"]],["get",["showChampionChestAvailable"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","champion-ring-chest-available-glow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["dynamic-attr","src",["unknown",["positionIconPath"]],null],["static-attr","class","svg-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","champion-icon-pick-chest-available-glow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["summoner","championName"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],6]],"locals":[]},{"statements":[["block",["if"],[["get",["summoner","championName"]]],null,7]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["swap-button-spacing ",["helper",["if"],[["get",["showPickOrderSwapButton"]],"","collapsed"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["swap-button"],null,[["swapId","uxSettings","summonerHasActiveSwap","displayName","recordDidRequestSucceed","showPickOrderSwapButton"],[["get",["summoner","swapId"]],["get",["uxSettings"]],["get",["summonerHasActiveSwap"]],["get",["displayName"]],["get",["recordDidRequestSucceed"]],["get",["showPickOrderSwapButton"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["image-magic-background ",["unknown",["summoner","actingBackgroundAnimationState"]]," skin-showcase"]]],["dynamic-attr","style",["unknown",["skinShowcaseStyle"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-state-machine",[]],["static-attr","state","not-acting"],["dynamic-attr","acting-state",["unknown",["summoner","actingBackgroundAnimationState"]],null],["static-attr","class","video-magic-background-state-machine skin-showcase"],["dynamic-attr","style",["unknown",["skinShowcaseStyle"]],null],["flush-element"],["text","\\n    "],["open-element","uikit-states",[]],["flush-element"],["text","\\n      "],["open-element","uikit-state",[]],["static-attr","name","not-acting"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","is-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","outro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","outro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","outro"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","not-acting"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","not-acting"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-intro-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","intro"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","intro"]]]]],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-idle-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","idle"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","idle"]]]]],["static-attr","loop","loop"],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-outro-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","outro"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","outro"]]]]],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["subteamLabel"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-wrapper"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],12],["text","    "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-arrow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["subteamIconPath"]],");"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showSubteamIcon"]]],null,11],["block",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]]],null,9,8],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["active-bar ",["helper",["if"],[["get",["summoner","shouldShowActingBar"]],"","hidden"],null]]]],["flush-element"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","active-bar-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["isUILockedForGameStart"]]],null,7],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-container-wrapper ",["helper",["if"],[["get",["showPickOrderSwapButton"]],"expanded","collapsed"],null]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-spells ",["helper",["if"],[["get",["summoner","shouldShowSpells"]],"","removed"],null]," ",["helper",["unless"],[["get",["bright"]],"dim"],null]]]],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1IconPath"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2IconPath"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-ban-item ",["helper",["if"],[["get",["summoner","shouldShowBanIntentIcon"]],"visible","removed"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champ-ban-icon"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["summoner","banIntentSquarePortratPath"]],")"]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","ban-icon-overlay"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","summoner-container-spacer"],["flush-element"],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-container ",["helper",["if"],[["get",["summoner","shouldShowExpanded"]],"expanded","collapsed"],null]]]],["flush-element"],["text","\\n    "],["open-element","lol-parties-comm-halo",[]],["dynamic-attr","puuid",["unknown",["summoner","puuid"]],null],["static-attr","size","medium"],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-icon-container ",["helper",["unless"],[["get",["bright"]],"dim"],null]," "]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showChampionIconTooltip"]]],null,6],["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-pop-animation ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-shine-animation ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-glow-animation"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-magic-animation"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icons"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","champion-icons-bg"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["positionIconPath"]]],null,3],["text","          "],["open-element","div",[]],["static-attr","class","portrait-icon fit-icon"],["dynamic-attr","style",["helper",["sanitize"],[["get",["championIconStyle"]]],null],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["static-attr","class","champion-ring"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-ring-animation"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","champion-icon-pick-snipe-magic-animation"],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-magic-animation-inner ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-ring-magic-animation-outer ",["helper",["if"],[["get",["summoner","shouldShowRingAnimations"]],"visible","removed"],null]]]],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["image-ring-spinner  ",["helper",["if"],[["get",["showSummonerActing"]],"visible","removed"],null]," ",["helper",["if"],[["get",["isLeft"]],"left-side","right-side"],null]," ",["helper",["if"],[["get",["summoner","isSelf"]],"is-self"],null]," ",["helper",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]],"animated","not-animated"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["open-element","img",[]],["dynamic-attr","class",["concat",["summoner-muted-icon ",["helper",["unless"],[["get",["summoner","showMuted"]],"removed"],null]]]],["static-attr","src","/fe/lol-champ-select/images/summoner-object/button-mute.svg"],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["isUILockedForGameStart"]]],null,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","player-details-spacer"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","player-details"],["dynamic-attr","style",["unknown",["playerDetailsStyle"]],null],["flush-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-vote-projection ",["helper",["unless"],[["get",["voteProjectionText"]],"no-vote-percent"],null]]]],["flush-element"],["text","\\n        "],["append",["unknown",["voteProjectionText"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-secondary-text ",["helper",["unless"],[["get",["summonerSecondaryText"]],"removed"],null]]]],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","summoner-secondary-text-inner"],["flush-element"],["append",["unknown",["summonerSecondaryText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-primary-text ",["helper",["unless"],[["get",["summonerPrimaryText"]],"hidden"],null]]]],["flush-element"],["text","\\n        "],["append",["unknown",["summonerPrimaryText"]],false],["text","\\n"],["text","        "],["open-element","div",[]],["static-attr","class","summoner-primary-text-glow"],["flush-element"],["append",["unknown",["summonerPrimaryText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["summoner-name ",["helper",["if"],[["get",["showTeamBoostIcon"]],"showing-summoner-booster-icon"],null]]]],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","name-text"],["flush-element"],["text","\\n          "],["append",["helper",["player-name-wrapper"],null,[["displayName","hiddenName","isSummonerInMyTeam","isOnPlayersTeam","nameVisibilityType","puuid"],[["get",["summoner","displayName"]],["get",["summoner","hiddenName"]],["get",["summoner","isSummonerInMyTeam"]],["get",["summoner","isOnPlayersTeam"]],["get",["summoner","nameVisibilityType"]],["get",["summoner","puuid"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showTeamBoostIcon"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowOverlay"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["summoner-overlay"],null,[["displayName","puuid","summonerId","obfuscatedPuuid","obfuscatedSummonerId","isMuted","isReportingEnabled","jmxSettings","recordDidRequestSucceed","queueId"],[["get",["displayName"]],["get",["summoner","puuid"]],["get",["summoner","summonerId"]],["get",["summoner","obfuscatedPuuid"]],["get",["summoner","obfuscatedSummonerId"]],["get",["summoner","showMuted"]],["get",["isReportingEnabled"]],["get",["jmxSettings"]],["get",["recordDidRequestSucceed"]],["get",["queueId"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","summoner-name-booster-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["helper",["trade-button"],null,[["tradeId","summonerToTradeChampionName","currentSummonerChampionName","uxSettings","displayName","recordDidRequestSucceed","summonerHasActiveTrade","showChampionTradeButton","showValidTrade"],[["get",["summoner","tradeId"]],["get",["summoner","championName"]],["get",["currentSummonerChampionName"]],["get",["uxSettings"]],["get",["displayName"]],["get",["recordDidRequestSucceed"]],["get",["summonerHasActiveTrade"]],["get",["showChampionTradeButton"]],["get",["summoner","showTrades"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["dynamic-attr","src",["unknown",["positionIconPath"]],null],["static-attr","class","svg-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["flush-element"],["append",["unknown",["summoner","championName"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],4]],"locals":[]},{"statements":[["block",["if"],[["get",["summoner","championName"]]],null,5]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["swap-button-spacing ",["helper",["if"],[["get",["showPickOrderSwapButton"]],"","collapsed"],null]]]],["flush-element"],["text","\\n    "],["append",["helper",["swap-button"],null,[["swapId","uxSettings","summonerHasActiveSwap","displayName","recordDidRequestSucceed","showPickOrderSwapButton"],[["get",["summoner","swapId"]],["get",["uxSettings"]],["get",["summonerHasActiveSwap"]],["get",["displayName"]],["get",["recordDidRequestSucceed"]],["get",["showPickOrderSwapButton"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["image-magic-background ",["unknown",["summoner","actingBackgroundAnimationState"]]," skin-showcase"]]],["dynamic-attr","style",["unknown",["skinShowcaseStyle"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-state-machine",[]],["static-attr","state","not-acting"],["dynamic-attr","acting-state",["unknown",["summoner","actingBackgroundAnimationState"]],null],["static-attr","class","video-magic-background-state-machine skin-showcase"],["dynamic-attr","style",["unknown",["skinShowcaseStyle"]],null],["flush-element"],["text","\\n    "],["open-element","uikit-states",[]],["flush-element"],["text","\\n      "],["open-element","uikit-state",[]],["static-attr","name","not-acting"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","is-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-intro-vid"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","outro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","outro"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","uikit-state",[]],["static-attr","name","outro"],["flush-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-idle-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","not-acting"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-media",[]],["static-attr","selector",".bg-outro-vid"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","uikit-transition",[]],["static-attr","next-state","not-acting"],["flush-element"],["text","\\n          "],["open-element","uikit-condition-parameter",[]],["static-attr","name","acting-state"],["static-attr","value","not-acting-background"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-intro-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","intro"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","intro"]]]]],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-idle-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","idle"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","idle"]]]]],["static-attr","loop","loop"],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["dynamic-attr","class",["concat",["bg-outro-vid video-magic-background ",["helper",["unless"],[["get",["isLeft"]],"right"],null]]]],["static-attr","visible-state","outro"],["dynamic-attr","src",["concat",[["unknown",["banMagicVideo","outro"]]]]],["static-attr","cache-name","rcp-fe-lol-champ-select"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["unknown",["subteamLabel"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-wrapper"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","restrictArea"],["top","whole-window"]],10],["text","    "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon-arrow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","champion-select-subteam-icon"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["subteamIconPath"]],");"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -31877,7 +31684,7 @@
         const s = n(1),
           { Ember: i } = s,
           o = i.Component.extend({
-            layout: n(313),
+            layout: n(310),
             classNames: ["spell-select-flyout"],
             spells: null,
             hoveredSpell: null,
@@ -31981,14 +31788,14 @@
             return e ? n : t;
           })(e);
         }
-        n(315);
+        n(312);
         const { DataBinding: c } = s.default,
           { Telemetry: u } = s.default,
           m = s.UiKitPlugin.getFlyoutManager(),
           { RunMixin: d } = s.EmberAddons.EmberLifeline,
           p = s.UiKitPlugin.getContextualNotificationManager();
         e.exports = s.Ember.Component.extend(d, {
-          layout: n(316),
+          layout: n(313),
           classNames: ["summoner-spell-container"],
           disabled: !1,
           requestInProgress: !1,
@@ -32261,12 +32068,12 @@
       (e, t, n) => {
         "use strict";
         var s = n(152);
-        n(318);
+        n(315);
         const i = n(1),
           { Ember: o } = i;
         e.exports = o.Component.extend({
           classNames: ["summoner-timer"],
-          layout: n(319),
+          layout: n(316),
           summonerTimerStyle: o.computed("timerCellId", function () {
             const e = this.get("timerCellId");
             return this.calculateAndFormatStyleFromCellId(e);
@@ -32292,7 +32099,7 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(321);
+        n(318);
         var i = n(152);
         e.exports = s.Ember.Component.extend({
           classNames: ["team-bans"],
@@ -32301,7 +32108,7 @@
             "hasSimultaneousBans:flip-my-team-bans",
             "numBanActionItemsClass",
           ],
-          layout: n(322),
+          layout: n(319),
           banActionItems: s.Ember.computed(
             "numBans",
             "banActions.[]",
@@ -32339,13 +32146,13 @@
       },
       (e, t, n) => {
         "use strict";
-        n(324);
+        n(321);
         var s = n(1),
           i = n(152);
         e.exports = s.Ember.Component.extend({
           classNames: ["team-bans-item"],
           classNameBindings: ["indexClass"],
-          layout: n(325),
+          layout: n(322),
           indexClass: s.Ember.computed(
             "actionIndex",
             "isMyTeam",
@@ -32394,7 +32201,7 @@
         "use strict";
         var s,
           i = (s = n(158)) && s.__esModule ? s : { default: s };
-        n(327);
+        n(324);
         const o = n(1),
           { Ember: a } = o,
           r =
@@ -32416,7 +32223,7 @@
             }));
         e.exports = a.Component.extend(r, {
           classNames: ["team-boost"],
-          layout: n(328),
+          layout: n(325),
           isBoostPurchaseModalShown: !1,
           rp: a.computed("walletRP.RP", function () {
             return this.get("walletRP.RP") || 0;
@@ -32559,9 +32366,9 @@
             return e ? n : t;
           })(e);
         }
-        n(330);
+        n(327);
         const o = s.Ember.Component.extend({
-          layout: n(331),
+          layout: n(328),
           boostModalMessage: s.Ember.computed(
             "price",
             "tra.boost_modal_message",
@@ -32633,7 +32440,7 @@
         var s,
           i = n(152),
           o = (s = n(150)) && s.__esModule ? s : { default: s };
-        n(333);
+        n(330);
         const a = n(1),
           { Ember: r } = a,
           { EmberHelpers: l } = a,
@@ -32641,7 +32448,7 @@
           u = "sfx-notifications";
         e.exports = r.Component.extend({
           classNames: ["timer-status"],
-          layout: n(334),
+          layout: n(331),
           classNameBindings: ["isHeaderExpanded:expanded-header"],
           inPlanningOrFinalization: r.computed.or(
             "timer.inPlanningPhase",
@@ -32903,9 +32710,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "0Xu8J306",
+          id: "/RXv+W1P",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isHeaderExpanded"]]],null,7,2],["text","\\n"],["open-element","div",[]],["static-attr","class","timer-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["burnout-timer left ",["helper",["unless"],[["get",["alliedTeamActive"]],"burnout-timer-invisible"],null]," ",["helper",["if"],[["get",["alliedActiveAction","isBan"]],"red","blue"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-glow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-bar"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer ",["helper",["if"],[["get",["isPlayingCeremony"]],"hidden"],null]," ",["helper",["if"],[["get",["displayAlternateTimer"]],"hidden"],null]]]],["dynamic-attr","data-time",["unknown",["formattedTime"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["timer","isInfinite"]]],null,1,0],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["burnout-timer right ",["helper",["unless"],[["get",["enemyTeamActive"]],"hidden"],null]," ",["helper",["if"],[["get",["inPlanningOrFinalization"]],"blue","red"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-glow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-bar"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","svg",[]],["static-attr","class","metal-work left"],["static-attr","id","Layer_1"],["static-attr","data-name","Layer 1"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","viewBox","0 0 1360 140.04"],["static-attr","width","340"],["static-attr","height","35.01"],["flush-element"],["text","\\n    "],["open-element","defs",[]],["flush-element"],["text","\\n      "],["open-element","linearGradient",[]],["static-attr","id","Gradient1"],["flush-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","class","stop1"],["static-attr","offset","0%"],["flush-element"],["close-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","class","stop2"],["static-attr","offset","55%"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","style",[]],["static-attr","type","text/css"],["flush-element"],["text",".cls-1 { fill: url(#Gradient1); }\\n      .stop1 { stop-color: #463714; }\\n      .stop2 { stop-color: #785A28; }\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","path",[]],["static-attr","class","cls-1"],["static-attr","transform","translate(615.5 6.54)"],["static-attr","d","M-261.55,112.3v9.45h10.79V101.37h-5.4c-47,0-87.17-36-93.48-83.75l-2.71-7.84H-583.08L-595.5-2.5h212c-.08,1.83,0,10.14,0,12h4v-16l-236,0v4h4l23,23.14h225.34C-354.46,69.64-310,109.74-261.55,112.3Zm6,17.2c-57.68,0-107.69-40.62-120-96h-4c12.41,58.46,63.33,100,124,100h996l4-4Z"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","svg",[]],["static-attr","class","metal-work right"],["static-attr","id","Layer_2"],["static-attr","data-name","Layer 1"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","viewBox","0 0 1360 140.04"],["static-attr","width","340"],["static-attr","height","35.01"],["flush-element"],["text","\\n    "],["open-element","path",[]],["static-attr","class","cls-1"],["static-attr","transform","translate(615.5 6.54)"],["static-attr","d","M-261.55,112.3v9.45h10.79V101.37h-5.4c-47,0-87.17-36-93.48-83.75l-2.71-7.84H-583.08L-595.5-2.5h212c-.08,1.83,0,10.14,0,12h4v-16l-236,0v4h4l23,23.14h225.34C-354.46,69.64-310,109.74-261.55,112.3Zm6,17.2c-57.68,0-107.69-40.62-120-96h-4c12.41,58.46,63.33,100,124,100h996l4-4Z"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["team-boost-button"],null,[["allowBattleBoost","isUILockedForGameStart","jmxSettings","inFinalizationPhase","isShowingVoteCeremonies","boostableSkinCount","recordDidRequestSucceed","timeRemaining"],[["get",["allowBattleBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["inFinalizationPhase"]],["get",["isShowingVoteCeremonies"]],["get",["boostableSkinCount"]],["get",["recordDidRequestSucceed"]],["get",["timer","timeRemaining"]]]]],false],["text","\\n\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["formattedTime"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      ∞\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["message ",["helper",["if"],[["get",["shouldHideMessage"]],"hidden"],null]," ",["helper",["if"],[["get",["localPlayerActive"]],"local-player-acting"],null]]]],["flush-element"],["text","\\n    "],["append",["unknown",["message"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["champion-bench"],null,[["benchChampions","championChestAvailabilityMap","shouldShowChestAvailability","showChestAvailabilityHintedPortraits","inventory","summoner","recordDidRequestSucceed"],[["get",["benchChampions"]],["get",["championChestAvailabilityMap"]],["get",["shouldShowChestAvailability"]],["get",["showChestAvailabilityHintedPortraits"]],["get",["inventory"]],["get",["summoner"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["formattedTime"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        ∞\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["small-timer ",["helper",["if"],[["get",["isPlayingCeremony"]],"hidden"],null]]]],["dynamic-attr","data-time",["unknown",["formattedTime"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["timer","isInfinite"]]],null,5,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["displayAlternateTimer"]]],null,6],["block",["if"],[["get",["showChampionBench"]]],null,3]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\timer-status-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isHeaderExpanded"]]],null,7,2],["text","\\n"],["open-element","div",[]],["static-attr","class","timer-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["burnout-timer left ",["helper",["unless"],[["get",["alliedTeamActive"]],"burnout-timer-invisible"],null]," ",["helper",["if"],[["get",["alliedActiveAction","isBan"]],"red","blue"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-glow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-bar"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer ",["helper",["if"],[["get",["isPlayingCeremony"]],"hidden"],null]," ",["helper",["if"],[["get",["displayAlternateTimer"]],"hidden"],null]]]],["dynamic-attr","data-time",["unknown",["formattedTime"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["timer","isInfinite"]]],null,1,0],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["burnout-timer right ",["helper",["unless"],[["get",["enemyTeamActive"]],"hidden"],null]," ",["helper",["if"],[["get",["inPlanningOrFinalization"]],"blue","red"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-glow"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","burnout-timer-bar"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","svg",[]],["static-attr","class","metal-work left"],["static-attr","id","Layer_1"],["static-attr","data-name","Layer 1"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","viewBox","0 0 1360 140.04"],["static-attr","width","340"],["static-attr","height","35.01"],["flush-element"],["text","\\n    "],["open-element","defs",[]],["flush-element"],["text","\\n      "],["open-element","linearGradient",[]],["static-attr","id","Gradient1"],["flush-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","class","stop1"],["static-attr","offset","0%"],["flush-element"],["close-element"],["text","\\n        "],["open-element","stop",[]],["static-attr","class","stop2"],["static-attr","offset","55%"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","style",[]],["static-attr","type","text/css"],["flush-element"],["text",".cls-1 { fill: url(#Gradient1); }\\n      .stop1 { stop-color: #463714; }\\n      .stop2 { stop-color: #785A28; }\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","path",[]],["static-attr","class","cls-1"],["static-attr","transform","translate(615.5 6.54)"],["static-attr","d","M-261.55,112.3v9.45h10.79V101.37h-5.4c-47,0-87.17-36-93.48-83.75l-2.71-7.84H-583.08L-595.5-2.5h212c-.08,1.83,0,10.14,0,12h4v-16l-236,0v4h4l23,23.14h225.34C-354.46,69.64-310,109.74-261.55,112.3Zm6,17.2c-57.68,0-107.69-40.62-120-96h-4c12.41,58.46,63.33,100,124,100h996l4-4Z"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","svg",[]],["static-attr","class","metal-work right"],["static-attr","id","Layer_2"],["static-attr","data-name","Layer 1"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["static-attr","viewBox","0 0 1360 140.04"],["static-attr","width","340"],["static-attr","height","35.01"],["flush-element"],["text","\\n    "],["open-element","path",[]],["static-attr","class","cls-1"],["static-attr","transform","translate(615.5 6.54)"],["static-attr","d","M-261.55,112.3v9.45h10.79V101.37h-5.4c-47,0-87.17-36-93.48-83.75l-2.71-7.84H-583.08L-595.5-2.5h212c-.08,1.83,0,10.14,0,12h4v-16l-236,0v4h4l23,23.14h225.34C-354.46,69.64-310,109.74-261.55,112.3Zm6,17.2c-57.68,0-107.69-40.62-120-96h-4c12.41,58.46,63.33,100,124,100h996l4-4Z"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["team-boost-button"],null,[["allowBattleBoost","isUILockedForGameStart","jmxSettings","inFinalizationPhase","isShowingVoteCeremonies","boostableSkinCount","recordDidRequestSucceed","timeRemaining"],[["get",["allowBattleBoost"]],["get",["isUILockedForGameStart"]],["get",["jmxSettings"]],["get",["inFinalizationPhase"]],["get",["isShowingVoteCeremonies"]],["get",["boostableSkinCount"]],["get",["recordDidRequestSucceed"]],["get",["timer","timeRemaining"]]]]],false],["text","\\n\\n\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["unknown",["formattedTime"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      ∞\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["message ",["helper",["if"],[["get",["shouldHideMessage"]],"hidden"],null]," ",["helper",["if"],[["get",["localPlayerActive"]],"local-player-acting"],null]]]],["flush-element"],["text","\\n    "],["append",["unknown",["message"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["champion-bench"],null,[["benchChampions","inventory","summoner","recordDidRequestSucceed"],[["get",["benchChampions"]],["get",["inventory"]],["get",["summoner"]],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["unknown",["formattedTime"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        ∞\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["small-timer ",["helper",["if"],[["get",["isPlayingCeremony"]],"hidden"],null]]]],["dynamic-attr","data-time",["unknown",["formattedTime"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["timer","isInfinite"]]],null,5,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["displayAlternateTimer"]]],null,6],["block",["if"],[["get",["showChampionBench"]]],null,3]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -32945,9 +32752,9 @@
             return e ? n : t;
           })(e);
         }
-        n(336),
+        n(333),
           (e.exports = s.Ember.Component.extend({
-            layout: n(337),
+            layout: n(334),
             classNames: ["trade-button"],
             requestInProgress: !1,
             disabled: s.Ember.computed("requestInProgress", function () {
@@ -33054,9 +32861,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "RRSI+oe9",
+          id: "xcGBWmGO",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showChampionTradeButton"]]],null,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","tooltip-champion-chest-available"],["flush-element"],["append",["unknown",["tra","tooltip_champion_chest_available"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","champ-select-trade-button-tooltip"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tradeTooltipText"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["showChampionChestAvailable"]]],null,0],["text","        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["onclick","class","interactive","borderWidth","disabled"],[["helper",["action"],[["get",[null]],"trade"],null],"champion-trade-button",true,2,["get",["disabled"]]]],2],["text","    "],["open-element","div",[]],["static-attr","class","champion-trade-ring-background"],["flush-element"],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showValidTrade"]]],null,3]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["class","interactive","borderWidth","disabled"],["champion-trade-button-active-trade",true,2,["get",["disabled"]]]],5],["text","    "],["open-element","div",[]],["static-attr","class","champion-trade-ring-background"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-trade-ring-spinner ",["helper",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]],"animated","not-animated"],null]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["summonerHasActiveTrade"]]],null,6,4]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\trade-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showChampionTradeButton"]]],null,6]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","champ-select-trade-button-tooltip"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["tradeTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],0]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["onclick","class","interactive","borderWidth","disabled"],[["helper",["action"],[["get",[null]],"trade"],null],"champion-trade-button",true,2,["get",["disabled"]]]],1],["text","    "],["open-element","div",[]],["static-attr","class","champion-trade-ring-background"],["flush-element"],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showValidTrade"]]],null,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["class","interactive","borderWidth","disabled"],["champion-trade-button-active-trade",true,2,["get",["disabled"]]]],4],["text","    "],["open-element","div",[]],["static-attr","class","champion-trade-ring-background"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["champion-trade-ring-spinner ",["helper",["if"],[["get",["uxSettings","largeAreaAnimationsEnabled"]],"animated","not-animated"],null]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["summonerHasActiveTrade"]]],null,5,3]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -33096,9 +32903,9 @@
             return e ? n : t;
           })(e);
         }
-        n(339),
+        n(336),
           (e.exports = s.Ember.Component.extend({
-            layout: n(340),
+            layout: n(337),
             classNames: ["swap-button"],
             requestInProgress: !1,
             disabled: s.Ember.computed("requestInProgress", function () {
@@ -33243,7 +33050,7 @@
           })(e);
         }
         const { RunMixin: l } = s.EmberAddons.EmberLifeline;
-        n(342);
+        n(339);
         const c = {
           RECEIVED: "RECEIVED",
           AVAILABLE: "AVAILABLE",
@@ -33268,7 +33075,7 @@
           f = "decline",
           S = "clear";
         var _ = s.Ember.Component.extend(l, {
-          layout: n(343),
+          layout: n(340),
           init: function () {
             this._super(...arguments),
               (this.audioPool = o.default),
@@ -33624,9 +33431,9 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(345);
+        n(342);
         const i = s.Ember.Component.extend({
-          layout: n(346),
+          layout: n(343),
           classNames: ["ward-skin-select-flyout"],
           contextWardSkin: s.Ember.computed(
             "hoveredWardSkin",
@@ -33673,14 +33480,14 @@
         var s = n(1),
           i = n(152),
           o = r(n(150));
-        n(348);
+        n(345);
         var a = r(n(158));
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
         const l = s.UiKitPlugin.getFlyoutManager();
         e.exports = s.Ember.Component.extend({
-          layout: n(349),
+          layout: n(346),
           classNames: ["ward-skin-container"],
           loadoutsService: s.Ember.inject.service("loadouts"),
           wardSkinIndex: 0,
@@ -33789,9 +33596,9 @@
       (e, t, n) => {
         "use strict";
         var s = n(1);
-        n(351),
+        n(348),
           (e.exports = s.Ember.Component.extend({
-            layout: n(352),
+            layout: n(349),
             classNames: ["missions-tracker-button-component"],
             missionsButton: null,
             missionsButtonEnabled: s.Ember.computed(
@@ -33839,13 +33646,13 @@
       },
       (e, t, n) => {
         "use strict";
-        n(354);
+        n(351);
         const s = n(1),
           { Ember: i } = s;
         e.exports = i.Component.extend({
           classNames: ["vote-reveal"],
           classNameBindings: ["visible:visible:removed"],
-          layout: n(355),
+          layout: n(352),
           voteRevealLabel: i.computed.readOnly("tra.vote_reveal_message"),
           championName: i.computed.readOnly("summoner.champion.name"),
         });
@@ -33869,7 +33676,7 @@
           (t.default = void 0);
         var s,
           i = n(1),
-          o = n(357),
+          o = n(354),
           a = (s = n(150)) && s.__esModule ? s : { default: s };
         const { RunMixin: r } = i.EmberAddons.EmberLifeline,
           l = new Set([
@@ -34419,7 +34226,7 @@
           i = n(1),
           o = n(152),
           a = (s = n(158)) && s.__esModule ? s : { default: s },
-          r = n(364);
+          r = n(361);
         var l = i.Ember.Service.extend({
           init: function () {
             this._super(...arguments),
@@ -34579,13 +34386,13 @@
               return c.default;
             },
           });
-        var s = u(n(365)),
-          i = u(n(376)),
-          o = u(n(377)),
-          a = u(n(378)),
-          r = u(n(379)),
-          l = u(n(380)),
-          c = u(n(381));
+        var s = u(n(362)),
+          i = u(n(373)),
+          o = u(n(374)),
+          a = u(n(375)),
+          r = u(n(376)),
+          l = u(n(377)),
+          c = u(n(378));
         function u(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -34594,16 +34401,16 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var s = p(n(366)),
-          i = p(n(367)),
-          o = p(n(368)),
-          a = p(n(369)),
-          r = p(n(370)),
-          l = p(n(371)),
-          c = p(n(372)),
-          u = p(n(373)),
-          m = p(n(374)),
-          d = p(n(375));
+        var s = p(n(363)),
+          i = p(n(364)),
+          o = p(n(365)),
+          a = p(n(366)),
+          r = p(n(367)),
+          l = p(n(368)),
+          c = p(n(369)),
+          u = p(n(370)),
+          m = p(n(371)),
+          d = p(n(372));
         function p(e) {
           return e && e.__esModule ? e : { default: e };
         }

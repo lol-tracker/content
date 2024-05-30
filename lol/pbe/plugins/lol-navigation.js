@@ -2518,8 +2518,8 @@
           G = D.LexerPopModeAction,
           q = D.LexerModeAction,
           K = "59627784-3BE5-417A-B9EB-8131A7286089",
-          $ = ["AADB8D7E-AEEF-4415-AD2B-8204D6CF042E", K],
-          Y = K;
+          Y = ["AADB8D7E-AEEF-4415-AD2B-8204D6CF042E", K],
+          $ = K;
         function z(e, t) {
           var n = [];
           return (
@@ -2539,8 +2539,8 @@
           );
         }
         (X.prototype.isFeatureSupported = function (e, t) {
-          var n = $.indexOf(e);
-          return !(n < 0) && $.indexOf(t) >= n;
+          var n = Y.indexOf(e);
+          return !(n < 0) && Y.indexOf(t) >= n;
         }),
           (X.prototype.deserialize = function (e) {
             this.reset(e), this.checkVersion(), this.checkUUID();
@@ -2578,7 +2578,7 @@
           }),
           (X.prototype.checkUUID = function () {
             var e = this.readUUID();
-            if ($.indexOf(e) < 0) throw Y;
+            if (Y.indexOf(e) < 0) throw $;
             this.uuid = e;
           }),
           (X.prototype.readATN = function () {
@@ -7139,10 +7139,10 @@
               G = "[object Uint32Array]",
               q = /\b__p \+= '';/g,
               K = /\b(__p \+=) '' \+/g,
-              $ = /(__e\(.*?\)|\b__t\)) \+\n'';/g,
-              Y = /&(?:amp|lt|gt|quot|#39);/g,
+              Y = /(__e\(.*?\)|\b__t\)) \+\n'';/g,
+              $ = /&(?:amp|lt|gt|quot|#39);/g,
               z = /[&<>"']/g,
-              X = RegExp(Y.source),
+              X = RegExp($.source),
               Q = RegExp(z.source),
               J = /<%-([\s\S]+?)%>/g,
               Z = /<%([\s\S]+?)%>/g,
@@ -7195,8 +7195,8 @@
               Ge = "\\u200d",
               qe = "(?:" + Be + "|" + He + ")",
               Ke = "(?:" + We + "|" + He + ")",
-              $e = "(?:['’](?:d|ll|m|re|s|t|ve))?",
-              Ye = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
+              Ye = "(?:['’](?:d|ll|m|re|s|t|ve))?",
+              $e = "(?:['’](?:D|LL|M|RE|S|T|VE))?",
               ze = "(?:" + Me + "|" + je + ")" + "?",
               Xe = "[" + Ie + "]?",
               Qe =
@@ -7221,13 +7221,13 @@
                     "?" +
                     Be +
                     "+" +
-                    $e +
+                    Ye +
                     "(?=" +
                     [Re, We, "$"].join("|") +
                     ")",
-                  Ke + "+" + Ye + "(?=" + [Re, We + qe, "$"].join("|") + ")",
-                  We + "?" + qe + "+" + $e,
-                  We + "+" + Ye,
+                  Ke + "+" + $e + "(?=" + [Re, We + qe, "$"].join("|") + ")",
+                  We + "?" + qe + "+" + Ye,
+                  We + "+" + $e,
                   "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])",
                   "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])",
                   Pe,
@@ -7447,7 +7447,7 @@
                 if (t(e[n], n, e)) return !0;
               return !1;
             }
-            var Ut = $t("length");
+            var Ut = Yt("length");
             function Ft(e, t, n) {
               var i;
               return (
@@ -7484,12 +7484,12 @@
               var n = null == e ? 0 : e.length;
               return n ? Xt(e, t) / n : f;
             }
-            function $t(e) {
+            function Yt(e) {
               return function (t) {
                 return null == t ? o : t[e];
               };
             }
-            function Yt(e) {
+            function $t(e) {
               return function (t) {
                 return null == e ? o : e[t];
               };
@@ -7534,7 +7534,7 @@
               for (var n = e.length; n-- && Wt(t, e[n], 0) > -1; );
               return n;
             }
-            var on = Yt({
+            var on = $t({
                 À: "A",
                 Á: "A",
                 Â: "A",
@@ -7726,7 +7726,7 @@
                 ŉ: "'n",
                 ſ: "s",
               }),
-              rn = Yt({
+              rn = $t({
                 "&": "&amp;",
                 "<": "&lt;",
                 ">": "&gt;",
@@ -7802,7 +7802,7 @@
                     return e.split("");
                   })(e);
             }
-            var gn = Yt({
+            var gn = $t({
               "&amp;": "&",
               "&lt;": "<",
               "&gt;": ">",
@@ -7850,8 +7850,8 @@
                 Ge = vt ? t.Buffer : o,
                 qe = t.Symbol,
                 Ke = t.Uint8Array,
-                $e = Ge ? Ge.allocUnsafe : o,
-                Ye = cn(Ae.getPrototypeOf, Ae),
+                Ye = Ge ? Ge.allocUnsafe : o,
+                $e = cn(Ae.getPrototypeOf, Ae),
                 ze = Ae.create,
                 Xe = Me.propertyIsEnumerable,
                 Qe = Le.splice,
@@ -7872,7 +7872,7 @@
                 yt = Ae.getOwnPropertySymbols,
                 bt = Ge ? Ge.isBuffer : o,
                 Ut = t.isFinite,
-                Yt = Le.join,
+                $t = Le.join,
                 vn = cn(Ae.keys, Ae),
                 yn = ke.max,
                 bn = ke.min,
@@ -7938,7 +7938,7 @@
                   this.set(i[0], i[1]);
                 }
               }
-              function $n(e) {
+              function Yn(e) {
                 var t = -1,
                   n = null == e ? 0 : e.length;
                 for (this.clear(); ++t < n; ) {
@@ -7946,7 +7946,7 @@
                   this.set(i[0], i[1]);
                 }
               }
-              function Yn(e) {
+              function $n(e) {
                 var t = -1,
                   n = null == e ? 0 : e.length;
                 for (this.clear(); ++t < n; ) {
@@ -7957,16 +7957,16 @@
               function zn(e) {
                 var t = -1,
                   n = null == e ? 0 : e.length;
-                for (this.__data__ = new Yn(); ++t < n; ) this.add(e[t]);
+                for (this.__data__ = new $n(); ++t < n; ) this.add(e[t]);
               }
               function Xn(e) {
-                var t = (this.__data__ = new $n(e));
+                var t = (this.__data__ = new Yn(e));
                 this.size = t.size;
               }
               function Qn(e, t) {
                 var n = Gs(e),
                   i = !n && Ws(e),
-                  o = !n && !i && Ys(e),
+                  o = !n && !i && $s(e),
                   r = !n && !i && !o && ca(e),
                   s = n || i || o || r,
                   a = s ? Qt(e.length, Oe) : [],
@@ -8070,7 +8070,7 @@
                 } else {
                   var p = gr(e),
                     h = p == w || p == T;
-                  if (Ys(e)) return xo(e, l);
+                  if ($s(e)) return xo(e, l);
                   if (p == k || p == v || (h && !r)) {
                     if (((a = c || h ? {} : vr(e)), !l))
                       return c
@@ -8237,10 +8237,10 @@
                     this
                   );
                 }),
-                ($n.prototype.clear = function () {
+                (Yn.prototype.clear = function () {
                   (this.__data__ = []), (this.size = 0);
                 }),
-                ($n.prototype.delete = function (e) {
+                (Yn.prototype.delete = function (e) {
                   var t = this.__data__,
                     n = ii(t, e);
                   return (
@@ -8250,40 +8250,40 @@
                     !0)
                   );
                 }),
-                ($n.prototype.get = function (e) {
+                (Yn.prototype.get = function (e) {
                   var t = this.__data__,
                     n = ii(t, e);
                   return n < 0 ? o : t[n][1];
                 }),
-                ($n.prototype.has = function (e) {
+                (Yn.prototype.has = function (e) {
                   return ii(this.__data__, e) > -1;
                 }),
-                ($n.prototype.set = function (e, t) {
+                (Yn.prototype.set = function (e, t) {
                   var n = this.__data__,
                     i = ii(n, e);
                   return (
                     i < 0 ? (++this.size, n.push([e, t])) : (n[i][1] = t), this
                   );
                 }),
-                (Yn.prototype.clear = function () {
+                ($n.prototype.clear = function () {
                   (this.size = 0),
                     (this.__data__ = {
                       hash: new Kn(),
-                      map: new (Cn || $n)(),
+                      map: new (Cn || Yn)(),
                       string: new Kn(),
                     });
                 }),
-                (Yn.prototype.delete = function (e) {
+                ($n.prototype.delete = function (e) {
                   var t = dr(this, e).delete(e);
                   return (this.size -= t ? 1 : 0), t;
                 }),
-                (Yn.prototype.get = function (e) {
+                ($n.prototype.get = function (e) {
                   return dr(this, e).get(e);
                 }),
-                (Yn.prototype.has = function (e) {
+                ($n.prototype.has = function (e) {
                   return dr(this, e).has(e);
                 }),
-                (Yn.prototype.set = function (e, t) {
+                ($n.prototype.set = function (e, t) {
                   var n = dr(this, e),
                     i = n.size;
                   return n.set(e, t), (this.size += n.size == i ? 0 : 1), this;
@@ -8296,7 +8296,7 @@
                   return this.__data__.has(e);
                 }),
                 (Xn.prototype.clear = function () {
-                  (this.__data__ = new $n()), (this.size = 0);
+                  (this.__data__ = new Yn()), (this.size = 0);
                 }),
                 (Xn.prototype.delete = function (e) {
                   var t = this.__data__,
@@ -8311,11 +8311,11 @@
                 }),
                 (Xn.prototype.set = function (e, t) {
                   var n = this.__data__;
-                  if (n instanceof $n) {
+                  if (n instanceof Yn) {
                     var i = n.__data__;
                     if (!Cn || i.length < 199)
                       return i.push([e, t]), (this.size = ++n.size), this;
-                    n = this.__data__ = new Yn(i);
+                    n = this.__data__ = new $n(i);
                   }
                   return n.set(e, t), (this.size = n.size), this;
                 });
@@ -8472,8 +8472,8 @@
                           d = (c = c == v ? k : c) == k,
                           p = (u = u == v ? k : u) == k,
                           h = c == u;
-                        if (h && Ys(e)) {
-                          if (!Ys(t)) return !1;
+                        if (h && $s(e)) {
+                          if (!$s(t)) return !1;
                           (a = !0), (d = !1);
                         }
                         if (h && !d)
@@ -8694,13 +8694,13 @@
                               p = d === o;
                             if (p) {
                               var h = Gs(c),
-                                m = !h && Ys(c),
+                                m = !h && $s(c),
                                 f = !h && !m && ca(c);
                               (d = c),
                                 h || m || f
                                   ? Gs(l)
                                     ? (d = l)
-                                    : $s(l)
+                                    : Ys(l)
                                       ? (d = No(l))
                                       : m
                                         ? ((p = !1), (d = xo(c, !0)))
@@ -8766,7 +8766,7 @@
                 }
                 return r;
               }
-              function $i(e, t, n, i) {
+              function Yi(e, t, n, i) {
                 var o = i ? Gt : Wt,
                   r = -1,
                   s = t.length,
@@ -8780,7 +8780,7 @@
                     a !== e && Qe.call(a, l, 1), Qe.call(e, l, 1);
                 return e;
               }
-              function Yi(e, t) {
+              function $i(e, t) {
                 for (var n = e ? t.length : 0, i = n - 1; n--; ) {
                   var o = t[n];
                   if (n == i || o !== r) {
@@ -9007,7 +9007,7 @@
                 return a;
               }
               function yo(e) {
-                return $s(e) ? e : [];
+                return Ys(e) ? e : [];
               }
               function bo(e) {
                 return "function" == typeof e ? e : il;
@@ -9028,7 +9028,7 @@
               function xo(e, t) {
                 if (t) return e.slice();
                 var n = e.length,
-                  i = $e ? $e(n) : new e.constructor(n);
+                  i = Ye ? Ye(n) : new e.constructor(n);
                 return e.copy(i), i;
               }
               function Co(e) {
@@ -9346,7 +9346,7 @@
                 var i = Xi(t, gt(e / mn(t)));
                 return an(t) ? wo(fn(i), 0, e).join("") : i.slice(0, e);
               }
-              function $o(e) {
+              function Yo(e) {
                 return function (t, n, r) {
                   return (
                     r && "number" != typeof r && Er(t, n, r) && (n = r = o),
@@ -9364,7 +9364,7 @@
                   );
                 };
               }
-              function Yo(e) {
+              function $o(e) {
                 return function (t, n) {
                   return (
                     ("string" == typeof t && "string" == typeof n) ||
@@ -9688,7 +9688,7 @@
                   : fl,
                 fr = yt
                   ? function (e) {
-                      for (var t = []; e; ) Dt(t, mr(e)), (e = Ye(e));
+                      for (var t = []; e; ) Dt(t, mr(e)), (e = $e(e));
                       return t;
                     }
                   : fl,
@@ -9709,7 +9709,7 @@
               function vr(e) {
                 return "function" != typeof e.constructor || xr(e)
                   ? {}
-                  : Vn(Ye(e));
+                  : Vn($e(e));
               }
               function yr(e) {
                 return Gs(e) || Ws(e) || !!(Je && e && e[Je]);
@@ -9922,19 +9922,19 @@
                 );
               }
               var Ur = Qi(function (e, t) {
-                  return $s(e) ? pi(e, vi(t, 1, $s, !0)) : [];
+                  return Ys(e) ? pi(e, vi(t, 1, Ys, !0)) : [];
                 }),
                 Fr = Qi(function (e, t) {
                   var n = Xr(t);
                   return (
-                    $s(n) && (n = o),
-                    $s(e) ? pi(e, vi(t, 1, $s, !0), ur(n, 2)) : []
+                    Ys(n) && (n = o),
+                    Ys(e) ? pi(e, vi(t, 1, Ys, !0), ur(n, 2)) : []
                   );
                 }),
                 Vr = Qi(function (e, t) {
                   var n = Xr(t);
                   return (
-                    $s(n) && (n = o), $s(e) ? pi(e, vi(t, 1, $s, !0), o, n) : []
+                    Ys(n) && (n = o), Ys(e) ? pi(e, vi(t, 1, Ys, !0), o, n) : []
                   );
                 });
               function Wr(e, t, n) {
@@ -9959,11 +9959,11 @@
               function Kr(e) {
                 return e && e.length ? e[0] : o;
               }
-              var $r = Qi(function (e) {
+              var Yr = Qi(function (e) {
                   var t = Pt(e, yo);
                   return t.length && t[0] === e[0] ? Oi(t) : [];
                 }),
-                Yr = Qi(function (e) {
+                $r = Qi(function (e) {
                   var t = Xr(e),
                     n = Pt(e, yo);
                   return (
@@ -9985,13 +9985,13 @@
               }
               var Qr = Qi(Jr);
               function Jr(e, t) {
-                return e && e.length && t && t.length ? $i(e, t) : e;
+                return e && e.length && t && t.length ? Yi(e, t) : e;
               }
               var Zr = or(function (e, t) {
                 var n = null == e ? 0 : e.length,
                   i = ai(e, t);
                 return (
-                  Yi(
+                  $i(
                     e,
                     Pt(t, function (e) {
                       return br(e, n) ? +e : e;
@@ -10004,17 +10004,17 @@
                 return null == e ? e : Tn.call(e);
               }
               var ts = Qi(function (e) {
-                  return po(vi(e, 1, $s, !0));
+                  return po(vi(e, 1, Ys, !0));
                 }),
                 ns = Qi(function (e) {
                   var t = Xr(e);
-                  return $s(t) && (t = o), po(vi(e, 1, $s, !0), ur(t, 2));
+                  return Ys(t) && (t = o), po(vi(e, 1, Ys, !0), ur(t, 2));
                 }),
                 is = Qi(function (e) {
                   var t = Xr(e);
                   return (
                     (t = "function" == typeof t ? t : o),
-                    po(vi(e, 1, $s, !0), o, t)
+                    po(vi(e, 1, Ys, !0), o, t)
                   );
                 });
               function os(e) {
@@ -10022,10 +10022,10 @@
                 var t = 0;
                 return (
                   (e = Lt(e, function (e) {
-                    if ($s(e)) return (t = yn(e.length, t)), !0;
+                    if (Ys(e)) return (t = yn(e.length, t)), !0;
                   })),
                   Qt(t, function (t) {
-                    return Pt(e, $t(t));
+                    return Pt(e, Yt(t));
                   })
                 );
               }
@@ -10039,19 +10039,19 @@
                     });
               }
               var ss = Qi(function (e, t) {
-                  return $s(e) ? pi(e, t) : [];
+                  return Ys(e) ? pi(e, t) : [];
                 }),
                 as = Qi(function (e) {
-                  return _o(Lt(e, $s));
+                  return _o(Lt(e, Ys));
                 }),
                 ls = Qi(function (e) {
                   var t = Xr(e);
-                  return $s(t) && (t = o), _o(Lt(e, $s), ur(t, 2));
+                  return Ys(t) && (t = o), _o(Lt(e, Ys), ur(t, 2));
                 }),
                 cs = Qi(function (e) {
                   var t = Xr(e);
                   return (
-                    (t = "function" == typeof t ? t : o), _o(Lt(e, $s), o, t)
+                    (t = "function" == typeof t ? t : o), _o(Lt(e, Ys), o, t)
                   );
                 }),
                 us = Qi(os);
@@ -10262,7 +10262,7 @@
                   var s = e.apply(this, i);
                   return (n.cache = r.set(o, s) || r), s;
                 };
-                return (n.cache = new (Ms.Cache || Yn)()), n;
+                return (n.cache = new (Ms.Cache || $n)()), n;
               }
               function Ps(e) {
                 if ("function" != typeof e) throw new Ne(r);
@@ -10281,7 +10281,7 @@
                   return !e.apply(this, t);
                 };
               }
-              Ms.Cache = Yn;
+              Ms.Cache = $n;
               var Ds = So(function (e, t) {
                   var n = (t =
                     1 == t.length && Gs(t[0])
@@ -10307,8 +10307,8 @@
               function Us(e, t) {
                 return e === t || (e != e && t != t);
               }
-              var Fs = Yo(ki),
-                Vs = Yo(function (e, t) {
+              var Fs = $o(ki),
+                Vs = $o(function (e, t) {
                   return e >= t;
                 }),
                 Ws = Li(
@@ -10331,10 +10331,10 @@
               function Ks(e) {
                 return null != e && Zs(e.length) && !Qs(e);
               }
-              function $s(e) {
+              function Ys(e) {
                 return ta(e) && Ks(e);
               }
-              var Ys = bt || gl,
+              var $s = bt || gl,
                 zs = St
                   ? Jt(St)
                   : function (e) {
@@ -10384,7 +10384,7 @@
               }
               function oa(e) {
                 if (!ta(e) || Ci(e) != k) return !1;
-                var t = Ye(e);
+                var t = $e(e);
                 if (null === t) return !0;
                 var n = Be.call(t, "constructor") && t.constructor;
                 return (
@@ -10412,8 +10412,8 @@
                 : function (e) {
                     return ta(e) && Zs(e.length) && !!lt[Ci(e)];
                   };
-              var ua = Yo(ji),
-                da = Yo(function (e, t) {
+              var ua = $o(ji),
+                da = $o(function (e, t) {
                   return e <= t;
                 });
               function pa(e) {
@@ -10589,10 +10589,10 @@
                   return e + (n ? " " : "") + t.toLowerCase();
                 }),
                 Ka = Bo("toLowerCase");
-              var $a = Ho(function (e, t, n) {
+              var Ya = Ho(function (e, t, n) {
                 return e + (n ? "_" : "") + t.toLowerCase();
               });
-              var Ya = Ho(function (e, t, n) {
+              var $a = Ho(function (e, t, n) {
                 return e + (n ? " " : "") + Xa(t);
               });
               var za = Ho(function (e, t, n) {
@@ -10692,15 +10692,15 @@
                 dl = qo(jt);
               function pl(e) {
                 return Sr(e)
-                  ? $t(Br(e))
+                  ? Yt(Br(e))
                   : (function (e) {
                       return function (t) {
                         return Ti(t, e);
                       };
                     })(e);
               }
-              var hl = $o(),
-                ml = $o(!0);
+              var hl = Yo(),
+                ml = Yo(!0);
               function fl() {
                 return [];
               }
@@ -10913,8 +10913,8 @@
                 (Fn.initial = function (e) {
                   return (null == e ? 0 : e.length) ? oo(e, 0, -1) : [];
                 }),
-                (Fn.intersection = $r),
-                (Fn.intersectionBy = Yr),
+                (Fn.intersection = Yr),
+                (Fn.intersectionBy = $r),
                 (Fn.intersectionWith = zr),
                 (Fn.invert = Aa),
                 (Fn.invertBy = Ia),
@@ -10998,11 +10998,11 @@
                 (Fn.pullAll = Jr),
                 (Fn.pullAllBy = function (e, t, n) {
                   return e && e.length && t && t.length
-                    ? $i(e, t, ur(n, 2))
+                    ? Yi(e, t, ur(n, 2))
                     : e;
                 }),
                 (Fn.pullAllWith = function (e, t, n) {
-                  return e && e.length && t && t.length ? $i(e, t, o, n) : e;
+                  return e && e.length && t && t.length ? Yi(e, t, o, n) : e;
                 }),
                 (Fn.pullAt = Zr),
                 (Fn.range = hl),
@@ -11021,7 +11021,7 @@
                     var s = e[i];
                     t(s, i, e) && (n.push(s), o.push(i));
                   }
-                  return Yi(e, o), n;
+                  return $i(e, o), n;
                 }),
                 (Fn.rest = function (e, t) {
                   if ("function" != typeof e) throw new Ne(r);
@@ -11136,7 +11136,7 @@
                 (Fn.toPlainObject = _a),
                 (Fn.transform = function (e, t, n) {
                   var i = Gs(e),
-                    o = i || Ys(e) || ca(e);
+                    o = i || $s(e) || ca(e);
                   if (((t = ur(t, 4)), null == n)) {
                     var r = e && e.constructor;
                     n = o
@@ -11144,7 +11144,7 @@
                         ? new r()
                         : []
                       : ea(e) && Qs(r)
-                        ? Vn(Ye(e))
+                        ? Vn($e(e))
                         : {};
                   }
                   return (
@@ -11325,11 +11325,11 @@
                 (Fn.isArray = Gs),
                 (Fn.isArrayBuffer = qs),
                 (Fn.isArrayLike = Ks),
-                (Fn.isArrayLikeObject = $s),
+                (Fn.isArrayLikeObject = Ys),
                 (Fn.isBoolean = function (e) {
                   return !0 === e || !1 === e || (ta(e) && Ci(e) == b);
                 }),
-                (Fn.isBuffer = Ys),
+                (Fn.isBuffer = $s),
                 (Fn.isDate = zs),
                 (Fn.isElement = function (e) {
                   return ta(e) && 1 === e.nodeType && !oa(e);
@@ -11341,7 +11341,7 @@
                     (Gs(e) ||
                       "string" == typeof e ||
                       "function" == typeof e.splice ||
-                      Ys(e) ||
+                      $s(e) ||
                       ca(e) ||
                       Ws(e))
                   )
@@ -11413,7 +11413,7 @@
                   return ta(e) && "[object WeakSet]" == Ci(e);
                 }),
                 (Fn.join = function (e, t) {
-                  return null == e ? "" : Yt.call(e, t);
+                  return null == e ? "" : $t.call(e, t);
                 }),
                 (Fn.kebabCase = Ga),
                 (Fn.last = Xr),
@@ -11562,7 +11562,7 @@
                   var t = gr(e);
                   return t == x || t == O ? e.size : Bi(e).length;
                 }),
-                (Fn.snakeCase = $a),
+                (Fn.snakeCase = Ya),
                 (Fn.some = function (e, t, n) {
                   var i = Gs(e) ? jt : ro;
                   return n && Er(e, t, n) && (t = o), i(e, ur(t, 3));
@@ -11594,7 +11594,7 @@
                   }
                   return -1;
                 }),
-                (Fn.startCase = Ya),
+                (Fn.startCase = $a),
                 (Fn.startsWith = function (e, t, n) {
                   return (
                     (e = va(e)),
@@ -11658,7 +11658,7 @@
                   f || (p = "with (obj) {\n" + p + "\n}\n"),
                     (p = (s ? p.replace(q, "") : p)
                       .replace(K, "$1")
-                      .replace($, "$1;")),
+                      .replace(Y, "$1;")),
                     (p =
                       "function(" +
                       (f || "obj") +
@@ -11756,7 +11756,7 @@
                   return c + i;
                 }),
                 (Fn.unescape = function (e) {
-                  return (e = va(e)) && X.test(e) ? e.replace(Y, gn) : e;
+                  return (e = va(e)) && X.test(e) ? e.replace($, gn) : e;
                 }),
                 (Fn.uniqueId = function (e) {
                   var t = ++He;
@@ -12434,8 +12434,8 @@
               G = (0, b.default)({ db: l, WindowMessenger: o.WindowMessenger }),
               q = (0, E.default)({ db: l, WindowMessenger: o.WindowMessenger }),
               K = (0, S.default)({ db: l, WindowMessenger: o.WindowMessenger }),
-              $ = (0, w.default)({ db: l, WindowMessenger: o.WindowMessenger }),
-              Y = (0, T.default)({ db: l, WindowMessenger: o.WindowMessenger }),
+              Y = (0, w.default)({ db: l, WindowMessenger: o.WindowMessenger }),
+              $ = (0, T.default)({ db: l, WindowMessenger: o.WindowMessenger }),
               z = (0, C.default)({ db: l, WindowMessenger: o.WindowMessenger }),
               X = (0, k.default)(),
               Q = (0, I.default)({ db: l }),
@@ -12458,8 +12458,8 @@
                 rsoListenerHelper: G,
                 foundationListenerHelper: q,
                 hubSettingsListenerHelper: K,
-                marketingPreferencesListenerHelper: $,
-                eventShopListenerHelper: Y,
+                marketingPreferencesListenerHelper: Y,
+                eventShopListenerHelper: $,
                 tftPassListenerHelper: z,
                 tftTrovesListenerHelper: X,
                 HomeRegistry: o.HomeRegistry,
@@ -18378,8 +18378,8 @@
                 G = new RegExp("^" + B + "*," + B + "*"),
                 q = new RegExp("^" + B + "*([>+~]|" + B + ")" + B + "*"),
                 K = new RegExp("=" + B + "*([^\\]'\"]*?)" + B + "*\\]", "g"),
-                $ = new RegExp(F),
-                Y = new RegExp("^" + j + "$"),
+                Y = new RegExp(F),
+                $ = new RegExp("^" + j + "$"),
                 z = {
                   ID: new RegExp("^#(" + H + ")"),
                   CLASS: new RegExp("^\\.(" + H + ")"),
@@ -18914,7 +18914,7 @@
                         : (e[3]
                             ? (e[2] = e[4] || e[5] || "")
                             : n &&
-                              $.test(n) &&
+                              Y.test(n) &&
                               (t = s(n, !0)) &&
                               (t = n.indexOf(")", n.length - t) - n.length) &&
                               ((e[0] = e[0].slice(0, t)),
@@ -19121,7 +19121,7 @@
                     }),
                     lang: ae(function (e) {
                       return (
-                        Y.test(e || "") || re.error("unsupported lang: " + e),
+                        $.test(e || "") || re.error("unsupported lang: " + e),
                         (e = e.replace(ne, ie).toLowerCase()),
                         function (t) {
                           var n;
@@ -20409,14 +20409,14 @@
               G,
               q = /[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source,
               K = ["Top", "Right", "Bottom", "Left"],
-              $ = function (e, t) {
+              Y = function (e, t) {
                 return (
                   (e = t || e),
                   "none" === g.css(e, "display") ||
                     !g.contains(e.ownerDocument, e)
                 );
               },
-              Y = /^(?:checkbox|radio)$/i;
+              $ = /^(?:checkbox|radio)$/i;
             (W = m
               .createDocumentFragment()
               .appendChild(m.createElement("div"))),
@@ -21070,7 +21070,7 @@
                         (l = s[i]),
                         (c = void 0),
                         "input" === (c = l.nodeName.toLowerCase()) &&
-                        Y.test(a.type)
+                        $.test(a.type)
                           ? (l.checked = a.checked)
                           : ("input" !== c && "textarea" !== c) ||
                             (l.defaultValue = a.defaultValue);
@@ -21557,9 +21557,9 @@
                   t
                     ? (r[s] || "none" !== n || (i.style.display = ""),
                       "" === i.style.display &&
-                        $(i) &&
+                        Y(i) &&
                         (r[s] = H.access(i, "olddisplay", Ee(i.nodeName))))
-                    : ((o = $(i)),
+                    : ((o = Y(i)),
                       ("none" === n && o) ||
                         H.set(i, "olddisplay", o ? n : g.css(i, "display"))));
               for (s = 0; s < a; s++)
@@ -21738,7 +21738,7 @@
                       ? this.show()
                       : this.hide()
                     : this.each(function () {
-                        $(this) ? g(this).show() : g(this).hide();
+                        Y(this) ? g(this).show() : g(this).hide();
                       });
                 },
               }),
@@ -21840,7 +21840,7 @@
                     u = this,
                     d = {},
                     p = e.style,
-                    h = e.nodeType && $(e),
+                    h = e.nodeType && Y(e),
                     m = H.get(e, "fxshow");
                   for (i in (n.queue ||
                     (null == (a = g._queueHooks(e, "fx")).unqueued &&
@@ -21901,7 +21901,7 @@
                       for (t in (H.remove(e, "fxshow"), d)) g.style(e, t, d[t]);
                     }),
                     d))
-                      (s = Ye(h ? m[i] : 0, i, u)),
+                      (s = $e(h ? m[i] : 0, i, u)),
                         i in m ||
                           ((m[i] = s.start),
                           h &&
@@ -21946,7 +21946,7 @@
                 (je = g.now())
               );
             }
-            function $e(e, t) {
+            function Ye(e, t) {
               var n,
                 i = 0,
                 o = { height: e };
@@ -21954,7 +21954,7 @@
                 o["margin" + (n = K[i])] = o["padding" + n] = e;
               return t && (o.opacity = o.width = e), o;
             }
-            function Ye(e, t, n) {
+            function $e(e, t, n) {
               for (
                 var i, o = (qe[t] || []).concat(qe["*"]), r = 0, s = o.length;
                 r < s;
@@ -22038,7 +22038,7 @@
               )
                 if ((i = Ge[r].call(c, e, u, c.opts))) return i;
               return (
-                g.map(u, Ye, c),
+                g.map(u, $e, c),
                 g.isFunction(c.opts.start) && c.opts.start.call(e, c),
                 g.fx.timer(
                   g.extend(l, { elem: e, anim: c, queue: c.opts.queue }),
@@ -22088,7 +22088,7 @@
               }),
               g.fn.extend({
                 fadeTo: function (e, t, n, i) {
-                  return this.filter($)
+                  return this.filter(Y)
                     .css("opacity", 0)
                     .show()
                     .end()
@@ -22163,14 +22163,14 @@
                 g.fn[t] = function (e, i, o) {
                   return null == e || "boolean" == typeof e
                     ? n.apply(this, arguments)
-                    : this.animate($e(t, !0), e, i, o);
+                    : this.animate(Ye(t, !0), e, i, o);
                 };
               }),
               g.each(
                 {
-                  slideDown: $e("show"),
-                  slideUp: $e("hide"),
-                  slideToggle: $e("toggle"),
+                  slideDown: Ye("show"),
+                  slideUp: Ye("hide"),
+                  slideToggle: Ye("toggle"),
                   fadeIn: { opacity: "show" },
                   fadeOut: { opacity: "hide" },
                   fadeToggle: { opacity: "toggle" },
@@ -23137,7 +23137,7 @@
                         !g(this).is(":disabled") &&
                         Et.test(this.nodeName) &&
                         !bt.test(e) &&
-                        (this.checked || !Y.test(e))
+                        (this.checked || !$.test(e))
                       );
                     })
                     .map(function (e, t) {
@@ -26711,7 +26711,7 @@
                         });
                       },
                     },
-                    $ = {
+                    Y = {
                       messageType: "pubhub-config-request",
                       validators: O,
                       handlers: () => {
@@ -26726,7 +26726,7 @@
                         });
                       },
                     },
-                    Y = {
+                    $ = {
                       messageType: "rcp-fe-lol-home-data-request",
                       validators: O,
                       handlers: () => {
@@ -27044,8 +27044,8 @@
                       G,
                       q,
                       K,
-                      Y,
                       $,
+                      Y,
                       z,
                       _e,
                       ve,
@@ -43842,6 +43842,8 @@
                 expirationDate: t,
               });
             this.set("modalDescription", n);
+            const i = this.get("tra.mena_migration_modal_disclaimer$html");
+            this.set("modalDisclaimer", i);
           },
         });
         t.default = s;
@@ -43849,9 +43851,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "uQGGzU7S",
+          id: "bwwZM7QU",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\mena-migration-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\components\\\\mena-migration-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","mena-migration-modal__main"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mena-migration-modal__header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__header-title"],["flush-element"],["append",["unknown",["tra","mena_migration_modal_title"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","mena-migration-modal__content"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__body"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["modalDescription"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__disclaimer"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","mena_migration_modal_disclaimer"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\mena-migration-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\components\\\\mena-migration-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","mena-migration-modal__main"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","mena-migration-modal__header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__header-title"],["flush-element"],["append",["unknown",["tra","mena_migration_modal_title"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","mena-migration-modal__content"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__body"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["modalDescription"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","mena-migration-modal__disclaimer"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["modalDisclaimer"]]],null],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -44677,14 +44679,12 @@
       (e, t, n) => {
         "use strict";
         var i = n(1),
-          o = l(n(433)),
-          r = l(n(434)),
-          s = l(n(435)),
-          a = l(n(436));
-        function l(e) {
+          o = s(n(433)),
+          r = s(n(434));
+        function s(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        let c, u, d;
+        let a;
         e.exports = function () {
           return (
             i.logger.trace(
@@ -44695,9 +44695,7 @@
               .then(
                 (e) => (
                   i.logger.trace("shared data initialized"),
-                  e.getIsLegendaryChampionMasteryEnabled()
-                    ? (d = new a.default(e))
-                    : ((u = new r.default(e)), (c = new s.default(e))),
+                  (a = new r.default(e)),
                   {}
                 ),
               )
@@ -44737,18 +44735,14 @@
           getChampionData(e) {
             return this._championSummary.find((t) => t.id === e);
           }
-          getIsLegendaryChampionMasteryEnabled() {
-            return this._isLegendaryChampionMasteryEnabled;
-          }
           _init() {
             i.logger.trace("initializing shared data...");
             const e = (0, i.getProvider)().getSocket();
             (this._binding = i.dataBinding.bindTo(e)),
               this._initSummonerNameObserver();
             const t = this._initChampionSummary(),
-              n = this._initMasteryRequirements(),
-              o = this._initLCMEnabled();
-            return Promise.all([t, n, o]).then(() => this);
+              n = this._initMasteryRequirements();
+            return Promise.all([t, n]).then(() => this);
           }
           _initSummonerNameObserver() {
             (this._summonerName = ""),
@@ -44781,15 +44775,6 @@
                     (this._championSummary = e || []);
                 })
             );
-          }
-          _initLCMEnabled() {
-            return this._binding
-              .get(
-                "/lol-client-config/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
-              )
-              .then((e) => {
-                this._isLegendaryChampionMasteryEnabled = !0 === e;
-              });
           }
           _updateDisplayName(e) {
             e &&
@@ -44843,214 +44828,6 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        var o = class {
-          constructor(e) {
-            (this._sharedData = e),
-              i.logger.trace("registering loot_grants notification endpoint"),
-              this._registerLootGrantEndpoint();
-          }
-          _registerLootGrantEndpoint() {
-            const e = {
-              endpoints: {
-                basePath: "/lol-loot",
-                get: "/v1/loot-grants",
-                dismiss: "/v1/loot-grants/:id",
-              },
-              notificationData: { idName: "id", typeName: "lootName" },
-              baseAssetsPath: "/fe/lol-navigation",
-              typeParams: {},
-            };
-            (e.typeParams.CHEST_champion_mastery = {
-              contentDelay: 1500,
-              getTitleLocParams: this._getDisplayNameLocParams.bind(this),
-            }),
-              (e.typeParams.MATERIAL_key_fragment = {
-                contentDelay: 1300,
-                getTitleLocParams: this._getDisplayNameLocParams.bind(this),
-              }),
-              (e.typeParams.CHAMPION_TOKEN_6 = {
-                createCustomDialog: this._createMasteryTokenDialog.bind(
-                  this,
-                  6,
-                ),
-              }),
-              (e.typeParams.CHAMPION_TOKEN_7 = {
-                createCustomDialog: this._createMasteryTokenDialog.bind(
-                  this,
-                  7,
-                ),
-              }),
-              i.SimpleDialogMessages.registerEndpoint("loot_grants", e);
-          }
-          _getDisplayNameLocParams() {
-            return { summonerName: this._sharedData.getDisplayName() };
-          }
-          _createMasteryTokenDialog(e, t) {
-            const n = this._sharedData.getChampionData(
-              t.notification.championId,
-            );
-            n ||
-              i.logger.warning(
-                "unable to find data for champion",
-                t.notification.championId,
-              );
-            const o = `/lol-game-data/assets/v1/champion-icons/${t.notification.championId}.png`,
-              r = this._sharedData.getMasteryRequirements()[e],
-              s = `dialog_message_loot_grants_CHAMPION_TOKEN_${e}_description`,
-              a = t.helpers.createLocNode(s, {
-                masteryLevel: e,
-                minimumTokenGrade: r.gradeRequired,
-                championName: n ? n.name : "",
-                tokensRequired: r.tokensRequired,
-              });
-            a.className += t.styles.celebration.description;
-            const l = t.helpers.createLocNode(
-              "dialog_message_loot_grants_CHAMPION_TOKEN_title",
-              this._getDisplayNameLocParams(),
-            );
-            l.className += t.styles.celebration.title;
-            const c = {
-              staticContent: t.helpers.createImgNode(o),
-              titleContent: l,
-              content: a,
-              okText: t.tra.get("lib_ui_dialog_alert_ok"),
-            };
-            return Promise.resolve(
-              t.modalManager.add({ type: "DialogCelebration", data: c }),
-            );
-          }
-        };
-        t.default = o;
-      },
-      (e, t, n) => {
-        "use strict";
-        Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.default = void 0);
-        var i = n(1);
-        const o = { 5: 5200, 6: 5200, 7: 8400 };
-        var r = class {
-          constructor(e) {
-            (this._sharedData = e),
-              (0, i.dataBinding)("/lol-client-config")
-                .get(
-                  "/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
-                )
-                .then((e) => {
-                  e || this._registerChampionMasteryLevelUpEndpoint();
-                });
-          }
-          _registerChampionMasteryLevelUpEndpoint() {
-            const e = {
-              endpoints: {
-                basePath: "/lol-rms",
-                get: "/v1/champion-mastery-leaveup-update",
-                dismiss: "/v1/champion-mastery-leaveup-update/:id",
-              },
-              notificationData: { idName: "id", typeName: "hasLeveledUp" },
-              typeParams: {},
-            };
-            (e.typeParams.true = {
-              createCustomDialog:
-                this._handleChampionMasteryNotification.bind(this),
-            }),
-              i.logger.trace(
-                'enabling builtin simple dialog message "championMastery"',
-              ),
-              i.SimpleDialogMessages.registerEndpoint("championMastery", e);
-          }
-          _handleChampionMasteryNotification(e) {
-            i.logger.trace("received championMastery message data:", e);
-            const t = e.notification.championLevel,
-              n = e.notification.championId,
-              o = this._sharedData.getChampionData(n),
-              r = this._createRankUpDialog(e, o, t);
-            return (
-              5 === t &&
-                r.okPromise.then(
-                  () => (
-                    i.logger.trace(
-                      "champion mastery rank achieved, displaying secondary info message",
-                      t,
-                    ),
-                    this._createSecondaryInfoDialog(e, o, t)
-                  ),
-                ),
-              Promise.resolve(r)
-            );
-          }
-          _createRankUpDialog(e, t, n) {
-            i.logger.trace(
-              "creating championMastery rank dialog celebration",
-              n,
-            );
-            const r = e.helpers.createLocNode(
-              "dialog_message_builtin_champion_mastery_title",
-              { summonerName: this._sharedData.getDisplayName() },
-            );
-            r.className += e.styles.celebration.title;
-            const s = t ? t.roles[0] : null;
-            let a = "";
-            if (s) {
-              const t = `champion_mastery_role_title_${s.toLowerCase()}_${n}`;
-              a = e.tra.get(t);
-            }
-            const l = e.helpers.createLocNode(
-              "dialog_message_builtin_champion_mastery_description",
-              {
-                masteryLevel: n,
-                masteryTitle: a,
-                championName: t ? t.name : "",
-              },
-            );
-            l.className += e.styles.celebration.description;
-            const c = `/fe/lol-navigation/video/cm_rank_up/${n}.webm`,
-              u = `/fe/lol-navigation/images/cm_rank_up/${n}.png`,
-              d = {
-                videoContent: e.helpers.createVideoNode(c),
-                staticContent: e.helpers.createImgNode(u),
-                titleContent: r,
-                content: l,
-                contentDelay: o[n],
-                okText: e.tra.get("lib_ui_dialog_alert_ok"),
-              },
-              p = e.modalManager.add({ type: "DialogCelebration", data: d }),
-              h = `/fe/lol-navigation/audio/cm_rank_up/sfx-${n}.ogg`;
-            return e.helpers.setAudio(p, h), p;
-          }
-          _createSecondaryInfoDialog(e, t, n) {
-            const i = e.helpers.createLocNode(
-              "dialog_message_builtin_champion_mastery_5_info_title",
-            );
-            i.className += e.styles.celebration.title;
-            const o = this._sharedData.getMasteryRequirements()[n + 1],
-              r = e.helpers.createLocNode(
-                "dialog_message_builtin_champion_mastery_5_info_description",
-                {
-                  championName: t ? t.name : "",
-                  nextMasteryLevel: n + 1,
-                  gradeRequired: o ? o.gradeRequired : "S-",
-                  tokensRequired: o ? o.tokensRequired : 2,
-                },
-              );
-            r.className += e.styles.celebration.description;
-            const s = {
-              staticContent: e.helpers.createImgNode(
-                "/fe/lol-navigation/images/cm_rank_up/6-locked.png",
-              ),
-              titleContent: i,
-              content: r,
-              okText: e.tra.get("lib_ui_dialog_alert_ok"),
-            };
-            return e.modalManager.add({ type: "DialogCelebration", data: s });
-          }
-        };
-        t.default = r;
-      },
-      (e, t, n) => {
-        "use strict";
-        Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.default = void 0);
-        var i = n(1);
         const o = "HEXTECH_CHEST_1",
           r = "HEXTECH_CHEST_3";
         var s = class {
@@ -45085,8 +44862,8 @@
       (e, t, n) => {
         "use strict";
         var i,
-          o = (i = n(438)) && i.__esModule ? i : { default: i };
-        n(440),
+          o = (i = n(436)) && i.__esModule ? i : { default: i };
+        n(438),
           (e.exports = function () {
             return new o.default();
           });
@@ -45097,7 +44874,7 @@
           (t.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(439)) && i.__esModule ? i : { default: i };
+          r = (i = n(437)) && i.__esModule ? i : { default: i };
         const s = "lol-loading-screen-gameflow-state",
           a = ["RiotClient", "Partner"],
           l = ["InProgress", "Reconnect"];
@@ -45414,7 +45191,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(442);
+        n(440);
         const o = "CHAMPION",
           r = "CHAMPION_SKIN",
           s = "WARD_SKIN",
@@ -45531,7 +45308,7 @@
                     i.classList.add(
                       `lol-store-gift-celebration-image-${e.data.inventoryType}`,
                     ))
-                : ((i.src = n(443)),
+                : ((i.src = n(441)),
                   i.classList.add("lol-store-gift-celebration-image-generic")),
               i
             );
@@ -45757,7 +45534,7 @@
             (i.default = e), n && n.set(e, i);
             return i;
           })(n(1)),
-          r = (i = n(445)) && i.__esModule ? i : { default: i };
+          r = (i = n(443)) && i.__esModule ? i : { default: i };
         function s(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
@@ -45766,12 +45543,12 @@
             return e ? n : t;
           })(e);
         }
-        n(450);
+        n(448);
         var a = function () {
           const e = o.default.getProvider().get("rcp-fe-lol-l10n").tra(),
-            t = n(458).default,
+            t = n(456).default,
             i = (function (e) {
-              const t = n(451).default,
+              const t = n(449).default,
                 i = "rcp-fe-lol-reconnect",
                 r = o.default.Viewport.main().getScreenRoot(i);
               r.getElement().className = i;
@@ -45779,7 +45556,7 @@
               return s.initBackendCommunication(e), s;
             })(e),
             s = (function (e) {
-              const t = n(453).default,
+              const t = n(451).default,
                 i = "rcp-fe-lol-game-in-progress",
                 r = o.default.Viewport.main().getScreenRoot(i);
               r.getElement().className = i;
@@ -45787,7 +45564,7 @@
               return s.initBackendCommunication(e), s;
             })(e),
             a = (function (e) {
-              const t = n(455).default,
+              const t = n(453).default,
                 i = "rcp-fe-lol-repair-while-in-game",
                 r = o.default.Viewport.main().getScreenRoot(i);
               r.getElement().className = i;
@@ -45823,7 +45600,7 @@
             (i.default = e), n && n.set(e, i);
             return i;
           })(n(1)),
-          o = s(n(446)),
+          o = s(n(444)),
           r = s(n(53));
         function s(e) {
           return e && e.__esModule ? e : { default: e };
@@ -46027,8 +45804,8 @@
                 : (t.querySelector(".spinner").style.display = "none");
             return u(t, e), (s = window.setInterval(c, 1e3, t, e)), t;
           });
-        var i = r(n(447)),
-          o = r(n(448));
+        var i = r(n(445)),
+          o = r(n(446));
         function r(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -46054,7 +45831,7 @@
           const r = t.lockoutText.replace(/\{\{lockoutTimeRemaining\}\}/, i);
           a > 0 && (o += ` ${r}`), (n.textContent = o);
         }
-        n(449);
+        n(447);
       },
       (e) => {
         "use strict";
@@ -46079,7 +45856,7 @@
           (t.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(452)) && i.__esModule ? i : { default: i };
+          r = (i = n(450)) && i.__esModule ? i : { default: i };
         t.default = class {
           constructor(e) {
             (this._screenRoot = e), (this._reconnect = new r.default());
@@ -46240,7 +46017,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i,
-          o = (i = n(454)) && i.__esModule ? i : { default: i };
+          o = (i = n(452)) && i.__esModule ? i : { default: i };
         t.default = class {
           constructor(e) {
             (this._screenRoot = e), (this._gameInProgress = new o.default());
@@ -46309,7 +46086,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i,
-          o = (i = n(456)) && i.__esModule ? i : { default: i };
+          o = (i = n(454)) && i.__esModule ? i : { default: i };
         t.default = class {
           constructor(e) {
             (this._screenRoot = e), (this._repair = new o.default());
@@ -46368,7 +46145,7 @@
                 e.get("game_in_progress_client_repair_learn"));
           }
           _buildElement() {
-            const e = n(457);
+            const e = n(455);
             return (
               (this._element = document.createElement("DIV")),
               (this._element.innerHTML = e),
@@ -46540,7 +46317,7 @@
         var i;
         (i = n(1)) && i.__esModule;
         var o = function () {
-          const { routeToExperience: e } = n(460);
+          const { routeToExperience: e } = n(458);
           e();
         };
         t.default = o;
@@ -46613,9 +46390,9 @@
           });
         var i,
           o = n(1),
-          r = n(461),
-          s = (i = n(463)) && i.__esModule ? i : { default: i },
-          a = n(462);
+          r = n(459),
+          s = (i = n(461)) && i.__esModule ? i : { default: i },
+          a = n(460);
         const l = "rcp-fe-lol-npe-first-touch";
       },
       (e, t, n) => {
@@ -46710,7 +46487,7 @@
           (t.waitForSettingsReady = a),
           (t.waitForSummonerReady = l);
         var i = n(1),
-          o = n(462);
+          o = n(460);
         function r() {
           return new Promise((e) => {
             const t = (0, i.dataBinding)("/lol-login", i.websocket),
@@ -46897,22 +46674,22 @@
                 name: "rcp-fe-lol-npe-first-touch",
                 tra: i.traService,
                 ComponentFactory: i.ComponentFactory,
-                FirstTouchComponent: n(464).default,
-                IntroVideoComponent: n(467).default,
-                AliasCreateComponent: n(470).default,
-                SummonerNameCreateComponent: n(476).default,
-                PatchingExperienceComponent: n(479).default,
-                ChampionCarouselComponent: n(482).default,
-                ChampionCarouselItemComponent: n(485).default,
-                ChampionInformationComponent: n(488).default,
-                GameModeSelectComponent: n(491).default,
+                FirstTouchComponent: n(462).default,
+                IntroVideoComponent: n(465).default,
+                AliasCreateComponent: n(468).default,
+                SummonerNameCreateComponent: n(474).default,
+                PatchingExperienceComponent: n(477).default,
+                ChampionCarouselComponent: n(480).default,
+                ChampionCarouselItemComponent: n(483).default,
+                ChampionInformationComponent: n(486).default,
+                GameModeSelectComponent: n(489).default,
                 ArrowFooterComponent: s,
                 PlayerNameComponent: a,
-                FirstTouchService: n(494).default,
-                LanguageFilterService: n(495).default,
-                PlayerNameStateService: n(498).default,
-                WaitForResolvedStringHelper: n(499).default,
-                IsEqualHelper: n(500).default,
+                FirstTouchService: n(492).default,
+                LanguageFilterService: n(493).default,
+                PlayerNameStateService: n(496).default,
+                WaitForResolvedStringHelper: n(497).default,
+                IsEqualHelper: n(498).default,
               };
             i.EmberApplicationFactory.setFactoryDefinition(l);
             const c = i.ComponentFactory.create(l.name, {
@@ -46932,7 +46709,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(465);
+        n(463);
         const o = "patching-experience",
           r = "summoner-name-create",
           s = "game-mode-select",
@@ -46942,7 +46719,7 @@
           u = [s, a];
         var d = i.Ember.Component.extend({
           classNames: ["rcp-fe-lol-npe-first-touch"],
-          layout: n(466),
+          layout: n(464),
           firstTouchService: i.Ember.inject.service("first-touch"),
           currentScreen: null,
           patchingExperienceShouldShow: i.Ember.computed.equal(
@@ -47011,11 +46788,11 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(468);
+        n(466);
         const { RunMixin: o } = i.EmberAddons.EmberLifeline;
         var r = i.Ember.Component.extend(o, {
           classNames: ["intro-video-component"],
-          layout: n(469),
+          layout: n(467),
           isSkipDisabled: !0,
           init() {
             this._super(...arguments),
@@ -47076,11 +46853,11 @@
               void 0),
           (t.isPossiblyValid = S);
         var i = n(1),
-          o = n(471);
-        n(472);
+          o = n(469);
+        n(470);
         var r,
-          s = n(462),
-          a = (r = n(473)) && r.__esModule ? r : { default: r };
+          s = n(460),
+          a = (r = n(471)) && r.__esModule ? r : { default: r };
         const l = {
             header: "alias_create_new_header",
             subhead: "alias_create_new_subhead",
@@ -47260,8 +47037,8 @@
           messageClass: i.Ember.computed("message", function () {
             return b.get(this.get("message"))?.message;
           }),
-          startButtonSoundHover: n(474),
-          startButtonSoundClick: n(475),
+          startButtonSoundHover: n(472),
+          startButtonSoundClick: n(473),
           disableRegisterButton: i.Ember.computed(
             "isLoading",
             "validityVerified",
@@ -47390,7 +47167,7 @@
             i.Telemetry.sendCustomData(t, n);
           });
         var i = n(1),
-          o = n(462);
+          o = n(460);
       },
       (e, t, n) => {
         "use strict";
@@ -47418,13 +47195,13 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1),
-          o = n(471);
-        n(477);
-        var r = n(462);
+          o = n(469);
+        n(475);
+        var r = n(460);
         const { RunMixin: s } = i.EmberAddons.EmberLifeline;
         var a = i.Ember.Component.extend(s, {
           classNames: ["summoner-name-create-component"],
-          layout: n(478),
+          layout: n(476),
           firstTouchService: i.Ember.inject.service("first-touch"),
           languageFilterService: i.Ember.inject.service("language-filter"),
           username: i.Ember.computed.alias(
@@ -47439,7 +47216,7 @@
           showFormSubmitRequestErrorMessage: !1,
           isNameAvailabilityRequestError: !1,
           isFormSubmitRequestErrorMessage: !1,
-          startNowButtonSound: { onHover: n(474), onClick: n(475) },
+          startNowButtonSound: { onHover: n(472), onClick: n(473) },
           init() {
             this._super(...arguments);
             const e = this.get("isNameChange")
@@ -47734,12 +47511,12 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(480);
-        var o = n(471),
-          r = n(462),
+        n(478);
+        var o = n(469),
+          r = n(460),
           s = i.Ember.Component.extend({
             classNames: ["npe-first-touch-patching-experience-component"],
-            layout: n(481),
+            layout: n(479),
             firstTouchService: i.Ember.inject.service("first-touch"),
             champions: i.Ember.computed.alias("firstTouchService.champions"),
             didSendEvent: !1,
@@ -47781,9 +47558,9 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = t.SFX_PIP_FORWARD = t.SFX_PIP_BACKWARD = void 0);
         var i = n(1);
-        n(483);
-        var o = n(471),
-          r = n(462);
+        n(481);
+        var o = n(469),
+          r = n(460);
         const s =
           "/fe/lol-static-assets/sounds/npe-ft-sfx-pip-backward-click.ogg";
         t.SFX_PIP_BACKWARD = s;
@@ -47792,7 +47569,7 @@
         t.SFX_PIP_FORWARD = a;
         var l = i.Ember.Component.extend({
           classNames: ["npe-first-touch-champion-carousel-component"],
-          layout: n(484),
+          layout: n(482),
           champions: null,
           currentChampionIdx: 0,
           lastChampionIdx: i.Ember.computed("champions", function () {
@@ -47859,10 +47636,10 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(486);
+        n(484);
         var o = i.Ember.Component.extend({
           classNames: ["npe-first-touch-champion-carousel-item-component"],
-          layout: n(487),
+          layout: n(485),
           champion: null,
           uncenteredSplashPath: i.Ember.computed("champion", function () {
             const e = this.get("champion");
@@ -47889,12 +47666,12 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(489);
-        var o = n(462),
-          r = n(471),
+        n(487);
+        var o = n(460),
+          r = n(469),
           s = i.Ember.Component.extend({
             classNames: ["npe-first-touch-champion-information-component"],
-            layout: n(490),
+            layout: n(488),
             firstTouchService: i.Ember.inject.service("first-touch"),
             locale: i.Ember.computed.alias("firstTouchService.locale"),
             primaryRole: i.Ember.computed("champion.roles", function () {
@@ -47940,12 +47717,12 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1);
-        n(492);
-        var o = n(471),
-          r = n(462),
+        n(490);
+        var o = n(469),
+          r = n(460),
           s = i.Ember.Component.extend({
             classNames: ["npe-first-touch-game-mode-select-component"],
-            layout: n(493),
+            layout: n(491),
             firstTouchService: i.Ember.inject.service("first-touch"),
             tftMapAssets: i.Ember.computed.alias(
               "firstTouchService.tftMapAssets",
@@ -48001,7 +47778,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var i = n(1),
-          o = n(462);
+          o = n(460);
         const r = "/lol-maps/v2/map/22/tft",
           s = "/lol-maps/v2/map/11/classic",
           a = "/lol-npe-tutorial-path/v1/settings",
@@ -48107,8 +47884,8 @@
           (t.default = void 0);
         var i,
           o = n(1),
-          r = (i = n(496)) && i.__esModule ? i : { default: i },
-          s = n(497);
+          r = (i = n(494)) && i.__esModule ? i : { default: i },
+          s = n(495);
         var a = o.Ember.Service.extend({
           ready: !1,
           init() {
@@ -48153,7 +47930,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var i = n(497);
+        var i = n(495);
         t.default = class {
           build(e) {
             this._allowedCharactersMap = {};
@@ -48410,8 +48187,8 @@
                   a = n(423).default;
                 t.default.SimpleDialogMessages = new a();
                 n(432)();
-                n(437)();
-                new (0, n(441).default)();
+                n(435)();
+                new (0, n(439).default)();
                 const l = t.default.Viewport,
                   c = l.getApiKey("rcp-fe-lol-navigation key"),
                   u = l
@@ -48462,9 +48239,9 @@
                       a._initEmailVerificationAPI(t.default),
                       a.showHome(),
                       t.default.add({ Navigation: a });
-                    (0, n(444).default)();
+                    (0, n(442).default)();
                     return (
-                      (0, n(459).default)(),
+                      (0, n(457).default)(),
                       t.default.Telemetry.invokeWithLowProbability(function () {
                         const e = t.default.db;
                         e.observe(

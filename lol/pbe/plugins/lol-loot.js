@@ -8213,6 +8213,7 @@
               "a",
               "hr",
               "img",
+              "u",
             ],
             allowedAttributes: {
               "*": ["class", "style"],
@@ -23069,6 +23070,8 @@
           "CHEST_new_player",
           "CHEST_day_one",
           "CHEST_224",
+          "CHEST_687",
+          "CHEST_688",
           "CHEST_promotion",
           "CHEST_96",
           "CHEST_97",
