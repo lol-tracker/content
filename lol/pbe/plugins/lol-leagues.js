@@ -5912,8 +5912,8 @@
             },
             _getBestChampionMastery: function (e) {
               return this._dataBinding
-                .get(
-                  `/lol-collections/v1/inventories/${e}/champion-mastery/top?limit=1`,
+                .post(
+                  `/lol-champion-mastery/v1/${e}/champion-mastery/top?count=1`,
                 )
                 .then((e) => (e && e.masteries ? e.masteries[0] : {}));
             },

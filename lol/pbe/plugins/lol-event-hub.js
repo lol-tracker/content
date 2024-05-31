@@ -4041,7 +4041,7 @@
                 this.get(
                   "marketingPreferencesService",
                 ).setFromEventShopForHolPartition(),
-                a.Navigation.showSubnavTab("hol-collections"),
+                a.Navigation.showSubnavTab("hall-of-legends-embed-2024"),
                 a.Navigation.showHome();
             },
           },
