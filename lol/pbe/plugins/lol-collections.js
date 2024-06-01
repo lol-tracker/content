@@ -7703,18 +7703,14 @@
               Promise.all([t, n]).then((t) => {
                 if (this.isDestroying || this.isDestroyed) return;
                 const [n, s] = t,
-                  i = n && n.data,
-                  l = s && s.data,
-                  { skinPurchaseDates: a, chromaPurchaseDates: r } = (0,
+                  { skinPurchaseDates: i, chromaPurchaseDates: l } = (0,
                   o.getSkinAndChromaPurchaseDates)(e),
-                  c = (0, o.getLastPurchaseDate)(a),
-                  d = (0, o.getLastPurchaseDate)(r);
-                (0 === c && 0 === d) ||
-                  (i &&
-                    c >= n.data.lastVisitTime &&
+                  a = (0, o.getLastPurchaseDate)(i),
+                  r = (0, o.getLastPurchaseDate)(l);
+                (0 === a && 0 === r) ||
+                  (a >= (n?.data?.lastVisitTime ?? 0) &&
                     this.set("hasSkinsForReview", !0),
-                  l &&
-                    d > s.data.lastVisitTime &&
+                  r > (s?.data?.lastVisitTime ?? 0) &&
                     this.set("hasChromasForReview", !0));
               });
             },

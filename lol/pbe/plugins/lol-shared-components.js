@@ -10977,7 +10977,7 @@
             PhoneNumberSearch: () => O,
             PhoneNumberSearchCustom: () => h.PhoneNumberSearch,
             findNumbers: () => H,
-            findPhoneNumbers: () => D,
+            findPhoneNumbers: () => $,
             findPhoneNumbersCustom: () => p.default,
             format: () => I,
             formatCustom: () => l.default,
@@ -11007,7 +11007,7 @@
             parsePhoneNumberFromString: () => T,
             parseRFC3966: () => j,
             searchNumbers: () => U,
-            searchPhoneNumbers: () => $,
+            searchPhoneNumbers: () => D,
             searchPhoneNumbersCustom: () => p.searchPhoneNumbers,
           });
         var a = n(200),
@@ -11076,11 +11076,11 @@
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), m.default.apply(this, e);
         }
-        function D() {
+        function $() {
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), p.default.apply(this, e);
         }
-        function $() {
+        function D() {
           var e = Array.prototype.slice.call(arguments);
           return e.push(a), p.searchPhoneNumbers.apply(this, e);
         }
@@ -32453,8 +32453,9 @@
           marksDisplayString: a.Ember.computed(
             "marksRequired",
             "championMasteryUpdateNotification.tokensEarned",
+            "tra",
             function () {
-              return `${this.get("championMasteryUpdateNotification.tokensEarned") || 0}/${this.get("marksRequired")} Marks of Mastery`;
+              return `${this.get("championMasteryUpdateNotification.tokensEarned") || 0}/${this.get("marksRequired")} ${this.get("tra.cm_reward_tooltip_mark")}`;
             },
           ),
           shouldDisplayMarks: a.Ember.computed(

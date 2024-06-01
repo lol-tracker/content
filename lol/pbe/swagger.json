@@ -4320,6 +4320,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "tilePath": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -19049,6 +19052,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "tilePath": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -60681,7 +60687,7 @@
     },
     "/async/v1/result/{asyncToken}": {
       "get": {
-        "operationId": "Http2AsyncResult",
+        "operationId": "HttpAsyncResult",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
