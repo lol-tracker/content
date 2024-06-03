@@ -47,9 +47,9 @@
             return (
               Object.keys(e).forEach(function (s) {
                 const a = e[s],
-                  l = n._getValue(s, a);
-                l && l.then
-                  ? (l.then(function (e) {
+                  o = n._getValue(s, a);
+                o && o.then
+                  ? (o.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
@@ -59,8 +59,8 @@
                         ),
                         n._addValue(s, e);
                     }),
-                    t.push(l))
-                  : n._addValue(s, l);
+                    t.push(o))
+                  : n._addValue(s, o);
               }),
               Promise.all(t)
             );
@@ -156,10 +156,10 @@
         t.REWARD_CELEBRATION_NAME = s;
         const a = n + "-item-purchase";
         t.ITEM_PURCHASE_NAME = a;
-        const l = n + "-reward-celebration-v2";
-        t.REWARD_CELEBRATION_V2_NAME = l;
-        const o = n + "-event-daily-login-celebration";
-        t.EVENT_DAILY_LOGIN_CELEBRATION_NAME = o;
+        const o = n + "-reward-celebration-v2";
+        t.REWARD_CELEBRATION_V2_NAME = o;
+        const l = n + "-event-daily-login-celebration";
+        t.EVENT_DAILY_LOGIN_CELEBRATION_NAME = l;
         t.TFT_INDEX_ROUTE = "index";
         t.TFT_HOME_ROUTE = "home";
         t.TFT_BATTLE_PASS_ROUTE = "battle-pass";
@@ -288,7 +288,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = [
+        const o = [
           "/fe/lol-tft/videos/claimable-sparkles-free.webm",
           "/fe/lol-tft/videos/claimable-sparkles-premium.webm",
           "/fe/lol-tft/videos/claimable-sparkles-keystone.webm",
@@ -330,15 +330,15 @@
               });
           }
           transitionToPage(e, t, n) {
-            const l = e.__container__.lookup("router:main");
+            const o = e.__container__.lookup("router:main");
             t && t.page
-              ? l.transitionTo(t.page)
+              ? o.transitionTo(t.page)
               : n
-                ? l.transitionTo(n)
-                : l.transitionTo(a.TFT_HOME_ROUTE);
-            const o = e.__container__.lookup("service:tft");
-            o
-              ? o.onShow()
+                ? o.transitionTo(n)
+                : o.transitionTo(a.TFT_HOME_ROUTE);
+            const l = e.__container__.lookup("service:tft");
+            l
+              ? l.onShow()
               : s.logger.warning(
                   "Failed to fetch TFT service from TFT Ember app.",
                 ),
@@ -384,9 +384,9 @@
                   : s.logger.warning(
                       "Failed to fetch TFT service from TFT Ember app",
                     );
-                const l = t.__container__.lookup("router:main");
-                l
-                  ? l.transitionTo(a.TFT_TROVES_ROUTE)
+                const o = t.__container__.lookup("router:main");
+                o
+                  ? o.transitionTo(a.TFT_TROVES_ROUTE)
                   : s.logger.warning(
                       "Failed to fetch TFT main router from TFT Ember app",
                     );
@@ -609,23 +609,23 @@
                     e,
                     { EMBER_CLI_COMPAT: !0 },
                   );
-                const l = {
+                const o = {
                   tra: s.traService,
                   ComponentFactory: s.componentFactory,
                   RewardCelebrationComponent: n(270).default,
                 };
                 s.emberApplicationFactory.setFactoryDefinition(
                   a.REWARD_CELEBRATION_NAME,
-                  l,
+                  o,
                 );
-                const o = {
+                const l = {
                   tra: s.traService,
                   ComponentFactory: s.componentFactory,
                   RewardCelebrationComponent: n(273).default,
                 };
                 s.emberApplicationFactory.setFactoryDefinition(
                   a.REWARD_CELEBRATION_V2_NAME,
-                  o,
+                  l,
                 );
                 const i = {
                   tra: s.traService,
@@ -717,7 +717,7 @@
                 this.TFTVideoCache.release(),
                   e &&
                     e.largeAreaAnimationsEnabled &&
-                    l.forEach((e) => {
+                    o.forEach((e) => {
                       this.TFTVideoCache.cache(e);
                     });
               });
@@ -732,7 +732,7 @@
                 "EndOfGame",
                 "TerminatedInError",
               ],
-              l =
+              o =
                 e.gameData &&
                 e.gameData.queue &&
                 e.gameData.queue.gameMode === a.TFT_GAME_MODE;
@@ -744,10 +744,10 @@
               : ["GameStart", "InProgress", "Reconnect"].indexOf(
                     this._gameflowPhase,
                   ) > -1
-                ? (this._isInTFTGame = l)
+                ? (this._isInTFTGame = o)
                 : n.indexOf(this._gameflowPhase) > -1 &&
-                  l &&
-                  l &&
+                  o &&
+                  o &&
                   (0, s.dataBinding)("/lol-settings", s.socket).patch(
                     "/v2/account/LCUPreferences/lol-tft",
                     {
@@ -784,8 +784,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.Ember.Router.extend({ location: "none" });
-        l.map(function () {
+        const o = s.Ember.Router.extend({ location: "none" });
+        o.map(function () {
           this.route(a.TFT_HOME_ROUTE),
             this.route(a.TFT_BATTLE_PASS_ROUTE),
             this.route(a.TFT_TROVES_ROUTE),
@@ -795,8 +795,8 @@
             this.route(a.TFT_EVENT_ROUTE),
             this.route(a.TFT_ROTATIONAL_SHOP_ROUTE);
         });
-        var o = l;
-        t.default = o;
+        var l = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -824,7 +824,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Route.extend({
+          o = s.Ember.Route.extend({
             tftService: s.Ember.inject.service("tft"),
             setupController(e, t) {
               this._super(e, t),
@@ -833,7 +833,7 @@
                 );
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -841,7 +841,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(12),
-          l = s.Ember.Route.extend({
+          o = s.Ember.Route.extend({
             model: () =>
               s.Ember.RSVP.hash({
                 champions: a.champions,
@@ -859,13 +859,13 @@
                 tftSets: a.tftSets,
               }),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
         var s = n(1),
           a = n(13);
-        const l = s.Ember.Object.extend(
+        const o = s.Ember.Object.extend(
             a.DataBindingMixin,
             a.FixDataBindingMixin,
             {
@@ -1003,25 +1003,25 @@
                   : s.Ember.Map.create(),
             },
           ),
-          o = l.create();
+          l = o.create();
         e.exports = {
-          MapsAndGameData: l,
-          augments: o.augments(),
-          champions: o.champions(),
-          items: o.items(),
-          maps: o.maps(),
-          queues: o.queues(),
-          runes: o.runes(),
-          runesStyles: o.runesStyles(),
-          spells: o.spells(),
-          tftItems: o.tftItems(),
-          tftItemsByName: o.tftItemsByName(),
-          championsByAlias: o.championsByAlias(),
-          tftChampionsByAlias: o.tftChampionsByAlias(),
-          tftTraitsById: o.tftTraitsById(),
-          tftGameVariationsByAlias: o.tftGameVariationsByAlias(),
-          tftSets: o.tftSets(),
-          tftDefaultSet: o.tftDefaultSet(),
+          MapsAndGameData: o,
+          augments: l.augments(),
+          champions: l.champions(),
+          items: l.items(),
+          maps: l.maps(),
+          queues: l.queues(),
+          runes: l.runes(),
+          runesStyles: l.runesStyles(),
+          spells: l.spells(),
+          tftItems: l.tftItems(),
+          tftItemsByName: l.tftItemsByName(),
+          championsByAlias: l.championsByAlias(),
+          tftChampionsByAlias: l.tftChampionsByAlias(),
+          tftTraitsById: l.tftTraitsById(),
+          tftGameVariationsByAlias: l.tftGameVariationsByAlias(),
+          tftSets: l.tftSets(),
+          tftDefaultSet: l.tftDefaultSet(),
           CUSTOM_GAME_TYPE: "CUSTOM_GAME",
           DEFAULT_MAP_ID: 11,
         };
@@ -1078,14 +1078,14 @@
               },
             },
           }),
-          l = s.Ember.Mixin.create({
+          o = s.Ember.Mixin.create({
             retrieveData(e, t, n) {
               return this.get(e)
                 .get(t, n)
                 .then((e) => (e ? Promise.resolve(e) : Promise.reject(void 0)));
             },
           });
-        e.exports = { FixDataBindingMixin: l, DataBindingMixin: a };
+        e.exports = { FixDataBindingMixin: o, DataBindingMixin: a };
       },
       (e, t, n) => {
         "use strict";
@@ -1137,7 +1137,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-time-remaining-widget`],
             layout: n(19),
             style: n(20),
@@ -1234,7 +1234,7 @@
               },
             ),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -1255,8 +1255,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.UIKit.getTooltipManager(),
-          o = {
+        const o = s.UIKit.getTooltipManager(),
+          l = {
             targetAnchor: { x: "center", y: "top" },
             tooltipAnchor: { x: "center", y: "bottom" },
             tooltipDirection: "top",
@@ -1271,10 +1271,10 @@
             "tooltipDirection",
             function () {
               return {
-                targetAnchor: this.get("targetAnchor") || o.targetAnchor,
-                tooltipAnchor: this.get("tooltipAnchor") || o.tooltipAnchor,
+                targetAnchor: this.get("targetAnchor") || l.targetAnchor,
+                tooltipAnchor: this.get("tooltipAnchor") || l.tooltipAnchor,
                 tooltipDirection:
-                  this.get("tooltipDirection") || o.tooltipDirection,
+                  this.get("tooltipDirection") || l.tooltipDirection,
               };
             },
           ),
@@ -1299,7 +1299,7 @@
             this.detachTooltip(), this._super(...arguments);
           },
           attachTooltip: function () {
-            l.assign(
+            o.assign(
               this.tooltipHoverElement,
               this.tooltipElement,
               null,
@@ -1307,7 +1307,7 @@
             );
           },
           detachTooltip: function () {
-            l.unassign(this.tooltipHoverElement);
+            o.unassign(this.tooltipHoverElement);
           },
         });
         t.default = i;
@@ -1328,7 +1328,7 @@
         var s = n(1),
           a = n(2);
         n(24);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-hub`],
           layout: n(25),
           _selectedMilestoneId: null,
@@ -1473,7 +1473,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -1495,7 +1495,7 @@
         var s = n(1),
           a = n(2);
         n(27);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           didRender() {
             this._super(...arguments),
               this.get("milestoneChanged") &&
@@ -1563,7 +1563,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -1585,7 +1585,7 @@
         var s = n(1),
           a = n(2);
         n(30);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           didRender() {
             this._super(...arguments);
           },
@@ -1708,8 +1708,8 @@
                 n = e ? (t ? "keystone" : "premium") : "free",
                 s = this.get("milestone.isLocked"),
                 a = this.get("isClaimable"),
-                l = this.get("isClaimed");
-              return `reward-frame--${n}-${s ? "locked" : a ? "claimable" : l ? "claimed" : "available"}`;
+                o = this.get("isClaimed");
+              return `reward-frame--${n}-${s ? "locked" : a ? "claimable" : o ? "claimed" : "available"}`;
             },
           ),
           rewardFrameImage: s.Ember.computed(
@@ -1754,7 +1754,7 @@
             return this.get("media.selection-highlight");
           }),
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -1763,9 +1763,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "oqHsz9E+",
+          id: "Y2o889VK",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","id",["concat",["id-",["unknown",["milestoneId"]]]]],["dynamic-attr","class",["concat",["milestone ",["helper",["if"],[["get",["isSmall"]],"small"],null]]]],["dynamic-attr","data-milestone-id",["unknown",["milestoneCssId"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,6],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["selection-highlight ",["helper",["if"],[["get",["isSelected"]],"visible"],null]]]],["dynamic-attr","style",["concat",["--selection-highlight-image: url(\'",["unknown",["selectedImage"]],"\')"]]],["flush-element"],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward ",["helper",["if"],[["get",["isRewardable"]],"rewardable-glow"],null]," ",["helper",["if"],[["get",["isLockedAndPaid"]],"locked"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","images"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["rewardBackgroundImage"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","reward-icon"],["dynamic-attr","src",["concat",[["unknown",["milestone","iconImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["checkmark ",["helper",["unless"],[["get",["isClaimed"]],"hidden"],null]]]],["dynamic-attr","style",["concat",["--checkmark-image: url(\'",["unknown",["media","reward-checkmark"]],"\');"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["locked ",["helper",["unless"],[["get",["isLockedAndPaid"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","frame"],["dynamic-attr","style",["concat",["--frame-image: url(\'",["unknown",["rewardFrameImage"]],"\'); --frame-image-hover: url(\'",["unknown",["rewardFrameImageHover"]],"\')"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["block",["unless"],[["get",["milestone","isPaid"]]],null,2],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showProgressionTracker"]]],null,1],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","progress-bar-empty"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["progress-bar ",["helper",["if"],[["get",["isBonus"]],"bonus"],null]]]],["dynamic-attr","style",["concat",["width:",["unknown",["progress"]],"%"]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","progression-tracker"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["first"]]],null,0],["text","\\n    "],["open-element","div",[]],["static-attr","class","level-pip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","image"],["dynamic-attr","style",["concat",["--pip-image: url(\'",["unknown",["levelPipImage"]],"\'); --pip-image-hover: url(\'",["unknown",["levelPipImageHover"]],"\')"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","label"],["flush-element"],["append",["unknown",["milestone","level"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","span",[]],["static-attr","class","free-label"],["flush-element"],["append",["unknown",["tra","battlepass_free_label"]],false],["close-element"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["static-attr","style","margin-bottom: 0"],["flush-element"],["append",["helper",["sanitize"],[["get",["description"]]],null],false],["close-element"],["text","\\n        "],["open-element","p",[]],["static-attr","style","font-weight: bold"],["flush-element"],["append",["helper",["sanitize"],[["get",["requiredXPText"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["description"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasRequiredXP"]]],null,4,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["tft-tooltip"],null,[["tooltipId"],["milestone-details"]],5]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\battlepass-milestone\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","id",["concat",["id-",["unknown",["milestoneId"]]]]],["dynamic-attr","class",["concat",["milestone ",["helper",["if"],[["get",["isSmall"]],"small"],null]]]],["dynamic-attr","data-milestone-id",["unknown",["milestoneCssId"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,6],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["selection-highlight ",["helper",["if"],[["get",["isSelected"]],"visible"],null]]]],["dynamic-attr","style",["concat",["--selection-highlight-image: url(\'",["unknown",["selectedImage"]],"\')"]]],["flush-element"],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward ",["helper",["if"],[["get",["isRewardable"]],"rewardable-glow"],null]," ",["helper",["if"],[["get",["isLockedAndPaid"]],"locked"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","images"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["rewardBackgroundImage"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","reward-icon"],["dynamic-attr","src",["concat",[["unknown",["milestone","iconImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["checkmark ",["helper",["unless"],[["get",["isClaimed"]],"hidden"],null]]]],["dynamic-attr","style",["concat",["--checkmark-image: url(\'",["unknown",["media","reward-checkmark"]],"\');"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["locked ",["helper",["unless"],[["get",["isLockedAndPaid"]],"hidden"],null]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","frame"],["dynamic-attr","style",["concat",["--frame-image: url(\'",["unknown",["rewardFrameImage"]],"\'); --frame-image-hover: url(\'",["unknown",["rewardFrameImageHover"]],"\')"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["block",["unless"],[["get",["milestone","isPaid"]]],null,2],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showProgressionTracker"]]],null,1],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","progress-bar-empty"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["progress-bar ",["helper",["if"],[["get",["isBonus"]],"bonus"],null]]]],["dynamic-attr","style",["concat",["width:",["unknown",["progress"]],"%"]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","progression-tracker"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["first"]]],null,0],["text","\\n    "],["open-element","div",[]],["static-attr","class","level-pip"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","image"],["dynamic-attr","style",["concat",["--pip-image: url(\'",["unknown",["levelPipImage"]],"\'); --pip-image-hover: url(\'",["unknown",["levelPipImageHover"]],"\')"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["dynamic-attr","class",["concat",["label ",["helper",["if"],[["get",["isActive"]],"label-color-dark","label-color-bright"],null]]]],["flush-element"],["append",["unknown",["milestone","level"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","span",[]],["static-attr","class","free-label"],["flush-element"],["append",["unknown",["tra","battlepass_free_label"]],false],["close-element"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["static-attr","style","margin-bottom: 0"],["flush-element"],["append",["helper",["sanitize"],[["get",["description"]]],null],false],["close-element"],["text","\\n        "],["open-element","p",[]],["static-attr","style","font-weight: bold"],["flush-element"],["append",["helper",["sanitize"],[["get",["requiredXPText"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["description"]]],null],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-small"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasRequiredXP"]]],null,4,3],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["tft-tooltip"],null,[["tooltipId"],["milestone-details"]],5]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1776,7 +1776,7 @@
         var s = n(1),
           a = n(2);
         n(33);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-battlepass-level-bar`],
           classNameBindings: [
             "isPassComplete:pass-complete:",
@@ -1908,7 +1908,7 @@
             return n ? 1 : a ? s / a : 0;
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -1930,7 +1930,7 @@
         var s = n(1),
           a = n(2);
         n(36);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-battlepass-info`],
           layout: n(37),
           timeoutExpired: !1,
@@ -1946,17 +1946,17 @@
               e -= 86400 * t;
               const n = Math.floor(e / a.HOUR_IN_MS) % 24;
               e -= 3600 * n;
-              const l = Math.floor(e / a.MINUTE_IN_MS) % 60;
-              let o, i, r;
-              e -= 60 * l;
+              const o = Math.floor(e / a.MINUTE_IN_MS) % 60;
+              let l, i, r;
+              e -= 60 * o;
               let c = 0;
               return t > 0
-                ? ((o = this.get("tra").formatString("tft_duration_days", {
+                ? ((l = this.get("tra").formatString("tft_duration_days", {
                     days: t,
                   })),
                   this.get("tra").formatString(
                     "battlepass_time_till_event_end",
-                    { duration: o },
+                    { duration: l },
                   ))
                 : (n > 0 && t <= 1
                     ? ((i = this.get("tra").formatString("tft_duration_hours", {
@@ -1965,7 +1965,7 @@
                       (c = n > 1 ? a.HOUR_IN_MS : a.MINUTE_IN_MS))
                     : ((r = this.get("tra").formatString(
                         "tft_duration_minutes",
-                        { minutes: l },
+                        { minutes: o },
                       )),
                       (c = a.MINUTE_IN_MS)),
                   (this.timeoutExpired = !1),
@@ -1989,7 +1989,7 @@
             },
           ),
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2011,7 +2011,7 @@
         var s = n(1),
           a = n(2);
         n(39);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-battlepass-upgrade-button`],
           layout: n(40),
           pcPurchaseRequirement: null,
@@ -2031,7 +2031,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2053,7 +2053,7 @@
         var s = n(1),
           a = n(2);
         n(42);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           didRender() {
             this._super(...arguments),
               setTimeout(() => {
@@ -2131,7 +2131,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2158,7 +2158,7 @@
         n(45);
         t.UNKNOWN_TFT_TAB_ROUTE_INDEX = -1;
         t.DEFAULT_TAB_COUNT_WITHOUT_EVENT = 7;
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-sub-nav`],
           layout: n(46),
           routeName: null,
@@ -2312,15 +2312,15 @@
                     e.length +
                     " events. Currently only displaying one event in the TFT Hub is supported. Picking the first event and ignoring the rest of the events in the data.",
                 );
-              const l = e[0];
-              l.enabled &&
-                l.titleTranslationKey &&
+              const o = e[0];
+              o.enabled &&
+                o.titleTranslationKey &&
                 n.push({
                   route: a.TFT_EVENT_ROUTE,
-                  traKey: l.titleTranslationKey,
+                  traKey: o.titleTranslationKey,
                   isEnabled: !0,
                   showPip: t || !1,
-                  url: l.url,
+                  url: o.url,
                 });
             }
             return n;
@@ -2382,7 +2382,7 @@
             );
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2404,12 +2404,12 @@
         var s = n(1),
           a = n(2);
         n(48);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-sub-nav-item`],
           layout: n(49),
           showPip: !1,
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2431,8 +2431,8 @@
         var s = n(1),
           a = n(2);
         n(51);
-        var l,
-          o = (l = n(52)) && l.__esModule ? l : { default: l };
+        var o,
+          l = (o = n(52)) && o.__esModule ? o : { default: o };
         const i = {
             clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
             imageActive: "",
@@ -2447,7 +2447,7 @@
           c = "store-promo-fallback-hover",
           m = "default-active",
           u = "default-hover";
-        var d = s.Ember.Component.extend(o.default, {
+        var d = s.Ember.Component.extend(l.default, {
           classNames: "rcp-fe-lol-tft-home",
           classNameBindings: ["tftService.homeOverrideUrl:iframe-view"],
           layout: n(53),
@@ -2476,11 +2476,11 @@
               this.get("playerHasBPPremium");
               if (!e || !n || !t) return [];
               const a = [n[0], e[0]],
-                l = { storeOfferIds: a, tacticianOfferIds: t };
+                o = { storeOfferIds: a, tacticianOfferIds: t };
               return (
                 (0, s.dataBinding)("/lol-settings", s.socket).patch(
                   "/v2/account/LCUPreferences/lol-tft",
-                  { data: { seenOfferIds: l }, schemaVersion: 1 },
+                  { data: { seenOfferIds: o }, schemaVersion: 1 },
                 ),
                 a
               );
@@ -2529,16 +2529,16 @@
             const n = e.inventoryType,
               s = e.itemId,
               a = e.prices.find((e) => "RP" === e.currency),
-              l =
+              o =
                 e.localizations && e.localizations[t]
                   ? e.localizations[t].name
                   : "";
             return (
-              !!(null != n && null != s && null != a && null != l) && {
+              !!(null != n && null != s && null != a && null != o) && {
                 inventoryType: n,
                 itemId: s,
                 priceRP: a,
-                name: l,
+                name: o,
               }
             );
           },
@@ -2552,20 +2552,20 @@
               }
               const n = this.get("tftService.battlePassOfferIds"),
                 s = n.length ? n[0] : null,
-                l = e.find((e) => e.offerId === s),
-                o = this.get("regionLocale"),
-                i = this._isValidStorePromoItem(l, o);
+                o = e.find((e) => e.offerId === s),
+                l = this.get("regionLocale"),
+                i = this._isValidStorePromoItem(o, l);
               if (i) {
                 const e = `${s}-hover`,
                   n = `${s}-active`,
-                  l = t[n] ? t[n] : t[m],
-                  o = t[e] ? t[e] : t[u],
+                  o = t[n] ? t[n] : t[m],
+                  l = t[e] ? t[e] : t[u],
                   { inventoryType: r, itemId: c, priceRP: d, name: p } = i;
                 return {
                   clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
                   hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
-                  imageActive: l,
-                  imageHover: o,
+                  imageActive: o,
+                  imageHover: l,
                   inventoryType: r,
                   itemId: c,
                   priceRP: d.cost,
@@ -2585,10 +2585,10 @@
               }
               const n = this.get("tftService.storePromoOfferIds"),
                 s = n.length ? n[0] : null,
-                l = `${s}-hover`,
-                o = `${s}-active`,
-                i = t[o] ? t[o] : t[m],
-                r = t[l] ? t[l] : t[u];
+                o = `${s}-hover`,
+                l = `${s}-active`,
+                i = t[l] ? t[l] : t[m],
+                r = t[o] ? t[o] : t[u];
               return {
                 clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
                 hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
@@ -2619,11 +2619,11 @@
                 const s = n.find((t) => t.sourceId === e || t.id === e);
                 if (s) {
                   const n = e + "-hover",
-                    l = e + "-active";
+                    o = e + "-active";
                   return {
                     clickSfxPath: a.TFT_BUTTON_CLICK_SFX_PATH,
                     hoverSfxPath: a.TFT_TACTICIAN_HOVER_SFX_PATH,
-                    imageActive: t ? t[l] : "",
+                    imageActive: t ? t[o] : "",
                     imageHover: t ? t[n] : "",
                     inventoryType: a.INVENTORY_TYPES.TROVES,
                     itemId: s.id,
@@ -2653,13 +2653,13 @@
               if (t && e) {
                 const n = e.assetId,
                   s = e.url,
-                  l = n + "-hover",
-                  o = n + "-active";
+                  o = n + "-hover",
+                  l = n + "-active";
                 return {
                   clickSfxPath: a.TFT_STORE_PROMO_CLICK_SFX_PATH,
                   hoverSfxPath: a.TFT_STORE_PROMO_HOVER_SFX_PATH,
-                  imageActive: t[o],
-                  imageHover: t[l],
+                  imageActive: t[l],
+                  imageHover: t[o],
                   inventoryType: a.INVENTORY_TYPES.PRIME_GAMING,
                   itemId: n,
                   name: "PrimeGaming",
@@ -2735,8 +2735,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.Audio.getChannel(a.SOUND_UX_CHANNEL);
-        var o = s.Ember.Mixin.create({
+        const o = s.Audio.getChannel(a.SOUND_UX_CHANNEL);
+        var l = s.Ember.Mixin.create({
           init() {
             this._super(...arguments),
               (this.listenersByEvents = new Map()),
@@ -2761,12 +2761,12 @@
               s.Ember.run.debounce(this, this.handleSoundLoop, 150);
           },
           playSound(e, t) {
-            (t && this.get(t)) || l.playSound(e);
+            (t && this.get(t)) || o.playSound(e);
           },
           playSoundLoop(e, t) {
             if (t && this.get(t)) return;
             if (this.get("loopIsPlaying")) return;
-            const n = l.createSound(e, { isLoop: !0 });
+            const n = o.createSound(e, { isLoop: !0 });
             this.soundMap.set(e, n), n.play(), this.set("loopIsPlaying", !0);
           },
           stopSoundLoop(e) {
@@ -2810,7 +2810,7 @@
               });
           },
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -2828,9 +2828,9 @@
         var s = n(1),
           a = n(2);
         n(55);
-        var l,
-          o = (l = n(52)) && l.__esModule ? l : { default: l };
-        var i = s.Ember.Component.extend(o.default, {
+        var o,
+          l = (o = n(52)) && o.__esModule ? o : { default: o };
+        var i = s.Ember.Component.extend(l.default, {
           classNames: [`${a.PLUGIN_NAME}-button`],
           layout: n(56),
           iconImageURL: null,
@@ -2879,7 +2879,7 @@
         var s = n(1),
           a = n(2);
         n(58);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-news`],
           classNameBindings: ["showManagedIframe:iframe-view:cards-view"],
           layout: n(59),
@@ -2908,7 +2908,7 @@
             },
           ),
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -2930,12 +2930,12 @@
         var s = n(1);
         n(61);
         var a,
-          l = (a = n(62)) && a.__esModule ? a : { default: a };
-        var o = s.Ember.Component.extend(l.default, {
+          o = (a = n(62)) && a.__esModule ? a : { default: a };
+        var l = s.Ember.Component.extend(o.default, {
           classNames: "rcp-fe-lol-tft-store-promo",
           layout: n(63),
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -2947,8 +2947,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.Audio.getChannel(a.SOUND_UX_CHANNEL),
-          o = {
+        const o = s.Audio.getChannel(a.SOUND_UX_CHANNEL),
+          l = {
             COMPANION: "companions",
             HEXTECH_CRAFTING: "hextech",
             STAR_FRAGMENTS: "star_fragments",
@@ -2991,11 +2991,11 @@
           ),
           click() {
             const e = this.get("storePromoData.clickSfxPath");
-            e && l.playSound(e), this.storePromoClicked();
+            e && o.playSound(e), this.storePromoClicked();
           },
           mouseEnter() {
             const e = this.get("storePromoData.hoverSfxPath");
-            e && l.playSound(e);
+            e && o.playSound(e);
           },
           storePromoClicked() {
             const e = this.get("storePromoInventoryType"),
@@ -3010,10 +3010,10 @@
                 : this.navigateToStore(e, t);
           },
           navigateToStore(e, t) {
-            let n = o.COMPANION;
+            let n = l.COMPANION;
             e === a.INVENTORY_TYPES.HEXTECH_CRAFTING
-              ? (n = o.COMPANION)
-              : e in o && (n = o[e]),
+              ? (n = l.COMPANION)
+              : e in l && (n = l[e]),
               s.Router.navigateTo("rcp-fe-lol-store", {
                 page: n,
                 items: [{ inventoryType: e, itemId: t }],
@@ -3052,9 +3052,9 @@
         var s = n(1),
           a = n(2);
         n(65);
-        var l,
-          o = (l = n(62)) && l.__esModule ? l : { default: l };
-        var i = s.Ember.Component.extend(o.default, {
+        var o,
+          l = (o = n(62)) && o.__esModule ? o : { default: o };
+        var i = s.Ember.Component.extend(l.default, {
           classNames: [`${a.PLUGIN_NAME}-prime-promo`],
           layout: n(66),
           tftService: s.Ember.inject.service("tft"),
@@ -3084,12 +3084,12 @@
         var s = n(1);
         n(68);
         var a,
-          l = (a = n(62)) && a.__esModule ? a : { default: a };
-        var o = s.Ember.Component.extend(l.default, {
+          o = (a = n(62)) && a.__esModule ? a : { default: a };
+        var l = s.Ember.Component.extend(o.default, {
           classNames: "rcp-fe-lol-tft-tactician-promo",
           layout: n(69),
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -3111,9 +3111,9 @@
         var s = n(1),
           a = n(2);
         n(71);
-        var l,
-          o = (l = n(52)) && l.__esModule ? l : { default: l };
-        var i = s.Ember.Component.extend(o.default, {
+        var o,
+          l = (o = n(52)) && o.__esModule ? o : { default: o };
+        var i = s.Ember.Component.extend(l.default, {
           classNameBindings: ["getClassNames"],
           getClassNames: s.Ember.computed("buttonClassName", function () {
             return "event-play" === this.get("buttonClassName")
@@ -3364,8 +3364,8 @@
         var s = n(1),
           a = n(2);
         n(74);
-        var l = n(75);
-        var o = s.Ember.Component.extend({
+        var o = n(75);
+        var l = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-event-promo`],
           layout: n(76),
           tftService: s.Ember.inject.service("tft"),
@@ -3447,7 +3447,7 @@
             );
           }),
           mouseEnter() {
-            l.SFX.buttonHover.play();
+            o.SFX.buttonHover.play();
           },
           actions: {
             preEventPromoClicked: function () {
@@ -3482,7 +3482,7 @@
             },
           },
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -3493,29 +3493,29 @@
         Object.defineProperty(t, "__esModule", { value: !0 }), (t.SFX = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.AudioPlugin.getChannel(
+        const o = s.AudioPlugin.getChannel(
           a.AUDIO_CHANNELS.SFX_SUB_CHANNEL_UI_NAME,
         );
-        function o(e) {
-          return l.createSound(e, { allowConcurrency: !1 });
+        function l(e) {
+          return o.createSound(e, { allowConcurrency: !1 });
         }
         const i = {
-          buttonClick: o(
+          buttonClick: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-big-click.ogg",
           ),
-          buttonHover: o(
+          buttonHover: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-generic-hover.ogg",
           ),
-          circleButtonClick: o(
+          circleButtonClick: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-circlegold-click.ogg",
           ),
-          circleButtonHover: o(
+          circleButtonHover: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-circlegold-hover.ogg",
           ),
-          buttonGoldHover: o(
+          buttonGoldHover: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-gold-hover.ogg",
           ),
-          buttonGenericClick: o(
+          buttonGenericClick: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-generic-click.ogg",
           ),
         };
@@ -3536,9 +3536,9 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(78);
+          o = n(78);
         n(79);
-        var o = s.Ember.Component.extend({
+        var l = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-header-buttons`],
           layout: n(80),
           tftService: s.Ember.inject.service("tft"),
@@ -3632,14 +3632,14 @@
               t.domNode.addEventListener("closeButtonClick", function () {
                 e.remove(t);
               }),
-                s.Telemetry.sendCustomData(l.TELEMETRY_TABLE_NAME, {
-                  [l.TELEMETRY_EVENT_KEY_EVENT_NAME]:
-                    l.TELEMETRY_EVENT_NAME_OPEN_PURCHASE_MODAL,
+                s.Telemetry.sendCustomData(o.TELEMETRY_TABLE_NAME, {
+                  [o.TELEMETRY_EVENT_KEY_EVENT_NAME]:
+                    o.TELEMETRY_EVENT_NAME_OPEN_PURCHASE_MODAL,
                 });
             },
           },
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t) => {
         "use strict";
@@ -3743,10 +3743,10 @@
         t.TYPE_ID_MYTHICMEDALLION = s;
         const a = "8b5ab62b-c56c-5abd-bec2-f1a1ff82ccfd";
         t.TYPE_ID_TREASURE_TOKEN = a;
-        const l = [n, s, a];
-        t.TYPE_CURRENCIES = l;
-        const o = { [n]: 2, [s]: 3 };
-        t.TYPE_ID_TO_MILESTONE_SLIDER_VALUE = o;
+        const o = [n, s, a];
+        t.TYPE_CURRENCIES = o;
+        const l = { [n]: 2, [s]: 3 };
+        t.TYPE_ID_TO_MILESTONE_SLIDER_VALUE = l;
         t.HIGHLIGHT_SLIDER_VALUE_SINGLE_COMPANION = 2;
         t.HIGHLIGHT_SLIDER_VALUE_SINGLE_MAPSKIN = 3;
         t.HIGHLIGHT_SLIDER_VALUE_SINGLE_PROMISETOKEN = 4;
@@ -3894,10 +3894,10 @@
           (t.default = void 0);
         var s,
           a = (s = n(88)) && s.__esModule ? s : { default: s },
-          l = n(1),
-          o = n(2);
-        var i = l.Ember.Component.extend(a.default, {
-          classNames: [`${o.PLUGIN_NAME}-event-hub`],
+          o = n(1),
+          l = n(2);
+        var i = o.Ember.Component.extend(a.default, {
+          classNames: [`${l.PLUGIN_NAME}-event-hub`],
           layout: n(93),
           style: n(94),
           telemetryEventPassTimeSpent: null,
@@ -3920,8 +3920,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(89);
-        const o = "lny24-event-hub-logo-tft-name",
+          o = n(89);
+        const l = "lny24-event-hub-logo-tft-name",
           i = "lny24-event-hub-question-mark",
           r = "event-hub-play-card",
           c = "lny24-hub-card-base-default",
@@ -3969,7 +3969,7 @@
           ),
           logoTftNameImagePath: s.Ember.computed("eventHubAssets", function () {
             const e = this.get("eventHubAssets");
-            return e ? e[o] : "";
+            return e ? e[l] : "";
           }),
           eventHubLogoImagePath: s.Ember.computed(
             "mapData.assets.set-event-5YA-Title-Logo",
@@ -4056,7 +4056,7 @@
                     "player-support-button",
                   ),
                 ),
-                (0, l.trackEventHubPlayerSupportButtonClick)(
+                (0, o.trackEventHubPlayerSupportButtonClick)(
                   this.get("eventSeriesId"),
                 ));
             },
@@ -4199,8 +4199,8 @@
           TROVES_ROLLING: { NAME: "troves_rolling", time_start: 0, uuid: "" },
         };
         t.PHASE = a;
-        const l = "rcp-fe-lol-tft",
-          o = {
+        const o = "rcp-fe-lol-tft",
+          l = {
             device: "PC",
             event_id: "",
             env: "",
@@ -4214,28 +4214,28 @@
           i = n(90);
         function r(e, t, n, a = !1) {
           !(function (e, t, n = !1) {
-            (o.phase = e.NAME),
+            (l.phase = e.NAME),
               n && ((e.uuid = i()), (e.time_start = Date.now())),
-              (o.phase_uuid = e.uuid),
-              (o.event_id = t),
-              (o.timestamp = Date.now());
+              (l.phase_uuid = e.uuid),
+              (l.event_id = t),
+              (l.timestamp = Date.now());
           })(e, t, a),
-            s.Telemetry.sendCustomData(l, { ...o, ...n });
+            s.Telemetry.sendCustomData(o, { ...l, ...n });
         }
         !(async function () {
-          if (!o.puuid) {
+          if (!l.puuid) {
             const e = await s.db.get("/lol-summoner/v1/current-summoner");
-            o.puuid = e?.puuid || "";
+            l.puuid = e?.puuid || "";
           }
-          if (!o.locale || !o.region) {
+          if (!l.locale || !l.region) {
             const e = await s.db.get("/riotclient/region-locale");
-            (o.locale = e?.locale || ""), (o.region = e?.region || "");
+            (l.locale = e?.locale || ""), (l.region = e?.region || "");
           }
-          if (!o.env && o.region) {
+          if (!l.env && l.region) {
             const e = await s.db.get(
-              `/data-store/v1/system-settings/region_data/${o.region}/rso_platform_id`,
+              `/data-store/v1/system-settings/region_data/${l.region}/rso_platform_id`,
             );
-            (o.env = e), (o.region = e);
+            (l.env = e), (l.region = e);
           }
         })();
       },
@@ -4243,13 +4243,13 @@
         var s = n(91),
           a = n(92);
         e.exports = function (e, t, n) {
-          var l = (t && n) || 0;
+          var o = (t && n) || 0;
           "string" == typeof e &&
             ((t = "binary" === e ? new Array(16) : null), (e = null));
-          var o = (e = e || {}).random || (e.rng || s)();
-          if (((o[6] = (15 & o[6]) | 64), (o[8] = (63 & o[8]) | 128), t))
-            for (var i = 0; i < 16; ++i) t[l + i] = o[i];
-          return t || a(o);
+          var l = (e = e || {}).random || (e.rng || s)();
+          if (((l[6] = (15 & l[6]) | 64), (l[8] = (63 & l[8]) | 128), t))
+            for (var i = 0; i < 16; ++i) t[o + i] = l[i];
+          return t || a(l);
         };
       },
       (e) => {
@@ -4324,8 +4324,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = "lny24-hub-mission-tracker-connect-bar",
-          o = "lny24-hub-mission-objective-divider";
+        const o = "lny24-hub-mission-tracker-connect-bar",
+          l = "lny24-hub-mission-objective-divider";
         var i = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-event-mission-chain`],
           layout: n(96),
@@ -4383,6 +4383,30 @@
             const e = this.get("rewards");
             return e ? e.map((e) => e.description).join(", ") : "";
           }),
+          rewardOverrideIconPath: s.Ember.computed(
+            "eventHubAssets",
+            "overrideRewardIcon",
+            "isLocked",
+            "currentMissionCompleted",
+            function () {
+              const e = this.get("isLocked"),
+                t = this.get("overrideRewardIcon"),
+                n = this.get("currentMissionCompleted");
+              return !1 === t
+                ? ""
+                : e
+                  ? this.get(
+                      "eventHubAssets.mission-reward-icon-locked-override",
+                    )
+                  : n
+                    ? this.get(
+                        "eventHubAssets.mission-reward-icon-completed-override",
+                      )
+                    : this.get(
+                        "eventHubAssets.mission-reward-icon-active-override",
+                      );
+            },
+          ),
           isLocked: s.Ember.computed("currentMission", function () {
             const e = this.get("currentMission");
             return !!e && "DUMMY" === e.status;
@@ -4442,8 +4466,8 @@
                 for (let s = 0; s < t; s++) {
                   let t = "",
                     a = "",
-                    l = "",
-                    o = "";
+                    o = "",
+                    l = "";
                   switch (n[s].status) {
                     case "PENDING":
                     default:
@@ -4453,10 +4477,10 @@
                         (a = this.get(
                           "eventHubAssets.mission-tracker-current-clicked",
                         )),
-                        (l = this.get(
+                        (o = this.get(
                           "eventHubAssets.mission-tracker-current-hover",
                         )),
-                        (o = this.get(
+                        (l = this.get(
                           "eventHubAssets.mission-tracker-current-clicked-hover",
                         ));
                       break;
@@ -4467,10 +4491,10 @@
                         (a = this.get(
                           "eventHubAssets.mission-tracker-locked-clicked",
                         )),
-                        (l = this.get(
+                        (o = this.get(
                           "eventHubAssets.mission-tracker-locked-hover",
                         )),
-                        (o = this.get(
+                        (l = this.get(
                           "eventHubAssets.mission-tracker-locked-clicked-hover",
                         ));
                       break;
@@ -4482,18 +4506,18 @@
                         (a = this.get(
                           "eventHubAssets.mission-tracker-completed-clicked",
                         )),
-                        (l = this.get(
+                        (o = this.get(
                           "eventHubAssets.mission-tracker-completed-hover",
                         )),
-                        (o = this.get(
+                        (l = this.get(
                           "eventHubAssets.mission-tracker-completed-clicked-hover",
                         ));
                   }
                   e.push({
                     defaultImagePath: t,
                     activeImagePath: a,
-                    hoverImagePath: l,
-                    clickedHoverImagePath: o,
+                    hoverImagePath: o,
+                    clickedHoverImagePath: l,
                   });
                 }
               return e;
@@ -4503,14 +4527,14 @@
             "eventHubAssets",
             function () {
               const e = this.get("eventHubAssets");
-              return e ? e[l] : "";
+              return e ? e[o] : "";
             },
           ),
           objectiveDividerImagePath: s.Ember.computed(
             "eventHubAssets",
             function () {
               const e = this.get("eventHubAssets");
-              return e ? e[o] : "";
+              return e ? e[l] : "";
             },
           ),
           _timeTillUnlockString(e) {
@@ -4518,11 +4542,11 @@
             let t = new Date(e) - Date.now();
             const n = Math.floor(t / a.DAY_IN_MS);
             t -= 86400 * n;
-            const l = Math.floor(t / a.HOUR_IN_MS) % 24;
-            t -= 3600 * l;
-            const o = Math.floor(t / a.MINUTE_IN_MS) % 60;
+            const o = Math.floor(t / a.HOUR_IN_MS) % 24;
+            t -= 3600 * o;
+            const l = Math.floor(t / a.MINUTE_IN_MS) % 60;
             let i, r, c;
-            t -= 60 * o;
+            t -= 60 * l;
             let m = 0;
             return n > 0
               ? ((i = this.get("tra").formatString("tft_duration_days", {
@@ -4531,13 +4555,13 @@
                 this.get("tra").formatString("tft_time_till_unlocked", {
                   duration: i,
                 }))
-              : (l > 0 && n <= 1
+              : (o > 0 && n <= 1
                   ? ((r = this.get("tra").formatString("tft_duration_hours", {
-                      hours: l,
+                      hours: o,
                     })),
-                    (m = l > 1 ? a.HOUR_IN_MS : a.MINUTE_IN_MS))
+                    (m = o > 1 ? a.HOUR_IN_MS : a.MINUTE_IN_MS))
                   : ((c = this.get("tra").formatString("tft_duration_minutes", {
-                      minutes: o,
+                      minutes: l,
                     })),
                     (m = a.MINUTE_IN_MS)),
                 (this.timeoutExpired = !1),
@@ -4569,9 +4593,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "iSAunJdm",
+          id: "zr6/qNt5",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-mission-container ",["helper",["if"],[["get",["showMissionTracker"]],"","with-separator"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMissionTracker"]]],null,13],["text","\\n"],["text","  "],["open-element","div",[]],["static-attr","class","card"],["dynamic-attr","style",["concat",["background: url(\'",["unknown",["missionPanelBackground"]],"\'); background-size: 100% 100%"]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","card-left"],["flush-element"],["text","\\n"],["block",["each"],[["get",["objectives"]]],null,8],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","card-right"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","rewards"],["flush-element"],["text","\\n"],["block",["each"],[["get",["rewards"]]],null,3],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","reward-tick"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["eventHubAssets","mission-card-reward-icon-frame-tick"]],"\')"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","reward-icon-frame"],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["get",["currentMissionCompleted"]],["get",["eventHubAssets","mission-card-reward-icon-frame-complete"]],["get",["eventHubAssets","mission-card-reward-icon-frame"]]],null],"\')"]]],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward-icon ",["helper",["if"],[["get",["currentMissionCompleted"]],"grey-out"],null]]]],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["helper",["eq"],[["get",["overrideRewardIcon"]],false],null],["get",["reward","iconUrl"]],["helper",["if"],[["helper",["eq"],[["get",["currentMissionInProgress"]],true],null],["get",["eventHubAssets","mission-reward-icon-active-override"]],["get",["eventHubAssets","mission-reward-icon-muted-override"]]],null]],null],"\')"]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"],["block",["if"],[["get",["currentMissionCompleted"]]],null,0]],"locals":[]},{"statements":[],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","reward"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["eq"],[["helper",["if"],[["helper",["eq"],[["get",["overrideRewardIcon"]],false],null],["get",["reward","iconUrl"]],["helper",["if"],[["helper",["eq"],[["get",["currentMissionInProgress"]],true],null],["get",["eventHubAssets","mission-reward-icon-active-override"]],["get",["eventHubAssets","mission-reward-icon-muted-override"]]],null]],null],""],null]],null,2,1],["text","          "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["description-text-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n              "],["append",["unknown",["objective","description"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","description-lock-text"],["flush-element"],["text","\\n                "],["append",["unknown",["lockMessage"]],false],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["dynamic-attr","class",["concat",["title-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n                "],["append",["unknown",["title"]],false],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward-text-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n                "],["append",["unknown",["rewardText"]],false],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","objective-columns"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","divider-text left-column"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","mission_objective_or"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","divider-image middle-column"],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["get",["currentMissionCompleted"]],["get",["eventHubAssets","hub-mission-objective-divider-completed"]],["get",["eventHubAssets","hub-mission-objective-divider-default"]]],null],"\')"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["helper",["eq"],[["get",["index"]],1],null]],null,7],["text","        "],["open-element","div",[]],["static-attr","class","objective-columns"],["flush-element"],["text","\\n"],["text","          "],["open-element","div",[]],["static-attr","class","progress left-column"],["flush-element"],["text","\\n            "],["append",["helper",["tft-radial-progress-bar"],null,[["current","total","completedIconImagePath","valueLockedImagePath","isLocked","isComplete"],[["get",["objective","progress","currentProgress"]],["get",["objective","progress","totalCount"]],["get",["eventHubAssets","mission-progress-completed"]],["get",["eventHubAssets","event-mission-value-locked"]],["get",["isLocked"]],["get",["currentMissionCompleted"]]]]],false],["text","\\n          "],["close-element"],["text","\\n"],["text","          "],["open-element","div",[]],["static-attr","class","description middle-column"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["eq"],[["get",["index"]],0],null]],null,6],["block",["if"],[["get",["isLocked"]]],null,5,4],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["objective","index"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","tracker-connect-bar"],["dynamic-attr","style",["concat",["background: url(\'",["unknown",["missionTrackerConnectBarImagePath"]],"\')"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[],"locals":[]},{"statements":[["block",["if"],[["helper",["eq"],[["get",["index"]],0],null]],null,10,9]],"locals":[]},{"statements":[["block",["if"],[["get",["showMissionTrackerConnector"]]],null,11],["text","        "],["open-element","div",[]],["static-attr","class","tracker-icon"],["dynamic-attr","style",["concat",["--tracker-icon-image: url(\'",["helper",["if"],[["helper",["eq"],[["get",["selectedTrackerIndex"]],["get",["index"]]],null],["get",["missionTrackerIcon","activeImagePath"]],["get",["missionTrackerIcon","defaultImagePath"]]],null],"\'); --tracker-icon-image-hover: url(\'",["unknown",["missionTrackerIcon","hoverImagePath"]],"\'); --tracker-icon-image-clicked-hover: url(\'",["unknown",["missionTrackerIcon","clickedHoverImagePath"]],"\'); --tracker-icon-image-active: url(\'",["unknown",["missionTrackerIcon","activeImagePath"]],"\')"]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectMission",["get",["index"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["missionTrackerIcon","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","tracker-columns"],["flush-element"],["text","\\n"],["block",["each"],[["get",["missionTrackerIcons"]]],null,12],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-tft\\\\src\\\\app\\\\components\\\\tft-event-mission-chain\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["event-mission-container ",["helper",["if"],[["get",["showMissionTracker"]],"","with-separator"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showMissionTracker"]]],null,11],["text","\\n"],["text","  "],["open-element","div",[]],["static-attr","class","card"],["dynamic-attr","style",["concat",["background: url(\'",["unknown",["missionPanelBackground"]],"\'); background-size: 100% 100%"]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","card-left"],["flush-element"],["text","\\n"],["block",["each"],[["get",["objectives"]]],null,6],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","card-right"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","rewards"],["flush-element"],["text","\\n"],["block",["each"],[["get",["rewards"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","reward-tick"],["dynamic-attr","style",["concat",["background-image: url(\'",["unknown",["eventHubAssets","mission-card-reward-icon-frame-tick"]],"\')"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","reward"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","reward-icon-frame"],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["get",["currentMissionCompleted"]],["get",["eventHubAssets","mission-card-reward-icon-frame-complete"]],["get",["eventHubAssets","mission-card-reward-icon-frame"]]],null],"\')"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","reward-icon"],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["helper",["eq"],[["get",["overrideRewardIcon"]],false],null],["get",["reward","iconUrl"]],["get",["rewardOverrideIconPath"]]],null],"\')"]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n"],["block",["if"],[["get",["currentMissionCompleted"]]],null,0],["text","          "],["close-element"],["text","\\n"]],"locals":["reward"]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["description-text-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n              "],["append",["unknown",["objective","description"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","description-lock-text"],["flush-element"],["text","\\n                "],["append",["unknown",["lockMessage"]],false],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["dynamic-attr","class",["concat",["title-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n                "],["append",["unknown",["title"]],false],["text","\\n              "],["close-element"],["text","\\n              "],["open-element","div",[]],["dynamic-attr","class",["concat",["reward-text-",["unknown",["currentMissionCompletedCSSString"]]]]],["flush-element"],["text","\\n                "],["append",["unknown",["rewardText"]],false],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","objective-columns"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","divider-text left-column"],["flush-element"],["text","\\n              "],["append",["unknown",["tra","mission_objective_or"]],false],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","divider-image middle-column"],["dynamic-attr","style",["concat",["background-image: url(\'",["helper",["if"],[["get",["currentMissionCompleted"]],["get",["eventHubAssets","hub-mission-objective-divider-completed"]],["get",["eventHubAssets","hub-mission-objective-divider-default"]]],null],"\')"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["helper",["eq"],[["get",["index"]],1],null]],null,5],["text","        "],["open-element","div",[]],["static-attr","class","objective-columns"],["flush-element"],["text","\\n"],["text","          "],["open-element","div",[]],["static-attr","class","progress left-column"],["flush-element"],["text","\\n            "],["append",["helper",["tft-radial-progress-bar"],null,[["current","total","completedIconImagePath","valueLockedImagePath","isLocked","isComplete"],[["get",["objective","progress","currentProgress"]],["get",["objective","progress","totalCount"]],["get",["eventHubAssets","mission-progress-completed"]],["get",["eventHubAssets","event-mission-value-locked"]],["get",["isLocked"]],["get",["currentMissionCompleted"]]]]],false],["text","\\n          "],["close-element"],["text","\\n"],["text","          "],["open-element","div",[]],["static-attr","class","description middle-column"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["eq"],[["get",["index"]],0],null]],null,4],["block",["if"],[["get",["isLocked"]]],null,3,2],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["objective","index"]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","tracker-connect-bar"],["dynamic-attr","style",["concat",["background: url(\'",["unknown",["missionTrackerConnectBarImagePath"]],"\')"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[],"locals":[]},{"statements":[["block",["if"],[["helper",["eq"],[["get",["index"]],0],null]],null,8,7]],"locals":[]},{"statements":[["block",["if"],[["get",["showMissionTrackerConnector"]]],null,9],["text","        "],["open-element","div",[]],["static-attr","class","tracker-icon"],["dynamic-attr","style",["concat",["--tracker-icon-image: url(\'",["helper",["if"],[["helper",["eq"],[["get",["selectedTrackerIndex"]],["get",["index"]]],null],["get",["missionTrackerIcon","activeImagePath"]],["get",["missionTrackerIcon","defaultImagePath"]]],null],"\'); --tracker-icon-image-hover: url(\'",["unknown",["missionTrackerIcon","hoverImagePath"]],"\'); --tracker-icon-image-clicked-hover: url(\'",["unknown",["missionTrackerIcon","clickedHoverImagePath"]],"\'); --tracker-icon-image-active: url(\'",["unknown",["missionTrackerIcon","activeImagePath"]],"\')"]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"selectMission",["get",["index"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["missionTrackerIcon","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","tracker-columns"],["flush-element"],["text","\\n"],["block",["each"],[["get",["missionTrackerIcons"]]],null,10],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4585,8 +4609,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(75),
-          o = n(89);
+          o = n(75),
+          l = n(89);
         const i = "lny24-hub-pass-complete-bg-default";
         var r = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-event-pass-thumbnail`],
@@ -4711,13 +4735,13 @@
                 "event-pass-button",
               ),
             ),
-              (0, o.trackEventHubEventPassButtonClick)(
+              (0, l.trackEventHubEventPassButtonClick)(
                 this.get("eventSeriesId"),
               ),
-              l.SFX.circleButtonClick.play();
+              o.SFX.circleButtonClick.play();
           },
           mouseEnter() {
-            l.SFX.buttonHover.play();
+            o.SFX.buttonHover.play();
           },
         });
         t.default = r;
@@ -4741,8 +4765,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(75),
-          o = n(89);
+          o = n(75),
+          l = n(89);
         const i = "troves-hub-banner-error",
           r = "troves-hub-banner-empty",
           c = "lny24-hub-trove-textfield-bg",
@@ -4955,7 +4979,7 @@
             return null;
           }),
           mouseEnter() {
-            l.SFX.buttonHover.play();
+            o.SFX.buttonHover.play();
           },
           actions: {
             telemetryClickTreasureRealmsThumbnail() {
@@ -4970,11 +4994,11 @@
               );
             },
             SFXButtonClickPlay() {
-              l.SFX.circleButtonClick.play();
+              o.SFX.circleButtonClick.play();
             },
             onClickAction() {
               this.send("telemetryClickTreasureRealmsThumbnail"),
-                (0, o.trackEventHubTreasureRealmButtonClick)(
+                (0, l.trackEventHubTreasureRealmButtonClick)(
                   this.get("eventSeriesId"),
                 ),
                 this.send("SFXButtonClickPlay");
@@ -5007,7 +5031,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-radial-progress-bar`],
             layout: n(105),
             style: n(106),
@@ -5024,7 +5048,7 @@
               );
             }),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5046,7 +5070,7 @@
         var s = n(1),
           a = n(2);
         n(108);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-versioned-container`],
           layout: n(109),
           name: "",
@@ -5096,7 +5120,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -5118,7 +5142,7 @@
         var s = n(1),
           a = n(2);
         n(111);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-custom-flex-wrap`],
           layout: n(112),
           elementId: "custom-flex-wrap",
@@ -5165,15 +5189,15 @@
               let t = 0;
               const n = [],
                 a = this.get("columns"),
-                l = this.get("_maxRows"),
-                o = [...Array(l)].map((e) => Array(a).fill(0));
+                o = this.get("_maxRows"),
+                l = [...Array(o)].map((e) => Array(a).fill(0));
               let i = 0;
               const r = (e = 1, t = 1, s = null) => {
                 n.push({ w: e, h: t, content: s });
               };
-              for (let c = 0; c < l; ++c)
+              for (let c = 0; c < o; ++c)
                 for (let m = 0; m < a; ++m) {
-                  if (o[c][m]) {
+                  if (l[c][m]) {
                     r();
                     continue;
                   }
@@ -5188,14 +5212,14 @@
                         []
                       );
                     for (let t = m; t < m + u.w; ++t)
-                      if (o[c][t] || t >= a) {
+                      if (l[c][t] || t >= a) {
                         e = !1;
                         break;
                       }
                     if (e) {
-                      for (let e = 0; e < u.h && c + e < l; ++e)
+                      for (let e = 0; e < u.h && c + e < o; ++e)
                         for (let t = 0; t < u.w && m + t < a; ++t)
-                          (o[c + e][m + t] = 1), (i = Math.max(i, c + e));
+                          (l[c + e][m + t] = 1), (i = Math.max(i, c + e));
                       r(u.w, u.h, u.content), ++t;
                     } else r();
                   } else {
@@ -5215,7 +5239,7 @@
             );
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -5237,7 +5261,7 @@
         var s = n(1),
           a = n(2);
         n(114);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-content-viewport`],
           layout: n(115),
           fullHeight: !1,
@@ -5247,7 +5271,7 @@
               (this.element.style.height = "100vh"));
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -5268,7 +5292,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-event-daily-login-thumbnail`],
             layout: n(117),
             style: n(118),
@@ -5313,8 +5337,8 @@
                     (e) => e.state === a.BP_V2_MILESTONE_COMPLETE,
                   ),
                   s = n.length ? n[n.length - 1] : null,
-                  l = e.find((e) => e.state === a.BP_V2_MILESTONE_CLAIMABLE);
-                return l || s || t;
+                  o = e.find((e) => e.state === a.BP_V2_MILESTONE_CLAIMABLE);
+                return o || s || t;
               },
             ),
             actions: {
@@ -5328,7 +5352,7 @@
               },
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5349,8 +5373,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(89);
-        const o = s.UIKit.getVignetteCelebrationManager();
+          o = n(89);
+        const l = s.UIKit.getVignetteCelebrationManager();
         var i = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-event-daily-login-page`],
           layout: n(120),
@@ -5389,16 +5413,16 @@
           ),
           init() {
             this._super(...arguments),
-              (0, l.trackEventHubDailyLoginModuleOpen)(
+              (0, o.trackEventHubDailyLoginModuleOpen)(
                 this.get("eventSeriesId"),
               );
           },
-          _createDailyRewardCelebration(e, t, n, l, i) {
-            o.add({
+          _createDailyRewardCelebration(e, t, n, o, i) {
+            l.add({
               id: "tft_event_daily_login_celebration",
               height: "LARGE",
               data: {
-                header: { title: n, titleSubtext: l },
+                header: { title: n, titleSubtext: o },
                 backgroundImageUrl: t,
                 nextButtonText: i,
               },
@@ -5431,7 +5455,7 @@
                   .finally(() => {
                     s.Ember.set(e, "isClaimRequestPending", !1);
                   }),
-                (0, l.trackEventHubDailyLoginClaim)(
+                (0, o.trackEventHubDailyLoginClaim)(
                   e.milestoneId,
                   this.get("eventSeriesId"),
                 );
@@ -5462,7 +5486,7 @@
                   for (const e of t)
                     s.Ember.set(e, "isClaimRequestPending", !1);
                 }),
-                (0, l.trackEventHubDailyLoginClaimAllClick)(
+                (0, o.trackEventHubDailyLoginClaimAllClick)(
                   this.get("eventSeriesId"),
                 );
             },
@@ -5492,7 +5516,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-daily-login-reward-item`],
             layout: n(123),
             style: n(124),
@@ -5557,7 +5581,7 @@
               },
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5578,8 +5602,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = "lny24-event-hub-time-remaining-icon";
-        var o = s.Ember.Component.extend({
+        const o = "lny24-event-hub-time-remaining-icon";
+        var l = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-event-timer`],
           layout: n(126),
           style: n(127),
@@ -5595,7 +5619,7 @@
             "eventHubAssets",
             function () {
               const e = this.get("eventHubAssets");
-              return e ? e[l] : "";
+              return e ? e[o] : "";
             },
           ),
           endDate: s.Ember.computed("eventData", function () {
@@ -5612,11 +5636,11 @@
               let t = new Date(e) - Date.now();
               const n = Math.floor(t / a.DAY_IN_MS);
               t -= 86400 * n;
-              const l = Math.floor(t / a.HOUR_IN_MS) % 24;
-              t -= 3600 * l;
-              const o = Math.floor(t / a.MINUTE_IN_MS) % 60;
+              const o = Math.floor(t / a.HOUR_IN_MS) % 24;
+              t -= 3600 * o;
+              const l = Math.floor(t / a.MINUTE_IN_MS) % 60;
               let i, r, c;
-              t -= 60 * o;
+              t -= 60 * l;
               let m = 0;
               return n > 0
                 ? ((i = this.get("tra").formatString("tft_duration_days", {
@@ -5626,14 +5650,14 @@
                     "battlepass_time_till_event_end",
                     { duration: i },
                   ))
-                : (l > 0 && n <= 1
+                : (o > 0 && n <= 1
                     ? ((r = this.get("tra").formatString("tft_duration_hours", {
-                        hours: l,
+                        hours: o,
                       })),
-                      (m = l > 1 ? a.HOUR_IN_MS : a.MINUTE_IN_MS))
+                      (m = o > 1 ? a.HOUR_IN_MS : a.MINUTE_IN_MS))
                     : ((c = this.get("tra").formatString(
                         "tft_duration_minutes",
-                        { minutes: o },
+                        { minutes: l },
                       )),
                       (m = a.MINUTE_IN_MS)),
                   (this.timeoutExpired = !1),
@@ -5657,7 +5681,7 @@
             },
           ),
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5678,7 +5702,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-event-play-panel`],
             layout: n(129),
             style: n(130),
@@ -5699,7 +5723,7 @@
                   null);
             }),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5720,7 +5744,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-event-mission-panel`],
             layout: n(132),
             style: n(133),
@@ -5770,7 +5794,7 @@
               },
             ),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -5791,42 +5815,42 @@
           (t.default = void 0);
         var s,
           a = (s = n(88)) && s.__esModule ? s : { default: s },
-          l = n(1),
-          o = n(2);
+          o = n(1),
+          l = n(2);
         n(135);
-        var i = l.Ember.Component.extend(a.default, {
-          classNames: [`${o.PLUGIN_NAME}-event-hub-xs`],
+        var i = o.Ember.Component.extend(a.default, {
+          classNames: [`${l.PLUGIN_NAME}-event-hub-xs`],
           layout: n(136),
           style: n(137),
           telemetryEventPassTimeSpent: null,
           showTrovesThumbnail: !1,
-          tftService: l.Ember.inject.service("tft"),
-          eventHubAssets: l.Ember.computed.alias("tftService.eventHubAssets"),
-          eventsData: l.Ember.computed.alias("tftService.eventsData"),
-          eventData: l.Ember.computed("eventsData", function () {
+          tftService: o.Ember.inject.service("tft"),
+          eventHubAssets: o.Ember.computed.alias("tftService.eventHubAssets"),
+          eventsData: o.Ember.computed.alias("tftService.eventsData"),
+          eventData: o.Ember.computed("eventsData", function () {
             const e = this.get("eventsData");
             return e && Array.isArray(e) && 1 === e.length ? e[0] : null;
           }),
-          titleName: l.Ember.computed("eventData", function () {
+          titleName: o.Ember.computed("eventData", function () {
             const e = this.get("eventData");
             return e ? this.get("tra").formatString(e.titleTranslationKey) : "";
           }),
-          activeBanners: l.Ember.computed.alias(
+          activeBanners: o.Ember.computed.alias(
             "trovesService.troveActiveBanners",
           ),
-          bannerToDisplay: l.Ember.computed("activeBanners", function () {
+          bannerToDisplay: o.Ember.computed("activeBanners", function () {
             const e = this.get("activeBanners");
             if (e)
               for (let t = 0; t < e.length; ++t)
                 if (e[t] && e[t].status && !e[t].status.owned) return e[t];
             return null;
           }),
-          urlFaq: l.Ember.computed("eventData", function () {
+          urlFaq: o.Ember.computed("eventData", function () {
             return this.get("eventData")?.urlFaq || "";
           }),
           init() {
             this._super(...arguments),
-              l.db.patch("/lol-settings/v2/account/TFT/VersionsSeen", {
+              o.db.patch("/lol-settings/v2/account/TFT/VersionsSeen", {
                 data: { eventHub: 1 },
               });
           },
@@ -5861,49 +5885,49 @@
           (t.default = void 0);
         var s,
           a = (s = n(88)) && s.__esModule ? s : { default: s },
-          l = n(1),
-          o = n(2),
+          o = n(1),
+          l = n(2),
           i = n(75),
           r = n(89);
         n(139);
-        var c = l.Ember.Component.extend(a.default, {
-          classNames: [`${o.PLUGIN_NAME}-event-hub-5-year`],
+        var c = o.Ember.Component.extend(a.default, {
+          classNames: [`${l.PLUGIN_NAME}-event-hub-5-year`],
           layout: n(140),
           style: n(141),
           telemetryEventPassTimeSpent: null,
-          tftService: l.Ember.inject.service("tft"),
-          queueService: l.Ember.inject.service("queue"),
-          eventsData: l.Ember.computed.alias("tftService.eventsData"),
-          eventData: l.Ember.computed("eventsData", function () {
+          tftService: o.Ember.inject.service("tft"),
+          queueService: o.Ember.inject.service("queue"),
+          eventsData: o.Ember.computed.alias("tftService.eventsData"),
+          eventData: o.Ember.computed("eventsData", function () {
             const e = this.get("eventsData");
             return e && Array.isArray(e) && 1 === e.length ? e[0] : null;
           }),
           firstTimeFlowKey: "5YA",
-          titleName: l.Ember.computed("eventData", function () {
+          titleName: o.Ember.computed("eventData", function () {
             const e = this.get("eventData");
             return e ? this.get("tra").formatString(e.titleTranslationKey) : "";
           }),
-          activeBanners: l.Ember.computed.alias(
+          activeBanners: o.Ember.computed.alias(
             "trovesService.troveActiveBanners",
           ),
-          bannerToDisplay: l.Ember.computed("activeBanners", function () {
+          bannerToDisplay: o.Ember.computed("activeBanners", function () {
             const e = this.get("activeBanners");
             if (e)
               for (let t = 0; t < e.length; ++t)
                 if (e[t] && e[t].status && !e[t].status.owned) return e[t];
             return null;
           }),
-          urlFaq: l.Ember.computed("eventData", function () {
+          urlFaq: o.Ember.computed("eventData", function () {
             const e = this.get("eventData");
             return e ? e.urlFaq : "";
           }),
-          eventQueueId: l.Ember.computed("eventData", function () {
+          eventQueueId: o.Ember.computed("eventData", function () {
             const e = this.get("eventData"),
               t = e.queueIds;
             return t && Array.isArray(t) && t.length ? e.queueIds[0] : null;
           }),
-          queues: l.Ember.computed.alias("queueService.queues"),
-          playButtonGameModeName: l.Ember.computed(
+          queues: o.Ember.computed.alias("queueService.queues"),
+          playButtonGameModeName: o.Ember.computed(
             "eventQueueId",
             "queues",
             function () {
@@ -5973,8 +5997,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(89),
-          o = s.Ember.Component.extend({
+          o = n(89),
+          l = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-event-hub-first-time-flow`],
             layout: n(143),
             style: n(144),
@@ -5985,7 +6009,7 @@
             showModal: !0,
             init() {
               this._super(...arguments),
-                (0, l.trackEventHubIntroModalOpen)(this.get("eventSeriesId"));
+                (0, o.trackEventHubIntroModalOpen)(this.get("eventSeriesId"));
             },
             actions: {
               hideModal(e) {
@@ -5995,7 +6019,7 @@
               },
             },
           });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -6014,15 +6038,15 @@
         "use strict";
         var s,
           a = n(1),
-          l = n(13),
-          o = (s = n(146)) && s.__esModule ? s : { default: s },
+          o = n(13),
+          l = (s = n(146)) && s.__esModule ? s : { default: s },
           i = n(147);
         n(151);
         const { Component: r, RSVP: c, computed: m } = a.Ember;
         e.exports = r.extend(
-          l.DataBindingMixin,
-          l.FixDataBindingMixin,
-          o.default,
+          o.DataBindingMixin,
+          o.FixDataBindingMixin,
+          l.default,
           {
             classNames: ["tft-match-history-main", "tft-match-history-bg"],
             layout: n(152),
@@ -6140,27 +6164,27 @@
                 n = this.get("tftItemsByName"),
                 s = this.get("championsByAlias");
               e.units.forEach((e) => {
-                let l = t.get(e.character_id.toLowerCase());
-                if (l)
-                  l.character_record
-                    ? ((e.iconPath = l.character_record.squareIconPath),
-                      (e.championName = l.character_record.display_name))
-                    : ((e.iconPath = l.squareIconPath),
-                      (e.championName = l.display_name));
+                let o = t.get(e.character_id.toLowerCase());
+                if (o)
+                  o.character_record
+                    ? ((e.iconPath = o.character_record.squareIconPath),
+                      (e.championName = o.character_record.display_name))
+                    : ((e.iconPath = o.squareIconPath),
+                      (e.championName = o.display_name));
                 else {
                   const t = e.name.replace("TFT_", "").replace("TFT2_", "");
-                  (l = s.get(t)),
-                    l
-                      ? ((e.iconPath = l.squarePortraitPath),
-                        (e.championName = l.name))
+                  (o = s.get(t)),
+                    o
+                      ? ((e.iconPath = o.squarePortraitPath),
+                        (e.championName = o.name))
                       : a.logger.trace("Unknown champion: " + e);
                 }
-                const o = [];
+                const l = [];
                 e.itemNames.forEach((e) => {
                   const t = n.get(e);
-                  t && o.push(t);
+                  t && l.push(t);
                 }),
-                  (e.equippedItems = o);
+                  (e.equippedItems = l);
               }),
                 e.units.sort((e, t) =>
                   e.tier > t.tier
@@ -6264,12 +6288,12 @@
         function a(e) {
           return s.createSound(e, { allowConcurrency: !1 });
         }
-        const l = {
+        const o = {
           genericClickSm: a(n(148)),
           gridClick: a(n(149)),
           gridHover: a(n(150)),
         };
-        t.SFX = l;
+        t.SFX = o;
       },
       (e, t, n) => {
         "use strict";
@@ -6443,12 +6467,12 @@
             tooltipAnchor: { x: "center", y: "bottom" },
             tooltipDirection: "top",
           },
-          l = {
+          o = {
             targetAnchor: { x: "center", y: "bottom" },
             tooltipAnchor: { x: "center", y: "top" },
             tooltipDirection: "bottom",
           };
-        var o = s.Ember.Component.extend({
+        var l = s.Ember.Component.extend({
           classNames: ["match-history-tooltip"],
           layout: n(157),
           toolTipAttached: !1,
@@ -6474,7 +6498,7 @@
             this.detachTooltip(), this._super(...arguments);
           },
           attachTooltip: function () {
-            const e = "bottom" === this.get("direction") ? l : a;
+            const e = "bottom" === this.get("direction") ? o : a;
             s.TooltipManager.assign(
               this.tooltipHoverElement,
               this.tooltipElement,
@@ -6486,7 +6510,7 @@
             s.TooltipManager.unassign(this.tooltipHoverElement);
           },
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -6503,8 +6527,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(159),
-          o = s.Ember.Component.extend({
+          o = n(159),
+          l = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-troves-mythic-button"],
             mythicTokenIcon:
               "/fe/lol-tft-troves/images/TFT_Icon_mythicTokens.png",
@@ -6555,7 +6579,7 @@
             ),
             click() {
               this.get("isPulling") ||
-                (l.SFX.buttonClick.play(),
+                (o.SFX.buttonClick.play(),
                 s.Telemetry.sendCustomData(a.TELEMETRY_TABLE_NAME, {
                   [a.TELEMETRY_EVENT_KEY_EVENT_NAME]:
                     a.TELEMETRY_EVENT_NAME_MYTHIC_BUTTON,
@@ -6566,7 +6590,7 @@
                 this.set("confirmModalShowing", !0));
             },
             mouseEnter() {
-              this.get("isPulling") || l.SFX.buttonHover.play();
+              this.get("isPulling") || o.SFX.buttonHover.play();
             },
             actions: {
               useMythicToken() {
@@ -6611,8 +6635,8 @@
               if (!t) return;
               const n = this.get("mythicTokenIcon"),
                 a = this.get("disableAcceptButton") ? "disabled" : "",
-                l = s.tra.get("troves_mythic_token_dialog_open");
-              (t.innerHTML = `\n      <div class="button-with-icon">\n      <img src="${n}" class="mythic-currency-icon" ${a}>\n      <span>${l}</span>\n      </div>`),
+                o = s.tra.get("troves_mythic_token_dialog_open");
+              (t.innerHTML = `\n      <div class="button-with-icon">\n      <img src="${n}" class="mythic-currency-icon" ${a}>\n      <span>${o}</span>\n      </div>`),
                 t.setAttribute("primary", !0),
                 t.blur(),
                 this.get("disableAcceptButton") && (t.disabled = !0);
@@ -6640,30 +6664,30 @@
                 this.set("currentRmsNotificationTransactionId", null));
             },
           });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }), (t.SFX = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.AudioPlugin.getChannel(
+        const o = s.AudioPlugin.getChannel(
           a.AUDIO_CHANNELS.SFX_SUB_CHANNEL_UI_NAME,
         );
-        function o(e) {
-          return l.createSound(e, { allowConcurrency: !1 });
+        function l(e) {
+          return o.createSound(e, { allowConcurrency: !1 });
         }
         const i = {
-          buttonClick: o(
+          buttonClick: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-big-click.ogg",
           ),
-          buttonHover: o(
+          buttonHover: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-generic-hover.ogg",
           ),
-          circleButtonClick: o(
+          circleButtonClick: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-circlegold-click.ogg",
           ),
-          circleButtonHover: o(
+          circleButtonHover: l(
             "/fe/lol-static-assets/sounds/sfx-uikit-button-circlegold-hover.ogg",
           ),
         };
@@ -6691,7 +6715,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [
               "rcp-fe-lol-tft-troves-pull-button",
               "single-button-container",
@@ -6760,7 +6784,7 @@
                 this.set("currentRmsNotificationTransactionId", null));
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -6768,7 +6792,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-troves-pull-buttons-container"],
             selectedOfferId: null,
             activeBannerStatus: null,
@@ -6863,7 +6887,7 @@
               },
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -6894,12 +6918,12 @@
           (t.default = void 0);
         var s = n(1);
         const { Component: a } = s.Ember;
-        var l = a.extend({
+        var o = a.extend({
           classNames: ["rcp-fe-lol-tft-troves-banners"],
           activeBanners: null,
           setSelectedChasedContentId: null,
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -6907,8 +6931,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(2);
-        const { SFX_SUB_CHANNEL_UI_NAME: o } = l.AUDIO_CHANNELS,
+          o = n(2);
+        const { SFX_SUB_CHANNEL_UI_NAME: l } = o.AUDIO_CHANNELS,
           { Component: i, computed: r } = s.Ember;
         function c(e) {
           return {
@@ -7026,7 +7050,7 @@
             return this.get("standardRewards").length > 0;
           }),
           _playSFX(e) {
-            s.Audio.getChannel(o).playSound(e);
+            s.Audio.getChannel(l).playSound(e);
           },
           didInsertElement() {
             this._super(...arguments);
@@ -7160,8 +7184,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78);
-        const { Component: l, computed: o } = s.Ember;
-        var i = l.extend({
+        const { Component: o, computed: l } = s.Ember;
+        var i = o.extend({
           classNames: ["highlight-rewards"],
           classNameBindings: [
             "playAnimation:playing:not-playing",
@@ -7176,7 +7200,7 @@
             "highlightSegmentData.transitionWipeSoundPath",
           ),
           onButtonClick: null,
-          highlightParams: o(
+          highlightParams: l(
             "highlightRewardsExist",
             "highlightSliderValue",
             function () {
@@ -7185,7 +7209,7 @@
               };
             },
           ),
-          highlightSliderValue: o(
+          highlightSliderValue: l(
             "ceremonyData",
             "pullType",
             "highlightRewardsExist",
@@ -7207,7 +7231,7 @@
               }
             },
           ),
-          highlightReplacementImages: o("rewards", function () {
+          highlightReplacementImages: l("rewards", function () {
             const e = this.get("rewards")[0];
             if (e.itemTypeId === a.TYPE_ID_PROMISETOKEN) return {};
             return {
@@ -7218,7 +7242,7 @@
                 : e.rewardTexturePath,
             };
           }),
-          highlightReplacementText: o(
+          highlightReplacementText: l(
             "highlightSegmentData",
             "rewards",
             function () {
@@ -7232,9 +7256,9 @@
               return t;
             },
           ),
-          highlightLottiePath: o.alias("highlightSegmentData.lottieJsonPath"),
+          highlightLottiePath: l.alias("highlightSegmentData.lottieJsonPath"),
           pauseHighlightSegment: !1,
-          highlightLottieImagePath: o("highlightLottiePath", function () {
+          highlightLottieImagePath: l("highlightLottiePath", function () {
             if (this.get("highlightLottiePath")) {
               const e = this.get("highlightLottiePath");
               return e.substr(0, e.lastIndexOf("/") + 1) + "images/";
@@ -7250,8 +7274,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(2);
-        const { SFX_SUB_CHANNEL_UI_NAME: o } = l.AUDIO_CHANNELS,
+          o = n(2);
+        const { SFX_SUB_CHANNEL_UI_NAME: l } = o.AUDIO_CHANNELS,
           { Component: i, computed: r } = s.Ember,
           c = "UX Choice: no reveal sound";
         var m = i.extend({
@@ -7345,9 +7369,9 @@
           init() {
             this._super(...arguments);
             const e = this._getRevealSfxPath();
-            e !== c && s.Audio.getChannel(o).playSound(e);
+            e !== c && s.Audio.getChannel(l).playSound(e);
             const t = this.get("standardSegmentData");
-            s.Audio.getChannel(o).playSound(t.revealGlobalSoundPath);
+            s.Audio.getChannel(l).playSound(t.revealGlobalSoundPath);
           },
           didInsertElement() {
             this._super(...arguments);
@@ -7374,15 +7398,15 @@
         var s = n(1),
           a = n(78);
         n(169);
-        const { Component: l, computed: o } = s.Ember;
-        var i = l.extend({
+        const { Component: o, computed: l } = s.Ember;
+        var i = o.extend({
           classNames: ["rcp-fe-lol-tft-troves-chased-content"],
           showDropRatesModal: !1,
           moreInfoIcon: "/fe/lol-tft-troves/images/TFT_Icon_moreInfo.png",
           chasedContent: null,
           onPityUpdate: null,
           trovesService: s.Ember.inject.service("tftTroves"),
-          pityCounter: o(
+          pityCounter: l(
             "chasedContent.status",
             "chasedContent.pityLimit",
             function () {
@@ -7392,7 +7416,7 @@
               return this.get("onPityUpdate") && this.get("onPityUpdate")(n), n;
             },
           ),
-          pityText: o(
+          pityText: l(
             "pityCounter",
             "chasedContent.name",
             "chasedContent.status",
@@ -7407,23 +7431,23 @@
               const s = this.get("chasedContent.status"),
                 a = s && s.owned;
               a && (n = this.get("tra.troves_promise_token"));
-              const l = { pity_count: e, name: n };
-              let o;
+              const o = { pity_count: e, name: n };
+              let l;
               if (this.get("chasedContent.isCollectorBounty")) {
                 const e = this.get("chasedContent.maxTotalRolls"),
                   t = this.get("chasedContent.status.totalRollsCount");
-                (l.max_roll = e),
-                  (l.pity_count = e - t),
-                  (o = s.isCollectorBountyMaxRollsMet
+                (o.max_roll = e),
+                  (o.pity_count = e - t),
+                  (l = s.isCollectorBountyMaxRollsMet
                     ? "troves_collectors_pity_max_rolls_text"
                     : a
                       ? "troves_collectors_pity_owned_text"
                       : "troves_collectors_pity_text");
-              } else o = "troves_chased_content_pity_text";
-              return t.formatString(o, l);
+              } else l = "troves_chased_content_pity_text";
+              return t.formatString(l, o);
             },
           ),
-          legalDisclaimer: o("chasedContent.isCollectorBounty", function () {
+          legalDisclaimer: l("chasedContent.isCollectorBounty", function () {
             const e = this.get("chasedContent.isCollectorBounty"),
               t = this.get("tra"),
               n = e
@@ -7435,7 +7459,7 @@
               a = e
                 ? "collectors_loot_odds_bad_luck_protection_description"
                 : "troves_loot_odds_bad_luck_protection_description",
-              l = {
+              o = {
                 badgeTitle: t.get(n),
                 title: t.get(s),
                 description: t.get(a),
@@ -7443,13 +7467,13 @@
               };
             return (
               e &&
-                (l.subtitle = t.get(
+                (o.subtitle = t.get(
                   "collectors_loot_odds_droprates_modal_legal_disclaimer_subtitle",
                 )),
-              l
+              o
             );
           }),
-          legalDisclaimerTrovesV2: o(function () {
+          legalDisclaimerTrovesV2: l(function () {
             const e = this.get("tra");
             return {
               badgeTitle: e.get("troves_loot_odds_mythic_promise_badge_title"),
@@ -7458,7 +7482,7 @@
               iconCssClass: "mythic-promise-icon",
             };
           }),
-          duplicateDisclaimerTrovesV2: o(function () {
+          duplicateDisclaimerTrovesV2: l(function () {
             const e = this.get("tra");
             return {
               badgeTitle: e.get("troves_loot_odds_duplicates_badge_title"),
@@ -7467,12 +7491,12 @@
               iconCssClass: "duplicate-rewards-icon",
             };
           }),
-          showBannerTimer: o("chasedContent", function () {
+          showBannerTimer: l("chasedContent", function () {
             const e = this.get("chasedContent");
             if (!e || !e.endDate) return !1;
             return new Date(e.endDate) - Date.now() > 0;
           }),
-          hasBannerTexture: o("chasedContent.bannerTexture", function () {
+          hasBannerTexture: l("chasedContent.bannerTexture", function () {
             const e = this.get("chasedContent.bannerTexture");
             return e && e.endsWith(".png");
           }),
@@ -7521,7 +7545,7 @@
           Object.defineProperty(t, "REWARD_TRACKER", {
             enumerable: !0,
             get: function () {
-              return l.default;
+              return o.default;
             },
           }),
           Object.defineProperty(t, "SETTINGS", {
@@ -7533,7 +7557,7 @@
           Object.defineProperty(t, "SOCIAL", {
             enumerable: !0,
             get: function () {
-              return o.default;
+              return l.default;
             },
           }),
           Object.defineProperty(t, "TIME", {
@@ -7544,8 +7568,8 @@
           });
         var s = m(n(170)),
           a = m(n(181)),
-          l = m(n(182)),
-          o = m(n(183)),
+          o = m(n(182)),
+          l = m(n(183)),
           i = m(n(184)),
           r = m(n(185)),
           c = m(n(186));
@@ -7559,8 +7583,8 @@
           (t.default = void 0);
         var s = p(n(171)),
           a = p(n(172)),
-          l = p(n(173)),
-          o = p(n(174)),
+          o = p(n(173)),
+          l = p(n(174)),
           i = p(n(175)),
           r = p(n(176)),
           c = p(n(177)),
@@ -7573,8 +7597,8 @@
         var h = {
           COMPONENT_TYPES: s.default,
           CURRENCY_TYPES: a.default,
-          INVENTORY_TYPES: l.default,
-          MEDIA_TYPES: o.default,
+          INVENTORY_TYPES: o.default,
+          MEDIA_TYPES: l.default,
           MEDIA_LOAD_TYPES: i.default,
           MODAL_TYPES: r.default,
           OFFER_PURCHASE_STATES: c.default,
@@ -7706,15 +7730,15 @@
         const n = "RANKED_SOLO_5x5",
           s = "RANKED_FLEX_SR",
           a = "RANKED_FLEX_TT",
-          l = "CHERRY",
-          o = "RANKED_TFT",
+          o = "CHERRY",
+          l = "RANKED_TFT",
           i = "RANKED_TFT_DOUBLE_UP",
           r = "RANKED_TFT_TURBO",
           c = "RANKED_TFT_PAIRS",
           m = [n, s],
           u = [...m, a],
-          d = [l],
-          p = [o, i],
+          d = [o],
+          p = [l, i],
           h = [r, c],
           f = [...p, ...h],
           g = [...u, ...p],
@@ -7723,8 +7747,8 @@
           RANKED_SOLO_5x5_QUEUE_TYPE: n,
           RANKED_FLEX_SR_QUEUE_TYPE: s,
           RANKED_FLEX_TT_QUEUE_TYPE: a,
-          RANKED_CHERRY_QUEUE_TYPE: l,
-          RANKED_TFT_QUEUE_TYPE: o,
+          RANKED_CHERRY_QUEUE_TYPE: o,
+          RANKED_TFT_QUEUE_TYPE: l,
           RANKED_TFT_DOUBLE_UP_QUEUE_TYPE: i,
           RANKED_TFT_TURBO_QUEUE_TYPE: r,
           RANKED_TFT_PAIRS_QUEUE_TYPE: c,
@@ -7825,17 +7849,17 @@
         t.TIME_UNITS = n;
         const s = 36e5,
           a = 864e5,
-          l = 6048e5,
-          o = {
+          o = 6048e5,
+          l = {
             MILLISECONDS_IN_A_SECOND: 1e3,
             MILLISECONDS_IN_A_MINUTE: 6e4,
             MILLISECONDS_IN_A_HOUR: s,
             MILLISECONDS_IN_A_DAY: a,
-            MILLISECONDS_IN_A_WEEK: l,
+            MILLISECONDS_IN_A_WEEK: o,
             MILLISECONDS_IN_A_YEAR: 314496e5,
           };
-        t.TIME_CONVERSIONS = o;
-        var i = { TIME_UNITS: n, TIME_CONVERSIONS: o };
+        t.TIME_CONVERSIONS = l;
+        var i = { TIME_UNITS: n, TIME_CONVERSIONS: l };
         t.default = i;
       },
       (e, t, n) => {
@@ -7845,12 +7869,12 @@
         var s = n(1),
           a = n(78);
         n(169);
-        const l = n(90),
-          { Component: o, computed: i } = s.Ember,
+        const o = n(90),
+          { Component: l, computed: i } = s.Ember,
           r = "troves-hub-banner-error",
           c = "troves-hub-banner-empty",
           m = "troves-hub-cloud-platform-image";
-        var u = o.extend({
+        var u = l.extend({
           classNames: ["rcp-fe-lol-tft-troves"],
           trovesService: s.Ember.inject.service("tftTroves"),
           activeBanner: null,
@@ -7914,7 +7938,7 @@
           }),
           didInsertElement() {
             this._super(...arguments);
-            const e = l();
+            const e = o();
             this.set("_visitId", e),
               s.Telemetry.sendCustomData(a.TELEMETRY_TABLE_NAME, {
                 [a.TELEMETRY_EVENT_KEY_EVENT_NAME]:
@@ -7955,9 +7979,9 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(2);
-        const { SFX_SUB_CHANNEL_AMBIENCE_INTERRUPTABLE_NAME: o } =
-            l.AUDIO_CHANNELS,
+          o = n(2);
+        const { SFX_SUB_CHANNEL_AMBIENCE_INTERRUPTABLE_NAME: l } =
+            o.AUDIO_CHANNELS,
           { Component: i, computed: r } = s.Ember;
         var c = i.extend({
           classNames: ["reward-card"],
@@ -8070,7 +8094,7 @@
               t = this.get("isLegendary")
                 ? e.pullSingleIndividualGlintLegendarySoundPath
                 : e.pullSingleIndividualGlintSoundPath;
-            s.Audio.getChannel(o).playSound(t);
+            s.Audio.getChannel(l).playSound(t);
           },
           rarityCssClass: s.Ember.computed("reward.rarity", function () {
             return (this.get("reward.rarity") || "default").toLowerCase();
@@ -8103,8 +8127,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(2);
-        const { SFX_SUB_CHANNEL_UI_NAME: o } = l.AUDIO_CHANNELS,
+          o = n(2);
+        const { SFX_SUB_CHANNEL_UI_NAME: l } = o.AUDIO_CHANNELS,
           { Component: i, computed: r } = s.Ember;
         var c = i.extend({
           classNames: "portal-video",
@@ -8150,7 +8174,7 @@
                 this.get("pullType") === a.PULL_TYPE_MULTI
                   ? e.multiPullSoundPath
                   : t),
-              (this._currentSFX = s.Audio.getChannel(o).createSound(t)),
+              (this._currentSFX = s.Audio.getChannel(l).createSound(t)),
               this._currentSFX.play()
             );
           },
@@ -8198,20 +8222,20 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var s = n(1);
-        const { Component: a, computed: l } = s.Ember,
-          o = 1e3;
+        const { Component: a, computed: o } = s.Ember,
+          l = 1e3;
         var i = a.extend({
           classNames: ["troves-sprite-animation"],
           sprite: null,
-          numRows: l.alias("sprite.numRows"),
-          numCols: l.alias("sprite.numCols"),
+          numRows: o.alias("sprite.numRows"),
+          numCols: o.alias("sprite.numCols"),
           backgroundImage: null,
           currentFrame: 0,
           playCount: 0,
           delayTimeout: null,
           durationTimeout: null,
           animationInterval: null,
-          elementStyle: l(
+          elementStyle: o(
             "backgroundImage",
             "backgroundPositionX",
             "backgroundPositionY",
@@ -8259,11 +8283,11 @@
                             -1 === e || t < e ? (s = 0) : this.stop();
                         }
                       },
-                      o / this.get("sprite.fps"),
+                      l / this.get("sprite.fps"),
                     ),
                   );
                 },
-                o * this.get("sprite.delay"),
+                l * this.get("sprite.delay"),
               ),
             );
             const t = this.get("sprite.duration");
@@ -8273,7 +8297,7 @@
                 "durationTimeout",
                 setTimeout(() => {
                   this.stop();
-                }, o * t),
+                }, l * t),
               );
           },
           stop() {
@@ -8302,14 +8326,14 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-time-remaining-widget`],
             bannerData: null,
             bannerName: s.Ember.computed.alias("bannerData.name"),
             startDate: s.Ember.computed.alias("bannerData.startDate"),
             endDate: s.Ember.computed.alias("bannerData.endDate"),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -8317,17 +8341,17 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193);
-        const { Component: l, computed: o, typeOf: i } = s.Ember;
-        var r = l.extend({
+        const { Component: o, computed: l, typeOf: i } = s.Ember;
+        var r = o.extend({
           classNames: ["rcp-fe-lol-tft-troves-milestone-rewards-tracker"],
           closeMilestoneRewardsModal: null,
           rewardPositionInterval: -6,
           trovesService: s.Ember.inject.service("tftTroves"),
-          milestones: o.alias("trovesService.milestones"),
-          milestoneCounter: o.alias("milestones.counter"),
-          progressInterval: o.alias("milestoneCounter.increaseBy"),
-          progressCurrent: o.alias("milestoneCounter.resetValue"),
-          milestoneRewards: o(
+          milestones: l.alias("trovesService.milestones"),
+          milestoneCounter: l.alias("milestones.counter"),
+          progressInterval: l.alias("milestoneCounter.increaseBy"),
+          progressCurrent: l.alias("milestoneCounter.resetValue"),
+          milestoneRewards: l(
             "milestones.milestones",
             "progressCurrent",
             "progressInterval",
@@ -8338,11 +8362,11 @@
                 n = this.get("progressInterval"),
                 s = this.get("rewardPositionInterval");
               return (
-                e.map((e, l) => {
-                  const o = e.currencyId;
-                  a.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.has(o) &&
-                    (e.iconURL = a.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.get(o)),
-                    (e.progressPosition = s * l * 2),
+                e.map((e, o) => {
+                  const l = e.currencyId;
+                  a.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.has(l) &&
+                    (e.iconURL = a.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.get(l)),
+                    (e.progressPosition = s * o * 2),
                     (e.position = e.progressPosition + s),
                     e.resetValue <= t
                       ? (e.progressPercentage = 100)
@@ -8355,24 +8379,24 @@
               );
             },
           ),
-          milestoneRewardsLength: o("milestoneRewards", function () {
+          milestoneRewardsLength: l("milestoneRewards", function () {
             const e = this.get("milestoneRewards");
             return e && "array" === i(e) ? e.length : 0;
           }),
-          progressMax: o("milestoneRewards", function () {
+          progressMax: l("milestoneRewards", function () {
             const e = this.get("milestoneRewards");
             if (e && "array" === i(e) && e.length) {
               return e[e.length - 1].resetValue;
             }
             return 0;
           }),
-          progressIndex: o("milestoneRewards", function () {
+          progressIndex: l("milestoneRewards", function () {
             const e = this.get("milestoneRewards").findIndex(
               (e) => !e.triggered,
             );
             return -1 !== e ? e : 0;
           }),
-          repeatTooltipProgressFormat: o(
+          repeatTooltipProgressFormat: l(
             "progressCurrent",
             "progressMax",
             function () {
@@ -8385,27 +8409,27 @@
               );
             },
           ),
-          milestoneClaimedCheckmark: o("trovesService", function () {
+          milestoneClaimedCheckmark: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-claimed-checkmark"] : "";
           }),
-          milestoneFrameImagePath: o("trovesService", function () {
+          milestoneFrameImagePath: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-frame"] : "";
           }),
-          milestonePipActiveImagePath: o("trovesService", function () {
+          milestonePipActiveImagePath: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-pip-active"] : "";
           }),
-          milestonePipClaimedImagePath: o("trovesService", function () {
+          milestonePipClaimedImagePath: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-pip-claimed"] : "";
           }),
-          milestonePipLockedImagePath: o("trovesService", function () {
+          milestonePipLockedImagePath: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-pip-locked"] : "";
           }),
-          repeatIconImagePath: o("trovesService", function () {
+          repeatIconImagePath: l("trovesService", function () {
             const e = this.get("trovesService").trovesPromoAssets;
             return e ? e["troves-hub-milestone-rotate-icon"] : "";
           }),
@@ -8468,44 +8492,44 @@
           PURCHASE_TRANSACTION: "/lol-marketplace/v1/purchases",
           GENERIC_ASSETS: "/lol-game-data/assets/v1/generic-assets.json",
         };
-        const l = {
+        const o = {
             _1x1: { w: 1, h: 1 },
             _1x2: { w: 1, h: 2 },
             _2x1: { w: 2, h: 1 },
             _2x2: { w: 2, h: 2 },
           },
-          o = {
+          l = {
             ARENA: "arena",
             BOOM: "boom",
             CHIBI: "chibi",
             LITTLE_LEGEND: "littlelegend",
           };
-        t.ITEM_TYPES = o;
+        t.ITEM_TYPES = l;
         const i = "large-square",
           r = {
             [n.MYTHIC]: {
-              [o.ARENA]: l._2x1,
-              [o.BOOM]: l._2x1,
-              [o.CHIBI]: l._1x2,
-              [o.LITTLE_LEGEND]: l._1x1,
-              [i]: l._2x2,
-              DEFAULT: l._1x1,
+              [l.ARENA]: o._2x1,
+              [l.BOOM]: o._2x1,
+              [l.CHIBI]: o._1x2,
+              [l.LITTLE_LEGEND]: o._1x1,
+              [i]: o._2x2,
+              DEFAULT: o._1x1,
             },
             [n.SEASONAL]: {
-              [o.ARENA]: l._2x1,
-              [o.BOOM]: l._2x1,
-              [o.CHIBI]: l._1x1,
-              [o.LITTLE_LEGEND]: l._1x1,
-              [i]: l._2x2,
-              DEFAULT: l._1x1,
+              [l.ARENA]: o._2x1,
+              [l.BOOM]: o._2x1,
+              [l.CHIBI]: o._1x1,
+              [l.LITTLE_LEGEND]: o._1x1,
+              [i]: o._2x2,
+              DEFAULT: o._1x1,
             },
             DEFAULT: {
-              [o.ARENA]: l._1x1,
-              [o.BOOM]: l._1x1,
-              [o.CHIBI]: l._1x1,
-              [o.LITTLE_LEGEND]: l._1x1,
-              [i]: l._1x1,
-              DEFAULT: l._1x1,
+              [l.ARENA]: o._1x1,
+              [l.BOOM]: o._1x1,
+              [l.CHIBI]: o._1x1,
+              [l.LITTLE_LEGEND]: o._1x1,
+              [i]: o._1x1,
+              DEFAULT: o._1x1,
             },
           };
         t.ITEM_TYPE_FRAME_DEFINITIONS = r;
@@ -8514,24 +8538,24 @@
           u = "longTileUVs",
           d = {
             [n.MYTHIC]: {
-              [o.ARENA]: u,
-              [o.BOOM]: u,
-              [o.CHIBI]: "tallTileUVs",
-              [o.LITTLE_LEGEND]: c,
+              [l.ARENA]: u,
+              [l.BOOM]: u,
+              [l.CHIBI]: "tallTileUVs",
+              [l.LITTLE_LEGEND]: c,
               [i]: m,
             },
             [n.SEASONAL]: {
-              [o.ARENA]: u,
-              [o.BOOM]: u,
-              [o.CHIBI]: c,
-              [o.LITTLE_LEGEND]: c,
+              [l.ARENA]: u,
+              [l.BOOM]: u,
+              [l.CHIBI]: c,
+              [l.LITTLE_LEGEND]: c,
               [i]: m,
             },
             DEFAULT: {
-              [o.ARENA]: c,
-              [o.BOOM]: c,
-              [o.CHIBI]: c,
-              [o.LITTLE_LEGEND]: c,
+              [l.ARENA]: c,
+              [l.BOOM]: c,
+              [l.CHIBI]: c,
+              [l.LITTLE_LEGEND]: c,
               [i]: m,
             },
           };
@@ -8548,9 +8572,9 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(2);
-        const { SFX_SUB_CHANNEL_AMBIENCE_INTERRUPTABLE_NAME: o } =
-            l.AUDIO_CHANNELS,
+          o = n(2);
+        const { SFX_SUB_CHANNEL_AMBIENCE_INTERRUPTABLE_NAME: l } =
+            o.AUDIO_CHANNELS,
           { Component: i, computed: r } = s.Ember;
         var c = i.extend({
           classNames: ["reward-card-v2"],
@@ -8698,16 +8722,16 @@
                 t = e?.itemId,
                 n = e?.quantity,
                 s = this.get("trovesPromoAssets"),
-                l = this.get("isDuplicate");
+                o = this.get("isDuplicate");
               if (t && n)
                 switch (t) {
                   case a.TYPE_ID_REALMCRYSTAL:
-                    if (l) return s["troves-hub-realm-crystal-duplicate"] || "";
+                    if (o) return s["troves-hub-realm-crystal-duplicate"] || "";
                     if (n >= 1e3) return s["troves-hub-realm-crystal-L"] || "";
                     if (n > 100) return s["troves-hub-realm-crystal-M"] || "";
                     break;
                   case a.TYPE_ID_MYTHICMEDALLION:
-                    if (l)
+                    if (o)
                       return s["troves-hub-mythic-medallion-duplicate"] || "";
                     if (n >= 5) return s["troves-hub-mythic-medallion-L"] || "";
                     if (n >= 3) return s["troves-hub-mythic-medallion-M"] || "";
@@ -8731,7 +8755,7 @@
               t = this.get("isLegendary")
                 ? e.pullSingleIndividualGlintLegendarySoundPath
                 : e.pullSingleIndividualGlintSoundPath;
-            s.Audio.getChannel(o).playSound(t);
+            s.Audio.getChannel(l).playSound(t);
           },
           rarityCssClass: s.Ember.computed("reward.rarity", function () {
             return (this.get("reward.rarity") || "default").toLowerCase();
@@ -8764,8 +8788,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(193),
-          o = n(89);
+          o = n(193),
+          l = n(89);
         const i = n(90),
           { Component: r, computed: c } = s.Ember,
           m = "troves-hub-banner-error",
@@ -8798,7 +8822,7 @@
               const e = this.get("activeBanner.chaseContentId"),
                 t = this.get("rotationalShopService.groupedStores");
               if (e && t) {
-                const n = t.get(l.TFT_ROTATIONAL_SHOP_GROUPS.MYTHIC);
+                const n = t.get(o.TFT_ROTATIONAL_SHOP_GROUPS.MYTHIC);
                 if (!s.Ember.isEmpty(n)) {
                   const t = n[0];
                   if (e && t)
@@ -8807,9 +8831,9 @@
                       if (a.catalogEntries)
                         for (let t = 0; t < a.catalogEntries.length; t++) {
                           const n = a.catalogEntries[t],
-                            l = n.purchaseUnits;
-                          if ("array" === s.Ember.typeOf(l) && l.length > 0) {
-                            const t = l[0].fulfillment;
+                            o = n.purchaseUnits;
+                          if ("array" === s.Ember.typeOf(o) && o.length > 0) {
+                            const t = o[0].fulfillment;
                             if (t && t.itemId === e)
                               return { storeId: a.id, item: n };
                           }
@@ -8872,10 +8896,10 @@
           },
           init() {
             this._super(...arguments),
-              (0, o.trackOpenTroves)(this.get("activeBannerIds"));
+              (0, l.trackOpenTroves)(this.get("activeBannerIds"));
           },
           willDestroyElement() {
-            this._super(...arguments), (0, o.trackCloseTroves)();
+            this._super(...arguments), (0, l.trackCloseTroves)();
           },
           actions: {
             setSelectedChasedContentId(e) {
@@ -8911,8 +8935,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(197);
-        const l = "troves-ftf-splash-image",
-          o = "troves-ftf-background-image";
+        const o = "troves-ftf-splash-image",
+          l = "troves-ftf-background-image";
         var i = s.Ember.Component.extend({
           classNames: ["rcp-fe-lol-tft-troves-v2-first-time-flow"],
           tftService: s.Ember.inject.service("tft"),
@@ -8925,14 +8949,14 @@
             "rotationalShopAssets",
             function () {
               const e = this.get("rotationalShopAssets");
-              return e ? e[l] : "";
+              return e ? e[o] : "";
             },
           ),
           backgroundImagePath: s.Ember.computed(
             "rotationalShopAssets",
             function () {
               const e = this.get("rotationalShopAssets");
-              return e ? e[o] : "";
+              return e ? e[l] : "";
             },
           ),
           didRender() {
@@ -8972,17 +8996,17 @@
                 '\n    :host .lol-uikit-dialog-frame.top, :host .lol-uikit-dialog-frame.bottom {\n      border-image-source: linear-gradient(180deg, #AFE1F9 -171.29%, #BBA7F2 -35.19%, #8A81E9 100%);\n    }\n    :host .lol-uikit-dialog-frame.top .lol-uikit-dialog-frame-sub-border::before,\n    :host .lol-uikit-dialog-frame.bottom .lol-uikit-dialog-frame-sub-border::before {\n      top: -6px;\n      border-image-source: url("/fe/lol-tft/images/rotational-shop/rotashop-sub-border-secondary-horizontal.png");\n    }\n    :host .lol-uikit-dialog-frame.top .lol-uikit-dialog-frame-sub-border::after,\n    :host .lol-uikit-dialog-frame.bottom .lol-uikit-dialog-frame-sub-border::after {\n      bottom: -6px;\n      border-image-source: url("/fe/lol-tft/images/rotational-shop/rotashop-sub-border-primary-horizontal.png");\n    }\n    '),
                 s.appendChild(e);
             }
-            const l = n.querySelector(
+            const o = n.querySelector(
               "lol-uikit-flat-button-group",
             )?.shadowRoot;
-            if (l) {
+            if (o) {
               const e = document.createElement("style");
               (e.textContent =
                 "\n    :host([type=dialog-frame]) .lol-uikit-flat-button-group::before {\n      border-right: 2px solid #8A81E9;\n    }\n    :host([type=dialog-frame]) .lol-uikit-flat-button-group::after {\n      border-left: 2px solid #8A81E9;\n    }\n    "),
-                l.appendChild(e);
+                o.appendChild(e);
             }
-            const o = n.querySelector("lol-uikit-flat-button.button-accept");
-            o && (o.setAttribute("primary", !1), o.blur(), a(o));
+            const l = n.querySelector("lol-uikit-flat-button.button-accept");
+            l && (l.setAttribute("primary", !1), l.blur(), a(l));
           });
         var s = n(1);
         function a(e) {
@@ -9001,8 +9025,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78);
-        const l = "troves-ceremony-milestone-lottie-json-path",
-          o = "crafting-ceremony-currency-lottie-sound-path";
+        const o = "troves-ceremony-milestone-lottie-json-path",
+          l = "crafting-ceremony-currency-lottie-sound-path";
         var i = s.Ember.Component.extend({
           classNames: ["troves-ceremony-milestone-rewards"],
           milestones: null,
@@ -9023,8 +9047,8 @@
                 t = this.get("rotationalShopAssets");
               this.get("item");
               return (
-                (e.src = t[l] || ""),
-                (e.sfxSrc = t[o] || ""),
+                (e.src = t[o] || ""),
+                (e.sfxSrc = t[l] || ""),
                 (e.imagePath =
                   e.src.substr(0, e.src.lastIndexOf("/") + 1) + "images/"),
                 e
@@ -9049,23 +9073,23 @@
                 t = { rewardName: "", rewardDescription: "", title: "" };
               if ("array" === s.Ember.typeOf(e) && e.length > 0) {
                 const n = e[0];
-                let l = "",
-                  o = "";
+                let o = "",
+                  l = "";
                 switch (n.currencyId) {
                   case a.TYPE_ID_REALMCRYSTAL:
-                    (l = "rotational_shop_standard_currency_name"),
-                      (o = "rotational_shop_standard_currency_quantity");
+                    (o = "rotational_shop_standard_currency_name"),
+                      (l = "rotational_shop_standard_currency_quantity");
                     break;
                   case a.TYPE_ID_MYTHICMEDALLION:
-                    (l = "rotational_shop_premium_currency_name"),
-                      (o = "rotational_shop_premium_currency_quantity");
+                    (o = "rotational_shop_premium_currency_name"),
+                      (l = "rotational_shop_premium_currency_quantity");
                 }
-                (t.rewardName = s.tra.formatString(o, {
+                (t.rewardName = s.tra.formatString(l, {
                   quantity: n.currencyAmount || 1,
                 })),
                   (t.rewardDescription = s.tra.formatString(
                     "rotational_shop_currency_description",
-                    { currencyName: s.tra.get(l) },
+                    { currencyName: s.tra.get(o) },
                   )),
                   (t.title = s.tra.get("troves_milestone_ceremony_title"));
               }
@@ -9113,8 +9137,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2),
-          l = n(78),
-          o = n(193),
+          o = n(78),
+          l = n(193),
           i = s.Ember.Component.extend({
             classNames: [`${a.PLUGIN_NAME}-troves-wallet`],
             tftService: s.Ember.inject.service("tft"),
@@ -9131,7 +9155,7 @@
               function () {
                 const e =
                   this.get("rotationalShopWallet")[
-                    o.TFT_ROTATIONAL_SHOP_CURRENCIES.tft_standard_coin
+                    l.TFT_ROTATIONAL_SHOP_CURRENCIES.tft_standard_coin
                   ] || 0;
                 return this.get("tra").formatString(
                   "rotational_shop_standard_currency_description",
@@ -9144,7 +9168,7 @@
               function () {
                 const e =
                   this.get("rotationalShopWallet")[
-                    o.TFT_ROTATIONAL_SHOP_CURRENCIES.tft_ultra_premium_coin
+                    l.TFT_ROTATIONAL_SHOP_CURRENCIES.tft_ultra_premium_coin
                   ] || 0;
                 return this.get("tra").formatString(
                   "rotational_shop_premium_currency_description",
@@ -9176,9 +9200,9 @@
                 t.domNode.addEventListener("closeButtonClick", function () {
                   e.remove(t);
                 }),
-                  s.Telemetry.sendCustomData(l.TELEMETRY_TABLE_NAME, {
-                    [l.TELEMETRY_EVENT_KEY_EVENT_NAME]:
-                      l.TELEMETRY_EVENT_NAME_OPEN_PURCHASE_MODAL,
+                  s.Telemetry.sendCustomData(o.TELEMETRY_TABLE_NAME, {
+                    [o.TELEMETRY_EVENT_KEY_EVENT_NAME]:
+                      o.TELEMETRY_EVENT_NAME_OPEN_PURCHASE_MODAL,
                   });
               },
             },
@@ -9191,7 +9215,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-rotational-shop-grouped-items"],
             groupedItems: null,
             activeNav: null,
@@ -9272,14 +9296,14 @@
                 if (!s.Ember.isEmpty("items"))
                   for (let s = 0; s < e.length; ++s) {
                     const a = e[s],
-                      l =
+                      o =
                         a &&
                         a.item &&
                         a.item.displayMetadata &&
                         a.item.displayMetadata.tft;
-                    if (l) {
+                    if (o) {
                       const e =
-                        t[l.overrideTileSize] || t[l.itemType] || t.DEFAULT;
+                        t[o.overrideTileSize] || t[o.itemType] || t.DEFAULT;
                       n.push({
                         ...e,
                         content: { item: a, frameDefinition: e },
@@ -9295,7 +9319,7 @@
               },
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -9303,7 +9327,7 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = s.Ember.Component.extend({
+          o = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-rotational-shop-header"],
             showStandardCurrency: !0,
             rotationalShopService: s.Ember.inject.service("rotationalShop"),
@@ -9337,7 +9361,7 @@
               },
             ),
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -9345,8 +9369,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = n(197),
-          o = n(89),
+          o = n(197),
+          l = n(89),
           i = n(75),
           r = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-rotational-shop-item"],
@@ -9413,7 +9437,7 @@
               },
             ),
             itemSold: s.Ember.computed("item.purchaseUnits", function () {
-              return (0, l.isItemSold)(this.get("item.purchaseUnits"));
+              return (0, o.isItemSold)(this.get("item.purchaseUnits"));
             }),
             hasBanner: s.Ember.computed(
               "activeNav",
@@ -9502,7 +9526,7 @@
                 const e = this.get("itemWithStoreId");
                 this.sendAction("onItemSelected", e), i.SFX.buttonClick.play();
               }
-              (0, o.trackClickRotationalShopEntry)(this.get("item")?.id);
+              (0, l.trackClickRotationalShopEntry)(this.get("item")?.id);
             },
             mouseEnter() {
               this.get("clickable") && i.SFX.buttonGoldHover.play();
@@ -9516,8 +9540,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(197),
-          l = n(193),
-          o = n(75),
+          o = n(193),
+          l = n(75),
           i = n(2);
         const { SFX_SUB_CHANNEL_UI_NAME: r } = i.AUDIO_CHANNELS,
           c = "rotational-shop-seasonal-redeem-sfx";
@@ -9536,7 +9560,7 @@
           }),
           itemDefaultDescription: s.Ember.computed("item", function () {
             const e = this.get("item")?.displayMetadata?.tft?.itemType;
-            return e === l.ITEM_TYPES.CHIBI || e === l.ITEM_TYPES.LITTLE_LEGEND
+            return e === o.ITEM_TYPES.CHIBI || e === o.ITEM_TYPES.LITTLE_LEGEND
               ? this.get(
                   "tra.rotational_shop_item_default_description_tactician",
                 )
@@ -9584,7 +9608,7 @@
                   Array.from(e, ([e, t]) => ({
                     currencyId: e,
                     currencyImagePath:
-                      l.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.get(e),
+                      o.ROTATIONAL_SHOP_CURRENCY_IMAGE_PATHS.get(e),
                     cost: t,
                   }))
                 );
@@ -9649,7 +9673,7 @@
           redeemCompleted: !1,
           actions: {
             close() {
-              o.SFX.buttonGenericClick.play(),
+              l.SFX.buttonGenericClick.play(),
                 this._getEnclosingModal()?.animate(
                   [{ opacity: "1" }, { opacity: "0" }],
                   { duration: 500 },
@@ -9685,8 +9709,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(197),
-          l = n(193),
-          o = n(75),
+          o = n(193),
+          l = n(75),
           i = n(2);
         const { SFX_SUB_CHANNEL_UI_NAME: r } = i.AUDIO_CHANNELS,
           c = "rotational-shop-item-detail-close-sfx";
@@ -9708,7 +9732,7 @@
           }),
           itemIsBoom: s.Ember.computed.equal(
             "item.displayMetadata.tft.itemType",
-            l.ITEM_TYPES.BOOM,
+            o.ITEM_TYPES.BOOM,
           ),
           boomBackgroundImagePath: s.Ember.computed(
             "rotationalShopAssets",
@@ -9719,7 +9743,7 @@
           ),
           itemDefaultDescription: s.Ember.computed("item", function () {
             const e = this.get("item")?.displayMetadata?.tft?.itemType;
-            return e === l.ITEM_TYPES.CHIBI || e === l.ITEM_TYPES.LITTLE_LEGEND
+            return e === o.ITEM_TYPES.CHIBI || e === o.ITEM_TYPES.LITTLE_LEGEND
               ? this.get(
                   "tra.rotational_shop_item_default_description_tactician",
                 )
@@ -9775,7 +9799,7 @@
           actions: {
             close() {
               this.get("isPurchasing") ||
-                (o.SFX.buttonGenericClick.play(),
+                (l.SFX.buttonGenericClick.play(),
                 this._playCloseSFX(),
                 this.sendAction("closeItemDetail"),
                 this.element.classList.add(
@@ -9797,7 +9821,7 @@
                 );
             },
             playBackButtonHoverSFX() {
-              o.SFX.buttonGoldHover.play();
+              l.SFX.buttonGoldHover.play();
             },
           },
         });
@@ -9809,8 +9833,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = n(89),
-          o = n(75);
+          o = n(89),
+          l = n(75);
         const i = {
           [a.TFT_ROTATIONAL_SHOP_GROUPS.MYTHIC]: {
             iconAssetKey: "subnav-icon-mythic",
@@ -9873,11 +9897,11 @@
           click() {
             const e = this.get("nav");
             this.sendAction("onNavSelected", e),
-              (0, l.trackClickRotationalShopCategory)(e),
-              o.SFX.buttonGenericClick.play();
+              (0, o.trackClickRotationalShopCategory)(e),
+              l.SFX.buttonGenericClick.play();
           },
           mouseEnter() {
-            o.SFX.buttonGoldHover.play();
+            l.SFX.buttonGoldHover.play();
           },
           actions: {
             setGlowMousePosition(e) {
@@ -9893,8 +9917,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const { SFX_SUB_CHANNEL_UI_NAME: l } = a.AUDIO_CHANNELS,
-          o = "crafting-ceremony-video",
+        const { SFX_SUB_CHANNEL_UI_NAME: o } = a.AUDIO_CHANNELS,
+          l = "crafting-ceremony-video",
           i = "crafting-ceremony-sfx",
           r = "crafting-ceremony-currency-lottie-json-path",
           c = "crafting-ceremony-currency-lottie-sound-path",
@@ -9954,14 +9978,14 @@
             "rotationalShopAssets",
             function () {
               const e = this.get("rotationalShopAssets");
-              return e ? e[o] : "";
+              return e ? e[l] : "";
             },
           ),
           _playPortalSfx() {
             const e = this.get("rotationalShopAssets");
             if (e) {
               const t = e[i];
-              s.Audio.getChannel(l).createSound(t).play();
+              s.Audio.getChannel(o).createSound(t).play();
             }
           },
           _portalVideoWaitTime: 3500,
@@ -10006,8 +10030,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = n(89),
-          o = n(197),
+          o = n(89),
+          l = n(197),
           i = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-rotational-shop-redeem-button"],
             rotationalShopService: s.Ember.inject.service("rotationalShop"),
@@ -10111,10 +10135,10 @@
                       .tft_ultra_premium_coin:
                       s = "rotational_shop_premium_currency_quantity";
                   }
-                  const l = this.get("tra"),
-                    o = l.formatString(s, { quantity: n.cost });
-                  return l.formatString("troves_redeem_dialog_content", {
-                    currencyWithQuantity: o,
+                  const o = this.get("tra"),
+                    l = o.formatString(s, { quantity: n.cost });
+                  return o.formatString("troves_redeem_dialog_content", {
+                    currencyWithQuantity: l,
                     name: e,
                   });
                 }
@@ -10191,10 +10215,10 @@
             ),
             didRender() {
               this._super(...arguments),
-                (0, o.updateRotationalShopButton)(
+                (0, l.updateRotationalShopButton)(
                   this.element.querySelector("lol-uikit-flat-button"),
                 ),
-                (0, o.updateRotationalShopConfirmDialog)(
+                (0, l.updateRotationalShopConfirmDialog)(
                   ".tft-rotational-shop-redeem-dialog-container",
                 );
             },
@@ -10231,8 +10255,8 @@
                       const t = this.get("paymentDetails");
                       "array" === s.Ember.typeOf(t) &&
                         t.length > 0 &&
-                        (0, l.trackCurrencySpent)(
-                          l.PHASE.ROTATIONAL_SHOP,
+                        (0, o.trackCurrencySpent)(
+                          o.PHASE.ROTATIONAL_SHOP,
                           e?.id,
                           t[0].currency,
                           t[0].cost,
@@ -10240,8 +10264,8 @@
                     },
                     onError: (t) => {
                       s.logger.error(t),
-                        (0, l.trackErrorRedeem)(
-                          l.PHASE.ROTATIONAL_SHOP,
+                        (0, o.trackErrorRedeem)(
+                          o.PHASE.ROTATIONAL_SHOP,
                           e?.id,
                           t.status,
                         ),
@@ -10259,8 +10283,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = n(89),
-          o = s.Ember.Component.extend({
+          o = n(89),
+          l = s.Ember.Component.extend({
             classNames: ["rcp-fe-lol-tft-rotational-shop"],
             setActiveNav: null,
             rotationalShopService: s.Ember.inject.service("rotationalShop"),
@@ -10345,7 +10369,7 @@
               this._super(...arguments);
               const e = this.get("rotationalShopService");
               e && this.set("_selectedNav", e.selectedNav),
-                (0, l.trackOpenRotationalShop)(this.get("groupedStoreIds"));
+                (0, o.trackOpenRotationalShop)(this.get("groupedStoreIds"));
             },
             didRender() {
               this._super(...arguments);
@@ -10364,7 +10388,7 @@
               e &&
                 (e.set("selectedNav", this.get("_selectedNav")),
                 this.setActiveNavScrollTop()),
-                (0, l.trackCloseRotationalShop)();
+                (0, o.trackCloseRotationalShop)();
             },
             actions: {
               onNavSelected(e) {
@@ -10401,7 +10425,7 @@
               },
             },
           });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -10417,7 +10441,7 @@
         var s = n(1);
         n(3);
         var a = n(193),
-          l = s.Ember.Controller.extend({
+          o = s.Ember.Controller.extend({
             tftService: s.Ember.inject.service("tft"),
             shopService: s.Ember.inject.service("rotationalShop"),
             _activeNav: null,
@@ -10447,7 +10471,7 @@
               },
             },
           });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -10648,7 +10672,7 @@
         var s = n(1);
         n(3);
         const a = "troves-hub-background-image";
-        var l = s.Ember.Controller.extend({
+        var o = s.Ember.Controller.extend({
           queryParams: ["displayedBannerId"],
           displayedBannerId: "",
           tftService: s.Ember.inject.service("tft"),
@@ -10709,7 +10733,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -10718,7 +10742,7 @@
         var s = n(1),
           a = n(2);
         n(3);
-        var l = s.Ember.Controller.extend({
+        var o = s.Ember.Controller.extend({
           queryParams: { url: { refreshModel: !0 } },
           url: "",
           displayEventPass: !1,
@@ -10806,7 +10830,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -10814,8 +10838,8 @@
           (t.default = t.DEFAULT_RANKED_STATS = void 0);
         var s,
           a = n(1),
-          l = (s = n(219)) && s.__esModule ? s : { default: s },
-          o = n(2),
+          o = (s = n(219)) && s.__esModule ? s : { default: s },
+          l = n(2),
           i = n(89);
         const r = n(220).default;
         t.DEFAULT_RANKED_STATS = {
@@ -11169,13 +11193,13 @@
             return t ? e.replace("/en_US/", `/${t}/`) : e;
           },
           claimRewards(e, t) {
-            const { rewards: n, milestoneId: s, passId: o, title: i } = e;
+            const { rewards: n, milestoneId: s, passId: l, title: i } = e;
             return (
               (n[0].description = i),
               (0, a.dataBinding)("/lol-tft-pass")
-                .put(`/v1/pass/${o}/milestone/${s}/reward`)
+                .put(`/v1/pass/${l}/milestone/${s}/reward`)
                 .then(() => {
-                  l.default.celebrate({ rewards: n, backgroundImage: t });
+                  o.default.celebrate({ rewards: n, backgroundImage: t });
                 })
             );
           },
@@ -11185,7 +11209,7 @@
               `/v1/pass/${e}/milestone/claimAllRewards`,
             ),
           celebratePassCompletion(e) {
-            l.default.celebratePassCompletion(e);
+            o.default.celebratePassCompletion(e);
           },
           markMissionsAsViewed(e, t) {
             const n = { missionIds: e, serieIds: t };
@@ -11204,16 +11228,16 @@
             const a =
               n.some(
                 ({ status: e, isLocked: t }) =>
-                  !t && e === o.BP_V2_MILESTONE_CLAIMABLE,
+                  !t && e === l.BP_V2_MILESTONE_CLAIMABLE,
               ) ||
               s.some(
                 ({ status: e, isLocked: t }) =>
-                  !t && e === o.BP_V2_MILESTONE_CLAIMABLE,
+                  !t && e === l.BP_V2_MILESTONE_CLAIMABLE,
               );
             this.set(t, a);
           },
           dismissNotification(e) {
-            if (e === o.TFT_BATTLE_PASS_ROUTE) this.set("showBpNavPip", !1);
+            if (e === l.TFT_BATTLE_PASS_ROUTE) this.set("showBpNavPip", !1);
           },
           setMissionOverrideSeries(e) {
             this.set("missionOverrideSeries", e),
@@ -11245,7 +11269,7 @@
             "battlePassV2.bonuses.@each.{isPaid,isLocked,pointsEarnedForMilestone,milestoneId,status,status}",
             function () {
               const e = this.get("battlePassV2.milestones"),
-                t = a.lodash.findIndex(e, ["status", o.BP_V2_MILESTONE_ACTIVE]);
+                t = a.lodash.findIndex(e, ["status", l.BP_V2_MILESTONE_ACTIVE]);
               if (t < 0) return null;
               const n = a.Ember.A([e[t]]);
               return t > 0 && n.unshift(e[t - 1]), n;
@@ -11270,8 +11294,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = s.UIKit.getVignetteCelebrationManager();
-        function o(e) {
+        const o = s.UIKit.getVignetteCelebrationManager();
+        function l(e) {
           return s.componentFactory.create({
             type: a.REWARD_CELEBRATION_NAME,
             data: e,
@@ -11300,8 +11324,8 @@
               d = u
                 ? "celebration_button_text_multi"
                 : "celebration_button_text",
-              p = o(i(e, (n = n.map((e) => s.Ember.Object.create(e))), u));
-            l.add({
+              p = l(i(e, (n = n.map((e) => s.Ember.Object.create(e))), u));
+            o.add({
               id: e,
               data: {
                 header: {
@@ -11324,14 +11348,14 @@
                 const t = { rewards: e };
                 return s.Ember.Object.create(t);
               })((e = e.map((e) => s.Ember.Object.create(e)))),
-              o =
+              l =
                 ((i = n),
                 s.componentFactory.create({
                   type: a.REWARD_CELEBRATION_V2_NAME,
                   data: i,
                 }));
             var i;
-            l.add({
+            o.add({
               id: "tft_pass_reward_celebration",
               data: {
                 header: { title: s.traService.get("celebration_title") },
@@ -11341,14 +11365,14 @@
                 backgroundImageUrl: t,
               },
               height: "LARGE",
-              content: o,
+              content: l,
               onRemove: () => {
-                o.onRemove && o.onRemove();
+                l.onRemove && l.onRemove();
               },
             });
           },
           celebratePassCompletion: function (e) {
-            l.add({
+            o.add({
               id: "tft_battlepass_completed",
               height: "MEDIUM",
               data: {
@@ -11368,7 +11392,7 @@
           isSelectable: r,
           updateRewardSelection: c,
           createCelebrationState: i,
-          createCelebrationApplication: o,
+          createCelebrationApplication: l,
         };
         t.default = m;
       },
@@ -11377,15 +11401,15 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.AudioManager = void 0),
           (t.default = function () {
-            o || (o = new l());
-            return o;
+            l || (l = new o());
+            return l;
           });
         var s = n(1);
         function a(e) {
           if (e && e.crossfadeTime)
             return { crossfade: !0, fadeTime: e.crossfadeTime };
         }
-        class l {
+        class o {
           constructor() {
             (this.playbackEnabled = !0),
               (this.uiAudioChannel = s.Audio.getChannel("sfx-ui")),
@@ -11440,27 +11464,27 @@
           }
           _playAmbienceSound(e, t, n) {
             const s = a(t),
-              l = this.getAmbienceSound(e, s);
+              o = this.getAmbienceSound(e, s);
             return (
-              n && n.isPlaying() && n.fadeOut({ fadeTime: l.options.fadeTime }),
-              l.play(),
-              l
+              n && n.isPlaying() && n.fadeOut({ fadeTime: o.options.fadeTime }),
+              o.play(),
+              o
             );
           }
-          _playAmbienceSounds(e, t, n, s, l, o) {
+          _playAmbienceSounds(e, t, n, s, o, l) {
             if (!this.playbackEnabled)
-              return { activeAmbienceSound: l, introSound: o };
+              return { activeAmbienceSound: o, introSound: l };
             if (t) {
               const e = a(s);
-              (o = this.getUiSound(t, e)).play();
-            } else o = null;
+              (l = this.getUiSound(t, e)).play();
+            } else l = null;
             return {
-              newAmbienceSound: this._playAmbienceSound(e, n, l),
-              introSound: o,
+              newAmbienceSound: this._playAmbienceSound(e, n, o),
+              introSound: l,
             };
           }
           playPrimaryAmbienceSounds(e, t, n, s) {
-            const { newAmbienceSound: a, introSound: l } =
+            const { newAmbienceSound: a, introSound: o } =
               this._playAmbienceSounds(
                 e,
                 t,
@@ -11469,10 +11493,10 @@
                 this.primaryAmbienceSound,
                 this.primaryIntroSound,
               );
-            (this.primaryAmbienceSound = a), (this.primaryIntroSound = l);
+            (this.primaryAmbienceSound = a), (this.primaryIntroSound = o);
           }
           playSecondaryAmbienceSounds(e, t, n, s) {
-            const { newAmbienceSound: a, introSound: l } =
+            const { newAmbienceSound: a, introSound: o } =
               this._playAmbienceSounds(
                 e,
                 t,
@@ -11481,7 +11505,7 @@
                 this.secondaryAmbienceSound,
                 this.secondaryIntroSound,
               );
-            (this.secondaryAmbienceSound = a), (this.secondaryIntroSound = l);
+            (this.secondaryAmbienceSound = a), (this.secondaryIntroSound = o);
           }
           stopMusicAmbience(e) {
             this.musicAmbience &&
@@ -11531,8 +11555,8 @@
             this.playbackEnabled = !0;
           }
         }
-        let o;
-        t.AudioManager = l;
+        let l;
+        t.AudioManager = o;
       },
       (e, t, n) => {
         "use strict";
@@ -11540,8 +11564,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = "/lol-lobby/v2/eligibility/initial-configuration-complete",
-          o = "/lol-lobby/v2/eligibility/self",
+        const o = "/lol-lobby/v2/eligibility/initial-configuration-complete",
+          l = "/lol-lobby/v2/eligibility/self",
           i = "/lol-lobby/v2/lobby",
           r = "/lol-clash/v1/playmode-restricted",
           c = "/lol-game-queues/v1/queues",
@@ -11561,7 +11585,7 @@
           },
           willDestroy() {
             this._super(...arguments),
-              m.removeObserver(l, this),
+              m.removeObserver(o, this),
               m.removeObserver(i, this),
               m.removeObserver(r, this),
               m.removeObserver(c, this),
@@ -11578,8 +11602,8 @@
             s.navigation.isButtonEnabledSubscribe(
               this._patcherButtonEnabledSubscriber,
             ),
-              m.addObserver(l, this, (e) => {
-                e && (this._getQueueEligibility(), m.removeObserver(l, this));
+              m.addObserver(o, this, (e) => {
+                e && (this._getQueueEligibility(), m.removeObserver(o, this));
               }),
               m.addObserver(i, this, (e) => {
                 this.set("inLobby", !!e);
@@ -11595,7 +11619,7 @@
               });
           },
           _getQueueEligibility() {
-            m.post(o).then((e) => {
+            m.post(l).then((e) => {
               if (!e) return;
               const t = e.find((e) => e.queueId === a.TFT_NORMAL_QUEUE_ID);
               this.set("tftEligible", !!t && t.eligible);
@@ -11610,8 +11634,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(2);
-        const l = "/lol-platform-config/v1/namespaces/PublishingContent",
-          o = "/lol-publishing-content/v1/ready",
+        const o = "/lol-platform-config/v1/namespaces/PublishingContent",
+          l = "/lol-publishing-content/v1/ready",
           i = "/lol-publishing-content/v1/tft-hub-cards",
           r = s.dataBinding.bindTo(s.socket);
         var c = s.Ember.Service.extend({
@@ -11623,10 +11647,10 @@
             this._super(...arguments), this._initObservers();
           },
           willDestroy() {
-            this._super(...arguments), r.unobserve(l, this);
+            this._super(...arguments), r.unobserve(o, this);
           },
           _initObservers() {
-            r.observe(l, this, (e) => {
+            r.observe(o, this, (e) => {
               e && e.Enabled
                 ? this.renderPcsData()
                 : (s.Telemetry.sendCustomData(a.PCS_TELEMETRY_TABLE, {
@@ -11636,9 +11660,9 @@
             });
           },
           getPcsChannelData() {
-            r.observe(o, this, (e) => {
+            r.observe(l, this, (e) => {
               e &&
-                (r.unobserve(o, this),
+                (r.unobserve(l, this),
                 r.get(i).then((e) => {
                   if (!e)
                     return (
@@ -11676,8 +11700,8 @@
           (t.default = void 0);
         var s = n(1);
         const a = "/lol-store/v1/catalog",
-          l = "/riotclient/region-locale",
-          o = s.dataBinding.bindTo(s.socket);
+          o = "/riotclient/region-locale",
+          l = s.dataBinding.bindTo(s.socket);
         var i = s.Ember.Service.extend({
           regionLocale: null,
           storeCatalog: null,
@@ -11686,16 +11710,16 @@
           },
           willDestroy() {
             this._super(...arguments),
-              o.removeObserver(a, this),
-              o.removeObserver(l, this);
+              l.removeObserver(a, this),
+              l.removeObserver(o, this);
           },
           getStoreCatalog: () => s.db.get(a),
-          getRegionLocale: () => s.db.get(l),
+          getRegionLocale: () => s.db.get(o),
           _initObservers() {
             s.db.get(a, (e) => {
               this.set("storeCatalog", e);
             }),
-              o.addObserver(l, this, (e) => {
+              l.addObserver(o, this, (e) => {
                 e && this.set("regionLocale", e.locale);
               });
           },
@@ -11708,8 +11732,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(89),
-          o = s.Ember.Service.extend({
+          o = n(89),
+          l = s.Ember.Service.extend({
             trovesEnabled: !1,
             trovesV2Enabled: !1,
             trovesTokensAmount: 0,
@@ -11752,13 +11776,13 @@
                   let t = !0;
                   e.rewards?.standard?.forEach((n) => {
                     a.TYPE_CURRENCIES.includes(n.itemId)
-                      ? (0, l.trackCurrencyGained)(
+                      ? (0, o.trackCurrencyGained)(
                           "roll_reward",
                           n.itemId,
                           n.quantity,
                           t,
                         )
-                      : (0, l.trackRollRewardTroves)(e.orderId, n.itemId, t),
+                      : (0, o.trackRollRewardTroves)(e.orderId, n.itemId, t),
                       (t = !1);
                   });
                 }
@@ -11837,8 +11861,8 @@
                               this.set("isWaitingForCeremonyData", !1),
                               void (
                                 this.get("trovesV2Enabled") &&
-                                (0, l.trackErrorRedeem)(
-                                  l.PHASE.TROVES_HOME,
+                                (0, o.trackErrorRedeem)(
+                                  o.PHASE.TROVES_HOME,
                                   e.dropTableId,
                                   500,
                                 )
@@ -11864,8 +11888,8 @@
                       (e) => {
                         e &&
                           (this.get("milestonesTriggered").push(e),
-                          (0, l.trackMilestoneRewardsTroves)(e.milestoneId),
-                          (0, l.trackCurrencyGained)(
+                          (0, o.trackMilestoneRewardsTroves)(e.milestoneId),
+                          (0, o.trackCurrencyGained)(
                             "milestone_rewards",
                             e.currencyId,
                             e.currencyAmount,
@@ -11889,8 +11913,8 @@
                 let s = n && n[0].cost;
                 s || (s = 0);
                 let a = -1,
-                  l = !1,
-                  o = 1;
+                  o = !1,
+                  l = 1;
                 t.metadata &&
                   t.metadata.forEach((e) => {
                     switch (e.type) {
@@ -11898,10 +11922,10 @@
                         a = parseInt(e.value);
                         break;
                       case "INCREMENTAL_PURCHASE":
-                        l = "true" === e.value.toLowerCase();
+                        o = "true" === e.value.toLowerCase();
                         break;
                       case "QUANTITY":
-                        o = parseInt(e.value);
+                        l = parseInt(e.value);
                     }
                   });
                 const i = {
@@ -11912,8 +11936,8 @@
                   price: s,
                   minQuantity: 1,
                   maxQuantity: a,
-                  incrementalPurchase: l,
-                  quantity: o,
+                  incrementalPurchase: o,
+                  quantity: l,
                 };
                 this.set("trovesTokensOffer", i);
               }
@@ -11928,16 +11952,16 @@
               this.set("pullErrorModalShowing", e);
             },
             spendCoins(e, t, n) {
-              const l = { offerId: e, numberOfRolls: t, dropTableId: n };
+              const o = { offerId: e, numberOfRolls: t, dropTableId: n };
               this.set("isWaitingForCeremonyData", !0),
-                s.db.post(a.PATHS.ROLL, l).catch(() => {
+                s.db.post(a.PATHS.ROLL, o).catch(() => {
                   this.set("isWaitingForCeremonyData", !1),
                     this.updatePulling(!1),
                     this.updatePullErrorModal(!0);
                 });
             },
           });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -11946,7 +11970,7 @@
         var s = n(1);
         const a = "/lol-summoner/v1/current-summoner";
         t.SUMMONER_PATH = a;
-        var l = s.Ember.Service.extend({
+        var o = s.Ember.Service.extend({
           currentSummoner: null,
           init() {
             this._super(...arguments),
@@ -11964,7 +11988,7 @@
             this._super(...arguments), s.db.unobserve(a, this);
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -11972,8 +11996,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(193),
-          l = n(2),
-          o = s.Ember.Service.extend({
+          o = n(2),
+          l = s.Ember.Service.extend({
             rotationalShopEnabled: !1,
             rotationalShopAssets: null,
             rotationalShopWallet: {},
@@ -12054,9 +12078,9 @@
                 onError: null,
               },
             ) {
-              const { context: l, onStart: o, onError: i } = n;
+              const { context: o, onStart: l, onError: i } = n;
               return (
-                o && o.apply(l),
+                l && l.apply(o),
                 s.db
                   .post(a.SERVICE_ENDPOINTS.SEND_PURCHASE, {
                     storeId: e,
@@ -12064,17 +12088,17 @@
                     paymentOptionsKeys: [],
                   })
                   .then(this._handlePurchaseRequestCreated.bind(this, n))
-                  .catch(i && i.bind(l))
+                  .catch(i && i.bind(o))
               );
             },
             currentPurchaseId: null,
             currentRmsNotificationTimer: null,
             _handlePurchaseRequestCreated(e, t) {
               if (!t) return;
-              const { context: n, onComplete: l, onError: o } = e;
+              const { context: n, onComplete: o, onError: l } = e;
               if (t.data) {
                 const e = t.data.id;
-                if (!e) return void (o && o.apply(n));
+                if (!e) return void (l && l.apply(n));
                 this.set("currentPurchaseId", e);
                 const i = `${a.SERVICE_ENDPOINTS.PURCHASE_TRANSACTION}/${e}`;
                 s.db.addObserver(i, this, (e) => {
@@ -12082,15 +12106,15 @@
                     e.purchaseState !== a.CAP_STATUS_CREATED &&
                     (this._clearPurchaseNotificationTimer(),
                     e.purchaseState === a.CAP_STATUS_COMPLETE
-                      ? l && l.apply(n)
-                      : o && o.apply(n),
+                      ? o && o.apply(n)
+                      : l && l.apply(n),
                     s.db.removeObserver(i, this));
                 });
                 const r = setTimeout(() => {
-                  this._handlePurchaseNotificationTimeout(), o && o.apply(n);
+                  this._handlePurchaseNotificationTimeout(), l && l.apply(n);
                 }, a.MAX_WAITING_TIME_IN_MS);
                 this.set("currentRmsNotificationTimer", r);
-              } else t.error && 0 !== t.error.code && o && o.apply(n);
+              } else t.error && 0 !== t.error.code && l && l.apply(n);
             },
             _handlePurchaseNotificationTimeout() {
               this.set("currentPurchaseId", null);
@@ -12137,9 +12161,9 @@
                           `${a.SERVICE_ENDPOINTS.WALLET}/${t}`,
                           this,
                           (n) => {
-                            const l = a.TFT_ROTATIONAL_SHOP_CURRENCIES[t];
+                            const o = a.TFT_ROTATIONAL_SHOP_CURRENCIES[t];
                             "number" === s.Ember.typeOf(n[t]) &&
-                              ((e[l] = n[t]),
+                              ((e[o] = n[t]),
                               this.set("rotationalShopWallet", e),
                               this.notifyPropertyChange(
                                 "rotationalShopWallet",
@@ -12167,7 +12191,7 @@
             _getRotationalShopVersionFromSettings() {
               s.db
                 .get(
-                  `${l.SETTINGS_PATH}${l.TFT_BINDING_PATH}${l.DATABINDING_CATEGORY.FIRST_TIME}`,
+                  `${o.SETTINGS_PATH}${o.TFT_BINDING_PATH}${o.DATABINDING_CATEGORY.FIRST_TIME}`,
                 )
                 .then((e) => {
                   const t = e?.data;
@@ -12224,13 +12248,13 @@
                   this.set("rotationalShopSeenVersion", t),
                   this.notifyPropertyChange("rotationalShopSeenVersion"),
                   s.db.patch(
-                    `${l.SETTINGS_PATH}${l.TFT_BINDING_PATH}${l.DATABINDING_CATEGORY.FIRST_TIME}`,
+                    `${o.SETTINGS_PATH}${o.TFT_BINDING_PATH}${o.DATABINDING_CATEGORY.FIRST_TIME}`,
                     { data: { [e]: n } },
                   );
               }
             },
           });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         const s = n(1).Ember;
@@ -12616,8 +12640,8 @@
           (t.default = void 0);
         var s = n(1),
           a = n(78),
-          l = n(159);
-        const o = "/lol-tft-troves/v1/purchase",
+          o = n(159);
+        const l = "/lol-tft-troves/v1/purchase",
           i = "/lol-tft-troves/v1/order-notifications/";
         var r = s.Ember.Component.extend({
           classNames: ["tft-troves-item-purchase"],
@@ -12826,7 +12850,7 @@
                   this.set("isPurchasing", !0),
                   this.set("purchaseSuccess", !1),
                   s.db
-                    .post(o, {
+                    .post(l, {
                       offerId: this.get("offer.id"),
                       quantity: this.get("quantity"),
                     })
@@ -12841,7 +12865,7 @@
                 );
             },
             playSound(e) {
-              const t = l.SFX[e];
+              const t = o.SFX[e];
               t && t.play();
             },
           },
@@ -12908,8 +12932,8 @@
         var s = n(1),
           a = n(2);
         n(271);
-        const l = s.UIKit.getVignetteCelebrationManager();
-        var o = s.Ember.Component.extend({
+        const o = s.UIKit.getVignetteCelebrationManager();
+        var l = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-reward-celebration`],
           layout: n(272),
           selectedReward: null,
@@ -12926,11 +12950,11 @@
                 this.set("selectedReward", e),
                 this.set("selectedReward.isSelected", !0),
                 this.set("softSelectionMade", !0),
-                l.update({ id: this.id, data: { nextButtonEnabled: !0 } }));
+                o.update({ id: this.id, data: { nextButtonEnabled: !0 } }));
             },
           },
         });
-        t.default = o;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -12952,7 +12976,7 @@
         var s = n(1),
           a = n(2);
         n(274);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.PLUGIN_NAME}-reward-celebration-v2`],
           layout: n(275),
           rewardsPerPage: 10,
@@ -12977,9 +13001,9 @@
                 n = this.get("pageCount"),
                 s = this.get("currentPage"),
                 a = {};
-              for (let l = 1; l <= n; l++) {
-                const n = e.slice((l - 1) * t, l * t);
-                a[l] = { isSelected: l === s, contents: n };
+              for (let o = 1; o <= n; o++) {
+                const n = e.slice((o - 1) * t, o * t);
+                a[o] = { isSelected: o === s, contents: n };
               }
               return a;
             },
@@ -13028,7 +13052,7 @@
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -13050,7 +13074,7 @@
         var s = n(1),
           a = n(2);
         n(277);
-        var l = s.Ember.Component.extend({
+        var o = s.Ember.Component.extend({
           classNames: [`${a.EVENT_DAILY_LOGIN_CELEBRATION_NAME}`],
           layout: n(278),
           rewards: null,
@@ -13061,7 +13085,7 @@
               : 0;
           }),
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
@@ -13114,8 +13138,8 @@
   function n(s) {
     var a = t[s];
     if (void 0 !== a) return a.exports;
-    var l = (t[s] = { exports: {} });
-    return e[s](l, l.exports, n), l.exports;
+    var o = (t[s] = { exports: {} });
+    return e[s](o, o.exports, n), o.exports;
   }
   (n.r = (e) => {
     "undefined" != typeof Symbol &&
@@ -13131,13 +13155,13 @@
         s = n(2);
       n(3), n(4), n(5), n(6);
       const a = "rcp-fe-lol-tft",
-        l = document.currentScript.ownerDocument;
-      const o = window.getPluginAnnounceEventName(a);
-      l.addEventListener(
-        o,
+        o = document.currentScript.ownerDocument;
+      const l = window.getPluginAnnounceEventName(a);
+      o.addEventListener(
+        l,
         function (e) {
           (0, e.registrationHandler)(function (e) {
-            const o = (e) =>
+            const l = (e) =>
               e.get("rcp-fe-ember-libs").getEmberDataBinding("rcp-fe-lol-tft");
             return t.default
               .init(e, {
@@ -13148,8 +13172,8 @@
                 dataBinding: (e) =>
                   e.get("rcp-fe-common-libs").getDataBinding(s.PLUGIN_NAME),
                 Ember: (e) => e.get("rcp-fe-ember-libs").getEmber(),
-                EmberDataBinding: o,
-                emberDataBinding: o,
+                EmberDataBinding: l,
+                emberDataBinding: l,
                 emberL10n: (e) => e.get("rcp-fe-ember-libs").getEmberL10n("1"),
                 htmlSanitizer: (e) =>
                   e.get("rcp-fe-common-libs").getHtmlSanitizer(1),
@@ -13186,7 +13210,7 @@
                 Viewport: (e) =>
                   e.get("rcp-fe-lol-shared-components").getApi_Viewport(),
                 webComponents: (e) =>
-                  e.get("rcp-fe-common-libs").getWebComponents(l),
+                  e.get("rcp-fe-common-libs").getWebComponents(o),
                 websocket: (e) => e.getSocket(),
               })
               .then(() => {
@@ -13222,9 +13246,9 @@
               })
               .then(function () {
                 const { Viewport: e, navigation: a } = t.default,
-                  l = e.getApiKey(s.PLUGIN_NAME),
-                  o = e.main().getScreenRoot(l, s.PLUGIN_NAME),
-                  i = new (0, n(7).default)(o);
+                  o = e.getApiKey(s.PLUGIN_NAME),
+                  l = e.main().getScreenRoot(o, s.PLUGIN_NAME),
+                  i = new (0, n(7).default)(l);
                 i.setupTftApp();
                 return new (0, n(279).default)(i);
               });
