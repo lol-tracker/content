@@ -6920,16 +6920,11 @@
             if ((this.set("currentSummoner", e), !t && e && e.puuid)) {
               const t = `/lol-champions/v1/inventories/${e.summonerId}/champions`;
               this._binding.observe(t, this, this.handleChampionInventory),
-                this._binding
-                  .get(
-                    "/lol-client-config/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
-                  )
-                  .then((t) => {
-                    const n = Boolean(t)
-                      ? "/lol-champion-mastery/v1/local-player/champion-mastery"
-                      : `/lol-collections/v1/inventories/${e.puuid}/champion-mastery`;
-                    this._binding.observe(n, this, this.handleChampionMastery);
-                  }),
+                this._binding.observe(
+                  "/lol-champion-mastery/v1/local-player/champion-mastery",
+                  this,
+                  this.handleChampionMastery,
+                ),
                 this._binding.observe(
                   "/lol-match-history/v1/products/lol/current-summoner/matches",
                   this,
@@ -15365,6 +15360,13 @@
                 return this.get("_rankedData.highestRankedEntrySR") || null;
               },
             ),
+            _getDefaultDifficulty(e) {
+              const t = e && e.botDifficulties,
+                n = t
+                  ? t.find((e) => "RSINTERMEDIATE" === e.difficulty)
+                  : void 0;
+              return n ? n.difficulty : t[0].difficulty;
+            },
             actions: {
               joinOtherTeam: function () {
                 if (this.get("joinDisabled")) return;
@@ -15390,31 +15392,31 @@
                   : n.recommendedPositions
                     ? n.recommendedPositions[0]
                     : r.CUSTOM_GAME_BOT_POSITIONS.TOP;
-                const s = n && n.botDifficulties,
-                  o = s
-                    ? s.find((e) => "RSINTERMEDIATE" === e.difficulty)
-                    : void 0,
-                  a = o ? o.difficulty : s[0].difficulty;
+                const s = this._getDefaultDifficulty(n);
                 this.get("customGameService").addBot(
                   this.get("team"),
                   n.id,
-                  a,
+                  s,
                   i,
                 );
               },
               changeBotChampion: function (e) {
-                e &&
-                  e.id !== this.get("botChampionId") &&
-                  !this.get("updatingBotDisabled") &&
-                  (this.set("_isUpdatingBot", !0),
-                  this.get("customGameService").changeBot({
-                    botId: this.get("botId"),
-                    team: this.get("team"),
-                    championId: e.id,
-                    botDifficulty: e.botDifficulties[0].difficulty,
-                    botPosition: this.get("botPosition"),
-                    botToDeletePosition: this.get("botPosition"),
-                  }));
+                if (
+                  !e ||
+                  e.id === this.get("botChampionId") ||
+                  this.get("updatingBotDisabled")
+                )
+                  return;
+                this.set("_isUpdatingBot", !0);
+                const t = this._getDefaultDifficulty(e);
+                this.get("customGameService").changeBot({
+                  botId: this.get("botId"),
+                  team: this.get("team"),
+                  championId: e.id,
+                  botDifficulty: t,
+                  botPosition: this.get("botPosition"),
+                  botToDeletePosition: this.get("botPosition"),
+                });
               },
               changeBotDifficulty: function (e) {
                 this.get("updatingBotDisabled") ||
@@ -23063,15 +23065,7 @@
                 n = this.get("quickPlayService"),
                 i = t[e].championId,
                 s = n.getChampionData(i);
-              return (
-                s?.skins
-                  ?.filter((e) => Boolean(e.name))
-                  ?.map((e) =>
-                    "kTieredSkin" === e.questSkinInfo.productType
-                      ? this.getMostProgressedSkin(e)
-                      : e,
-                  ) ?? []
-              );
+              return s?.skins?.filter((e) => Boolean(e.name)) ?? [];
             },
           ),
           selectingSlot: i.Ember.computed(
@@ -23182,13 +23176,6 @@
                     this.set("ongoingRequestedSlots", void 0);
                   }));
           },
-          getMostProgressedSkin: function (e) {
-            const t =
-              e?.questSkinInfo.tiers
-                ?.filter?.((e) => e?.ownership?.owned)
-                .pop() ?? e?.questSkinInfo?.tiers?.[0];
-            return (t.isTieredSkin = !0), t;
-          },
           _setCurrentSelectedChampion(e) {
             if (!Boolean(e)) return;
             const t = this.get("selectingSlotIndex"),
@@ -23269,10 +23256,10 @@
                 this.set("positionSelectorOpenIndex", -1);
             },
             handleChampionSelected(e) {
-              return this.debounceTask("_setCurrentSelectedChampion", e, 500);
+              return this.debounceTask("_setCurrentSelectedChampion", e, 150);
             },
             handleSkinSelected(e) {
-              return this.debounceTask("_setCurrentSelectedSkin", e, 500);
+              return this.debounceTask("_setCurrentSelectedSkin", e, 150);
             },
             handleQuickPlaySlotChange(e) {
               this.sendAction("setSelectingSlotIndex", e);
@@ -23295,7 +23282,7 @@
               );
             },
             handleSwapSlots() {
-              return this.debounceTask("_handleSwapSlots", 500);
+              return this.debounceTask("_handleSwapSlots", 150);
             },
             setPositionPreferences(e, t) {
               this._setPositionPreferences(t);
@@ -24030,6 +24017,13 @@
                     (e - 1) * this.get("thumbnailWidth");
             },
           ),
+          _getMostProgressedSkin: function (e) {
+            return (
+              e?.questSkinInfo.tiers
+                ?.filter?.((e) => e?.ownership?.owned)
+                .pop() ?? e?.questSkinInfo?.tiers?.[0]
+            );
+          },
           _getSkinPurchaseCallback(e, t) {
             if (t) {
               const t = (this.get("selectedSkin").chromas || []).find(
@@ -24097,7 +24091,10 @@
             this._setCarouselOffset(e);
             const t = this.get("skins");
             if ((this.set("selectingSkinIndex", e), Boolean(t[e]))) {
-              const n = t[e].id;
+              const n =
+                "kTieredSkin" === t[e].questSkinInfo.productType
+                  ? this._getMostProgressedSkin(t[e])?.id
+                  : t[e]?.id;
               this.sendAction("setSkin", n);
             }
           },
@@ -24224,9 +24221,12 @@
             ownedSkinAugments: i.Ember.computed(
               "inventoryService.ownedSkinAugments",
               "viewSkin",
+              "viewForm",
               function () {
                 const e = this.get("inventoryService.ownedSkinAugments"),
-                  t = this.get("viewSkin.skinAugments") || [];
+                  t =
+                    (this.get("viewForm") || this.get("viewSkin"))
+                      ?.skinAugments || [];
                 return t?.augments
                   ?.filter((t) => e[t.contentId])
                   ?.map((e) => e.overlays?.[0]?.centeredLCOverlayPath);
@@ -24264,13 +24264,6 @@
               const t = this.get("skins");
               for (const n of t) {
                 if (!n) return;
-                if (n.isTieredSkin)
-                  return (
-                    this.set("viewSkin", n),
-                    this.set("viewChroma", n),
-                    this.set("viewForm", n),
-                    n
-                  );
                 const t = (n.questSkinInfo.tiers || []).find((t) => t.id === e);
                 if (t && t.id)
                   return (

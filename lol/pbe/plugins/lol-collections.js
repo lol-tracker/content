@@ -7736,7 +7736,8 @@
             dismissNotification(e) {
               switch (e) {
                 case "skins":
-                  this.set("hasSkinsForReview", !1);
+                  this.acknowledgeInventoryNotifications("SKIN_BORDER"),
+                    this.set("hasSkinsForReview", !1);
                   break;
                 case "emotes":
                   this.set("hasEmotesForReview", !1);

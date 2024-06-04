@@ -2547,6 +2547,9 @@
     },
     "LcdsBotParticipant": {
       "properties": {
+        "botDifficulty": {
+          "type": "string"
+        },
         "botSkillLevel": {
           "format": "int32",
           "type": "integer"
@@ -2980,6 +2983,9 @@
     },
     "LcdsPlayerParticipant": {
       "properties": {
+        "botDifficulty": {
+          "type": "string"
+        },
         "botSkillLevel": {
           "format": "int32",
           "type": "integer"
@@ -35535,6 +35541,14 @@
           "format": "int32",
           "type": "integer"
         },
+        "playerAugment5": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment6": {
+          "format": "int32",
+          "type": "integer"
+        },
         "playerScore0": {
           "format": "int64",
           "type": "integer"
@@ -45837,6 +45851,14 @@
           "type": "integer"
         },
         "playerAugment4": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment5": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment6": {
           "format": "int32",
           "type": "integer"
         },
@@ -60723,7 +60745,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "HttpAsyncDelete",
+        "operationId": "Http2AsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -60757,7 +60779,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -89679,7 +89701,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "Http2ApiDocsV3",
+        "operationId": "HttpApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

@@ -74602,7 +74602,9 @@
                         this._purchaseDialogButtonWrapper.classList.remove(
                           "parties-purchase-loading",
                         ),
-                          this._displayErrorMessageInPurchaseDialog();
+                          this._displayErrorMessageInPurchaseDialog(
+                            "tft_upgrade_purchase_dialog_body_content_upgrade_timed_out",
+                          );
                       }, 1e4)),
                       this._playSound(s.SFX_STAR_SHARDS_PURCHASE);
                   }),
@@ -74626,12 +74628,10 @@
             );
             return e.setData(t), (this._purchaseDialogContentWrapper = e), e;
           },
-          _displayErrorMessageInPurchaseDialog() {
+          _displayErrorMessageInPurchaseDialog(t) {
             this._purchaseDialogContentWrapper.shadowRoot.querySelector(
               ".lol-parties-purchase-dialog-error-message",
-            ).innerText = this.get(
-              "tra.tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
-            );
+            ).innerText = this.get(`tra.${t}`);
           },
           _applyAdditionalButtonStyles(t) {
             const e = t.domNode.querySelector(
@@ -74730,7 +74730,9 @@
                     this._purchaseDialogButtonWrapper.classList.remove(
                       "parties-purchase-loading",
                     ),
-                    this._displayErrorMessageInPurchaseDialog()),
+                    this._displayErrorMessageInPurchaseDialog(
+                      "tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
+                    )),
                 this._purchaseTransactionTimeout &&
                   (clearTimeout(this._purchaseTransactionTimeout),
                   (this._purchaseTransactionTimeout = null))));

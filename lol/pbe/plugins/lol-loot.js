@@ -281,6 +281,7 @@
             t.EVENT_ERROR_EXECUTE_MASS_DISENCHANT =
             t.ETERNALS_TYPE =
             t.ETERNALS_TAGS =
+            t.DISPLAY_CATEGORY_CHEST =
             t.DISENCHANT_RECIPE_TYPE =
             t.CUSTOM_RARITY_TAG_NAMES =
             t.CURRENCY_CHAMPION_ID =
@@ -382,6 +383,7 @@
         t.CHAMPION_TOKEN_6 = "CHAMPION_TOKEN_6";
         t.CHAMPION_TOKEN_7 = "CHAMPION_TOKEN_7";
         t.PORTAL_PREFIX = "portal_";
+        t.DISPLAY_CATEGORY_CHEST = "CHEST";
         t.OPEN_UI = "loot-recipe-ui-open";
         t.REROLL_UI = "loot-recipe-ui-reroll";
         t.UPGRADE_UI = "loot-recipe-ui-upgrade";
@@ -682,12 +684,13 @@
                 r.SharedEmberComponents.RemainingTimeTextComponent,
               ...r.RewardTrackerEmberComponents,
               LootRecipeMilestoneRewardTooltipComponent: n(241),
-              LootService: n(244),
-              LootMassDisenchantService: n(248),
-              UxSettingsService: n(249),
-              TelemetryService: n(250),
-              LootLocHelperService: n(251),
-              LootRedeemConfirmService: n(252),
+              ClientConfigService: n(244),
+              LootService: n(245),
+              LootMassDisenchantService: n(249),
+              UxSettingsService: n(250),
+              TelemetryService: n(251),
+              LootLocHelperService: n(252),
+              LootRedeemConfirmService: n(253),
             });
           });
         var o,
@@ -1485,8 +1488,8 @@
               A = "[object RegExp]",
               N = "[object Set]",
               R = "[object String]",
-              M = "[object Symbol]",
-              L = "[object WeakMap]",
+              L = "[object Symbol]",
+              M = "[object WeakMap]",
               O = "[object ArrayBuffer]",
               P = "[object DataView]",
               D = "[object Float32Array]",
@@ -1541,8 +1544,8 @@
               Ne =
                 "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",
               Re = "['’]",
-              Me = "[" + Ce + "]",
-              Le = "[" + Ne + "]",
+              Le = "[" + Ce + "]",
+              Me = "[" + Ne + "]",
               Oe = "[" + we + "]",
               Pe = "\\d+",
               De = "[" + Ie + "]",
@@ -1572,7 +1575,7 @@
                   Ke +
                   ")*"),
               Ze = "(?:" + [De, Fe, Ve].join("|") + ")" + Xe,
-              Je = "(?:" + [Ue + Oe + "?", Oe, Fe, Ve, Me].join("|") + ")",
+              Je = "(?:" + [Ue + Oe + "?", Oe, Fe, Ve, Le].join("|") + ")",
               et = RegExp(Re, "g"),
               tt = RegExp(Oe, "g"),
               nt = RegExp(He + "(?=" + He + ")|" + Je + Xe, "g"),
@@ -1584,9 +1587,9 @@
                     "+" +
                     Ye +
                     "(?=" +
-                    [Le, qe, "$"].join("|") +
+                    [Me, qe, "$"].join("|") +
                     ")",
-                  We + "+" + $e + "(?=" + [Le, qe + ze, "$"].join("|") + ")",
+                  We + "+" + $e + "(?=" + [Me, qe + ze, "$"].join("|") + ")",
                   qe + "?" + ze + "+" + Ye,
                   qe + "+" + $e,
                   "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])",
@@ -1657,7 +1660,7 @@
                 lt[A] =
                 lt[N] =
                 lt[R] =
-                lt[L] =
+                lt[M] =
                   !1);
             var ct = {};
             (ct[y] =
@@ -1677,13 +1680,13 @@
               ct[A] =
               ct[N] =
               ct[R] =
-              ct[M] =
+              ct[L] =
               ct[F] =
               ct[V] =
               ct[q] =
               ct[G] =
                 !0),
-              (ct[E] = ct[S] = ct[L] = !1);
+              (ct[E] = ct[S] = ct[M] = !1);
             var ut = {
                 "\\": "\\",
                 "'": "'",
@@ -1759,7 +1762,7 @@
                 if (!t(e[n], n, e)) return !1;
               return !0;
             }
-            function Mt(e, t) {
+            function Lt(e, t) {
               for (
                 var n = -1, o = null == e ? 0 : e.length, r = 0, i = [];
                 ++n < o;
@@ -1770,7 +1773,7 @@
               }
               return i;
             }
-            function Lt(e, t) {
+            function Mt(e, t) {
               return !!(null == e ? 0 : e.length) && qt(e, t, 0) > -1;
             }
             function Ot(e, t, n) {
@@ -2183,11 +2186,11 @@
                 Ae = t.RegExp,
                 Ne = t.String,
                 Re = t.TypeError,
-                Me = o.prototype,
-                Le = Ie.prototype,
+                Le = o.prototype,
+                Me = Ie.prototype,
                 Oe = ke.prototype,
                 Pe = t["__core-js_shared__"],
-                De = Le.toString,
+                De = Me.toString,
                 je = Oe.hasOwnProperty,
                 Be = 0,
                 He = (n = /[^.]+$/.exec(
@@ -2215,7 +2218,7 @@
                 $e = cn(ke.getPrototypeOf, ke),
                 Ke = ke.create,
                 Qe = Oe.propertyIsEnumerable,
-                Xe = Me.splice,
+                Xe = Le.splice,
                 Ze = ze ? ze.isConcatSpreadable : r,
                 Je = ze ? ze.iterator : r,
                 nt = ze ? ze.toStringTag : r,
@@ -2233,14 +2236,14 @@
                 vt = ke.getOwnPropertySymbols,
                 bt = Ge ? Ge.isBuffer : r,
                 Ut = t.isFinite,
-                $t = Me.join,
+                $t = Le.join,
                 yn = cn(ke.keys, ke),
                 vn = Te.max,
                 bn = Te.min,
                 xn = Ce.now,
                 En = t.parseInt,
                 Sn = Te.random,
-                Cn = Me.reverse,
+                Cn = Le.reverse,
                 wn = hi(t, "DataView"),
                 In = hi(t, "Map"),
                 Tn = hi(t, "Promise"),
@@ -2248,8 +2251,8 @@
                 An = hi(t, "WeakMap"),
                 Nn = hi(ke, "create"),
                 Rn = An && new An(),
-                Mn = {},
-                Ln = Bi(wn),
+                Ln = {},
+                Mn = Bi(wn),
                 On = Bi(In),
                 Pn = Bi(Tn),
                 Dn = Bi(kn),
@@ -2377,7 +2380,7 @@
                 );
               }
               function io(e, t) {
-                return e && Mr(t, Ra(t), e);
+                return e && Lr(t, Ra(t), e);
               }
               function so(e, t, n) {
                 "__proto__" == t && rt
@@ -2436,15 +2439,15 @@
                     if (((a = c || h ? {} : yi(e)), !l))
                       return c
                         ? (function (e, t) {
-                            return Mr(e, fi(e), t);
+                            return Lr(e, fi(e), t);
                           })(
                             e,
                             (function (e, t) {
-                              return e && Mr(t, Ma(t), e);
+                              return e && Lr(t, La(t), e);
                             })(a, e),
                           )
                         : (function (e, t) {
-                            return Mr(e, di(e), t);
+                            return Lr(e, di(e), t);
                           })(e, io(a, e));
                   } else {
                     if (!ct[p]) return i ? e : {};
@@ -2487,7 +2490,7 @@
                           })(e);
                         case N:
                           return new o();
-                        case M:
+                        case L:
                           return (r = e), Hn ? ke(Hn.call(r)) : {};
                       }
                       var r;
@@ -2511,7 +2514,7 @@
                     }),
                     a
                   );
-                var f = m ? r : (u ? (c ? si : ii) : c ? Ma : Ra)(e);
+                var f = m ? r : (u ? (c ? si : ii) : c ? La : Ra)(e);
                 return (
                   At(f || e, function (o, r) {
                     f && (o = e[(r = o)]), no(a, r, co(o, t, n, r, e, s));
@@ -2538,7 +2541,7 @@
               }
               function po(e, t, n, o) {
                 var r = -1,
-                  i = Lt,
+                  i = Mt,
                   s = !0,
                   a = e.length,
                   l = [],
@@ -2732,7 +2735,7 @@
                 return e && xo(e, t, Ra);
               }
               function Co(e, t) {
-                return Mt(t, function (t) {
+                return Lt(t, function (t) {
                   return Xs(e[t]);
                 });
               }
@@ -2777,7 +2780,7 @@
               }
               function Ro(e, t, n) {
                 for (
-                  var i = n ? Ot : Lt,
+                  var i = n ? Ot : Mt,
                     s = e[0].length,
                     a = e.length,
                     l = a,
@@ -2813,11 +2816,11 @@
                 }
                 return m;
               }
-              function Mo(e, t, n) {
+              function Lo(e, t, n) {
                 var o = null == (e = Ai(e, (t = xr(t, e)))) ? e : e[ji(Qi(t))];
                 return null == o ? r : Tt(o, e, n);
               }
-              function Lo(e) {
+              function Mo(e) {
                 return ta(e) && To(e) == y;
               }
               function Oo(e, t, n, o, i) {
@@ -2881,7 +2884,7 @@
                                       (o |= 2), s.set(e, t);
                                       var u = oi(a(e), a(t), o, r, i, s);
                                       return s.delete(e), u;
-                                    case M:
+                                    case L:
                                       if (Hn) return Hn.call(e) == Hn.call(t);
                                   }
                                   return !1;
@@ -3084,7 +3087,7 @@
                         l === r && (l = s), to(e, a, l);
                       }
                     },
-                    Ma,
+                    La,
                   );
               }
               function zo(e, t) {
@@ -3163,7 +3166,7 @@
                 return n;
               }
               function Zo(e, t) {
-                return Mi(ki(e, t, ol), e + "");
+                return Li(ki(e, t, ol), e + "");
               }
               function Jo(e) {
                 return Zn(Ua(e));
@@ -3296,7 +3299,7 @@
               }
               function pr(e, t, n) {
                 var o = -1,
-                  r = Lt,
+                  r = Mt,
                   i = e.length,
                   s = !0,
                   a = [],
@@ -3472,7 +3475,7 @@
                 for (t || (t = o(r)); ++n < r; ) t[n] = e[n];
                 return t;
               }
-              function Mr(e, t, n, o) {
+              function Lr(e, t, n, o) {
                 var i = !n;
                 n || (n = {});
                 for (var s = -1, a = t.length; ++s < a; ) {
@@ -3482,7 +3485,7 @@
                 }
                 return n;
               }
-              function Lr(e, t) {
+              function Mr(e, t) {
                 return function (n, o) {
                   var r = Gs(n) ? kt : ro,
                     i = t ? t() : {};
@@ -3750,7 +3753,7 @@
                     p,
                   ],
                   f = n.apply(r, d);
-                return Si(e) && Ni(f, d), (f.placeholder = o), Li(f, e, t);
+                return Si(e) && Ni(f, d), (f.placeholder = o), Mi(f, e, t);
               }
               function Qr(e) {
                 var t = Te[e];
@@ -3918,7 +3921,7 @@
                       ).apply(o ? n : this, arguments);
                     };
                   })(e, t, n);
-                return Li((x ? nr : Ni)(S, E), e, t);
+                return Mi((x ? nr : Ni)(S, E), e, t);
               }
               function ei(e, t, n, o) {
                 return e === r || (Us(e, Oe[n]) && !je.call(o, n)) ? t : e;
@@ -3971,13 +3974,13 @@
                 return s.delete(e), s.delete(t), p;
               }
               function ri(e) {
-                return Mi(ki(e, r, zi), e + "");
+                return Li(ki(e, r, zi), e + "");
               }
               function ii(e) {
                 return Io(e, Ra, di);
               }
               function si(e) {
-                return Io(e, Ma, fi);
+                return Io(e, La, fi);
               }
               var ai = Rn
                 ? function (e) {
@@ -3987,8 +3990,8 @@
               function li(e) {
                 for (
                   var t = e.name + "",
-                    n = Mn[t],
-                    o = je.call(Mn, t) ? n.length : 0;
+                    n = Ln[t],
+                    o = je.call(Ln, t) ? n.length : 0;
                   o--;
 
                 ) {
@@ -4042,7 +4045,7 @@
                       return null == e
                         ? []
                         : ((e = ke(e)),
-                          Mt(vt(e), function (t) {
+                          Lt(vt(e), function (t) {
                             return Qe.call(e, t);
                           }));
                     }
@@ -4122,14 +4125,14 @@
                 (In && gi(new In()) != w) ||
                 (Tn && gi(Tn.resolve()) != k) ||
                 (kn && gi(new kn()) != N) ||
-                (An && gi(new An()) != L)) &&
+                (An && gi(new An()) != M)) &&
                 (gi = function (e) {
                   var t = To(e),
                     n = t == T ? e.constructor : r,
                     o = n ? Bi(n) : "";
                   if (o)
                     switch (o) {
-                      case Ln:
+                      case Mn:
                         return P;
                       case On:
                         return w;
@@ -4138,7 +4141,7 @@
                       case Dn:
                         return N;
                       case jn:
-                        return L;
+                        return M;
                     }
                   return t;
                 });
@@ -4183,10 +4186,10 @@
                   function (e, t) {
                     return ft.setTimeout(e, t);
                   },
-                Mi = Oi(or);
-              function Li(e, t, n) {
+                Li = Oi(or);
+              function Mi(e, t, n) {
                 var o = t + "";
-                return Mi(
+                return Li(
                   e,
                   (function (e, t) {
                     var n = t.length;
@@ -4203,7 +4206,7 @@
                       return (
                         At(_, function (n) {
                           var o = "_." + n[0];
-                          t & n[1] && !Lt(e, o) && e.push(o);
+                          t & n[1] && !Mt(e, o) && e.push(o);
                         }),
                         e.sort()
                       );
@@ -4382,7 +4385,7 @@
                 if (!e || !e.length) return [];
                 var t = 0;
                 return (
-                  (e = Mt(e, function (e) {
+                  (e = Lt(e, function (e) {
                     if (Ys(e)) return (t = vn(e.length, t)), !0;
                   })),
                   Xt(t, function (t) {
@@ -4403,16 +4406,16 @@
                   return Ys(e) ? po(e, t) : [];
                 }),
                 as = Zo(function (e) {
-                  return _r(Mt(e, Ys));
+                  return _r(Lt(e, Ys));
                 }),
                 ls = Zo(function (e) {
                   var t = Qi(e);
-                  return Ys(t) && (t = r), _r(Mt(e, Ys), ui(t, 2));
+                  return Ys(t) && (t = r), _r(Lt(e, Ys), ui(t, 2));
                 }),
                 cs = Zo(function (e) {
                   var t = Qi(e);
                   return (
-                    (t = "function" == typeof t ? t : r), _r(Mt(e, Ys), r, t)
+                    (t = "function" == typeof t ? t : r), _r(Lt(e, Ys), r, t)
                   );
                 }),
                 us = Zo(rs);
@@ -4450,7 +4453,7 @@
                     }))
                   : this.thru(i);
               });
-              var fs = Lr(function (e, t, n) {
+              var fs = Mr(function (e, t, n) {
                 je.call(e, n) ? ++e[n] : so(e, n, 1);
               });
               var gs = Ur(qi),
@@ -4461,7 +4464,7 @@
               function vs(e, t) {
                 return (Gs(e) ? Nt : fo)(e, ui(t, 3));
               }
-              var bs = Lr(function (e, t, n) {
+              var bs = Mr(function (e, t, n) {
                 je.call(e, n) ? e[n].push(t) : so(e, n, [t]);
               });
               var xs = Zo(function (e, t, n) {
@@ -4470,18 +4473,18 @@
                     s = Ws(e) ? o(e.length) : [];
                   return (
                     ho(e, function (e) {
-                      s[++r] = i ? Tt(t, e, n) : Mo(e, t, n);
+                      s[++r] = i ? Tt(t, e, n) : Lo(e, t, n);
                     }),
                     s
                   );
                 }),
-                Es = Lr(function (e, t, n) {
+                Es = Mr(function (e, t, n) {
                   so(e, n, t);
                 });
               function Ss(e, t) {
                 return (Gs(e) ? Pt : Fo)(e, ui(t, 3));
               }
-              var Cs = Lr(
+              var Cs = Mr(
                 function (e, t, n) {
                   e[n ? 0 : 1].push(t);
                 },
@@ -4603,10 +4606,10 @@
                   v
                 );
               }
-              var Ms = Zo(function (e, t) {
+              var Ls = Zo(function (e, t) {
                   return mo(e, 1, t);
                 }),
-                Ls = Zo(function (e, t, n) {
+                Ms = Zo(function (e, t, n) {
                   return mo(e, ga(t) || 0, n);
                 });
               function Os(e, t) {
@@ -4672,12 +4675,12 @@
                 Vs = $r(function (e, t) {
                   return e >= t;
                 }),
-                qs = Lo(
+                qs = Mo(
                   (function () {
                     return arguments;
                   })(),
                 )
-                  ? Lo
+                  ? Mo
                   : function (e) {
                       return (
                         ta(e) && je.call(e, "callee") && !Qe.call(e, "callee")
@@ -4766,7 +4769,7 @@
                 return "string" == typeof e || (!Gs(e) && ta(e) && To(e) == R);
               }
               function la(e) {
-                return "symbol" == typeof e || (ta(e) && To(e) == M);
+                return "symbol" == typeof e || (ta(e) && To(e) == L);
               }
               var ca = It
                 ? Zt(It)
@@ -4824,23 +4827,23 @@
                     : +e;
               }
               function _a(e) {
-                return Mr(e, Ma(e));
+                return Lr(e, La(e));
               }
               function ya(e) {
                 return null == e ? "" : mr(e);
               }
               var va = Or(function (e, t) {
-                  if (wi(t) || Ws(t)) Mr(t, Ra(t), e);
+                  if (wi(t) || Ws(t)) Lr(t, Ra(t), e);
                   else for (var n in t) je.call(t, n) && no(e, n, t[n]);
                 }),
                 ba = Or(function (e, t) {
-                  Mr(t, Ma(t), e);
+                  Lr(t, La(t), e);
                 }),
                 xa = Or(function (e, t, n, o) {
-                  Mr(t, Ma(t), e, o);
+                  Lr(t, La(t), e, o);
                 }),
                 Ea = Or(function (e, t, n, o) {
-                  Mr(t, Ra(t), e, o);
+                  Lr(t, Ra(t), e, o);
                 }),
                 Sa = ri(ao);
               var Ca = Zo(function (e, t) {
@@ -4850,7 +4853,7 @@
                     i = o > 2 ? t[2] : r;
                   for (i && xi(t[0], t[1], i) && (o = 1); ++n < o; )
                     for (
-                      var s = t[n], a = Ma(s), l = -1, c = a.length;
+                      var s = t[n], a = La(s), l = -1, c = a.length;
                       ++l < c;
 
                     ) {
@@ -4883,14 +4886,14 @@
                     (t = Ue.call(t)),
                     je.call(e, t) ? e[t].push(n) : (e[t] = [n]);
                 }, ui),
-                Na = Zo(Mo);
+                Na = Zo(Lo);
               function Ra(e) {
                 return Ws(e) ? Xn(e) : Bo(e);
               }
-              function Ma(e) {
+              function La(e) {
                 return Ws(e) ? Xn(e, !0) : Ho(e);
               }
-              var La = Or(function (e, t, n) {
+              var Ma = Or(function (e, t, n) {
                   Go(e, t, n);
                 }),
                 Oa = Or(function (e, t, n, o) {
@@ -4903,7 +4906,7 @@
                   (t = Pt(t, function (t) {
                     return (t = xr(t, e)), o || (o = t.length > 1), t;
                   })),
-                    Mr(e, si(e), n),
+                    Lr(e, si(e), n),
                     o && (n = co(n, 7, ni));
                   for (var r = t.length; r--; ) hr(n, t[r]);
                   return n;
@@ -4930,7 +4933,7 @@
                 );
               }
               var Ba = Zr(Ra),
-                Ha = Zr(Ma);
+                Ha = Zr(La);
               function Ua(e) {
                 return null == e ? [] : Jt(e, Ra(e));
               }
@@ -5006,12 +5009,12 @@
               }
               var il = Zo(function (e, t) {
                   return function (n) {
-                    return Mo(n, e, t);
+                    return Lo(n, e, t);
                   };
                 }),
                 sl = Zo(function (e, t) {
                   return function (n) {
-                    return Mo(e, n, t);
+                    return Lo(e, n, t);
                   };
                 });
               function al(e, t, n) {
@@ -5179,8 +5182,8 @@
                 (Fn.debounce = Rs),
                 (Fn.defaults = Ca),
                 (Fn.defaultsDeep = wa),
-                (Fn.defer = Ms),
-                (Fn.delay = Ls),
+                (Fn.defer = Ls),
+                (Fn.delay = Ms),
                 (Fn.difference = Ui),
                 (Fn.differenceBy = Fi),
                 (Fn.differenceWith = Vi),
@@ -5228,7 +5231,7 @@
                     : [];
                 }),
                 (Fn.filter = function (e, t) {
-                  return (Gs(e) ? Mt : yo)(e, ui(t, 3));
+                  return (Gs(e) ? Lt : yo)(e, ui(t, 3));
                 }),
                 (Fn.flatMap = function (e, t) {
                   return vo(Ss(e, t), 1);
@@ -5268,7 +5271,7 @@
                   return null == e ? [] : Co(e, Ra(e));
                 }),
                 (Fn.functionsIn = function (e) {
-                  return null == e ? [] : Co(e, Ma(e));
+                  return null == e ? [] : Co(e, La(e));
                 }),
                 (Fn.groupBy = bs),
                 (Fn.initial = function (e) {
@@ -5283,7 +5286,7 @@
                 (Fn.iteratee = rl),
                 (Fn.keyBy = Es),
                 (Fn.keys = Ra),
-                (Fn.keysIn = Ma),
+                (Fn.keysIn = La),
                 (Fn.map = Ss),
                 (Fn.mapKeys = function (e, t) {
                   var n = {};
@@ -5312,7 +5315,7 @@
                   return qo(e, co(t, 1));
                 }),
                 (Fn.memoize = Os),
-                (Fn.merge = La),
+                (Fn.merge = Ma),
                 (Fn.mergeWith = Oa),
                 (Fn.method = il),
                 (Fn.methodOf = sl),
@@ -5370,7 +5373,7 @@
                 (Fn.rangeRight = dl),
                 (Fn.rearg = Hs),
                 (Fn.reject = function (e, t) {
-                  return (Gs(e) ? Mt : yo)(e, Ps(ui(t, 3)));
+                  return (Gs(e) ? Lt : yo)(e, Ps(ui(t, 3)));
                 }),
                 (Fn.remove = function (e, t) {
                   var n = [];
@@ -5549,7 +5552,7 @@
                 }),
                 (Fn.values = Ua),
                 (Fn.valuesIn = function (e) {
-                  return null == e ? [] : Jt(e, Ma(e));
+                  return null == e ? [] : Jt(e, La(e));
                 }),
                 (Fn.without = ss),
                 (Fn.words = Xa),
@@ -5636,10 +5639,10 @@
                 (Fn.forEach = ys),
                 (Fn.forEachRight = vs),
                 (Fn.forIn = function (e, t) {
-                  return null == e ? e : bo(e, ui(t, 3), Ma);
+                  return null == e ? e : bo(e, ui(t, 3), La);
                 }),
                 (Fn.forInRight = function (e, t) {
-                  return null == e ? e : xo(e, ui(t, 3), Ma);
+                  return null == e ? e : xo(e, ui(t, 3), La);
                 }),
                 (Fn.forOwn = function (e, t) {
                   return e && Eo(e, ui(t, 3));
@@ -5768,7 +5771,7 @@
                   return e === r;
                 }),
                 (Fn.isWeakMap = function (e) {
-                  return ta(e) && gi(e) == L;
+                  return ta(e) && gi(e) == M;
                 }),
                 (Fn.isWeakSet = function (e) {
                   return ta(e) && "[object WeakSet]" == To(e);
@@ -6207,7 +6210,7 @@
                   return "function" == typeof e
                     ? new zn(this)
                     : this.map(function (n) {
-                        return Mo(n, e, t);
+                        return Lo(n, e, t);
                       });
                 })),
                 (zn.prototype.reject = function (e) {
@@ -6275,7 +6278,7 @@
                 At(
                   ["pop", "push", "shift", "sort", "splice", "unshift"],
                   function (e) {
-                    var t = Me[e],
+                    var t = Le[e],
                       n = /^(?:push|sort|unshift)$/.test(e) ? "tap" : "thru",
                       o = /^(?:pop|shift)$/.test(e);
                     Fn.prototype[e] = function () {
@@ -6294,10 +6297,10 @@
                   var n = Fn[t];
                   if (n) {
                     var o = n.name + "";
-                    (Mn[o] || (Mn[o] = [])).push({ name: t, func: n });
+                    (Ln[o] || (Ln[o] = [])).push({ name: t, func: n });
                   }
                 }),
-                (Mn[Vr(r, 2).name] = [{ name: "wrapper", func: r }]),
+                (Ln[Vr(r, 2).name] = [{ name: "wrapper", func: r }]),
                 (zn.prototype.clone = function () {
                   var e = new zn(this.__wrapped__);
                   return (
@@ -8316,11 +8319,11 @@
             A = {},
             N = {},
             R = !1,
-            M = 0,
-            L = new o.Parser(
+            L = 0,
+            M = new o.Parser(
               {
                 onopentag: function (e, n) {
-                  if (R) M++;
+                  if (R) L++;
                   else {
                     var o = new b(e, n);
                     k.push(o);
@@ -8341,7 +8344,7 @@
                       t.allowedTags &&
                         -1 === t.allowedTags.indexOf(e) &&
                         ((i = !0),
-                        -1 !== S.indexOf(e) && ((R = !0), (M = 1)),
+                        -1 !== S.indexOf(e) && ((R = !0), (L = 1)),
                         (A[T] = !0)),
                       T++,
                       i ||
@@ -8380,11 +8383,11 @@
                                           R = void 0;
                                         try {
                                           for (
-                                            var M, L = k[Symbol.iterator]();
-                                            !(A = (M = L.next()).done);
+                                            var L, M = k[Symbol.iterator]();
+                                            !(A = (L = M.next()).done);
                                             A = !0
                                           ) {
-                                            var D = M.value;
+                                            var D = L.value;
                                             -1 !== I.values.indexOf(D) &&
                                               ("" === T
                                                 ? (T = D)
@@ -8394,7 +8397,7 @@
                                           (N = !0), (R = e);
                                         } finally {
                                           try {
-                                            !A && L.return && L.return();
+                                            !A && M.return && M.return();
                                           } finally {
                                             if (N) throw R;
                                           }
@@ -8563,7 +8566,7 @@
                 },
                 onclosetag: function (e) {
                   if (R) {
-                    if (--M) return;
+                    if (--L) return;
                     R = !1;
                   }
                   var n = k.pop();
@@ -8581,7 +8584,7 @@
               },
               t.parser,
             );
-          return L.write(e), L.end(), v;
+          return M.write(e), M.end(), v;
           function O(e, n) {
             return (
               "string" != typeof e && (e += ""),
@@ -9029,8 +9032,8 @@
           A = a++,
           N = a++,
           R = a++,
-          M = a++,
           L = a++,
+          M = a++,
           O = a++,
           P = a++,
           D = a++,
@@ -9280,8 +9283,8 @@
           }),
           (ge.prototype._stateBeforeCdata1 = de("C", N, S)),
           (ge.prototype._stateBeforeCdata2 = de("D", R, S)),
-          (ge.prototype._stateBeforeCdata3 = de("A", M, S)),
-          (ge.prototype._stateBeforeCdata4 = de("T", L, S)),
+          (ge.prototype._stateBeforeCdata3 = de("A", L, S)),
+          (ge.prototype._stateBeforeCdata4 = de("T", M, S)),
           (ge.prototype._stateBeforeCdata5 = de("A", O, S)),
           (ge.prototype._stateBeforeCdata6 = function (e) {
             "[" === e
@@ -9526,13 +9529,13 @@
                                                                   e,
                                                                 )
                                                               : this._state ===
-                                                                  M
+                                                                  L
                                                                 ? this._stateBeforeCdata4(
                                                                     e,
                                                                   )
                                                                 : this
                                                                       ._state ===
-                                                                    L
+                                                                    M
                                                                   ? this._stateBeforeCdata5(
                                                                       e,
                                                                     )
@@ -12176,32 +12179,32 @@
           A = "[object Uint32Array]",
           N = /\w*$/,
           R = /^\[object .+?Constructor\]$/,
-          M = /^(?:0|[1-9]\d*)$/,
-          L = {};
-        (L[i] =
-          L["[object Array]"] =
-          L[v] =
-          L[b] =
-          L[s] =
-          L[a] =
-          L[x] =
-          L[E] =
-          L[S] =
-          L[C] =
-          L[w] =
-          L[u] =
-          L[m] =
-          L[p] =
-          L[d] =
-          L[f] =
-          L[g] =
-          L[_] =
-          L[I] =
-          L[T] =
-          L[k] =
-          L[A] =
+          L = /^(?:0|[1-9]\d*)$/,
+          M = {};
+        (M[i] =
+          M["[object Array]"] =
+          M[v] =
+          M[b] =
+          M[s] =
+          M[a] =
+          M[x] =
+          M[E] =
+          M[S] =
+          M[C] =
+          M[w] =
+          M[u] =
+          M[m] =
+          M[p] =
+          M[d] =
+          M[f] =
+          M[g] =
+          M[_] =
+          M[I] =
+          M[T] =
+          M[k] =
+          M[A] =
             !0),
-          (L["[object Error]"] = L[l] = L[y] = !1);
+          (M["[object Error]"] = M[l] = M[y] = !1);
         var O = "object" == typeof n.g && n.g && n.g.Object === Object && n.g,
           P = "object" == typeof self && self && self.Object === Object && self,
           D = O || P || Function("return this")(),
@@ -12357,16 +12360,16 @@
           var o = e[t];
           (ee.call(e, t) && Ge(o, n) && (void 0 !== n || t in e)) || (e[t] = n);
         }
-        function Me(e, t) {
+        function Le(e, t) {
           for (var n = e.length; n--; ) if (Ge(e[n][0], t)) return n;
           return -1;
         }
-        function Le(e, t, n, o, r, h, y) {
+        function Me(e, t, n, o, r, h, y) {
           var R;
           if ((o && (R = h ? o(e, r, h, y) : o(e)), void 0 !== R)) return R;
           if (!Ke(e)) return e;
-          var M = ze(e);
-          if (M) {
+          var L = ze(e);
+          if (L) {
             if (
               ((R = (function (e) {
                 var t = e.length,
@@ -12415,7 +12418,7 @@
                   })(R, e),
                 );
             } else {
-              if (!L[O]) return h ? e : {};
+              if (!M[O]) return h ? e : {};
               R = (function (e, t, n, o) {
                 var r = e.constructor;
                 switch (t) {
@@ -12464,13 +12467,13 @@
                     return (i = e), we ? Object(we.call(i)) : {};
                 }
                 var i;
-              })(e, O, Le, t);
+              })(e, O, Me, t);
             }
           }
           y || (y = new Ae());
           var D = y.get(e);
           if (D) return D;
-          if ((y.set(e, R), !M))
+          if ((y.set(e, R), !L))
             var j = n
               ? (function (e) {
                   return (function (e, t, n) {
@@ -12497,7 +12500,7 @@
 
               );
             })(j || e, function (r, i) {
-              j && (r = e[(i = r)]), Re(R, i, Le(r, t, n, o, i, e, y));
+              j && (r = e[(i = r)]), Re(R, i, Me(r, t, n, o, i, e, y));
             }),
             R
           );
@@ -12569,22 +12572,22 @@
           }),
           (Te.prototype.delete = function (e) {
             var t = this.__data__,
-              n = Me(t, e);
+              n = Le(t, e);
             return (
               !(n < 0) && (n == t.length - 1 ? t.pop() : ce.call(t, n, 1), !0)
             );
           }),
           (Te.prototype.get = function (e) {
             var t = this.__data__,
-              n = Me(t, e);
+              n = Le(t, e);
             return n < 0 ? void 0 : t[n][1];
           }),
           (Te.prototype.has = function (e) {
-            return Me(this.__data__, e) > -1;
+            return Le(this.__data__, e) > -1;
           }),
           (Te.prototype.set = function (e, t) {
             var n = this.__data__,
-              o = Me(n, e);
+              o = Le(n, e);
             return o < 0 ? n.push([e, t]) : (n[o][1] = t), this;
           }),
           (ke.prototype.clear = function () {
@@ -12638,7 +12641,7 @@
         function Fe(e, t) {
           return (
             !!(t = null == t ? r : t) &&
-            ("number" == typeof e || M.test(e)) &&
+            ("number" == typeof e || L.test(e)) &&
             e > -1 &&
             e % 1 == 0 &&
             e < t
@@ -12721,7 +12724,7 @@
               })(e);
         }
         e.exports = function (e) {
-          return Le(e, !0, !0);
+          return Me(e, !0, !0);
         };
       },
       (e, t, n) => {
@@ -12787,17 +12790,17 @@
           A = Array.prototype,
           N = Function.prototype,
           R = Object.prototype,
-          M = y["__core-js_shared__"],
-          L = N.toString,
+          L = y["__core-js_shared__"],
+          M = N.toString,
           O = R.hasOwnProperty,
-          P = (I = /[^.]+$/.exec((M && M.keys && M.keys.IE_PROTO) || ""))
+          P = (I = /[^.]+$/.exec((L && L.keys && L.keys.IE_PROTO) || ""))
             ? "Symbol(src)_1." + I
             : "",
           D = R.toString,
-          j = L.call(Object),
+          j = M.call(Object),
           B = RegExp(
             "^" +
-              L.call(O)
+              M.call(O)
                 .replace(/[\\^$.*+?()[\]{}|]/g, "\\$&")
                 .replace(
                   /hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,
@@ -12872,7 +12875,7 @@
           var n = Ie(e),
             o = !n && we(e),
             r = !n && !o && ke(e),
-            i = !n && !o && !r && Le(e),
+            i = !n && !o && !r && Me(e),
             s = n || o || r || i,
             a = s
               ? (function (e, t) {
@@ -13044,7 +13047,7 @@
                 })(e);
         }
         function he(e) {
-          return Me(e) && pe(e) == i;
+          return Le(e) && pe(e) == i;
         }
         function de(e) {
           return (
@@ -13058,7 +13061,7 @@
               (function (e) {
                 if (null != e) {
                   try {
-                    return L.call(e);
+                    return M.call(e);
                   } catch (e) {}
                   try {
                     return e + "";
@@ -13099,12 +13102,12 @@
                       if (p) {
                         var h = Ie(l),
                           d = !h && ke(l),
-                          f = !h && !d && Le(l);
+                          f = !h && !d && Me(l);
                         (m = l),
                           h || d || f
                             ? Ie(a)
                               ? (m = a)
-                              : Me((b = a)) && Te(b)
+                              : Le((b = a)) && Te(b)
                                 ? (m = (function (e, t) {
                                     var n = -1,
                                       o = e.length;
@@ -13136,7 +13139,7 @@
                                       )))
                                     : (m = [])
                             : (function (e) {
-                                  if (!Me(e) || pe(e) != u) return !1;
+                                  if (!Le(e) || pe(e) != u) return !1;
                                   var t = q(e);
                                   if (null === t) return !0;
                                   var n =
@@ -13144,7 +13147,7 @@
                                   return (
                                     "function" == typeof n &&
                                     n instanceof n &&
-                                    L.call(n) == j
+                                    M.call(n) == j
                                   );
                                 })(l) || we(l)
                               ? ((m = a),
@@ -13299,7 +13302,7 @@
           )
             ? he
             : function (e) {
-                return Me(e) && O.call(e, "callee") && !z.call(e, "callee");
+                return Le(e) && O.call(e, "callee") && !z.call(e, "callee");
               },
           Ie = Array.isArray;
         function Te(e) {
@@ -13322,17 +13325,17 @@
           var t = typeof e;
           return null != e && ("object" == t || "function" == t);
         }
-        function Me(e) {
+        function Le(e) {
           return null != e && "object" == typeof e;
         }
-        var Le = C
+        var Me = C
           ? (function (e) {
               return function (t) {
                 return e(t);
               };
             })(C)
           : function (e) {
-              return Me(e) && Ne(e.length) && !!f[pe(e)];
+              return Le(e) && Ne(e.length) && !!f[pe(e)];
             };
         function Oe(e) {
           return Te(e) ? ie(e, !0) : fe(e);
@@ -15053,9 +15056,9 @@
               ) {
                 var R = A[I];
                 if (R && !R.match(p)) {
-                  for (var M = "", L = 0, O = R.length; L < O; L++)
-                    R.charCodeAt(L) > 127 ? (M += "x") : (M += R[L]);
-                  if (!M.match(p)) {
+                  for (var L = "", M = 0, O = R.length; M < O; M++)
+                    R.charCodeAt(M) > 127 ? (L += "x") : (L += R[M]);
+                  if (!L.match(p)) {
                     var P = A.slice(0, I),
                       D = A.slice(I + 1),
                       j = R.match(h);
@@ -16833,8 +16836,8 @@
             A,
             N,
             R,
-            M,
             L,
+            M,
             O,
             P = e.css.valueOf(),
             D = C.ignoreErrors,
@@ -16878,16 +16881,16 @@
                 }
                 case p:
                   if (
-                    ((M = H.length ? H.pop()[1] : ""),
-                    (L = P.charCodeAt(B + 1)),
-                    "url" === M &&
-                      L !== t &&
-                      L !== n &&
-                      L !== s &&
-                      L !== i &&
-                      L !== l &&
-                      L !== a &&
-                      L !== c)
+                    ((L = H.length ? H.pop()[1] : ""),
+                    (M = P.charCodeAt(B + 1)),
+                    "url" === L &&
+                      M !== t &&
+                      M !== n &&
+                      M !== s &&
+                      M !== i &&
+                      M !== l &&
+                      M !== a &&
+                      M !== c)
                   ) {
                     I = B;
                     do {
@@ -17395,6 +17398,7 @@
         e.exports = o.Ember.Component.extend(l, r.default, i.default, {
           layout: n(138),
           classNames: ["loot-inventory"],
+          clientConfig: o.Ember.inject.service("client-config"),
           lootService: o.Ember.inject.service("loot"),
           lootMassDisenchantService: o.Ember.inject.service(
             "loot-mass-disenchant",
@@ -17487,6 +17491,7 @@
             "searchFilter",
             "sortType",
             "lootTypeFilter",
+            "clientConfig.externalLootSupportUrl",
             function () {
               const e = this.get("categorizedLootItems"),
                 t = this.get("categorizedLootItemsChanged");
@@ -17498,7 +17503,14 @@
                   n = this.get("lootTypeFilter");
                 this._decorateDisplayItems(e, t, n);
               }
-              return this._handleDisplayItemSort(e, t), e;
+              const r = this.get("clientConfig.externalLootSupportUrl");
+              return (
+                r &&
+                  e?.hasOwnProperty(s.DISPLAY_CATEGORY_CHEST) &&
+                  e[s.DISPLAY_CATEGORY_CHEST].set("externalLootSupportUrl", r),
+                this._handleDisplayItemSort(e, t),
+                e
+              );
             },
           ),
           isAnyContextMenuOpen: o.Ember.computed(
@@ -17536,7 +17548,11 @@
             return e.splice(t, 1), (e = [n, ...e]);
           },
           _applyPostSortContent: function (e, t) {
-            return "CHEST" === e && (t = this._pinMythicEssenceToTop(t)), t;
+            return (
+              e === s.DISPLAY_CATEGORY_CHEST &&
+                (t = this._pinMythicEssenceToTop(t)),
+              t
+            );
           },
           _handleDisplayItemSort: function (e, t) {
             const n = this.get("sortType");
@@ -17809,9 +17825,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "1UebrW87",
+          id: "IRBRFFN5",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-display-category-tabs-container"],["flush-element"],["text","\\n  "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],["ALL",["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"],["block",["each"],[["get",["allDisplayCategories"]]],null,7],["block",["if"],[["get",["showMassDisenchantTab"]]],null,6,5],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-inventory-content-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-filter-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-filter"],null,[["searchFilter","sortType","isMassDisenchantOpen","updateSearchFilter","updateSortType"],[["get",["searchFilter"]],["get",["sortType"]],["get",["isMassDisenchantOpen"]],["helper",["action"],[["get",[null]],"updateSearchFilter"],null],["helper",["action"],[["get",[null]],"updateSortType"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-inventory-grid-wrapper"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootLoadingOrNotReady"]]],null,4],["block",["if"],[["get",["isLootReadyAndDisplayEnabled"]]],null,3],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["append",["helper",["loot-item"],null,[["decoratedRecipeSlotStates","selectedLootItems","lootItem","selectContextMenuAction","openRecipeMenu","addItemToFirstValidSlot","notifyContextMenuState","isAnyContextMenuOpen","lastLootItemRendered","isLootPageVisible","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["get",["lootItem"]],["get",["selectContextMenuAction"]],["get",["openRecipeMenu"]],["get",["addItemToFirstValidSlot"]],["helper",["action"],[["get",[null]],"notifyContextMenuState"],null],["get",["isAnyContextMenuOpen"]],["helper",["action"],[["get",[null]],"lastLootItemRendered"],null],["get",["isLootPageVisible"]],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]]]]],false],["text","\\n"]],"locals":["lootItem"]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","display-category-section-title"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["helper",["concat"],["loot_category_",["get",["category"]]],null]],null],false],["close-element"],["text","\\n                "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","display-category-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItems","isCategoryVisible"]]],null,1],["block",["each"],[["get",["lootItems"]]],[["key"],["lootId"]],0],["text","          "],["close-element"],["text","\\n"]],"locals":["category","lootItems"]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-inventory-grid ",["helper",["if"],[["get",["isLootItemsLazyLoading"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["helper",["-each-in"],[["get",["displayItems"]]],null]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["uikit-spinner"],null,[["class"],["loot-inventory-grid-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-action-tabs-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-mass-disenchant-action-tab"],null,[["isMassDisenchantOpen","toggleMassDisenchant"],[["get",["isMassDisenchantOpen"]],["get",["toggleMassDisenchant"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],[["get",["displayCategory"]],["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"]],"locals":["displayCategory"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-display-category-tabs-container"],["flush-element"],["text","\\n  "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],["ALL",["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"],["block",["each"],[["get",["allDisplayCategories"]]],null,8],["block",["if"],[["get",["showMassDisenchantTab"]]],null,7,6],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-inventory-content-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-filter-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-filter"],null,[["searchFilter","sortType","isMassDisenchantOpen","updateSearchFilter","updateSortType"],[["get",["searchFilter"]],["get",["sortType"]],["get",["isMassDisenchantOpen"]],["helper",["action"],[["get",[null]],"updateSearchFilter"],null],["helper",["action"],[["get",[null]],"updateSortType"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-inventory-grid-wrapper"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootLoadingOrNotReady"]]],null,5],["block",["if"],[["get",["isLootReadyAndDisplayEnabled"]]],null,4],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["append",["helper",["loot-item"],null,[["decoratedRecipeSlotStates","selectedLootItems","lootItem","selectContextMenuAction","openRecipeMenu","addItemToFirstValidSlot","notifyContextMenuState","isAnyContextMenuOpen","lastLootItemRendered","isLootPageVisible","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["get",["lootItem"]],["get",["selectContextMenuAction"]],["get",["openRecipeMenu"]],["get",["addItemToFirstValidSlot"]],["helper",["action"],[["get",[null]],"notifyContextMenuState"],null],["get",["isAnyContextMenuOpen"]],["helper",["action"],[["get",[null]],"lastLootItemRendered"],null],["get",["isLootPageVisible"]],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]]]]],false],["text","\\n"]],"locals":["lootItem"]},{"statements":[["text","                    "],["open-element","a",[]],["static-attr","class","external-link"],["static-attr","target","_blank"],["dynamic-attr","href",["unknown",["lootItems","externalLootSupportUrl"]],null],["flush-element"],["text","\\n                      "],["append",["unknown",["tra","loot_chest_external_drop_rates_link"]],false],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","display-category-section-title"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["text","\\n                  "],["append",["helper",["get"],[["get",["tra"]],["helper",["concat"],["loot_category_",["get",["category"]]],null]],null],false],["text","\\n"],["block",["if"],[["get",["lootItems","externalLootSupportUrl"]]],null,1],["text","                "],["close-element"],["text","\\n                "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","display-category-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItems","isCategoryVisible"]]],null,2],["block",["each"],[["get",["lootItems"]]],[["key"],["lootId"]],0],["text","          "],["close-element"],["text","\\n"]],"locals":["category","lootItems"]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-inventory-grid ",["helper",["if"],[["get",["isLootItemsLazyLoading"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["helper",["-each-in"],[["get",["displayItems"]]],null]],null,3],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["uikit-spinner"],null,[["class"],["loot-inventory-grid-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-action-tabs-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-mass-disenchant-action-tab"],null,[["isMassDisenchantOpen","toggleMassDisenchant"],[["get",["isMassDisenchantOpen"]],["get",["toggleMassDisenchant"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],[["get",["displayCategory"]],["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"]],"locals":["displayCategory"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -22604,8 +22620,39 @@
       },
       (e, t, n) => {
         "use strict";
+        var o = n(1);
+        e.exports = o.Ember.Service.extend({
+          init() {
+            this._super(...arguments),
+              (this.clientConfigDataBinding = (0, o.dataBinding)(
+                "/client-config/v2/config",
+                o.socket,
+              )),
+              this.initConfigObservers();
+          },
+          initConfigObservers() {
+            this.observeConfig(
+              "externalLootSupportUrl",
+              "/lol.client_settings.store.lcu.externalLootSupportUrl",
+            );
+          },
+          observeConfig(e, t) {
+            this.clientConfigDataBinding.observe(t, this, (t) => {
+              this.isDestroying ||
+                this.isDestroyed ||
+                this.set(e, "string" == typeof t ? t : "");
+            });
+          },
+          willDestroyElement() {
+            this._super(...arguments),
+              this.clientConfigDataBinding.unobserve(this);
+          },
+        });
+      },
+      (e, t, n) => {
+        "use strict";
         var o = n(1),
-          r = n(245),
+          r = n(246),
           i = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
@@ -22628,8 +22675,8 @@
             return o;
           })(n(7)),
           s = l(n(211)),
-          a = l(n(246));
-        n(247);
+          a = l(n(247));
+        n(248);
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -23616,7 +23663,7 @@
       (e, t, n) => {
         "use strict";
         var o = n(1);
-        n(253);
+        n(254);
         var r = n(3);
         e.exports = o.Ember.Service.extend({
           locHelper: o.Ember.inject.service("lootLocHelper"),
@@ -23641,7 +23688,7 @@
                 )
               : this.get("tra").get("loot_redeem_notification_body");
             const s = e.isRental ? "shard" : "permanent",
-              a = n(254)({
+              a = n(255)({
                 titleLoc: t,
                 bodyLoc: i,
                 borderType: s,
@@ -23801,6 +23848,7 @@
                   e
                     .get("rcp-fe-lol-shared-components")
                     .getSharedEmberComponents(),
+                socket: (e) => e.getSocket(),
                 Telemetry: (e) => e.get("rcp-fe-common-libs").getTelemetry("1"),
                 TooltipManager: (e) =>
                   e.get("rcp-fe-lol-uikit").getTooltipManager(),

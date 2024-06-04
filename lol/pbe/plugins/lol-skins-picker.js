@@ -1311,7 +1311,6 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.UNOWNED_SKIN_FILTER =
-            t.TIERED_SKIN_PRODUCT_TYPE =
             t.THUMBNAIL_PER_ROW =
             t.TENCENT_REGION_NAME =
             t.SPLASH_VIDEO_CONFIG =
@@ -1322,7 +1321,6 @@
             t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS =
             t.SKINS_VIEWER_ASSET_BASE_PATH =
             t.SHOWCASE_VIEW_VIDEO_BASE_PATH =
-            t.QUEST_SKIN_PRODUCT_TYPE =
             t.PARSEINT_DEFAULT_RADIX =
             t.OWNED_SKIN_FILTER =
             t.NO_SKINLINE_ID =
@@ -1450,8 +1448,6 @@
         t.SKINS_VIEWER_PAW_SOURCE = "skinsViewer";
         t.SKINS_VIEWER_LOC_KEY_IN_COLLECTIONS =
           "collections_sub_nav_skins_viewer";
-        t.QUEST_SKIN_PRODUCT_TYPE = "kQuestSkin";
-        t.TIERED_SKIN_PRODUCT_TYPE = "kTieredSkin";
       },
       (e, t, n) => {
         const i = n(1).Ember;
@@ -2476,22 +2472,15 @@
               t &&
                 t.forEach((t) => {
                   t.skins.forEach((n) => {
-                    let i = [];
-                    const r = n.questSkinInfo;
-                    if (r && r.tiers.length > 0) {
-                      for (let e = r.tiers.length - 1; e >= 0; e--) {
-                        const s = r.tiers[e];
-                        if (
-                          ((s.champOwnership = t.ownership),
-                          (s.championId = t.id),
-                          (s.parentSkin = n.id),
-                          i.push(s),
-                          s.ownership.owned &&
-                            r.productType === o.TIERED_SKIN_PRODUCT_TYPE)
-                        ) {
-                          i = [s];
-                          break;
-                        }
+                    const i = [],
+                      o = n.questSkinInfo;
+                    if (o && o.tiers.length > 0) {
+                      for (let e = o.tiers.length - 1; e >= 0; e--) {
+                        const r = o.tiers[e];
+                        (r.champOwnership = t.ownership),
+                          (r.championId = t.id),
+                          (r.parentSkin = n.id),
+                          i.push(r);
                       }
                       e.push(...i.reverse());
                     } else

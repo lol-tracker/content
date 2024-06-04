@@ -34931,17 +34931,13 @@
               );
             Promise.all([t, n]).then((t) => {
               const [n, i] = t,
-                s = n && n.data,
-                a = i && i.data,
-                { skinPurchaseDates: l, chromaPurchaseDates: c } = r(e),
-                u = o(l),
-                d = o(c);
-              (0 === u && 0 === d) ||
-                (s &&
-                  u >= n.data.lastVisitTime &&
+                { skinPurchaseDates: s, chromaPurchaseDates: a } = r(e),
+                l = o(s),
+                c = o(a);
+              (0 === l && 0 === c) ||
+                (l >= (n?.data?.lastVisitTime ?? 0) &&
                   this.NavigationPlugin.setItemAlert(this.navigationItem, !0),
-                a &&
-                  d > i.data.lastVisitTime &&
+                c > (i?.data?.lastVisitTime ?? 0) &&
                   this.NavigationPlugin.setItemAlert(this.navigationItem, !0));
             });
           }
@@ -40447,11 +40443,9 @@
         const o = ["None", "Lobby", "Matchmaking", "EndOfGame"],
           r = "/lol-champion-mastery/v1/notifications",
           s =
-            "/lol-client-config/v3/client-config/lol.client_settings.champ_mastery.lcm_enabled",
-          a =
             "/lol-client-config/v3/client-config/lol.client_settings.champ_mastery.lcm_celebrations_enabled",
-          l = "/lol-gameflow/v1/session";
-        var c = i.Ember.Service.extend({
+          a = "/lol-gameflow/v1/session";
+        var l = i.Ember.Service.extend({
           championMasteryCelebrationsEnabled: !1,
           animationsEnabled: !1,
           championMasteryVignette: null,
@@ -40462,7 +40456,6 @@
             "init",
             i.Ember.observer(
               "notification.gameId",
-              "legendaryChampionMasteryEnabled",
               "championMasteryCelebrationsEnabled",
               "isValidNotificationDisplayPhase",
               function () {
@@ -40481,24 +40474,18 @@
           willDestroy() {
             this._super(...arguments),
               i.db.unobserve(s, this),
-              i.db.unobserve(a, this),
               i.db.unobserve(r, this),
-              i.db.unobserve(l, this),
+              i.db.unobserve(a, this),
               i.UXSettings.removeObserver(this._handleUXSettings);
           },
           initDataBindings() {
-            i.db.observe(
-              s,
-              this,
-              this._handleLegendaryChampionMasteryEnabled.bind(this),
-            ),
-              i.db.observe(a, this, this._handleCelebrationEnabled.bind(this)),
+            i.db.observe(s, this, this._handleCelebrationEnabled.bind(this)),
               i.db.observe(
                 r,
                 this,
                 this._handleChampionMasteryNotification.bind(this),
               ),
-              i.db.observe(l, this, this._handleGameflowPhase.bind(this)),
+              i.db.observe(a, this, this._handleGameflowPhase.bind(this)),
               (this._handleUXSettings = this.handleUXSettings.bind(this)),
               i.UXSettings.addObserver(this._handleUXSettings);
           },
@@ -40509,17 +40496,12 @@
             this.set("isValidNotificationDisplayPhase", n),
               this._processChampionMasteryNotification();
           },
-          _handleLegendaryChampionMasteryEnabled(e) {
-            const t = !0 === e;
-            this.set("legendaryChampionMasteryEnabled", t);
-          },
           _handleCelebrationEnabled(e) {
             const t = !1 !== e;
             this.set("championMasteryCelebrationsEnabled", t);
           },
           _canShowNotifications() {
             return (
-              this.get("legendaryChampionMasteryEnabled") &&
               this.get("championMasteryCelebrationsEnabled") &&
               this.get("isValidNotificationDisplayPhase")
             );
@@ -40598,7 +40580,7 @@
             } else n(t);
           },
         });
-        t.default = c;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
@@ -42219,8 +42201,9 @@
             "-70": [s],
             "-1": [s, a],
           },
-          p = ["faq", "ps"];
-        var h = i.Ember.Service.extend({
+          p = [185],
+          h = ["faq", "ps"];
+        var m = i.Ember.Service.extend({
           tra: i.tra,
           enabled: null,
           playerKickedVanguard: !1,
@@ -42274,7 +42257,8 @@
               e &&
               e.state &&
               "ERROR" === e.state &&
-              this._showNotification(e.vanguardStatus);
+              (p.includes(e.vanguardStatus) ||
+                this._showNotification(e.vanguardStatus));
           },
           _shutdownClient: function () {
             window.riotInvoke &&
@@ -42290,7 +42274,7 @@
             if (t) return i.tra.get(t);
             const n = d[e];
             if (!n) return i.tra.get(c);
-            const o = [...n, ...p];
+            const o = [...n, ...h];
             let r = i.tra.get(c);
             r += i.tra.get("vanguard_error_description_persist");
             for (let e = 0; e < o.length; e++) {
@@ -42339,7 +42323,7 @@
               });
           },
         });
-        t.default = h;
+        t.default = m;
       },
       (e, t, n) => {
         "use strict";

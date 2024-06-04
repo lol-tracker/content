@@ -20777,8 +20777,7 @@
       (e, t) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
-          (t.skinProductTypes =
-            t.VOTE_MAJORITY_THRESHOLD =
+          (t.VOTE_MAJORITY_THRESHOLD =
             t.TIMER_PHASES =
             t.SUMMONER_OBJECT_SIZE =
             t.STANDARD_MAX_TEAM_SIZE =
@@ -20979,10 +20978,6 @@
           VISIBLE: "VISIBLE",
           HIDDEN: "HIDDEN",
           UNHIDDEN: "UNHIDDEN",
-        };
-        t.skinProductTypes = {
-          kQuestSkin: "kQuestSkin",
-          kTieredSkin: "kTieredSkin",
         };
       },
       (e, t, n) => {
@@ -27349,7 +27344,8 @@
             function () {
               return (
                 !this.get("doesSkinHaveChromas") &&
-                "kQuestSkin" === this.get("baseSkin.productType")
+                ("kQuestSkin" === this.get("baseSkin.productType") ||
+                  "kTieredSkin" === this.get("baseSkin.productType"))
               );
             },
           ),
@@ -29832,12 +29828,11 @@
         "use strict";
         var s,
           i = n(1),
-          o = (s = n(150)) && s.__esModule ? s : { default: s },
-          a = n(152);
-        const r = i.UiKitPlugin.getFlyoutManager(),
-          { RunMixin: l } = i.EmberAddons.EmberLifeline;
+          o = (s = n(150)) && s.__esModule ? s : { default: s };
+        const a = i.UiKitPlugin.getFlyoutManager(),
+          { RunMixin: r } = i.EmberAddons.EmberLifeline;
         n(224), n(285);
-        const c = i.Ember.Object.extend({
+        const l = i.Ember.Object.extend({
             containerStyle: i.Ember.computed("offset", "faded", function () {
               const e = this.get("offset");
               let t = 37.5;
@@ -29894,7 +29889,7 @@
               },
             ),
           }),
-          u = i.Ember.Object.extend({
+          c = i.Ember.Object.extend({
             skin: null,
             skinCarousel: null,
             isViewed: i.Ember.computed(
@@ -29911,7 +29906,7 @@
               },
             ),
           });
-        e.exports = i.Ember.Component.extend(l, {
+        e.exports = i.Ember.Component.extend(r, {
           layout: n(286),
           classNames: ["skin-carousel"],
           classNameBindings: ["willTransition"],
@@ -29924,7 +29919,7 @@
               this.set("skinCarouselItems", new i.Ember.A());
             for (let e = 0; e < this.maxSkinsToDisplay + 4; e++)
               this.get("skinCarouselItems").pushObject(
-                c.create({ placeholder: !0, skinCarousel: this, skin: {} }),
+                l.create({ placeholder: !0, skinCarousel: this, skin: {} }),
               );
             this.get("isShowingGrid") && this.setSkinCarouselItems();
             const e = {
@@ -29964,7 +29959,7 @@
             const e = this.get("carouselSkins");
             return e && e.length
               ? i.Ember.A(
-                  e.map((e) => u.create({ skin: e, skinCarousel: this })),
+                  e.map((e) => c.create({ skin: e, skinCarousel: this })),
                 )
               : [];
           }),
@@ -30027,43 +30022,32 @@
                 4 === n &&
                   (n++, -1 === s && 3 === e ? s-- : 1 === s && 0 === e && s++);
                 const o = (n + e - 2) % n;
-                for (let r = -2; r < this.maxSkinsToDisplay + 2; r++) {
-                  const l = r + 2,
-                    c = (r + o + n) % n;
-                  let u = t.objectAt(c),
-                    m = !1;
-                  u || ((m = !0), (u = {}));
-                  const d = r + s,
-                    p = this.get("disabledChromas");
-                  let h,
-                    g,
-                    f = !m && i.Ember.get(u, "childSkins.length");
-                  f &&
-                    p &&
-                    (f =
-                      void 0 !== u.childSkins.find((e) => !p.includes(e.id))),
-                    u?.productType === a.skinProductTypes.kTieredSkin &&
-                      ((h = u.childSkins?.reduce(
-                        (e, t) => (t.ownership.owned ? t : e),
-                        u.childSkins[0],
-                      )),
-                      (g = h?.tilePath)),
+                for (let a = -2; a < this.maxSkinsToDisplay + 2; a++) {
+                  const r = a + 2,
+                    l = (a + o + n) % n;
+                  let c = t.objectAt(l),
+                    u = !1;
+                  c || ((u = !0), (c = {}));
+                  const m = a + s,
+                    d = this.get("disabledChromas");
+                  let p = !u && i.Ember.get(c, "childSkins.length");
+                  p &&
+                    d &&
+                    (p =
+                      void 0 !== c.childSkins.find((e) => !d.includes(e.id))),
                     this.get("skinCarouselItems")
-                      .objectAt(l)
+                      .objectAt(r)
                       .setProperties({
-                        placeholder: m,
-                        offsetClass: "skin-carousel-offset-" + d,
-                        offset: d,
-                        hasChildSkins: f,
-                        alternativeTilePath: g,
-                        isTieredSkin:
-                          u?.productType === a.skinProductTypes.kTieredSkin,
-                        skin: u,
+                        placeholder: u,
+                        offsetClass: "skin-carousel-offset-" + m,
+                        offset: m,
+                        hasChildSkins: p,
+                        skin: c,
                         selectedChildSkinId:
-                          this.parentSkinIdToSelectedChromaIdMap[u.id],
-                        unlocked: u.unlocked,
-                        unclickable: this._isOffsetHidden(r, !0, e),
-                        faded: this._isOffsetHidden(d, !s, e),
+                          this.parentSkinIdToSelectedChromaIdMap[c.id],
+                        unlocked: c.unlocked,
+                        unclickable: this._isOffsetHidden(a, !0, e),
+                        faded: this._isOffsetHidden(m, !s, e),
                       });
                 }
                 s &&
@@ -30097,9 +30081,9 @@
             this.playSfxUISound(t);
           },
           hideChromaFlyout: function () {
-            r.isActive() &&
+            a.isActive() &&
               this.$(".skin-selection-item .chroma-button").each((e, t) => {
-                r.sendEvent(t, "toggle");
+                a.sendEvent(t, "toggle");
               });
           },
           getIndexBySkinId(e, t) {
@@ -30170,9 +30154,9 @@
       (e, t, n) => {
         const s = n(1).Ember;
         e.exports = s.HTMLBars.template({
-          id: "2sqnCmY2",
+          id: "V93lapmz",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-selection-indicator ",["helper",["if"],[["get",["disabled"]],"disabled","enabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-left"],["flush-element"],["close-element"],["text","\\n  "],["open-element","ul",[]],["static-attr","class","skin-selection-indicator-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinPips"]]],null,9],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-right"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skin-selection-button-container"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-arrow-button",[]],["dynamic-attr","disabled",["unknown",["disabledAttr"]],null],["static-attr","direction","left"],["static-attr","class","skin-selection-button left"],["static-attr","click-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-arrowback-click.ogg"],["static-attr","hover-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-gold-hover.ogg"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinScrollBy1",-1],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","skin-selection-carousel-container"],["flush-element"],["text","\\n    "],["open-element","ul",[]],["dynamic-attr","class",["concat",["skin-selection-carousel ",["helper",["if"],[["get",["disabled"]],"disabled","enabled"],null]," ",["helper",["if"],[["get",["willTransition"]],"will-transition","did-transition"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinCarouselItems"]]],null,8],["text","      "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isFlyoutOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hideChromaFlyout"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutSettings"]],null],["flush-element"],["text","\\n        "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n          "],["append",["helper",["chroma-modal"],null,[["selectedSkinId","timeRemaining","inFinalizationPhase","disabledChromas","currentMapChromaPath","baseSkin","jmxSettings","setSkinThroughChromaModal","recordDidRequestSucceed"],[["get",["selectedSkinId"]],["get",["timeRemaining"]],["get",["inFinalizationPhase"]],["get",["disabledChromas"]],["get",["currentMapChromaPath"]],["get",["baseSkin"]],["get",["jmxSettings"]],["helper",["action"],[["get",[null]],"setSkinThroughChromaModal"],null],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["append",["helper",["skin-purchase-button"],null,[["jmxSettings","viewSkin","isShown","ip","rp","isSkinSelectVisible","timeRemaining","inFinalizationPhase"],[["get",["jmxSettings"]],["get",["rootViewSkin"]],["get",["rootComponentShown"]],["get",["ip"]],["get",["rp"]],["get",["isSkinSelectVisible"]],["get",["timer","timeRemaining"]],["get",["timer","inFinalizationPhase"]]]]],false],["text","\\n\\n  "],["open-element","lol-uikit-arrow-button",[]],["dynamic-attr","disabled",["unknown",["disabledAttr"]],null],["static-attr","direction","right"],["static-attr","class","skin-selection-button right"],["static-attr","hover-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-gold-hover.ogg"],["static-attr","click-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-arrowfwd-click.ogg"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinScrollBy1",1],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                      "],["open-element","div",[]],["static-attr","class","chroma-button-2 chroma-selection"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"chromaButtonClicked",["get",["item"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["unless"],[["get",["item","isTieredSkin"]]],null,0]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","content"],["dynamic-attr","style",["concat",["background: ",["unknown",["item","selectedChromaStyle"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["disabled","class","onclick","interactive","borderWidth"],[["get",["disabledAttr"]],"chroma-button chroma-selection {{if item.selectedChildSkin \'selected\'}}",["helper",["action"],[["get",[null]],"chromaButtonClicked",["get",["item"]]],null],true,2]],2]],"locals":[]},{"statements":[["block",["if"],[["get",["item","skin","chromaPreviewPath"]]],null,3,1]],"locals":[]},{"statements":[["block",["if"],[["get",["item","hasChildSkins"]]],null,4]],"locals":[]},{"statements":[["block",["if"],[["get",["item","unlocked"]]],null,5]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","skin-selection-thumbnail-gem-overlay"],["flush-element"],["text","\\n                "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["item","skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-selection-item\\n            skin-selection-item-visible\\n            ",["helper",["if"],[["get",["item","placeholder"]],"skin-selection-item-placeholder"],null],"\\n            ",["unknown",["item","offsetClass"]],"\\n            ",["helper",["if"],[["get",["item","showSelected"]],"skin-selection-item-selected"],null],"\\n            ",["helper",["if"],[["get",["item","unlocked"]],"enabled","disabled"],null]]]],["dynamic-attr","style",["unknown",["item","containerStyle"]],null],["flush-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","skin-selection-thumbnail"],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"skinButtonMouseEnter",["get",["item","unclickable"]]],null],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinButtonClicked",["get",["item","skin"]],"sfx-cs-button-thumbnail-click.ogg"],null],null],["dynamic-attr","style",["concat",["background-image:url(",["helper",["if"],[["get",["item","isTieredSkin"]],["get",["item","alternativeTilePath"]],["get",["item","skin","tilePath"]]],null],")"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","skin","rarityGemPath"]]],null,7],["text","\\n"],["block",["unless"],[["get",["item","unclickable"]]],null,6],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-selection-item-information\\n            ",["helper",["if"],[["get",["item","skin","ownership","rental","rented"]],"rental-icon"],null],"\\n            ",["helper",["if"],[["get",["item","skin","ownership","loyaltyReward"]],"loyalty-reward-icon"],null],"\\n            ",["helper",["if"],[["get",["UseNewLoyaltyIcon"]],"loyalty-reward-icon--rewards"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","      "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-selection-indicator-selector ",["helper",["if"],[["get",["skinPip","isViewed"]],"skin-selection-indicator-selector-viewed"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinButtonClicked",["get",["skinPip","skin"]],"sfx-uikit-button-pip-click.ogg"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["skinPip","index"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-champ-select\\\\src\\\\app\\\\skin-carousel-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-selection-indicator ",["helper",["if"],[["get",["disabled"]],"disabled","enabled"],null]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-left"],["flush-element"],["close-element"],["text","\\n  "],["open-element","ul",[]],["static-attr","class","skin-selection-indicator-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinPips"]]],null,8],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","line line-right"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","skin-selection-button-container"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-arrow-button",[]],["dynamic-attr","disabled",["unknown",["disabledAttr"]],null],["static-attr","direction","left"],["static-attr","class","skin-selection-button left"],["static-attr","click-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-arrowback-click.ogg"],["static-attr","hover-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-gold-hover.ogg"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinScrollBy1",-1],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","skin-selection-carousel-container"],["flush-element"],["text","\\n    "],["open-element","ul",[]],["dynamic-attr","class",["concat",["skin-selection-carousel ",["helper",["if"],[["get",["disabled"]],"disabled","enabled"],null]," ",["helper",["if"],[["get",["willTransition"]],"will-transition","did-transition"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["skinCarouselItems"]]],null,7],["text","      "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isFlyoutOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hideChromaFlyout"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutSettings"]],null],["flush-element"],["text","\\n        "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n          "],["append",["helper",["chroma-modal"],null,[["selectedSkinId","timeRemaining","inFinalizationPhase","disabledChromas","currentMapChromaPath","baseSkin","jmxSettings","setSkinThroughChromaModal","recordDidRequestSucceed"],[["get",["selectedSkinId"]],["get",["timeRemaining"]],["get",["inFinalizationPhase"]],["get",["disabledChromas"]],["get",["currentMapChromaPath"]],["get",["baseSkin"]],["get",["jmxSettings"]],["helper",["action"],[["get",[null]],"setSkinThroughChromaModal"],null],["get",["recordDidRequestSucceed"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["append",["helper",["skin-purchase-button"],null,[["jmxSettings","viewSkin","isShown","ip","rp","isSkinSelectVisible","timeRemaining","inFinalizationPhase"],[["get",["jmxSettings"]],["get",["rootViewSkin"]],["get",["rootComponentShown"]],["get",["ip"]],["get",["rp"]],["get",["isSkinSelectVisible"]],["get",["timer","timeRemaining"]],["get",["timer","inFinalizationPhase"]]]]],false],["text","\\n\\n  "],["open-element","lol-uikit-arrow-button",[]],["dynamic-attr","disabled",["unknown",["disabledAttr"]],null],["static-attr","direction","right"],["static-attr","class","skin-selection-button right"],["static-attr","hover-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-gold-hover.ogg"],["static-attr","click-sfx-src","/fe/lol-champ-select/sounds/sfx-uikit-button-arrowfwd-click.ogg"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinScrollBy1",1],null],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                    "],["open-element","div",[]],["static-attr","class","chroma-button-2 chroma-selection"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"chromaButtonClicked",["get",["item"]]],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","content"],["dynamic-attr","style",["concat",["background: ",["unknown",["item","selectedChromaStyle"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-framed-icon"],null,[["disabled","class","onclick","interactive","borderWidth"],[["get",["disabledAttr"]],"chroma-button chroma-selection {{if item.selectedChildSkin \'selected\'}}",["helper",["action"],[["get",[null]],"chromaButtonClicked",["get",["item"]]],null],true,2]],1]],"locals":[]},{"statements":[["block",["if"],[["get",["item","skin","chromaPreviewPath"]]],null,2,0]],"locals":[]},{"statements":[["block",["if"],[["get",["item","hasChildSkins"]]],null,3]],"locals":[]},{"statements":[["block",["if"],[["get",["item","unlocked"]]],null,4]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","skin-selection-thumbnail-gem-overlay"],["flush-element"],["text","\\n                "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["item","skin","rarityGemPath"]]]]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-selection-item\\n            skin-selection-item-visible\\n            ",["helper",["if"],[["get",["item","placeholder"]],"skin-selection-item-placeholder"],null],"\\n            ",["unknown",["item","offsetClass"]],"\\n            ",["helper",["if"],[["get",["item","showSelected"]],"skin-selection-item-selected"],null],"\\n            ",["helper",["if"],[["get",["item","unlocked"]],"enabled","disabled"],null]]]],["dynamic-attr","style",["unknown",["item","containerStyle"]],null],["flush-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","skin-selection-thumbnail"],["dynamic-attr","onmouseenter",["helper",["action"],[["get",[null]],"skinButtonMouseEnter",["get",["item","unclickable"]]],null],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinButtonClicked",["get",["item","skin"]],"sfx-cs-button-thumbnail-click.ogg"],null],null],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","skin","tilePath"]],")"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","skin","rarityGemPath"]]],null,6],["text","\\n"],["block",["unless"],[["get",["item","unclickable"]]],null,5],["text","          "],["close-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["skin-selection-item-information\\n            ",["helper",["if"],[["get",["item","skin","ownership","rental","rented"]],"rental-icon"],null],"\\n            ",["helper",["if"],[["get",["item","skin","ownership","loyaltyReward"]],"loyalty-reward-icon"],null],"\\n            ",["helper",["if"],[["get",["UseNewLoyaltyIcon"]],"loyalty-reward-icon--rewards"],null]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["item"]},{"statements":[["text","      "],["open-element","li",[]],["dynamic-attr","class",["concat",["skin-selection-indicator-selector ",["helper",["if"],[["get",["skinPip","isViewed"]],"skin-selection-indicator-selector-viewed"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"skinButtonClicked",["get",["skinPip","skin"]],"sfx-uikit-button-pip-click.ogg"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":["skinPip","index"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -30316,11 +30300,10 @@
         "use strict";
         var s,
           i = n(1),
-          o = (s = n(158)) && s.__esModule ? s : { default: s },
-          a = n(152);
-        const { RunMixin: r } = i.EmberAddons.EmberLifeline;
+          o = (s = n(158)) && s.__esModule ? s : { default: s };
+        const { RunMixin: a } = i.EmberAddons.EmberLifeline;
         n(294),
-          (e.exports = i.Ember.Component.extend(r, {
+          (e.exports = i.Ember.Component.extend(a, {
             classNames: ["skin-select"],
             classNameBindings: ["showRerollButton:has-reroll"],
             layout: n(295),
@@ -30362,12 +30345,10 @@
                 (e || []).filter((e) => !e.disabled),
               );
               const t = this.get("viewSkin.id")
-                ? this.get("viewSkin.id")
-                : this.get("selectedSkinId");
-              let n = this.getSkin(t);
-              n?.productType === a.skinProductTypes.kTieredSkin &&
-                (n = this.getMostProgressedSkin(n)),
-                this.setViewSkin(n),
+                  ? this.get("viewSkin.id")
+                  : this.get("selectedSkinId"),
+                n = this.getSkin(t);
+              this.setViewSkin(n),
                 this.updateParentSkinIdToSelectedChromaIdMap(n);
             },
             handleSkinSelectorInfo: function (e) {
@@ -30440,14 +30421,12 @@
             },
             actions: {
               setSkinThroughChromaModal: function (e) {
-                e.productType === a.skinProductTypes.kTieredSkin
-                  ? (e = this.getMostProgressedSkin(e))
-                  : this.updateParentSkinIdToSelectedChromaIdMap(e),
+                this.updateParentSkinIdToSelectedChromaIdMap(e),
                   this.setSkin(e);
               },
               setSkinThroughScroll: function (e) {
                 (e =
-                  e.productType === a.skinProductTypes.kTieredSkin
+                  "kTieredSkin" === e.productType
                     ? this.getMostProgressedSkin(e)
                     : this.getSelectedChromaForSkin(e)),
                   this.setSkin(e);
