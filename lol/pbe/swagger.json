@@ -2554,6 +2554,9 @@
           "format": "int32",
           "type": "integer"
         },
+        "botUuid": {
+          "type": "string"
+        },
         "position": {
           "type": "string"
         },
@@ -2989,6 +2992,9 @@
         "botSkillLevel": {
           "format": "int32",
           "type": "integer"
+        },
+        "botUuid": {
+          "type": "string"
         },
         "position": {
           "type": "string"
@@ -4586,6 +4592,23 @@
         "itemId": {
           "format": "int32",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "LolCatalogGameDataRegaliaBanner": {
+      "properties": {
+        "assetPath": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "idSecondary": {
+          "type": "string"
+        },
+        "localizedName": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -27636,6 +27659,9 @@
         "botDifficulty": {
           "$ref": "#/definitions/LolLobbyLobbyBotDifficulty"
         },
+        "botUuid": {
+          "type": "string"
+        },
         "championId": {
           "format": "int32",
           "type": "integer"
@@ -28217,6 +28243,9 @@
         "botDifficulty": {
           "$ref": "#/definitions/LolLobbyLobbyBotDifficulty"
         },
+        "botUuid": {
+          "type": "string"
+        },
         "canInviteOthers": {
           "type": "boolean"
         },
@@ -28316,6 +28345,9 @@
           "type": "string"
         },
         "botPosition": {
+          "type": "string"
+        },
+        "botUuid": {
           "type": "string"
         },
         "firstPositionPreference": {
@@ -60745,7 +60777,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -60779,7 +60811,7 @@
         ]
       },
       "get": {
-        "operationId": "Http2AsyncStatus",
+        "operationId": "HttpAsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -74621,15 +74653,29 @@
         ]
       }
     },
-    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}": {
-      "delete": {
-        "operationId": "DeleteLolLobbyV1LobbyCustomBotsBySummonerInternalName",
+    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}": {
+      "post": {
+        "operationId": "PostLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotUuidToDelete",
         "parameters": [
           {
             "in": "path",
             "name": "summonerInternalName",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "botUuidToDelete",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolLobbyLobbyBotParams"
+            }
           }
         ],
         "responses": {
@@ -74647,9 +74693,9 @@
         ]
       }
     },
-    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botToDeletePosition}": {
-      "post": {
-        "operationId": "PostLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotToDeletePosition",
+    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}/{teamId}": {
+      "delete": {
+        "operationId": "DeleteLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotUuidToDeleteByTeamId",
         "parameters": [
           {
             "in": "path",
@@ -74659,17 +74705,15 @@
           },
           {
             "in": "path",
-            "name": "botToDeletePosition",
+            "name": "botUuidToDelete",
             "required": true,
             "type": "string"
           },
           {
-            "in": "body",
-            "name": "parameters",
+            "in": "path",
+            "name": "teamId",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/LolLobbyLobbyBotParams"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -89629,7 +89673,7 @@
     },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "HttpApiDocsV1",
+        "operationId": "Http2ApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {
@@ -89648,7 +89692,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",

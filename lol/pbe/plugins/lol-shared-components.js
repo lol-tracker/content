@@ -1941,53 +1941,46 @@
           asyncGetRewardImage(e, t = i.DEFAULT_CHAMPION_SKIN_ASSET_KEY) {
             const n = this._splitsConfig,
               a = this._dataBinding;
-            return new Promise(function (r) {
-              if (n && n.rewardInfoByRewardId && n.rewardInfoByRewardId[e]) {
-                const t = n.rewardInfoByRewardId[e].rewardType;
-                if (
-                  i.REWARD_ASSET_PATHS &&
-                  i.REWARD_ASSET_PATHS[t] &&
-                  i.REWARD_ASSET_PATHS[t].length > 0
-                )
-                  r(i.REWARD_ASSET_PATHS[t]);
-                else if (t === i.REWARD_TYPES.CHAMPION_TOKEN) {
-                  const t = n.rewardInfoByRewardId[e].championId || e;
-                  s.ChampionAssetsManager.getChampionAssetsByChampionId(t).then(
-                    (e) => {
-                      r(e.skins?.[0]?.tilePath);
-                    },
-                  );
-                }
+            if (n && n.rewardInfoByRewardId && n.rewardInfoByRewardId[e]) {
+              const t = n.rewardInfoByRewardId[e].rewardType;
+              if (
+                i.REWARD_ASSET_PATHS &&
+                i.REWARD_ASSET_PATHS[t] &&
+                i.REWARD_ASSET_PATHS[t].length > 0
+              )
+                return Promise.resolve(i.REWARD_ASSET_PATHS[t]);
+              if (t === i.REWARD_TYPES.CHAMPION_TOKEN) {
+                const t = n.rewardInfoByRewardId[e].championId || e;
+                return s.ChampionAssetsManager.getChampionAssetsByChampionId(
+                  t,
+                ).then((e) => e.skins?.[0]?.tilePath);
               }
-              a.get(`${i.ITEM_KEYS_URL}?instanceIds=%5B%22${e}%22%5D`).then(
-                (n) => {
-                  if (n && n[e] && n[e].inventoryType && n[e].itemId) {
-                    const l = n[e].inventoryType,
-                      o = n[e].itemId;
-                    l === i.REWARD_TYPES.CHAMPION &&
-                      s.ChampionAssetsManager.getChampionAssetsByChampionId(
-                        o,
-                      ).then((e) => {
-                        r(e.skins?.[0]?.tilePath);
-                      }),
-                      a
+            }
+            return a
+              .get(`${i.ITEM_KEYS_URL}?instanceIds=%5B%22${e}%22%5D`)
+              .then((n) => {
+                if (n && n[e] && n[e].inventoryType && n[e].itemId) {
+                  const r = n[e].inventoryType,
+                    l = n[e].itemId;
+                  return r === i.REWARD_TYPES.CHAMPION
+                    ? s.ChampionAssetsManager.getChampionAssetsByChampionId(
+                        l,
+                      ).then((e) => e.skins?.[0]?.tilePath)
+                    : a
                         .get(
-                          `${i.ITEM_DETAILS_URL}?inventoryType=${l}&itemId=${o}`,
+                          `${i.ITEM_DETAILS_URL}?inventoryType=${r}&itemId=${l}`,
                         )
                         .then((e) => {
-                          e &&
-                            e.item &&
-                            (l === i.REWARD_TYPES.CHAMPION_SKIN &&
-                            !e.item.subInventoryType &&
-                            e.assets &&
-                            e.assets[t]
-                              ? r(e.assets[t])
-                              : r(e.item.imagePath));
+                          if (e && e.item)
+                            return r === i.REWARD_TYPES.CHAMPION_SKIN &&
+                              !e.item.subInventoryType &&
+                              e.assets &&
+                              e.assets[t]
+                              ? e.assets[t]
+                              : e.item.imagePath;
                         });
-                  }
-                },
-              );
-            });
+                }
+              });
           }
         };
         t.default = c;

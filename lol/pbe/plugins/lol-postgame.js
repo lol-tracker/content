@@ -606,53 +606,55 @@
               TftTooltipComponent: N.default,
               PostgameSecondaryProgressionComponent: w.default,
               PostgamePartyStatusComponent: M.default,
-              ArrowFooterComponent: Gt,
-              HextechLoadingAnimationComponent: Ut,
-              GenericButtonComponent: Ie.default,
-              StrawberryPostgameRootComponent: Se.default,
-              StrawberryScoreboardRootComponent: Pe.default,
-              StrawberryScoreboardHeaderComponent: Te.default,
-              StrawberryScoreboardRowComponent: ke.default,
-              RenderTimerComponent: Ce.default,
-              EternalsTokenComponent: Ae.default,
-              PostgameRootComponent: we.default,
-              PostgameSubNavigationComponent: Me.default,
-              PostgameProgressionComponent: Re.default,
-              PrestigeProgressionComponent: Ne.default,
-              PrestigeProgressionTooltipComponent: Oe.default,
-              LegendaryMasteryProgressionComponent: De.default,
-              CherryProgressionComponent: Be.default,
-              RankedProgressionComponent: Ue.default,
-              RatingChangeComponent: Ge.default,
-              RankedRewardProgressionComponent: He.default,
-              MiniseriesProgressComponent: Fe.default,
-              ChallengeUpdateContainerComponent: je.default,
-              ChallengeUpdatesTooltipComponent: Ve.default,
-              EternalsUpdatesTooltipComponent: qe.default,
-              PostgamePartyStatusV2Component: We.default,
-              ProgressionModalComponent: Ye.default,
-              CherryScoreboardHeaderComponent: Ke.default,
-              ScoreboardHeaderComponent: $e.default,
-              ScoreboardHonorFlairComponent: Xe.default,
-              ScoreboardRootComponent: Qe.default,
-              CherryScoreboardRowComponent: ze.default,
-              ScoreboardRowComponent: Ze.default,
-              ScoreboardRowActionsMenuComponent: Je.default,
-              ScoreboardRowStatDisplayComponent: et.default,
-              ScoreboardStatSwitcherComponent: tt.default,
-              AnimatedPlayButtonComponent: Le.default,
-              ScoreboardSpellComponent: nt.default,
-              PostgameReportModal: jt,
-              GameIdClipboardCopyComponent: Ht,
-              PlayerNameComponent: Ft,
-              ChallengeCardHeaderComponent: Vt,
-              ChallengeCardComponent: qt,
-              ChallengeItemFooterComponent: Wt,
-              ChallengeItemTooltipComponent: Yt,
-              ChallengeItemComponent: Kt,
-              EternalsItemTooltipComponent: $t,
-              EternalsItemComponent: Xt,
-              IdentityCustomizerTokenComponent: Jt,
+              ArrowFooterComponent: Ht,
+              HextechLoadingAnimationComponent: Ft,
+              GenericButtonComponent: Le.default,
+              StrawberryPostgameAchievementsComponent:
+                Se.StrawberryPostgameAchievementsComponent,
+              StrawberryPostgameRootComponent: Pe.default,
+              StrawberryScoreboardRootComponent: Te.default,
+              StrawberryScoreboardHeaderComponent: ke.default,
+              StrawberryScoreboardRowComponent: Ce.default,
+              RenderTimerComponent: Ae.default,
+              EternalsTokenComponent: we.default,
+              PostgameRootComponent: Me.default,
+              PostgameSubNavigationComponent: Ie.default,
+              PostgameProgressionComponent: Ne.default,
+              PrestigeProgressionComponent: Oe.default,
+              PrestigeProgressionTooltipComponent: De.default,
+              LegendaryMasteryProgressionComponent: Be.default,
+              CherryProgressionComponent: Ge.default,
+              RankedProgressionComponent: He.default,
+              RatingChangeComponent: Ue.default,
+              RankedRewardProgressionComponent: Fe.default,
+              MiniseriesProgressComponent: je.default,
+              ChallengeUpdateContainerComponent: Ve.default,
+              ChallengeUpdatesTooltipComponent: qe.default,
+              EternalsUpdatesTooltipComponent: We.default,
+              PostgamePartyStatusV2Component: Ye.default,
+              ProgressionModalComponent: Ke.default,
+              CherryScoreboardHeaderComponent: $e.default,
+              ScoreboardHeaderComponent: Xe.default,
+              ScoreboardHonorFlairComponent: Qe.default,
+              ScoreboardRootComponent: ze.default,
+              CherryScoreboardRowComponent: Ze.default,
+              ScoreboardRowComponent: Je.default,
+              ScoreboardRowActionsMenuComponent: et.default,
+              ScoreboardRowStatDisplayComponent: tt.default,
+              ScoreboardStatSwitcherComponent: nt.default,
+              AnimatedPlayButtonComponent: Re.default,
+              ScoreboardSpellComponent: at.default,
+              PostgameReportModal: qt,
+              GameIdClipboardCopyComponent: jt,
+              PlayerNameComponent: Vt,
+              ChallengeCardHeaderComponent: Wt,
+              ChallengeCardComponent: Yt,
+              ChallengeItemFooterComponent: Kt,
+              ChallengeItemTooltipComponent: $t,
+              ChallengeItemComponent: Xt,
+              EternalsItemTooltipComponent: Qt,
+              EternalsItemComponent: zt,
+              IdentityCustomizerTokenComponent: tn,
               GradeDisplayComponent:
                 a.SharedChampionMasteryComponents.GradeDisplayComponent,
               MasteryTooltipComponent:
@@ -678,9 +680,9 @@
               HonorService: j.default,
               ChallengesService: V.default,
               PerksService: q.default,
-              GameDataService: Qt,
-              RiotclientService: zt,
-              SummonerService: Zt,
+              GameDataService: Zt,
+              RiotclientService: Jt,
+              SummonerService: en,
               PlayerActionsService: $.default,
               RemedyService: W.default,
               ChampionMasteryService: Y.default,
@@ -714,45 +716,47 @@
                   fe.default,
                 "components/postgame-scoreboard-progression-honor-category-icon":
                   be.default,
-                "components/strawberry-postgame-root": at.default,
-                "components/strawberry-scoreboard-root": st.default,
-                "components/strawberry-scoreboard-header": ot.default,
-                "components/strawberry-scoreboard-row": lt.default,
-                "components/render-timer": it.default,
-                "components/eternals-token": rt.default,
-                "components/postgame-root": mt.default,
-                "components/postgame-sub-navigation": ct.default,
-                "components/postgame-progression": pt.default,
-                "components/prestige-progression": dt.default,
-                "components/prestige-progression-tooltip": ut.default,
-                "components/legendary-mastery-progression": gt.default,
-                "components/cherry-progression": ht.default,
-                "components/ranked-progression": ft.default,
-                "components/rating-change": bt.default,
-                "components/ranked-reward-progression": yt.default,
-                "components/miniseries-progress": _t.default,
-                "components/challenge-update-container": Et.default,
-                "components/challenge-updates-tooltip": vt.default,
-                "components/eternals-updates-tooltip": xt.default,
-                "components/progression-modal": Pt.default,
-                "components/cherry-scoreboard-header": Tt.default,
-                "components/scoreboard-header": kt.default,
-                "components/scoreboard-honor-flair": Ct.default,
-                "components/scoreboard-root": At.default,
-                "components/cherry-scoreboard-row": wt.default,
-                "components/scoreboard-row": Mt.default,
-                "components/scoreboard-row-actions-menu": It.default,
-                "components/scoreboard-row-stat-display": Lt.default,
-                "components/scoreboard-stat-switcher": Rt.default,
-                "components/postgame-party-status-v2": St.default,
-                "components/animated-play-button": Nt.default,
-                "components/scoreboard-spell": Ot.default,
+                "components/strawberry-postgame-achievements": st.default,
+                "components/strawberry-postgame-root": ot.default,
+                "components/strawberry-scoreboard-root": lt.default,
+                "components/strawberry-scoreboard-header": it.default,
+                "components/strawberry-scoreboard-row": rt.default,
+                "components/render-timer": mt.default,
+                "components/eternals-token": ct.default,
+                "components/postgame-root": pt.default,
+                "components/postgame-sub-navigation": dt.default,
+                "components/postgame-progression": ut.default,
+                "components/prestige-progression": gt.default,
+                "components/prestige-progression-tooltip": ht.default,
+                "components/legendary-mastery-progression": ft.default,
+                "components/cherry-progression": bt.default,
+                "components/ranked-progression": yt.default,
+                "components/rating-change": _t.default,
+                "components/ranked-reward-progression": Et.default,
+                "components/miniseries-progress": vt.default,
+                "components/challenge-update-container": xt.default,
+                "components/challenge-updates-tooltip": St.default,
+                "components/eternals-updates-tooltip": Pt.default,
+                "components/progression-modal": kt.default,
+                "components/cherry-scoreboard-header": Ct.default,
+                "components/scoreboard-header": At.default,
+                "components/scoreboard-honor-flair": wt.default,
+                "components/scoreboard-root": Mt.default,
+                "components/cherry-scoreboard-row": It.default,
+                "components/scoreboard-row": Lt.default,
+                "components/scoreboard-row-actions-menu": Rt.default,
+                "components/scoreboard-row-stat-display": Nt.default,
+                "components/scoreboard-stat-switcher": Ot.default,
+                "components/postgame-party-status-v2": Tt.default,
+                "components/animated-play-button": Dt.default,
+                "components/scoreboard-spell": Bt.default,
                 "components/tft-header": ye.default,
                 "components/tft-partner-group-placement": _e.default,
                 "components/tft-player": Ee.default,
                 "components/tft-tooltip": ve.default,
               },
             };
+            a.StrawberryModules && Object.assign(e, { ...a.StrawberryModules });
             a.ApplicationInjector.setFactoryDefinition(e),
               a.emberApplicationFactory.setFactoryDefinition(
                 s.POSTGAME_EMBER_APP_NAME,
@@ -806,7 +810,7 @@
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
               return { default: e };
-            var n = Bt(t);
+            var n = Ut(t);
             if (n && n.has(e)) return n.get(e);
             var a = {},
               s = Object.defineProperty && Object.getOwnPropertyDescriptor;
@@ -824,175 +828,177 @@
             return a;
           })(n(1)),
           s = n(3),
-          o = Dt(n(8)),
-          l = Dt(n(9)),
-          i = Dt(n(11)),
-          r = Dt(n(12)),
-          m = Dt(n(13)),
-          c = Dt(n(16)),
-          p = Dt(n(17)),
-          d = Dt(n(36)),
-          u = Dt(n(37)),
-          g = Dt(n(38)),
-          h = Dt(n(39)),
-          f = Dt(n(40)),
-          b = Dt(n(41)),
-          y = Dt(n(42)),
-          _ = Dt(n(43)),
-          E = Dt(n(44)),
-          v = Dt(n(45)),
-          x = Dt(n(46)),
-          S = Dt(n(47)),
-          P = Dt(n(48)),
-          T = Dt(n(49)),
-          k = Dt(n(50)),
-          C = Dt(n(51)),
-          A = Dt(n(52)),
-          w = Dt(n(53)),
-          M = Dt(n(54)),
-          I = Dt(n(55)),
-          L = Dt(n(56)),
-          R = Dt(n(57)),
-          N = Dt(n(58)),
-          O = Dt(n(59)),
-          D = Dt(n(60)),
-          B = Dt(n(61)),
-          G = Dt(n(62)),
-          U = Dt(n(63)),
-          H = Dt(n(64)),
-          F = Dt(n(65)),
-          j = Dt(n(66)),
-          V = Dt(n(67)),
-          q = Dt(n(68)),
-          W = Dt(n(69)),
-          Y = Dt(n(70)),
-          K = Dt(n(71)),
-          $ = Dt(n(72)),
-          X = Dt(n(73)),
-          Q = Dt(n(74)),
-          z = Dt(n(75)),
-          Z = Dt(n(76)),
-          J = Dt(n(77)),
-          ee = Dt(n(78)),
-          te = Dt(n(79)),
-          ne = Dt(n(80)),
-          ae = Dt(n(81)),
-          se = Dt(n(82)),
-          oe = Dt(n(83)),
-          le = Dt(n(84)),
-          ie = Dt(n(85)),
-          re = Dt(n(86)),
-          me = Dt(n(87)),
-          ce = Dt(n(88)),
-          pe = Dt(n(89)),
-          de = Dt(n(90)),
-          ue = Dt(n(91)),
-          ge = Dt(n(92)),
-          he = Dt(n(93)),
-          fe = Dt(n(94)),
-          be = Dt(n(95)),
-          ye = Dt(n(96)),
-          _e = Dt(n(97)),
-          Ee = Dt(n(98)),
-          ve = Dt(n(99)),
-          xe = Dt(n(100)),
-          Se = Dt(n(103)),
-          Pe = Dt(n(104)),
-          Te = Dt(n(105)),
-          ke = Dt(n(106)),
-          Ce = Dt(n(109)),
-          Ae = Dt(n(110)),
-          we = Dt(n(111)),
-          Me = Dt(n(112)),
-          Ie = Dt(n(113)),
-          Le = Dt(n(117)),
-          Re = Dt(n(118)),
-          Ne = Dt(n(120)),
-          Oe = Dt(n(121)),
-          De = Dt(n(122)),
-          Be = Dt(n(123)),
-          Ge = Dt(n(124)),
-          Ue = Dt(n(125)),
-          He = Dt(n(126)),
-          Fe = Dt(n(127)),
-          je = Dt(n(128)),
-          Ve = Dt(n(129)),
-          qe = Dt(n(130)),
-          We = Dt(n(131)),
-          Ye = Dt(n(132)),
-          Ke = Dt(n(134)),
-          $e = Dt(n(136)),
-          Xe = Dt(n(137)),
-          Qe = Dt(n(138)),
-          ze = Dt(n(139)),
-          Ze = Dt(n(140)),
-          Je = Dt(n(141)),
-          et = Dt(n(142)),
-          tt = Dt(n(143)),
-          nt = Dt(n(144)),
-          at = Dt(n(145)),
-          st = Dt(n(146)),
-          ot = Dt(n(147)),
-          lt = Dt(n(148)),
-          it = Dt(n(149)),
-          rt = Dt(n(150)),
-          mt = Dt(n(151)),
-          ct = Dt(n(152)),
-          pt = Dt(n(153)),
-          dt = Dt(n(154)),
-          ut = Dt(n(155)),
-          gt = Dt(n(156)),
-          ht = Dt(n(157)),
-          ft = Dt(n(158)),
-          bt = Dt(n(159)),
-          yt = Dt(n(160)),
-          _t = Dt(n(161)),
-          Et = Dt(n(162)),
-          vt = Dt(n(163)),
-          xt = Dt(n(164)),
-          St = Dt(n(165)),
-          Pt = Dt(n(166)),
-          Tt = Dt(n(167)),
-          kt = Dt(n(168)),
-          Ct = Dt(n(169)),
-          At = Dt(n(170)),
-          wt = Dt(n(171)),
-          Mt = Dt(n(172)),
-          It = Dt(n(173)),
-          Lt = Dt(n(174)),
-          Rt = Dt(n(175)),
-          Nt = Dt(n(176)),
-          Ot = Dt(n(177));
-        function Dt(e) {
+          o = Gt(n(8)),
+          l = Gt(n(9)),
+          i = Gt(n(11)),
+          r = Gt(n(12)),
+          m = Gt(n(13)),
+          c = Gt(n(16)),
+          p = Gt(n(17)),
+          d = Gt(n(36)),
+          u = Gt(n(37)),
+          g = Gt(n(38)),
+          h = Gt(n(39)),
+          f = Gt(n(40)),
+          b = Gt(n(41)),
+          y = Gt(n(42)),
+          _ = Gt(n(43)),
+          E = Gt(n(44)),
+          v = Gt(n(45)),
+          x = Gt(n(46)),
+          S = Gt(n(47)),
+          P = Gt(n(48)),
+          T = Gt(n(49)),
+          k = Gt(n(50)),
+          C = Gt(n(51)),
+          A = Gt(n(52)),
+          w = Gt(n(53)),
+          M = Gt(n(54)),
+          I = Gt(n(55)),
+          L = Gt(n(56)),
+          R = Gt(n(57)),
+          N = Gt(n(58)),
+          O = Gt(n(59)),
+          D = Gt(n(60)),
+          B = Gt(n(61)),
+          G = Gt(n(62)),
+          U = Gt(n(63)),
+          H = Gt(n(64)),
+          F = Gt(n(65)),
+          j = Gt(n(66)),
+          V = Gt(n(67)),
+          q = Gt(n(68)),
+          W = Gt(n(69)),
+          Y = Gt(n(70)),
+          K = Gt(n(71)),
+          $ = Gt(n(72)),
+          X = Gt(n(73)),
+          Q = Gt(n(74)),
+          z = Gt(n(75)),
+          Z = Gt(n(76)),
+          J = Gt(n(77)),
+          ee = Gt(n(78)),
+          te = Gt(n(79)),
+          ne = Gt(n(80)),
+          ae = Gt(n(81)),
+          se = Gt(n(82)),
+          oe = Gt(n(83)),
+          le = Gt(n(84)),
+          ie = Gt(n(85)),
+          re = Gt(n(86)),
+          me = Gt(n(87)),
+          ce = Gt(n(88)),
+          pe = Gt(n(89)),
+          de = Gt(n(90)),
+          ue = Gt(n(91)),
+          ge = Gt(n(92)),
+          he = Gt(n(93)),
+          fe = Gt(n(94)),
+          be = Gt(n(95)),
+          ye = Gt(n(96)),
+          _e = Gt(n(97)),
+          Ee = Gt(n(98)),
+          ve = Gt(n(99)),
+          xe = Gt(n(100)),
+          Se = n(103),
+          Pe = Gt(n(104)),
+          Te = Gt(n(105)),
+          ke = Gt(n(106)),
+          Ce = Gt(n(107)),
+          Ae = Gt(n(110)),
+          we = Gt(n(111)),
+          Me = Gt(n(112)),
+          Ie = Gt(n(113)),
+          Le = Gt(n(114)),
+          Re = Gt(n(118)),
+          Ne = Gt(n(119)),
+          Oe = Gt(n(121)),
+          De = Gt(n(122)),
+          Be = Gt(n(123)),
+          Ge = Gt(n(124)),
+          Ue = Gt(n(125)),
+          He = Gt(n(126)),
+          Fe = Gt(n(127)),
+          je = Gt(n(128)),
+          Ve = Gt(n(129)),
+          qe = Gt(n(130)),
+          We = Gt(n(131)),
+          Ye = Gt(n(132)),
+          Ke = Gt(n(133)),
+          $e = Gt(n(135)),
+          Xe = Gt(n(137)),
+          Qe = Gt(n(138)),
+          ze = Gt(n(139)),
+          Ze = Gt(n(140)),
+          Je = Gt(n(141)),
+          et = Gt(n(142)),
+          tt = Gt(n(143)),
+          nt = Gt(n(144)),
+          at = Gt(n(145)),
+          st = Gt(n(146)),
+          ot = Gt(n(147)),
+          lt = Gt(n(148)),
+          it = Gt(n(149)),
+          rt = Gt(n(150)),
+          mt = Gt(n(151)),
+          ct = Gt(n(152)),
+          pt = Gt(n(153)),
+          dt = Gt(n(154)),
+          ut = Gt(n(155)),
+          gt = Gt(n(156)),
+          ht = Gt(n(157)),
+          ft = Gt(n(158)),
+          bt = Gt(n(159)),
+          yt = Gt(n(160)),
+          _t = Gt(n(161)),
+          Et = Gt(n(162)),
+          vt = Gt(n(163)),
+          xt = Gt(n(164)),
+          St = Gt(n(165)),
+          Pt = Gt(n(166)),
+          Tt = Gt(n(167)),
+          kt = Gt(n(168)),
+          Ct = Gt(n(169)),
+          At = Gt(n(170)),
+          wt = Gt(n(171)),
+          Mt = Gt(n(172)),
+          It = Gt(n(173)),
+          Lt = Gt(n(174)),
+          Rt = Gt(n(175)),
+          Nt = Gt(n(176)),
+          Ot = Gt(n(177)),
+          Dt = Gt(n(178)),
+          Bt = Gt(n(179));
+        function Gt(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        function Bt(e) {
+        function Ut(e) {
           if ("function" != typeof WeakMap) return null;
           var t = new WeakMap(),
             n = new WeakMap();
-          return (Bt = function (e) {
+          return (Ut = function (e) {
             return e ? n : t;
           })(e);
         }
         const {
-            ArrowFooterComponent: Gt,
-            HextechLoadingAnimationComponent: Ut,
-            GameIdClipboardCopyComponent: Ht,
-            PlayerNameComponent: Ft,
-            PostgameReportModal: jt,
+            ArrowFooterComponent: Ht,
+            HextechLoadingAnimationComponent: Ft,
+            GameIdClipboardCopyComponent: jt,
+            PlayerNameComponent: Vt,
+            PostgameReportModal: qt,
           } = a.SharedComponents.getSharedEmberComponents(),
           {
-            ChallengeCardHeaderComponent: Vt,
-            ChallengeCardComponent: qt,
-            ChallengeItemFooterComponent: Wt,
-            ChallengeItemTooltipComponent: Yt,
-            ChallengeItemComponent: Kt,
-            EternalsItemTooltipComponent: $t,
-            EternalsItemComponent: Xt,
-            GameDataService: Qt,
-            RiotclientService: zt,
-            SummonerService: Zt,
-            IdentityCustomizerTokenComponent: Jt,
+            ChallengeCardHeaderComponent: Wt,
+            ChallengeCardComponent: Yt,
+            ChallengeItemFooterComponent: Kt,
+            ChallengeItemTooltipComponent: $t,
+            ChallengeItemComponent: Xt,
+            EternalsItemTooltipComponent: Qt,
+            EternalsItemComponent: zt,
+            GameDataService: Zt,
+            RiotclientService: Jt,
+            SummonerService: en,
+            IdentityCustomizerTokenComponent: tn,
           } = a.SharedComponents.getApi_SharedChallengesComponents();
       },
       (e, t, n) => {
@@ -6261,6 +6267,53 @@
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.StrawberryPostgameAchievementsComponent = void 0);
+        var a = n(1);
+        const s = a.Ember.Component.extend({
+          classNames: ["strawberry-postgame-achievements-component"],
+          strawberryService: a.Ember.inject.service("strawberry"),
+          milestonesToShow: a.Ember.computed(
+            "strawberryService.progressionCategoriesWithMilestones",
+            "strawberryService.boonOwnershipLookup",
+            "strawberryService.countersPlayerState",
+            function () {
+              const e = this.get(
+                  "strawberryService.progressionCategoriesWithMilestones",
+                ),
+                t = this.get("strawberryService.boonOwnershipLookup"),
+                n = this.get("strawberryService.countersPlayerState");
+              if (!e || !t) return [];
+              if (!e.length || 0 === e.length) return [];
+              const a = {},
+                s = (e, t) => Math.floor((e / t) * 100),
+                o = [];
+              for (const s of e)
+                if (!t[s.PrerequisiteBoon?.ItemId])
+                  for (const e of s.Milestones) {
+                    const t = n.find((t) => t.counterId === e.value.Counter.Id);
+                    t &&
+                      t.counterValue < e.value.TriggerValue &&
+                      ((a[e.value.Counter.Id] = t), o.push(e.value));
+                  }
+              return (
+                o.sort((e, t) => {
+                  const n = a[e.Counter.Id],
+                    o = a[t.Counter.Id],
+                    l = s(n.counterValue, e.TriggerValue),
+                    i = s(o.counterValue, t.TriggerValue);
+                  return l < i ? 1 : l > i ? -1 : 0;
+                }),
+                o.length > 6 && (o.length = 6),
+                o
+              );
+            },
+          ),
+        });
+        t.StrawberryPostgameAchievementsComponent = s;
+      },
+      (e, t, n) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
         const { RunMixin: s } = a.EmberAddons.EmberLifeline,
@@ -6748,8 +6801,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          o = n(107),
-          l = n(108),
+          o = n(108),
+          l = n(109),
           i = (a = n(14)) && a.__esModule ? a : { default: a };
         var r = s.Ember.Component.extend(i.default, {
           classNames: ["strawberry-scoreboard-row-component"],
@@ -7831,8 +7884,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(114);
-        n(115);
+          s = n(115);
+        n(116);
         const o = "sfx-ui",
           l = a.Ember.Component.extend({
             classNames: ["clash-generic-button"],
@@ -7842,7 +7895,7 @@
               "isImgFlippedX:flip-x",
               "isImgFlippedY:flip-y",
             ],
-            layout: n(116),
+            layout: n(117),
             canBeSelected: !1,
             triggerSelected: !1,
             selectionGroup: null,
@@ -8051,7 +8104,7 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(114),
+          s = n(115),
           o = n(6);
         const { RunMixin: l } = a.EmberAddons.EmberLifeline,
           i = "sfx-ui";
@@ -8188,9 +8241,9 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          o = n(107),
+          o = n(108),
           l = n(15),
-          i = n(119),
+          i = n(120),
           r = n(3),
           m = (a = n(14)) && a.__esModule ? a : { default: a };
         const c = "/lol-ranked/v1/current-lp-change-notification",
@@ -10215,7 +10268,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        n(133);
+        n(134);
         var s = a.Ember.Component.extend({
           classNames: ["progression-modal-root-component"],
           challenges: [],
@@ -10239,7 +10292,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(135),
+          s = n(136),
           o = n(3),
           l = a.Ember.Component.extend({
             classNames: ["scoreboard-header-component"],
@@ -10334,7 +10387,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(135),
+          s = n(136),
           o = a.Ember.Component.extend({
             classNames: ["scoreboard-header-component"],
             classNameBindings: ["team.isPlayerTeam"],
@@ -10730,8 +10783,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          o = n(107),
-          l = n(108),
+          o = n(108),
+          l = n(109),
           i = (a = n(14)) && a.__esModule ? a : { default: a },
           r = n(6);
         var m = s.Ember.Component.extend(i.default, {
@@ -11116,8 +11169,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          o = n(107),
-          l = n(108),
+          o = n(108),
+          l = n(109),
           i = (a = n(14)) && a.__esModule ? a : { default: a };
         var r = s.Ember.Component.extend(i.default, {
           classNames: ["scoreboard-row-component"],
@@ -11561,7 +11614,7 @@
           (t.default = void 0);
         var a = n(1),
           s = n(3),
-          o = n(135);
+          o = n(136);
         const l = [
             s.STAT_SWITCHER_STATS.DAMAGE_DEALT,
             s.STAT_SWITCHER_STATS.DAMAGE_TAKEN,
@@ -11844,9 +11897,18 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "/JvxL7B2",
+          id: "oFEeNK6v",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-postgame-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,0],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-header-section"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-background"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-header-button-container"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n    "],["append",["helper",["strawberry-scoreboard-root"],null,[["eogStats","showKeystone","hasScoreboardAnimationPlayed","hasCelebratedHonor","isContinueButtonClicked","updateHonorCelebrationAnimation","updateScoreboardAnimation"],[["get",["eogStats"]],["get",["gameflow","showKeystone"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["isContinueButtonClicked"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null],["helper",["action"],[["get",[null]],"updateScoreboardAnimation"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["chat-container ",["helper",["if"],[["get",["shouldHideChatRoom"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-social-chat-room",[]],["static-attr","class","scoreboard-v2"],["static-attr","type","postGame"],["dynamic-attr","placeholder",["concat",[["unknown",["tra","postgame_chat_placeholder"]]]]],["static-attr","can-hide-player-messages",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","class","postgame-footer-exit-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"exitPostgame"],null],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-left"],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["animated-play-button"],null,[["onClick","hasIntroAnimationPlayed","buttonText","baseImgPath","overImgPath","downImgPath","onHoverSound","onClickSound","clickedStyle","partyStatus"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],["get",["hasIntroAnimationPlayed"]],["get",["forwardButtonText"]],"/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png",["get",["forwardHoverSound"]],["get",["forwardClickSound"]],"color: #005A82",["get",["partyStatus"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-right"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["append",["helper",["postgame-party-status-v2"],null,[["partyStatus","animationsEnabled"],[["get",["partyStatus"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["flush-element"],["text","🍓🍓🍓🍓"],["close-element"],["text","\\n      "],["open-element","button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"copyEOGDataToClipboard"],null],null],["flush-element"],["text","Copy EOGData to Clipboard"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-postgame-achievements.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-achievement-grid-container"],["flush-element"],["text","\\n\\t"],["open-element","div",[]],["static-attr","class","postgame-achievement-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["milestonesToShow"]]],null,0],["text","\\t"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","\\t\\t"],["open-element","div",[]],["static-attr","class","postgame-achievement-item-container"],["flush-element"],["text","\\n\\t\\t\\t"],["append",["helper",["achievement-item"],null,[["milestone"],[["get",["milestone"]]]]],false],["text","\\n\\t\\t"],["close-element"],["text","\\n"]],"locals":["milestone"]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, n) => {
+        const a = n(1).Ember;
+        e.exports = a.HTMLBars.template({
+          id: "GjQlWsAm",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-postgame-root.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,0],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-header-section"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-background"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","postgame-header-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-header"],null,[["gameId"],[["get",["gameId"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","postgame-header-button-container"],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n    "],["append",["helper",["strawberry-scoreboard-root"],null,[["eogStats","showKeystone","hasScoreboardAnimationPlayed","hasCelebratedHonor","isContinueButtonClicked","updateHonorCelebrationAnimation","updateScoreboardAnimation"],[["get",["eogStats"]],["get",["gameflow","showKeystone"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["get",["isContinueButtonClicked"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null],["helper",["action"],[["get",[null]],"updateScoreboardAnimation"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","postgame-contents"],["flush-element"],["text","\\n    "],["append",["unknown",["strawberry-postgame-achievements"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","postgame-footer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["chat-container ",["helper",["if"],[["get",["shouldHideChatRoom"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","lol-social-chat-room",[]],["static-attr","class","scoreboard-v2"],["static-attr","type","postGame"],["dynamic-attr","placeholder",["concat",[["unknown",["tra","postgame_chat_placeholder"]]]]],["static-attr","can-hide-player-messages",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","class","postgame-footer-exit-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"exitPostgame"],null],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-left"],["flush-element"],["close-element"],["text","\\n        "],["append",["helper",["animated-play-button"],null,[["onClick","hasIntroAnimationPlayed","buttonText","baseImgPath","overImgPath","downImgPath","onHoverSound","onClickSound","clickedStyle","partyStatus"],[["helper",["action"],[["get",[null]],"onButtonClick"],null],["get",["hasIntroAnimationPlayed"]],["get",["forwardButtonText"]],"/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png",["get",["forwardHoverSound"]],["get",["forwardClickSound"]],"color: #005A82",["get",["partyStatus"]]]]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","find-match-button-decoration find-match-button-decoration-right"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["append",["helper",["postgame-party-status-v2"],null,[["partyStatus","animationsEnabled"],[["get",["partyStatus"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["flush-element"],["text","🍓🍓🍓🍓"],["close-element"],["text","\\n      "],["open-element","button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"copyEOGDataToClipboard"],null],null],["flush-element"],["text","Copy EOGData to Clipboard"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -11862,18 +11924,18 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "5FqtS3oU",
+          id: "A5rov1dw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-header.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-content"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-name"],["flush-element"],["append",["unknown",["teamNameLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],5],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small kda"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["kdaLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],4],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small gold"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["teamGoldLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showScoreboardColumnIcons"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_GOLD_EARNED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_MINIONS_KILLED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TOTAL_DAMAGE_DEALT"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-column-icons-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon damage-dealt"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],2],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon minions"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon gold"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TEAM_GOLD_EARNED"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_KILL_DEATH_ASSIST"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-header.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-content"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-team-name"],["flush-element"],["append",["unknown",["teamNameLoc"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-separator-icon"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-container"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],4],["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon small gold"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-header-stat-label"],["flush-element"],["append",["unknown",["teamGoldLoc"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-header-spacer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showScoreboardColumnIcons"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_GOLD_EARNED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_MINIONS_KILLED"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n            "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TOTAL_DAMAGE_DEALT"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-column-icons-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon damage-dealt"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],2],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon minions"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon-spacer"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-header-icon gold"],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","scoreboard-header-stat-icon-tooltip"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","postgame_scoreboard_stat_display_tooltip_TEAM_GOLD_EARNED"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "Lwc35K/L",
+          id: "IX11C2uj",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-row.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-content-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLeaver"]]],null,12],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["scoreboard-row-color-bar ",["unknown",["playerColorBarClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-details-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-background"],["dynamic-attr","style",["unknown",["skinSplashStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-skin-overlay secondary"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","scoreboard-row-details-content horizontal-flex-box"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-level-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayedPosition"]]],null,11],["text","        "],["open-element","div",[]],["static-attr","class","scoreboard-row-in-game-level centered-flex-box"],["flush-element"],["append",["unknown",["player","stats","LEVEL"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-spacer"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-name-and-champ-container vertical-flex-box"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-name"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,9,8],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["player","leaver"]]],null,7,6],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,3],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","id","mute-indicator"],["static-attr","class","scoreboard-row-mute-indicator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlayerHonorComponent"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","scoreboard-row-items-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["paredItems"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","hasScoreboardAnimationPlayed","animationsEnabled"],["TOTAL_DAMAGE_DEALT",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["MINIONS_KILLED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["GOLD_EARNED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","scoreboard-row-hover-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,0],["text","  "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isPlayerActionsMenuOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hidePlayerActionsMenu"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutOptions"]],null],["flush-element"],["text","\\n    "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["scoreboard-row-actions-menu"],null,[["data","isItemSetsDisabled","isFriendRequestDisabled","isPlayerBlocked","isReportDisabled","isPlayerMuted","sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute","isPlayerMuteToggleable"],[["get",["player"]],["get",["postgame","isItemSetsDisabled"]],["get",["isFriendRequestDisabled"]],["get",["isPlayerBlocked"]],["get",["isReportDisabled"]],["get",["showPlayerMute"]],"sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute",["get",["isPlayerMuteToggleable"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","scoreboard-row-player-controls-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["player","isFriendRequestDisabled","isReportDisabled","isPlayerTeam","isInviteDisabled","sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute","isPlayerMuted"],[["get",["player"]],["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],["get",["team","isPlayerTeam"]],["get",["isInviteDisabled"]],"sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute",["get",["isPlayerMuted"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-item"],null,[["itemId"],[["get",["itemId"]]]]],false],["text","\\n"]],"locals":["itemId"]},{"statements":[["text","    "],["append",["helper",["scoreboard-honor-flair"],null,[["isLocalPlayer","isPlayerTeam","isBot","puuid","summonerName","gameName","tagLine","hasScoreboardAnimationPlayed","hasCelebrated","updateHonorCelebrationAnimation"],[["get",["player","isLocalPlayer"]],["get",["team","isPlayerTeam"]],["get",["player","botPlayer"]],["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-actions-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPlayerActionsMenu"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-champ-name"],["flush-element"],["append",["unknown",["player","championName"]],false],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-is-system-muted"],["flush-element"],["append",["unknown",["tra","postgame_system_muted_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSystemMuted"]]],null,5,4]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-leaver-text"],["flush-element"],["append",["unknown",["tra","postgame_afk_penalty_applied_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["player","summonerName"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","class","scoreboard-row-lane-position-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-header"],["flush-element"],["append",["unknown",["displayedPositionTranslatedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","scoreboard-row-lane-position-tooltip-description"],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_lane_position_tooltip_description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","scoreboard-row-position-icon-wrapper centered-flex-box"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","scoreboard-row-position-icon"],["dynamic-attr","src",["concat",["/fe/lol-parties/icon-position-",["unknown",["displayedPosition"]],"-hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],10],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","embellishment-icon-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cancel-icon"],["static-attr","src","/fe/lol-postgame/icon-cancel.svg"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-postgame\\\\src\\\\app\\\\templates\\\\components\\\\strawberry\\\\strawberry-scoreboard-row.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-content-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLeaver"]]],null,12],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["strawberry-scoreboard-row-color-bar ",["unknown",["playerColorBarClass"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-player-details-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-skin-background"],["dynamic-attr","style",["unknown",["skinSplashStyle"]],null],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-skin-overlay"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-skin-overlay secondary"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-details-content horizontal-flex-box"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-position-level-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayedPosition"]]],null,11],["text","        "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-in-game-level centered-flex-box"],["flush-element"],["append",["unknown",["player","stats","LEVEL"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-spacer"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-name-and-champ-container vertical-flex-box"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-player-name"],["flush-element"],["text","\\n"],["block",["if"],[["get",["player","botPlayer"]]],null,9,8],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["player","leaver"]]],null,7,6],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-actions-button-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,3],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","id","mute-indicator"],["static-attr","class","strawberry-scoreboard-row-mute-indicator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowPlayerHonorComponent"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-items-container centered-flex-box"],["flush-element"],["text","\\n"],["block",["each"],[["get",["paredItems"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","hasScoreboardAnimationPlayed","animationsEnabled"],["TOTAL_DAMAGE_DEALT",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["MINIONS_KILLED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n  "],["append",["helper",["scoreboard-row-stat-display"],null,[["statName","player","team","gameLengthSeconds","highestStatValueByStatMap","locale","hasScoreboardAnimationPlayed","animationsEnabled"],["GOLD_EARNED",["get",["player"]],["get",["team"]],["get",["gameLengthSeconds"]],["get",["highestStatValueByStatMap"]],["get",["postgame","locale"]],["get",["hasScoreboardAnimationPlayed"]],["get",["animationsEnabled"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-hover-overlay"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowButtons"]]],null,0],["text","  "],["open-element","lc-flyout",[]],["dynamic-attr","open",["unknown",["isPlayerActionsMenuOpen"]],null],["dynamic-attr","onHide",["helper",["action"],[["get",[null]],"hidePlayerActionsMenu"],null],null],["dynamic-attr","uiKitOptionOverrides",["unknown",["flyoutOptions"]],null],["flush-element"],["text","\\n    "],["open-element","lc-flyout-content",[]],["flush-element"],["text","\\n      "],["append",["helper",["scoreboard-row-actions-menu"],null,[["data","isItemSetsDisabled","isFriendRequestDisabled","isPlayerBlocked","isReportDisabled","isPlayerMuted","sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute","isPlayerMuteToggleable"],[["get",["player"]],["get",["postgame","isItemSetsDisabled"]],["get",["isFriendRequestDisabled"]],["get",["isPlayerBlocked"]],["get",["isReportDisabled"]],["get",["showPlayerMute"]],"sendFriendRequest","inviteToParty","showReportDialog","confirmBlockPlayer","viewProfile","importItemSet","togglePlayerMute",["get",["isPlayerMuteToggleable"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-player-controls-container"],["flush-element"],["text","\\n      "],["append",["helper",["postgame-scoreboard-player-buttons"],null,[["player","isFriendRequestDisabled","isReportDisabled","isPlayerTeam","isInviteDisabled","sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute","isPlayerMuted"],[["get",["player"]],["get",["isFriendRequestDisabled"]],["get",["isReportDisabled"]],["get",["team","isPlayerTeam"]],["get",["isInviteDisabled"]],"sendFriendRequest","showReportDialog","inviteToParty","togglePlayerMute",["get",["isPlayerMuted"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["postgame-scoreboard-player-item"],null,[["itemId"],[["get",["itemId"]]]]],false],["text","\\n"]],"locals":["itemId"]},{"statements":[["text","    "],["append",["helper",["scoreboard-honor-flair"],null,[["isLocalPlayer","isPlayerTeam","isBot","puuid","summonerName","gameName","tagLine","hasScoreboardAnimationPlayed","hasCelebrated","updateHonorCelebrationAnimation"],[["get",["player","isLocalPlayer"]],["get",["team","isPlayerTeam"]],["get",["player","botPlayer"]],["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]],["get",["hasScoreboardAnimationPlayed"]],["get",["hasCelebratedHonor"]],["helper",["action"],[["get",[null]],"updateHonorCelebrationAnimation"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-actions-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"showPlayerActionsMenu"],null],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-champ-name"],["flush-element"],["append",["unknown",["player","championName"]],false],["close-element"],["text","\\n        "]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-is-system-muted"],["flush-element"],["append",["unknown",["tra","postgame_system_muted_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSystemMuted"]]],null,5,4]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-leaver-text"],["flush-element"],["append",["unknown",["tra","postgame_afk_penalty_applied_scoreboard"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["player-name"],null,[["format","puuid","summonerName","gameName","tagLine"],["short",["get",["player","puuid"]],["get",["player","summonerName"]],["get",["gameName"]],["get",["tagLine"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["player","summonerName"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","lol-uikit-content-block",[]],["static-attr","class","strawberry-scoreboard-row-lane-position-tooltip"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-lane-position-tooltip-header"],["flush-element"],["append",["unknown",["displayedPositionTranslatedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-lane-position-tooltip-description"],["flush-element"],["append",["unknown",["tra","postgame_scoreboard_lane_position_tooltip_description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","strawberry-scoreboard-row-position-icon-wrapper centered-flex-box"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","strawberry-scoreboard-row-position-icon"],["dynamic-attr","src",["concat",["/fe/lol-parties/icon-position-",["unknown",["displayedPosition"]],"-hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition"],["top"]],10],["text","          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","embellishment-icon-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","cancel-icon"],["static-attr","src","/fe/lol-postgame/icon-cancel.svg"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -12259,13 +12321,24 @@
                 });
               })
               .then(() => {
-                const e = n(2).default,
-                  a = new (0, n(4).default)(t.default.emberApplicationFactory),
-                  s = new e(a);
-                return t.default.add({
-                  ApplicationInjector: a,
-                  ProgressionComponentHelper: s,
-                });
+                const a = n(2).default,
+                  s = new (0, n(4).default)(t.default.emberApplicationFactory),
+                  o = new a(s);
+                return (
+                  e.getOptional("rcp-fe-lol-strawberry-hub").then(
+                    (e) => {
+                      (t.default.StrawberryModules = e.getStrawberryModules()),
+                        (t.default.tra = t.default.tra.overlay(
+                          "/fe/lol-strawberry-hub/trans.json",
+                        ));
+                    },
+                    () => null,
+                  ),
+                  t.default.add({
+                    ApplicationInjector: s,
+                    ProgressionComponentHelper: o,
+                  })
+                );
               })
               .then(() => (0, n(5).default)()),
           );

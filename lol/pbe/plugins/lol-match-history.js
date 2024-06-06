@@ -7022,7 +7022,7 @@
             e.MAP_IDS_WITHOUT_CS =
               void 0);
         e.MAP_IDS_WITHOUT_CS = [30];
-        e.MAP_IDS_WITH_AUGMENTS = [30];
+        e.MAP_IDS_WITH_AUGMENTS = [30, 33];
         e.NUMBER_OF_AUGMENTS = 4;
       },
       (t, e, a) => {

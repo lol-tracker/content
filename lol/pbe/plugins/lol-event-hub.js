@@ -1429,7 +1429,8 @@
                 ),
                 this.set("selectedOption", e),
                 this.setIsDescriptionExpanded(!1),
-                this.set("tosChecked", !1));
+                this.set("tosChecked", !1),
+                this.set("descriptionElementAdditionalClassName", ""));
             },
             toggleTosChecked(e) {
               this.set("tosChecked", e.target.checked);
