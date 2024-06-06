@@ -29683,6 +29683,18 @@
         },
         "type": "object"
       },
+      "LolLobbyStrawberryMapUpdateDto": {
+        "properties": {
+          "contentId": {
+            "type": "string"
+          },
+          "itemId": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "LolLobbySubteamDataDto": {
         "properties": {
           "intraSubteamPosition": {
@@ -78163,7 +78175,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/LolLobbyStrawberryMapUpdateDto"
               }
             }
           }
@@ -94060,7 +94072,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {
