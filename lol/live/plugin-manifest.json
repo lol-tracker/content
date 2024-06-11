@@ -25,6 +25,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-services-api"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-client-config"
     },
     {
@@ -83,12 +89,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-fe-common-libs"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-player-notifications"
     },
     {
@@ -101,13 +101,13 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-services-api"
+      "name": "rcp-be-lol-league-session"
     },
     {
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-league-session"
+      "name": "rcp-fe-common-libs"
     },
     {
       "affinity": null,
@@ -125,12 +125,6 @@
       "affinity": null,
       "as": [],
       "lazy": false,
-      "name": "rcp-be-lol-player-preferences"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
       "name": "rcp-be-lol-store"
     },
     {
@@ -143,7 +137,19 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-player-preferences"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-fe-lol-l10n"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
+      "name": "rcp-be-lol-summoner"
     },
     {
       "affinity": null,
@@ -156,12 +162,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-game-settings"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-summoner"
     },
     {
       "affinity": [
@@ -223,6 +223,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-lol-champion-mastery"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-fe-lol-shared-components"
     },
     {
@@ -242,12 +248,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-be-lol-collections"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-lol-champion-mastery"
     },
     {
       "affinity": null,

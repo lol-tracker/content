@@ -2547,9 +2547,15 @@
     },
     "LcdsBotParticipant": {
       "properties": {
+        "botDifficulty": {
+          "type": "string"
+        },
         "botSkillLevel": {
           "format": "int32",
           "type": "integer"
+        },
+        "botUuid": {
+          "type": "string"
         },
         "position": {
           "type": "string"
@@ -2980,9 +2986,15 @@
     },
     "LcdsPlayerParticipant": {
       "properties": {
+        "botDifficulty": {
+          "type": "string"
+        },
         "botSkillLevel": {
           "format": "int32",
           "type": "integer"
+        },
+        "botUuid": {
+          "type": "string"
         },
         "position": {
           "type": "string"
@@ -4320,6 +4332,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "tilePath": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -4577,6 +4592,23 @@
         "itemId": {
           "format": "int32",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "LolCatalogGameDataRegaliaBanner": {
+      "properties": {
+        "assetPath": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "idSecondary": {
+          "type": "string"
+        },
+        "localizedName": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -5974,9 +6006,6 @@
         "loyaltyReward": {
           "type": "boolean"
         },
-        "masteryChestGranted": {
-          "type": "boolean"
-        },
         "masteryLevel": {
           "format": "int32",
           "type": "integer"
@@ -6581,6 +6610,23 @@
       ],
       "type": "string"
     },
+    "LolChampSelectChampionMastery": {
+      "properties": {
+        "championId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "championLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "championPoints": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "LolChampSelectChampionQuestSkinInfo": {
       "properties": {
         "productType": {
@@ -6700,27 +6746,10 @@
         "ownership": {
           "$ref": "#/definitions/LolChampSelectCollectionsOwnership"
         },
+        "skinAugments": {
+          "$ref": "#/definitions/LolChampSelectChampionSkinAugments"
+        },
         "stillObtainable": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "LolChampSelectCollectionsChampionMastery": {
-      "properties": {
-        "championId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championLevel": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championPoints": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "chestGranted": {
           "type": "boolean"
         }
       },
@@ -7927,9 +7956,6 @@
           "format": "int32",
           "type": "integer"
         },
-        "chestGranted": {
-          "type": "boolean"
-        },
         "highestGrade": {
           "type": "string"
         },
@@ -8222,6 +8248,10 @@
         },
         "type": {
           "type": "string"
+        },
+        "value": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -8466,6 +8496,9 @@
         },
         "ownership": {
           "$ref": "#/definitions/LolChampionsCollectionsOwnership"
+        },
+        "skinAugments": {
+          "$ref": "#/definitions/LolChampionsCollectionsChampionSkinAugments"
         },
         "stillObtainable": {
           "type": "boolean"
@@ -8962,6 +8995,9 @@
         "id": {
           "format": "int32",
           "type": "integer"
+        },
+        "skinAugments": {
+          "$ref": "#/definitions/LolChampionsCollectionsChampionSkinAugments"
         }
       },
       "type": "object"
@@ -13876,7 +13912,7 @@
       },
       "type": "object"
     },
-    "LolCollectionsCollectionsChampionMastery": {
+    "LolCollectionsChampionMastery": {
       "properties": {
         "championId": {
           "format": "int32",
@@ -13898,14 +13934,9 @@
           "format": "int32",
           "type": "integer"
         },
-        "chestGranted": {
-          "type": "boolean"
-        },
-        "formattedChampionPoints": {
-          "type": "string"
-        },
-        "formattedMasteryGoal": {
-          "type": "string"
+        "championSeasonMilestone": {
+          "format": "int32",
+          "type": "integer"
         },
         "highestGrade": {
           "type": "string"
@@ -13914,9 +13945,18 @@
           "format": "int64",
           "type": "integer"
         },
-        "playerId": {
-          "format": "int64",
+        "markRequiredForNextLevel": {
+          "format": "int32",
           "type": "integer"
+        },
+        "milestoneGrades": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nextSeasonMilestone": {
+          "$ref": "#/definitions/LolCollectionsSeasonMilestoneRequireAndRewards"
         },
         "puuid": {
           "type": "string"
@@ -14035,28 +14075,6 @@
             "type": "integer"
           },
           "type": "array"
-        },
-        "summonerId": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "LolCollectionsCollectionsTopChampionMasteries": {
-      "properties": {
-        "masteries": {
-          "items": {
-            "$ref": "#/definitions/LolCollectionsCollectionsChampionMastery"
-          },
-          "type": "array"
-        },
-        "puuid": {
-          "type": "string"
-        },
-        "score": {
-          "format": "int64",
-          "type": "integer"
         },
         "summonerId": {
           "format": "int64",
@@ -14532,6 +14550,38 @@
       },
       "type": "object"
     },
+    "LolCollectionsRewardConfigurationEntry": {
+      "properties": {
+        "maximumReward": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rewardValue": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolCollectionsSeasonMilestoneRequireAndRewards": {
+      "properties": {
+        "bonus": {
+          "type": "boolean"
+        },
+        "requireGradeCounts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "rewardConfig": {
+          "$ref": "#/definitions/LolCollectionsRewardConfigurationEntry"
+        },
+        "rewardMarks": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "LolCollectionsSummoner": {
       "properties": {
         "accountId": {
@@ -14580,8 +14630,21 @@
       },
       "type": "object"
     },
-    "LolContentTargetingAccountIdAndSummonerId": {
+    "LolCollectionsTopChampionMasteries": {
       "properties": {
+        "masteries": {
+          "items": {
+            "$ref": "#/definitions/LolCollectionsChampionMastery"
+          },
+          "type": "array"
+        },
+        "puuid": {
+          "type": "string"
+        },
+        "score": {
+          "format": "int64",
+          "type": "integer"
+        },
         "summonerId": {
           "format": "int64",
           "type": "integer"
@@ -14589,25 +14652,9 @@
       },
       "type": "object"
     },
-    "LolContentTargetingCollectionsChampionMastery": {
+    "LolContentTargetingAccountIdAndSummonerId": {
       "properties": {
-        "championId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championLevel": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "championPoints": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "lastPlayTime": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "playerId": {
+        "summonerId": {
           "format": "int64",
           "type": "integer"
         }
@@ -16483,6 +16530,9 @@
             "$ref": "#/definitions/LolEndOfGameChampionMasteryGrade"
           },
           "type": "array"
+        },
+        "mvpPuuid": {
+          "type": "string"
         },
         "pointsBeforeGame": {
           "format": "int64",
@@ -18781,8 +18831,7 @@
     "LolEventHubEventHubType": {
       "enum": [
         "EventShop",
-        "HallOfLegends",
-        "SeasonPass"
+        "HallOfLegends"
       ],
       "type": "string"
     },
@@ -19032,6 +19081,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "tilePath": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -24034,9 +24086,37 @@
       },
       "type": "object"
     },
+    "LolHonorV2ApiHonorPlayerServerRequestV3": {
+      "properties": {
+        "honorType": {
+          "type": "string"
+        },
+        "puuid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolHonorV2ApiSubmitBallotRequest": {
+      "properties": {
+        "honoredPlayers": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "LolHonorV2Ballot": {
       "properties": {
-        "eligiblePlayers": {
+        "eligibleAllies": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2EligiblePlayer"
+          },
+          "type": "array"
+        },
+        "eligibleOpponents": {
           "items": {
             "$ref": "#/definitions/LolHonorV2EligiblePlayer"
           },
@@ -24044,6 +24124,16 @@
         },
         "gameId": {
           "format": "int64",
+          "type": "integer"
+        },
+        "honoredPlayers": {
+          "items": {
+            "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+          },
+          "type": "array"
+        },
+        "numVotes": {
+          "format": "int32",
           "type": "integer"
         }
       },
@@ -24234,6 +24324,9 @@
         "SecondsToVote": {
           "format": "int32",
           "type": "integer"
+        },
+        "ceremonyV3Enabled": {
+          "type": "boolean"
         },
         "honorEndpointsV2Enabled": {
           "type": "boolean"
@@ -27035,6 +27128,7 @@
         "SeasonVersionLockout",
         "UnknownRestriction",
         "LOLNewPlayerRestriction",
+        "MinNormalGamesForRankedRestriction",
         "QPPlayerScarcePositionCoverageRestriction",
         "QPPartyPositionCoverageRestriction",
         "QPPlayerPositionCoverageRestriction",
@@ -27564,6 +27658,9 @@
       "properties": {
         "botDifficulty": {
           "$ref": "#/definitions/LolLobbyLobbyBotDifficulty"
+        },
+        "botUuid": {
+          "type": "string"
         },
         "championId": {
           "format": "int32",
@@ -28146,6 +28243,9 @@
         "botDifficulty": {
           "$ref": "#/definitions/LolLobbyLobbyBotDifficulty"
         },
+        "botUuid": {
+          "type": "string"
+        },
         "canInviteOthers": {
           "type": "boolean"
         },
@@ -28247,6 +28347,9 @@
         "botPosition": {
           "type": "string"
         },
+        "botUuid": {
+          "type": "string"
+        },
         "firstPositionPreference": {
           "type": "string"
         },
@@ -28282,6 +28385,9 @@
         },
         "showGhostedBanner": {
           "type": "boolean"
+        },
+        "strawberryMapId": {
+          "type": "string"
         },
         "subteamIndex": {
           "type": "integer"
@@ -29582,6 +29688,18 @@
         },
         "url": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "LolLobbyStrawberryMapUpdateDto": {
+      "properties": {
+        "contentId": {
+          "type": "string"
+        },
+        "itemId": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -33328,6 +33446,9 @@
         "displayCategories": {
           "type": "string"
         },
+        "hasVisibleLootOdds": {
+          "type": "boolean"
+        },
         "imagePath": {
           "type": "string"
         },
@@ -35461,6 +35582,14 @@
           "type": "integer"
         },
         "playerAugment4": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment5": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment6": {
           "format": "int32",
           "type": "integer"
         },
@@ -45769,6 +45898,14 @@
           "format": "int32",
           "type": "integer"
         },
+        "playerAugment5": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "playerAugment6": {
+          "format": "int32",
+          "type": "integer"
+        },
         "playerScore0": {
           "format": "int64",
           "type": "integer"
@@ -46222,8 +46359,8 @@
           "type": "string"
         },
         "minutesUntilReplayConsideredLost": {
-          "format": "double",
-          "type": "number"
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -46234,8 +46371,8 @@
           "type": "string"
         },
         "MinutesUntilReplayConsideredLost": {
-          "format": "double",
-          "type": "number"
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -68078,124 +68215,6 @@
         ]
       }
     },
-    "/lol-collections/v1/inventories/local-player/champion-mastery-score": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesLocalPlayerChampionMasteryScore",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/scouting": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesScouting",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "puuids",
-            "required": true,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "items": {
-                "$ref": "#/definitions/RankedScoutingDTO"
-              },
-              "type": "array"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMastery",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "puuid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "items": {
-                "$ref": "#/definitions/LolCollectionsCollectionsChampionMastery"
-              },
-              "type": "array"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
-    "/lol-collections/v1/inventories/{puuid}/champion-mastery/top": {
-      "get": {
-        "operationId": "GetLolCollectionsV1InventoriesByPuuidChampionMasteryTop",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "puuid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "sortRule",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolCollectionsCollectionsTopChampionMasteries"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-collections"
-        ]
-      }
-    },
     "/lol-collections/v1/inventories/{summonerId}/backdrop": {
       "get": {
         "operationId": "GetLolCollectionsV1InventoriesBySummonerIdBackdrop",
@@ -72214,6 +72233,48 @@
         ]
       }
     },
+    "/lol-honor/v1/ballot": {
+      "post": {
+        "operationId": "PostLolHonorV1Ballot",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-honor-v2"
+        ]
+      }
+    },
+    "/lol-honor/v1/honor": {
+      "post": {
+        "operationId": "PostLolHonorV1Honor",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "honorPlayerRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolHonorV2ApiHonorPlayerServerRequestV3"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-honor-v2"
+        ]
+      }
+    },
     "/lol-hovercard/v1/friend-info-by-summoner/{summonerId}": {
       "get": {
         "operationId": "GetLolHovercardV1FriendInfoBySummonerBySummonerId",
@@ -74604,15 +74665,29 @@
         ]
       }
     },
-    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}": {
-      "delete": {
-        "operationId": "DeleteLolLobbyV1LobbyCustomBotsBySummonerInternalName",
+    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}": {
+      "post": {
+        "operationId": "PostLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotUuidToDelete",
         "parameters": [
           {
             "in": "path",
             "name": "summonerInternalName",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "botUuidToDelete",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LolLobbyLobbyBotParams"
+            }
           }
         ],
         "responses": {
@@ -74630,9 +74705,9 @@
         ]
       }
     },
-    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botToDeletePosition}": {
-      "post": {
-        "operationId": "PostLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotToDeletePosition",
+    "/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}/{teamId}": {
+      "delete": {
+        "operationId": "DeleteLolLobbyV1LobbyCustomBotsBySummonerInternalNameByBotUuidToDeleteByTeamId",
         "parameters": [
           {
             "in": "path",
@@ -74642,17 +74717,15 @@
           },
           {
             "in": "path",
-            "name": "botToDeletePosition",
+            "name": "botUuidToDelete",
             "required": true,
             "type": "string"
           },
           {
-            "in": "body",
-            "name": "parameters",
+            "in": "path",
+            "name": "teamId",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/LolLobbyLobbyBotParams"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -75716,10 +75789,10 @@
         "parameters": [
           {
             "in": "body",
-            "name": "mapId",
+            "name": "mapUpdate",
             "required": true,
             "schema": {
-              "type": "string"
+              "$ref": "#/definitions/LolLobbyStrawberryMapUpdateDto"
             }
           }
         ],
@@ -76421,31 +76494,6 @@
       "get": {
         "operationId": "GetLolLoginV1Session",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/LolLoginLoginSession"
-            }
-          }
-        },
-        "tags": [
-          "Plugins",
-          "Plugin lol-login"
-        ]
-      },
-      "post": {
-        "operationId": "PostLolLoginV1Session",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "UsernameAndPassword",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LolLoginUsernameAndPassword"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -86376,6 +86424,34 @@
         ]
       }
     },
+    "/lol-tft-team-planner/v1/set": {
+      "patch": {
+        "operationId": "PatchLolTftTeamPlannerV1Set",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "setName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin lol-tft-team-planner"
+        ]
+      }
+    },
     "/lol-tft-team-planner/v1/team": {
       "put": {
         "operationId": "PutLolTftTeamPlannerV1Team",
@@ -89563,6 +89639,28 @@
         ]
       }
     },
+    "/services-api/config/v1/client-config": {
+      "post": {
+        "operationId": "PostServicesApiConfigV1ClientConfig",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "clientConfigData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/services-api/game-session/v1/game-session-token": {
       "put": {
         "operationId": "PutServicesApiGameSessionV1GameSessionToken",
@@ -89606,7 +89704,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -89659,7 +89757,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {

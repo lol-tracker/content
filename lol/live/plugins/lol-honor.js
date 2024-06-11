@@ -531,6 +531,11 @@
                 "/lol-gameflow/v1/session",
                 this,
                 this._handleGameflowData.bind(this),
+              ),
+              this._dataBinding.observe(
+                "/lol-honor-v2/v1/config",
+                this,
+                this._handleConfigUpdate.bind(this),
               );
           }
           _showHonor(e) {
@@ -563,7 +568,14 @@
           }
           _createApplication() {
             const e = (0, a.default)(r.Ember, r.tra);
-            this._application = (0, i.createEmberApp)(e);
+            this._usingHonorCeremonyV3
+              ? (this._application = (0, i.createHonorV3CeremonyApp)(e))
+              : (this._application = (0, i.createEmberApp)(e));
+          }
+          _handleConfigUpdate(e) {
+            void 0 !== e.ceremonyV3Enabled &&
+              null !== e.ceremonyV3Enabled &&
+              (this._usingHonorCeremonyV3 = e.ceremonyV3Enabled);
           }
           _handleGameflowData(e) {
             this._application ||
@@ -673,6 +685,25 @@
                 PlayerNameComponent: r,
               }),
               n.componentFactory.create("PromptedVotingComponent")
+            );
+          }),
+          (t.createHonorV3CeremonyApp = function (e) {
+            const {
+              RenderTelemetrySenderComponent: t,
+              PlayerNameComponent: r,
+            } = n.SharedEmberComponents;
+            return (
+              n.emberApplicationFactory.setFactoryDefinition({
+                name: "HonorV3Ceremony",
+                tra: e,
+                ComponentFactory: n.componentFactory,
+                PromptedVotingComponent: o(17).default,
+                PromptedVotingPlayerComponent: o(20).default,
+                HonorService: o(16).default,
+                RenderTelemetrySenderComponent: t,
+                PlayerNameComponent: r,
+              }),
+              n.componentFactory.create("HonorV3Ceremony")
             );
           });
         var n = o(1);
@@ -856,14 +887,14 @@
             let o = this.get("honorConfig.SecondsToVote");
             if (
               (o ? (o *= 1e3) : (o = r.DEFAULT_TIME_TO_VOTE),
-              e && e.eligiblePlayers && e.eligiblePlayers.length > 0 && !t)
+              e && e.eligibleAllies && e.eligibleAllies.length > 0 && !t)
             ) {
               let t = !1;
               n.Telemetry.invokeWithLowProbability(() => {
                 (t = !0), n.Telemetry.startTracingEvent(this.renderEventName);
               }),
                 this.setProperties({
-                  eligiblePlayers: e.eligiblePlayers.slice(),
+                  eligibleAllies: e.eligibleAllies.slice(),
                   selectionChosen: !1,
                   canVote: !1,
                   hoveredCategory: null,
@@ -889,9 +920,9 @@
       (e, t, o) => {
         const n = o(1).Ember;
         e.exports = n.HTMLBars.template({
-          id: "nH5oR03s",
+          id: "tMp15xS4",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isShowing"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["skipButtonTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","index","totalCandidates","localSummonerId","hoveredPlayer","hoveredCategory","selectionChosen","canVote","gameId","submitHonor"],[["get",["candidate"]],["get",["index"]],["get",["eligiblePlayers","length"]],["get",["localSummonerId"]],["get",["hoveredPlayer"]],["get",["hoveredCategory"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]],"submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligiblePlayers"]]],null,1],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette-glow"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette bottom"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-header"],["flush-element"],["text","\\n      "],["append",["unknown",["promptedVotingHeaderText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","next"],["dynamic-attr","class",["concat",["prompted-voting-skip-button ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["dynamic-attr","disabled",["unknown",["selectionChosen"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"optOutHonor"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-timer ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-minutes"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextMinutes"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-colon"],["flush-element"],["text","\\n        :\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-seconds"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextSeconds"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],2]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isShowing"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["append",["unknown",["skipButtonTooltipText"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","index","totalCandidates","localSummonerId","hoveredPlayer","hoveredCategory","selectionChosen","canVote","gameId","submitHonor"],[["get",["candidate"]],["get",["index"]],["get",["eligibleAllies","length"]],["get",["localSummonerId"]],["get",["hoveredPlayer"]],["get",["hoveredCategory"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]],"submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligibleAllies"]]],null,1],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette top"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette-glow"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-vignette bottom"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-header"],["flush-element"],["text","\\n      "],["append",["unknown",["promptedVotingHeaderText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","next"],["dynamic-attr","class",["concat",["prompted-voting-skip-button ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["dynamic-attr","disabled",["unknown",["selectionChosen"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"optOutHonor"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],0],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-timer ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-minutes"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextMinutes"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-colon"],["flush-element"],["text","\\n        :\\n      "],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-seconds"],["flush-element"],["text","\\n        "],["append",["unknown",["timerTextSeconds"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],2]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1046,9 +1077,9 @@
       (e, t, o) => {
         const n = o(1).Ember;
         e.exports = n.HTMLBars.template({
-          id: "ZnTzirpM",
+          id: "RoFN5lpV",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-champ"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","championName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["candidate","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-candidate-overlay ",["unknown",["candidateBrightnessClass"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["each"],[["helper",["-each-in"],[["get",["honorCategories"]]],null]],null,0],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-header"],["flush-element"],["text","\\n  "],["append",["unknown",["promptHeader"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-body"],["flush-element"],["text","\\n  "],["append",["unknown",["promptBody"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["prompted-voting-category-select"],null,[["candidate","totalCandidates","candidateIsHovered","candidateIsSelected","honorCategory","honorCategoryKey","hoveredCategory","hoveredPlayer","selectionChosen","canVote","gameId"],[["get",["candidate"]],["get",["totalCandidates"]],["get",["candidateIsHovered"]],["get",["candidateIsSelected"]],["get",["honorCategory"]],["get",["honorCategoryKey"]],["get",["hoveredCategory"]],["get",["hoveredPlayer"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]]]]],false],["text","\\n"]],"locals":["honorCategoryKey","honorCategory"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\player-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-champ"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","championName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-name"],["flush-element"],["text","\\n  "],["append",["helper",["player-name"],null,[["format","puuid"],["short",["get",["candidate","puuid"]]]]],false],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-candidate-overlay ",["unknown",["candidateBrightnessClass"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["each"],[["helper",["-each-in"],[["get",["honorCategories"]]],null]],null,0],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-header"],["flush-element"],["text","\\n  "],["append",["unknown",["promptHeader"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","honor-category-prompt-body"],["flush-element"],["text","\\n  "],["append",["unknown",["promptBody"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["prompted-voting-category-select"],null,[["candidate","totalCandidates","candidateIsHovered","candidateIsSelected","honorCategory","honorCategoryKey","hoveredCategory","hoveredPlayer","selectionChosen","canVote","gameId"],[["get",["candidate"]],["get",["totalCandidates"]],["get",["candidateIsHovered"]],["get",["candidateIsSelected"]],["get",["honorCategory"]],["get",["honorCategoryKey"]],["get",["hoveredCategory"]],["get",["hoveredPlayer"]],["get",["selectionChosen"]],["get",["canVote"]],["get",["gameId"]]]]],false],["text","\\n"]],"locals":["honorCategoryKey","honorCategory"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1065,7 +1096,7 @@
           return e && e.__esModule ? e : { default: e };
         }
         const { RunMixin: s } = n.EmberAddons.EmberLifeline;
-        var _ = n.Ember.Component.extend(s, a.default, {
+        var c = n.Ember.Component.extend(s, a.default, {
           classNameBindings: [
             "baseClassName",
             "categoryPosition",
@@ -1201,7 +1232,7 @@
             },
           },
         });
-        t.default = _;
+        t.default = c;
       },
       (e, t, o) => {
         "use strict";
@@ -1210,9 +1241,9 @@
       (e, t, o) => {
         const n = o(1).Ember;
         e.exports = n.HTMLBars.template({
-          id: "civ4NMtf",
+          id: "KhGj90qd",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-selector ",["helper",["if"],[["get",["candidateCategoryIsHovered"]],"active"],null]," ",["unknown",["totalCandidatesClassName"]]," ",["unknown",["categoryPosition"]]]]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"mouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"click"],[["on"],["click"]]],["flush-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-image-container ",["unknown",["categoryPosition"]]," ",["unknown",["totalCandidatesClassName"]]," ",["helper",["if"],[["get",["candidateIsHovered"]],"active"],null]," ",["helper",["if"],[["get",["candidateCategoryIsSelected"]],"selected"],null]]]],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-honor-category-image"],["dynamic-attr","src",["concat",[["unknown",["categoryIcon"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["playLowSpecAnimation"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-selection-animation-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-glow"],["dynamic-attr","src",["concat",[["unknown",["lowSpecGlowPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-outro"],["dynamic-attr","src",["concat",[["unknown",["lowSpecOutroPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\prompted-voting-component\\\\category-select-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-selector ",["helper",["if"],[["get",["candidateCategoryIsHovered"]],"active"],null]," ",["unknown",["totalCandidatesClassName"]]," ",["unknown",["categoryPosition"]]]]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"mouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"click"],[["on"],["click"]]],["flush-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-honor-category-image-container ",["unknown",["categoryPosition"]]," ",["unknown",["totalCandidatesClassName"]]," ",["helper",["if"],[["get",["candidateIsHovered"]],"active"],null]," ",["helper",["if"],[["get",["candidateCategoryIsSelected"]],"selected"],null]]]],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-honor-category-image"],["dynamic-attr","src",["concat",[["unknown",["categoryIcon"]]]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["playLowSpecAnimation"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-selection-animation-container"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-glow"],["dynamic-attr","src",["concat",[["unknown",["lowSpecGlowPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","prompted-voting-selection-outro"],["dynamic-attr","src",["concat",[["unknown",["lowSpecOutroPath"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1260,12 +1291,21 @@
                   "/lol-honor-v2/v1/config",
                   "honorConfig",
                 ),
+              ),
+              this._observers.push(
+                this._addObservedProperty(
+                  "/lol-end-of-game/v1/champion-mastery-updates",
+                  "champMastery",
+                ),
               );
           },
           tearDownDataBindingObservers() {
             this._observers &&
               this._observers.forEach((e) => r.unobserve(e, this)),
               (this._observers = []);
+          },
+          honorPlayerV3(e) {
+            n.db.post("/lol-honor/v1/honor", e);
           },
           _setPropertyValue(e, t) {
             this.isDestroying || this.isDestroyed || this.set(e, t);
@@ -1280,6 +1320,279 @@
           },
         });
         t.default = a;
+      },
+      (e, t, o) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var n = o(1),
+          r = o(2);
+        o(18);
+        var a = l(o(19)),
+          i = l(o(10));
+        function l(e) {
+          return e && e.__esModule ? e : { default: e };
+        }
+        const { RunMixin: s } = n.EmberAddons.EmberLifeline,
+          c = "/lol-honor-v2/v1/ballot",
+          d = "/lol-honor-v2/v1/config";
+        var _ = n.Ember.Component.extend(s, i.default, {
+          honor: n.Ember.inject.service(),
+          classNameBindings: ["baseClassName"],
+          baseClassName: "honor-vote-ceremony-v3",
+          attributeBindings: ["style"],
+          style: n.Ember.computed(
+            "gameflowSession.map.assets.gameflow-background",
+            function () {
+              return `background-image: url(${this.get("gameflowSession.map.assets.parties-background")})`;
+            },
+          ),
+          layout: a.default,
+          selectionChosen: !1,
+          currentPhase: null,
+          isShowing: !1,
+          honorConfig: null,
+          honorBallot: null,
+          loginSession: n.Ember.computed.readOnly("honor.loginSession"),
+          gameflowSession: n.Ember.computed.readOnly("honor.gameflowSession"),
+          champMastery: n.Ember.computed.readOnly("honor.champMastery"),
+          eligibleAllies: n.Ember.computed.alias("honorBallot.eligibleAllies"),
+          eligibleOpponents: n.Ember.computed.alias(
+            "honorBallot.eligibleOpponents",
+          ),
+          gameId: n.Ember.computed.alias("honorBallot.gameId"),
+          selectedPlayers: [],
+          init: function () {
+            this._super(...arguments), this.initDataBindings();
+          },
+          willDestroy() {
+            this._super(...arguments),
+              this.tearDownDataBindingObservers(),
+              this._cleanup();
+          },
+          initDataBindings() {
+            n.db.observe(c, this, (e) => {
+              const t =
+                  e?.eligibleAllies?.length || e?.eligibleOpponents?.length,
+                o = this.get("honorBallot");
+              (!e ||
+                (!(o?.eligibleAllies?.length || o?.eligibleOpponents?.length) &&
+                  t)) &&
+                this.set("honorBallot", e),
+                this.set("selectedPlayers", e?.honoredPlayers),
+                this._attemptToShowHonor(),
+                e.numVotes === e.honoredPlayers.length &&
+                  (n.logger.info(
+                    "rcp-fe-lol-honor: player submitted (used all votes)",
+                  ),
+                  (this._beginTransitionTimer = n.Ember.run.once(
+                    this,
+                    "beginTransition",
+                  )));
+            }),
+              n.db.observe(d, this, (e) => {
+                this.set("honorConfig", e), this._attemptToShowHonor();
+              });
+          },
+          tearDownDataBindingObservers() {
+            n.db.unobserve(c, this), n.db.unobserve(d, this);
+          },
+          mvp: n.Ember.computed(
+            "champMastery.mvpPuuid",
+            "eligibleAllies",
+            "eligibleOpponents",
+            function () {
+              const e = this.get("champMastery.mvpPuuid"),
+                t = this.get("eligibleAllies"),
+                o = this.get("eligibleOpponents");
+              if (!e || !t || !o) return;
+              return [...t, ...o].find((t) => t.puuid === e);
+            },
+          ),
+          decrementTime: function () {
+            this.runTask(function () {
+              const e = this.get("timeRemaining");
+              0 === e
+                ? this.send("timeOutHonor")
+                : e > 0 &&
+                  (this.set("timeRemaining", Math.max(e - 1e3, 0)),
+                  this.decrementTime());
+            }, 1e3);
+          },
+          timerTextMinutes: n.Ember.computed("timeRemaining", function () {
+            let e = Math.floor(this.get("timeRemaining") / 6e4);
+            return (e = Math.max(e, 0)), this.padTimeDisplay(Math.floor(e));
+          }),
+          timerTextSeconds: n.Ember.computed("timeRemaining", function () {
+            let e = Math.floor(this.get("timeRemaining") / 1e3);
+            return (e = Math.max(e, 0)), this.padTimeDisplay(e % 60);
+          }),
+          votesRemaining: n.Ember.computed(
+            "selectedPlayers",
+            "honorBallot.numVotes",
+            function () {
+              if (!this.get("selectedPlayers")) return "";
+              const e = this.get("selectedPlayers").length;
+              return this.get("tra").formatString(
+                "honor_prompted_voting_votes",
+                { votes: this.get("honorBallot.numVotes") - e },
+              );
+            },
+          ),
+          mvpChampBackground: n.Ember.computed(
+            "mvp.skinSplashPath",
+            function () {
+              return `background-image: url(${this.get("mvp.skinSplashPath")});`;
+            },
+          ),
+          padTimeDisplay: function (e) {
+            let t = "";
+            return e < 10 && (t = "0"), t + e;
+          },
+          actions: {
+            timeOutHonor() {
+              n.logger.info("rcp-fe-lol-honor: honor timed out"),
+                (this._beginTransitionTimer = n.Ember.run.once(
+                  this,
+                  "beginTransition",
+                ));
+            },
+            submitSelection() {
+              n.logger.info(
+                "rcp-fe-lol-honor: player submitted (did not use all votes)",
+              ),
+                (this._beginTransitionTimer = n.Ember.run.once(
+                  this,
+                  "beginTransition",
+                ));
+            },
+          },
+          startCountdown: function () {
+            this.decrementTime();
+          },
+          renderEventName: "honor-voting-render",
+          shouldSendTelemetry: !1,
+          beginTransition: function () {
+            this.set("selectionChosen", !0),
+              (this._beginTransitionTimer = null);
+            this.runTask(function () {
+              this.submitBallot();
+            }, 1500);
+          },
+          submitBallot: function () {
+            n.db.post("/lol-honor/v1/ballot"), this.hideHonor();
+          },
+          hideHonor: function () {
+            n.logger.info("rcp-fe-lol-honor: attempt to hideHonor"),
+              n.api._hideHonor(),
+              this._cleanup();
+          },
+          _cleanup: function () {
+            this._beginTransitionTimer &&
+              (n.Ember.run.cancel(this._beginTransitionTimer),
+              (this._beginTransitionTimer = null)),
+              this.set("isShowing", !1),
+              this.set("selectionChosen", !1);
+          },
+          _attemptToShowHonor: function () {
+            const e = this.get("honorConfig.Enabled"),
+              t = this.get("honorBallot"),
+              o = this.get("isShowing");
+            if (
+              !e ||
+              (!t?.eligibleAllies?.length && !t?.eligibleOpponents?.length) ||
+              o
+            )
+              return;
+            let a = this.get("honorConfig.SecondsToVote");
+            a ? (a *= 1e3) : (a = r.DEFAULT_TIME_TO_VOTE),
+              this.set("timeRemaining", a),
+              this.set("isShowing", !0),
+              n.api._showHonor(this.startCountdown.bind(this));
+          },
+        });
+        t.default = _;
+      },
+      (e, t, o) => {
+        "use strict";
+        o.r(t);
+      },
+      (e, t, o) => {
+        const n = o(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "0v/AVBrm",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isShowing"]]],null,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","prompted-voting-mvp-v3"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","prompted-voting-mvp-champ-icon-v3"],["dynamic-attr","style",["unknown",["mvpChampBackground"]],null],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","prompted-voting-mvp-title-v3"],["flush-element"],["append",["unknown",["tra","honor_prompted_voting_mvp"]],false],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","prompted-voting-mvp-summoner-name-v3"],["flush-element"],["append",["unknown",["mvp","summonerName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["skipButtonTooltipText"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","selectedPlayers","index","totalCandidates","gameId","selectionChosen","team","submitHonor"],[["get",["candidate"]],["get",["selectedPlayers"]],["get",["index"]],["get",["eligibleOpponents","length"]],["get",["gameId"]],["get",["selectionChosen"]],"chaos","submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","        "],["append",["helper",["prompted-voting-player"],null,[["candidate","selectedPlayers","index","totalCandidates","gameId","selectionChosen","team","submitHonor"],[["get",["candidate"]],["get",["selectedPlayers"]],["get",["index"]],["get",["eligibleAllies","length"]],["get",["gameId"]],["get",["selectionChosen"]],"order","submitHonor"]]],false],["text","\\n"]],"locals":["candidate","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","prompted-voting-title-v3"],["flush-element"],["append",["unknown",["tra","honor_prompted_voting_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-votes-remaining-v3"],["flush-element"],["append",["unknown",["votesRemaining"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container-v3 order"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligibleAllies"]]],null,3],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-player-container-v3 chaos"],["flush-element"],["text","\\n"],["block",["each"],[["get",["eligibleOpponents"]]],null,2],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","prompted-voting-footer-v3"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-close-button",[]],["static-attr","button-type","next"],["static-attr","class","prompted-voting-skip-button-v3"],["dynamic-attr","disabled",["unknown",["selectionChosen"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"submitSelection"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["type","tooltipPosition"],["system","top"]],1],["text","      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["prompted-voting-timer-v3 ",["helper",["if"],[["get",["selectionChosen"]],"hidden"],null]]]],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-minutes-v3"],["flush-element"],["text","\\n          "],["append",["unknown",["timerTextMinutes"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-colon-v3"],["flush-element"],["text","\\n          :\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","prompted-voting-timer-seconds-v3"],["flush-element"],["text","\\n          "],["append",["unknown",["timerTextSeconds"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["mvp"]]],null,0]],"locals":[]},{"statements":[["block",["render-telemetry-sender"],null,[["renderEventName","shouldSendTelemetry"],[["get",["renderEventName"]],["get",["shouldSendTelemetry"]]]],4]],"locals":[]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, o) => {
+        "use strict";
+        Object.defineProperty(t, "__esModule", { value: !0 }),
+          (t.default = void 0);
+        var n = o(1),
+          r = i(o(10));
+        o(21);
+        var a = i(o(22));
+        function i(e) {
+          return e && e.__esModule ? e : { default: e };
+        }
+        var l = n.Ember.Component.extend(r.default, {
+          classNameBindings: [
+            "baseClassName",
+            "candidateBrightnessClass",
+            "totalCandidatesClassName",
+            "candidateClassName",
+            "teamClassName",
+            "disabledClassName",
+          ],
+          attributeBindings: ["style"],
+          style: n.Ember.computed("index", "totalCandidates", function () {
+            const e = this.get("index") - (this.get("totalCandidates") - 1) / 2;
+            return `animation-delay: ${Math.abs(e / 8) + Math.random() / 30}s`;
+          }),
+          baseClassName: "prompted-voting-player-component-v3",
+          teamClassName: n.Ember.computed.alias("team"),
+          layout: a.default,
+          honor: n.Ember.inject.service(),
+          disabledClassName: n.Ember.computed("selectionChosen", function () {
+            return this.get("selectionChosen") ? "disabled" : "";
+          }),
+          candidateBrightnessClass: n.Ember.computed(
+            "selectedPlayers",
+            "candidate.puuid",
+            function () {
+              const e = this.get("selectedPlayers"),
+                t = this.get("candidate.puuid");
+              return e
+                ? e.some((e) => e.puuid === t)
+                  ? "active"
+                  : "dimmed"
+                : "";
+            },
+          ),
+          click: function () {
+            const e = {
+              puuid: this.get("candidate.puuid"),
+              honorType: "HEART",
+            };
+            this.get("honor").honorPlayerV3(e);
+          },
+        });
+        t.default = l;
+      },
+      (e, t, o) => {
+        "use strict";
+        o.r(t);
+      },
+      (e, t, o) => {
+        const n = o(1).Ember;
+        e.exports = n.HTMLBars.template({
+          id: "YJS3xNnZ",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\player-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\player-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-honor\\\\src\\\\app\\\\components\\\\vote-ceremony-v3\\\\player-component\\\\index.js\\" "],["text","\\n"],["open-element","img",[]],["static-attr","class","prompted-voting-candidate-champ-image-v3"],["dynamic-attr","src",["concat",[["unknown",["candidate","skinSplashPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-champ-name-v3"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","championName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-summoner-name-v3"],["flush-element"],["text","\\n  "],["append",["unknown",["candidate","summonerName"]],false],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","prompted-voting-candidate-honor-icons-v3"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-candidate-honor-icon-v3 unselected"],["static-attr","src","fe/lol-honor/assets/Heart_Unselected.png"],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","prompted-voting-candidate-honor-icon-v3 selected"],["static-attr","src","fe/lol-honor/assets/Heart_Selected.png"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+          meta: {},
+        });
       },
     ],
     t = {};
@@ -1347,6 +1660,7 @@
               })
               .then(() =>
                 t.default.add({
+                  db: t.default.dataBinding.bindTo(e.getSocket()),
                   EmberAddons: (e) =>
                     e.get("rcp-fe-ember-libs").getSharedEmberAddons(),
                   emberApplicationFactory: (e) =>

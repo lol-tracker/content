@@ -281,6 +281,7 @@
             t.EVENT_ERROR_EXECUTE_MASS_DISENCHANT =
             t.ETERNALS_TYPE =
             t.ETERNALS_TAGS =
+            t.DISPLAY_CATEGORY_CHEST =
             t.DISENCHANT_RECIPE_TYPE =
             t.CUSTOM_RARITY_TAG_NAMES =
             t.CURRENCY_CHAMPION_ID =
@@ -382,6 +383,7 @@
         t.CHAMPION_TOKEN_6 = "CHAMPION_TOKEN_6";
         t.CHAMPION_TOKEN_7 = "CHAMPION_TOKEN_7";
         t.PORTAL_PREFIX = "portal_";
+        t.DISPLAY_CATEGORY_CHEST = "CHEST";
         t.OPEN_UI = "loot-recipe-ui-open";
         t.REROLL_UI = "loot-recipe-ui-reroll";
         t.UPGRADE_UI = "loot-recipe-ui-upgrade";
@@ -682,12 +684,13 @@
                 r.SharedEmberComponents.RemainingTimeTextComponent,
               ...r.RewardTrackerEmberComponents,
               LootRecipeMilestoneRewardTooltipComponent: n(241),
-              LootService: n(244),
-              LootMassDisenchantService: n(248),
-              UxSettingsService: n(249),
-              TelemetryService: n(250),
-              LootLocHelperService: n(251),
-              LootRedeemConfirmService: n(252),
+              ClientConfigService: n(244),
+              LootService: n(245),
+              LootMassDisenchantService: n(249),
+              UxSettingsService: n(250),
+              TelemetryService: n(251),
+              LootLocHelperService: n(252),
+              LootRedeemConfirmService: n(253),
             });
           });
         var o,
@@ -7332,9 +7335,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "a+Hk9r3T",
+          id: "o1KbB0+/",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-content-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-backdrop ",["helper",["unless"],[["get",["useBackgroundAnimation"]],"background-static"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["useBackgroundAnimation"]]],null,12],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["lootService","lootItemsInitialized"]]],null,11],["text","\\n"],["block",["if"],[["get",["disenchantItem"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","id","loading-screen"],["static-attr","class","loot-loading-screen"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-disenchant"],null,[["lootItem","recipeName","closeDisenchantModal"],[["get",["disenchantItem"]],["get",["disenchantRecipeName"]],["helper",["action"],[["get",[null]],"closeDisenchantModal"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","id","inventory-input-blocker"],["static-attr","class","input-blocker"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","input-blocker"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-recipe-menu"],null,[["initialItem","openRecipeMenuItemCrafter"],[["get",["initialRecipeMenuItem"]],["helper",["action"],[["get",[null]],"openRecipeMenuItemCrafter"],null]]]],false],["text","\\n          "]],"locals":[]},{"statements":[["block",["if"],[["get",["initialRecipeMenuItem"]]],null,3]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-state-machine"],null,[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","decoratedRecipeSlotStates","selectContextMenuAction","closeCrafter","removeItemFromSlot","craft","craftResults","claimMilestonesRewards","claimMilestonesRewardsResult"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["helper",["action"],[["get",[null]],"setMilestonesUnavailable"],null],["get",["decoratedRecipeSlotStates"]],["helper",["action"],[["get",[null]],"selectContextMenuAction"],null],["helper",["action"],[["get",[null]],"closeCrafter"],null],["helper",["action"],[["get",[null]],"removeItemFromSlot"],null],["helper",["action"],[["get",[null]],"craft"],null],["get",["craftResults"]],["helper",["action"],[["get",[null]],"claimMilestonesRewards"],null],["get",["claimMilestonesRewardsResult"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["recipe"]]],null,5,4]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-reveal"],null,[["redemptionItem","redeem","closeItemRedeemer"],[["get",["redemptionItem"]],["helper",["action"],[["get",[null]],"redeem"],null],["helper",["action"],[["get",[null]],"closeItemRedeemer"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["redemptionItem"]]],null,7,6]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["loot-mass-disenchant"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isMassDisenchantOpen"]]],null,9,8]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-contents"],["flush-element"],["text","\\n"],["text","      "],["open-element","div",[]],["static-attr","class","loot-crafter-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootInventoryLoaded"]]],null,10],["block",["if"],[["get",["isCrafterInputDisabled"]]],null,2],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-inventory-container"],["flush-element"],["text","\\n        "],["append",["helper",["loot-inventory"],null,[["decoratedRecipeSlotStates","selectedLootItems","selectContextMenuAction","openRecipeMenu","toggleMassDisenchant","isMassDisenchantOpen","disenchantSelectedCategory","closeCrafter","addItemToFirstValidSlot","setLootInventoryLoaded","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones","isLootPageVisible"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["helper",["action"],[["get",[null]],"selectContextMenuAction"],null],["helper",["action"],[["get",[null]],"openRecipeMenu"],null],["helper",["action"],[["get",[null]],"toggleMassDisenchant"],null],["get",["isMassDisenchantOpen"]],["get",["disenchantSelectedCategory"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["helper",["action"],[["get",[null]],"addItemToFirstValidSlot"],null],["helper",["action"],[["get",[null]],"setLootInventoryLoaded"],null],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]],["get",["isLootPageVisible"]]]]],false],["text"," "],["append",["helper",["loot-tray"],null,[["selectContextMenuAction"],[["helper",["action"],[["get",[null]],"selectContextMenuAction"],null]]]],false],["text","\\n"],["block",["if"],[["get",["isInventoryInputDisabled"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","id","background-ambient"],["static-attr","fade-in","100"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/background_ambient.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-root\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-content-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-backdrop ",["helper",["unless"],[["get",["useBackgroundAnimation"]],"background-static"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["useBackgroundAnimation"]]],null,12],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["lootService","lootItemsInitialized"]]],null,11],["text","\\n"],["block",["if"],[["get",["disenchantItem"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","id","loading-screen"],["static-attr","class","loot-loading-screen"],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-disenchant"],null,[["lootItem","recipeName","closeDisenchantModal"],[["get",["disenchantItem"]],["get",["disenchantRecipeName"]],["helper",["action"],[["get",[null]],"closeDisenchantModal"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","id","inventory-input-blocker"],["static-attr","class","input-blocker"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","input-blocker"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-recipe-menu"],null,[["initialItem","openRecipeMenuItemCrafter"],[["get",["initialRecipeMenuItem"]],["helper",["action"],[["get",[null]],"openRecipeMenuItemCrafter"],null]]]],false],["text","\\n          "]],"locals":[]},{"statements":[["block",["if"],[["get",["initialRecipeMenuItem"]]],null,3]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-state-machine"],null,[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","decoratedRecipeSlotStates","selectContextMenuAction","closeCrafter","removeItemFromSlot","craft","craftResults","claimMilestonesRewards","claimMilestonesRewardsResult"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["helper",["action"],[["get",[null]],"setMilestonesUnavailable"],null],["get",["decoratedRecipeSlotStates"]],["helper",["action"],[["get",[null]],"selectContextMenuAction"],null],["helper",["action"],[["get",[null]],"closeCrafter"],null],["helper",["action"],[["get",[null]],"removeItemFromSlot"],null],["helper",["action"],[["get",[null]],"craft"],null],["get",["craftResults"]],["helper",["action"],[["get",[null]],"claimMilestonesRewards"],null],["get",["claimMilestonesRewardsResult"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["recipe"]]],null,5,4]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-crafter-reveal"],null,[["redemptionItem","redeem","closeItemRedeemer"],[["get",["redemptionItem"]],["helper",["action"],[["get",[null]],"redeem"],null],["helper",["action"],[["get",[null]],"closeItemRedeemer"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["redemptionItem"]]],null,7,6]],"locals":[]},{"statements":[["text","            "],["append",["unknown",["loot-mass-disenchant"]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isMassDisenchantOpen"]]],null,9,8]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-contents"],["flush-element"],["text","\\n"],["text","      "],["open-element","div",[]],["static-attr","class","loot-crafter-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootInventoryLoaded"]]],null,10],["block",["if"],[["get",["isCrafterInputDisabled"]]],null,2],["text","      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-inventory-container"],["flush-element"],["text","\\n        "],["append",["helper",["loot-inventory"],null,[["decoratedRecipeSlotStates","selectedLootItems","selectContextMenuAction","openRecipeMenu","toggleMassDisenchant","isMassDisenchantOpen","disenchantSelectedCategory","closeCrafter","addItemToFirstValidSlot","setLootInventoryLoaded","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones","isLootPageVisible"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["helper",["action"],[["get",[null]],"selectContextMenuAction"],null],["helper",["action"],[["get",[null]],"openRecipeMenu"],null],["helper",["action"],[["get",[null]],"toggleMassDisenchant"],null],["get",["isMassDisenchantOpen"]],["get",["disenchantSelectedCategory"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["helper",["action"],[["get",[null]],"addItemToFirstValidSlot"],null],["helper",["action"],[["get",[null]],"setLootInventoryLoaded"],null],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]],["get",["isLootPageVisible"]]]]],false],["text"," "],["append",["helper",["loot-tray"],null,[["selectContextMenuAction"],[["helper",["action"],[["get",[null]],"selectContextMenuAction"],null]]]],false],["text","\\n"],["block",["if"],[["get",["isInventoryInputDisabled"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","id","background-ambient"],["static-attr","fade-in","100"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/background_ambient.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -8144,9 +8147,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "mfUeSNcR",
+          id: "Vb4WYSHR",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\index.js\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["disabled","targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY","showDelay"],[["get",["isAnyContextMenuOpen"]],"right","center","left","center",500]],14],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-item-visual-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-visual ",["unknown",["isInteractiveClass"]]," ",["unknown",["visualStateCSSClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["backgroundName"]]],null,13],["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["icon ",["unknown",["visualStateCSSClass"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["useHoverOverlay"]]],null,12],["text","    "],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","border border-normal"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],".png"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","border border-hover"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],"_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["lootItem","isRental"]]],null,11],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isNew"]]],null,10],["open-element","div",[]],["dynamic-attr","class",["concat",["visual-state ",["unknown",["visualState"]]," ",["unknown",["lootItem","lootName"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showVisualStateVideoSelected"]]],null,9,8],["close-element"],["text","\\n"],["block",["if"],[["get",["hasSeriesNumber"]]],null,6],["block",["if"],[["get",["showLootItemQuantity"]]],null,5],["block",["if"],[["get",["rarityIconPath"]]],null,2],["block",["if"],[["get",["tagIconPath"]]],null,1],["block",["if"],[["get",["hasMilestones"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","has-milestones"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["dynamic-attr","class",["concat",["icon ",["helper",["if"],[["get",["showVisualStateSelected"]],"selected"],null]]]],["static-attr","width","12"],["static-attr","height","11"],["static-attr","viewBox","0 0 12 11"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","d","M5.9999 0.400024L7.5999 4.40002H11.5999L8.3999 6.80002L9.2915 10.8L5.9999 8.40002L2.70831 10.8L3.5999 6.80002L0.399902 4.40002H4.3999L5.9999 0.400024Z"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["dynamic-attr","class",["concat",["tag-icon ",["unknown",["lootItem","type"]]]]],["dynamic-attr","src",["concat",[["unknown",["tagIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","class","rarity-icon"],["dynamic-attr","src",["concat",[["unknown",["rarityIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-text-container ",["unknown",["borderType"]]]]],["flush-element"],["append",["unknown",["lootItem","count"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-text-container ",["unknown",["borderType"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["lootItem","count"]],false],["text"," ("],["open-element","span",[]],["static-attr","class","quantity-text-used"],["flush-element"],["text","-"],["append",["unknown",["selectedQuantity"]],false],["close-element"],["text",")\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","quantity-background"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isSlotted"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","series-number"],["flush-element"],["append",["unknown",["seriesNumber"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","class","context-menu-video-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_states/anim_item_state_context_menu_loop.webm"]]],["static-attr","metadata","preload"],["flush-element"],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showVisualStateSelected"]]],null,7]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","loop",""],["static-attr","class","context-menu-video-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_states/anim_item_state_context_menu_loop.webm"]]],["static-attr","metadata","preload"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","class","new-state"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/new_state.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","shard-overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_icons/",["unknown",["backgroundName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["loot-item-tooltip"],null,[["isTextView","lootItem","lootItemName","lootTypeDescription","textDescription","rarityTag","redeemableText","tagIconPath","tagIcon","pluginNamespace","hasMilestones"],[["get",["isNonRedeemableItem"]],["get",["lootItem"]],["get",["lootItemName"]],["get",["lootTypeDescription"]],["get",["textDescription"]],["get",["rarityTag"]],["get",["redeemableText"]],["get",["tagIconPath"]],["get",["tagIcon"]],["get",["pluginNamespace"]],["get",["hasMilestones"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item\\\\index.js\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["disabled","targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY","showDelay"],[["get",["isAnyContextMenuOpen"]],"right","center","left","center",500]],14],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-item-visual-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-visual ",["unknown",["isInteractiveClass"]]," ",["unknown",["visualStateCSSClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["backgroundName"]]],null,13],["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["icon ",["unknown",["visualStateCSSClass"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["useHoverOverlay"]]],null,12],["text","    "],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","border border-normal"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],".png"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","border border-hover"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],"_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["lootItem","isRental"]]],null,11],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isNew"]]],null,10],["open-element","div",[]],["dynamic-attr","class",["concat",["visual-state ",["unknown",["visualState"]]," ",["unknown",["lootItem","lootName"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["showVisualStateVideoSelected"]]],null,9,8],["close-element"],["text","\\n"],["block",["if"],[["get",["hasSeriesNumber"]]],null,6],["block",["if"],[["get",["showLootItemQuantity"]]],null,5],["block",["if"],[["get",["rarityIconPath"]]],null,2],["block",["if"],[["get",["tagIconPath"]]],null,1],["block",["if"],[["get",["hasMilestones"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","has-milestones"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["dynamic-attr","class",["concat",["icon ",["helper",["if"],[["get",["showVisualStateSelected"]],"selected"],null]]]],["static-attr","width","12"],["static-attr","height","11"],["static-attr","viewBox","0 0 12 11"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","d","M5.9999 0.400024L7.5999 4.40002H11.5999L8.3999 6.80002L9.2915 10.8L5.9999 8.40002L2.70831 10.8L3.5999 6.80002L0.399902 4.40002H4.3999L5.9999 0.400024Z"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["dynamic-attr","class",["concat",["tag-icon ",["unknown",["lootItem","type"]]]]],["dynamic-attr","src",["concat",[["unknown",["tagIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","class","rarity-icon"],["dynamic-attr","src",["concat",[["unknown",["rarityIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-text-container ",["unknown",["borderType"]]]]],["flush-element"],["append",["unknown",["lootItem","count"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-text-container ",["unknown",["borderType"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["lootItem","count"]],false],["text"," ("],["open-element","span",[]],["static-attr","class","quantity-text-used"],["flush-element"],["text","-"],["append",["unknown",["selectedQuantity"]],false],["close-element"],["text",")\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","quantity-background"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isSlotted"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","series-number"],["flush-element"],["append",["unknown",["seriesNumber"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","class","context-menu-video-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_states/anim_item_state_context_menu_loop.webm"]]],["static-attr","metadata","preload"],["flush-element"],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showVisualStateSelected"]]],null,7]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","loop",""],["static-attr","class","context-menu-video-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_states/anim_item_state_context_menu_loop.webm"]]],["static-attr","metadata","preload"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","class","new-state"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/new_state.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","shard-overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_icons/",["unknown",["backgroundName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["loot-item-tooltip"],null,[["isTextView","lootItem","lootItemName","lootTypeDescription","textDescription","rarityTag","redeemableText","tagIconPath","tagIcon","pluginNamespace","hasMilestones"],[["get",["isNonRedeemableItem"]],["get",["lootItem"]],["get",["lootItemName"]],["get",["lootTypeDescription"]],["get",["textDescription"]],["get",["rarityTag"]],["get",["redeemableText"]],["get",["tagIconPath"]],["get",["tagIcon"]],["get",["pluginNamespace"]],["get",["hasMilestones"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -8213,6 +8216,7 @@
               "a",
               "hr",
               "img",
+              "u",
             ],
             allowedAttributes: {
               "*": ["class", "style"],
@@ -13637,8 +13641,8 @@
               l = Math.min(this.line + 2, s.length),
               c = String(l).length;
             if (e) {
-              let { bold: e, red: t, gray: r } = o.createColors(!0);
-              (n = (n) => e(t(n))), (i = (e) => r(e));
+              let { bold: e, gray: t, red: r } = o.createColors(!0);
+              (n = (t) => e(r(t))), (i = (e) => t(e));
             } else n = i = (e) => e;
             return s
               .slice(a, l)
@@ -13752,22 +13756,150 @@
                     : this.append(n);
               } else this[t] = e[t];
           }
+          addToError(e) {
+            if (
+              ((e.postcssNode = this),
+              e.stack && this.source && /\n\s{4}at /.test(e.stack))
+            ) {
+              let t = this.source;
+              e.stack = e.stack.replace(
+                /\n\s{4}at /,
+                `$&${t.input.from}:${t.start.line}:${t.start.column}$&`,
+              );
+            }
+            return e;
+          }
+          after(e) {
+            return this.parent.insertAfter(this, e), this;
+          }
+          assign(e = {}) {
+            for (let t in e) this[t] = e[t];
+            return this;
+          }
+          before(e) {
+            return this.parent.insertBefore(this, e), this;
+          }
+          cleanRaws(e) {
+            delete this.raws.before,
+              delete this.raws.after,
+              e || delete this.raws.between;
+          }
+          clone(e = {}) {
+            let t = l(this);
+            for (let n in e) t[n] = e[n];
+            return t;
+          }
+          cloneAfter(e = {}) {
+            let t = this.clone(e);
+            return this.parent.insertAfter(this, t), t;
+          }
+          cloneBefore(e = {}) {
+            let t = this.clone(e);
+            return this.parent.insertBefore(this, t), t;
+          }
           error(e, t = {}) {
             if (this.source) {
-              let { start: n, end: o } = this.rangeBy(t);
+              let { end: n, start: o } = this.rangeBy(t);
               return this.source.input.error(
                 e,
-                { line: n.line, column: n.column },
-                { line: o.line, column: o.column },
+                { column: o.column, line: o.line },
+                { column: n.column, line: n.line },
                 t,
               );
             }
             return new i(e);
           }
-          warn(e, t, n) {
-            let o = { node: this };
-            for (let e in n) o[e] = n[e];
-            return e.warn(t, o);
+          getProxyProcessor() {
+            return {
+              get: (e, t) =>
+                "proxyOf" === t
+                  ? e
+                  : "root" === t
+                    ? () => e.root().toProxy()
+                    : e[t],
+              set: (e, t, n) => (
+                e[t] === n ||
+                  ((e[t] = n),
+                  ("prop" !== t &&
+                    "value" !== t &&
+                    "name" !== t &&
+                    "params" !== t &&
+                    "important" !== t &&
+                    "text" !== t) ||
+                    e.markDirty()),
+                !0
+              ),
+            };
+          }
+          markDirty() {
+            if (this[o]) {
+              this[o] = !1;
+              let e = this;
+              for (; (e = e.parent); ) e[o] = !1;
+            }
+          }
+          next() {
+            if (!this.parent) return;
+            let e = this.parent.index(this);
+            return this.parent.nodes[e + 1];
+          }
+          positionBy(e, t) {
+            let n = this.source.start;
+            if (e.index) n = this.positionInside(e.index, t);
+            else if (e.word) {
+              let o = (t = this.toString()).indexOf(e.word);
+              -1 !== o && (n = this.positionInside(o, t));
+            }
+            return n;
+          }
+          positionInside(e, t) {
+            let n = t || this.toString(),
+              o = this.source.start.column,
+              r = this.source.start.line;
+            for (let t = 0; t < e; t++)
+              "\n" === n[t] ? ((o = 1), (r += 1)) : (o += 1);
+            return { column: o, line: r };
+          }
+          prev() {
+            if (!this.parent) return;
+            let e = this.parent.index(this);
+            return this.parent.nodes[e - 1];
+          }
+          rangeBy(e) {
+            let t = {
+                column: this.source.start.column,
+                line: this.source.start.line,
+              },
+              n = this.source.end
+                ? {
+                    column: this.source.end.column + 1,
+                    line: this.source.end.line,
+                  }
+                : { column: t.column + 1, line: t.line };
+            if (e.word) {
+              let o = this.toString(),
+                r = o.indexOf(e.word);
+              -1 !== r &&
+                ((t = this.positionInside(r, o)),
+                (n = this.positionInside(r + e.word.length, o)));
+            } else
+              e.start
+                ? (t = { column: e.start.column, line: e.start.line })
+                : e.index && (t = this.positionInside(e.index)),
+                e.end
+                  ? (n = { column: e.end.column, line: e.end.line })
+                  : "number" == typeof e.endIndex
+                    ? (n = this.positionInside(e.endIndex))
+                    : e.index && (n = this.positionInside(e.index + 1));
+            return (
+              (n.line < t.line ||
+                (n.line === t.line && n.column <= t.column)) &&
+                (n = { column: t.column + 1, line: t.line }),
+              { end: n, start: t }
+            );
+          }
+          raw(e, t) {
+            return new s().raw(this, e, t);
           }
           remove() {
             return (
@@ -13775,33 +13907,6 @@
               (this.parent = void 0),
               this
             );
-          }
-          toString(e = a) {
-            e.stringify && (e = e.stringify);
-            let t = "";
-            return (
-              e(this, (e) => {
-                t += e;
-              }),
-              t
-            );
-          }
-          assign(e = {}) {
-            for (let t in e) this[t] = e[t];
-            return this;
-          }
-          clone(e = {}) {
-            let t = l(this);
-            for (let n in e) t[n] = e[n];
-            return t;
-          }
-          cloneBefore(e = {}) {
-            let t = this.clone(e);
-            return this.parent.insertBefore(this, t), t;
-          }
-          cloneAfter(e = {}) {
-            let t = this.clone(e);
-            return this.parent.insertAfter(this, t), t;
           }
           replaceWith(...e) {
             if (this.parent) {
@@ -13817,34 +13922,10 @@
             }
             return this;
           }
-          next() {
-            if (!this.parent) return;
-            let e = this.parent.index(this);
-            return this.parent.nodes[e + 1];
-          }
-          prev() {
-            if (!this.parent) return;
-            let e = this.parent.index(this);
-            return this.parent.nodes[e - 1];
-          }
-          before(e) {
-            return this.parent.insertBefore(this, e), this;
-          }
-          after(e) {
-            return this.parent.insertAfter(this, e), this;
-          }
           root() {
             let e = this;
             for (; e.parent && "document" !== e.parent.type; ) e = e.parent;
             return e;
-          }
-          raw(e, t) {
-            return new s().raw(this, e, t);
-          }
-          cleanRaws(e) {
-            delete this.raws.before,
-              delete this.raws.after,
-              e || delete this.raws.between;
           }
           toJSON(e, t) {
             let n = {},
@@ -13864,81 +13945,10 @@
               else if ("source" === e) {
                 let i = t.get(o.input);
                 null == i && ((i = r), t.set(o.input, r), r++),
-                  (n[e] = { inputId: i, start: o.start, end: o.end });
+                  (n[e] = { end: o.end, inputId: i, start: o.start });
               } else n[e] = o;
             }
             return o && (n.inputs = [...t.keys()].map((e) => e.toJSON())), n;
-          }
-          positionInside(e) {
-            let t = this.toString(),
-              n = this.source.start.column,
-              o = this.source.start.line;
-            for (let r = 0; r < e; r++)
-              "\n" === t[r] ? ((n = 1), (o += 1)) : (n += 1);
-            return { line: o, column: n };
-          }
-          positionBy(e) {
-            let t = this.source.start;
-            if (e.index) t = this.positionInside(e.index);
-            else if (e.word) {
-              let n = this.toString().indexOf(e.word);
-              -1 !== n && (t = this.positionInside(n));
-            }
-            return t;
-          }
-          rangeBy(e) {
-            let t = {
-                line: this.source.start.line,
-                column: this.source.start.column,
-              },
-              n = this.source.end
-                ? {
-                    line: this.source.end.line,
-                    column: this.source.end.column + 1,
-                  }
-                : { line: t.line, column: t.column + 1 };
-            if (e.word) {
-              let o = this.toString().indexOf(e.word);
-              -1 !== o &&
-                ((t = this.positionInside(o)),
-                (n = this.positionInside(o + e.word.length)));
-            } else
-              e.start
-                ? (t = { line: e.start.line, column: e.start.column })
-                : e.index && (t = this.positionInside(e.index)),
-                e.end
-                  ? (n = { line: e.end.line, column: e.end.column })
-                  : e.endIndex
-                    ? (n = this.positionInside(e.endIndex))
-                    : e.index && (n = this.positionInside(e.index + 1));
-            return (
-              (n.line < t.line ||
-                (n.line === t.line && n.column <= t.column)) &&
-                (n = { line: t.line, column: t.column + 1 }),
-              { start: t, end: n }
-            );
-          }
-          getProxyProcessor() {
-            return {
-              set: (e, t, n) => (
-                e[t] === n ||
-                  ((e[t] = n),
-                  ("prop" !== t &&
-                    "value" !== t &&
-                    "name" !== t &&
-                    "params" !== t &&
-                    "important" !== t &&
-                    "text" !== t) ||
-                    e.markDirty()),
-                !0
-              ),
-              get: (e, t) =>
-                "proxyOf" === t
-                  ? e
-                  : "root" === t
-                    ? () => e.root().toProxy()
-                    : e[t],
-            };
           }
           toProxy() {
             return (
@@ -13947,25 +13957,20 @@
               this.proxyCache
             );
           }
-          addToError(e) {
-            if (
-              ((e.postcssNode = this),
-              e.stack && this.source && /\n\s{4}at /.test(e.stack))
-            ) {
-              let t = this.source;
-              e.stack = e.stack.replace(
-                /\n\s{4}at /,
-                `$&${t.input.from}:${t.start.line}:${t.start.column}$&`,
-              );
-            }
-            return e;
+          toString(e = a) {
+            e.stringify && (e = e.stringify);
+            let t = "";
+            return (
+              e(this, (e) => {
+                t += e;
+              }),
+              t
+            );
           }
-          markDirty() {
-            if (this[o]) {
-              this[o] = !1;
-              let e = this;
-              for (; (e = e.parent); ) e[o] = !1;
-            }
+          warn(e, t, n) {
+            let o = { node: this };
+            for (let e in n) o[e] = n[e];
+            return e.warn(t, o);
           }
           get proxyOf() {
             return this;
@@ -13980,54 +13985,22 @@
       (e) => {
         "use strict";
         const t = {
-          colon: ": ",
-          indent: "    ",
-          beforeDecl: "\n",
-          beforeRule: "\n",
-          beforeOpen: " ",
+          after: "\n",
           beforeClose: "\n",
           beforeComment: "\n",
-          after: "\n",
-          emptyBody: "",
+          beforeDecl: "\n",
+          beforeOpen: " ",
+          beforeRule: "\n",
+          colon: ": ",
           commentLeft: " ",
           commentRight: " ",
+          emptyBody: "",
+          indent: "    ",
           semicolon: !1,
         };
         class n {
           constructor(e) {
             this.builder = e;
-          }
-          stringify(e, t) {
-            if (!this[e.type])
-              throw new Error(
-                "Unknown AST node type " +
-                  e.type +
-                  ". Maybe you need to change PostCSS stringifier.",
-              );
-            this[e.type](e, t);
-          }
-          document(e) {
-            this.body(e);
-          }
-          root(e) {
-            this.body(e), e.raws.after && this.builder(e.raws.after);
-          }
-          comment(e) {
-            let t = this.raw(e, "left", "commentLeft"),
-              n = this.raw(e, "right", "commentRight");
-            this.builder("/*" + t + e.text + n + "*/", e);
-          }
-          decl(e, t) {
-            let n = this.raw(e, "between", "colon"),
-              o = e.prop + n + this.rawValue(e, "value");
-            e.important && (o += e.raws.important || " !important"),
-              t && (o += ";"),
-              this.builder(o, e);
-          }
-          rule(e) {
-            this.block(e, this.rawValue(e, "selector")),
-              e.raws.ownSemicolon &&
-                this.builder(e.raws.ownSemicolon, e, "end");
           }
           atrule(e, t) {
             let n = "@" + e.name,
@@ -14044,15 +14017,24 @@
               this.builder(n + o + r, e);
             }
           }
-          body(e) {
-            let t = e.nodes.length - 1;
-            for (; t > 0 && "comment" === e.nodes[t].type; ) t -= 1;
-            let n = this.raw(e, "semicolon");
-            for (let o = 0; o < e.nodes.length; o++) {
-              let r = e.nodes[o],
-                i = this.raw(r, "before");
-              i && this.builder(i), this.stringify(r, t !== o || n);
+          beforeAfter(e, t) {
+            let n;
+            n =
+              "decl" === e.type
+                ? this.raw(e, null, "beforeDecl")
+                : "comment" === e.type
+                  ? this.raw(e, null, "beforeComment")
+                  : "before" === t
+                    ? this.raw(e, null, "beforeRule")
+                    : this.raw(e, null, "beforeClose");
+            let o = e.parent,
+              r = 0;
+            for (; o && "root" !== o.type; ) (r += 1), (o = o.parent);
+            if (n.includes("\n")) {
+              let t = this.raw(e, null, "indent");
+              if (t.length) for (let e = 0; e < r; e++) n += t;
             }
+            return n;
           }
           block(e, t) {
             let n,
@@ -14063,6 +14045,31 @@
                 : (n = this.raw(e, "after", "emptyBody")),
               n && this.builder(n),
               this.builder("}", e, "end");
+          }
+          body(e) {
+            let t = e.nodes.length - 1;
+            for (; t > 0 && "comment" === e.nodes[t].type; ) t -= 1;
+            let n = this.raw(e, "semicolon");
+            for (let o = 0; o < e.nodes.length; o++) {
+              let r = e.nodes[o],
+                i = this.raw(r, "before");
+              i && this.builder(i), this.stringify(r, t !== o || n);
+            }
+          }
+          comment(e) {
+            let t = this.raw(e, "left", "commentLeft"),
+              n = this.raw(e, "right", "commentRight");
+            this.builder("/*" + t + e.text + n + "*/", e);
+          }
+          decl(e, t) {
+            let n = this.raw(e, "between", "colon"),
+              o = e.prop + n + this.rawValue(e, "value");
+            e.important && (o += e.raws.important || " !important"),
+              t && (o += ";"),
+              this.builder(o, e);
+          }
+          document(e) {
+            this.body(e);
           }
           raw(e, n, o) {
             let r;
@@ -14088,17 +14095,90 @@
             var a;
             return void 0 === r && (r = t[o]), (s.rawCache[o] = r), r;
           }
-          rawSemicolon(e) {
+          rawBeforeClose(e) {
             let t;
             return (
               e.walk((e) => {
-                if (
-                  e.nodes &&
-                  e.nodes.length &&
-                  "decl" === e.last.type &&
-                  ((t = e.raws.semicolon), void 0 !== t)
-                )
+                if (e.nodes && e.nodes.length > 0 && void 0 !== e.raws.after)
+                  return (
+                    (t = e.raws.after),
+                    t.includes("\n") && (t = t.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              t && (t = t.replace(/\S/g, "")),
+              t
+            );
+          }
+          rawBeforeComment(e, t) {
+            let n;
+            return (
+              e.walkComments((e) => {
+                if (void 0 !== e.raws.before)
+                  return (
+                    (n = e.raws.before),
+                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              void 0 === n
+                ? (n = this.raw(t, null, "beforeDecl"))
+                : n && (n = n.replace(/\S/g, "")),
+              n
+            );
+          }
+          rawBeforeDecl(e, t) {
+            let n;
+            return (
+              e.walkDecls((e) => {
+                if (void 0 !== e.raws.before)
+                  return (
+                    (n = e.raws.before),
+                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              void 0 === n
+                ? (n = this.raw(t, null, "beforeRule"))
+                : n && (n = n.replace(/\S/g, "")),
+              n
+            );
+          }
+          rawBeforeOpen(e) {
+            let t;
+            return (
+              e.walk((e) => {
+                if ("decl" !== e.type && ((t = e.raws.between), void 0 !== t))
                   return !1;
+              }),
+              t
+            );
+          }
+          rawBeforeRule(e) {
+            let t;
+            return (
+              e.walk((n) => {
+                if (
+                  n.nodes &&
+                  (n.parent !== e || e.first !== n) &&
+                  void 0 !== n.raws.before
+                )
+                  return (
+                    (t = n.raws.before),
+                    t.includes("\n") && (t = t.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              t && (t = t.replace(/\S/g, "")),
+              t
+            );
+          }
+          rawColon(e) {
+            let t;
+            return (
+              e.walkDecls((e) => {
+                if (void 0 !== e.raws.between)
+                  return (t = e.raws.between.replace(/[^\s:]/g, "")), !1;
               }),
               t
             );
@@ -14137,117 +14217,42 @@
               t
             );
           }
-          rawBeforeComment(e, t) {
-            let n;
-            return (
-              e.walkComments((e) => {
-                if (void 0 !== e.raws.before)
-                  return (
-                    (n = e.raws.before),
-                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              void 0 === n
-                ? (n = this.raw(t, null, "beforeDecl"))
-                : n && (n = n.replace(/\S/g, "")),
-              n
-            );
-          }
-          rawBeforeDecl(e, t) {
-            let n;
-            return (
-              e.walkDecls((e) => {
-                if (void 0 !== e.raws.before)
-                  return (
-                    (n = e.raws.before),
-                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              void 0 === n
-                ? (n = this.raw(t, null, "beforeRule"))
-                : n && (n = n.replace(/\S/g, "")),
-              n
-            );
-          }
-          rawBeforeRule(e) {
+          rawSemicolon(e) {
             let t;
             return (
-              e.walk((n) => {
+              e.walk((e) => {
                 if (
-                  n.nodes &&
-                  (n.parent !== e || e.first !== n) &&
-                  void 0 !== n.raws.before
+                  e.nodes &&
+                  e.nodes.length &&
+                  "decl" === e.last.type &&
+                  ((t = e.raws.semicolon), void 0 !== t)
                 )
-                  return (
-                    (t = n.raws.before),
-                    t.includes("\n") && (t = t.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              t && (t = t.replace(/\S/g, "")),
-              t
-            );
-          }
-          rawBeforeClose(e) {
-            let t;
-            return (
-              e.walk((e) => {
-                if (e.nodes && e.nodes.length > 0 && void 0 !== e.raws.after)
-                  return (
-                    (t = e.raws.after),
-                    t.includes("\n") && (t = t.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              t && (t = t.replace(/\S/g, "")),
-              t
-            );
-          }
-          rawBeforeOpen(e) {
-            let t;
-            return (
-              e.walk((e) => {
-                if ("decl" !== e.type && ((t = e.raws.between), void 0 !== t))
                   return !1;
               }),
               t
             );
           }
-          rawColon(e) {
-            let t;
-            return (
-              e.walkDecls((e) => {
-                if (void 0 !== e.raws.between)
-                  return (t = e.raws.between.replace(/[^\s:]/g, "")), !1;
-              }),
-              t
-            );
-          }
-          beforeAfter(e, t) {
-            let n;
-            n =
-              "decl" === e.type
-                ? this.raw(e, null, "beforeDecl")
-                : "comment" === e.type
-                  ? this.raw(e, null, "beforeComment")
-                  : "before" === t
-                    ? this.raw(e, null, "beforeRule")
-                    : this.raw(e, null, "beforeClose");
-            let o = e.parent,
-              r = 0;
-            for (; o && "root" !== o.type; ) (r += 1), (o = o.parent);
-            if (n.includes("\n")) {
-              let t = this.raw(e, null, "indent");
-              if (t.length) for (let e = 0; e < r; e++) n += t;
-            }
-            return n;
-          }
           rawValue(e, t) {
             let n = e[t],
               o = e.raws[t];
             return o && o.value === n ? o.raw : n;
+          }
+          root(e) {
+            this.body(e), e.raws.after && this.builder(e.raws.after);
+          }
+          rule(e) {
+            this.block(e, this.rawValue(e, "selector")),
+              e.raws.ownSemicolon &&
+                this.builder(e.raws.ownSemicolon, e, "end");
+          }
+          stringify(e, t) {
+            if (!this[e.type])
+              throw new Error(
+                "Unknown AST node type " +
+                  e.type +
+                  ". Maybe you need to change PostCSS stringifier.",
+              );
+            this[e.type](e, t);
           }
         }
         (e.exports = n), (n.default = n);
@@ -14272,32 +14277,32 @@
           m = n(121),
           p = n(125);
         const h = {
+            atrule: "AtRule",
+            comment: "Comment",
+            decl: "Declaration",
             document: "Document",
             root: "Root",
-            atrule: "AtRule",
             rule: "Rule",
-            decl: "Declaration",
-            comment: "Comment",
           },
           d = {
+            AtRule: !0,
+            AtRuleExit: !0,
+            Comment: !0,
+            CommentExit: !0,
+            Declaration: !0,
+            DeclarationExit: !0,
+            Document: !0,
+            DocumentExit: !0,
+            Once: !0,
+            OnceExit: !0,
             postcssPlugin: !0,
             prepare: !0,
-            Once: !0,
-            Document: !0,
             Root: !0,
-            Declaration: !0,
-            Rule: !0,
-            AtRule: !0,
-            Comment: !0,
-            DeclarationExit: !0,
-            RuleExit: !0,
-            AtRuleExit: !0,
-            CommentExit: !0,
             RootExit: !0,
-            DocumentExit: !0,
-            OnceExit: !0,
+            Rule: !0,
+            RuleExit: !0,
           },
-          f = { postcssPlugin: !0, prepare: !0, Once: !0 },
+          f = { Once: !0, postcssPlugin: !0, prepare: !0 },
           g = 0;
         function _(e) {
           return "object" == typeof e && "function" == typeof e.then;
@@ -14328,12 +14333,12 @@
                   ? ["Root", g, "RootExit"]
                   : y(e)),
             {
-              node: e,
-              events: t,
               eventIndex: 0,
-              visitors: [],
-              visitorIndex: 0,
+              events: t,
               iterator: 0,
+              node: e,
+              visitorIndex: 0,
+              visitors: [],
             }
           );
         }
@@ -14371,58 +14376,12 @@
               }
             else o = b(t);
             (this.result = new u(e, o, n)),
-              (this.helpers = { ...x, result: this.result, postcss: x }),
+              (this.helpers = { ...x, postcss: x, result: this.result }),
               (this.plugins = this.processor.plugins.map((e) =>
                 "object" == typeof e && e.prepare
                   ? { ...e, ...e.prepare(this.result) }
                   : e,
               ));
-          }
-          get [Symbol.toStringTag]() {
-            return "LazyResult";
-          }
-          get processor() {
-            return this.result.processor;
-          }
-          get opts() {
-            return this.result.opts;
-          }
-          get css() {
-            return this.stringify().css;
-          }
-          get content() {
-            return this.stringify().content;
-          }
-          get map() {
-            return this.stringify().map;
-          }
-          get root() {
-            return this.sync().root;
-          }
-          get messages() {
-            return this.sync().messages;
-          }
-          warnings() {
-            return this.sync().warnings();
-          }
-          toString() {
-            return this.css;
-          }
-          then(e, t) {
-            return (
-              "production" !== "production".NODE_ENV &&
-                ("from" in this.opts ||
-                  c(
-                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
-                  )),
-              this.async().then(e, t)
-            );
-          }
-          catch(e) {
-            return this.async().catch(e);
-          }
-          finally(e) {
-            return this.async().then(e, e);
           }
           async() {
             return this.error
@@ -14432,84 +14391,11 @@
                 : (this.processing || (this.processing = this.runAsync()),
                   this.processing);
           }
-          sync() {
-            if (this.error) throw this.error;
-            if (this.processed) return this.result;
-            if (((this.processed = !0), this.processing))
-              throw this.getAsyncError();
-            for (let e of this.plugins) {
-              if (_(this.runOnRoot(e))) throw this.getAsyncError();
-            }
-            if ((this.prepareVisitors(), this.hasListener)) {
-              let e = this.result.root;
-              for (; !e[o]; ) (e[o] = !0), this.walkSync(e);
-              if (this.listeners.OnceExit)
-                if ("document" === e.type)
-                  for (let t of e.nodes)
-                    this.visitSync(this.listeners.OnceExit, t);
-                else this.visitSync(this.listeners.OnceExit, e);
-            }
-            return this.result;
+          catch(e) {
+            return this.async().catch(e);
           }
-          stringify() {
-            if (this.error) throw this.error;
-            if (this.stringified) return this.result;
-            (this.stringified = !0), this.sync();
-            let e = this.result.opts,
-              t = s;
-            e.syntax && (t = e.syntax.stringify),
-              e.stringifier && (t = e.stringifier),
-              t.stringify && (t = t.stringify);
-            let n = new i(t, this.result.root, this.result.opts).generate();
-            return (
-              (this.result.css = n[0]), (this.result.map = n[1]), this.result
-            );
-          }
-          walkSync(e) {
-            e[o] = !0;
-            let t = y(e);
-            for (let n of t)
-              if (n === g)
-                e.nodes &&
-                  e.each((e) => {
-                    e[o] || this.walkSync(e);
-                  });
-              else {
-                let t = this.listeners[n];
-                if (t && this.visitSync(t, e.toProxy())) return;
-              }
-          }
-          visitSync(e, t) {
-            for (let [n, o] of e) {
-              let e;
-              this.result.lastPlugin = n;
-              try {
-                e = o(t, this.helpers);
-              } catch (e) {
-                throw this.handleError(e, t.proxyOf);
-              }
-              if ("root" !== t.type && "document" !== t.type && !t.parent)
-                return !0;
-              if (_(e)) throw this.getAsyncError();
-            }
-          }
-          runOnRoot(e) {
-            this.result.lastPlugin = e;
-            try {
-              if ("object" == typeof e && e.Once) {
-                if ("document" === this.result.root.type) {
-                  let t = this.result.root.nodes.map((t) =>
-                    e.Once(t, this.helpers),
-                  );
-                  return _(t[0]) ? Promise.all(t) : t;
-                }
-                return e.Once(this.result.root, this.helpers);
-              }
-              if ("function" == typeof e)
-                return e(this.result.root, this.result);
-            } catch (e) {
-              throw this.handleError(e);
-            }
+          finally(e) {
+            return this.async().then(e, e);
           }
           getAsyncError() {
             throw new Error(
@@ -14549,6 +14435,31 @@
               console && console.error && console.error(e);
             }
             return e;
+          }
+          prepareVisitors() {
+            this.listeners = {};
+            let e = (e, t, n) => {
+              this.listeners[t] || (this.listeners[t] = []),
+                this.listeners[t].push([e, n]);
+            };
+            for (let t of this.plugins)
+              if ("object" == typeof t)
+                for (let n in t) {
+                  if (!d[n] && /^[A-Z]/.test(n))
+                    throw new Error(
+                      `Unknown event ${n} in ${t.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`,
+                    );
+                  if (!f[n])
+                    if ("object" == typeof t[n])
+                      for (let o in t[n])
+                        e(
+                          t,
+                          "*" === o ? n : n + "-" + o.toLowerCase(),
+                          t[n][o],
+                        );
+                    else "function" == typeof t[n] && e(t, n, t[n]);
+                }
+            this.hasListener = Object.keys(this.listeners).length > 0;
           }
           async runAsync() {
             this.plugin = 0;
@@ -14593,30 +14504,83 @@
             }
             return (this.processed = !0), this.stringify();
           }
-          prepareVisitors() {
-            this.listeners = {};
-            let e = (e, t, n) => {
-              this.listeners[t] || (this.listeners[t] = []),
-                this.listeners[t].push([e, n]);
-            };
-            for (let t of this.plugins)
-              if ("object" == typeof t)
-                for (let n in t) {
-                  if (!d[n] && /^[A-Z]/.test(n))
-                    throw new Error(
-                      `Unknown event ${n} in ${t.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`,
-                    );
-                  if (!f[n])
-                    if ("object" == typeof t[n])
-                      for (let o in t[n])
-                        e(
-                          t,
-                          "*" === o ? n : n + "-" + o.toLowerCase(),
-                          t[n][o],
-                        );
-                    else "function" == typeof t[n] && e(t, n, t[n]);
+          runOnRoot(e) {
+            this.result.lastPlugin = e;
+            try {
+              if ("object" == typeof e && e.Once) {
+                if ("document" === this.result.root.type) {
+                  let t = this.result.root.nodes.map((t) =>
+                    e.Once(t, this.helpers),
+                  );
+                  return _(t[0]) ? Promise.all(t) : t;
                 }
-            this.hasListener = Object.keys(this.listeners).length > 0;
+                return e.Once(this.result.root, this.helpers);
+              }
+              if ("function" == typeof e)
+                return e(this.result.root, this.result);
+            } catch (e) {
+              throw this.handleError(e);
+            }
+          }
+          stringify() {
+            if (this.error) throw this.error;
+            if (this.stringified) return this.result;
+            (this.stringified = !0), this.sync();
+            let e = this.result.opts,
+              t = s;
+            e.syntax && (t = e.syntax.stringify),
+              e.stringifier && (t = e.stringifier),
+              t.stringify && (t = t.stringify);
+            let n = new i(t, this.result.root, this.result.opts).generate();
+            return (
+              (this.result.css = n[0]), (this.result.map = n[1]), this.result
+            );
+          }
+          sync() {
+            if (this.error) throw this.error;
+            if (this.processed) return this.result;
+            if (((this.processed = !0), this.processing))
+              throw this.getAsyncError();
+            for (let e of this.plugins) {
+              if (_(this.runOnRoot(e))) throw this.getAsyncError();
+            }
+            if ((this.prepareVisitors(), this.hasListener)) {
+              let e = this.result.root;
+              for (; !e[o]; ) (e[o] = !0), this.walkSync(e);
+              if (this.listeners.OnceExit)
+                if ("document" === e.type)
+                  for (let t of e.nodes)
+                    this.visitSync(this.listeners.OnceExit, t);
+                else this.visitSync(this.listeners.OnceExit, e);
+            }
+            return this.result;
+          }
+          then(e, t) {
+            return (
+              "production" !== "production".NODE_ENV &&
+                ("from" in this.opts ||
+                  c(
+                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
+                  )),
+              this.async().then(e, t)
+            );
+          }
+          toString() {
+            return this.css;
+          }
+          visitSync(e, t) {
+            for (let [n, o] of e) {
+              let e;
+              this.result.lastPlugin = n;
+              try {
+                e = o(t, this.helpers);
+              } catch (e) {
+                throw this.handleError(e, t.proxyOf);
+              }
+              if ("root" !== t.type && "document" !== t.type && !t.parent)
+                return !0;
+              if (_(e)) throw this.getAsyncError();
+            }
           }
           visitTick(e) {
             let t = e[e.length - 1],
@@ -14657,6 +14621,47 @@
             }
             e.pop();
           }
+          walkSync(e) {
+            e[o] = !0;
+            let t = y(e);
+            for (let n of t)
+              if (n === g)
+                e.nodes &&
+                  e.each((e) => {
+                    e[o] || this.walkSync(e);
+                  });
+              else {
+                let t = this.listeners[n];
+                if (t && this.visitSync(t, e.toProxy())) return;
+              }
+          }
+          warnings() {
+            return this.sync().warnings();
+          }
+          get content() {
+            return this.stringify().content;
+          }
+          get css() {
+            return this.stringify().css;
+          }
+          get map() {
+            return this.stringify().map;
+          }
+          get messages() {
+            return this.sync().messages;
+          }
+          get opts() {
+            return this.result.opts;
+          }
+          get processor() {
+            return this.result.processor;
+          }
+          get root() {
+            return this.sync().root;
+          }
+          get [Symbol.toStringTag]() {
+            return "LazyResult";
+          }
         }
         (E.registerPostcss = (e) => {
           x = e;
@@ -14669,11 +14674,11 @@
       (e, t, n) => {
         "use strict";
         let { SourceMapConsumer: o, SourceMapGenerator: r } = n(103),
-          { dirname: i, resolve: s, relative: a, sep: l } = n(104),
+          { dirname: i, relative: s, resolve: a, sep: l } = n(104),
           { pathToFileURL: c } = n(105),
           u = n(111),
           m = Boolean(o && r),
-          p = Boolean(i && s && a && l);
+          p = Boolean(i && a && s && l);
         e.exports = class {
           constructor(e, t, n, o) {
             (this.stringify = e),
@@ -14681,106 +14686,11 @@
               (this.root = t),
               (this.opts = n),
               (this.css = o),
-              (this.usesFileUrls = !this.mapOpts.from && this.mapOpts.absolute);
-          }
-          isMap() {
-            return void 0 !== this.opts.map
-              ? !!this.opts.map
-              : this.previous().length > 0;
-          }
-          previous() {
-            if (!this.previousMaps)
-              if (((this.previousMaps = []), this.root))
-                this.root.walk((e) => {
-                  if (e.source && e.source.input.map) {
-                    let t = e.source.input.map;
-                    this.previousMaps.includes(t) || this.previousMaps.push(t);
-                  }
-                });
-              else {
-                let e = new u(this.css, this.opts);
-                e.map && this.previousMaps.push(e.map);
-              }
-            return this.previousMaps;
-          }
-          isInline() {
-            if (void 0 !== this.mapOpts.inline) return this.mapOpts.inline;
-            let e = this.mapOpts.annotation;
-            return (
-              (void 0 === e || !0 === e) &&
-              (!this.previous().length || this.previous().some((e) => e.inline))
-            );
-          }
-          isSourcesContent() {
-            return void 0 !== this.mapOpts.sourcesContent
-              ? this.mapOpts.sourcesContent
-              : !this.previous().length ||
-                  this.previous().some((e) => e.withContent());
-          }
-          clearAnnotation() {
-            if (!1 !== this.mapOpts.annotation)
-              if (this.root) {
-                let e;
-                for (let t = this.root.nodes.length - 1; t >= 0; t--)
-                  (e = this.root.nodes[t]),
-                    "comment" === e.type &&
-                      0 === e.text.indexOf("# sourceMappingURL=") &&
-                      this.root.removeChild(t);
-              } else
-                this.css &&
-                  (this.css = this.css.replace(
-                    /(\n)?\/\*#[\S\s]*?\*\/$/gm,
-                    "",
-                  ));
-          }
-          setSourcesContent() {
-            let e = {};
-            if (this.root)
-              this.root.walk((t) => {
-                if (t.source) {
-                  let n = t.source.input.from;
-                  if (n && !e[n]) {
-                    e[n] = !0;
-                    let o = this.usesFileUrls
-                      ? this.toFileUrl(n)
-                      : this.toUrl(this.path(n));
-                    this.map.setSourceContent(o, t.source.input.css);
-                  }
-                }
-              });
-            else if (this.css) {
-              let e = this.opts.from
-                ? this.toUrl(this.path(this.opts.from))
-                : "<no source>";
-              this.map.setSourceContent(e, this.css);
-            }
-          }
-          applyPrevMaps() {
-            for (let e of this.previous()) {
-              let t,
-                n = this.toUrl(this.path(e.file)),
-                r = e.root || i(e.file);
-              !1 === this.mapOpts.sourcesContent
-                ? ((t = new o(e.text)),
-                  t.sourcesContent &&
-                    (t.sourcesContent = t.sourcesContent.map(() => null)))
-                : (t = e.consumer()),
-                this.map.applySourceMap(t, n, this.toUrl(this.path(r)));
-            }
-          }
-          isAnnotation() {
-            return (
-              !!this.isInline() ||
-              (void 0 !== this.mapOpts.annotation
-                ? this.mapOpts.annotation
-                : !this.previous().length ||
-                  this.previous().some((e) => e.annotation))
-            );
-          }
-          toBase64(e) {
-            return Buffer
-              ? Buffer.from(e).toString("base64")
-              : window.btoa(unescape(encodeURIComponent(e)));
+              (this.originalCSS = o),
+              (this.usesFileUrls = !this.mapOpts.from && this.mapOpts.absolute),
+              (this.memoizedFileURLs = new Map()),
+              (this.memoizedPaths = new Map()),
+              (this.memoizedURLs = new Map());
           }
           addAnnotation() {
             let e;
@@ -14796,26 +14706,61 @@
             this.css.includes("\r\n") && (t = "\r\n"),
               (this.css += t + "/*# sourceMappingURL=" + e + " */");
           }
-          outputFile() {
-            return this.opts.to
-              ? this.path(this.opts.to)
-              : this.opts.from
-                ? this.path(this.opts.from)
-                : "to.css";
+          applyPrevMaps() {
+            for (let e of this.previous()) {
+              let t,
+                n = this.toUrl(this.path(e.file)),
+                r = e.root || i(e.file);
+              !1 === this.mapOpts.sourcesContent
+                ? ((t = new o(e.text)),
+                  t.sourcesContent && (t.sourcesContent = null))
+                : (t = e.consumer()),
+                this.map.applySourceMap(t, n, this.toUrl(this.path(r)));
+            }
+          }
+          clearAnnotation() {
+            if (!1 !== this.mapOpts.annotation)
+              if (this.root) {
+                let e;
+                for (let t = this.root.nodes.length - 1; t >= 0; t--)
+                  (e = this.root.nodes[t]),
+                    "comment" === e.type &&
+                      0 === e.text.indexOf("# sourceMappingURL=") &&
+                      this.root.removeChild(t);
+              } else
+                this.css &&
+                  (this.css = this.css.replace(/\n*?\/\*#[\S\s]*?\*\/$/gm, ""));
+          }
+          generate() {
+            if ((this.clearAnnotation(), p && m && this.isMap()))
+              return this.generateMap();
+            {
+              let e = "";
+              return (
+                this.stringify(this.root, (t) => {
+                  e += t;
+                }),
+                [e]
+              );
+            }
           }
           generateMap() {
             if (this.root) this.generateString();
             else if (1 === this.previous().length) {
               let e = this.previous()[0].consumer();
-              (e.file = this.outputFile()), (this.map = r.fromSourceMap(e));
+              (e.file = this.outputFile()),
+                (this.map = r.fromSourceMap(e, { ignoreInvalidMapping: !0 }));
             } else
-              (this.map = new r({ file: this.outputFile() })),
+              (this.map = new r({
+                file: this.outputFile(),
+                ignoreInvalidMapping: !0,
+              })),
                 this.map.addMapping({
+                  generated: { column: 0, line: 1 },
+                  original: { column: 0, line: 1 },
                   source: this.opts.from
                     ? this.toUrl(this.path(this.opts.from))
                     : "<no source>",
-                  generated: { line: 1, column: 0 },
-                  original: { line: 1, column: 0 },
                 });
             return (
               this.isSourcesContent() && this.setSourcesContent(),
@@ -14824,47 +14769,21 @@
               this.isInline() ? [this.css] : [this.css, this.map]
             );
           }
-          path(e) {
-            if (0 === e.indexOf("<")) return e;
-            if (/^\w+:\/\//.test(e)) return e;
-            if (this.mapOpts.absolute) return e;
-            let t = this.opts.to ? i(this.opts.to) : ".";
-            return (
-              "string" == typeof this.mapOpts.annotation &&
-                (t = i(s(t, this.mapOpts.annotation))),
-              (e = a(t, e))
-            );
-          }
-          toUrl(e) {
-            return (
-              "\\" === l && (e = e.replace(/\\/g, "/")),
-              encodeURI(e).replace(/[#?]/g, encodeURIComponent)
-            );
-          }
-          toFileUrl(e) {
-            if (c) return c(e).toString();
-            throw new Error(
-              "`map.absolute` option is not available in this PostCSS build",
-            );
-          }
-          sourcePath(e) {
-            return this.mapOpts.from
-              ? this.toUrl(this.mapOpts.from)
-              : this.usesFileUrls
-                ? this.toFileUrl(e.source.input.from)
-                : this.toUrl(this.path(e.source.input.from));
-          }
           generateString() {
-            (this.css = ""), (this.map = new r({ file: this.outputFile() }));
+            (this.css = ""),
+              (this.map = new r({
+                file: this.outputFile(),
+                ignoreInvalidMapping: !0,
+              }));
             let e,
               t,
               n = 1,
               o = 1,
               i = "<no source>",
               s = {
+                generated: { column: 0, line: 0 },
+                original: { column: 0, line: 0 },
                 source: "",
-                generated: { line: 0, column: 0 },
-                original: { line: 0, column: 0 },
               };
             this.stringify(this.root, (r, a, l) => {
               if (
@@ -14910,18 +14829,119 @@
               }
             });
           }
-          generate() {
-            if ((this.clearAnnotation(), p && m && this.isMap()))
-              return this.generateMap();
-            {
-              let e = "";
-              return (
-                this.stringify(this.root, (t) => {
-                  e += t;
-                }),
-                [e]
-              );
+          isAnnotation() {
+            return (
+              !!this.isInline() ||
+              (void 0 !== this.mapOpts.annotation
+                ? this.mapOpts.annotation
+                : !this.previous().length ||
+                  this.previous().some((e) => e.annotation))
+            );
+          }
+          isInline() {
+            if (void 0 !== this.mapOpts.inline) return this.mapOpts.inline;
+            let e = this.mapOpts.annotation;
+            return (
+              (void 0 === e || !0 === e) &&
+              (!this.previous().length || this.previous().some((e) => e.inline))
+            );
+          }
+          isMap() {
+            return void 0 !== this.opts.map
+              ? !!this.opts.map
+              : this.previous().length > 0;
+          }
+          isSourcesContent() {
+            return void 0 !== this.mapOpts.sourcesContent
+              ? this.mapOpts.sourcesContent
+              : !this.previous().length ||
+                  this.previous().some((e) => e.withContent());
+          }
+          outputFile() {
+            return this.opts.to
+              ? this.path(this.opts.to)
+              : this.opts.from
+                ? this.path(this.opts.from)
+                : "to.css";
+          }
+          path(e) {
+            if (this.mapOpts.absolute) return e;
+            if (60 === e.charCodeAt(0)) return e;
+            if (/^\w+:\/\//.test(e)) return e;
+            let t = this.memoizedPaths.get(e);
+            if (t) return t;
+            let n = this.opts.to ? i(this.opts.to) : ".";
+            "string" == typeof this.mapOpts.annotation &&
+              (n = i(a(n, this.mapOpts.annotation)));
+            let o = s(n, e);
+            return this.memoizedPaths.set(e, o), o;
+          }
+          previous() {
+            if (!this.previousMaps)
+              if (((this.previousMaps = []), this.root))
+                this.root.walk((e) => {
+                  if (e.source && e.source.input.map) {
+                    let t = e.source.input.map;
+                    this.previousMaps.includes(t) || this.previousMaps.push(t);
+                  }
+                });
+              else {
+                let e = new u(this.originalCSS, this.opts);
+                e.map && this.previousMaps.push(e.map);
+              }
+            return this.previousMaps;
+          }
+          setSourcesContent() {
+            let e = {};
+            if (this.root)
+              this.root.walk((t) => {
+                if (t.source) {
+                  let n = t.source.input.from;
+                  if (n && !e[n]) {
+                    e[n] = !0;
+                    let o = this.usesFileUrls
+                      ? this.toFileUrl(n)
+                      : this.toUrl(this.path(n));
+                    this.map.setSourceContent(o, t.source.input.css);
+                  }
+                }
+              });
+            else if (this.css) {
+              let e = this.opts.from
+                ? this.toUrl(this.path(this.opts.from))
+                : "<no source>";
+              this.map.setSourceContent(e, this.css);
             }
+          }
+          sourcePath(e) {
+            return this.mapOpts.from
+              ? this.toUrl(this.mapOpts.from)
+              : this.usesFileUrls
+                ? this.toFileUrl(e.source.input.from)
+                : this.toUrl(this.path(e.source.input.from));
+          }
+          toBase64(e) {
+            return Buffer
+              ? Buffer.from(e).toString("base64")
+              : window.btoa(unescape(encodeURIComponent(e)));
+          }
+          toFileUrl(e) {
+            let t = this.memoizedFileURLs.get(e);
+            if (t) return t;
+            if (c) {
+              let t = c(e).toString();
+              return this.memoizedFileURLs.set(e, t), t;
+            }
+            throw new Error(
+              "`map.absolute` option is not available in this PostCSS build",
+            );
+          }
+          toUrl(e) {
+            let t = this.memoizedURLs.get(e);
+            if (t) return t;
+            "\\" === l && (e = e.replace(/\\/g, "/"));
+            let n = encodeURI(e).replace(/[#?]/g, encodeURIComponent);
+            return this.memoizedURLs.set(e, n), n;
           }
         };
       },
@@ -15628,14 +15648,14 @@
         "use strict";
         let { SourceMapConsumer: o, SourceMapGenerator: r } = n(103),
           { fileURLToPath: i, pathToFileURL: s } = n(105),
-          { resolve: a, isAbsolute: l } = n(104),
+          { isAbsolute: a, resolve: l } = n(104),
           { nanoid: c } = n(112),
           u = n(95),
           m = n(93),
           p = n(113),
           h = Symbol("fromOffsetCache"),
           d = Boolean(o && r),
-          f = Boolean(a && l);
+          f = Boolean(l && a);
         class g {
           constructor(e, t = {}) {
             if (null == e || ("object" == typeof e && !e.toString))
@@ -15646,9 +15666,9 @@
                 ? ((this.hasBOM = !0), (this.css = this.css.slice(1)))
                 : (this.hasBOM = !1),
               t.from &&
-                (!f || /^\w+:\/\//.test(t.from) || l(t.from)
+                (!f || /^\w+:\/\//.test(t.from) || a(t.from)
                   ? (this.file = t.from)
-                  : (this.file = a(t.from))),
+                  : (this.file = l(t.from))),
               f && d)
             ) {
               let e = new p(this.css, t);
@@ -15660,6 +15680,59 @@
             }
             this.file || (this.id = "<input css " + c(6) + ">"),
               this.map && (this.map.file = this.from);
+          }
+          error(e, t, n, o = {}) {
+            let r, i, a;
+            if (t && "object" == typeof t) {
+              let e = t,
+                o = n;
+              if ("number" == typeof e.offset) {
+                let o = this.fromOffset(e.offset);
+                (t = o.line), (n = o.col);
+              } else (t = e.line), (n = e.column);
+              if ("number" == typeof o.offset) {
+                let e = this.fromOffset(o.offset);
+                (i = e.line), (a = e.col);
+              } else (i = o.line), (a = o.column);
+            } else if (!n) {
+              let e = this.fromOffset(t);
+              (t = e.line), (n = e.col);
+            }
+            let l = this.origin(t, n, i, a);
+            return (
+              (r = l
+                ? new m(
+                    e,
+                    void 0 === l.endLine
+                      ? l.line
+                      : { column: l.column, line: l.line },
+                    void 0 === l.endLine
+                      ? l.column
+                      : { column: l.endColumn, line: l.endLine },
+                    l.source,
+                    l.file,
+                    o.plugin,
+                  )
+                : new m(
+                    e,
+                    void 0 === i ? t : { column: n, line: t },
+                    void 0 === i ? n : { column: a, line: i },
+                    this.css,
+                    this.file,
+                    o.plugin,
+                  )),
+              (r.input = {
+                column: n,
+                endColumn: a,
+                endLine: i,
+                line: t,
+                source: this.css,
+              }),
+              this.file &&
+                (s && (r.input.url = s(this.file).toString()),
+                (r.input.file = this.file)),
+              r
+            );
           }
           fromOffset(e) {
             let t, n;
@@ -15688,100 +15761,44 @@
                   o = t + 1;
                 }
             }
-            return { line: o + 1, col: e - n[o] + 1 };
+            return { col: e - n[o] + 1, line: o + 1 };
           }
-          error(e, t, n, o = {}) {
-            let r, i, a;
-            if (t && "object" == typeof t) {
-              let e = t,
-                o = n;
-              if ("number" == typeof e.offset) {
-                let o = this.fromOffset(e.offset);
-                (t = o.line), (n = o.col);
-              } else (t = e.line), (n = e.column);
-              if ("number" == typeof o.offset) {
-                let e = this.fromOffset(o.offset);
-                (i = e.line), (a = e.col);
-              } else (i = o.line), (a = o.column);
-            } else if (!n) {
-              let e = this.fromOffset(t);
-              (t = e.line), (n = e.col);
-            }
-            let l = this.origin(t, n, i, a);
-            return (
-              (r = l
-                ? new m(
-                    e,
-                    void 0 === l.endLine
-                      ? l.line
-                      : { line: l.line, column: l.column },
-                    void 0 === l.endLine
-                      ? l.column
-                      : { line: l.endLine, column: l.endColumn },
-                    l.source,
-                    l.file,
-                    o.plugin,
-                  )
-                : new m(
-                    e,
-                    void 0 === i ? t : { line: t, column: n },
-                    void 0 === i ? n : { line: i, column: a },
-                    this.css,
-                    this.file,
-                    o.plugin,
-                  )),
-              (r.input = {
-                line: t,
-                column: n,
-                endLine: i,
-                endColumn: a,
-                source: this.css,
-              }),
-              this.file &&
-                (s && (r.input.url = s(this.file).toString()),
-                (r.input.file = this.file)),
-              r
-            );
+          mapResolve(e) {
+            return /^\w+:\/\//.test(e)
+              ? e
+              : l(this.map.consumer().sourceRoot || this.map.root || ".", e);
           }
           origin(e, t, n, o) {
             if (!this.map) return !1;
             let r,
-              a,
+              l,
               c = this.map.consumer(),
-              u = c.originalPositionFor({ line: e, column: t });
+              u = c.originalPositionFor({ column: t, line: e });
             if (!u.source) return !1;
             "number" == typeof n &&
-              (r = c.originalPositionFor({ line: n, column: o })),
-              (a = l(u.source)
+              (r = c.originalPositionFor({ column: o, line: n })),
+              (l = a(u.source)
                 ? s(u.source)
                 : new URL(
                     u.source,
                     this.map.consumer().sourceRoot || s(this.map.mapFile),
                   ));
             let m = {
-              url: a.toString(),
-              line: u.line,
               column: u.column,
-              endLine: r && r.line,
               endColumn: r && r.column,
+              endLine: r && r.line,
+              line: u.line,
+              url: l.toString(),
             };
-            if ("file:" === a.protocol) {
+            if ("file:" === l.protocol) {
               if (!i)
                 throw new Error(
                   "file: protocol is not available in this PostCSS build",
                 );
-              m.file = i(a);
+              m.file = i(l);
             }
             let p = c.sourceContentFor(u.source);
             return p && (m.source = p), m;
-          }
-          mapResolve(e) {
-            return /^\w+:\/\//.test(e)
-              ? e
-              : a(this.map.consumer().sourceRoot || this.map.root || ".", e);
-          }
-          get from() {
-            return this.file || this.id;
           }
           toJSON() {
             let e = {};
@@ -15793,6 +15810,9 @@
                 e.map.consumerCache && (e.map.consumerCache = void 0)),
               e
             );
+          }
+          get from() {
+            return this.file || this.id;
           }
         }
         (e.exports = g),
@@ -15843,27 +15863,6 @@
               this.consumerCache
             );
           }
-          withContent() {
-            return !!(
-              this.consumer().sourcesContent &&
-              this.consumer().sourcesContent.length > 0
-            );
-          }
-          startWith(e, t) {
-            return !!e && e.substr(0, t.length) === t;
-          }
-          getAnnotationURL(e) {
-            return e.replace(/^\/\*\s*# sourceMappingURL=/, "").trim();
-          }
-          loadAnnotation(e) {
-            let t = e.match(/\/\*\s*# sourceMappingURL=/gm);
-            if (!t) return;
-            let n = e.lastIndexOf(t.pop()),
-              o = e.indexOf("*/", n);
-            n > -1 &&
-              o > -1 &&
-              (this.annotation = this.getAnnotationURL(e.substring(n, o)));
-          }
           decodeInline(e) {
             if (
               /^data:application\/json;charset=utf-?8,/.test(e) ||
@@ -15881,6 +15880,26 @@
             var t;
             let n = e.match(/data:application\/json;([^,]+),/)[1];
             throw new Error("Unsupported source map encoding " + n);
+          }
+          getAnnotationURL(e) {
+            return e.replace(/^\/\*\s*# sourceMappingURL=/, "").trim();
+          }
+          isMap(e) {
+            return (
+              "object" == typeof e &&
+              ("string" == typeof e.mappings ||
+                "string" == typeof e._mappings ||
+                Array.isArray(e.sections))
+            );
+          }
+          loadAnnotation(e) {
+            let t = e.match(/\/\*\s*# sourceMappingURL=/gm);
+            if (!t) return;
+            let n = e.lastIndexOf(t.pop()),
+              o = e.indexOf("*/", n);
+            n > -1 &&
+              o > -1 &&
+              (this.annotation = this.getAnnotationURL(e.substring(n, o)));
           }
           loadFile(e) {
             if (((this.root = a(e)), i(e)))
@@ -15917,12 +15936,13 @@
               }
             }
           }
-          isMap(e) {
-            return (
-              "object" == typeof e &&
-              ("string" == typeof e.mappings ||
-                "string" == typeof e._mappings ||
-                Array.isArray(e.sections))
+          startWith(e, t) {
+            return !!e && e.substr(0, t.length) === t;
+          }
+          withContent() {
+            return !!(
+              this.consumer().sourcesContent &&
+              this.consumer().sourcesContent.length > 0
             );
           }
         }
@@ -15949,8 +15969,16 @@
             for (let t of e.proxyOf.nodes) h(t);
         }
         class d extends m {
-          push(e) {
-            return (e.parent = this), this.proxyOf.nodes.push(e), this;
+          append(...e) {
+            for (let t of e) {
+              let e = this.normalize(t, this.last);
+              for (let t of e) this.proxyOf.nodes.push(t);
+            }
+            return this.markDirty(), this;
+          }
+          cleanRaws(e) {
+            if ((super.cleanRaws(e), this.nodes))
+              for (let t of this.nodes) t.cleanRaws(e);
           }
           each(e) {
             if (!this.proxyOf.nodes) return;
@@ -15968,84 +15996,65 @@
               this.indexes[o] += 1;
             return delete this.indexes[o], n;
           }
-          walk(e) {
-            return this.each((t, n) => {
-              let o;
-              try {
-                o = e(t, n);
-              } catch (e) {
-                throw t.addToError(e);
-              }
-              return !1 !== o && t.walk && (o = t.walk(e)), o;
-            });
+          every(e) {
+            return this.nodes.every(e);
           }
-          walkDecls(e, t) {
-            return t
-              ? e instanceof RegExp
-                ? this.walk((n, o) => {
-                    if ("decl" === n.type && e.test(n.prop)) return t(n, o);
-                  })
-                : this.walk((n, o) => {
-                    if ("decl" === n.type && n.prop === e) return t(n, o);
-                  })
-              : ((t = e),
-                this.walk((e, n) => {
-                  if ("decl" === e.type) return t(e, n);
-                }));
+          getIterator() {
+            this.lastEach || (this.lastEach = 0),
+              this.indexes || (this.indexes = {}),
+              (this.lastEach += 1);
+            let e = this.lastEach;
+            return (this.indexes[e] = 0), e;
           }
-          walkRules(e, t) {
-            return t
-              ? e instanceof RegExp
-                ? this.walk((n, o) => {
-                    if ("rule" === n.type && e.test(n.selector)) return t(n, o);
-                  })
-                : this.walk((n, o) => {
-                    if ("rule" === n.type && n.selector === e) return t(n, o);
-                  })
-              : ((t = e),
-                this.walk((e, n) => {
-                  if ("rule" === e.type) return t(e, n);
-                }));
+          getProxyProcessor() {
+            return {
+              get: (e, t) =>
+                "proxyOf" === t
+                  ? e
+                  : e[t]
+                    ? "each" === t ||
+                      ("string" == typeof t && t.startsWith("walk"))
+                      ? (...n) =>
+                          e[t](
+                            ...n.map((e) =>
+                              "function" == typeof e
+                                ? (t, n) => e(t.toProxy(), n)
+                                : e,
+                            ),
+                          )
+                      : "every" === t || "some" === t
+                        ? (n) => e[t]((e, ...t) => n(e.toProxy(), ...t))
+                        : "root" === t
+                          ? () => e.root().toProxy()
+                          : "nodes" === t
+                            ? e.nodes.map((e) => e.toProxy())
+                            : "first" === t || "last" === t
+                              ? e[t].toProxy()
+                              : e[t]
+                    : e[t],
+              set: (e, t, n) => (
+                e[t] === n ||
+                  ((e[t] = n),
+                  ("name" !== t && "params" !== t && "selector" !== t) ||
+                    e.markDirty()),
+                !0
+              ),
+            };
           }
-          walkAtRules(e, t) {
-            return t
-              ? e instanceof RegExp
-                ? this.walk((n, o) => {
-                    if ("atrule" === n.type && e.test(n.name)) return t(n, o);
-                  })
-                : this.walk((n, o) => {
-                    if ("atrule" === n.type && n.name === e) return t(n, o);
-                  })
-              : ((t = e),
-                this.walk((e, n) => {
-                  if ("atrule" === e.type) return t(e, n);
-                }));
+          index(e) {
+            return "number" == typeof e
+              ? e
+              : (e.proxyOf && (e = e.proxyOf), this.proxyOf.nodes.indexOf(e));
           }
-          walkComments(e) {
-            return this.walk((t, n) => {
-              if ("comment" === t.type) return e(t, n);
-            });
-          }
-          append(...e) {
-            for (let t of e) {
-              let e = this.normalize(t, this.last);
-              for (let t of e) this.proxyOf.nodes.push(t);
-            }
+          insertAfter(e, t) {
+            let n,
+              o = this.index(e),
+              r = this.normalize(t, this.proxyOf.nodes[o]).reverse();
+            o = this.index(e);
+            for (let e of r) this.proxyOf.nodes.splice(o + 1, 0, e);
+            for (let e in this.indexes)
+              (n = this.indexes[e]), o < n && (this.indexes[e] = n + r.length);
             return this.markDirty(), this;
-          }
-          prepend(...e) {
-            e = e.reverse();
-            for (let t of e) {
-              let e = this.normalize(t, this.first, "prepend").reverse();
-              for (let t of e) this.proxyOf.nodes.unshift(t);
-              for (let t in this.indexes)
-                this.indexes[t] = this.indexes[t] + e.length;
-            }
-            return this.markDirty(), this;
-          }
-          cleanRaws(e) {
-            if ((super.cleanRaws(e), this.nodes))
-              for (let t of this.nodes) t.cleanRaws(e);
           }
           insertBefore(e, t) {
             let n,
@@ -16058,61 +16067,9 @@
               (n = this.indexes[e]), o <= n && (this.indexes[e] = n + i.length);
             return this.markDirty(), this;
           }
-          insertAfter(e, t) {
-            let n,
-              o = this.index(e),
-              r = this.normalize(t, this.proxyOf.nodes[o]).reverse();
-            o = this.index(e);
-            for (let e of r) this.proxyOf.nodes.splice(o + 1, 0, e);
-            for (let e in this.indexes)
-              (n = this.indexes[e]), o < n && (this.indexes[e] = n + r.length);
-            return this.markDirty(), this;
-          }
-          removeChild(e) {
-            let t;
-            (e = this.index(e)),
-              (this.proxyOf.nodes[e].parent = void 0),
-              this.proxyOf.nodes.splice(e, 1);
-            for (let n in this.indexes)
-              (t = this.indexes[n]), t >= e && (this.indexes[n] = t - 1);
-            return this.markDirty(), this;
-          }
-          removeAll() {
-            for (let e of this.proxyOf.nodes) e.parent = void 0;
-            return (this.proxyOf.nodes = []), this.markDirty(), this;
-          }
-          replaceValues(e, t, n) {
-            return (
-              n || ((n = t), (t = {})),
-              this.walkDecls((o) => {
-                (t.props && !t.props.includes(o.prop)) ||
-                  (t.fast && !o.value.includes(t.fast)) ||
-                  (o.value = o.value.replace(e, n));
-              }),
-              this.markDirty(),
-              this
-            );
-          }
-          every(e) {
-            return this.nodes.every(e);
-          }
-          some(e) {
-            return this.nodes.some(e);
-          }
-          index(e) {
-            return "number" == typeof e
-              ? e
-              : (e.proxyOf && (e = e.proxyOf), this.proxyOf.nodes.indexOf(e));
-          }
-          get first() {
-            if (this.proxyOf.nodes) return this.proxyOf.nodes[0];
-          }
-          get last() {
-            if (this.proxyOf.nodes)
-              return this.proxyOf.nodes[this.proxyOf.nodes.length - 1];
-          }
           normalize(e, t) {
             if ("string" == typeof e) e = p(o(e).nodes);
+            else if (void 0 === e) e = [];
             else if (Array.isArray(e)) {
               e = e.slice(0);
               for (let t of e) t.parent && t.parent.removeChild(t, "ignore");
@@ -16146,47 +16103,111 @@
               ),
             );
           }
-          getProxyProcessor() {
-            return {
-              set: (e, t, n) => (
-                e[t] === n ||
-                  ((e[t] = n),
-                  ("name" !== t && "params" !== t && "selector" !== t) ||
-                    e.markDirty()),
-                !0
-              ),
-              get: (e, t) =>
-                "proxyOf" === t
-                  ? e
-                  : e[t]
-                    ? "each" === t ||
-                      ("string" == typeof t && t.startsWith("walk"))
-                      ? (...n) =>
-                          e[t](
-                            ...n.map((e) =>
-                              "function" == typeof e
-                                ? (t, n) => e(t.toProxy(), n)
-                                : e,
-                            ),
-                          )
-                      : "every" === t || "some" === t
-                        ? (n) => e[t]((e, ...t) => n(e.toProxy(), ...t))
-                        : "root" === t
-                          ? () => e.root().toProxy()
-                          : "nodes" === t
-                            ? e.nodes.map((e) => e.toProxy())
-                            : "first" === t || "last" === t
-                              ? e[t].toProxy()
-                              : e[t]
-                    : e[t],
-            };
+          prepend(...e) {
+            e = e.reverse();
+            for (let t of e) {
+              let e = this.normalize(t, this.first, "prepend").reverse();
+              for (let t of e) this.proxyOf.nodes.unshift(t);
+              for (let t in this.indexes)
+                this.indexes[t] = this.indexes[t] + e.length;
+            }
+            return this.markDirty(), this;
           }
-          getIterator() {
-            this.lastEach || (this.lastEach = 0),
-              this.indexes || (this.indexes = {}),
-              (this.lastEach += 1);
-            let e = this.lastEach;
-            return (this.indexes[e] = 0), e;
+          push(e) {
+            return (e.parent = this), this.proxyOf.nodes.push(e), this;
+          }
+          removeAll() {
+            for (let e of this.proxyOf.nodes) e.parent = void 0;
+            return (this.proxyOf.nodes = []), this.markDirty(), this;
+          }
+          removeChild(e) {
+            let t;
+            (e = this.index(e)),
+              (this.proxyOf.nodes[e].parent = void 0),
+              this.proxyOf.nodes.splice(e, 1);
+            for (let n in this.indexes)
+              (t = this.indexes[n]), t >= e && (this.indexes[n] = t - 1);
+            return this.markDirty(), this;
+          }
+          replaceValues(e, t, n) {
+            return (
+              n || ((n = t), (t = {})),
+              this.walkDecls((o) => {
+                (t.props && !t.props.includes(o.prop)) ||
+                  (t.fast && !o.value.includes(t.fast)) ||
+                  (o.value = o.value.replace(e, n));
+              }),
+              this.markDirty(),
+              this
+            );
+          }
+          some(e) {
+            return this.nodes.some(e);
+          }
+          walk(e) {
+            return this.each((t, n) => {
+              let o;
+              try {
+                o = e(t, n);
+              } catch (e) {
+                throw t.addToError(e);
+              }
+              return !1 !== o && t.walk && (o = t.walk(e)), o;
+            });
+          }
+          walkAtRules(e, t) {
+            return t
+              ? e instanceof RegExp
+                ? this.walk((n, o) => {
+                    if ("atrule" === n.type && e.test(n.name)) return t(n, o);
+                  })
+                : this.walk((n, o) => {
+                    if ("atrule" === n.type && n.name === e) return t(n, o);
+                  })
+              : ((t = e),
+                this.walk((e, n) => {
+                  if ("atrule" === e.type) return t(e, n);
+                }));
+          }
+          walkComments(e) {
+            return this.walk((t, n) => {
+              if ("comment" === t.type) return e(t, n);
+            });
+          }
+          walkDecls(e, t) {
+            return t
+              ? e instanceof RegExp
+                ? this.walk((n, o) => {
+                    if ("decl" === n.type && e.test(n.prop)) return t(n, o);
+                  })
+                : this.walk((n, o) => {
+                    if ("decl" === n.type && n.prop === e) return t(n, o);
+                  })
+              : ((t = e),
+                this.walk((e, n) => {
+                  if ("decl" === e.type) return t(e, n);
+                }));
+          }
+          walkRules(e, t) {
+            return t
+              ? e instanceof RegExp
+                ? this.walk((n, o) => {
+                    if ("rule" === n.type && e.test(n.selector)) return t(n, o);
+                  })
+                : this.walk((n, o) => {
+                    if ("rule" === n.type && n.selector === e) return t(n, o);
+                  })
+              : ((t = e),
+                this.walk((e, n) => {
+                  if ("rule" === e.type) return t(e, n);
+                }));
+          }
+          get first() {
+            if (this.proxyOf.nodes) return this.proxyOf.nodes[0];
+          }
+          get last() {
+            if (this.proxyOf.nodes)
+              return this.proxyOf.nodes[this.proxyOf.nodes.length - 1];
           }
         }
         (d.registerParse = (e) => {
@@ -16314,8 +16335,8 @@
           toString() {
             return this.node
               ? this.node.error(this.text, {
-                  plugin: this.plugin,
                   index: this.index,
+                  plugin: this.plugin,
                   word: this.word,
                 }).message
               : this.plugin
@@ -16373,46 +16394,118 @@
               (this.current = this.root),
               (this.spaces = ""),
               (this.semicolon = !1),
-              (this.customProperty = !1),
               this.createTokenizer(),
               (this.root.source = {
                 input: e,
-                start: { offset: 0, line: 1, column: 1 },
+                start: { column: 1, line: 1, offset: 0 },
               });
           }
-          createTokenizer() {
-            this.tokenizer = r(this.input);
-          }
-          parse() {
-            let e;
-            for (; !this.tokenizer.endOfFile(); )
-              switch (((e = this.tokenizer.nextToken()), e[0])) {
-                case "space":
-                  this.spaces += e[1];
+          atrule(e) {
+            let t,
+              n,
+              o,
+              r = new s();
+            (r.name = e[1].slice(1)),
+              "" === r.name && this.unnamedAtrule(r, e),
+              this.init(r, e[2]);
+            let i = !1,
+              a = !1,
+              l = [],
+              c = [];
+            for (; !this.tokenizer.endOfFile(); ) {
+              if (
+                ((t = (e = this.tokenizer.nextToken())[0]),
+                "(" === t || "[" === t
+                  ? c.push("(" === t ? ")" : "]")
+                  : "{" === t && c.length > 0
+                    ? c.push("}")
+                    : t === c[c.length - 1] && c.pop(),
+                0 === c.length)
+              ) {
+                if (";" === t) {
+                  (r.source.end = this.getPosition(e[2])),
+                    r.source.end.offset++,
+                    (this.semicolon = !0);
                   break;
-                case ";":
-                  this.freeSemicolon(e);
+                }
+                if ("{" === t) {
+                  a = !0;
                   break;
-                case "}":
+                }
+                if ("}" === t) {
+                  if (l.length > 0) {
+                    for (o = l.length - 1, n = l[o]; n && "space" === n[0]; )
+                      n = l[--o];
+                    n &&
+                      ((r.source.end = this.getPosition(n[3] || n[2])),
+                      r.source.end.offset++);
+                  }
                   this.end(e);
                   break;
-                case "comment":
-                  this.comment(e);
-                  break;
-                case "at-word":
-                  this.atrule(e);
-                  break;
-                case "{":
-                  this.emptyRule(e);
-                  break;
-                default:
-                  this.other(e);
+                }
+                l.push(e);
+              } else l.push(e);
+              if (this.tokenizer.endOfFile()) {
+                i = !0;
+                break;
               }
-            this.endFile();
+            }
+            (r.raws.between = this.spacesAndCommentsFromEnd(l)),
+              l.length
+                ? ((r.raws.afterName = this.spacesAndCommentsFromStart(l)),
+                  this.raw(r, "params", l),
+                  i &&
+                    ((e = l[l.length - 1]),
+                    (r.source.end = this.getPosition(e[3] || e[2])),
+                    r.source.end.offset++,
+                    (this.spaces = r.raws.between),
+                    (r.raws.between = "")))
+                : ((r.raws.afterName = ""), (r.params = "")),
+              a && ((r.nodes = []), (this.current = r));
+          }
+          checkMissedSemicolon(e) {
+            let t = this.colon(e);
+            if (!1 === t) return;
+            let n,
+              o = 0;
+            for (
+              let r = t - 1;
+              r >= 0 && ((n = e[r]), "space" === n[0] || ((o += 1), 2 !== o));
+              r--
+            );
+            throw this.input.error(
+              "Missed semicolon",
+              "word" === n[0] ? n[3] + 1 : n[2],
+            );
+          }
+          colon(e) {
+            let t,
+              n,
+              o,
+              r = 0;
+            for (let [i, s] of e.entries()) {
+              if (
+                ((t = s),
+                (n = t[0]),
+                "(" === n && (r += 1),
+                ")" === n && (r -= 1),
+                0 === r && ":" === n)
+              ) {
+                if (o) {
+                  if ("word" === o[0] && "progid" === o[1]) continue;
+                  return i;
+                }
+                this.doubleColon(t);
+              }
+              o = t;
+            }
+            return !1;
           }
           comment(e) {
             let t = new i();
-            this.init(t, e[2]), (t.source.end = this.getPosition(e[3] || e[2]));
+            this.init(t, e[2]),
+              (t.source.end = this.getPosition(e[3] || e[2])),
+              t.source.end.offset++;
             let n = e[1].slice(2, -2);
             if (/^\s*$/.test(n))
               (t.text = ""), (t.raws.left = n), (t.raws.right = "");
@@ -16421,65 +16514,8 @@
               (t.text = e[2]), (t.raws.left = e[1]), (t.raws.right = e[3]);
             }
           }
-          emptyRule(e) {
-            let t = new l();
-            this.init(t, e[2]),
-              (t.selector = ""),
-              (t.raws.between = ""),
-              (this.current = t);
-          }
-          other(e) {
-            let t = !1,
-              n = null,
-              o = !1,
-              r = null,
-              i = [],
-              s = e[1].startsWith("--"),
-              a = [],
-              l = e;
-            for (; l; ) {
-              if (((n = l[0]), a.push(l), "(" === n || "[" === n))
-                r || (r = l), i.push("(" === n ? ")" : "]");
-              else if (s && o && "{" === n) r || (r = l), i.push("}");
-              else if (0 === i.length) {
-                if (";" === n) {
-                  if (o) return void this.decl(a, s);
-                  break;
-                }
-                if ("{" === n) return void this.rule(a);
-                if ("}" === n) {
-                  this.tokenizer.back(a.pop()), (t = !0);
-                  break;
-                }
-                ":" === n && (o = !0);
-              } else
-                n === i[i.length - 1] &&
-                  (i.pop(), 0 === i.length && (r = null));
-              l = this.tokenizer.nextToken();
-            }
-            if (
-              (this.tokenizer.endOfFile() && (t = !0),
-              i.length > 0 && this.unclosedBracket(r),
-              t && o)
-            ) {
-              if (!s)
-                for (
-                  ;
-                  a.length &&
-                  ((l = a[a.length - 1][0]), "space" === l || "comment" === l);
-
-                )
-                  this.tokenizer.back(a.pop());
-              this.decl(a, s);
-            } else this.unknownWord(a);
-          }
-          rule(e) {
-            e.pop();
-            let t = new l();
-            this.init(t, e[0][2]),
-              (t.raws.between = this.spacesAndCommentsFromEnd(e)),
-              this.raw(t, "selector", e),
-              (this.current = t);
+          createTokenizer() {
+            this.tokenizer = r(this.input);
           }
           decl(e, t) {
             let n = new o();
@@ -16498,7 +16534,8 @@
                         if (o) return o;
                       }
                     })(e),
-                );
+                ),
+                n.source.end.offset++;
               "word" !== e[0][0];
 
             )
@@ -16558,64 +16595,19 @@
               this.raw(n, "value", a.concat(e), t),
               n.value.includes(":") && !t && this.checkMissedSemicolon(e);
           }
-          atrule(e) {
-            let t,
-              n,
-              o,
-              r = new s();
-            (r.name = e[1].slice(1)),
-              "" === r.name && this.unnamedAtrule(r, e),
-              this.init(r, e[2]);
-            let i = !1,
-              a = !1,
-              l = [],
-              c = [];
-            for (; !this.tokenizer.endOfFile(); ) {
-              if (
-                ((t = (e = this.tokenizer.nextToken())[0]),
-                "(" === t || "[" === t
-                  ? c.push("(" === t ? ")" : "]")
-                  : "{" === t && c.length > 0
-                    ? c.push("}")
-                    : t === c[c.length - 1] && c.pop(),
-                0 === c.length)
-              ) {
-                if (";" === t) {
-                  (r.source.end = this.getPosition(e[2])),
-                    (this.semicolon = !0);
-                  break;
-                }
-                if ("{" === t) {
-                  a = !0;
-                  break;
-                }
-                if ("}" === t) {
-                  if (l.length > 0) {
-                    for (o = l.length - 1, n = l[o]; n && "space" === n[0]; )
-                      n = l[--o];
-                    n && (r.source.end = this.getPosition(n[3] || n[2]));
-                  }
-                  this.end(e);
-                  break;
-                }
-                l.push(e);
-              } else l.push(e);
-              if (this.tokenizer.endOfFile()) {
-                i = !0;
-                break;
-              }
-            }
-            (r.raws.between = this.spacesAndCommentsFromEnd(l)),
-              l.length
-                ? ((r.raws.afterName = this.spacesAndCommentsFromStart(l)),
-                  this.raw(r, "params", l),
-                  i &&
-                    ((e = l[l.length - 1]),
-                    (r.source.end = this.getPosition(e[3] || e[2])),
-                    (this.spaces = r.raws.between),
-                    (r.raws.between = "")))
-                : ((r.raws.afterName = ""), (r.params = "")),
-              a && ((r.nodes = []), (this.current = r));
+          doubleColon(e) {
+            throw this.input.error(
+              "Double colon",
+              { offset: e[2] },
+              { offset: e[2] + e[1].length },
+            );
+          }
+          emptyRule(e) {
+            let t = new l();
+            this.init(t, e[2]),
+              (t.selector = ""),
+              (t.raws.between = ""),
+              (this.current = t);
           }
           end(e) {
             this.current.nodes &&
@@ -16627,6 +16619,7 @@
               (this.spaces = ""),
               this.current.parent
                 ? ((this.current.source.end = this.getPosition(e[2])),
+                  this.current.source.end.offset++,
                   (this.current = this.current.parent))
                 : this.unexpectedClose(e);
           }
@@ -16636,7 +16629,10 @@
                 this.current.nodes.length &&
                 (this.current.raws.semicolon = this.semicolon),
               (this.current.raws.after =
-                (this.current.raws.after || "") + this.spaces);
+                (this.current.raws.after || "") + this.spaces),
+              (this.root.source.end = this.getPosition(
+                this.tokenizer.position(),
+              ));
           }
           freeSemicolon(e) {
             if (((this.spaces += e[1]), this.current.nodes)) {
@@ -16649,15 +16645,88 @@
           }
           getPosition(e) {
             let t = this.input.fromOffset(e);
-            return { offset: e, line: t.line, column: t.col };
+            return { column: t.col, line: t.line, offset: e };
           }
           init(e, t) {
             this.current.push(e),
-              (e.source = { start: this.getPosition(t), input: this.input }),
+              (e.source = { input: this.input, start: this.getPosition(t) }),
               (e.raws.before = this.spaces),
               (this.spaces = ""),
               "comment" !== e.type && (this.semicolon = !1);
           }
+          other(e) {
+            let t = !1,
+              n = null,
+              o = !1,
+              r = null,
+              i = [],
+              s = e[1].startsWith("--"),
+              a = [],
+              l = e;
+            for (; l; ) {
+              if (((n = l[0]), a.push(l), "(" === n || "[" === n))
+                r || (r = l), i.push("(" === n ? ")" : "]");
+              else if (s && o && "{" === n) r || (r = l), i.push("}");
+              else if (0 === i.length) {
+                if (";" === n) {
+                  if (o) return void this.decl(a, s);
+                  break;
+                }
+                if ("{" === n) return void this.rule(a);
+                if ("}" === n) {
+                  this.tokenizer.back(a.pop()), (t = !0);
+                  break;
+                }
+                ":" === n && (o = !0);
+              } else
+                n === i[i.length - 1] &&
+                  (i.pop(), 0 === i.length && (r = null));
+              l = this.tokenizer.nextToken();
+            }
+            if (
+              (this.tokenizer.endOfFile() && (t = !0),
+              i.length > 0 && this.unclosedBracket(r),
+              t && o)
+            ) {
+              if (!s)
+                for (
+                  ;
+                  a.length &&
+                  ((l = a[a.length - 1][0]), "space" === l || "comment" === l);
+
+                )
+                  this.tokenizer.back(a.pop());
+              this.decl(a, s);
+            } else this.unknownWord(a);
+          }
+          parse() {
+            let e;
+            for (; !this.tokenizer.endOfFile(); )
+              switch (((e = this.tokenizer.nextToken()), e[0])) {
+                case "space":
+                  this.spaces += e[1];
+                  break;
+                case ";":
+                  this.freeSemicolon(e);
+                  break;
+                case "}":
+                  this.end(e);
+                  break;
+                case "comment":
+                  this.comment(e);
+                  break;
+                case "at-word":
+                  this.atrule(e);
+                  break;
+                case "{":
+                  this.emptyRule(e);
+                  break;
+                default:
+                  this.other(e);
+              }
+            this.endFile();
+          }
+          precheckMissedSemicolon() {}
           raw(e, t, n, o) {
             let r,
               i,
@@ -16680,9 +16749,17 @@
                   : (m = !1);
             if (!m) {
               let o = n.reduce((e, t) => e + t[1], "");
-              e.raws[t] = { value: u, raw: o };
+              e.raws[t] = { raw: o, value: u };
             }
             e[t] = u;
+          }
+          rule(e) {
+            e.pop();
+            let t = new l();
+            this.init(t, e[0][2]),
+              (t.raws.between = this.spacesAndCommentsFromEnd(e)),
+              this.raw(t, "selector", e),
+              (this.current = t);
           }
           spacesAndCommentsFromEnd(e) {
             let t,
@@ -16719,32 +16796,20 @@
             for (let o = t; o < e.length; o++) n += e[o][1];
             return e.splice(t, e.length - t), n;
           }
-          colon(e) {
-            let t,
-              n,
-              o,
-              r = 0;
-            for (let [i, s] of e.entries()) {
-              if (
-                ((t = s),
-                (n = t[0]),
-                "(" === n && (r += 1),
-                ")" === n && (r -= 1),
-                0 === r && ":" === n)
-              ) {
-                if (o) {
-                  if ("word" === o[0] && "progid" === o[1]) continue;
-                  return i;
-                }
-                this.doubleColon(t);
-              }
-              o = t;
-            }
-            return !1;
+          unclosedBlock() {
+            let e = this.current.source.start;
+            throw this.input.error("Unclosed block", e.line, e.column);
           }
           unclosedBracket(e) {
             throw this.input.error(
               "Unclosed bracket",
+              { offset: e[2] },
+              { offset: e[2] + 1 },
+            );
+          }
+          unexpectedClose(e) {
+            throw this.input.error(
+              "Unexpected }",
               { offset: e[2] },
               { offset: e[2] + 1 },
             );
@@ -16756,45 +16821,11 @@
               { offset: e[0][2] + e[0][1].length },
             );
           }
-          unexpectedClose(e) {
-            throw this.input.error(
-              "Unexpected }",
-              { offset: e[2] },
-              { offset: e[2] + 1 },
-            );
-          }
-          unclosedBlock() {
-            let e = this.current.source.start;
-            throw this.input.error("Unclosed block", e.line, e.column);
-          }
-          doubleColon(e) {
-            throw this.input.error(
-              "Double colon",
-              { offset: e[2] },
-              { offset: e[2] + e[1].length },
-            );
-          }
           unnamedAtrule(e, t) {
             throw this.input.error(
               "At-rule without name",
               { offset: t[2] },
               { offset: t[2] + t[1].length },
-            );
-          }
-          precheckMissedSemicolon() {}
-          checkMissedSemicolon(e) {
-            let t = this.colon(e);
-            if (!1 === t) return;
-            let n,
-              o = 0;
-            for (
-              let r = t - 1;
-              r >= 0 && ((n = e[r]), "space" === n[0] || ((o += 1), 2 !== o));
-              r--
-            );
-            throw this.input.error(
-              "Missed semicolon",
-              "word" === n[0] ? n[3] + 1 : n[2],
             );
           }
         };
@@ -16822,7 +16853,7 @@
           v = "@".charCodeAt(0),
           b = /[\t\n\f\r "#'()/;[\\\]{}]/g,
           x = /[\t\n\f\r !"#'():;@[\\\]{}]|\/(?=\*)/g,
-          E = /.[\n"'(/\\]/,
+          E = /.[\r\n"'(/\\]/,
           S = /[\da-f]/i;
         e.exports = function (e, C = {}) {
           let w,
@@ -16847,6 +16878,9 @@
           return {
             back: function (e) {
               U.push(e);
+            },
+            endOfFile: function () {
+              return 0 === U.length && H >= j;
             },
             nextToken: function (e) {
               if (U.length) return U.pop();
@@ -16964,9 +16998,6 @@
               }
               return H++, O;
             },
-            endOfFile: function () {
-              return 0 === U.length && H >= j;
-            },
             position: function () {
               return H;
             },
@@ -16998,16 +17029,6 @@
           constructor(e) {
             super(e), (this.type = "root"), this.nodes || (this.nodes = []);
           }
-          removeChild(e, t) {
-            let n = this.index(e);
-            return (
-              !t &&
-                0 === n &&
-                this.nodes.length > 1 &&
-                (this.nodes[1].raws.before = this.nodes[n].raws.before),
-              super.removeChild(e)
-            );
-          }
           normalize(e, t, n) {
             let o = super.normalize(e);
             if (t)
@@ -17018,6 +17039,16 @@
               else if (this.first !== t)
                 for (let e of o) e.raws.before = t.raws.before;
             return o;
+          }
+          removeChild(e, t) {
+            let n = this.index(e);
+            return (
+              !t &&
+                0 === n &&
+                this.nodes.length > 1 &&
+                (this.nodes[1].raws.before = this.nodes[n].raws.before),
+              super.removeChild(e)
+            );
           }
           toResult(e = {}) {
             return new o(new r(), this, e).stringify();
@@ -17055,6 +17086,8 @@
       (e) => {
         "use strict";
         let t = {
+          comma: (e) => t.split(e, [","], !0),
+          space: (e) => t.split(e, [" ", "\n", "\t"]),
           split(e, t, n) {
             let o = [],
               r = "",
@@ -17082,8 +17115,6 @@
                   : (r += n);
             return (n || "" !== r) && o.push(r.trim()), o;
           },
-          space: (e) => t.split(e, [" ", "\n", "\t"]),
-          comma: (e) => t.split(e, [","], !0),
         };
         (e.exports = t), (t.default = t);
       },
@@ -17095,20 +17126,7 @@
           s = n(125);
         class a {
           constructor(e = []) {
-            (this.version = "8.4.23"), (this.plugins = this.normalize(e));
-          }
-          use(e) {
-            return (
-              (this.plugins = this.plugins.concat(this.normalize([e]))), this
-            );
-          }
-          process(e, t = {}) {
-            return 0 === this.plugins.length &&
-              void 0 === t.parser &&
-              void 0 === t.stringifier &&
-              void 0 === t.syntax
-              ? new o(this, e, t)
-              : new r(this, e, t);
+            (this.version = "8.4.38"), (this.plugins = this.normalize(e));
           }
           normalize(e) {
             let t = [];
@@ -17129,6 +17147,16 @@
                   );
               }
             return t;
+          }
+          process(e, t = {}) {
+            return this.plugins.length || t.parser || t.stringifier || t.syntax
+              ? new r(this, e, t)
+              : new o(this, e, t);
+          }
+          use(e) {
+            return (
+              (this.plugins = this.plugins.concat(this.normalize([e]))), this
+            );
           }
         }
         (e.exports = a),
@@ -17161,25 +17189,56 @@
             if (c.isMap()) {
               let [e, t] = c.generate();
               e && (this.result.css = e), t && (this.result.map = t);
-            }
+            } else c.clearAnnotation(), (this.result.css = c.css);
           }
-          get [Symbol.toStringTag]() {
-            return "NoWorkResult";
+          async() {
+            return this.error
+              ? Promise.reject(this.error)
+              : Promise.resolve(this.result);
           }
-          get processor() {
-            return this.result.processor;
+          catch(e) {
+            return this.async().catch(e);
           }
-          get opts() {
-            return this.result.opts;
+          finally(e) {
+            return this.async().then(e, e);
           }
-          get css() {
-            return this.result.css;
+          sync() {
+            if (this.error) throw this.error;
+            return this.result;
+          }
+          then(e, t) {
+            return (
+              "production" !== "production".NODE_ENV &&
+                ("from" in this._opts ||
+                  i(
+                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
+                  )),
+              this.async().then(e, t)
+            );
+          }
+          toString() {
+            return this._css;
+          }
+          warnings() {
+            return [];
           }
           get content() {
             return this.result.css;
           }
+          get css() {
+            return this.result.css;
+          }
           get map() {
             return this.result.map;
+          }
+          get messages() {
+            return [];
+          }
+          get opts() {
+            return this.result.opts;
+          }
+          get processor() {
+            return this.result.processor;
           }
           get root() {
             if (this._root) return this._root;
@@ -17193,39 +17252,8 @@
             if (this.error) throw this.error;
             return (this._root = e), e;
           }
-          get messages() {
-            return [];
-          }
-          warnings() {
-            return [];
-          }
-          toString() {
-            return this._css;
-          }
-          then(e, t) {
-            return (
-              "production" !== "production".NODE_ENV &&
-                ("from" in this._opts ||
-                  i(
-                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
-                  )),
-              this.async().then(e, t)
-            );
-          }
-          catch(e) {
-            return this.async().catch(e);
-          }
-          finally(e) {
-            return this.async().then(e, e);
-          }
-          async() {
-            return this.error
-              ? Promise.reject(this.error)
-              : Promise.resolve(this.result);
-          }
-          sync() {
-            if (this.error) throw this.error;
-            return this.result;
+          get [Symbol.toStringTag]() {
+            return "NoWorkResult";
           }
         }
         (e.exports = l), (l.default = l);
@@ -17373,9 +17401,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "50yfXyHk",
+          id: "PtZDZbo1",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isTextView"]]],null,9,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-name"],["flush-element"],["append",["unknown",["tra","loot_tooltip_upgrade"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/",["unknown",["lootItem","upgradeEssenceName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value"],["flush-element"],["text","-"],["append",["unknown",["lootItem","upgradeEssenceValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-name"],["flush-element"],["append",["unknown",["tra","loot_tooltip_disenchant"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/",["unknown",["lootItem","disenchantLootName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value"],["flush-element"],["text","+"],["append",["unknown",["lootItem","disenchantValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-tag-container"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-tag-icon"],["dynamic-attr","src",["concat",[["unknown",["tagIconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["flush-element"],["append",["unknown",["tagIconDescription"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-description"],["flush-element"],["append",["unknown",["lootTypeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-rarity-icon"],["dynamic-attr","src",["concat",[["unknown",["lootRarityIconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["flush-element"],["append",["unknown",["lootTypeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-rp-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/currency_champion.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-tooltip-hero ",["unknown",["lootType"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-icon-vignette"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-hero-copy"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-header"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-name"],["flush-element"],["append",["unknown",["lootItemName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowValueAsBE"]]],null,6,5],["text","          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-rp-value"],["flush-element"],["append",["unknown",["lootItem","value"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-subheader"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-type-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootRarityIconPath"]]],null,4,3],["text","        "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["tagIconPath"]]],null,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-body"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowDisenchantValue"]]],null,1],["text","\\n"],["block",["if"],[["get",["lootItem","upgradeEssenceValue"]]],null,0],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-status-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-tooltip-status ",["unknown",["redeemableStatus"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["redeemableText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-milestones-description"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","has-milestones"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_milestones/inventory_item_milestones_indicator_icon.svg"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","loot_milestones_item_tooltip_hint"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","text-only"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-title"],["flush-element"],["append",["unknown",["lootItemName"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-description"],["flush-element"],["append",["unknown",["textDescription"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasMilestones"]]],null,8],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-item-tooltip\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isTextView"]]],null,9,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-name"],["flush-element"],["append",["unknown",["tra","loot_tooltip_upgrade"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/",["unknown",["lootItem","upgradeEssenceName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value"],["flush-element"],["text","-"],["append",["unknown",["lootItem","upgradeEssenceValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-name"],["flush-element"],["append",["unknown",["tra","loot_tooltip_disenchant"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/",["unknown",["lootItem","disenchantLootName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-essence-value"],["flush-element"],["text","+"],["append",["unknown",["lootItem","disenchantValue"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-tag-container"],["flush-element"],["text","\\n            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-tag-icon"],["dynamic-attr","src",["concat",[["unknown",["tagIconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["flush-element"],["append",["unknown",["tagIconDescription"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-description"],["flush-element"],["append",["unknown",["lootTypeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-rarity-icon"],["dynamic-attr","src",["concat",[["unknown",["lootRarityIconPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["flush-element"],["append",["unknown",["lootTypeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-rp-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","loot-item-tooltip-essence-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/tooltips/currency_champion.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-tooltip-hero ",["unknown",["lootType"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-icon-vignette"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-hero-copy"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-header"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-name"],["flush-element"],["append",["unknown",["lootItemName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-value-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowValueAsBE"]]],null,6,5],["text","          "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-rp-value"],["flush-element"],["append",["unknown",["lootItem","value"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-subheader"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-type-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootRarityIconPath"]]],null,4,3],["text","        "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["tagIconPath"]]],null,2],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-body"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowDisenchantValue"]]],null,1],["text","\\n"],["block",["if"],[["get",["lootItem","upgradeEssenceValue"]]],null,0],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-status-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-tooltip-status ",["unknown",["redeemableStatus"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["redeemableText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-milestones-description"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","has-milestones"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_milestones/inventory_item_milestones_indicator_icon.svg"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","loot_milestones_item_tooltip_hint"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","text-only"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-title"],["flush-element"],["append",["unknown",["lootItemName"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-item-tooltip-description"],["flush-element"],["append",["unknown",["textDescription"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["hasMilestones"]]],null,8],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -17394,6 +17422,7 @@
         e.exports = o.Ember.Component.extend(l, r.default, i.default, {
           layout: n(138),
           classNames: ["loot-inventory"],
+          clientConfig: o.Ember.inject.service("client-config"),
           lootService: o.Ember.inject.service("loot"),
           lootMassDisenchantService: o.Ember.inject.service(
             "loot-mass-disenchant",
@@ -17486,6 +17515,7 @@
             "searchFilter",
             "sortType",
             "lootTypeFilter",
+            "clientConfig.externalLootSupportUrl",
             function () {
               const e = this.get("categorizedLootItems"),
                 t = this.get("categorizedLootItemsChanged");
@@ -17497,7 +17527,14 @@
                   n = this.get("lootTypeFilter");
                 this._decorateDisplayItems(e, t, n);
               }
-              return this._handleDisplayItemSort(e, t), e;
+              const r = this.get("clientConfig.externalLootSupportUrl");
+              return (
+                r &&
+                  e?.hasOwnProperty(s.DISPLAY_CATEGORY_CHEST) &&
+                  e[s.DISPLAY_CATEGORY_CHEST].set("externalLootSupportUrl", r),
+                this._handleDisplayItemSort(e, t),
+                e
+              );
             },
           ),
           isAnyContextMenuOpen: o.Ember.computed(
@@ -17535,7 +17572,11 @@
             return e.splice(t, 1), (e = [n, ...e]);
           },
           _applyPostSortContent: function (e, t) {
-            return "CHEST" === e && (t = this._pinMythicEssenceToTop(t)), t;
+            return (
+              e === s.DISPLAY_CATEGORY_CHEST &&
+                (t = this._pinMythicEssenceToTop(t)),
+              t
+            );
           },
           _handleDisplayItemSort: function (e, t) {
             const n = this.get("sortType");
@@ -17808,9 +17849,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "3MmuNPmD",
+          id: "Oko616TF",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-display-category-tabs-container"],["flush-element"],["text","\\n  "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],["ALL",["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"],["block",["each"],[["get",["allDisplayCategories"]]],null,7],["block",["if"],[["get",["showMassDisenchantTab"]]],null,6,5],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-inventory-content-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-filter-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-filter"],null,[["searchFilter","sortType","isMassDisenchantOpen","updateSearchFilter","updateSortType"],[["get",["searchFilter"]],["get",["sortType"]],["get",["isMassDisenchantOpen"]],["helper",["action"],[["get",[null]],"updateSearchFilter"],null],["helper",["action"],[["get",[null]],"updateSortType"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-inventory-grid-wrapper"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootLoadingOrNotReady"]]],null,4],["block",["if"],[["get",["isLootReadyAndDisplayEnabled"]]],null,3],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["append",["helper",["loot-item"],null,[["decoratedRecipeSlotStates","selectedLootItems","lootItem","selectContextMenuAction","openRecipeMenu","addItemToFirstValidSlot","notifyContextMenuState","isAnyContextMenuOpen","lastLootItemRendered","isLootPageVisible","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["get",["lootItem"]],["get",["selectContextMenuAction"]],["get",["openRecipeMenu"]],["get",["addItemToFirstValidSlot"]],["helper",["action"],[["get",[null]],"notifyContextMenuState"],null],["get",["isAnyContextMenuOpen"]],["helper",["action"],[["get",[null]],"lastLootItemRendered"],null],["get",["isLootPageVisible"]],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]]]]],false],["text","\\n"]],"locals":["lootItem"]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","display-category-section-title"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["helper",["concat"],["loot_category_",["get",["category"]]],null]],null],false],["close-element"],["text","\\n                "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","display-category-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItems","isCategoryVisible"]]],null,1],["block",["each"],[["get",["lootItems"]]],[["key"],["lootId"]],0],["text","          "],["close-element"],["text","\\n"]],"locals":["category","lootItems"]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-inventory-grid ",["helper",["if"],[["get",["isLootItemsLazyLoading"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["helper",["-each-in"],[["get",["displayItems"]]],null]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["uikit-spinner"],null,[["class"],["loot-inventory-grid-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-action-tabs-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-mass-disenchant-action-tab"],null,[["isMassDisenchantOpen","toggleMassDisenchant"],[["get",["isMassDisenchantOpen"]],["get",["toggleMassDisenchant"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],[["get",["displayCategory"]],["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"]],"locals":["displayCategory"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-inventory\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-display-category-tabs-container"],["flush-element"],["text","\\n  "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],["ALL",["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"],["block",["each"],[["get",["allDisplayCategories"]]],null,8],["block",["if"],[["get",["showMassDisenchantTab"]]],null,7,6],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-inventory-content-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-filter-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-filter"],null,[["searchFilter","sortType","isMassDisenchantOpen","updateSearchFilter","updateSortType"],[["get",["searchFilter"]],["get",["sortType"]],["get",["isMassDisenchantOpen"]],["helper",["action"],[["get",[null]],"updateSearchFilter"],null],["helper",["action"],[["get",[null]],"updateSortType"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-inventory-grid-wrapper"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLootLoadingOrNotReady"]]],null,5],["block",["if"],[["get",["isLootReadyAndDisplayEnabled"]]],null,4],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["append",["helper",["loot-item"],null,[["decoratedRecipeSlotStates","selectedLootItems","lootItem","selectContextMenuAction","openRecipeMenu","addItemToFirstValidSlot","notifyContextMenuState","isAnyContextMenuOpen","lastLootItemRendered","isLootPageVisible","validItemIds","initialRecipeMenuItem","lootItemsWithMilestones"],[["get",["decoratedRecipeSlotStates"]],["get",["selectedLootItems"]],["get",["lootItem"]],["get",["selectContextMenuAction"]],["get",["openRecipeMenu"]],["get",["addItemToFirstValidSlot"]],["helper",["action"],[["get",[null]],"notifyContextMenuState"],null],["get",["isAnyContextMenuOpen"]],["helper",["action"],[["get",[null]],"lastLootItemRendered"],null],["get",["isLootPageVisible"]],["get",["validItemIds"]],["get",["initialRecipeMenuItem"]],["get",["lootItemsWithMilestones"]]]]],false],["text","\\n"]],"locals":["lootItem"]},{"statements":[["text","                    "],["open-element","a",[]],["static-attr","class","external-link"],["static-attr","target","_blank"],["dynamic-attr","href",["unknown",["lootItems","externalLootSupportUrl"]],null],["flush-element"],["text","\\n                      "],["append",["unknown",["tra","loot_chest_external_drop_rates_link"]],false],["text","\\n                    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","display-category-section-title"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","title-text"],["flush-element"],["text","\\n                  "],["append",["helper",["get"],[["get",["tra"]],["helper",["concat"],["loot_category_",["get",["category"]]],null]],null],false],["text","\\n"],["block",["if"],[["get",["lootItems","externalLootSupportUrl"]]],null,1],["text","                "],["close-element"],["text","\\n                "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","display-category-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItems","isCategoryVisible"]]],null,2],["block",["each"],[["get",["lootItems"]]],[["key"],["lootId"]],0],["text","          "],["close-element"],["text","\\n"]],"locals":["category","lootItems"]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-inventory-grid ",["helper",["if"],[["get",["isLootItemsLazyLoading"]],"hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["helper",["-each-in"],[["get",["displayItems"]]],null]],null,3],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["uikit-spinner"],null,[["class"],["loot-inventory-grid-spinner"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-action-tabs-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-mass-disenchant-action-tab"],null,[["isMassDisenchantOpen","toggleMassDisenchant"],[["get",["isMassDisenchantOpen"]],["get",["toggleMassDisenchant"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-category-tab"],null,[["category","selectedCategory","filterItems"],[["get",["displayCategory"]],["get",["lootTypeFilter"]],["helper",["action"],[["get",[null]],"filterItems"],null]]]],false],["text","\\n"]],"locals":["displayCategory"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -17916,9 +17957,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "GwqKY/xx",
+          id: "0ApikAqd",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isCraftState"]]],null,1],["text","\\n"],["block",["if"],[["get",["isRevealState"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-reveal"],null,[["craftResults","claimMilestonesRewardsResult","recipeUiComponentName","closeCrafter","returnToCrafter"],[["get",["craftResults"]],["get",["claimMilestonesRewardsResult"]],["get",["recipeUiComponentName"]],["get",["closeCrafter"]],["helper",["action"],[["get",[null]],"returnToCrafter"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["component"],[["get",["recipeUiComponentName"]]],[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","craftResults","decoratedRecipeSlotStates","slotsPercentFill","revealRecipeResults","closeCrafter","craft","claimMilestonesRewards","removeItemFromSlot"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["get",["setMilestonesUnavailable"]],["get",["craftResults"]],["get",["decoratedRecipeSlotStates"]],["get",["slotsPercentFill"]],["helper",["action"],[["get",[null]],"revealRecipeResults"],null],["get",["closeCrafter"]],["get",["craft"]],["get",["claimMilestonesRewards"]],["get",["removeItemFromSlot"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-state-machine\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isCraftState"]]],null,1],["text","\\n"],["block",["if"],[["get",["isRevealState"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-reveal"],null,[["craftResults","claimMilestonesRewardsResult","recipeUiComponentName","closeCrafter","returnToCrafter"],[["get",["craftResults"]],["get",["claimMilestonesRewardsResult"]],["get",["recipeUiComponentName"]],["get",["closeCrafter"]],["helper",["action"],[["get",[null]],"returnToCrafter"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["component"],[["get",["recipeUiComponentName"]]],[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","craftResults","decoratedRecipeSlotStates","slotsPercentFill","revealRecipeResults","closeCrafter","craft","claimMilestonesRewards","removeItemFromSlot"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["get",["setMilestonesUnavailable"]],["get",["craftResults"]],["get",["decoratedRecipeSlotStates"]],["get",["slotsPercentFill"]],["helper",["action"],[["get",[null]],"revealRecipeResults"],null],["get",["closeCrafter"]],["get",["craft"]],["get",["claimMilestonesRewards"]],["get",["removeItemFromSlot"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18013,9 +18054,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "Pgc3WZXu",
+          id: "+yOkzObU",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-menu-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","menu-title-container"],["flush-element"],["text","\\n    "],["open-element","h3",[]],["static-attr","class","menu-title"],["flush-element"],["append",["unknown",["recipeMenuTitle"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","menu-subtitle-container"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","menu-subtitle"],["flush-element"],["append",["unknown",["recipeMenuSubtitle"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isMythicEssenceShop"]]],null,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","recipe-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","scroll-pane"],["static-attr","scrolled-bottom","false"],["static-attr","scrolled-top","true"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","recipe-menu-content-wrapper"],["flush-element"],["text","\\n"],["block",["each"],[["get",["recipes"]]],null,0],["text","        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["append",["helper",["loot-crafter-recipe-menu-item"],null,[["initialItem","recipe","openRecipeMenuItemCrafter"],[["get",["initialItem"]],["get",["recipe"]],["get",["openRecipeMenuItemCrafter"]]]]],false],["text","\\n"]],"locals":["recipe"]},{"statements":[["text","        "],["open-element","span",[]],["static-attr","class","learn-more"],["flush-element"],["text","\\n          "],["open-element","a",[]],["static-attr","class","learn-more-link"],["static-attr","target","_blank"],["dynamic-attr","href",["unknown",["tra","loot_mythic_shop_lean_more_url"]],null],["flush-element"],["append",["unknown",["tra","loot_mythic_shop_learn_more_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-menu-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","menu-title-container"],["flush-element"],["text","\\n    "],["open-element","h3",[]],["static-attr","class","menu-title"],["flush-element"],["append",["unknown",["recipeMenuTitle"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","menu-subtitle-container"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","menu-subtitle"],["flush-element"],["append",["unknown",["recipeMenuSubtitle"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isMythicEssenceShop"]]],null,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","recipe-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","scroll-pane"],["static-attr","scrolled-bottom","false"],["static-attr","scrolled-top","true"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","recipe-menu-content-wrapper"],["flush-element"],["text","\\n"],["block",["each"],[["get",["recipes"]]],null,0],["text","        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["append",["helper",["loot-crafter-recipe-menu-item"],null,[["initialItem","recipe","openRecipeMenuItemCrafter"],[["get",["initialItem"]],["get",["recipe"]],["get",["openRecipeMenuItemCrafter"]]]]],false],["text","\\n"]],"locals":["recipe"]},{"statements":[["text","        "],["open-element","span",[]],["static-attr","class","learn-more"],["flush-element"],["text","\\n          "],["open-element","a",[]],["static-attr","class","learn-more-link"],["static-attr","target","_blank"],["dynamic-attr","href",["unknown",["tra","loot_mythic_shop_lean_more_url"]],null],["flush-element"],["append",["unknown",["tra","loot_mythic_shop_learn_more_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18264,9 +18305,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "PyHm6P2C",
+          id: "c2dnoZLA",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-menu-item-container"],["modifier",["action"],[["get",[null]],"craft"],[["on"],["click"]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["disabled","targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY"],[["get",["shouldDisableTooltip"]],"left","top","right","center"]],9],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["recipe ",["helper",["if"],[["get",["recipeOwned"]],"disabled"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["recipeOutputImagePath"]]],null,8],["text","    "],["open-element","div",[]],["static-attr","class","recipe-vignette"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","recipe-overlay"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","craft-action-image"],["dynamic-attr","src",["concat",[["unknown",["craftActionImage"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","recipe-details-container"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","recipe-name"],["flush-element"],["append",["unknown",["recipeName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isPreviewRecipe"]]],null,3,2],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","span",[]],["static-attr","class","recipe-price"],["flush-element"],["open-element","img",[]],["static-attr","class","currency-icon"],["dynamic-attr","src",["concat",[["unknown",["currencyIcon"]]]]],["flush-element"],["close-element"],["append",["unknown",["recipePrice"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","span",[]],["static-attr","class","owned-text"],["flush-element"],["append",["unknown",["tra","loot_tooltip_short_ALREADY_OWNED"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["recipeOwned"]]],null,1,0]],"locals":[]},{"statements":[],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["static-attr","class","recipe-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["static-attr","class","small-item-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSmallItemImage"]]],null,5,4]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","champ-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isChampImage"]]],null,7,6]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-crafter-recipe-menu-item-tooltip"],null,[["recipe","recipeName","recipeOutputImagePath","currencyIcon"],[["get",["recipe"]],["get",["recipeName"]],["get",["recipeOutputImagePath"]],["get",["currencyIcon"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-menu-item-container"],["modifier",["action"],[["get",[null]],"craft"],[["on"],["click"]]],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["disabled","targetAnchorX","targetAnchorY","tooltipAnchorX","tooltipAnchorY"],[["get",["shouldDisableTooltip"]],"left","top","right","center"]],9],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["recipe ",["helper",["if"],[["get",["recipeOwned"]],"disabled"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["recipeOutputImagePath"]]],null,8],["text","    "],["open-element","div",[]],["static-attr","class","recipe-vignette"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","recipe-overlay"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","craft-action-image"],["dynamic-attr","src",["concat",[["unknown",["craftActionImage"]]]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","recipe-details-container"],["flush-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","recipe-name"],["flush-element"],["append",["unknown",["recipeName"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["isPreviewRecipe"]]],null,3,2],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","span",[]],["static-attr","class","recipe-price"],["flush-element"],["open-element","img",[]],["static-attr","class","currency-icon"],["dynamic-attr","src",["concat",[["unknown",["currencyIcon"]]]]],["flush-element"],["close-element"],["append",["unknown",["recipePrice"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","span",[]],["static-attr","class","owned-text"],["flush-element"],["append",["unknown",["tra","loot_tooltip_short_ALREADY_OWNED"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["recipeOwned"]]],null,1,0]],"locals":[]},{"statements":[],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["static-attr","class","recipe-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","img",[]],["static-attr","class","small-item-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isSmallItemImage"]]],null,5,4]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","champ-image"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isChampImage"]]],null,7,6]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-crafter-recipe-menu-item-tooltip"],null,[["recipe","recipeName","recipeOutputImagePath","currencyIcon"],[["get",["recipe"]],["get",["recipeName"]],["get",["recipeOutputImagePath"]],["get",["currencyIcon"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18373,9 +18414,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "3LIm1i7f",
+          id: "nxm//Ds5",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["hasLootTableDescriptions"]]],null,7,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","recipe-name"],["flush-element"],["append",["unknown",["recipeName"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","recipe-price"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","number"],["flush-element"],["append",["unknown",["recipeCostNumber"]],false],["close-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","price-icon"],["dynamic-attr","src",["concat",[["unknown",["currencyIcon"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","recipe-tooltip-description"],["flush-element"],["append",["unknown",["recipeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","recipe-icon"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isPreviewRecipe"]]],null,1,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","li",[]],["static-attr","class","loottable"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","loottable-icon"],["dynamic-attr","src",["concat",[["unknown",["loottable","imagePath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-name"],["flush-element"],["append",["unknown",["loottable","localizedName"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-type"],["flush-element"],["append",["unknown",["tra","loot_type_hextech_crafting"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["loottable"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","bonus-loottable-section"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","bonusLootTableTitle"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","ul",[]],["static-attr","class","loottable-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["bonus"]]],null,3],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","li",[]],["static-attr","class","loottable"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","loottable-icon"],["dynamic-attr","src",["concat",[["unknown",["loottable","imagePath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-name"],["flush-element"],["append",["unknown",["loottable","localizedName"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-type"],["flush-element"],["append",["unknown",["tra","loot_type_hextech_crafting"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["loottable"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","guaranteed-loottable-section"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["text","\\n        "],["append",["unknown",["guaranteedTitle"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","ul",[]],["static-attr","class","loottable-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["guaranteed"]]],null,5],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasGuaranteed"]]],null,6],["block",["if"],[["get",["hasBonus"]]],null,4]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-recipe-menu-item-tooltip\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["hasLootTableDescriptions"]]],null,7,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","recipe-name"],["flush-element"],["append",["unknown",["recipeName"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","recipe-price"],["flush-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","number"],["flush-element"],["append",["unknown",["recipeCostNumber"]],false],["close-element"],["text","\\n        "],["open-element","img",[]],["static-attr","class","price-icon"],["dynamic-attr","src",["concat",[["unknown",["currencyIcon"]]]]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","recipe-tooltip-description"],["flush-element"],["append",["unknown",["recipeDescription"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","recipe-icon"],["dynamic-attr","src",["concat",[["unknown",["recipeOutputImagePath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isPreviewRecipe"]]],null,1,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","li",[]],["static-attr","class","loottable"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","loottable-icon"],["dynamic-attr","src",["concat",[["unknown",["loottable","imagePath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-name"],["flush-element"],["append",["unknown",["loottable","localizedName"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-type"],["flush-element"],["append",["unknown",["tra","loot_type_hextech_crafting"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["loottable"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","bonus-loottable-section"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","bonusLootTableTitle"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","ul",[]],["static-attr","class","loottable-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["bonus"]]],null,3],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","li",[]],["static-attr","class","loottable"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","image"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","class","loottable-icon"],["dynamic-attr","src",["concat",[["unknown",["loottable","imagePath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-name"],["flush-element"],["append",["unknown",["loottable","localizedName"]],false],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loottable-type"],["flush-element"],["append",["unknown",["tra","loot_type_hextech_crafting"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["loottable"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","guaranteed-loottable-section"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","title"],["flush-element"],["text","\\n        "],["append",["unknown",["guaranteedTitle"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","ul",[]],["static-attr","class","loottable-list"],["flush-element"],["text","\\n"],["block",["each"],[["get",["guaranteed"]]],null,5],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasGuaranteed"]]],null,6],["block",["if"],[["get",["hasBonus"]]],null,4]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18844,9 +18885,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "qSyaw42h",
+          id: "iEcci5ka",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["nextItem"]]],null,16],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-reveal-animations"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","reveal-video-state-machine"],["flush-element"],["text","\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,5,4],["text","  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-reveal"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["redemptionItem"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cancel-button"],["modifier",["action"],[["get",[null]],"closeItemRedeemer"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-video",[]],["static-attr","id","reveal-outro"],["static-attr","signal-before-end","0.8"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_outro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","redeem-outro"],["static-attr","signal-before-end","0.5"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_redeem_outro.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","name","reveal-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/loot_reveal_low_spec_shard_loop.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","name","reveal-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/loot_reveal_low_spec_permanent_loop.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPermanentReveal"]]],null,3,2],["text","      "],["open-element","img",[]],["static-attr","name","reveal-rarity-idle"],["static-attr","class","reveal-rarity-low-spec-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/rarity/",["unknown",["rarityName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal_permanent"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["static-attr","fade-in","50"],["static-attr","fade-out","260"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","fade-in","260"],["static-attr","fade-out","75"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal_rental"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["static-attr","fade-in","50"],["static-attr","fade-out","260"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_shard_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","fade-in","260"],["static-attr","fade-out","75"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_shard_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n"],["text","      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null-rarity"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal-rarity"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-rarity-intro"],["static-attr","fade-in","0"],["static-attr","fade-out","250"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_",["unknown",["rarityName"]],"_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-rarity-idle"],["static-attr","fade-in","250"],["static-attr","fade-out","0"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_",["unknown",["rarityName"]],"_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reveal-count"],["flush-element"],["text","\\n          "],["append",["unknown",["selectedCount"]],false],["text"," / "],["append",["unknown",["numTotalItems"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["pip ",["unknown",["counter","type"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["counter"]},{"statements":[["block",["each"],[["get",["pipCounters"]]],null,7]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["static-attr","class","loot-subtitle-column-icon"],["dynamic-attr","src",["concat",[["unknown",["subtitleColumn","icon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","loot-subtitle-column"],["flush-element"],["text","\\n"],["block",["if"],[["get",["subtitleColumn","icon"]]],null,9],["text","            "],["open-element","h6",[]],["static-attr","class","loot-subtitle-text sub-title"],["flush-element"],["append",["unknown",["subtitleColumn","text"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["subtitleColumn"]},{"statements":[["text","            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["block",["each"],[["get",["emblemIcons"]]],null,11]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["static-attr","class","wardskin-shadow"],["dynamic-attr","src",["concat",[["unknown",["nextItem","playerLoot","shadowPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","id","splash-animated"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]],"-backdrop"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["nextItem","playerLoot","shadowPath"]]],null,13],["text","          "],["close-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","splash"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]]]]],["dynamic-attr","src",["concat",[["unknown",["itemSplashPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]],"-overlay"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["loot-crafter-reveal-animated-item"],null,[["animatedLootItem"],[["get",["animatedLootItem"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-crafter-reveal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","content"],["flush-element"],["text","\\n\\n"],["block",["if"],[["get",["animatedLootItem"]]],null,15,14],["text","\\n      "],["open-element","div",[]],["static-attr","class","text"],["flush-element"],["text","\\n        "],["open-element","h4",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["itemName"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","emblems-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["emblemIcons"]]],null,12],["text","      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","loot-subtitle-columns-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["subtitleColumns"]]],null,10],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","reveal-counter-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["usePipCounters"]]],null,8,6],["text","    "],["close-element"],["text","\\n\\n"],["text","    "],["open-element","lol-uikit-flat-button",[]],["static-attr","id","accept-button"],["static-attr","class","accept-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"acceptItem"],null],null],["flush-element"],["text","\\n      "],["append",["unknown",["acceptButtonText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["nextItem"]]],null,16],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-reveal-animations"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","reveal-video-state-machine"],["flush-element"],["text","\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,5,4],["text","  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,1],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-reveal"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["redemptionItem"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","cancel-button"],["modifier",["action"],[["get",[null]],"closeItemRedeemer"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-video",[]],["static-attr","id","reveal-outro"],["static-attr","signal-before-end","0.8"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_outro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","redeem-outro"],["static-attr","signal-before-end","0.5"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_redeem_outro.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","name","reveal-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/loot_reveal_low_spec_shard_loop.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","name","reveal-loop"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/loot_reveal_low_spec_permanent_loop.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPermanentReveal"]]],null,3,2],["text","      "],["open-element","img",[]],["static-attr","name","reveal-rarity-idle"],["static-attr","class","reveal-rarity-low-spec-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/rarity/",["unknown",["rarityName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal_permanent"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["static-attr","fade-in","50"],["static-attr","fade-out","260"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","fade-in","260"],["static-attr","fade-out","75"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal_rental"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["static-attr","fade-in","50"],["static-attr","fade-out","260"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_shard_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","fade-in","260"],["static-attr","fade-out","75"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_shard_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n"],["text","      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null-rarity"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","reveal-rarity"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-rarity-intro"],["static-attr","fade-in","0"],["static-attr","fade-out","250"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_",["unknown",["rarityName"]],"_intro.webm"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-rarity-idle"],["static-attr","fade-in","250"],["static-attr","fade-out","0"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_",["unknown",["rarityName"]],"_loop.webm"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reveal-count"],["flush-element"],["text","\\n          "],["append",["unknown",["selectedCount"]],false],["text"," / "],["append",["unknown",["numTotalItems"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["pip ",["unknown",["counter","type"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["counter"]},{"statements":[["block",["each"],[["get",["pipCounters"]]],null,7]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["static-attr","class","loot-subtitle-column-icon"],["dynamic-attr","src",["concat",[["unknown",["subtitleColumn","icon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","loot-subtitle-column"],["flush-element"],["text","\\n"],["block",["if"],[["get",["subtitleColumn","icon"]]],null,9],["text","            "],["open-element","h6",[]],["static-attr","class","loot-subtitle-text sub-title"],["flush-element"],["append",["unknown",["subtitleColumn","text"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":["subtitleColumn"]},{"statements":[["text","            "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["block",["each"],[["get",["emblemIcons"]]],null,11]],"locals":[]},{"statements":[["text","              "],["open-element","img",[]],["static-attr","class","wardskin-shadow"],["dynamic-attr","src",["concat",[["unknown",["nextItem","playerLoot","shadowPath"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","id","splash-animated"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]],"-backdrop"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["nextItem","playerLoot","shadowPath"]]],null,13],["text","          "],["close-element"],["text","\\n\\n          "],["open-element","div",[]],["static-attr","class","splash"],["flush-element"],["text","\\n            "],["open-element","img",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]]]]],["dynamic-attr","src",["concat",[["unknown",["itemSplashPath"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",[["unknown",["itemSplashLayout"]],"-overlay"]]],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["loot-crafter-reveal-animated-item"],null,[["animatedLootItem"],[["get",["animatedLootItem"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-crafter-reveal"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","content"],["flush-element"],["text","\\n\\n"],["block",["if"],[["get",["animatedLootItem"]]],null,15,14],["text","\\n      "],["open-element","div",[]],["static-attr","class","text"],["flush-element"],["text","\\n        "],["open-element","h4",[]],["static-attr","class","title"],["flush-element"],["append",["unknown",["itemName"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","emblems-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["emblemIcons"]]],null,12],["text","      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","loot-subtitle-columns-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["subtitleColumns"]]],null,10],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","reveal-counter-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["usePipCounters"]]],null,8,6],["text","    "],["close-element"],["text","\\n\\n"],["text","    "],["open-element","lol-uikit-flat-button",[]],["static-attr","id","accept-button"],["static-attr","class","accept-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"acceptItem"],null],null],["flush-element"],["text","\\n      "],["append",["unknown",["acceptButtonText"]],false],["text","\\n    "],["close-element"],["text","\\n\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -18891,9 +18932,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "UXeuyDcz",
+          id: "th3iowON",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","animated-loot-item-video-state-machine"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","animate-item"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/lootitems/",["unknown",["animatedLootItemName"]],"_intro.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","preload",""],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/lootitems/",["unknown",["animatedLootItemName"]],"_loop.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-reveal-animated-item\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","animated-loot-item-video-state-machine"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","null"],["static-attr","no-preserve-state",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","animate-item"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","reveal-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/lootitems/",["unknown",["animatedLootItemName"]],"_intro.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","reveal-loop"],["static-attr","preload",""],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/lootitems/",["unknown",["animatedLootItemName"]],"_loop.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -19021,9 +19062,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "YzVQyYfE",
+          id: "SQEPipLw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,3],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-slots-container"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","id","backdrop"],["dynamic-attr","src",["concat",[["unknown",["backdropPath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","slot-visuals"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showRecipeHelpIcon"]]],null,2,1],["block",["each"],[["get",["decoratedRecipeSlotStates"]]],null,0],["text","    "],["open-element","div",[]],["static-attr","class","close-button"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","icon"],["modifier",["action"],[["get",[null]],"closeCrafter"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","slot-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","slot"],["flush-element"],["text","\\n          "],["append",["helper",["loot-crafter-item-slot"],null,[["slotData","lootItem","quantitySlotted","isAutofilled","slotClicked"],[["get",["crafterSlot","data"]],["get",["crafterSlot","lootItem"]],["get",["crafterSlot","quantitySlotted"]],["get",["crafterSlot","isAutofilled"]],["helper",["action"],[["get",[null]],"slotClicked",["get",["index"]]],null]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["crafterSlot","index"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","no-tooltip"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tooltip"],["static-attr","id","recipe-help-tooltip"],["modifier",["action"],[["get",[null]],"recipeHintMouseEnter"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-crafter-slots-animations"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","1-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_1_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","1-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_1_outro.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","2-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_2_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","2-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_2_outro.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","3-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_3_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","3-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_3_outro.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-slots-container\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,3],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-slots-container"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","id","backdrop"],["dynamic-attr","src",["concat",[["unknown",["backdropPath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","id","slot-visuals"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showRecipeHelpIcon"]]],null,2,1],["block",["each"],[["get",["decoratedRecipeSlotStates"]]],null,0],["text","    "],["open-element","div",[]],["static-attr","class","close-button"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","icon"],["modifier",["action"],[["get",[null]],"closeCrafter"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","slot-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","slot"],["flush-element"],["text","\\n          "],["append",["helper",["loot-crafter-item-slot"],null,[["slotData","lootItem","quantitySlotted","isAutofilled","slotClicked"],[["get",["crafterSlot","data"]],["get",["crafterSlot","lootItem"]],["get",["crafterSlot","quantitySlotted"]],["get",["crafterSlot","isAutofilled"]],["helper",["action"],[["get",[null]],"slotClicked",["get",["index"]]],null]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["crafterSlot","index"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","no-tooltip"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","tooltip"],["static-attr","id","recipe-help-tooltip"],["modifier",["action"],[["get",[null]],"recipeHintMouseEnter"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-crafter-slots-animations"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","1-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_1_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","1-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_1_outro.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","2-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_2_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","2-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_2_outro.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","3-slot-intro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_3_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","3-slot-outro-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_input_3_outro.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -19193,9 +19234,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "F64m4y/L",
+          id: "XvbzgYRl",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-crafter-slot ",["unknown",["emptyState"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItem"]]],null,4],["text","  "],["open-element","div",[]],["static-attr","class","slot-animation"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","slot-intro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","type","intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/crafter_slot_complete.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","slot-outro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","type","idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_material_incomplete.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-slot-quantity-container"],["dynamic-attr","ember-computed",["concat",[["unknown",["currentQuantity"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-current ",["unknown",["isQuantityFull"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["currentDisplayedQuantity"]],false],["text","\\n  "],["close-element"],["text","\\n  / "],["append",["unknown",["requiredQuantity"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","series-number"],["flush-element"],["append",["unknown",["seriesNumber"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","shard-overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_icons/",["unknown",["backgroundName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-crafter-slot-item-removable-hitbox"],["modifier",["action"],[["get",[null]],"slotClicked"]],["modifier",["action"],[["get",[null]],"slotHovered"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-item-visual-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-visual ",["unknown",["isInteractiveClass"]]," ",["unknown",["visualStateCSSClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["backgroundName"]]],null,3],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["icon ",["unknown",["visualStateCSSClass"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["useHoverOverlay"]]],null,2],["text","          "],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","border border-normal"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","border border-hover"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],"_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["lootItem","isRental"]]],null,1],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasSeriesNumber"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-crafter-item-slot\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-crafter-slot ",["unknown",["emptyState"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["lootItem"]]],null,4],["text","  "],["open-element","div",[]],["static-attr","class","slot-animation"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","slot-intro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","type","intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/crafter_slot_complete.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video",[]],["static-attr","id","slot-outro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","type","idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_material_incomplete.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-crafter-slot-quantity-container"],["dynamic-attr","ember-computed",["concat",[["unknown",["currentQuantity"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["quantity-current ",["unknown",["isQuantityFull"]]]]],["flush-element"],["text","\\n    "],["append",["unknown",["currentDisplayedQuantity"]],false],["text","\\n  "],["close-element"],["text","\\n  / "],["append",["unknown",["requiredQuantity"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","series-number"],["flush-element"],["append",["unknown",["seriesNumber"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","shard-overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","overlay"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","img",[]],["static-attr","class","background"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/loot_item_icons/",["unknown",["backgroundName"]],".png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-crafter-slot-item-removable-hitbox"],["modifier",["action"],[["get",[null]],"slotClicked"]],["modifier",["action"],[["get",[null]],"slotHovered"],[["on"],["mouseEnter"]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-item-visual-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-item-visual ",["unknown",["isInteractiveClass"]]," ",["unknown",["visualStateCSSClass"]]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["backgroundName"]]],null,3],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["icon ",["unknown",["visualStateCSSClass"]]]]],["dynamic-attr","style",["unknown",["lootIconPathBackroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["useHoverOverlay"]]],null,2],["text","          "],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","border border-normal"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],".png"]]],["flush-element"],["close-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","border border-hover"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/border_images/",["unknown",["borderName"]],"_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["lootItem","isRental"]]],null,1],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasSeriesNumber"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20012,9 +20053,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "oOoP7e91",
+          id: "kdkrKqpR",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["milestonesUnavailable"]]],null,8,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-text"],["flush-element"],["append",["unknown",["timeRemainingTooltipText"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","h3",[]],["flush-element"],["append",["unknown",["repeatingLoopCounter"]],false],["close-element"],["text","\\n                "],["open-element","h6",[]],["flush-element"],["append",["unknown",["loopsCompletedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-separator"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-text"],["flush-element"],["append",["unknown",["tra","loot_milestones_repeating_tooltip"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","loot-milestones-header-right-text"],["flush-element"],["text","\\n              "],["append",["helper",["remaining-time-text"],null,[["endDateTime","almostEndingText","timeHasExpiredText","wrappingText"],[["get",["lootMilestones","endDate"]],["get",["tra","loot_milestones_duration_almost_ending"]],["get",["tra","loot_milestones_duration_ended"]],["get",["tra","loot_milestones_duration_remaining"]]]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","loot-milestones-header-right-text"],["flush-element"],["append",["unknown",["tra","loot_milestones_repeating"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-milestones-tracker-header-right ",["helper",["if"],[["get",["isRepeating"]],"is-repeating"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRepeating"]]],null,3],["block",["if"],[["get",["hasEndDate"]]],null,2],["text","          "],["open-element","lc-tooltip",[]],["static-attr","direction","top"],["flush-element"],["text","\\n            "],["open-element","lc-tooltip-content",[]],["dynamic-attr","class",["concat",["loot-milestones-header-right-tooltip ",["helper",["if"],[["get",["isRepeating"]],"is-repeating"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRepeating"]]],null,1],["block",["if"],[["get",["hasEndDate"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-loaded-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-header"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-header-current-progress"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-milestones-progress-counter"],["flush-element"],["text","\\n          "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","loot-milestones-radial-progress"],["static-attr","start-angle","270"],["static-attr","end-angle","-90"],["static-attr","type","custom"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","bottom unfilled"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle filled-progress"],["dynamic-attr","percent",["unknown",["filledProgressAnimationValue"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle gap-progress"],["static-attr","percent","1"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle future-progress"],["dynamic-attr","percent",["unknown",["futureProgressAnimationValue"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","outer-ring"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","inner-circle"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-final-counter"],["flush-element"],["append",["unknown",["finalCounterRoundedValue"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","loot-milestones-progress-counter-of"],["flush-element"],["append",["unknown",["tra","loot_milestones_progress_quantity_x_of_y"]],false],["text"," "],["append",["unknown",["nextMilestoneThreshold"]],false],["close-element"],["text"," "],["append",["unknown",["tra","loot_milestones_progress_quantity_x_opened"]],false],["open-element","span",[]],["static-attr","class","tracker-complete-message"],["flush-element"],["text",". "],["append",["unknown",["tra","loot_milestones_finished_congrats"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasRenderableEndDateOrRepeating"]]],null,4],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-milestone-wrapper"],["flush-element"],["text","\\n      "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","repeat","trackerSize","itemClick","itemMouseEnter","additionalTooltipData","rewardItemTooltipComponent","rewardItemTooltipClassName","shouldScrollToUnclaimedReward","scrollingArrowsEnabled"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["lootMilestones","repeat"]],["get",["trackerSize"]],["helper",["action"],[["get",[null]],"onMilestoneClick"],null],["helper",["action"],[["get",[null]],"onMilestoneHover"],null],["get",["additionalTooltipData"]],"loot-recipe-milestone-reward-tooltip",null,false,["get",["scrollingArrowsEnabled"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-loading-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["class"],["loading-spinner"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["initialLoading"]]],null,6,5]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-image"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message-header"],["flush-element"],["append",["unknown",["tra","loot_milestones_disabled_message_header"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message-body"],["flush-element"],["append",["unknown",["tra","loot_milestones_disabled_message_body"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestones-tracker\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["milestonesUnavailable"]]],null,8,7]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-text"],["flush-element"],["append",["unknown",["timeRemainingTooltipText"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","h3",[]],["flush-element"],["append",["unknown",["repeatingLoopCounter"]],false],["close-element"],["text","\\n                "],["open-element","h6",[]],["flush-element"],["append",["unknown",["loopsCompletedText"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-separator"],["flush-element"],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-header-right-tooltip-text"],["flush-element"],["append",["unknown",["tra","loot_milestones_repeating_tooltip"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","loot-milestones-header-right-text"],["flush-element"],["text","\\n              "],["append",["helper",["remaining-time-text"],null,[["endDateTime","almostEndingText","timeHasExpiredText","wrappingText"],[["get",["lootMilestones","endDate"]],["get",["tra","loot_milestones_duration_almost_ending"]],["get",["tra","loot_milestones_duration_ended"]],["get",["tra","loot_milestones_duration_remaining"]]]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","span",[]],["static-attr","class","loot-milestones-header-right-text"],["flush-element"],["append",["unknown",["tra","loot_milestones_repeating"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-milestones-tracker-header-right ",["helper",["if"],[["get",["isRepeating"]],"is-repeating"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRepeating"]]],null,3],["block",["if"],[["get",["hasEndDate"]]],null,2],["text","          "],["open-element","lc-tooltip",[]],["static-attr","direction","top"],["flush-element"],["text","\\n            "],["open-element","lc-tooltip-content",[]],["dynamic-attr","class",["concat",["loot-milestones-header-right-tooltip ",["helper",["if"],[["get",["isRepeating"]],"is-repeating"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRepeating"]]],null,1],["block",["if"],[["get",["hasEndDate"]]],null,0],["text","            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-loaded-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-header"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-header-current-progress"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-milestones-progress-counter"],["flush-element"],["text","\\n          "],["open-element","lol-uikit-radial-progress",[]],["static-attr","class","loot-milestones-radial-progress"],["static-attr","start-angle","270"],["static-attr","end-angle","-90"],["static-attr","type","custom"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","bottom"],["static-attr","class","bottom unfilled"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle filled-progress"],["dynamic-attr","percent",["unknown",["filledProgressAnimationValue"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle gap-progress"],["static-attr","percent","1"],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","middle"],["static-attr","class","middle future-progress"],["dynamic-attr","percent",["unknown",["futureProgressAnimationValue"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","slot","top"],["static-attr","class","top"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","outer-ring"],["flush-element"],["close-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","inner-circle"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","loot-milestones-final-counter"],["flush-element"],["append",["unknown",["finalCounterRoundedValue"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","span",[]],["static-attr","class","loot-milestones-progress-counter-of"],["flush-element"],["append",["unknown",["tra","loot_milestones_progress_quantity_x_of_y"]],false],["text"," "],["append",["unknown",["nextMilestoneThreshold"]],false],["close-element"],["text"," "],["append",["unknown",["tra","loot_milestones_progress_quantity_x_opened"]],false],["open-element","span",[]],["static-attr","class","tracker-complete-message"],["flush-element"],["text",". "],["append",["unknown",["tra","loot_milestones_finished_congrats"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasRenderableEndDateOrRepeating"]]],null,4],["text","    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-milestone-wrapper"],["flush-element"],["text","\\n      "],["append",["helper",["reward-tracker"],null,[["rewardTrackItems","rewardTrackProgress","repeat","trackerSize","itemClick","itemMouseEnter","additionalTooltipData","rewardItemTooltipComponent","rewardItemTooltipClassName","shouldScrollToUnclaimedReward","scrollingArrowsEnabled"],[["get",["rewardTrackItems"]],["get",["rewardTrackProgress"]],["get",["lootMilestones","repeat"]],["get",["trackerSize"]],["helper",["action"],[["get",[null]],"onMilestoneClick"],null],["helper",["action"],[["get",[null]],"onMilestoneHover"],null],["get",["additionalTooltipData"]],"loot-recipe-milestone-reward-tooltip",null,false,["get",["scrollingArrowsEnabled"]]]]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-loading-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["class"],["loading-spinner"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["initialLoading"]]],null,6,5]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-image"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message-header"],["flush-element"],["append",["unknown",["tra","loot_milestones_disabled_message_header"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-unavailable-message-body"],["flush-element"],["append",["unknown",["tra","loot_milestones_disabled_message_body"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-milestones-tracker-line-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20275,9 +20316,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "4Z1WHL41",
+          id: "5tZTF+9y",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-meter-state-machine"],["static-attr","state","loading"],["dynamic-attr","is-crafting",["unknown",["isCraftingParam"]],null],["dynamic-attr","is-closing",["unknown",["isClosingParam"]],null],["dynamic-attr","are-slots-full",["unknown",["areSlotsFullParam"]],null],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","filling"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","uikit-states"],["static-attr","non-media-duration","1300"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","filling"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-container"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","uikit-states"],["static-attr","non-media-duration","1100"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-container"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-video"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-full"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-craft-outro-perf-flag"],["static-attr","non-media-duration","2200"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","close"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","finished"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-output-image-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["outputImage"]]],null,3],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","intro,filling"],["static-attr","class","loot-meter-frame-intro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-frame-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_output_1_intro.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-idle-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-idle-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_meter_loop.webm"]]],["static-attr","loop","loop"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","loot-meter-idle-fallback-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flex_crafter_low_spec_meter_loop.png"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","meter-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","meter-mask"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","fill"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_meter_endcap.png"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","meter-container flip"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","meter-mask"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","fill"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_meter_endcap.png"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","full"],["static-attr","class","loot-meter-full-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-full"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_meter_complete_overlay.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","craft"],["static-attr","match-number","2"],["static-attr","class","loot-meter-craft-outro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-craft-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_output_1_outro.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-meter-craft-outro-perf-flag"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","close"],["static-attr","class","loot-meter-close-outro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-close-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/metered-ui-close-outro.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-golden-frame"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","crafter-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_frame_1.png"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-meter-crest-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isChampionMasteryToken"]]],null,2,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-button-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-recipe-ui-meter-button"],null,[["craftButtonText","enabled","craft"],[["get",["craftButtonText"]],["get",["canCraft"]],["helper",["action"],[["get",[null]],"craft"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["isClosing"]]],null,0],["text","\\n"],["open-element","style",[]],["flush-element"],["text","\\n  @keyframes loot-meter-rotate {\\n    from {\\n      transform: rotate(0deg);\\n    }\\n    to {\\n      transform: rotate("],["append",["unknown",["fillRotation"]],false],["text","deg);\\n    }\\n  }\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-slots-container"],null,[["decoratedRecipeSlotStates","recipe","closeCrafter","slotClicked","isCrafting"],[["get",["decoratedRecipeSlotStates"]],["get",["recipe"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["get",["removeItemFromSlot"]],["get",["isCrafting"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","loot-meter-upgrade-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_icon_upgrade.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","loot-meter-champion-mastery-crest"],["dynamic-attr","src",["concat",[["unknown",["championMasteryCrestImage"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","loot-meter-output-image"],["dynamic-attr","src",["concat",[["unknown",["outputImage"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-base\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-meter-state-machine"],["static-attr","state","loading"],["dynamic-attr","is-crafting",["unknown",["isCraftingParam"]],null],["dynamic-attr","is-closing",["unknown",["isClosingParam"]],null],["dynamic-attr","are-slots-full",["unknown",["areSlotsFullParam"]],null],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","filling"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","uikit-states"],["static-attr","non-media-duration","1300"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","filling"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-container"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector","uikit-states"],["static-attr","non-media-duration","1100"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-frame-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-container"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-idle-video"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-full"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-craft-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-craft-outro-perf-flag"],["static-attr","non-media-duration","2200"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","close"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-meter-close-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","finished"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-output-image-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["outputImage"]]],null,3],["text","  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","intro,filling"],["static-attr","class","loot-meter-frame-intro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-frame-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_output_1_intro.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-idle-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-idle-video"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_meter_loop.webm"]]],["static-attr","loop","loop"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","loot-meter-idle-fallback-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flex_crafter_low_spec_meter_loop.png"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","meter-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","meter-mask"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","fill"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_meter_endcap.png"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","meter-container flip"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","meter-mask"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","fill"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_meter_endcap.png"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","full"],["static-attr","class","loot-meter-full-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-full"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_meter_complete_overlay.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","craft"],["static-attr","match-number","2"],["static-attr","class","loot-meter-craft-outro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-craft-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/anim_flexible_output_1_outro.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-meter-craft-outro-perf-flag"],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","close"],["static-attr","class","loot-meter-close-outro-container"],["flush-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","class","loot-meter-close-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/metered-ui-close-outro.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-golden-frame"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","crafter-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_frame_1.png"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-meter-crest-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isChampionMasteryToken"]]],null,2,1],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","visible-state","filling,idle,full"],["static-attr","class","loot-meter-button-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-recipe-ui-meter-button"],null,[["craftButtonText","enabled","craft"],[["get",["craftButtonText"]],["get",["canCraft"]],["helper",["action"],[["get",[null]],"craft"],null]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["isClosing"]]],null,0],["text","\\n"],["open-element","style",[]],["flush-element"],["text","\\n  @keyframes loot-meter-rotate {\\n    from {\\n      transform: rotate(0deg);\\n    }\\n    to {\\n      transform: rotate("],["append",["unknown",["fillRotation"]],false],["text","deg);\\n    }\\n  }\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-slots-container"],null,[["decoratedRecipeSlotStates","recipe","closeCrafter","slotClicked","isCrafting"],[["get",["decoratedRecipeSlotStates"]],["get",["recipe"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["get",["removeItemFromSlot"]],["get",["isCrafting"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","loot-meter-upgrade-icon"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/flexible_crafter/loot_flexible_icon_upgrade.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","loot-meter-champion-mastery-crest"],["dynamic-attr","src",["concat",[["unknown",["championMasteryCrestImage"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","loot-meter-output-image"],["dynamic-attr","src",["concat",[["unknown",["outputImage"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20325,9 +20366,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "O64jS05G",
+          id: "34owcTSa",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-meter-button-background"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-meter-button-text"],["flush-element"],["text","\\n  "],["append",["unknown",["craftButtonText"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-meter-button\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-meter-button-background"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-meter-button-text"],["flush-element"],["text","\\n  "],["append",["unknown",["craftButtonText"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20663,9 +20704,7 @@
           shouldShowLootOdds: o.Ember.computed(
             "recipe.recipeName",
             function () {
-              return this.get("lootService").getGameDataLootRecipe(
-                this.get("recipe.recipeName"),
-              )?.hasVisibleLootOdds;
+              return this.get("recipe.hasVisibleLootOdds");
             },
           ),
           _getLootItemFromRecipe: function () {
@@ -20822,9 +20861,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "lhDWy4Bk",
+          id: "ds1522IM",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["eggAnimationsEnabled"]]],null,15,13],["open-element","div",[]],["static-attr","class","translatedName"],["flush-element"],["text","\\n  "],["append",["unknown",["recipeName"]],false],["text","\\n"],["block",["if"],[["get",["shouldShowLootOdds"]]],null,8],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","crafter-bottom-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowMilestoneTracker"]]],null,7],["text","  "],["open-element","div",[]],["static-attr","class","craft-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowCraftButtons"]]],null,6],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showDropRatesModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["recipe","recipeName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeDropRatesModal"],null]]],0]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","id",["concat",[["unknown",["craftMultipleCount"]]]]],["dynamic-attr","disabled",["unknown",["craftButtonDisabled"]],null],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"craftMultiple"],null],null],["modifier",["action"],[["get",[null]],"craftMultipleMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftMouseLeave"],[["on"],["mouseLeave"]]],["flush-element"],["text","\\n          "],["append",["unknown",["craftMultipleText"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowCraftMultipleButton"]]],null,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"getMore"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_get_more_button_text"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lc-tooltip",[]],["static-attr","direction","top"],["flush-element"],["text","\\n              "],["open-element","lc-tooltip-content",[]],["static-attr","class","craft-button-slots-unfilled-tooltip"],["flush-element"],["text","\\n                "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","loot_open_disabled_unfilled_slots_tooltip_text"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["craftButtonDisabled"]],null],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"craft",1],null],null],["modifier",["action"],[["get",[null]],"craftMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftMouseLeave"],[["on"],["mouseLeave"]]],["flush-element"],["text","\\n          "],["append",["unknown",["craftButtonText"]],false],["text","\\n"],["block",["if"],[["get",["slotsUnfilled"]]],null,5],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGetMoreButton"]]],null,4,3]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-recipe-milestones-tracker"],null,[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","setMilestoneCounterLoaded","craftButtonClicked","craftButtonHoveredQuantity","claimMilestonesRewards","revealRecipeResults"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["get",["setMilestonesUnavailable"]],["helper",["action"],[["get",[null]],"setMilestoneCounterLoaded"],null],["get",["craftButtonClicked"]],["get",["craftButtonHoveredQuantity"]],["helper",["action"],[["get",[null]],"claimMilestonesRewards"],null],["get",["revealRecipeResults"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"lootOddsTooltipClicked"],null],null],["static-attr","class","loot-odds-tooltip"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","src","/fe/lol-loot/assets/tooltips/loot_odds_tooltip_icon.svg"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","type","idle"],["static-attr","class","static-chest-image"],["dynamic-attr","src",["concat",[["unknown",["imageSrc"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","chest-idle"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","type","idle"],["static-attr","class","static-chest-image"],["dynamic-attr","src",["concat",[["unknown",["imageSrc"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","chest-intro"],["static-attr","signal-before-end","0.33"],["static-attr","fade-in","100"],["static-attr","fade-out","300"],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","intro"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","chest-idle"],["static-attr","fade-in","100"],["static-attr","fade-out","300"],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","idle"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["static-attr","name","chest-outro"],["static-attr","fade-in","100"],["static-attr","fade-out","100"],["dynamic-attr","signal-before-end",["concat",[["unknown",["chestOutroTiming"]]]]],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","outro"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","chest-video-state-machine"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","chest-active"],["static-attr","no-preserve-state",""],["static-attr","wait-for-end",""],["flush-element"],["text","\\n"],["block",["if"],[["get",["chestAnimationsEnabled"]]],null,11,10],["text","        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","chest-finished"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","chest-animation"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasVideos"]]],null,12,9],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-video",[]],["static-attr","signal-before-end","0.25"],["static-attr","id","egg-vfx"],["static-attr","type","intro"],["dynamic-attr","src",["concat",[["unknown",["eggVfxSrc"]]]]],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","hextech-egg-lottie-frame"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hextech-egg-lottie-container"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-lottie",[]],["static-attr","id","hextech-egg-lottie"],["static-attr","src","fe/lol-loot/lottie/HextechEgg.json"],["static-attr","autoplay","false"],["dynamic-attr","param-twitch",["concat",[["unknown",["isTwitchEgg"]]]]],["dynamic-attr","param-green",["concat",[["unknown",["isCommon"]]]]],["dynamic-attr","param-blue",["concat",[["unknown",["isEpic"]]]]],["dynamic-attr","param-purple",["concat",[["unknown",["isLegendary"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","id","hexegg-emblem"],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["animateEgg"]],"hide"],null]]]],["dynamic-attr","src",["concat",["fe/lol-loot/lottie/images/",["unknown",["eggEmblemSrc"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["animateEgg"]]],null,14],["text","    "],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","id","egg-loop-video"],["static-attr","type","idle"],["static-attr","src","fe/lol-loot/lottie/videos/HexEgg_VFX_Loop.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","autoplay",""],["static-attr","preload",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-open\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["eggAnimationsEnabled"]]],null,15,13],["open-element","div",[]],["static-attr","class","translatedName"],["flush-element"],["text","\\n  "],["append",["unknown",["recipeName"]],false],["text","\\n"],["block",["if"],[["get",["shouldShowLootOdds"]]],null,8],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","crafter-bottom-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowMilestoneTracker"]]],null,7],["text","  "],["open-element","div",[]],["static-attr","class","craft-button-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowCraftButtons"]]],null,6],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showDropRatesModal"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["recipe","recipeName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeDropRatesModal"],null]]],0]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","id",["concat",[["unknown",["craftMultipleCount"]]]]],["dynamic-attr","disabled",["unknown",["craftButtonDisabled"]],null],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"craftMultiple"],null],null],["modifier",["action"],[["get",[null]],"craftMultipleMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftMouseLeave"],[["on"],["mouseLeave"]]],["flush-element"],["text","\\n          "],["append",["unknown",["craftMultipleText"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowCraftMultipleButton"]]],null,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"getMore"],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_get_more_button_text"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lc-tooltip",[]],["static-attr","direction","top"],["flush-element"],["text","\\n              "],["open-element","lc-tooltip-content",[]],["static-attr","class","craft-button-slots-unfilled-tooltip"],["flush-element"],["text","\\n                "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","loot_open_disabled_unfilled_slots_tooltip_text"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","button-container"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["craftButtonDisabled"]],null],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"craft",1],null],null],["modifier",["action"],[["get",[null]],"craftMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftMouseLeave"],[["on"],["mouseLeave"]]],["flush-element"],["text","\\n          "],["append",["unknown",["craftButtonText"]],false],["text","\\n"],["block",["if"],[["get",["slotsUnfilled"]]],null,5],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGetMoreButton"]]],null,4,3]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-recipe-milestones-tracker"],null,[["recipe","lootMilestones","milestonesUnavailable","setMilestonesUnavailable","setMilestoneCounterLoaded","craftButtonClicked","craftButtonHoveredQuantity","claimMilestonesRewards","revealRecipeResults"],[["get",["recipe"]],["get",["lootMilestones"]],["get",["milestonesUnavailable"]],["get",["setMilestonesUnavailable"]],["helper",["action"],[["get",[null]],"setMilestoneCounterLoaded"],null],["get",["craftButtonClicked"]],["get",["craftButtonHoveredQuantity"]],["helper",["action"],[["get",[null]],"claimMilestonesRewards"],null],["get",["revealRecipeResults"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"lootOddsTooltipClicked"],null],null],["static-attr","class","loot-odds-tooltip"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","src","/fe/lol-loot/assets/tooltips/loot_odds_tooltip_icon.svg"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","type","idle"],["static-attr","class","static-chest-image"],["dynamic-attr","src",["concat",[["unknown",["imageSrc"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","chest-idle"],["flush-element"],["text","\\n              "],["open-element","img",[]],["static-attr","type","idle"],["static-attr","class","static-chest-image"],["dynamic-attr","src",["concat",[["unknown",["imageSrc"]]]]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","name","chest-intro"],["static-attr","signal-before-end","0.33"],["static-attr","fade-in","100"],["static-attr","fade-out","300"],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","intro"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["static-attr","name","chest-idle"],["static-attr","fade-in","100"],["static-attr","fade-out","300"],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","idle"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["static-attr","name","chest-outro"],["static-attr","fade-in","100"],["static-attr","fade-out","100"],["dynamic-attr","signal-before-end",["concat",[["unknown",["chestOutroTiming"]]]]],["dynamic-attr","src",["concat",[["unknown",["videoSrcs","outro"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-video-state-machine",[]],["static-attr","id","chest-video-state-machine"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","chest-active"],["static-attr","no-preserve-state",""],["static-attr","wait-for-end",""],["flush-element"],["text","\\n"],["block",["if"],[["get",["chestAnimationsEnabled"]]],null,11,10],["text","        "],["close-element"],["text","\\n        "],["open-element","lol-uikit-video-state",[]],["static-attr","state","chest-finished"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","chest-animation"],["flush-element"],["text","\\n"],["block",["if"],[["get",["hasVideos"]]],null,12,9],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-video",[]],["static-attr","signal-before-end","0.25"],["static-attr","id","egg-vfx"],["static-attr","type","intro"],["dynamic-attr","src",["concat",[["unknown",["eggVfxSrc"]]]]],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","preload",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","hextech-egg-lottie-frame"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","hextech-egg-lottie-container"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-lottie",[]],["static-attr","id","hextech-egg-lottie"],["static-attr","src","fe/lol-loot/lottie/HextechEgg.json"],["static-attr","autoplay","false"],["dynamic-attr","param-twitch",["concat",[["unknown",["isTwitchEgg"]]]]],["dynamic-attr","param-green",["concat",[["unknown",["isCommon"]]]]],["dynamic-attr","param-blue",["concat",[["unknown",["isEpic"]]]]],["dynamic-attr","param-purple",["concat",[["unknown",["isLegendary"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","img",[]],["static-attr","id","hexegg-emblem"],["dynamic-attr","class",["concat",[["helper",["if"],[["get",["animateEgg"]],"hide"],null]]]],["dynamic-attr","src",["concat",["fe/lol-loot/lottie/images/",["unknown",["eggEmblemSrc"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["animateEgg"]]],null,14],["text","    "],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","id","egg-loop-video"],["static-attr","type","idle"],["static-attr","src","fe/lol-loot/lottie/videos/HexEgg_VFX_Loop.webm"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","autoplay",""],["static-attr","preload",""],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -20967,9 +21006,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "IxPfC05G",
+          id: "/HOlHtCL",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-reroll-state-machine"],["static-attr","state","loading"],["dynamic-attr","is-crafting",["unknown",["isCraftingParam"]],null],["dynamic-attr","is-closing",["unknown",["isClosingParam"]],null],["dynamic-attr","are-slots-full",["unknown",["areSlotsFullParam"]],null],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full-intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-not-full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full-intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","full-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","close"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","finished"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,4],["text","\\n"],["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-magic-pulse"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_4_magic_pulse.webm"]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["isClosing"]]],null,3],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,2],["text","\\n"],["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-rings-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full"],["static-attr","class","loot-reroll-rings-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","full-intro"],["static-attr","class","loot-reroll-rings-full-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_full_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-full"],["static-attr","class","loot-reroll-rings-full-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_full_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,1],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","close"],["static-attr","class","loot-reroll-close-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot-reroll-close-outro.webm"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowSlots"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-slots-container"],null,[["decoratedRecipeSlotStates","recipe","closeCrafter","slotClicked","isCrafting"],[["get",["decoratedRecipeSlotStates"]],["get",["recipe"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["get",["removeItemFromSlot"]],["get",["isCrafting"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-rings-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-switch",[]],["static-attr","visible-state","*"],["dynamic-attr","state",["unknown",["stateMachineState"]],null],["static-attr","class","loot-reroll-inner-plate-container"],["static-attr","match-string","state"],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-inner-plate-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_in.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-inner-plate-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-inner-plate-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_out.webm"]]],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-inner-plate-pulse"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_pulse.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-recipe-ui-reroll-button"],null,[["parentState","canCraft","buttonState","craft","changeButtonState"],[["get",["stateMachineState"]],["get",["canCraft"]],["get",["buttonState"]],["helper",["action"],[["get",[null]],"craft"],null],["helper",["action"],[["get",[null]],"changeButtonState"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-whirlpool-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-whirlpool-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-whirlpool-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-reroll-state-machine"],["static-attr","state","loading"],["dynamic-attr","is-crafting",["unknown",["isCraftingParam"]],null],["dynamic-attr","is-closing",["unknown",["isClosingParam"]],null],["dynamic-attr","are-slots-full",["unknown",["areSlotsFullParam"]],null],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-whirlpool-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-inner-plate-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full-intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-not-full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","full-intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","full-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-full"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-full-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-not-full"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","are-slots-full"],["static-attr","value","no"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","close"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is-closing"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-whirlpool-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-inner-plate-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-rings-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","close"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","finished"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-close-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","uikit-state",[]],["static-attr","name","finished"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,4],["text","\\n"],["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-magic-pulse"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_4_magic_pulse.webm"]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["unless"],[["get",["isClosing"]]],null,3],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,2],["text","\\n"],["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-rings-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full"],["static-attr","class","loot-reroll-rings-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","full-intro"],["static-attr","class","loot-reroll-rings-full-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_full_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-full"],["static-attr","class","loot-reroll-rings-full-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_full_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,1],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","close"],["static-attr","class","loot-reroll-close-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot-reroll-close-outro.webm"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["shouldShowSlots"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-crafter-slots-container"],null,[["decoratedRecipeSlotStates","recipe","closeCrafter","slotClicked","isCrafting"],[["get",["decoratedRecipeSlotStates"]],["get",["recipe"]],["helper",["action"],[["get",[null]],"closeCrafter"],null],["get",["removeItemFromSlot"]],["get",["isCrafting"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-rings-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-switch",[]],["static-attr","visible-state","*"],["dynamic-attr","state",["unknown",["stateMachineState"]],null],["static-attr","class","loot-reroll-inner-plate-container"],["static-attr","match-string","state"],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-inner-plate-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_in.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-inner-plate-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-inner-plate-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_out.webm"]]],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-inner-plate-pulse"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_pulse.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["loot-recipe-ui-reroll-button"],null,[["parentState","canCraft","buttonState","craft","changeButtonState"],[["get",["stateMachineState"]],["get",["canCraft"]],["get",["buttonState"]],["helper",["action"],[["get",[null]],"craft"],null],["helper",["action"],[["get",[null]],"changeButtonState"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-whirlpool-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-not-full,full-intro,idle-full"],["static-attr","class","loot-reroll-whirlpool-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-whirlpool-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21035,9 +21074,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "bhziDTxr",
+          id: "ff7/sycj",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\index.js\\" "],["text","\\n"],["open-element","uikit-states",[]],["flush-element"],["text","\\n  "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-hover-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-click-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-craft-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-closed"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","open-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","full-intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-closed"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","open-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","full-intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","open-intro"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-hover"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseEnter"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","deactivate"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-not-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-hover"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseEnter"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","deactivate"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-not-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","deactivate"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-closed"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open-hover"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-hover-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","none"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open-click"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-click-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","craft"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","none"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-craft-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,5],["open-element","img",[]],["static-attr","visible-state","idle-closed"],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_closed.png"]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,4,3],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,2],["text","\\n"],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","idle-open-hover"],["static-attr","class","loot-reroll-button-open-hover-idle"],["flush-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_hover_loop.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","idle-open-click"],["static-attr","class","loot-reroll-button-open-click-idle"],["flush-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_depressed_loop.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_depressed.png"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,1],["text","\\n"],["block",["if"],[["get",["isCraftButtonEnabled"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","crafter-button-hitbox"],["modifier",["action"],[["get",[null]],"craft"]],["modifier",["action"],[["get",[null]],"craftButtonMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseDown"],[["on"],["mouseDown"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseUp"],[["on"],["mouseUp"]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-button-craft-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","deactivate"],["static-attr","class","loot-reroll-button-deactivate"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_deactivate.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","visible-state","idle-open"],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_active.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","open-intro"],["static-attr","class","loot-reroll-button-open-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_active_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-open"],["static-attr","class","loot-reroll-button-open-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_active_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-button-closed-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_closed_in.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-ui-reroll-button\\\\index.js\\" "],["text","\\n"],["open-element","uikit-states",[]],["flush-element"],["text","\\n  "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-hover-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-click-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-craft-outro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-closed"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-closed-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","open-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","full-intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-closed"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-closed-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","open-intro"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","full-intro"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","open-intro"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-open-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-hover"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseEnter"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","deactivate"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-not-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-hover"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseEnter"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","deactivate"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","idle-not-full"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","deactivate"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-closed"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-reroll-button-deactivate"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open-hover"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-hover-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open-click"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","mouseDown"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","none"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","idle-open-click"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-open-click-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","parent-state"],["static-attr","value","craft"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-open"],["flush-element"],["text","\\n      "],["open-element","uikit-condition-parameter",[]],["static-attr","name","mouse-state"],["static-attr","value","none"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n    "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-reroll-button-craft-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,5],["open-element","img",[]],["static-attr","visible-state","idle-closed"],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_closed.png"]]],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,4,3],["text","\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,2],["text","\\n"],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","idle-open-hover"],["static-attr","class","loot-reroll-button-open-hover-idle"],["flush-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_hover_loop.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_hover.png"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","user-experience-perf-switch",[]],["static-attr","visible-state","idle-open-click"],["static-attr","class","loot-reroll-button-open-click-idle"],["flush-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_depressed_loop.webm"]]],["static-attr","perf-flags","largeAreaAnimationsEnabled"],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_depressed.png"]]],["flush-element"],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,1],["text","\\n"],["block",["if"],[["get",["isCraftButtonEnabled"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","crafter-button-hitbox"],["modifier",["action"],[["get",[null]],"craft"]],["modifier",["action"],[["get",[null]],"craftButtonMouseEnter"],[["on"],["mouseEnter"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseLeave"],[["on"],["mouseLeave"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseDown"],[["on"],["mouseDown"]]],["modifier",["action"],[["get",[null]],"craftButtonMouseUp"],[["on"],["mouseUp"]]],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-reroll-button-craft-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_out.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","deactivate"],["static-attr","class","loot-reroll-button-deactivate"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_deactivate.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","img",[]],["static-attr","visible-state","idle-open"],["static-attr","class","loot-reroll-button-image"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_btn_active.png"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","open-intro"],["static-attr","class","loot-reroll-button-open-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_active_in.webm"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-open"],["static-attr","class","loot-reroll-button-open-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_active_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-reroll-button-closed-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_3_btn_closed_in.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21067,9 +21106,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "EkUa9ywd",
+          id: "eTxYi0me",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-action-tab ",["helper",["if"],[["get",["isMassDisenchantOpen"]],"loot-action-tab-active"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"handleMassDisenchantTabClick"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0],["text","  "],["open-element","div",[]],["static-attr","class","loot-action-tab-mass-disenchant-button"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 19 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","loot-action-tab-mass-disenchant-button-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.3103 7.93103C9.34478 2.75862 9.34478 2.75862 9.68961 0C9.81451 0.915933 9.89417 1.62075 9.97775 2.36024C10.1249 3.66235 10.2842 5.07198 10.7241 7.93103C11.1017 10.3852 11.8735 13.7931 12.1034 14.1379H14.862L9.68961 20L3.82754 14.1379H6.93099C6.96272 13.9793 7.02177 13.7366 7.10728 13.3851L7.10728 13.3851L7.10728 13.3851C7.33156 12.4633 7.73782 10.7934 8.3103 7.93103L8.3103 7.93103ZM14.8622 12.4141L14.1725 4.82794L19.0001 9.65552L14.8622 12.4141ZM4.86225 5.17221L4.1726 12.7584L0.034668 9.99979L4.86225 5.17221Z"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_mass_disenchant_title"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-action-tab\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-action-tab ",["helper",["if"],[["get",["isMassDisenchantOpen"]],"loot-action-tab-active"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"handleMassDisenchantTabClick"],null],null],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0],["text","  "],["open-element","div",[]],["static-attr","class","loot-action-tab-mass-disenchant-button"],["flush-element"],["text","\\n    "],["open-element","svg",[]],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 19 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n      "],["open-element","path",[]],["static-attr","class","loot-action-tab-mass-disenchant-button-path"],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M8.3103 7.93103C9.34478 2.75862 9.34478 2.75862 9.68961 0C9.81451 0.915933 9.89417 1.62075 9.97775 2.36024C10.1249 3.66235 10.2842 5.07198 10.7241 7.93103C11.1017 10.3852 11.8735 13.7931 12.1034 14.1379H14.862L9.68961 20L3.82754 14.1379H6.93099C6.96272 13.9793 7.02177 13.7366 7.10728 13.3851L7.10728 13.3851L7.10728 13.3851C7.33156 12.4633 7.73782 10.7934 8.3103 7.93103L8.3103 7.93103ZM14.8622 12.4141L14.1725 4.82794L19.0001 9.65552L14.8622 12.4141ZM4.86225 5.17221L4.1726 12.7584L0.034668 9.99979L4.86225 5.17221Z"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_mass_disenchant_title"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21312,9 +21351,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "uyz9PEkH",
+          id: "r3WbAM+8",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\index.js\\" "],["text","\\n"],["append",["helper",["loot-mass-disenchant-animations"],null,[["is_crafting","currency_added_asset","onAnimationChange"],[["get",["is_crafting"]],["get",["currency_added_asset"]],["helper",["action"],[["get",[null]],"onAnimationChange"],null]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"closeMassDisenchant"],null],null],["flush-element"],["text","\\n      "],["open-element","lol-uikit-close-button",[]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-ring loot-mass-disenchant-wheel-ring-inner"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-ring loot-mass-disenchant-wheel-ring-outer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["disenchantDisabled"]]],null,2,1],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-craft-button-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","craft-button"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["disenchantDisabled"]],null],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"executeMassDisenchant"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","loot_recipe_button_disenchant"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["append",["helper",["loot-mass-disenchant-selection-category"],null,[["selectedCategory","onClick","disenchantableCategory","massDisenchantPlayerSelection","disenchantCurrencyName"],[["get",["selectedCategory"]],["helper",["action"],[["get",[null]],"updateCategorySelection",["get",["disenchantableCategory","displayCategories"]]],null],["get",["disenchantableCategory"]],["get",["massDisenchantPlayerSelection"]],["get",["disenchantBalance","currencyName"]]]]],false],["text","\\n"]],"locals":["disenchantableCategory"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-description"],["flush-element"],["text","\\n          "],["append",["helper",["sanitize"],[["get",["tra","loot_mass_disenchant_auto_select_description$html"]]],null],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-selection-categories"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radio-input",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disenchantableCategories"]]],null,0],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-summary"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_summary_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-deltas"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-currency"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-icon"],["dynamic-attr","style",["unknown",["disenchantBalance","currencyBackgroundImageStyle"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-balance-delta"],["flush-element"],["append",["unknown",["disenchantBalance","delta"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-empty"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_nothing_to_disenchant"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-description"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_empty_state_description"]],false],["text","\\n        "],["close-element"],["text","\\n         "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-description"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_empty_state_hint"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant\\\\index.js\\" "],["text","\\n"],["append",["helper",["loot-mass-disenchant-animations"],null,[["is_crafting","currency_added_asset","onAnimationChange"],[["get",["is_crafting"]],["get",["currency_added_asset"]],["helper",["action"],[["get",[null]],"onAnimationChange"],null]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-header"],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"closeMassDisenchant"],null],null],["flush-element"],["text","\\n      "],["open-element","lol-uikit-close-button",[]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-ring loot-mass-disenchant-wheel-ring-inner"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-ring loot-mass-disenchant-wheel-ring-outer"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["disenchantDisabled"]]],null,2,1],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-craft-button-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","craft-button"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","disabled",["unknown",["disenchantDisabled"]],null],["dynamic-attr","onClick",["helper",["action"],[["get",[null]],"executeMassDisenchant"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","loot_recipe_button_disenchant"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["append",["helper",["loot-mass-disenchant-selection-category"],null,[["selectedCategory","onClick","disenchantableCategory","massDisenchantPlayerSelection","disenchantCurrencyName"],[["get",["selectedCategory"]],["helper",["action"],[["get",[null]],"updateCategorySelection",["get",["disenchantableCategory","displayCategories"]]],null],["get",["disenchantableCategory"]],["get",["massDisenchantPlayerSelection"]],["get",["disenchantBalance","currencyName"]]]]],false],["text","\\n"]],"locals":["disenchantableCategory"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-description"],["flush-element"],["text","\\n          "],["append",["helper",["sanitize"],[["get",["tra","loot_mass_disenchant_auto_select_description$html"]]],null],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-selection-categories"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-radio-input",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disenchantableCategories"]]],null,0],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-summary"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_summary_title"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-deltas"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-currency"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-icon"],["dynamic-attr","style",["unknown",["disenchantBalance","currencyBackgroundImageStyle"]],null],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-balance-summary-balance-delta"],["flush-element"],["append",["unknown",["disenchantBalance","delta"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-empty"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-icon"],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-title"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_nothing_to_disenchant"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-description"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_empty_state_description"]],false],["text","\\n        "],["close-element"],["text","\\n         "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-wheel-header-empty-state-description"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","loot_mass_disenchant_empty_state_hint"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21379,9 +21418,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "0rVWOgpX",
+          id: "1l9Sk5uB",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-mass-disenchant-state-machine"],["dynamic-attr","is_crafting",["unknown",["is_crafting"]],null],["dynamic-attr","currency_added_asset",["unknown",["currency_added_asset"]],null],["static-attr","state","loading"],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-transition"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-transition"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","currency_added_animation"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","currency_added_asset"],["static-attr","value","currency_champion"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","currency_added_animation"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","currency_added_asset"],["static-attr","value","currency_cosmetic"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","currency_added_animation"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,0],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state",""],["static-attr","class","loot-mass-disenchant-rings-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-whirlpool-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle"],["static-attr","class","loot-mass-disenchant-whirlpool-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-whirlpool-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_out.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-switch",[]],["static-attr","visible-state","*"],["dynamic-attr","state",["unknown",["stateMachineState"]],null],["static-attr","class","loot-mass-disenchant-inner-plate-container"],["static-attr","match-string","state"],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-inner-plate-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_in.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle"],["static-attr","class","loot-mass-disenchant-inner-plate-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-inner-plate-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_out.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-rings-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-mass-disenchant-summary-open"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-transition,idle"],["static-attr","class","loot-mass-disenchant-summary-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-rings-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_out.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","*"],["dynamic-attr","class",["concat",["loot-mass-disenchant-currency-animation loot-mass-disenchant-currency-animation-",["unknown",["currency_added_asset"]]]]],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/disenchant_outro_currency_champion.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-animations\\\\index.js\\" "],["text","\\n"],["open-element","uikit-state-machine",[]],["static-attr","class","loot-mass-disenchant-state-machine"],["dynamic-attr","is_crafting",["unknown",["is_crafting"]],null],["dynamic-attr","currency_added_asset",["unknown",["currency_added_asset"]],null],["static-attr","state","loading"],["flush-element"],["text","\\n  "],["open-element","uikit-states",[]],["flush-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","loading"],["flush-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","can-play",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","intro"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle-transition"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle-transition"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","preloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","idle"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","idle"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-intro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","craft"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","is_crafting"],["static-attr","value","yes"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","craft"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-idle"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-rings-outro"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","currency_added_animation"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","currency_added_asset"],["static-attr","value","currency_champion"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","currency_added_animation"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-parameter",[]],["static-attr","name","currency_added_asset"],["static-attr","value","currency_cosmetic"],["flush-element"],["close-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-state",[]],["static-attr","name","currency_added_animation"],["flush-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-summary-open"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-whirlpool-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-inner-plate-outro"],["static-attr","unloading",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-behavior-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","playing",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-transition",[]],["static-attr","next-state","intro"],["flush-element"],["text","\\n        "],["open-element","uikit-condition-media",[]],["static-attr","selector",".loot-mass-disenchant-currency-animation"],["static-attr","ended",""],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["crafterAnimationsEnabled"]]],null,0],["text","\\n  "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state",""],["static-attr","class","loot-mass-disenchant-rings-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-whirlpool-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle"],["static-attr","class","loot-mass-disenchant-whirlpool-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-whirlpool-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_5_whirlpool_out.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-switch",[]],["static-attr","visible-state","*"],["dynamic-attr","state",["unknown",["stateMachineState"]],null],["static-attr","class","loot-mass-disenchant-inner-plate-container"],["static-attr","match-string","state"],["flush-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-inner-plate-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_in.webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle"],["static-attr","class","loot-mass-disenchant-inner-plate-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n      "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-inner-plate-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_2_innerPlate_out.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro,idle-transition"],["static-attr","class","loot-mass-disenchant-rings-intro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_in.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","intro"],["static-attr","class","loot-mass-disenchant-summary-open"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_intro.webm"]]],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","idle-transition,idle"],["static-attr","class","loot-mass-disenchant-summary-idle"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reveal_redeem/anim_reveal_permanent_loop.webm"]]],["static-attr","loop",""],["flush-element"],["close-element"],["text","\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","craft"],["static-attr","class","loot-mass-disenchant-rings-outro"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/reroll_crafter/loot_reroll_1_rings_out.webm"]]],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","uikit-video",[]],["static-attr","cache-name","rcp-fe-lol-loot"],["static-attr","visible-state","*"],["dynamic-attr","class",["concat",["loot-mass-disenchant-currency-animation loot-mass-disenchant-currency-animation-",["unknown",["currency_added_asset"]]]]],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/disenchant_outro_currency_champion.webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21480,9 +21519,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "j90k3JUq",
+          id: "rpW48wx6",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-radio-input-option",[]],["dynamic-attr","selected",["unknown",["isCategorySelected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],["get",["onClick"]]],null],null],["static-attr","class","loot-mass-disenchant-selection-category-option"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-info"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","loot-mass-disenchant-selection-category-icon"],["dynamic-attr","src",["concat",[["unknown",["disenchantableCategory","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["selectionCategoryTitle"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-values"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-shards"],["flush-element"],["text","\\n        "],["append",["unknown",["numberOfSmartSelectedShards"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-mass-disenchant-selection-category-title-disenchant-limit\\n          ",["helper",["if"],[["get",["shouldDisplayLimit"]],"loot-mass-disenchant-selection-category-title-disenchant-limit-visible"],null]]]],["flush-element"],["text","\\n        (-"],["open-element","span",[]],["dynamic-attr","class",["unknown",["categoryCurrencyClass"]],null],["flush-element"],["append",["unknown",["numberOfShardsToDisenchant"]],false],["close-element"],["text",")\\n        "],["open-element","span",[]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-limit-tooltip-anchor"],["flush-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0],["text","        "],["close-element"],["text","\\n\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-limit-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n              "],["append",["helper",["sanitize"],[["get",["disenchantLimitTra"]]],null],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-mass-disenchant-selection-category\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-radio-input-option",[]],["dynamic-attr","selected",["unknown",["isCategorySelected"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],["get",["onClick"]]],null],null],["static-attr","class","loot-mass-disenchant-selection-category-option"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-info"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","loot-mass-disenchant-selection-category-icon"],["dynamic-attr","src",["concat",[["unknown",["disenchantableCategory","iconPath"]]]]],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["selectionCategoryTitle"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-values"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-shards"],["flush-element"],["text","\\n        "],["append",["unknown",["numberOfSmartSelectedShards"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-mass-disenchant-selection-category-title-disenchant-limit\\n          ",["helper",["if"],[["get",["shouldDisplayLimit"]],"loot-mass-disenchant-selection-category-title-disenchant-limit-visible"],null]]]],["flush-element"],["text","\\n        (-"],["open-element","span",[]],["dynamic-attr","class",["unknown",["categoryCurrencyClass"]],null],["flush-element"],["append",["unknown",["numberOfShardsToDisenchant"]],false],["close-element"],["text",")\\n        "],["open-element","span",[]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-limit-tooltip-anchor"],["flush-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],0],["text","        "],["close-element"],["text","\\n\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","class","loot-mass-disenchant-selection-category-title-disenchant-limit-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n              "],["append",["helper",["sanitize"],[["get",["disenchantLimitTra"]]],null],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21609,9 +21648,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "aNfOggE8",
+          id: "jDNXSnPD",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-tray-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMassDisenchantEnabled"]]],null,1],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-to-store-button ",["unknown",["storeStatusClass"]]]]],["modifier",["action"],[["get",[null]],"goToStore"]],["modifier",["action"],[["get",[null]],"purchaseChestButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["shouldUseWalletsForBlueEssence"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["orangeCount"]],["get",["orangeItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["mythicCount"]],["get",["mythicItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["keyCount"]],["get",["keyItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["chestCount"]],["get",["chestItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["blueCount"]],["get",["blueItem"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-tray-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isMassDisenchantEnabled"]]],null,1],["text","  "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-to-store-button ",["unknown",["storeStatusClass"]]]]],["modifier",["action"],[["get",[null]],"goToStore"]],["modifier",["action"],[["get",[null]],"purchaseChestButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n"],["block",["unless"],[["get",["shouldUseWalletsForBlueEssence"]]],null,0],["text","  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["orangeCount"]],["get",["orangeItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["mythicCount"]],["get",["mythicItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["keyCount"]],["get",["keyItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n    "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["chestCount"]],["get",["chestItem"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-currency-container"],["flush-element"],["text","\\n      "],["append",["helper",["loot-tray-item"],null,[["targetCount","lootItemName"],[["get",["blueCount"]],["get",["blueItem"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-recipe-help-container"],["flush-element"],["text","\\n      "],["append",["unknown",["loot-recipe-help-button"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21739,9 +21778,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "hgE3heCN",
+          id: "avWkjgeq",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\index.js\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["text","\\n"],["block",["if"],[["get",["assetName"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-currency-text-container"],["flush-element"],["text","\\n  "],["append",["unknown",["displayedCount"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","id","animation-add"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/resource_add_",["unknown",["assetName"]],".webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","id","animation-remove"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/resource_remove_",["unknown",["assetName"]],".webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-currency-icon-container"],["dynamic-attr","style",["unknown",["trayIconBackgroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipName"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-tray-item\\\\index.js\\" "],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],2],["text","\\n"],["block",["if"],[["get",["assetName"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-currency-text-container"],["flush-element"],["text","\\n  "],["append",["unknown",["displayedCount"]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","id","animation-add"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/resource_add_",["unknown",["assetName"]],".webm"]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["static-attr","id","animation-remove"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/resource_remove_",["unknown",["assetName"]],".webm"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loot-currency-icon-container"],["dynamic-attr","style",["unknown",["trayIconBackgroundStyle"]],null],["flush-element"],["text","\\n"],["block",["if"],[["get",["uxSettingsService","animationsEnabled"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tooltipName"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21828,9 +21867,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "V3jucXtd",
+          id: "vh3rGCAw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-category-tab ",["unknown",["selectedState"]]]]],["modifier",["action"],[["get",[null]],"filterItems"]],["flush-element"],["text","\\n  "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["categoryIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],1],["close-element"],["text","\\n"],["block",["if"],[["get",["enableNewCount"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","new-count"],["flush-element"],["text","\\n    "],["append",["unknown",["newCount"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["categoryName"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-category-tab\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-category-tab ",["unknown",["selectedState"]]]]],["modifier",["action"],[["get",[null]],"filterItems"]],["flush-element"],["text","\\n  "],["open-element","img",[]],["dynamic-attr","src",["concat",[["unknown",["categoryIconPath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["right","system"]],1],["close-element"],["text","\\n"],["block",["if"],[["get",["enableNewCount"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","new-count"],["flush-element"],["text","\\n    "],["append",["unknown",["newCount"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["categoryName"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -21947,9 +21986,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "3mfW6g2J",
+          id: "2VTozlns",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","disenchant-modal-container"],["static-attr","id","disenchant-modal-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","backdrop"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","close-button"],["modifier",["action"],[["get",[null]],"cancelDisenchant"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","icon-container"],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["border ",["unknown",["borderType"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","title-text-container"],["flush-element"],["append",["unknown",["lootName"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","description-text-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","essence-icon-container"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/disenchant_modal/",["unknown",["disenchantType"]],".png"]]],["flush-element"],["close-element"],["text"," "],["append",["unknown",["lootItem","disenchantValue"]],false],["text"," "],["append",["unknown",["disenchantDescription"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","craft-button"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"confirmDisenchant"],null],null],["flush-element"],["text","\\n      "],["append",["unknown",["craftButtonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-video-state-machine",[]],["dynamic-attr","class",["concat",["disenchant-video-state-machine disenchant-",["unknown",["disenchantType"]]]]],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disenchant-outro"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","signal-before-end","0.1"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/disenchant_outro_",["unknown",["disenchantType"]],".webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-disenchant\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","disenchant-modal-container"],["static-attr","id","disenchant-modal-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","backdrop"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","close-button"],["modifier",["action"],[["get",[null]],"cancelDisenchant"]],["modifier",["action"],[["get",[null]],"closeButtonHovered"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","icon-container"],["dynamic-attr","style",["unknown",["lootIconPathBackgroundStyle"]],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["border ",["unknown",["borderType"]]]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","title-text-container"],["flush-element"],["append",["unknown",["lootName"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","description-text-container"],["flush-element"],["text","\\n    "],["open-element","img",[]],["static-attr","class","essence-icon-container"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/disenchant_modal/",["unknown",["disenchantType"]],".png"]]],["flush-element"],["close-element"],["text"," "],["append",["unknown",["lootItem","disenchantValue"]],false],["text"," "],["append",["unknown",["disenchantDescription"]],false],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","craft-button"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","cancel-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"confirmDisenchant"],null],null],["flush-element"],["text","\\n      "],["append",["unknown",["craftButtonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["open-element","lol-uikit-video-state-machine",[]],["dynamic-attr","class",["concat",["disenchant-video-state-machine disenchant-",["unknown",["disenchantType"]]]]],["flush-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disenchant-outro"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["static-attr","fade-in","0"],["static-attr","fade-out","0"],["static-attr","signal-before-end","0.1"],["dynamic-attr","src",["concat",[["unknown",["pluginNamespace"]],"/assets/videos/disenchant_outro_",["unknown",["disenchantType"]],".webm"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -22028,9 +22067,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "dcwfq7js",
+          id: "6npyJF1c",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-filter"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","searchbox-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n      "],["append",["helper",["input"],null,[["type","value","class","placeholder"],["search",["get",["searchFilter"]],"searchbox-text",["get",["tra","loot_filter_searchbox_placeholder_text"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","dropdown-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","champions-collection-filter ownership-filter"],["flush-element"],["text","\\n"],["block",["each"],[["get",["dropdownOptions"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","value",["unknown",["option","value"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortType",["get",["option","value"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["option","label"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["option"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-filter\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-filter"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","searchbox-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-flat-input",[]],["flush-element"],["text","\\n      "],["append",["helper",["input"],null,[["type","value","class","placeholder"],["search",["get",["searchFilter"]],"searchbox-text",["get",["tra","loot_filter_searchbox_placeholder_text"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","dropdown-container"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","class","champions-collection-filter ownership-filter"],["flush-element"],["text","\\n"],["block",["each"],[["get",["dropdownOptions"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","value",["unknown",["option","value"]],null],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"setSortType",["get",["option","value"]]],null],null],["flush-element"],["text","\\n          "],["append",["unknown",["option","label"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["option"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -22149,9 +22188,9 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "9sT0Eqcn",
+          id: "ztd8rPFR",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-help-button"],["modifier",["action"],[["get",[null]],"showHelpModal"]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-help-button\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","recipe-help-button"],["modifier",["action"],[["get",[null]],"showHelpModal"]],["modifier",["action"],[["get",[null]],"mouseEnter"],[["on"],["mouseEnter"]]],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -22597,16 +22636,47 @@
       (e, t, n) => {
         const o = n(1).Ember;
         e.exports = o.HTMLBars.template({
-          id: "Dz3bf9bz",
+          id: "BS/u5oC5",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-milestone-reward-tooltip-content"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","reward-tooltip-image"],["dynamic-attr","src",["concat",[["unknown",["imagePath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","reward-tooltip-image-gradient-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","reward-tooltip-text-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-item-header"],["flush-element"],["append",["unknown",["rewardName"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-item-description"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipDescription","icon"]]],null,7],["text","      "],["open-element","span",[]],["flush-element"],["append",["unknown",["tooltipDescription","text"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showHeaderBanner"]]],null,6]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text"],["flush-element"],["append",["unknown",["remainingToOpen"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claimed"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claimed_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["alreadyClaimed"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claim"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claim_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claim"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claim_all_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["multipleToClaim"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind-straight left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind-straight right"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind right"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side right"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["claimable"]]],null,5,2],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","reward-tooltip-item-type-icon"],["dynamic-attr","src",["concat",[["unknown",["tooltipDescription","icon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-loot\\\\src\\\\app\\\\components\\\\loot-recipe-milestone-reward-tooltip\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-milestone-reward-tooltip-content"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","reward-tooltip-image"],["dynamic-attr","src",["concat",[["unknown",["imagePath"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","reward-tooltip-image-gradient-overlay"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","reward-tooltip-text-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-item-header"],["flush-element"],["append",["unknown",["rewardName"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-item-description"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipDescription","icon"]]],null,7],["text","      "],["open-element","span",[]],["flush-element"],["append",["unknown",["tooltipDescription","text"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showHeaderBanner"]]],null,6]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text"],["flush-element"],["append",["unknown",["remainingToOpen"]],false],["close-element"],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claimed"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claimed_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["alreadyClaimed"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claim"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claim_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","reward-tooltip-header-text claim"],["flush-element"],["append",["unknown",["tra","loot_milestones_reward_tooltip_claim_all_header"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["multipleToClaim"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind-straight left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side left"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind-straight right"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side-behind right"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","reward-tooltip-claim-header-side right"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["claimable"]]],null,5,2],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","class","reward-tooltip-item-type-icon"],["dynamic-attr","src",["concat",[["unknown",["tooltipDescription","icon"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
+        var o = n(1);
+        e.exports = o.Ember.Service.extend({
+          init() {
+            this._super(...arguments),
+              (this.clientConfigDataBinding = (0, o.dataBinding)(
+                "/client-config/v2/config",
+                o.socket,
+              )),
+              this.initConfigObservers();
+          },
+          initConfigObservers() {
+            this.observeConfig(
+              "externalLootSupportUrl",
+              "/lol.client_settings.store.lcu.externalLootSupportUrl",
+            );
+          },
+          observeConfig(e, t) {
+            this.clientConfigDataBinding.observe(t, this, (t) => {
+              this.isDestroying ||
+                this.isDestroyed ||
+                this.set(e, "string" == typeof t ? t : "");
+            });
+          },
+          willDestroyElement() {
+            this._super(...arguments),
+              this.clientConfigDataBinding.unobserve(this);
+          },
+        });
+      },
+      (e, t, n) => {
+        "use strict";
         var o = n(1),
-          r = n(245),
+          r = n(246),
           i = (function (e, t) {
             if (!t && e && e.__esModule) return e;
             if (null === e || ("object" != typeof e && "function" != typeof e))
@@ -22629,8 +22699,8 @@
             return o;
           })(n(7)),
           s = l(n(211)),
-          a = l(n(246));
-        n(247);
+          a = l(n(247));
+        n(248);
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -23071,6 +23141,8 @@
           "CHEST_new_player",
           "CHEST_day_one",
           "CHEST_224",
+          "CHEST_687",
+          "CHEST_688",
           "CHEST_promotion",
           "CHEST_96",
           "CHEST_97",
@@ -23615,7 +23687,7 @@
       (e, t, n) => {
         "use strict";
         var o = n(1);
-        n(253);
+        n(254);
         var r = n(3);
         e.exports = o.Ember.Service.extend({
           locHelper: o.Ember.inject.service("lootLocHelper"),
@@ -23640,7 +23712,7 @@
                 )
               : this.get("tra").get("loot_redeem_notification_body");
             const s = e.isRental ? "shard" : "permanent",
-              a = n(254)({
+              a = n(255)({
                 titleLoc: t,
                 bodyLoc: i,
                 borderType: s,
@@ -23800,6 +23872,7 @@
                   e
                     .get("rcp-fe-lol-shared-components")
                     .getSharedEmberComponents(),
+                socket: (e) => e.getSocket(),
                 Telemetry: (e) => e.get("rcp-fe-common-libs").getTelemetry("1"),
                 TooltipManager: (e) =>
                   e.get("rcp-fe-lol-uikit").getTooltipManager(),

@@ -64400,6 +64400,7 @@
               "a",
               "hr",
               "img",
+              "u",
             ],
             allowedAttributes: {
               "*": ["class", "style"],
@@ -69824,8 +69825,8 @@
               u = Math.min(this.line + 2, s.length),
               l = String(u).length;
             if (t) {
-              let { bold: t, red: e, gray: i } = r.createColors(!0);
-              (n = (n) => t(e(n))), (o = (t) => i(t));
+              let { bold: t, gray: e, red: i } = r.createColors(!0);
+              (n = (e) => t(i(e))), (o = (t) => e(t));
             } else n = o = (t) => t;
             return s
               .slice(a, u)
@@ -69939,22 +69940,150 @@
                     : this.append(n);
               } else this[e] = t[e];
           }
+          addToError(t) {
+            if (
+              ((t.postcssNode = this),
+              t.stack && this.source && /\n\s{4}at /.test(t.stack))
+            ) {
+              let e = this.source;
+              t.stack = t.stack.replace(
+                /\n\s{4}at /,
+                `$&${e.input.from}:${e.start.line}:${e.start.column}$&`,
+              );
+            }
+            return t;
+          }
+          after(t) {
+            return this.parent.insertAfter(this, t), this;
+          }
+          assign(t = {}) {
+            for (let e in t) this[e] = t[e];
+            return this;
+          }
+          before(t) {
+            return this.parent.insertBefore(this, t), this;
+          }
+          cleanRaws(t) {
+            delete this.raws.before,
+              delete this.raws.after,
+              t || delete this.raws.between;
+          }
+          clone(t = {}) {
+            let e = u(this);
+            for (let n in t) e[n] = t[n];
+            return e;
+          }
+          cloneAfter(t = {}) {
+            let e = this.clone(t);
+            return this.parent.insertAfter(this, e), e;
+          }
+          cloneBefore(t = {}) {
+            let e = this.clone(t);
+            return this.parent.insertBefore(this, e), e;
+          }
           error(t, e = {}) {
             if (this.source) {
-              let { start: n, end: r } = this.rangeBy(e);
+              let { end: n, start: r } = this.rangeBy(e);
               return this.source.input.error(
                 t,
-                { line: n.line, column: n.column },
-                { line: r.line, column: r.column },
+                { column: r.column, line: r.line },
+                { column: n.column, line: n.line },
                 e,
               );
             }
             return new o(t);
           }
-          warn(t, e, n) {
-            let r = { node: this };
-            for (let t in n) r[t] = n[t];
-            return t.warn(e, r);
+          getProxyProcessor() {
+            return {
+              get: (t, e) =>
+                "proxyOf" === e
+                  ? t
+                  : "root" === e
+                    ? () => t.root().toProxy()
+                    : t[e],
+              set: (t, e, n) => (
+                t[e] === n ||
+                  ((t[e] = n),
+                  ("prop" !== e &&
+                    "value" !== e &&
+                    "name" !== e &&
+                    "params" !== e &&
+                    "important" !== e &&
+                    "text" !== e) ||
+                    t.markDirty()),
+                !0
+              ),
+            };
+          }
+          markDirty() {
+            if (this[r]) {
+              this[r] = !1;
+              let t = this;
+              for (; (t = t.parent); ) t[r] = !1;
+            }
+          }
+          next() {
+            if (!this.parent) return;
+            let t = this.parent.index(this);
+            return this.parent.nodes[t + 1];
+          }
+          positionBy(t, e) {
+            let n = this.source.start;
+            if (t.index) n = this.positionInside(t.index, e);
+            else if (t.word) {
+              let r = (e = this.toString()).indexOf(t.word);
+              -1 !== r && (n = this.positionInside(r, e));
+            }
+            return n;
+          }
+          positionInside(t, e) {
+            let n = e || this.toString(),
+              r = this.source.start.column,
+              i = this.source.start.line;
+            for (let e = 0; e < t; e++)
+              "\n" === n[e] ? ((r = 1), (i += 1)) : (r += 1);
+            return { column: r, line: i };
+          }
+          prev() {
+            if (!this.parent) return;
+            let t = this.parent.index(this);
+            return this.parent.nodes[t - 1];
+          }
+          rangeBy(t) {
+            let e = {
+                column: this.source.start.column,
+                line: this.source.start.line,
+              },
+              n = this.source.end
+                ? {
+                    column: this.source.end.column + 1,
+                    line: this.source.end.line,
+                  }
+                : { column: e.column + 1, line: e.line };
+            if (t.word) {
+              let r = this.toString(),
+                i = r.indexOf(t.word);
+              -1 !== i &&
+                ((e = this.positionInside(i, r)),
+                (n = this.positionInside(i + t.word.length, r)));
+            } else
+              t.start
+                ? (e = { column: t.start.column, line: t.start.line })
+                : t.index && (e = this.positionInside(t.index)),
+                t.end
+                  ? (n = { column: t.end.column, line: t.end.line })
+                  : "number" == typeof t.endIndex
+                    ? (n = this.positionInside(t.endIndex))
+                    : t.index && (n = this.positionInside(t.index + 1));
+            return (
+              (n.line < e.line ||
+                (n.line === e.line && n.column <= e.column)) &&
+                (n = { column: e.column + 1, line: e.line }),
+              { end: n, start: e }
+            );
+          }
+          raw(t, e) {
+            return new s().raw(this, t, e);
           }
           remove() {
             return (
@@ -69962,33 +70091,6 @@
               (this.parent = void 0),
               this
             );
-          }
-          toString(t = a) {
-            t.stringify && (t = t.stringify);
-            let e = "";
-            return (
-              t(this, (t) => {
-                e += t;
-              }),
-              e
-            );
-          }
-          assign(t = {}) {
-            for (let e in t) this[e] = t[e];
-            return this;
-          }
-          clone(t = {}) {
-            let e = u(this);
-            for (let n in t) e[n] = t[n];
-            return e;
-          }
-          cloneBefore(t = {}) {
-            let e = this.clone(t);
-            return this.parent.insertBefore(this, e), e;
-          }
-          cloneAfter(t = {}) {
-            let e = this.clone(t);
-            return this.parent.insertAfter(this, e), e;
           }
           replaceWith(...t) {
             if (this.parent) {
@@ -70004,34 +70106,10 @@
             }
             return this;
           }
-          next() {
-            if (!this.parent) return;
-            let t = this.parent.index(this);
-            return this.parent.nodes[t + 1];
-          }
-          prev() {
-            if (!this.parent) return;
-            let t = this.parent.index(this);
-            return this.parent.nodes[t - 1];
-          }
-          before(t) {
-            return this.parent.insertBefore(this, t), this;
-          }
-          after(t) {
-            return this.parent.insertAfter(this, t), this;
-          }
           root() {
             let t = this;
             for (; t.parent && "document" !== t.parent.type; ) t = t.parent;
             return t;
-          }
-          raw(t, e) {
-            return new s().raw(this, t, e);
-          }
-          cleanRaws(t) {
-            delete this.raws.before,
-              delete this.raws.after,
-              t || delete this.raws.between;
           }
           toJSON(t, e) {
             let n = {},
@@ -70051,81 +70129,10 @@
               else if ("source" === t) {
                 let o = e.get(r.input);
                 null == o && ((o = i), e.set(r.input, i), i++),
-                  (n[t] = { inputId: o, start: r.start, end: r.end });
+                  (n[t] = { end: r.end, inputId: o, start: r.start });
               } else n[t] = r;
             }
             return r && (n.inputs = [...e.keys()].map((t) => t.toJSON())), n;
-          }
-          positionInside(t) {
-            let e = this.toString(),
-              n = this.source.start.column,
-              r = this.source.start.line;
-            for (let i = 0; i < t; i++)
-              "\n" === e[i] ? ((n = 1), (r += 1)) : (n += 1);
-            return { line: r, column: n };
-          }
-          positionBy(t) {
-            let e = this.source.start;
-            if (t.index) e = this.positionInside(t.index);
-            else if (t.word) {
-              let n = this.toString().indexOf(t.word);
-              -1 !== n && (e = this.positionInside(n));
-            }
-            return e;
-          }
-          rangeBy(t) {
-            let e = {
-                line: this.source.start.line,
-                column: this.source.start.column,
-              },
-              n = this.source.end
-                ? {
-                    line: this.source.end.line,
-                    column: this.source.end.column + 1,
-                  }
-                : { line: e.line, column: e.column + 1 };
-            if (t.word) {
-              let r = this.toString().indexOf(t.word);
-              -1 !== r &&
-                ((e = this.positionInside(r)),
-                (n = this.positionInside(r + t.word.length)));
-            } else
-              t.start
-                ? (e = { line: t.start.line, column: t.start.column })
-                : t.index && (e = this.positionInside(t.index)),
-                t.end
-                  ? (n = { line: t.end.line, column: t.end.column })
-                  : t.endIndex
-                    ? (n = this.positionInside(t.endIndex))
-                    : t.index && (n = this.positionInside(t.index + 1));
-            return (
-              (n.line < e.line ||
-                (n.line === e.line && n.column <= e.column)) &&
-                (n = { line: e.line, column: e.column + 1 }),
-              { start: e, end: n }
-            );
-          }
-          getProxyProcessor() {
-            return {
-              set: (t, e, n) => (
-                t[e] === n ||
-                  ((t[e] = n),
-                  ("prop" !== e &&
-                    "value" !== e &&
-                    "name" !== e &&
-                    "params" !== e &&
-                    "important" !== e &&
-                    "text" !== e) ||
-                    t.markDirty()),
-                !0
-              ),
-              get: (t, e) =>
-                "proxyOf" === e
-                  ? t
-                  : "root" === e
-                    ? () => t.root().toProxy()
-                    : t[e],
-            };
           }
           toProxy() {
             return (
@@ -70134,25 +70141,20 @@
               this.proxyCache
             );
           }
-          addToError(t) {
-            if (
-              ((t.postcssNode = this),
-              t.stack && this.source && /\n\s{4}at /.test(t.stack))
-            ) {
-              let e = this.source;
-              t.stack = t.stack.replace(
-                /\n\s{4}at /,
-                `$&${e.input.from}:${e.start.line}:${e.start.column}$&`,
-              );
-            }
-            return t;
+          toString(t = a) {
+            t.stringify && (t = t.stringify);
+            let e = "";
+            return (
+              t(this, (t) => {
+                e += t;
+              }),
+              e
+            );
           }
-          markDirty() {
-            if (this[r]) {
-              this[r] = !1;
-              let t = this;
-              for (; (t = t.parent); ) t[r] = !1;
-            }
+          warn(t, e, n) {
+            let r = { node: this };
+            for (let t in n) r[t] = n[t];
+            return t.warn(e, r);
           }
           get proxyOf() {
             return this;
@@ -70167,54 +70169,22 @@
       (t) => {
         "use strict";
         const e = {
-          colon: ": ",
-          indent: "    ",
-          beforeDecl: "\n",
-          beforeRule: "\n",
-          beforeOpen: " ",
+          after: "\n",
           beforeClose: "\n",
           beforeComment: "\n",
-          after: "\n",
-          emptyBody: "",
+          beforeDecl: "\n",
+          beforeOpen: " ",
+          beforeRule: "\n",
+          colon: ": ",
           commentLeft: " ",
           commentRight: " ",
+          emptyBody: "",
+          indent: "    ",
           semicolon: !1,
         };
         class n {
           constructor(t) {
             this.builder = t;
-          }
-          stringify(t, e) {
-            if (!this[t.type])
-              throw new Error(
-                "Unknown AST node type " +
-                  t.type +
-                  ". Maybe you need to change PostCSS stringifier.",
-              );
-            this[t.type](t, e);
-          }
-          document(t) {
-            this.body(t);
-          }
-          root(t) {
-            this.body(t), t.raws.after && this.builder(t.raws.after);
-          }
-          comment(t) {
-            let e = this.raw(t, "left", "commentLeft"),
-              n = this.raw(t, "right", "commentRight");
-            this.builder("/*" + e + t.text + n + "*/", t);
-          }
-          decl(t, e) {
-            let n = this.raw(t, "between", "colon"),
-              r = t.prop + n + this.rawValue(t, "value");
-            t.important && (r += t.raws.important || " !important"),
-              e && (r += ";"),
-              this.builder(r, t);
-          }
-          rule(t) {
-            this.block(t, this.rawValue(t, "selector")),
-              t.raws.ownSemicolon &&
-                this.builder(t.raws.ownSemicolon, t, "end");
           }
           atrule(t, e) {
             let n = "@" + t.name,
@@ -70231,15 +70201,24 @@
               this.builder(n + r + i, t);
             }
           }
-          body(t) {
-            let e = t.nodes.length - 1;
-            for (; e > 0 && "comment" === t.nodes[e].type; ) e -= 1;
-            let n = this.raw(t, "semicolon");
-            for (let r = 0; r < t.nodes.length; r++) {
-              let i = t.nodes[r],
-                o = this.raw(i, "before");
-              o && this.builder(o), this.stringify(i, e !== r || n);
+          beforeAfter(t, e) {
+            let n;
+            n =
+              "decl" === t.type
+                ? this.raw(t, null, "beforeDecl")
+                : "comment" === t.type
+                  ? this.raw(t, null, "beforeComment")
+                  : "before" === e
+                    ? this.raw(t, null, "beforeRule")
+                    : this.raw(t, null, "beforeClose");
+            let r = t.parent,
+              i = 0;
+            for (; r && "root" !== r.type; ) (i += 1), (r = r.parent);
+            if (n.includes("\n")) {
+              let e = this.raw(t, null, "indent");
+              if (e.length) for (let t = 0; t < i; t++) n += e;
             }
+            return n;
           }
           block(t, e) {
             let n,
@@ -70250,6 +70229,31 @@
                 : (n = this.raw(t, "after", "emptyBody")),
               n && this.builder(n),
               this.builder("}", t, "end");
+          }
+          body(t) {
+            let e = t.nodes.length - 1;
+            for (; e > 0 && "comment" === t.nodes[e].type; ) e -= 1;
+            let n = this.raw(t, "semicolon");
+            for (let r = 0; r < t.nodes.length; r++) {
+              let i = t.nodes[r],
+                o = this.raw(i, "before");
+              o && this.builder(o), this.stringify(i, e !== r || n);
+            }
+          }
+          comment(t) {
+            let e = this.raw(t, "left", "commentLeft"),
+              n = this.raw(t, "right", "commentRight");
+            this.builder("/*" + e + t.text + n + "*/", t);
+          }
+          decl(t, e) {
+            let n = this.raw(t, "between", "colon"),
+              r = t.prop + n + this.rawValue(t, "value");
+            t.important && (r += t.raws.important || " !important"),
+              e && (r += ";"),
+              this.builder(r, t);
+          }
+          document(t) {
+            this.body(t);
           }
           raw(t, n, r) {
             let i;
@@ -70275,17 +70279,90 @@
             var a;
             return void 0 === i && (i = e[r]), (s.rawCache[r] = i), i;
           }
-          rawSemicolon(t) {
+          rawBeforeClose(t) {
             let e;
             return (
               t.walk((t) => {
-                if (
-                  t.nodes &&
-                  t.nodes.length &&
-                  "decl" === t.last.type &&
-                  ((e = t.raws.semicolon), void 0 !== e)
-                )
+                if (t.nodes && t.nodes.length > 0 && void 0 !== t.raws.after)
+                  return (
+                    (e = t.raws.after),
+                    e.includes("\n") && (e = e.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              e && (e = e.replace(/\S/g, "")),
+              e
+            );
+          }
+          rawBeforeComment(t, e) {
+            let n;
+            return (
+              t.walkComments((t) => {
+                if (void 0 !== t.raws.before)
+                  return (
+                    (n = t.raws.before),
+                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              void 0 === n
+                ? (n = this.raw(e, null, "beforeDecl"))
+                : n && (n = n.replace(/\S/g, "")),
+              n
+            );
+          }
+          rawBeforeDecl(t, e) {
+            let n;
+            return (
+              t.walkDecls((t) => {
+                if (void 0 !== t.raws.before)
+                  return (
+                    (n = t.raws.before),
+                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              void 0 === n
+                ? (n = this.raw(e, null, "beforeRule"))
+                : n && (n = n.replace(/\S/g, "")),
+              n
+            );
+          }
+          rawBeforeOpen(t) {
+            let e;
+            return (
+              t.walk((t) => {
+                if ("decl" !== t.type && ((e = t.raws.between), void 0 !== e))
                   return !1;
+              }),
+              e
+            );
+          }
+          rawBeforeRule(t) {
+            let e;
+            return (
+              t.walk((n) => {
+                if (
+                  n.nodes &&
+                  (n.parent !== t || t.first !== n) &&
+                  void 0 !== n.raws.before
+                )
+                  return (
+                    (e = n.raws.before),
+                    e.includes("\n") && (e = e.replace(/[^\n]+$/, "")),
+                    !1
+                  );
+              }),
+              e && (e = e.replace(/\S/g, "")),
+              e
+            );
+          }
+          rawColon(t) {
+            let e;
+            return (
+              t.walkDecls((t) => {
+                if (void 0 !== t.raws.between)
+                  return (e = t.raws.between.replace(/[^\s:]/g, "")), !1;
               }),
               e
             );
@@ -70324,117 +70401,42 @@
               e
             );
           }
-          rawBeforeComment(t, e) {
-            let n;
-            return (
-              t.walkComments((t) => {
-                if (void 0 !== t.raws.before)
-                  return (
-                    (n = t.raws.before),
-                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              void 0 === n
-                ? (n = this.raw(e, null, "beforeDecl"))
-                : n && (n = n.replace(/\S/g, "")),
-              n
-            );
-          }
-          rawBeforeDecl(t, e) {
-            let n;
-            return (
-              t.walkDecls((t) => {
-                if (void 0 !== t.raws.before)
-                  return (
-                    (n = t.raws.before),
-                    n.includes("\n") && (n = n.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              void 0 === n
-                ? (n = this.raw(e, null, "beforeRule"))
-                : n && (n = n.replace(/\S/g, "")),
-              n
-            );
-          }
-          rawBeforeRule(t) {
+          rawSemicolon(t) {
             let e;
             return (
-              t.walk((n) => {
+              t.walk((t) => {
                 if (
-                  n.nodes &&
-                  (n.parent !== t || t.first !== n) &&
-                  void 0 !== n.raws.before
+                  t.nodes &&
+                  t.nodes.length &&
+                  "decl" === t.last.type &&
+                  ((e = t.raws.semicolon), void 0 !== e)
                 )
-                  return (
-                    (e = n.raws.before),
-                    e.includes("\n") && (e = e.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              e && (e = e.replace(/\S/g, "")),
-              e
-            );
-          }
-          rawBeforeClose(t) {
-            let e;
-            return (
-              t.walk((t) => {
-                if (t.nodes && t.nodes.length > 0 && void 0 !== t.raws.after)
-                  return (
-                    (e = t.raws.after),
-                    e.includes("\n") && (e = e.replace(/[^\n]+$/, "")),
-                    !1
-                  );
-              }),
-              e && (e = e.replace(/\S/g, "")),
-              e
-            );
-          }
-          rawBeforeOpen(t) {
-            let e;
-            return (
-              t.walk((t) => {
-                if ("decl" !== t.type && ((e = t.raws.between), void 0 !== e))
                   return !1;
               }),
               e
             );
           }
-          rawColon(t) {
-            let e;
-            return (
-              t.walkDecls((t) => {
-                if (void 0 !== t.raws.between)
-                  return (e = t.raws.between.replace(/[^\s:]/g, "")), !1;
-              }),
-              e
-            );
-          }
-          beforeAfter(t, e) {
-            let n;
-            n =
-              "decl" === t.type
-                ? this.raw(t, null, "beforeDecl")
-                : "comment" === t.type
-                  ? this.raw(t, null, "beforeComment")
-                  : "before" === e
-                    ? this.raw(t, null, "beforeRule")
-                    : this.raw(t, null, "beforeClose");
-            let r = t.parent,
-              i = 0;
-            for (; r && "root" !== r.type; ) (i += 1), (r = r.parent);
-            if (n.includes("\n")) {
-              let e = this.raw(t, null, "indent");
-              if (e.length) for (let t = 0; t < i; t++) n += e;
-            }
-            return n;
-          }
           rawValue(t, e) {
             let n = t[e],
               r = t.raws[e];
             return r && r.value === n ? r.raw : n;
+          }
+          root(t) {
+            this.body(t), t.raws.after && this.builder(t.raws.after);
+          }
+          rule(t) {
+            this.block(t, this.rawValue(t, "selector")),
+              t.raws.ownSemicolon &&
+                this.builder(t.raws.ownSemicolon, t, "end");
+          }
+          stringify(t, e) {
+            if (!this[t.type])
+              throw new Error(
+                "Unknown AST node type " +
+                  t.type +
+                  ". Maybe you need to change PostCSS stringifier.",
+              );
+            this[t.type](t, e);
           }
         }
         (t.exports = n), (n.default = n);
@@ -70459,32 +70461,32 @@
           p = n(105),
           h = n(109);
         const f = {
+            atrule: "AtRule",
+            comment: "Comment",
+            decl: "Declaration",
             document: "Document",
             root: "Root",
-            atrule: "AtRule",
             rule: "Rule",
-            decl: "Declaration",
-            comment: "Comment",
           },
           d = {
+            AtRule: !0,
+            AtRuleExit: !0,
+            Comment: !0,
+            CommentExit: !0,
+            Declaration: !0,
+            DeclarationExit: !0,
+            Document: !0,
+            DocumentExit: !0,
+            Once: !0,
+            OnceExit: !0,
             postcssPlugin: !0,
             prepare: !0,
-            Once: !0,
-            Document: !0,
             Root: !0,
-            Declaration: !0,
-            Rule: !0,
-            AtRule: !0,
-            Comment: !0,
-            DeclarationExit: !0,
-            RuleExit: !0,
-            AtRuleExit: !0,
-            CommentExit: !0,
             RootExit: !0,
-            DocumentExit: !0,
-            OnceExit: !0,
+            Rule: !0,
+            RuleExit: !0,
           },
-          m = { postcssPlugin: !0, prepare: !0, Once: !0 },
+          m = { Once: !0, postcssPlugin: !0, prepare: !0 },
           g = 0;
         function y(t) {
           return "object" == typeof t && "function" == typeof t.then;
@@ -70515,12 +70517,12 @@
                   ? ["Root", g, "RootExit"]
                   : v(t)),
             {
-              node: t,
-              events: e,
               eventIndex: 0,
-              visitors: [],
-              visitorIndex: 0,
+              events: e,
               iterator: 0,
+              node: t,
+              visitorIndex: 0,
+              visitors: [],
             }
           );
         }
@@ -70558,58 +70560,12 @@
               }
             else r = _(e);
             (this.result = new c(t, r, n)),
-              (this.helpers = { ...w, result: this.result, postcss: w }),
+              (this.helpers = { ...w, postcss: w, result: this.result }),
               (this.plugins = this.processor.plugins.map((t) =>
                 "object" == typeof t && t.prepare
                   ? { ...t, ...t.prepare(this.result) }
                   : t,
               ));
-          }
-          get [Symbol.toStringTag]() {
-            return "LazyResult";
-          }
-          get processor() {
-            return this.result.processor;
-          }
-          get opts() {
-            return this.result.opts;
-          }
-          get css() {
-            return this.stringify().css;
-          }
-          get content() {
-            return this.stringify().content;
-          }
-          get map() {
-            return this.stringify().map;
-          }
-          get root() {
-            return this.sync().root;
-          }
-          get messages() {
-            return this.sync().messages;
-          }
-          warnings() {
-            return this.sync().warnings();
-          }
-          toString() {
-            return this.css;
-          }
-          then(t, e) {
-            return (
-              "production" !== "production".NODE_ENV &&
-                ("from" in this.opts ||
-                  l(
-                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
-                  )),
-              this.async().then(t, e)
-            );
-          }
-          catch(t) {
-            return this.async().catch(t);
-          }
-          finally(t) {
-            return this.async().then(t, t);
           }
           async() {
             return this.error
@@ -70619,84 +70575,11 @@
                 : (this.processing || (this.processing = this.runAsync()),
                   this.processing);
           }
-          sync() {
-            if (this.error) throw this.error;
-            if (this.processed) return this.result;
-            if (((this.processed = !0), this.processing))
-              throw this.getAsyncError();
-            for (let t of this.plugins) {
-              if (y(this.runOnRoot(t))) throw this.getAsyncError();
-            }
-            if ((this.prepareVisitors(), this.hasListener)) {
-              let t = this.result.root;
-              for (; !t[r]; ) (t[r] = !0), this.walkSync(t);
-              if (this.listeners.OnceExit)
-                if ("document" === t.type)
-                  for (let e of t.nodes)
-                    this.visitSync(this.listeners.OnceExit, e);
-                else this.visitSync(this.listeners.OnceExit, t);
-            }
-            return this.result;
+          catch(t) {
+            return this.async().catch(t);
           }
-          stringify() {
-            if (this.error) throw this.error;
-            if (this.stringified) return this.result;
-            (this.stringified = !0), this.sync();
-            let t = this.result.opts,
-              e = s;
-            t.syntax && (e = t.syntax.stringify),
-              t.stringifier && (e = t.stringifier),
-              e.stringify && (e = e.stringify);
-            let n = new o(e, this.result.root, this.result.opts).generate();
-            return (
-              (this.result.css = n[0]), (this.result.map = n[1]), this.result
-            );
-          }
-          walkSync(t) {
-            t[r] = !0;
-            let e = v(t);
-            for (let n of e)
-              if (n === g)
-                t.nodes &&
-                  t.each((t) => {
-                    t[r] || this.walkSync(t);
-                  });
-              else {
-                let e = this.listeners[n];
-                if (e && this.visitSync(e, t.toProxy())) return;
-              }
-          }
-          visitSync(t, e) {
-            for (let [n, r] of t) {
-              let t;
-              this.result.lastPlugin = n;
-              try {
-                t = r(e, this.helpers);
-              } catch (t) {
-                throw this.handleError(t, e.proxyOf);
-              }
-              if ("root" !== e.type && "document" !== e.type && !e.parent)
-                return !0;
-              if (y(t)) throw this.getAsyncError();
-            }
-          }
-          runOnRoot(t) {
-            this.result.lastPlugin = t;
-            try {
-              if ("object" == typeof t && t.Once) {
-                if ("document" === this.result.root.type) {
-                  let e = this.result.root.nodes.map((e) =>
-                    t.Once(e, this.helpers),
-                  );
-                  return y(e[0]) ? Promise.all(e) : e;
-                }
-                return t.Once(this.result.root, this.helpers);
-              }
-              if ("function" == typeof t)
-                return t(this.result.root, this.result);
-            } catch (t) {
-              throw this.handleError(t);
-            }
+          finally(t) {
+            return this.async().then(t, t);
           }
           getAsyncError() {
             throw new Error(
@@ -70736,6 +70619,31 @@
               console && console.error && console.error(t);
             }
             return t;
+          }
+          prepareVisitors() {
+            this.listeners = {};
+            let t = (t, e, n) => {
+              this.listeners[e] || (this.listeners[e] = []),
+                this.listeners[e].push([t, n]);
+            };
+            for (let e of this.plugins)
+              if ("object" == typeof e)
+                for (let n in e) {
+                  if (!d[n] && /^[A-Z]/.test(n))
+                    throw new Error(
+                      `Unknown event ${n} in ${e.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`,
+                    );
+                  if (!m[n])
+                    if ("object" == typeof e[n])
+                      for (let r in e[n])
+                        t(
+                          e,
+                          "*" === r ? n : n + "-" + r.toLowerCase(),
+                          e[n][r],
+                        );
+                    else "function" == typeof e[n] && t(e, n, e[n]);
+                }
+            this.hasListener = Object.keys(this.listeners).length > 0;
           }
           async runAsync() {
             this.plugin = 0;
@@ -70780,30 +70688,83 @@
             }
             return (this.processed = !0), this.stringify();
           }
-          prepareVisitors() {
-            this.listeners = {};
-            let t = (t, e, n) => {
-              this.listeners[e] || (this.listeners[e] = []),
-                this.listeners[e].push([t, n]);
-            };
-            for (let e of this.plugins)
-              if ("object" == typeof e)
-                for (let n in e) {
-                  if (!d[n] && /^[A-Z]/.test(n))
-                    throw new Error(
-                      `Unknown event ${n} in ${e.postcssPlugin}. Try to update PostCSS (${this.processor.version} now).`,
-                    );
-                  if (!m[n])
-                    if ("object" == typeof e[n])
-                      for (let r in e[n])
-                        t(
-                          e,
-                          "*" === r ? n : n + "-" + r.toLowerCase(),
-                          e[n][r],
-                        );
-                    else "function" == typeof e[n] && t(e, n, e[n]);
+          runOnRoot(t) {
+            this.result.lastPlugin = t;
+            try {
+              if ("object" == typeof t && t.Once) {
+                if ("document" === this.result.root.type) {
+                  let e = this.result.root.nodes.map((e) =>
+                    t.Once(e, this.helpers),
+                  );
+                  return y(e[0]) ? Promise.all(e) : e;
                 }
-            this.hasListener = Object.keys(this.listeners).length > 0;
+                return t.Once(this.result.root, this.helpers);
+              }
+              if ("function" == typeof t)
+                return t(this.result.root, this.result);
+            } catch (t) {
+              throw this.handleError(t);
+            }
+          }
+          stringify() {
+            if (this.error) throw this.error;
+            if (this.stringified) return this.result;
+            (this.stringified = !0), this.sync();
+            let t = this.result.opts,
+              e = s;
+            t.syntax && (e = t.syntax.stringify),
+              t.stringifier && (e = t.stringifier),
+              e.stringify && (e = e.stringify);
+            let n = new o(e, this.result.root, this.result.opts).generate();
+            return (
+              (this.result.css = n[0]), (this.result.map = n[1]), this.result
+            );
+          }
+          sync() {
+            if (this.error) throw this.error;
+            if (this.processed) return this.result;
+            if (((this.processed = !0), this.processing))
+              throw this.getAsyncError();
+            for (let t of this.plugins) {
+              if (y(this.runOnRoot(t))) throw this.getAsyncError();
+            }
+            if ((this.prepareVisitors(), this.hasListener)) {
+              let t = this.result.root;
+              for (; !t[r]; ) (t[r] = !0), this.walkSync(t);
+              if (this.listeners.OnceExit)
+                if ("document" === t.type)
+                  for (let e of t.nodes)
+                    this.visitSync(this.listeners.OnceExit, e);
+                else this.visitSync(this.listeners.OnceExit, t);
+            }
+            return this.result;
+          }
+          then(t, e) {
+            return (
+              "production" !== "production".NODE_ENV &&
+                ("from" in this.opts ||
+                  l(
+                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
+                  )),
+              this.async().then(t, e)
+            );
+          }
+          toString() {
+            return this.css;
+          }
+          visitSync(t, e) {
+            for (let [n, r] of t) {
+              let t;
+              this.result.lastPlugin = n;
+              try {
+                t = r(e, this.helpers);
+              } catch (t) {
+                throw this.handleError(t, e.proxyOf);
+              }
+              if ("root" !== e.type && "document" !== e.type && !e.parent)
+                return !0;
+              if (y(t)) throw this.getAsyncError();
+            }
           }
           visitTick(t) {
             let e = t[t.length - 1],
@@ -70844,6 +70805,47 @@
             }
             t.pop();
           }
+          walkSync(t) {
+            t[r] = !0;
+            let e = v(t);
+            for (let n of e)
+              if (n === g)
+                t.nodes &&
+                  t.each((t) => {
+                    t[r] || this.walkSync(t);
+                  });
+              else {
+                let e = this.listeners[n];
+                if (e && this.visitSync(e, t.toProxy())) return;
+              }
+          }
+          warnings() {
+            return this.sync().warnings();
+          }
+          get content() {
+            return this.stringify().content;
+          }
+          get css() {
+            return this.stringify().css;
+          }
+          get map() {
+            return this.stringify().map;
+          }
+          get messages() {
+            return this.sync().messages;
+          }
+          get opts() {
+            return this.result.opts;
+          }
+          get processor() {
+            return this.result.processor;
+          }
+          get root() {
+            return this.sync().root;
+          }
+          get [Symbol.toStringTag]() {
+            return "LazyResult";
+          }
         }
         (E.registerPostcss = (t) => {
           w = t;
@@ -70856,11 +70858,11 @@
       (t, e, n) => {
         "use strict";
         let { SourceMapConsumer: r, SourceMapGenerator: i } = n(93),
-          { dirname: o, resolve: s, relative: a, sep: u } = n(94),
+          { dirname: o, relative: s, resolve: a, sep: u } = n(94),
           { pathToFileURL: l } = n(5),
           c = n(95),
           p = Boolean(r && i),
-          h = Boolean(o && s && a && u);
+          h = Boolean(o && a && s && u);
         t.exports = class {
           constructor(t, e, n, r) {
             (this.stringify = t),
@@ -70868,106 +70870,11 @@
               (this.root = e),
               (this.opts = n),
               (this.css = r),
-              (this.usesFileUrls = !this.mapOpts.from && this.mapOpts.absolute);
-          }
-          isMap() {
-            return void 0 !== this.opts.map
-              ? !!this.opts.map
-              : this.previous().length > 0;
-          }
-          previous() {
-            if (!this.previousMaps)
-              if (((this.previousMaps = []), this.root))
-                this.root.walk((t) => {
-                  if (t.source && t.source.input.map) {
-                    let e = t.source.input.map;
-                    this.previousMaps.includes(e) || this.previousMaps.push(e);
-                  }
-                });
-              else {
-                let t = new c(this.css, this.opts);
-                t.map && this.previousMaps.push(t.map);
-              }
-            return this.previousMaps;
-          }
-          isInline() {
-            if (void 0 !== this.mapOpts.inline) return this.mapOpts.inline;
-            let t = this.mapOpts.annotation;
-            return (
-              (void 0 === t || !0 === t) &&
-              (!this.previous().length || this.previous().some((t) => t.inline))
-            );
-          }
-          isSourcesContent() {
-            return void 0 !== this.mapOpts.sourcesContent
-              ? this.mapOpts.sourcesContent
-              : !this.previous().length ||
-                  this.previous().some((t) => t.withContent());
-          }
-          clearAnnotation() {
-            if (!1 !== this.mapOpts.annotation)
-              if (this.root) {
-                let t;
-                for (let e = this.root.nodes.length - 1; e >= 0; e--)
-                  (t = this.root.nodes[e]),
-                    "comment" === t.type &&
-                      0 === t.text.indexOf("# sourceMappingURL=") &&
-                      this.root.removeChild(e);
-              } else
-                this.css &&
-                  (this.css = this.css.replace(
-                    /(\n)?\/\*#[\S\s]*?\*\/$/gm,
-                    "",
-                  ));
-          }
-          setSourcesContent() {
-            let t = {};
-            if (this.root)
-              this.root.walk((e) => {
-                if (e.source) {
-                  let n = e.source.input.from;
-                  if (n && !t[n]) {
-                    t[n] = !0;
-                    let r = this.usesFileUrls
-                      ? this.toFileUrl(n)
-                      : this.toUrl(this.path(n));
-                    this.map.setSourceContent(r, e.source.input.css);
-                  }
-                }
-              });
-            else if (this.css) {
-              let t = this.opts.from
-                ? this.toUrl(this.path(this.opts.from))
-                : "<no source>";
-              this.map.setSourceContent(t, this.css);
-            }
-          }
-          applyPrevMaps() {
-            for (let t of this.previous()) {
-              let e,
-                n = this.toUrl(this.path(t.file)),
-                i = t.root || o(t.file);
-              !1 === this.mapOpts.sourcesContent
-                ? ((e = new r(t.text)),
-                  e.sourcesContent &&
-                    (e.sourcesContent = e.sourcesContent.map(() => null)))
-                : (e = t.consumer()),
-                this.map.applySourceMap(e, n, this.toUrl(this.path(i)));
-            }
-          }
-          isAnnotation() {
-            return (
-              !!this.isInline() ||
-              (void 0 !== this.mapOpts.annotation
-                ? this.mapOpts.annotation
-                : !this.previous().length ||
-                  this.previous().some((t) => t.annotation))
-            );
-          }
-          toBase64(t) {
-            return Buffer
-              ? Buffer.from(t).toString("base64")
-              : window.btoa(unescape(encodeURIComponent(t)));
+              (this.originalCSS = r),
+              (this.usesFileUrls = !this.mapOpts.from && this.mapOpts.absolute),
+              (this.memoizedFileURLs = new Map()),
+              (this.memoizedPaths = new Map()),
+              (this.memoizedURLs = new Map());
           }
           addAnnotation() {
             let t;
@@ -70983,26 +70890,61 @@
             this.css.includes("\r\n") && (e = "\r\n"),
               (this.css += e + "/*# sourceMappingURL=" + t + " */");
           }
-          outputFile() {
-            return this.opts.to
-              ? this.path(this.opts.to)
-              : this.opts.from
-                ? this.path(this.opts.from)
-                : "to.css";
+          applyPrevMaps() {
+            for (let t of this.previous()) {
+              let e,
+                n = this.toUrl(this.path(t.file)),
+                i = t.root || o(t.file);
+              !1 === this.mapOpts.sourcesContent
+                ? ((e = new r(t.text)),
+                  e.sourcesContent && (e.sourcesContent = null))
+                : (e = t.consumer()),
+                this.map.applySourceMap(e, n, this.toUrl(this.path(i)));
+            }
+          }
+          clearAnnotation() {
+            if (!1 !== this.mapOpts.annotation)
+              if (this.root) {
+                let t;
+                for (let e = this.root.nodes.length - 1; e >= 0; e--)
+                  (t = this.root.nodes[e]),
+                    "comment" === t.type &&
+                      0 === t.text.indexOf("# sourceMappingURL=") &&
+                      this.root.removeChild(e);
+              } else
+                this.css &&
+                  (this.css = this.css.replace(/\n*?\/\*#[\S\s]*?\*\/$/gm, ""));
+          }
+          generate() {
+            if ((this.clearAnnotation(), h && p && this.isMap()))
+              return this.generateMap();
+            {
+              let t = "";
+              return (
+                this.stringify(this.root, (e) => {
+                  t += e;
+                }),
+                [t]
+              );
+            }
           }
           generateMap() {
             if (this.root) this.generateString();
             else if (1 === this.previous().length) {
               let t = this.previous()[0].consumer();
-              (t.file = this.outputFile()), (this.map = i.fromSourceMap(t));
+              (t.file = this.outputFile()),
+                (this.map = i.fromSourceMap(t, { ignoreInvalidMapping: !0 }));
             } else
-              (this.map = new i({ file: this.outputFile() })),
+              (this.map = new i({
+                file: this.outputFile(),
+                ignoreInvalidMapping: !0,
+              })),
                 this.map.addMapping({
+                  generated: { column: 0, line: 1 },
+                  original: { column: 0, line: 1 },
                   source: this.opts.from
                     ? this.toUrl(this.path(this.opts.from))
                     : "<no source>",
-                  generated: { line: 1, column: 0 },
-                  original: { line: 1, column: 0 },
                 });
             return (
               this.isSourcesContent() && this.setSourcesContent(),
@@ -71011,47 +70953,21 @@
               this.isInline() ? [this.css] : [this.css, this.map]
             );
           }
-          path(t) {
-            if (0 === t.indexOf("<")) return t;
-            if (/^\w+:\/\//.test(t)) return t;
-            if (this.mapOpts.absolute) return t;
-            let e = this.opts.to ? o(this.opts.to) : ".";
-            return (
-              "string" == typeof this.mapOpts.annotation &&
-                (e = o(s(e, this.mapOpts.annotation))),
-              (t = a(e, t))
-            );
-          }
-          toUrl(t) {
-            return (
-              "\\" === u && (t = t.replace(/\\/g, "/")),
-              encodeURI(t).replace(/[#?]/g, encodeURIComponent)
-            );
-          }
-          toFileUrl(t) {
-            if (l) return l(t).toString();
-            throw new Error(
-              "`map.absolute` option is not available in this PostCSS build",
-            );
-          }
-          sourcePath(t) {
-            return this.mapOpts.from
-              ? this.toUrl(this.mapOpts.from)
-              : this.usesFileUrls
-                ? this.toFileUrl(t.source.input.from)
-                : this.toUrl(this.path(t.source.input.from));
-          }
           generateString() {
-            (this.css = ""), (this.map = new i({ file: this.outputFile() }));
+            (this.css = ""),
+              (this.map = new i({
+                file: this.outputFile(),
+                ignoreInvalidMapping: !0,
+              }));
             let t,
               e,
               n = 1,
               r = 1,
               o = "<no source>",
               s = {
+                generated: { column: 0, line: 0 },
+                original: { column: 0, line: 0 },
                 source: "",
-                generated: { line: 0, column: 0 },
-                original: { line: 0, column: 0 },
               };
             this.stringify(this.root, (i, a, u) => {
               if (
@@ -71097,18 +71013,119 @@
               }
             });
           }
-          generate() {
-            if ((this.clearAnnotation(), h && p && this.isMap()))
-              return this.generateMap();
-            {
-              let t = "";
-              return (
-                this.stringify(this.root, (e) => {
-                  t += e;
-                }),
-                [t]
-              );
+          isAnnotation() {
+            return (
+              !!this.isInline() ||
+              (void 0 !== this.mapOpts.annotation
+                ? this.mapOpts.annotation
+                : !this.previous().length ||
+                  this.previous().some((t) => t.annotation))
+            );
+          }
+          isInline() {
+            if (void 0 !== this.mapOpts.inline) return this.mapOpts.inline;
+            let t = this.mapOpts.annotation;
+            return (
+              (void 0 === t || !0 === t) &&
+              (!this.previous().length || this.previous().some((t) => t.inline))
+            );
+          }
+          isMap() {
+            return void 0 !== this.opts.map
+              ? !!this.opts.map
+              : this.previous().length > 0;
+          }
+          isSourcesContent() {
+            return void 0 !== this.mapOpts.sourcesContent
+              ? this.mapOpts.sourcesContent
+              : !this.previous().length ||
+                  this.previous().some((t) => t.withContent());
+          }
+          outputFile() {
+            return this.opts.to
+              ? this.path(this.opts.to)
+              : this.opts.from
+                ? this.path(this.opts.from)
+                : "to.css";
+          }
+          path(t) {
+            if (this.mapOpts.absolute) return t;
+            if (60 === t.charCodeAt(0)) return t;
+            if (/^\w+:\/\//.test(t)) return t;
+            let e = this.memoizedPaths.get(t);
+            if (e) return e;
+            let n = this.opts.to ? o(this.opts.to) : ".";
+            "string" == typeof this.mapOpts.annotation &&
+              (n = o(a(n, this.mapOpts.annotation)));
+            let r = s(n, t);
+            return this.memoizedPaths.set(t, r), r;
+          }
+          previous() {
+            if (!this.previousMaps)
+              if (((this.previousMaps = []), this.root))
+                this.root.walk((t) => {
+                  if (t.source && t.source.input.map) {
+                    let e = t.source.input.map;
+                    this.previousMaps.includes(e) || this.previousMaps.push(e);
+                  }
+                });
+              else {
+                let t = new c(this.originalCSS, this.opts);
+                t.map && this.previousMaps.push(t.map);
+              }
+            return this.previousMaps;
+          }
+          setSourcesContent() {
+            let t = {};
+            if (this.root)
+              this.root.walk((e) => {
+                if (e.source) {
+                  let n = e.source.input.from;
+                  if (n && !t[n]) {
+                    t[n] = !0;
+                    let r = this.usesFileUrls
+                      ? this.toFileUrl(n)
+                      : this.toUrl(this.path(n));
+                    this.map.setSourceContent(r, e.source.input.css);
+                  }
+                }
+              });
+            else if (this.css) {
+              let t = this.opts.from
+                ? this.toUrl(this.path(this.opts.from))
+                : "<no source>";
+              this.map.setSourceContent(t, this.css);
             }
+          }
+          sourcePath(t) {
+            return this.mapOpts.from
+              ? this.toUrl(this.mapOpts.from)
+              : this.usesFileUrls
+                ? this.toFileUrl(t.source.input.from)
+                : this.toUrl(this.path(t.source.input.from));
+          }
+          toBase64(t) {
+            return Buffer
+              ? Buffer.from(t).toString("base64")
+              : window.btoa(unescape(encodeURIComponent(t)));
+          }
+          toFileUrl(t) {
+            let e = this.memoizedFileURLs.get(t);
+            if (e) return e;
+            if (l) {
+              let e = l(t).toString();
+              return this.memoizedFileURLs.set(t, e), e;
+            }
+            throw new Error(
+              "`map.absolute` option is not available in this PostCSS build",
+            );
+          }
+          toUrl(t) {
+            let e = this.memoizedURLs.get(t);
+            if (e) return e;
+            "\\" === u && (t = t.replace(/\\/g, "/"));
+            let n = encodeURI(t).replace(/[#?]/g, encodeURIComponent);
+            return this.memoizedURLs.set(t, n), n;
           }
         };
       },
@@ -71118,14 +71135,14 @@
         "use strict";
         let { SourceMapConsumer: r, SourceMapGenerator: i } = n(93),
           { fileURLToPath: o, pathToFileURL: s } = n(5),
-          { resolve: a, isAbsolute: u } = n(94),
+          { isAbsolute: a, resolve: u } = n(94),
           { nanoid: l } = n(96),
           c = n(85),
           p = n(83),
           h = n(97),
           f = Symbol("fromOffsetCache"),
           d = Boolean(r && i),
-          m = Boolean(a && u);
+          m = Boolean(u && a);
         class g {
           constructor(t, e = {}) {
             if (null == t || ("object" == typeof t && !t.toString))
@@ -71136,9 +71153,9 @@
                 ? ((this.hasBOM = !0), (this.css = this.css.slice(1)))
                 : (this.hasBOM = !1),
               e.from &&
-                (!m || /^\w+:\/\//.test(e.from) || u(e.from)
+                (!m || /^\w+:\/\//.test(e.from) || a(e.from)
                   ? (this.file = e.from)
-                  : (this.file = a(e.from))),
+                  : (this.file = u(e.from))),
               m && d)
             ) {
               let t = new h(this.css, e);
@@ -71150,6 +71167,59 @@
             }
             this.file || (this.id = "<input css " + l(6) + ">"),
               this.map && (this.map.file = this.from);
+          }
+          error(t, e, n, r = {}) {
+            let i, o, a;
+            if (e && "object" == typeof e) {
+              let t = e,
+                r = n;
+              if ("number" == typeof t.offset) {
+                let r = this.fromOffset(t.offset);
+                (e = r.line), (n = r.col);
+              } else (e = t.line), (n = t.column);
+              if ("number" == typeof r.offset) {
+                let t = this.fromOffset(r.offset);
+                (o = t.line), (a = t.col);
+              } else (o = r.line), (a = r.column);
+            } else if (!n) {
+              let t = this.fromOffset(e);
+              (e = t.line), (n = t.col);
+            }
+            let u = this.origin(e, n, o, a);
+            return (
+              (i = u
+                ? new p(
+                    t,
+                    void 0 === u.endLine
+                      ? u.line
+                      : { column: u.column, line: u.line },
+                    void 0 === u.endLine
+                      ? u.column
+                      : { column: u.endColumn, line: u.endLine },
+                    u.source,
+                    u.file,
+                    r.plugin,
+                  )
+                : new p(
+                    t,
+                    void 0 === o ? e : { column: n, line: e },
+                    void 0 === o ? n : { column: a, line: o },
+                    this.css,
+                    this.file,
+                    r.plugin,
+                  )),
+              (i.input = {
+                column: n,
+                endColumn: a,
+                endLine: o,
+                line: e,
+                source: this.css,
+              }),
+              this.file &&
+                (s && (i.input.url = s(this.file).toString()),
+                (i.input.file = this.file)),
+              i
+            );
           }
           fromOffset(t) {
             let e, n;
@@ -71178,100 +71248,44 @@
                   r = e + 1;
                 }
             }
-            return { line: r + 1, col: t - n[r] + 1 };
+            return { col: t - n[r] + 1, line: r + 1 };
           }
-          error(t, e, n, r = {}) {
-            let i, o, a;
-            if (e && "object" == typeof e) {
-              let t = e,
-                r = n;
-              if ("number" == typeof t.offset) {
-                let r = this.fromOffset(t.offset);
-                (e = r.line), (n = r.col);
-              } else (e = t.line), (n = t.column);
-              if ("number" == typeof r.offset) {
-                let t = this.fromOffset(r.offset);
-                (o = t.line), (a = t.col);
-              } else (o = r.line), (a = r.column);
-            } else if (!n) {
-              let t = this.fromOffset(e);
-              (e = t.line), (n = t.col);
-            }
-            let u = this.origin(e, n, o, a);
-            return (
-              (i = u
-                ? new p(
-                    t,
-                    void 0 === u.endLine
-                      ? u.line
-                      : { line: u.line, column: u.column },
-                    void 0 === u.endLine
-                      ? u.column
-                      : { line: u.endLine, column: u.endColumn },
-                    u.source,
-                    u.file,
-                    r.plugin,
-                  )
-                : new p(
-                    t,
-                    void 0 === o ? e : { line: e, column: n },
-                    void 0 === o ? n : { line: o, column: a },
-                    this.css,
-                    this.file,
-                    r.plugin,
-                  )),
-              (i.input = {
-                line: e,
-                column: n,
-                endLine: o,
-                endColumn: a,
-                source: this.css,
-              }),
-              this.file &&
-                (s && (i.input.url = s(this.file).toString()),
-                (i.input.file = this.file)),
-              i
-            );
+          mapResolve(t) {
+            return /^\w+:\/\//.test(t)
+              ? t
+              : u(this.map.consumer().sourceRoot || this.map.root || ".", t);
           }
           origin(t, e, n, r) {
             if (!this.map) return !1;
             let i,
-              a,
+              u,
               l = this.map.consumer(),
-              c = l.originalPositionFor({ line: t, column: e });
+              c = l.originalPositionFor({ column: e, line: t });
             if (!c.source) return !1;
             "number" == typeof n &&
-              (i = l.originalPositionFor({ line: n, column: r })),
-              (a = u(c.source)
+              (i = l.originalPositionFor({ column: r, line: n })),
+              (u = a(c.source)
                 ? s(c.source)
                 : new URL(
                     c.source,
                     this.map.consumer().sourceRoot || s(this.map.mapFile),
                   ));
             let p = {
-              url: a.toString(),
-              line: c.line,
               column: c.column,
-              endLine: i && i.line,
               endColumn: i && i.column,
+              endLine: i && i.line,
+              line: c.line,
+              url: u.toString(),
             };
-            if ("file:" === a.protocol) {
+            if ("file:" === u.protocol) {
               if (!o)
                 throw new Error(
                   "file: protocol is not available in this PostCSS build",
                 );
-              p.file = o(a);
+              p.file = o(u);
             }
             let h = l.sourceContentFor(c.source);
             return h && (p.source = h), p;
-          }
-          mapResolve(t) {
-            return /^\w+:\/\//.test(t)
-              ? t
-              : a(this.map.consumer().sourceRoot || this.map.root || ".", t);
-          }
-          get from() {
-            return this.file || this.id;
           }
           toJSON() {
             let t = {};
@@ -71283,6 +71297,9 @@
                 t.map.consumerCache && (t.map.consumerCache = void 0)),
               t
             );
+          }
+          get from() {
+            return this.file || this.id;
           }
         }
         (t.exports = g),
@@ -71333,27 +71350,6 @@
               this.consumerCache
             );
           }
-          withContent() {
-            return !!(
-              this.consumer().sourcesContent &&
-              this.consumer().sourcesContent.length > 0
-            );
-          }
-          startWith(t, e) {
-            return !!t && t.substr(0, e.length) === e;
-          }
-          getAnnotationURL(t) {
-            return t.replace(/^\/\*\s*# sourceMappingURL=/, "").trim();
-          }
-          loadAnnotation(t) {
-            let e = t.match(/\/\*\s*# sourceMappingURL=/gm);
-            if (!e) return;
-            let n = t.lastIndexOf(e.pop()),
-              r = t.indexOf("*/", n);
-            n > -1 &&
-              r > -1 &&
-              (this.annotation = this.getAnnotationURL(t.substring(n, r)));
-          }
           decodeInline(t) {
             if (
               /^data:application\/json;charset=utf-?8,/.test(t) ||
@@ -71371,6 +71367,26 @@
             var e;
             let n = t.match(/data:application\/json;([^,]+),/)[1];
             throw new Error("Unsupported source map encoding " + n);
+          }
+          getAnnotationURL(t) {
+            return t.replace(/^\/\*\s*# sourceMappingURL=/, "").trim();
+          }
+          isMap(t) {
+            return (
+              "object" == typeof t &&
+              ("string" == typeof t.mappings ||
+                "string" == typeof t._mappings ||
+                Array.isArray(t.sections))
+            );
+          }
+          loadAnnotation(t) {
+            let e = t.match(/\/\*\s*# sourceMappingURL=/gm);
+            if (!e) return;
+            let n = t.lastIndexOf(e.pop()),
+              r = t.indexOf("*/", n);
+            n > -1 &&
+              r > -1 &&
+              (this.annotation = this.getAnnotationURL(t.substring(n, r)));
           }
           loadFile(t) {
             if (((this.root = a(t)), o(t)))
@@ -71407,12 +71423,13 @@
               }
             }
           }
-          isMap(t) {
-            return (
-              "object" == typeof t &&
-              ("string" == typeof t.mappings ||
-                "string" == typeof t._mappings ||
-                Array.isArray(t.sections))
+          startWith(t, e) {
+            return !!t && t.substr(0, e.length) === e;
+          }
+          withContent() {
+            return !!(
+              this.consumer().sourcesContent &&
+              this.consumer().sourcesContent.length > 0
             );
           }
         }
@@ -71439,8 +71456,16 @@
             for (let e of t.proxyOf.nodes) f(e);
         }
         class d extends p {
-          push(t) {
-            return (t.parent = this), this.proxyOf.nodes.push(t), this;
+          append(...t) {
+            for (let e of t) {
+              let t = this.normalize(e, this.last);
+              for (let e of t) this.proxyOf.nodes.push(e);
+            }
+            return this.markDirty(), this;
+          }
+          cleanRaws(t) {
+            if ((super.cleanRaws(t), this.nodes))
+              for (let e of this.nodes) e.cleanRaws(t);
           }
           each(t) {
             if (!this.proxyOf.nodes) return;
@@ -71458,84 +71483,65 @@
               this.indexes[r] += 1;
             return delete this.indexes[r], n;
           }
-          walk(t) {
-            return this.each((e, n) => {
-              let r;
-              try {
-                r = t(e, n);
-              } catch (t) {
-                throw e.addToError(t);
-              }
-              return !1 !== r && e.walk && (r = e.walk(t)), r;
-            });
+          every(t) {
+            return this.nodes.every(t);
           }
-          walkDecls(t, e) {
-            return e
-              ? t instanceof RegExp
-                ? this.walk((n, r) => {
-                    if ("decl" === n.type && t.test(n.prop)) return e(n, r);
-                  })
-                : this.walk((n, r) => {
-                    if ("decl" === n.type && n.prop === t) return e(n, r);
-                  })
-              : ((e = t),
-                this.walk((t, n) => {
-                  if ("decl" === t.type) return e(t, n);
-                }));
+          getIterator() {
+            this.lastEach || (this.lastEach = 0),
+              this.indexes || (this.indexes = {}),
+              (this.lastEach += 1);
+            let t = this.lastEach;
+            return (this.indexes[t] = 0), t;
           }
-          walkRules(t, e) {
-            return e
-              ? t instanceof RegExp
-                ? this.walk((n, r) => {
-                    if ("rule" === n.type && t.test(n.selector)) return e(n, r);
-                  })
-                : this.walk((n, r) => {
-                    if ("rule" === n.type && n.selector === t) return e(n, r);
-                  })
-              : ((e = t),
-                this.walk((t, n) => {
-                  if ("rule" === t.type) return e(t, n);
-                }));
+          getProxyProcessor() {
+            return {
+              get: (t, e) =>
+                "proxyOf" === e
+                  ? t
+                  : t[e]
+                    ? "each" === e ||
+                      ("string" == typeof e && e.startsWith("walk"))
+                      ? (...n) =>
+                          t[e](
+                            ...n.map((t) =>
+                              "function" == typeof t
+                                ? (e, n) => t(e.toProxy(), n)
+                                : t,
+                            ),
+                          )
+                      : "every" === e || "some" === e
+                        ? (n) => t[e]((t, ...e) => n(t.toProxy(), ...e))
+                        : "root" === e
+                          ? () => t.root().toProxy()
+                          : "nodes" === e
+                            ? t.nodes.map((t) => t.toProxy())
+                            : "first" === e || "last" === e
+                              ? t[e].toProxy()
+                              : t[e]
+                    : t[e],
+              set: (t, e, n) => (
+                t[e] === n ||
+                  ((t[e] = n),
+                  ("name" !== e && "params" !== e && "selector" !== e) ||
+                    t.markDirty()),
+                !0
+              ),
+            };
           }
-          walkAtRules(t, e) {
-            return e
-              ? t instanceof RegExp
-                ? this.walk((n, r) => {
-                    if ("atrule" === n.type && t.test(n.name)) return e(n, r);
-                  })
-                : this.walk((n, r) => {
-                    if ("atrule" === n.type && n.name === t) return e(n, r);
-                  })
-              : ((e = t),
-                this.walk((t, n) => {
-                  if ("atrule" === t.type) return e(t, n);
-                }));
+          index(t) {
+            return "number" == typeof t
+              ? t
+              : (t.proxyOf && (t = t.proxyOf), this.proxyOf.nodes.indexOf(t));
           }
-          walkComments(t) {
-            return this.walk((e, n) => {
-              if ("comment" === e.type) return t(e, n);
-            });
-          }
-          append(...t) {
-            for (let e of t) {
-              let t = this.normalize(e, this.last);
-              for (let e of t) this.proxyOf.nodes.push(e);
-            }
+          insertAfter(t, e) {
+            let n,
+              r = this.index(t),
+              i = this.normalize(e, this.proxyOf.nodes[r]).reverse();
+            r = this.index(t);
+            for (let t of i) this.proxyOf.nodes.splice(r + 1, 0, t);
+            for (let t in this.indexes)
+              (n = this.indexes[t]), r < n && (this.indexes[t] = n + i.length);
             return this.markDirty(), this;
-          }
-          prepend(...t) {
-            t = t.reverse();
-            for (let e of t) {
-              let t = this.normalize(e, this.first, "prepend").reverse();
-              for (let e of t) this.proxyOf.nodes.unshift(e);
-              for (let e in this.indexes)
-                this.indexes[e] = this.indexes[e] + t.length;
-            }
-            return this.markDirty(), this;
-          }
-          cleanRaws(t) {
-            if ((super.cleanRaws(t), this.nodes))
-              for (let e of this.nodes) e.cleanRaws(t);
           }
           insertBefore(t, e) {
             let n,
@@ -71548,61 +71554,9 @@
               (n = this.indexes[t]), r <= n && (this.indexes[t] = n + o.length);
             return this.markDirty(), this;
           }
-          insertAfter(t, e) {
-            let n,
-              r = this.index(t),
-              i = this.normalize(e, this.proxyOf.nodes[r]).reverse();
-            r = this.index(t);
-            for (let t of i) this.proxyOf.nodes.splice(r + 1, 0, t);
-            for (let t in this.indexes)
-              (n = this.indexes[t]), r < n && (this.indexes[t] = n + i.length);
-            return this.markDirty(), this;
-          }
-          removeChild(t) {
-            let e;
-            (t = this.index(t)),
-              (this.proxyOf.nodes[t].parent = void 0),
-              this.proxyOf.nodes.splice(t, 1);
-            for (let n in this.indexes)
-              (e = this.indexes[n]), e >= t && (this.indexes[n] = e - 1);
-            return this.markDirty(), this;
-          }
-          removeAll() {
-            for (let t of this.proxyOf.nodes) t.parent = void 0;
-            return (this.proxyOf.nodes = []), this.markDirty(), this;
-          }
-          replaceValues(t, e, n) {
-            return (
-              n || ((n = e), (e = {})),
-              this.walkDecls((r) => {
-                (e.props && !e.props.includes(r.prop)) ||
-                  (e.fast && !r.value.includes(e.fast)) ||
-                  (r.value = r.value.replace(t, n));
-              }),
-              this.markDirty(),
-              this
-            );
-          }
-          every(t) {
-            return this.nodes.every(t);
-          }
-          some(t) {
-            return this.nodes.some(t);
-          }
-          index(t) {
-            return "number" == typeof t
-              ? t
-              : (t.proxyOf && (t = t.proxyOf), this.proxyOf.nodes.indexOf(t));
-          }
-          get first() {
-            if (this.proxyOf.nodes) return this.proxyOf.nodes[0];
-          }
-          get last() {
-            if (this.proxyOf.nodes)
-              return this.proxyOf.nodes[this.proxyOf.nodes.length - 1];
-          }
           normalize(t, e) {
             if ("string" == typeof t) t = h(r(t).nodes);
+            else if (void 0 === t) t = [];
             else if (Array.isArray(t)) {
               t = t.slice(0);
               for (let e of t) e.parent && e.parent.removeChild(e, "ignore");
@@ -71636,47 +71590,111 @@
               ),
             );
           }
-          getProxyProcessor() {
-            return {
-              set: (t, e, n) => (
-                t[e] === n ||
-                  ((t[e] = n),
-                  ("name" !== e && "params" !== e && "selector" !== e) ||
-                    t.markDirty()),
-                !0
-              ),
-              get: (t, e) =>
-                "proxyOf" === e
-                  ? t
-                  : t[e]
-                    ? "each" === e ||
-                      ("string" == typeof e && e.startsWith("walk"))
-                      ? (...n) =>
-                          t[e](
-                            ...n.map((t) =>
-                              "function" == typeof t
-                                ? (e, n) => t(e.toProxy(), n)
-                                : t,
-                            ),
-                          )
-                      : "every" === e || "some" === e
-                        ? (n) => t[e]((t, ...e) => n(t.toProxy(), ...e))
-                        : "root" === e
-                          ? () => t.root().toProxy()
-                          : "nodes" === e
-                            ? t.nodes.map((t) => t.toProxy())
-                            : "first" === e || "last" === e
-                              ? t[e].toProxy()
-                              : t[e]
-                    : t[e],
-            };
+          prepend(...t) {
+            t = t.reverse();
+            for (let e of t) {
+              let t = this.normalize(e, this.first, "prepend").reverse();
+              for (let e of t) this.proxyOf.nodes.unshift(e);
+              for (let e in this.indexes)
+                this.indexes[e] = this.indexes[e] + t.length;
+            }
+            return this.markDirty(), this;
           }
-          getIterator() {
-            this.lastEach || (this.lastEach = 0),
-              this.indexes || (this.indexes = {}),
-              (this.lastEach += 1);
-            let t = this.lastEach;
-            return (this.indexes[t] = 0), t;
+          push(t) {
+            return (t.parent = this), this.proxyOf.nodes.push(t), this;
+          }
+          removeAll() {
+            for (let t of this.proxyOf.nodes) t.parent = void 0;
+            return (this.proxyOf.nodes = []), this.markDirty(), this;
+          }
+          removeChild(t) {
+            let e;
+            (t = this.index(t)),
+              (this.proxyOf.nodes[t].parent = void 0),
+              this.proxyOf.nodes.splice(t, 1);
+            for (let n in this.indexes)
+              (e = this.indexes[n]), e >= t && (this.indexes[n] = e - 1);
+            return this.markDirty(), this;
+          }
+          replaceValues(t, e, n) {
+            return (
+              n || ((n = e), (e = {})),
+              this.walkDecls((r) => {
+                (e.props && !e.props.includes(r.prop)) ||
+                  (e.fast && !r.value.includes(e.fast)) ||
+                  (r.value = r.value.replace(t, n));
+              }),
+              this.markDirty(),
+              this
+            );
+          }
+          some(t) {
+            return this.nodes.some(t);
+          }
+          walk(t) {
+            return this.each((e, n) => {
+              let r;
+              try {
+                r = t(e, n);
+              } catch (t) {
+                throw e.addToError(t);
+              }
+              return !1 !== r && e.walk && (r = e.walk(t)), r;
+            });
+          }
+          walkAtRules(t, e) {
+            return e
+              ? t instanceof RegExp
+                ? this.walk((n, r) => {
+                    if ("atrule" === n.type && t.test(n.name)) return e(n, r);
+                  })
+                : this.walk((n, r) => {
+                    if ("atrule" === n.type && n.name === t) return e(n, r);
+                  })
+              : ((e = t),
+                this.walk((t, n) => {
+                  if ("atrule" === t.type) return e(t, n);
+                }));
+          }
+          walkComments(t) {
+            return this.walk((e, n) => {
+              if ("comment" === e.type) return t(e, n);
+            });
+          }
+          walkDecls(t, e) {
+            return e
+              ? t instanceof RegExp
+                ? this.walk((n, r) => {
+                    if ("decl" === n.type && t.test(n.prop)) return e(n, r);
+                  })
+                : this.walk((n, r) => {
+                    if ("decl" === n.type && n.prop === t) return e(n, r);
+                  })
+              : ((e = t),
+                this.walk((t, n) => {
+                  if ("decl" === t.type) return e(t, n);
+                }));
+          }
+          walkRules(t, e) {
+            return e
+              ? t instanceof RegExp
+                ? this.walk((n, r) => {
+                    if ("rule" === n.type && t.test(n.selector)) return e(n, r);
+                  })
+                : this.walk((n, r) => {
+                    if ("rule" === n.type && n.selector === t) return e(n, r);
+                  })
+              : ((e = t),
+                this.walk((t, n) => {
+                  if ("rule" === t.type) return e(t, n);
+                }));
+          }
+          get first() {
+            if (this.proxyOf.nodes) return this.proxyOf.nodes[0];
+          }
+          get last() {
+            if (this.proxyOf.nodes)
+              return this.proxyOf.nodes[this.proxyOf.nodes.length - 1];
           }
         }
         (d.registerParse = (t) => {
@@ -71804,8 +71822,8 @@
           toString() {
             return this.node
               ? this.node.error(this.text, {
-                  plugin: this.plugin,
                   index: this.index,
+                  plugin: this.plugin,
                   word: this.word,
                 }).message
               : this.plugin
@@ -71863,46 +71881,118 @@
               (this.current = this.root),
               (this.spaces = ""),
               (this.semicolon = !1),
-              (this.customProperty = !1),
               this.createTokenizer(),
               (this.root.source = {
                 input: t,
-                start: { offset: 0, line: 1, column: 1 },
+                start: { column: 1, line: 1, offset: 0 },
               });
           }
-          createTokenizer() {
-            this.tokenizer = i(this.input);
-          }
-          parse() {
-            let t;
-            for (; !this.tokenizer.endOfFile(); )
-              switch (((t = this.tokenizer.nextToken()), t[0])) {
-                case "space":
-                  this.spaces += t[1];
+          atrule(t) {
+            let e,
+              n,
+              r,
+              i = new s();
+            (i.name = t[1].slice(1)),
+              "" === i.name && this.unnamedAtrule(i, t),
+              this.init(i, t[2]);
+            let o = !1,
+              a = !1,
+              u = [],
+              l = [];
+            for (; !this.tokenizer.endOfFile(); ) {
+              if (
+                ((e = (t = this.tokenizer.nextToken())[0]),
+                "(" === e || "[" === e
+                  ? l.push("(" === e ? ")" : "]")
+                  : "{" === e && l.length > 0
+                    ? l.push("}")
+                    : e === l[l.length - 1] && l.pop(),
+                0 === l.length)
+              ) {
+                if (";" === e) {
+                  (i.source.end = this.getPosition(t[2])),
+                    i.source.end.offset++,
+                    (this.semicolon = !0);
                   break;
-                case ";":
-                  this.freeSemicolon(t);
+                }
+                if ("{" === e) {
+                  a = !0;
                   break;
-                case "}":
+                }
+                if ("}" === e) {
+                  if (u.length > 0) {
+                    for (r = u.length - 1, n = u[r]; n && "space" === n[0]; )
+                      n = u[--r];
+                    n &&
+                      ((i.source.end = this.getPosition(n[3] || n[2])),
+                      i.source.end.offset++);
+                  }
                   this.end(t);
                   break;
-                case "comment":
-                  this.comment(t);
-                  break;
-                case "at-word":
-                  this.atrule(t);
-                  break;
-                case "{":
-                  this.emptyRule(t);
-                  break;
-                default:
-                  this.other(t);
+                }
+                u.push(t);
+              } else u.push(t);
+              if (this.tokenizer.endOfFile()) {
+                o = !0;
+                break;
               }
-            this.endFile();
+            }
+            (i.raws.between = this.spacesAndCommentsFromEnd(u)),
+              u.length
+                ? ((i.raws.afterName = this.spacesAndCommentsFromStart(u)),
+                  this.raw(i, "params", u),
+                  o &&
+                    ((t = u[u.length - 1]),
+                    (i.source.end = this.getPosition(t[3] || t[2])),
+                    i.source.end.offset++,
+                    (this.spaces = i.raws.between),
+                    (i.raws.between = "")))
+                : ((i.raws.afterName = ""), (i.params = "")),
+              a && ((i.nodes = []), (this.current = i));
+          }
+          checkMissedSemicolon(t) {
+            let e = this.colon(t);
+            if (!1 === e) return;
+            let n,
+              r = 0;
+            for (
+              let i = e - 1;
+              i >= 0 && ((n = t[i]), "space" === n[0] || ((r += 1), 2 !== r));
+              i--
+            );
+            throw this.input.error(
+              "Missed semicolon",
+              "word" === n[0] ? n[3] + 1 : n[2],
+            );
+          }
+          colon(t) {
+            let e,
+              n,
+              r,
+              i = 0;
+            for (let [o, s] of t.entries()) {
+              if (
+                ((e = s),
+                (n = e[0]),
+                "(" === n && (i += 1),
+                ")" === n && (i -= 1),
+                0 === i && ":" === n)
+              ) {
+                if (r) {
+                  if ("word" === r[0] && "progid" === r[1]) continue;
+                  return o;
+                }
+                this.doubleColon(e);
+              }
+              r = e;
+            }
+            return !1;
           }
           comment(t) {
             let e = new o();
-            this.init(e, t[2]), (e.source.end = this.getPosition(t[3] || t[2]));
+            this.init(e, t[2]),
+              (e.source.end = this.getPosition(t[3] || t[2])),
+              e.source.end.offset++;
             let n = t[1].slice(2, -2);
             if (/^\s*$/.test(n))
               (e.text = ""), (e.raws.left = n), (e.raws.right = "");
@@ -71911,65 +72001,8 @@
               (e.text = t[2]), (e.raws.left = t[1]), (e.raws.right = t[3]);
             }
           }
-          emptyRule(t) {
-            let e = new u();
-            this.init(e, t[2]),
-              (e.selector = ""),
-              (e.raws.between = ""),
-              (this.current = e);
-          }
-          other(t) {
-            let e = !1,
-              n = null,
-              r = !1,
-              i = null,
-              o = [],
-              s = t[1].startsWith("--"),
-              a = [],
-              u = t;
-            for (; u; ) {
-              if (((n = u[0]), a.push(u), "(" === n || "[" === n))
-                i || (i = u), o.push("(" === n ? ")" : "]");
-              else if (s && r && "{" === n) i || (i = u), o.push("}");
-              else if (0 === o.length) {
-                if (";" === n) {
-                  if (r) return void this.decl(a, s);
-                  break;
-                }
-                if ("{" === n) return void this.rule(a);
-                if ("}" === n) {
-                  this.tokenizer.back(a.pop()), (e = !0);
-                  break;
-                }
-                ":" === n && (r = !0);
-              } else
-                n === o[o.length - 1] &&
-                  (o.pop(), 0 === o.length && (i = null));
-              u = this.tokenizer.nextToken();
-            }
-            if (
-              (this.tokenizer.endOfFile() && (e = !0),
-              o.length > 0 && this.unclosedBracket(i),
-              e && r)
-            ) {
-              if (!s)
-                for (
-                  ;
-                  a.length &&
-                  ((u = a[a.length - 1][0]), "space" === u || "comment" === u);
-
-                )
-                  this.tokenizer.back(a.pop());
-              this.decl(a, s);
-            } else this.unknownWord(a);
-          }
-          rule(t) {
-            t.pop();
-            let e = new u();
-            this.init(e, t[0][2]),
-              (e.raws.between = this.spacesAndCommentsFromEnd(t)),
-              this.raw(e, "selector", t),
-              (this.current = e);
+          createTokenizer() {
+            this.tokenizer = i(this.input);
           }
           decl(t, e) {
             let n = new r();
@@ -71988,7 +72021,8 @@
                         if (r) return r;
                       }
                     })(t),
-                );
+                ),
+                n.source.end.offset++;
               "word" !== t[0][0];
 
             )
@@ -72048,64 +72082,19 @@
               this.raw(n, "value", a.concat(t), e),
               n.value.includes(":") && !e && this.checkMissedSemicolon(t);
           }
-          atrule(t) {
-            let e,
-              n,
-              r,
-              i = new s();
-            (i.name = t[1].slice(1)),
-              "" === i.name && this.unnamedAtrule(i, t),
-              this.init(i, t[2]);
-            let o = !1,
-              a = !1,
-              u = [],
-              l = [];
-            for (; !this.tokenizer.endOfFile(); ) {
-              if (
-                ((e = (t = this.tokenizer.nextToken())[0]),
-                "(" === e || "[" === e
-                  ? l.push("(" === e ? ")" : "]")
-                  : "{" === e && l.length > 0
-                    ? l.push("}")
-                    : e === l[l.length - 1] && l.pop(),
-                0 === l.length)
-              ) {
-                if (";" === e) {
-                  (i.source.end = this.getPosition(t[2])),
-                    (this.semicolon = !0);
-                  break;
-                }
-                if ("{" === e) {
-                  a = !0;
-                  break;
-                }
-                if ("}" === e) {
-                  if (u.length > 0) {
-                    for (r = u.length - 1, n = u[r]; n && "space" === n[0]; )
-                      n = u[--r];
-                    n && (i.source.end = this.getPosition(n[3] || n[2]));
-                  }
-                  this.end(t);
-                  break;
-                }
-                u.push(t);
-              } else u.push(t);
-              if (this.tokenizer.endOfFile()) {
-                o = !0;
-                break;
-              }
-            }
-            (i.raws.between = this.spacesAndCommentsFromEnd(u)),
-              u.length
-                ? ((i.raws.afterName = this.spacesAndCommentsFromStart(u)),
-                  this.raw(i, "params", u),
-                  o &&
-                    ((t = u[u.length - 1]),
-                    (i.source.end = this.getPosition(t[3] || t[2])),
-                    (this.spaces = i.raws.between),
-                    (i.raws.between = "")))
-                : ((i.raws.afterName = ""), (i.params = "")),
-              a && ((i.nodes = []), (this.current = i));
+          doubleColon(t) {
+            throw this.input.error(
+              "Double colon",
+              { offset: t[2] },
+              { offset: t[2] + t[1].length },
+            );
+          }
+          emptyRule(t) {
+            let e = new u();
+            this.init(e, t[2]),
+              (e.selector = ""),
+              (e.raws.between = ""),
+              (this.current = e);
           }
           end(t) {
             this.current.nodes &&
@@ -72117,6 +72106,7 @@
               (this.spaces = ""),
               this.current.parent
                 ? ((this.current.source.end = this.getPosition(t[2])),
+                  this.current.source.end.offset++,
                   (this.current = this.current.parent))
                 : this.unexpectedClose(t);
           }
@@ -72126,7 +72116,10 @@
                 this.current.nodes.length &&
                 (this.current.raws.semicolon = this.semicolon),
               (this.current.raws.after =
-                (this.current.raws.after || "") + this.spaces);
+                (this.current.raws.after || "") + this.spaces),
+              (this.root.source.end = this.getPosition(
+                this.tokenizer.position(),
+              ));
           }
           freeSemicolon(t) {
             if (((this.spaces += t[1]), this.current.nodes)) {
@@ -72139,15 +72132,88 @@
           }
           getPosition(t) {
             let e = this.input.fromOffset(t);
-            return { offset: t, line: e.line, column: e.col };
+            return { column: e.col, line: e.line, offset: t };
           }
           init(t, e) {
             this.current.push(t),
-              (t.source = { start: this.getPosition(e), input: this.input }),
+              (t.source = { input: this.input, start: this.getPosition(e) }),
               (t.raws.before = this.spaces),
               (this.spaces = ""),
               "comment" !== t.type && (this.semicolon = !1);
           }
+          other(t) {
+            let e = !1,
+              n = null,
+              r = !1,
+              i = null,
+              o = [],
+              s = t[1].startsWith("--"),
+              a = [],
+              u = t;
+            for (; u; ) {
+              if (((n = u[0]), a.push(u), "(" === n || "[" === n))
+                i || (i = u), o.push("(" === n ? ")" : "]");
+              else if (s && r && "{" === n) i || (i = u), o.push("}");
+              else if (0 === o.length) {
+                if (";" === n) {
+                  if (r) return void this.decl(a, s);
+                  break;
+                }
+                if ("{" === n) return void this.rule(a);
+                if ("}" === n) {
+                  this.tokenizer.back(a.pop()), (e = !0);
+                  break;
+                }
+                ":" === n && (r = !0);
+              } else
+                n === o[o.length - 1] &&
+                  (o.pop(), 0 === o.length && (i = null));
+              u = this.tokenizer.nextToken();
+            }
+            if (
+              (this.tokenizer.endOfFile() && (e = !0),
+              o.length > 0 && this.unclosedBracket(i),
+              e && r)
+            ) {
+              if (!s)
+                for (
+                  ;
+                  a.length &&
+                  ((u = a[a.length - 1][0]), "space" === u || "comment" === u);
+
+                )
+                  this.tokenizer.back(a.pop());
+              this.decl(a, s);
+            } else this.unknownWord(a);
+          }
+          parse() {
+            let t;
+            for (; !this.tokenizer.endOfFile(); )
+              switch (((t = this.tokenizer.nextToken()), t[0])) {
+                case "space":
+                  this.spaces += t[1];
+                  break;
+                case ";":
+                  this.freeSemicolon(t);
+                  break;
+                case "}":
+                  this.end(t);
+                  break;
+                case "comment":
+                  this.comment(t);
+                  break;
+                case "at-word":
+                  this.atrule(t);
+                  break;
+                case "{":
+                  this.emptyRule(t);
+                  break;
+                default:
+                  this.other(t);
+              }
+            this.endFile();
+          }
+          precheckMissedSemicolon() {}
           raw(t, e, n, r) {
             let i,
               o,
@@ -72170,9 +72236,17 @@
                   : (p = !1);
             if (!p) {
               let r = n.reduce((t, e) => t + e[1], "");
-              t.raws[e] = { value: c, raw: r };
+              t.raws[e] = { raw: r, value: c };
             }
             t[e] = c;
+          }
+          rule(t) {
+            t.pop();
+            let e = new u();
+            this.init(e, t[0][2]),
+              (e.raws.between = this.spacesAndCommentsFromEnd(t)),
+              this.raw(e, "selector", t),
+              (this.current = e);
           }
           spacesAndCommentsFromEnd(t) {
             let e,
@@ -72209,32 +72283,20 @@
             for (let r = e; r < t.length; r++) n += t[r][1];
             return t.splice(e, t.length - e), n;
           }
-          colon(t) {
-            let e,
-              n,
-              r,
-              i = 0;
-            for (let [o, s] of t.entries()) {
-              if (
-                ((e = s),
-                (n = e[0]),
-                "(" === n && (i += 1),
-                ")" === n && (i -= 1),
-                0 === i && ":" === n)
-              ) {
-                if (r) {
-                  if ("word" === r[0] && "progid" === r[1]) continue;
-                  return o;
-                }
-                this.doubleColon(e);
-              }
-              r = e;
-            }
-            return !1;
+          unclosedBlock() {
+            let t = this.current.source.start;
+            throw this.input.error("Unclosed block", t.line, t.column);
           }
           unclosedBracket(t) {
             throw this.input.error(
               "Unclosed bracket",
+              { offset: t[2] },
+              { offset: t[2] + 1 },
+            );
+          }
+          unexpectedClose(t) {
+            throw this.input.error(
+              "Unexpected }",
               { offset: t[2] },
               { offset: t[2] + 1 },
             );
@@ -72246,45 +72308,11 @@
               { offset: t[0][2] + t[0][1].length },
             );
           }
-          unexpectedClose(t) {
-            throw this.input.error(
-              "Unexpected }",
-              { offset: t[2] },
-              { offset: t[2] + 1 },
-            );
-          }
-          unclosedBlock() {
-            let t = this.current.source.start;
-            throw this.input.error("Unclosed block", t.line, t.column);
-          }
-          doubleColon(t) {
-            throw this.input.error(
-              "Double colon",
-              { offset: t[2] },
-              { offset: t[2] + t[1].length },
-            );
-          }
           unnamedAtrule(t, e) {
             throw this.input.error(
               "At-rule without name",
               { offset: e[2] },
               { offset: e[2] + e[1].length },
-            );
-          }
-          precheckMissedSemicolon() {}
-          checkMissedSemicolon(t) {
-            let e = this.colon(t);
-            if (!1 === e) return;
-            let n,
-              r = 0;
-            for (
-              let i = e - 1;
-              i >= 0 && ((n = t[i]), "space" === n[0] || ((r += 1), 2 !== r));
-              i--
-            );
-            throw this.input.error(
-              "Missed semicolon",
-              "word" === n[0] ? n[3] + 1 : n[2],
             );
           }
         };
@@ -72312,7 +72340,7 @@
           b = "@".charCodeAt(0),
           _ = /[\t\n\f\r "#'()/;[\\\]{}]/g,
           w = /[\t\n\f\r !"#'():;@[\\\]{}]|\/(?=\*)/g,
-          E = /.[\n"'(/\\]/,
+          E = /.[\r\n"'(/\\]/,
           x = /[\da-f]/i;
         t.exports = function (t, S = {}) {
           let k,
@@ -72337,6 +72365,9 @@
           return {
             back: function (t) {
               U.push(t);
+            },
+            endOfFile: function () {
+              return 0 === U.length && B >= j;
             },
             nextToken: function (t) {
               if (U.length) return U.pop();
@@ -72454,9 +72485,6 @@
               }
               return B++, L;
             },
-            endOfFile: function () {
-              return 0 === U.length && B >= j;
-            },
             position: function () {
               return B;
             },
@@ -72488,16 +72516,6 @@
           constructor(t) {
             super(t), (this.type = "root"), this.nodes || (this.nodes = []);
           }
-          removeChild(t, e) {
-            let n = this.index(t);
-            return (
-              !e &&
-                0 === n &&
-                this.nodes.length > 1 &&
-                (this.nodes[1].raws.before = this.nodes[n].raws.before),
-              super.removeChild(t)
-            );
-          }
           normalize(t, e, n) {
             let r = super.normalize(t);
             if (e)
@@ -72508,6 +72526,16 @@
               else if (this.first !== e)
                 for (let t of r) t.raws.before = e.raws.before;
             return r;
+          }
+          removeChild(t, e) {
+            let n = this.index(t);
+            return (
+              !e &&
+                0 === n &&
+                this.nodes.length > 1 &&
+                (this.nodes[1].raws.before = this.nodes[n].raws.before),
+              super.removeChild(t)
+            );
           }
           toResult(t = {}) {
             return new r(new i(), this, t).stringify();
@@ -72545,6 +72573,8 @@
       (t) => {
         "use strict";
         let e = {
+          comma: (t) => e.split(t, [","], !0),
+          space: (t) => e.split(t, [" ", "\n", "\t"]),
           split(t, e, n) {
             let r = [],
               i = "",
@@ -72572,8 +72602,6 @@
                   : (i += n);
             return (n || "" !== i) && r.push(i.trim()), r;
           },
-          space: (t) => e.split(t, [" ", "\n", "\t"]),
-          comma: (t) => e.split(t, [","], !0),
         };
         (t.exports = e), (e.default = e);
       },
@@ -72585,20 +72613,7 @@
           s = n(109);
         class a {
           constructor(t = []) {
-            (this.version = "8.4.23"), (this.plugins = this.normalize(t));
-          }
-          use(t) {
-            return (
-              (this.plugins = this.plugins.concat(this.normalize([t]))), this
-            );
-          }
-          process(t, e = {}) {
-            return 0 === this.plugins.length &&
-              void 0 === e.parser &&
-              void 0 === e.stringifier &&
-              void 0 === e.syntax
-              ? new r(this, t, e)
-              : new i(this, t, e);
+            (this.version = "8.4.38"), (this.plugins = this.normalize(t));
           }
           normalize(t) {
             let e = [];
@@ -72619,6 +72634,16 @@
                   );
               }
             return e;
+          }
+          process(t, e = {}) {
+            return this.plugins.length || e.parser || e.stringifier || e.syntax
+              ? new i(this, t, e)
+              : new r(this, t, e);
+          }
+          use(t) {
+            return (
+              (this.plugins = this.plugins.concat(this.normalize([t]))), this
+            );
           }
         }
         (t.exports = a),
@@ -72651,25 +72676,56 @@
             if (l.isMap()) {
               let [t, e] = l.generate();
               t && (this.result.css = t), e && (this.result.map = e);
-            }
+            } else l.clearAnnotation(), (this.result.css = l.css);
           }
-          get [Symbol.toStringTag]() {
-            return "NoWorkResult";
+          async() {
+            return this.error
+              ? Promise.reject(this.error)
+              : Promise.resolve(this.result);
           }
-          get processor() {
-            return this.result.processor;
+          catch(t) {
+            return this.async().catch(t);
           }
-          get opts() {
-            return this.result.opts;
+          finally(t) {
+            return this.async().then(t, t);
           }
-          get css() {
-            return this.result.css;
+          sync() {
+            if (this.error) throw this.error;
+            return this.result;
+          }
+          then(t, e) {
+            return (
+              "production" !== "production".NODE_ENV &&
+                ("from" in this._opts ||
+                  o(
+                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
+                  )),
+              this.async().then(t, e)
+            );
+          }
+          toString() {
+            return this._css;
+          }
+          warnings() {
+            return [];
           }
           get content() {
             return this.result.css;
           }
+          get css() {
+            return this.result.css;
+          }
           get map() {
             return this.result.map;
+          }
+          get messages() {
+            return [];
+          }
+          get opts() {
+            return this.result.opts;
+          }
+          get processor() {
+            return this.result.processor;
           }
           get root() {
             if (this._root) return this._root;
@@ -72683,39 +72739,8 @@
             if (this.error) throw this.error;
             return (this._root = t), t;
           }
-          get messages() {
-            return [];
-          }
-          warnings() {
-            return [];
-          }
-          toString() {
-            return this._css;
-          }
-          then(t, e) {
-            return (
-              "production" !== "production".NODE_ENV &&
-                ("from" in this._opts ||
-                  o(
-                    "Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.",
-                  )),
-              this.async().then(t, e)
-            );
-          }
-          catch(t) {
-            return this.async().catch(t);
-          }
-          finally(t) {
-            return this.async().then(t, t);
-          }
-          async() {
-            return this.error
-              ? Promise.reject(this.error)
-              : Promise.resolve(this.result);
-          }
-          sync() {
-            if (this.error) throw this.error;
-            return this.result;
+          get [Symbol.toStringTag]() {
+            return "NoWorkResult";
           }
         }
         (t.exports = u), (u.default = u);
@@ -73596,81 +73621,81 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "q4MCa3H0",
+          id: "rOF2i4wM",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-spinner.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-spinner.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["lol-uikit-spinner-image ",["unknown",["defaultSize"]]," ",["unknown",["class"]]]]],["dynamic-attr","src",["unknown",["s"]],null],["dynamic-attr","width",["unknown",["w"]],null],["dynamic-attr","height",["unknown",["h"]],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-spinner.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-spinner.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["lol-uikit-spinner-image ",["unknown",["defaultSize"]]," ",["unknown",["class"]]]]],["dynamic-attr","src",["unknown",["s"]],null],["dynamic-attr","width",["unknown",["w"]],null],["dynamic-attr","height",["unknown",["h"]],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "QC8KDUMX",
+          id: "x2zgBda8",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["renderContent"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n"],["block",["if"],[["get",["renderContent"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "PN2vEIEH",
+          id: "/0J6/HYC",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-modal.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-modal.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-modal.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-modal.js\\" "],["text","\\n"],["open-element","div",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "4a4gRYck",
+          id: "Z8/Lu92M",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-framed-icon.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-framed-icon.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["outer-mask ",["unknown",["interactiveStyle"]]," ",["unknown",["zoomStyle"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["frame-color ",["unknown",["cursorStyle"]]]]],["dynamic-attr","style",["unknown",["frameDynamicStyle"]],null],["flush-element"],["text","\\n    "],["yield","default"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["inner-mask ",["unknown",["innerShadowStyle"]]]]],["dynamic-attr","style",["unknown",["innerMaskDynamicStyle"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-framed-icon.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-framed-icon.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["outer-mask ",["unknown",["interactiveStyle"]]," ",["unknown",["zoomStyle"]]]]],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["frame-color ",["unknown",["cursorStyle"]]]]],["dynamic-attr","style",["unknown",["frameDynamicStyle"]],null],["flush-element"],["text","\\n    "],["yield","default"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["inner-mask ",["unknown",["innerShadowStyle"]]]]],["dynamic-attr","style",["unknown",["innerMaskDynamicStyle"]],null],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "g3un1IBr",
+          id: "/WvfF2ei",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-background-switcher.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-background-switcher.js\\" "],["text","\\n"],["block",["if"],[["get",["src"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["get",["overlay"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-overlay ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["overlay"]},{"statements":[["block",["each"],[["get",["overlays"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","src",["unknown",["src"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["dynamic-attr","src",["unknown",["src"]],null],["static-attr","autoplay","true"],["static-attr","loop","true"],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isVideoSrc"]]],null,3,2],["block",["if"],[["get",["overlays"]]],null,1]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-background-switcher.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-background-switcher.js\\" "],["text","\\n"],["block",["if"],[["get",["src"]]],null,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["dynamic-attr","src",["get",["overlay"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-overlay ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["overlay"]},{"statements":[["block",["each"],[["get",["overlays"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["dynamic-attr","src",["unknown",["src"]],null],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["dynamic-attr","src",["unknown",["src"]],null],["static-attr","autoplay","true"],["static-attr","loop","true"],["dynamic-attr","class",["concat",["lol-uikit-background-switcher-image ",["unknown",["newSrcCssClassNames"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isVideoSrc"]]],null,3,2],["block",["if"],[["get",["overlays"]]],null,1]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "qnoeKaKp",
+          id: "K8W+0db0",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-error-page.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-error-page.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","uikit-error-page__group"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__wrench"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","p",[]],["static-attr","class","uikit-error-page__content"],["flush-element"],["text","\\n        "],["append",["unknown",["renderedContent"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRetrying"]]],null,1,0],["text","    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","uikit-error-page__button"],["modifier",["action"],[["get",[null]],"buttonCallback"]],["flush-element"],["text","\\n                "],["append",["unknown",["renderedButtonText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","uikit-error-page__retry-spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-error-page.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-error-page.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","class","uikit-error-page__group"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__wrench"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","p",[]],["static-attr","class","uikit-error-page__content"],["flush-element"],["text","\\n        "],["append",["unknown",["renderedContent"]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","uikit-error-page__button-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isRetrying"]]],null,1,0],["text","    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","uikit-error-page__button"],["modifier",["action"],[["get",[null]],"buttonCallback"]],["flush-element"],["text","\\n                "],["append",["unknown",["renderedButtonText"]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","uikit-error-page__retry-spinner"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "kVWtE7hN",
+          id: "2rEdTaJN",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-lottie.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-lottie.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","lottie-render-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lottieErrorMessage"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["lottieErrorMessage"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-lottie.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-lottie.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","lottie-render-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["lottieErrorMessage"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["lottieErrorMessage"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "ITa1wbZh",
+          id: "1C00sHhI",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-vignette.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-vignette.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","header bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["header"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","main-content"],["flush-element"],["text","\\n  "],["yield","default",[["helper",["hash"],null,[["content"],["blank-template"]]]]],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","footer bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["footer"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\uikit-vignette.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\components\\\\uikit-vignette.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","header bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["header"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","main-content"],["flush-element"],["text","\\n  "],["yield","default",[["helper",["hash"],null,[["content"],["blank-template"]]]]],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","border-bar"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","footer bar"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","interior-content"],["flush-element"],["text","\\n    "],["yield","default",[["helper",["hash"],null,[["footer"],["blank-template"]]]]],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "xNnjJfd+",
+          id: "I2hoVTya",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\blank-template.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["yield","default"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\ember-uikit\\\\addon\\\\templates\\\\components\\\\blank-template.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["yield","default"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -73724,7 +73749,7 @@
               if (
                 (this.runTask(() => {
                   this.get("isInitialized") ||
-                    this._closeModalAndShowLoadError("loot odds load timeout");
+                    this._showLoadError("loot odds load timeout");
                 }, 5e3),
                 this.get("dropTableId"))
               )
@@ -73741,7 +73766,7 @@
                     this.set("isInitialized", !0);
                 })
                 .catch((t) => {
-                  this._closeModalAndShowLoadError(t);
+                  this._showLoadError(t);
                 });
             },
             _loadLootOddsForCAPDropTable() {
@@ -73754,7 +73779,7 @@
                     this.set("isInitialized", !0);
                 })
                 .catch((t) => {
-                  this._closeModalAndShowLoadError(t);
+                  this._showLoadError(t);
                 });
             },
             _updateItemLists(t, e) {
@@ -73780,7 +73805,7 @@
                 ),
                 h(this.get("guaranteedList"), this.get("tra"));
             },
-            _closeModalAndShowLoadError(t) {
+            _showLoadError(t) {
               i.logger.error(
                 "Loot odds failed to fetch data for " + this.get("name"),
                 t,
@@ -74198,27 +74223,27 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "ae8nXM0j",
+          id: "0KSrDNYC",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-table-window"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,7,1],["close-element"],["text","\\n\\n"],["block",["uikit-modal"],null,[["type","displayModal","okText","dismissable"],["DialogAlert",["get",["showLoadError"]],"Okay!",true]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-small"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_title"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","classname","loot-table-loading"],["flush-element"],["append",["helper",["uikit-spinner"],null,[["class","width","height"],["loading-spinner","50px","50px"]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-no-results"],["flush-element"],["append",["unknown",["tra","loot_odds_no_results"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["chanceList"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-subtitle ",["helper",["unless"],[["get",["guaranteedItem","isVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["guaranteedItem","subHeader"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["guaranteedItem","children"]]]]],false],["text","\\n"]],"locals":["guaranteedItem"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","style","padding:18px"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__title-container"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon loot-table-variable-odds-tooltip__badge-icon--tooltip ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                      "],["open-element","h3",[]],["static-attr","class","loot-table-variable-odds-tooltip__title"],["flush-element"],["append",["unknown",["disclaimer","title"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","loot-table-variable-odds-tooltip__disclaimer"],["flush-element"],["text","\\n                      "],["append",["helper",["sanitize"],[["get",["disclaimer","description"]]],null],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__toggle-button"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["disclaimer","badgeTitle"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],5],["text","            "],["close-element"],["text","\\n"]],"locals":["disclaimer"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-table-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-header-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header"],["flush-element"],["text","\\n          "],["append",["unknown",["lootItemName"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds"],["flush-element"],["text","\\n"],["block",["each"],[["get",["disclaimers"]]],null,6],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header-subtext"],["flush-element"],["append",["unknown",["disclaimerSubtitle"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","loot-table-search"],["flush-element"],["text","\\n          "],["open-element","input",[]],["static-attr","class","loot-table-search-input"],["static-attr","type","search"],["dynamic-attr","value",["unknown",["searchTerm"]],null],["dynamic-attr","oninput",["helper",["action"],[["get",[null]],"onSearchInput"],null],null],["dynamic-attr","placeholder",["unknown",["tra","loot_odds_filter_searchbox_placeholder_text"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-scrollable-wrapper"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-table-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-title ",["helper",["unless"],[["get",["hasVisibleGuaranteedList"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_guaranteed_title"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["each"],[["get",["guaranteedList"]]],null,4],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["unless"],[["get",["chanceListVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-title"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_title"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-subtitle"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_subtitle"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["chanceList"]]],null,3],["block",["if"],[["get",["noResults"]]],null,2],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-table-window"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isInitialized"]]],null,7,1],["close-element"],["text","\\n\\n"],["block",["uikit-modal"],null,[["type","displayModal","okText","dismissable","show"],["DialogAlert",["get",["showLoadError"]],["get",["tra","loot_odds_error_fail_to_load_dismiss_modal"]],true,true]],0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-small"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_title"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["static-attr","class","heading-spacer"],["flush-element"],["close-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","loot_odds_error_fail_to_load_description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","classname","loot-table-loading"],["flush-element"],["append",["helper",["uikit-spinner"],null,[["class","width","height"],["loading-spinner","50px","50px"]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-no-results"],["flush-element"],["append",["unknown",["tra","loot_odds_no_results"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["chanceList"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-subtitle ",["helper",["unless"],[["get",["guaranteedItem","isVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["guaranteedItem","subHeader"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["guaranteedItem","children"]]]]],false],["text","\\n"]],"locals":["guaranteedItem"]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","style","padding:18px"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__title-container"],["flush-element"],["text","\\n                      "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon loot-table-variable-odds-tooltip__badge-icon--tooltip ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                      "],["open-element","h3",[]],["static-attr","class","loot-table-variable-odds-tooltip__title"],["flush-element"],["append",["unknown",["disclaimer","title"]],false],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","loot-table-variable-odds-tooltip__disclaimer"],["flush-element"],["text","\\n                      "],["append",["helper",["sanitize"],[["get",["disclaimer","description"]]],null],false],["text","\\n                    "],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds-tooltip__toggle-button"],["flush-element"],["text","\\n                "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-variable-odds-tooltip__badge-icon ",["unknown",["disclaimer","iconCssClass"]]]]],["flush-element"],["close-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["disclaimer","badgeTitle"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],5],["text","            "],["close-element"],["text","\\n"]],"locals":["disclaimer"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","loot-table-content"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-header-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header"],["flush-element"],["text","\\n          "],["append",["unknown",["lootItemName"]],false],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-variable-odds"],["flush-element"],["text","\\n"],["block",["each"],[["get",["disclaimers"]]],null,6],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","loot-table-header-subtext"],["flush-element"],["append",["unknown",["disclaimerSubtitle"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-input",[]],["static-attr","class","loot-table-search"],["flush-element"],["text","\\n          "],["open-element","input",[]],["static-attr","class","loot-table-search-input"],["static-attr","type","search"],["dynamic-attr","value",["unknown",["searchTerm"]],null],["dynamic-attr","oninput",["helper",["action"],[["get",[null]],"onSearchInput"],null],null],["dynamic-attr","placeholder",["unknown",["tra","loot_odds_filter_searchbox_placeholder_text"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","loot-table-scrollable-wrapper"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","loot-table-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["list-title ",["helper",["unless"],[["get",["hasVisibleGuaranteedList"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_guaranteed_title"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["each"],[["get",["guaranteedList"]]],null,4],["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",[["helper",["unless"],[["get",["chanceListVisible"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-title"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_title"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","list-subtitle"],["flush-element"],["text","\\n              "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","loot_odds_droprates_modal_chance_subtitle"]],false],["close-element"],["text","\\n              "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["chanceList"]]],null,3],["block",["if"],[["get",["noResults"]]],null,2],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "Zh7faG/T",
+          id: "G575x9N2",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-list.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-list.js\\" "],["text","\\n"],["block",["each"],[["get",["sortedItemList"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-table-item"],null,[["item"],[["get",["item"]]]]],false],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-list.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-list.js\\" "],["text","\\n"],["block",["each"],[["get",["sortedItemList"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["loot-table-item"],null,[["item"],[["get",["item"]]]]],false],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "t7uMy4oL",
+          id: "5uwGTfIg",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-item.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-item.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-list-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-list-item-details"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"collapseNode"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-list-item-background-holder"],["flush-element"],["open-element","div",[]],["static-attr","class","loot-list-item-row-background"],["flush-element"],["close-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isCollapsable"]]],null,7,6],["text","    "],["open-element","div",[]],["static-attr","class","loot-odd-name"],["flush-element"],["append",["unknown",["displayLabel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-table-drop-rate"],["flush-element"],["append",["unknown",["percentage"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasQueryEvaluation"]]],null,5],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChildren"]]],null,3,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","loot-table-query-child-item"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["append",["unknown",["queryItem","localizedName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["queryItem"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-query-children ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["queryEvaluatedItemsToShow"]]],null,0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showEvaluationItems"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-child-list ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["item","children"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["childQueryDisplayText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-query-wrapper"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["item","isLoadingQueryEvaluation"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-chevron-wrapper"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","loot-table-chevron"],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 20 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M13.3 10L12.3 9L12 8.7L8.3 5L7 6.4L10.6 10L7 13.7L8.3 15L13.3 10Z"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\templates\\\\components\\\\loot-table-item.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loot-table\\\\addon\\\\components\\\\loot-table-item.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loot-list-item"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loot-list-item-details"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"collapseNode"],null],null],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-list-item-background-holder"],["flush-element"],["open-element","div",[]],["static-attr","class","loot-list-item-row-background"],["flush-element"],["close-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isCollapsable"]]],null,7,6],["text","    "],["open-element","div",[]],["static-attr","class","loot-odd-name"],["flush-element"],["append",["unknown",["displayLabel"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","loot-table-drop-rate"],["flush-element"],["append",["unknown",["percentage"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasQueryEvaluation"]]],null,5],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["hasChildren"]]],null,3,2],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","loot-table-query-child-item"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n          "],["open-element","div",[]],["flush-element"],["append",["unknown",["queryItem","localizedName"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["queryItem"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-query-children ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["queryEvaluatedItemsToShow"]]],null,0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["showEvaluationItems"]]],null,1]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["loot-table-child-list ",["helper",["if"],[["get",["item","isCollapsed"]],"filtered-hidden"],null]]]],["flush-element"],["append",["helper",["loot-table-list"],null,[["itemList"],[["get",["item","children"]]]]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["childQueryDisplayText"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-query-wrapper"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["item","isLoadingQueryEvaluation"]]],null,4],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-bullet-point"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","loot-table-chevron-wrapper"],["flush-element"],["text","\\n        "],["open-element","svg",[]],["static-attr","class","loot-table-chevron"],["static-attr","width","20"],["static-attr","height","20"],["static-attr","viewBox","0 0 20 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n          "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M13.3 10L12.3 9L12 8.7L8.3 5L7 6.4L10.6 10L7 13.7L8.3 15L13.3 10Z"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -74601,7 +74626,9 @@
                         this._purchaseDialogButtonWrapper.classList.remove(
                           "parties-purchase-loading",
                         ),
-                          this._displayErrorMessageInPurchaseDialog();
+                          this._displayErrorMessageInPurchaseDialog(
+                            "tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
+                          );
                       }, 1e4)),
                       this._playSound(s.SFX_STAR_SHARDS_PURCHASE);
                   }),
@@ -74625,12 +74652,10 @@
             );
             return e.setData(t), (this._purchaseDialogContentWrapper = e), e;
           },
-          _displayErrorMessageInPurchaseDialog() {
+          _displayErrorMessageInPurchaseDialog(t) {
             this._purchaseDialogContentWrapper.shadowRoot.querySelector(
               ".lol-parties-purchase-dialog-error-message",
-            ).innerText = this.get(
-              "tra.tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
-            );
+            ).innerText = this.get(`tra.${t}`);
           },
           _applyAdditionalButtonStyles(t) {
             const e = t.domNode.querySelector(
@@ -74729,7 +74754,9 @@
                     this._purchaseDialogButtonWrapper.classList.remove(
                       "parties-purchase-loading",
                     ),
-                    this._displayErrorMessageInPurchaseDialog()),
+                    this._displayErrorMessageInPurchaseDialog(
+                      "tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
+                    )),
                 this._purchaseTransactionTimeout &&
                   (clearTimeout(this._purchaseTransactionTimeout),
                   (this._purchaseTransactionTimeout = null))));
@@ -74859,9 +74886,9 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "bqilphjE",
+          id: "HzPVZ0Xm",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\templates\\\\components\\\\loadouts-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\components\\\\loadouts-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loadouts-modal-content"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-navigation-bar",[]],["static-attr","type","tabbed"],["static-attr","direction","down"],["static-attr","selectedindex","0"],["static-attr","class","loadouts-selectable-items"],["flush-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," This should have the content of the active selection"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loadouts-modal-active-item"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\templates\\\\components\\\\loadouts-modal-root.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\loadouts-modal\\\\addon\\\\components\\\\loadouts-modal-root.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","loadouts-modal-content"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-navigation-bar",[]],["static-attr","type","tabbed"],["static-attr","direction","down"],["static-attr","selectedindex","0"],["static-attr","class","loadouts-selectable-items"],["flush-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," This should have the content of the active selection"],["text","\\n  "],["open-element","div",[]],["static-attr","class","loadouts-modal-active-item"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -74928,9 +74955,9 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "XZW4RTBH",
+          id: "7HxKoYXB",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\templates\\\\svg-loader.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\styles\\\\svg-loader.styl\\" js-path=\\"null\\" "],["text","\\n\\n"],["block",["if"],[["get",["guideMode"]]],null,2,1]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["shouldFadeOutSvg"]],"fade-out"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["content ",["helper",["unless"],[["get",["showContent"]],"display-none"],null]]]],["flush-element"],["text","\\n        "],["yield","default"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showContent"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["guideMode"]],"guide-mode"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\templates\\\\svg-loader.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\svg-loader\\\\addon\\\\styles\\\\svg-loader.styl\\" js-path=\\"null\\" "],["text","\\n\\n"],["block",["if"],[["get",["guideMode"]]],null,2,1]],"locals":[],"named":[],"yields":["default"],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["shouldFadeOutSvg"]],"fade-out"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["content ",["helper",["unless"],[["get",["showContent"]],"display-none"],null]]]],["flush-element"],["text","\\n        "],["yield","default"],["text","\\n    "],["close-element"],["text","\\n"],["block",["unless"],[["get",["showContent"]]],null,0]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["svg-loader ",["helper",["if"],[["get",["guideMode"]],"guide-mode"],null]]]],["dynamic-attr","style",["unknown",["loaderStyles"]],null],["flush-element"],["close-element"],["text","\\n    "],["yield","default"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -75039,18 +75066,18 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "qTbELR2j",
+          id: "2XflAFXN",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\icon-rarity.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\icon-rarity.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","icon-rarity__tooltip-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipOn"]]],null,1],["text","    "],["open-element","img",[]],["static-attr","class","icon-rarity__image"],["dynamic-attr","src",["unknown",["rarityData","gemIcon"]],null],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["static-attr","class","icon-rarity__tooltip-content"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["rarityData","tooltipTraKey"]]],null],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["collections-tooltip"],null,null,0]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\icon-rarity.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\icon-rarity.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","icon-rarity__tooltip-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["tooltipOn"]]],null,1],["text","    "],["open-element","img",[]],["static-attr","class","icon-rarity__image"],["dynamic-attr","src",["unknown",["rarityData","gemIcon"]],null],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","padding","small"],["flush-element"],["text","\\n                "],["open-element","p",[]],["static-attr","class","icon-rarity__tooltip-content"],["flush-element"],["append",["helper",["get"],[["get",["tra"]],["get",["rarityData","tooltipTraKey"]]],null],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["collections-tooltip"],null,null,0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "x0Ut5eLo",
+          id: "llrfqeDP",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\collections-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\collections-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\templates\\\\components\\\\collections-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\icon-rarity\\\\addon\\\\components\\\\collections-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["flush-element"],["text","\\n  "],["yield","default"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -77129,90 +77156,90 @@
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "X/468zuV",
+          id: "rTJ5JeM9",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-and-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-and-play-button.js\\" "],["text","\\n"],["append",["unknown",["patcher-play-button"]],false],["text","\\n"],["append",["unknown",["patching-progress-bar"]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","patcher-tooltip-holder"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isProgressTooltipAttached"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["patcher-progress-tooltip"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-and-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-and-play-button.js\\" "],["text","\\n"],["append",["unknown",["patcher-play-button"]],false],["text","\\n"],["append",["unknown",["patching-progress-bar"]],false],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","patcher-tooltip-holder"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isProgressTooltipAttached"]]],null,0],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["patcher-progress-tooltip"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "FVbxCPuh",
+          id: "FQQCIvAi",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-bar.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-bar.js\\" "],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "8k5sw8Tk",
+          id: "EnN2BCB6",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-video-state.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-video-state.js\\" "],["text","\\n"],["block",["if"],[["get",["isIntro"]]],null,2],["block",["if"],[["get",["isLoop"]]],null,1],["block",["if"],[["get",["playOutro"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["outro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcOutro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["loop",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcLoop"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["static-attr","loop","true"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["intro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcIntro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-video-state.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-video-state.js\\" "],["text","\\n"],["block",["if"],[["get",["isIntro"]]],null,2],["block",["if"],[["get",["isLoop"]]],null,1],["block",["if"],[["get",["playOutro"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["outro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcOutro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["loop",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcLoop"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["static-attr","loop","true"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","video",[]],["dynamic-attr","class",["concat",["intro",["helper",["if"],[["get",["isHanging"]]," hanging"],null]]]],["dynamic-attr","src",["unknown",["srcIntro"]],null],["static-attr","autoplay","true"],["static-attr","preload","auto"],["dynamic-attr","width",["unknown",["srcWidth"]],null],["dynamic-attr","height",["unknown",["srcHeight"]],null],["flush-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "LxCu1OJ0",
+          id: "TOFxxaM7",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-progress-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-progress-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["static-attr","id","patcher-progress-tooltip"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n    "],["open-element","h1",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayText"]],false],["text"," | "],["append",["unknown",["productName"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","info"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDownloading"]]],null,7,4],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayDetailText"]],false],["close-element"],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isRepairing"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["filesScanned"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isScanningFiles"]]],null,3,2]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","patcher_hanging_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["isHanging"]]],null,6,5]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-progress-tooltip.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-progress-tooltip.js\\" "],["text","\\n"],["open-element","lol-uikit-tooltip",[]],["static-attr","id","patcher-progress-tooltip"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n    "],["open-element","h1",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayText"]],false],["text"," | "],["append",["unknown",["productName"]],false],["close-element"],["text","\\n    "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","info"],["flush-element"],["text","\\n"],["block",["if"],[["get",["isDownloading"]]],null,7,4],["text","      "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["primaryWorkDisplayDetailText"]],false],["close-element"],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isRepairing"]]],null,1,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["filesScanned"]],false],["close-element"],["open-element","div",[]],["static-attr","class","filename"],["flush-element"],["append",["unknown",["lastFileProcessed"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isScanningFiles"]]],null,3,2]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["tra","patcher_hanging_text"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["flush-element"],["append",["unknown",["eta"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["flush-element"],["append",["unknown",["progress"]],false],["close-element"],["text","\\n"],["block",["unless"],[["get",["isHanging"]]],null,6,5]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "lqSEa90A",
+          id: "B7hW75K8",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-basic-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-basic-button.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-frame"],["dynamic-attr","data-is-logged-in",["unknown",["playButton","isLoggedIn"]],null],["dynamic-attr","data-is-not-patching",["unknown",["playButton","isNotPatching"]],null],["dynamic-attr","data-patcher-state",["unknown",["patcher","patcherState"]],null],["flush-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-container"],["dynamic-attr","style",["helper",["sanitize"],[["get",["buttonContainerStyle"]]],null],null],["flush-element"],["text","\\n\\n  "],["append",["helper",["league-client-logo"],null,[["videoSource"],[["get",["videoSource"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","play-button-content"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","play-button-text"],["flush-element"],["text","\\n      "],["append",["unknown",["buttonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["text","\\n        "],["append",["unknown",["tooltipMessage"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-basic-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-basic-button.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-frame"],["dynamic-attr","data-is-logged-in",["unknown",["playButton","isLoggedIn"]],null],["dynamic-attr","data-is-not-patching",["unknown",["playButton","isNotPatching"]],null],["dynamic-attr","data-patcher-state",["unknown",["patcher","patcherState"]],null],["flush-element"],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["showTooltip"]]],null,1],["text","\\n"],["open-element","div",[]],["static-attr","class","play-button-container"],["dynamic-attr","style",["helper",["sanitize"],[["get",["buttonContainerStyle"]]],null],null],["flush-element"],["text","\\n\\n  "],["append",["helper",["league-client-logo"],null,[["videoSource"],[["get",["videoSource"]]]]],false],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","play-button-content"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","play-button-text"],["flush-element"],["text","\\n      "],["append",["unknown",["buttonText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["text","\\n        "],["append",["unknown",["tooltipMessage"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition"],["bottom"]],0]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "cVfuIi/E",
+          id: "rxSx/Mj7",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-play-button.js\\" "],["text","\\n"],["append",["helper",["patcher-basic-button"],null,[["isHidden","buttonText","buttonState","imageSource","soundSource","videoSource","isLobby","play","tooltipMessage","showTooltip"],[["get",["isHidden"]],["get",["buttonText"]],["get",["buttonState"]],["get",["imageSource"]],["get",["soundSource"]],["get",["videoSource"]],["get",["isLobbyBtn"]],"play",["get",["tooltipMessage"]],["get",["showTooltip"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patcher-play-button.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patcher-play-button.js\\" "],["text","\\n"],["append",["helper",["patcher-basic-button"],null,[["isHidden","buttonText","buttonState","imageSource","soundSource","videoSource","isLobby","play","tooltipMessage","showTooltip"],[["get",["isHidden"]],["get",["buttonText"]],["get",["buttonState"]],["get",["imageSource"]],["get",["soundSource"]],["get",["videoSource"]],["get",["isLobbyBtn"]],"play",["get",["tooltipMessage"]],["get",["showTooltip"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "AJE28GQY",
+          id: "vwMtMOZO",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\game-patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\game-patcher-bar.js\\" "],["text","\\n"],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","type","video/webm"],["flush-element"],["text","\\n  "],["open-element","source",[]],["static-attr","src","/fe/lol-static-assets/videos/league-logo-loop-idle.webm"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\game-patcher-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\game-patcher-bar.js\\" "],["text","\\n"],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","type","video/webm"],["flush-element"],["text","\\n  "],["open-element","source",[]],["static-attr","src","/fe/lol-static-assets/videos/league-logo-loop-idle.webm"],["flush-element"],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "2N2s4mOd",
+          id: "BUj4s+Qk",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\league-client-logo.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\league-client-logo.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["flush-element"],["text","\\n  "],["comment"," BUTTON BACKGROUND VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-video"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","patcherIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","disabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","releaseIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","hoverIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","hoverOutro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," BUTTON MAGIC VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-hover-magic"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","magicRelease"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","hoverIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," LOGO VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","refresh"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoMagicIntro"]],null],["static-attr","fade-out","400"],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\league-client-logo.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\league-client-logo.js\\" "],["text","\\n"],["open-element","lol-uikit-video-state-machine",[]],["flush-element"],["text","\\n  "],["comment"," BUTTON BACKGROUND VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-video"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","patcherIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","enabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","class","large-video"],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","disabledIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","releaseIntro"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","hoverIntro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","hoverOutro"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," BUTTON MAGIC VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","play-button-hover-magic"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["static-attr","wait-for-end",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","outro"],["dynamic-attr","src",["unknown",["videoSource","magicRelease"]],null],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","hoverIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","patcher-intro"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-out"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["comment"," LOGO VIDEO "],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","default"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","refresh"],["static-attr","no-preserve-state",""],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","idle"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoIdle"]],null],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","lol-uikit-video-group",[]],["static-attr","class","league-logo"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","release"],["flush-element"],["text","\\n      "],["open-element","lol-uikit-video",[]],["static-attr","type","intro"],["dynamic-attr","src",["unknown",["videoSource","leagueLogoMagicIntro"]],null],["static-attr","fade-out","400"],["static-attr","preload",""],["flush-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","enabled"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","hover-in"],["flush-element"],["close-element"],["text","\\n    "],["open-element","lol-uikit-video-state",[]],["static-attr","state","disabled"],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "bsKFZfPi",
+          id: "hwHijlQb",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\progress-bar.js\\" "],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["global-mask ",["helper",["if"],[["get",["endPointMask"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","progress-bar-mask"],["dynamic-attr","style",["helper",["sanitize"],[["get",["progressBarStyle"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["main",["get",["srcMainLoop"]]]]],false],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["border",["get",["srcBorderLoop"]]]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","endpoint-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","action"],["endpoint",["get",["srcTipIntro"]],["get",["srcTipLoop"]],"endpointState"]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n    "],["yield","default"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\progress-bar.js\\" "],["text","\\n\\n"],["open-element","div",[]],["static-attr","class","progress-bar-container"],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["global-mask ",["helper",["if"],[["get",["endPointMask"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","progress-bar-mask"],["dynamic-attr","style",["helper",["sanitize"],[["get",["progressBarStyle"]]],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["main",["get",["srcMainLoop"]]]]],false],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcLoop"],["border",["get",["srcBorderLoop"]]]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","endpoint-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","video-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","action"],["endpoint",["get",["srcTipIntro"]],["get",["srcTipLoop"]],"endpointState"]]],false],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n\\n    "],["yield","default"],["text","\\n\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":["default"],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (t, e, n) => {
         const r = n(1).Ember;
         t.exports = r.HTMLBars.template({
-          id: "pAiJ2eUO",
+          id: "rq4rg80G",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patching-progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_11\\\\LeagueClientContent_Release\\\\15689\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patching-progress-bar.js\\" "],["text","\\n"],["comment"," need currentPatchPercentComplete in the template to ensure it fires updates "],["text","\\n"],["open-element","div",[]],["dynamic-attr","data-video-state",["unknown",["videoState"]],null],["dynamic-attr","data-current-progress",["unknown",["patcher","currentPatchPercentComplete"]],null],["dynamic-attr","class",["concat",["animated-progress-bar main ",["unknown",["patchingStatus"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","patcher-bar-proxy"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLongPatcherBar"]]],null,6,5],["text","\\n"],["block",["if"],[["get",["isPatching"]]],null,4],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","id","lol-patcher-client-patch-modal-holder"],["static-attr","class","lol-patcher-modal-holder"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","lol-patcher-client-patch-modal-body"],["static-attr","type","dialog-medium"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["text"," "],["append",["unknown",["clientPatchMessageText"]],false],["text"," "],["close-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","timer"],["flush-element"],["append",["unknown",["clientPatchModalTimerText"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["open-element","span",[]],["static-attr","class","phase"],["flush-element"],["append",["unknown",["phase"]],false],["close-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","long_patcher_bar_text"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLongPatcherBar"]]],null,1,0]],"locals":[]},{"statements":[["text","\\n"],["block",["progress-bar"],null,[["progressPercent","srcMainLoop","srcBorderLoop","srcTipIntro","srcTipLoop"],[["get",["patcher","currentPatchPercentComplete"]],["get",["progressBarAssets","progressBarMainLoop"]],["get",["progressBarAssets","progressBarBorder"]],["get",["progressBarAssets","progressBarTipIntro"]],["get",["progressBarAssets","progressBarTipLoop"]]]],2],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressing"]]],null,3],["text","\\n    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","srcWidth","srcHeight"],["logo",["get",["leagueLogoIntro"]],["get",["leagueLogoLoop"]],"64","54"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro"],["frame",["get",["progressBarAssets","patcherFrameIntro"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","frame"],["dynamic-attr","src",["unknown",["progressBarAssets","patcherFrame"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\templates\\\\components\\\\patching-progress-bar.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-ember-libs\\\\src\\\\lib\\\\patcher-and-play-button\\\\addon\\\\components\\\\patching-progress-bar.js\\" "],["text","\\n"],["comment"," need currentPatchPercentComplete in the template to ensure it fires updates "],["text","\\n"],["open-element","div",[]],["dynamic-attr","data-video-state",["unknown",["videoState"]],null],["dynamic-attr","data-current-progress",["unknown",["patcher","currentPatchPercentComplete"]],null],["dynamic-attr","class",["concat",["animated-progress-bar main ",["unknown",["patchingStatus"]]]]],["flush-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","patcher-bar-proxy"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isLongPatcherBar"]]],null,6,5],["text","\\n"],["block",["if"],[["get",["isPatching"]]],null,4],["close-element"],["text","\\n\\n"],["open-element","div",[]],["static-attr","id","lol-patcher-client-patch-modal-holder"],["static-attr","class","lol-patcher-modal-holder"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","lol-patcher-client-patch-modal-body"],["static-attr","type","dialog-medium"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["text"," "],["append",["unknown",["clientPatchMessageText"]],false],["text"," "],["close-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","timer"],["flush-element"],["append",["unknown",["clientPatchModalTimerText"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["open-element","span",[]],["static-attr","class","phase"],["flush-element"],["append",["unknown",["phase"]],false],["close-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","progress-percent-text"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","long_patcher_bar_text"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["patcher","formattedPercent"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isLongPatcherBar"]]],null,1,0]],"locals":[]},{"statements":[["text","\\n"],["block",["progress-bar"],null,[["progressPercent","srcMainLoop","srcBorderLoop","srcTipIntro","srcTipLoop"],[["get",["patcher","currentPatchPercentComplete"]],["get",["progressBarAssets","progressBarMainLoop"]],["get",["progressBarAssets","progressBarBorder"]],["get",["progressBarAssets","progressBarTipIntro"]],["get",["progressBarAssets","progressBarTipLoop"]]]],2],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isProgressing"]]],null,3],["text","\\n    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro","srcLoop","srcWidth","srcHeight"],["logo",["get",["leagueLogoIntro"]],["get",["leagueLogoLoop"]],"64","54"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["helper",["patcher-video-state"],null,[["class","srcIntro"],["frame",["get",["progressBarAssets","patcherFrameIntro"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","img",[]],["static-attr","class","frame"],["dynamic-attr","src",["unknown",["progressBarAssets","patcherFrame"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
