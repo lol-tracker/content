@@ -18869,6 +18869,9 @@
           "format": "int32",
           "type": "integer"
         },
+        "navBarIcon": {
+          "type": "string"
+        },
         "timeOfLastUnclaimedReward": {
           "format": "int64",
           "type": "integer"
@@ -22683,6 +22686,10 @@
         },
         "detailedDescription": {
           "type": "string"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
         },
         "name": {
           "type": "string"
@@ -34397,6 +34404,9 @@
           "additionalProperties": true,
           "type": "object"
         },
+        "tftSetOverride": {
+          "type": "string"
+        },
         "tutorialCards": {
           "items": {
             "$ref": "#/definitions/LolMapsTutorialCard"
@@ -45137,6 +45147,9 @@
             "$ref": "#/definitions/LolRegaliaGameDataRegalia"
           },
           "type": "array"
+        },
+        "purchaseDate": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -60789,7 +60802,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -60823,7 +60836,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -89683,9 +89696,31 @@
         ]
       }
     },
+    "/services-api/riot-message-service/v1/data": {
+      "post": {
+        "operationId": "PostServicesApiRiotMessageServiceV1Data",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "message",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/swagger/v1/api-docs": {
       "get": {
-        "operationId": "Http2ApiDocsV1",
+        "operationId": "HttpApiDocsV1",
         "parameters": [],
         "responses": {
           "200": {

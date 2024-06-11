@@ -2607,7 +2607,7 @@
     "assetMutator": "",
     "category": "PvP",
     "championsRequiredToPlay": 8,
-    "description": "Clash",
+    "description": "",
     "detailedDescription": "",
     "gameMode": "ARAM",
     "gameTypeConfig": {
@@ -2646,7 +2646,7 @@
     "maximumParticipantListSize": 1,
     "minLevel": 0,
     "minimumParticipantListSize": 1,
-    "name": "Clash",
+    "name": "",
     "numPlayersPerTeam": 1,
     "queueAvailability": "Available",
     "queueRewards": {
@@ -2657,7 +2657,7 @@
     },
     "removalFromGameAllowed": false,
     "removalFromGameDelayMinutes": 0,
-    "shortName": "Clash",
+    "shortName": "",
     "showPositionSelector": false,
     "showQuickPlaySlotSelection": false,
     "spectatorEnabled": true,

@@ -64,6 +64,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "",
     "tutorialCards": [
       {
         "description": "Queue up solo or join forces with your closest friends in our multi-team lobby. Prepare to conquer enemies with the help of your ally.",
@@ -154,6 +155,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "",
     "tutorialCards": [
       {
         "description": "Choose a champion from the store and recruit them with gold. Then, drag them from the bench to the battlefield to deploy them.<br><br>Combine three of the same champion to create a stronger, two-star version of that champion.",
@@ -218,6 +220,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSet11_TURBO",
     "tutorialCards": [
       {
         "description": "You start with 20 life; each loss will cost you two. But as the game goes on, losses will hurt more and more!",
@@ -282,6 +285,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSet11_PAIRS",
     "tutorialCards": [
       {
         "description": "Invite a friend, or queue up solo. You and your partner will share a health pool and work together to beat out three other pairs. The last team standing wins!",
@@ -346,6 +350,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSetEventSF",
     "tutorialCards": [
       {
         "description": "Health is replaced with Soul Power! During training you cannot die. Focus on building your Soul Power with Soul Fighter Gwen and Sett's help.",
@@ -409,6 +414,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSetEventCT",
     "tutorialCards": [
       {
         "description": "Time to live large! Start the match with a powerful Tier 4 or Tier 5 champion to form the core of your team.",
@@ -473,6 +479,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSet3",
     "tutorialCards": [
       {
         "description": "Play this classic set, where mechanized monstrosities and strange spacefarers clash in a battle of galactic proportions.",
@@ -537,6 +544,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "TFTSetEvent5YR",
     "tutorialCards": [
       {
         "description": "Get crazy with the Cupcakes and Party Crabs! They give more loot - and vibes - than your standard monsters.",
@@ -614,6 +622,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -667,59 +676,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
-    "tutorialCards": []
-  },
-  {
-    "assets": {
-      "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-cs-allrandom-urf.ogg",
-      "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
-      "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
-      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
-      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
-      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
-      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
-      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
-      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
-      "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/gameflow-background.jpg",
-      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
-      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
-      "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
-      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
-      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
-      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
-      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
-      "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm",
-      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-inqueue-loop-urf.ogg",
-      "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/notification-background.jpg",
-      "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
-      "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/parties-background.jpg",
-      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
-      "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/ready-check-background.png",
-      "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
-      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
-      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png"
-    },
-    "categorizedContentBundles": {},
-    "description": "The newest and most venerated battleground is known as Summoner's Rift. Traverse down one of three different paths in order to attack your enemy at their weakest point. Work with your allies to siege the enemy base and destroy their Nexus!",
-    "gameMode": "URF",
-    "gameModeDescription": "Fire off your abilities nonstop in this Ultra-Rapid game mode.",
-    "gameModeName": "URF",
-    "gameModeShortName": "URF",
-    "gameMutator": "ARURF",
-    "id": 11,
-    "isDefault": false,
-    "isRGM": true,
-    "locStrings": {},
-    "mapStringId": "SR",
-    "name": "Summoner's Rift",
-    "perPositionDisallowedSummonerSpells": {},
-    "perPositionRequiredSummonerSpells": {},
-    "platformId": "",
-    "platformName": "",
-    "properties": {
-      "suppressRunesMasteriesPerks": false
-    },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -773,6 +730,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -826,6 +784,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -856,6 +815,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -909,6 +869,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -962,6 +923,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1017,6 +979,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1070,6 +1033,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1123,6 +1087,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1176,6 +1141,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": true
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1229,6 +1195,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1321,6 +1288,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": [
       {
         "description": "Summoner's Rift with a twist! Pick One of 3 Random Ultimates to Gain as a Summoner Spell",
@@ -1341,59 +1309,6 @@
         "imagePath": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/UltBook/TutorialImage_3.png"
       }
     ]
-  },
-  {
-    "assets": {
-      "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-cs-allrandom-urf.ogg",
-      "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
-      "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
-      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
-      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-active.webm",
-      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
-      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-disabled.png",
-      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
-      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/game-select-icon-rgm-intro.webm",
-      "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/gameflow-background.jpg",
-      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
-      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-defeat.png",
-      "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-defeat.webm",
-      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-empty.png",
-      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-hover.png",
-      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
-      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png",
-      "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/video/icon-rgm-victory.webm",
-      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/sound/music-inqueue-loop-urf.ogg",
-      "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/notification-background.jpg",
-      "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
-      "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/parties-background.jpg",
-      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
-      "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/URF/img/ready-check-background.png",
-      "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
-      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-leaver.png",
-      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-victory.png"
-    },
-    "categorizedContentBundles": {},
-    "description": "The newest and most venerated battleground is known as Summoner's Rift. Traverse down one of three different paths in order to attack your enemy at their weakest point. Work with your allies to siege the enemy base and destroy their Nexus!",
-    "gameMode": "URF",
-    "gameModeDescription": "Fire off your abilities nonstop in this Ultra-Rapid game mode.",
-    "gameModeName": "URF",
-    "gameModeShortName": "URF",
-    "gameMutator": "PICKURF",
-    "id": 11,
-    "isDefault": false,
-    "isRGM": true,
-    "locStrings": {},
-    "mapStringId": "SR",
-    "name": "Summoner's Rift",
-    "perPositionDisallowedSummonerSpells": {},
-    "perPositionRequiredSummonerSpells": {},
-    "platformId": "",
-    "platformName": "",
-    "properties": {
-      "suppressRunesMasteriesPerks": false
-    },
-    "tutorialCards": []
   },
   {
     "assets": {
@@ -1449,6 +1364,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1500,55 +1416,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
-    "tutorialCards": []
-  },
-  {
-    "assets": {
-      "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/music-cs-allrandom-butchersbridge.ogg",
-      "champ-select-banphase-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/music-cs-allrandom-banphase-butchersbridge.ogg",
-      "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/champ-select-flyout-background.png",
-      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-active.png",
-      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-default.png",
-      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-disabled.png",
-      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/game-select-icon-hover.png",
-      "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/gameflow-background.jpg",
-      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
-      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-defeat.png",
-      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-empty.png",
-      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-hover.png",
-      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-leaver.png",
-      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/icon-victory.png",
-      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
-      "notification-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/notification-background.jpg",
-      "notification-icon": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/img/icon-rgm-active.png",
-      "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/parties-background.jpg",
-      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
-      "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/img/ready-check-background.png",
-      "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/sound/sfx-readycheck-ha-portal.ogg",
-      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Bilgewater/sound/sfx-ambience-loop-butchersbridge.ogg",
-      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-leaver.png",
-      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/ARAM/img/social-icon-victory.png"
-    },
-    "categorizedContentBundles": {},
-    "description": "The Howling Abyss is a bottomless crevasse located in the coldest, cruelest, part of the Freljord. Legends say that, long ago, a great battle took place here on the narrow bridge spanning this chasm. No one remembers who fought here, or why, but it is said that if you listen carefully to the wind you can still hear the cries of the vanquished tossed howling into the Abyss.",
-    "gameMode": "ARAM",
-    "gameModeDescription": "Ten randomly-selected champions battle over a narrow bridge in the heart of Bilgewater. Cross to the other side and destroy everything in your path.",
-    "gameModeName": "ARAM",
-    "gameModeShortName": "ARAM",
-    "gameMutator": "Event_Bilgewater",
-    "id": 12,
-    "isDefault": false,
-    "isRGM": false,
-    "locStrings": {},
-    "mapStringId": "HA",
-    "name": "Butcher's Bridge",
-    "perPositionDisallowedSummonerSpells": {},
-    "perPositionRequiredSummonerSpells": {},
-    "platformId": "",
-    "platformName": "",
-    "properties": {
-      "suppressRunesMasteriesPerks": false
-    },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1600,6 +1468,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": []
   },
   {
@@ -1741,6 +1610,7 @@
     "properties": {
       "suppressRunesMasteriesPerks": false
     },
+    "tftSetOverride": "",
     "tutorialCards": [
       {
         "description": "Fights constantly break out on a compact map with special events and rewards adding a touch of chaos.",

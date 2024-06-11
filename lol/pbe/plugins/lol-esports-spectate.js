@@ -46,10 +46,10 @@
               n = this;
             return (
               Object.keys(e).forEach(function (i) {
-                const s = e[i],
-                  o = n._getValue(i, s);
-                o && o.then
-                  ? (o.then(function (e) {
+                const o = e[i],
+                  s = n._getValue(i, o);
+                s && s.then
+                  ? (s.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
@@ -59,8 +59,8 @@
                         ),
                         n._addValue(i, e);
                     }),
-                    t.push(o))
-                  : n._addValue(i, o);
+                    t.push(s))
+                  : n._addValue(i, s);
               }),
               Promise.all(t)
             );
@@ -88,8 +88,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         const i = n(1),
-          { ViewportPlugin: s } = i,
-          { DataBinding: o } = i,
+          { ViewportPlugin: o } = i,
+          { DataBinding: s } = i,
           c = i.Bluebird;
         i.Lodash;
         var a = new (class {
@@ -105,10 +105,10 @@
             this.initialized ||
               ((this.initialized = !0),
               (this._isShown = !1),
-              (this.screenRoot = s
+              (this.screenRoot = o
                 .fullScreen()
                 .getScreenRoot("lol-esports-spectate")),
-              (this.gameflowBinding = o("/lol-gameflow", e.getSocket())),
+              (this.gameflowBinding = s("/lol-gameflow", e.getSocket())),
               i.ChampSelectPlugin.registerReplacementChampSelectHandler(
                 (e) => e && e.isSpectating,
                 this.show.bind(this),
@@ -170,17 +170,17 @@
                 .tra()
                 .overlay("/fe/lol-l10n/trans.json")
                 .overlay("/fe/lol-esports-spectate/trans.json"),
-              t = c(o, e),
+              t = c(s, e),
               a = d.create({ traService: t });
             return (
               a.set("sessionActions", n(17).create({ root: a })),
-              s.resolve().then(function () {
+              o.resolve().then(function () {
                 return l(a, t);
               })
             );
           });
         const i = n(1),
-          { Bluebird: s, Ember: o, EmberL10n: c, SharedComponents: a } = i,
+          { Bluebird: o, Ember: s, EmberL10n: c, SharedComponents: a } = i,
           { PlayerNameComponent: r } = a.getSharedEmberComponents();
         function l(e, t) {
           return i.EmberApplicationFactory.create(
@@ -195,7 +195,7 @@
           );
         }
         const m = i.EmberDataBinding({
-            Ember: o,
+            Ember: s,
             websocket: i.getProvider().getSocket(),
             defaultPropertyValue: {},
             boundProperties: {
@@ -227,10 +227,10 @@
               },
             },
           }),
-          d = o.Object.extend(m, {
-            summoners: o.computed.union("session.myTeam", "session.theirTeam"),
+          d = s.Object.extend(m, {
+            summoners: s.computed.union("session.myTeam", "session.theirTeam"),
             isSpectating: !0,
-            loggedInPlayer: o.computed("login.summonerId", function () {
+            loggedInPlayer: s.computed("login.summonerId", function () {
               if (
                 this.get("login.summonerId") &&
                 this.get("login.summonerId") > 0
@@ -243,8 +243,8 @@
         "use strict";
         var i = n(1);
         n(5), n(6);
-        let s = "#0b849e",
-          o = "#be1e37";
+        let o = "#0b849e",
+          s = "#be1e37";
         e.exports = i.Ember.Component.extend({
           classNameBindings: [
             "rightSideActing",
@@ -253,8 +253,8 @@
           ],
           classNames: ["champ-select-spectate-component"],
           layout: n(7),
-          leftColor: s,
-          rightColor: o,
+          leftColor: o,
+          rightColor: s,
           showColorSwitcher: !1,
           padBans: function (e) {
             const t = Math.floor(this.get("session.bans.numBans") / 2);
@@ -351,14 +351,14 @@
             },
           ),
           setSideColors: i.Ember.on("didInsertElement", function () {
-            this.element.style.setProperty("--left-side-color", s),
-              this.element.style.setProperty("--right-side-color", o);
+            this.element.style.setProperty("--left-side-color", o),
+              this.element.style.setProperty("--right-side-color", s);
           }),
           actions: {
             updateColors: function () {
               i.Ember.run.next(() => {
-                (s = this.get("leftColor")),
-                  (o = this.get("rightColor")),
+                (o = this.get("leftColor")),
+                  (s = this.get("rightColor")),
                   this.setSideColors();
               });
             },
@@ -376,9 +376,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "dpqQ2KVI",
+          id: "+LEeWFZR",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-select-header"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer-left ",["helper",["if"],[["get",["leftSideTimer"]],"visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-bg"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-inner"],["flush-element"],["append",["unknown",["session","timer","timeRemainingFormatted"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","header-keystone"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","left-bg-section"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","right-bg-section"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","header-keystone-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","left-bg-section"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","right-bg-section"],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","header-keystone-inner-bg"],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","phase"],["flush-element"],["text","\\n        "],["append",["unknown",["session","timer","displayedPhase"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer-right ",["helper",["if"],[["get",["rightSideTimer"]],"visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-bg"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-inner"],["flush-element"],["append",["unknown",["session","timer","timeRemainingFormatted"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showColorSwitcher"]]],null,4],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-select-summoner-array-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-array your-party"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","party"],["flush-element"],["text","\\n"],["block",["each"],[["get",["session","myTeam"]]],null,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","summoner-array enemy-party"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","party"],["flush-element"],["text","\\n"],["block",["each"],[["get",["session","theirTeam"]]],null,2],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","bans"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","my-bans"],["flush-element"],["text","\\n"],["block",["each"],[["get",["myTeamBans"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","their-bans"],["flush-element"],["text","\\n"],["block",["each"],[["get",["theirTeamBans"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-wrapper ",["helper",["if"],[["get",["ban","completed"]],"completed"],null]," ",["helper",["if"],[["get",["ban","isActive"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-background"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-container ",["helper",["unless"],[["get",["ban","delayedChampion"]],"no-champion"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ban"],["dynamic-attr","data-id",["concat",[["unknown",["ban","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["ban","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-icon"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ban"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-wrapper ",["helper",["if"],[["get",["ban","completed"]],"completed"],null]," ",["helper",["if"],[["get",["ban","isActive"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-background"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-container ",["helper",["unless"],[["get",["ban","delayedChampion"]],"no-champion"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ban"],["dynamic-attr","data-id",["concat",[["unknown",["ban","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["ban","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-icon"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ban"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","summoner-wrapper"],["dynamic-attr","data-cell-id",["concat",[["unknown",["summoner","cellId"]]]]],["flush-element"],["text","\\n          "],["append",["helper",["summoner-object"],null,[["summoner","isLeft"],[["get",["summoner"]],false]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","summoner-wrapper"],["dynamic-attr","data-summoner-name",["concat",[["unknown",["summoner","displayName"]]]]],["dynamic-attr","data-cell-id",["concat",[["unknown",["summoner","cellId"]]]]],["flush-element"],["text","\\n          "],["append",["helper",["summoner-object"],null,[["summoner"],[["get",["summoner"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-select-color-switcher"],["flush-element"],["text","\\n  Color switcher"],["open-element","br",[]],["flush-element"],["close-element"],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n\\n  Left side: "],["append",["helper",["input"],null,[["type","value","key-up"],["text",["get",["leftColor"]],"updateColors"]]],false],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n  Right side: "],["append",["helper",["input"],null,[["type","value","key-up"],["text",["get",["rightColor"]],"updateColors"]]],false],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\spectate-root-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-select-header"],["flush-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer-left ",["helper",["if"],[["get",["leftSideTimer"]],"visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-bg"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-inner"],["flush-element"],["append",["unknown",["session","timer","timeRemainingFormatted"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","header-keystone"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","left-bg-section"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","right-bg-section"],["flush-element"],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","header-keystone-inner"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","left-bg-section"],["flush-element"],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","right-bg-section"],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","header-keystone-inner-bg"],["flush-element"],["close-element"],["text","\\n\\n      "],["open-element","div",[]],["static-attr","class","phase"],["flush-element"],["text","\\n        "],["append",["unknown",["session","timer","displayedPhase"]],false],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["dynamic-attr","class",["concat",["timer-right ",["helper",["if"],[["get",["rightSideTimer"]],"visible"],null]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-bg"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","timer-inner"],["flush-element"],["append",["unknown",["session","timer","timeRemainingFormatted"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["showColorSwitcher"]]],null,4],["text","\\n"],["open-element","div",[]],["static-attr","class","champion-select-summoner-array-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-array your-party"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","party"],["flush-element"],["text","\\n"],["block",["each"],[["get",["session","myTeam"]]],null,3],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","summoner-array enemy-party"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","party"],["flush-element"],["text","\\n"],["block",["each"],[["get",["session","theirTeam"]]],null,2],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","bans"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","my-bans"],["flush-element"],["text","\\n"],["block",["each"],[["get",["myTeamBans"]]],null,1],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","their-bans"],["flush-element"],["text","\\n"],["block",["each"],[["get",["theirTeamBans"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-wrapper ",["helper",["if"],[["get",["ban","completed"]],"completed"],null]," ",["helper",["if"],[["get",["ban","isActive"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-background"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-container ",["helper",["unless"],[["get",["ban","delayedChampion"]],"no-champion"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ban"],["dynamic-attr","data-id",["concat",[["unknown",["ban","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["ban","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-icon"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ban"]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-wrapper ",["helper",["if"],[["get",["ban","completed"]],"completed"],null]," ",["helper",["if"],[["get",["ban","isActive"]],"active"],null]]]],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-background"],["flush-element"],["text","\\n        "],["open-element","div",[]],["dynamic-attr","class",["concat",["ban-container ",["helper",["unless"],[["get",["ban","delayedChampion"]],"no-champion"],null]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","ban"],["dynamic-attr","data-id",["concat",[["unknown",["ban","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["ban","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","ban-icon"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":["ban"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","summoner-wrapper"],["dynamic-attr","data-cell-id",["concat",[["unknown",["summoner","cellId"]]]]],["flush-element"],["text","\\n          "],["append",["helper",["summoner-object"],null,[["summoner","isLeft"],[["get",["summoner"]],false]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","summoner-wrapper"],["dynamic-attr","data-summoner-name",["concat",[["unknown",["summoner","displayName"]]]]],["dynamic-attr","data-cell-id",["concat",[["unknown",["summoner","cellId"]]]]],["flush-element"],["text","\\n          "],["append",["helper",["summoner-object"],null,[["summoner"],[["get",["summoner"]]]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["summoner"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","champion-select-color-switcher"],["flush-element"],["text","\\n  Color switcher"],["open-element","br",[]],["flush-element"],["close-element"],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n\\n  Left side: "],["append",["helper",["input"],null,[["type","value","key-up"],["text",["get",["leftColor"]],"updateColors"]]],false],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n  Right side: "],["append",["helper",["input"],null,[["type","value","key-up"],["text",["get",["rightColor"]],"updateColors"]]],false],["open-element","br",[]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -413,21 +413,21 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "LuiBmfso",
+          id: "CvTLTjB9",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-object-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","base-color-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","gradient-background-overlay"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["oldBackground"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","background-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["summoner","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","edge-border"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","action-text"],["flush-element"],["append",["unknown",["tra","picking"]],false],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","spells"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summoner","spell1"]]],null,1],["block",["if"],[["get",["summoner","spell2"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n    "],["append",["helper",["player-name"],null,[["format","summonerId","gameName","tagLine"],["short",["get",["summoner","summonerId"]],["get",["summoner","gameName"]],["get",["summoner","tagLine"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","old-background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["oldBackground"]],")"]]],["flush-element"],["close-element"],["text","\\n    }\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-esports-spectate\\\\src\\\\app\\\\summoner-object-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","summoner-object-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","base-color-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","gradient-background-overlay"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["oldBackground"]]],null,2],["text","  "],["open-element","div",[]],["static-attr","class","background-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["summoner","champion","skins","firstObject","splashPath"]],")"]]],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","edge-border"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","action-text"],["flush-element"],["append",["unknown",["tra","picking"]],false],["close-element"],["text","\\n\\n  "],["open-element","div",[]],["static-attr","class","spells"],["flush-element"],["text","\\n"],["block",["if"],[["get",["summoner","spell1"]]],null,1],["block",["if"],[["get",["summoner","spell2"]]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","summoner-name"],["flush-element"],["text","\\n    "],["append",["helper",["player-name"],null,[["format","summonerId","gameName","tagLine"],["short",["get",["summoner","summonerId"]],["get",["summoner","gameName"]],["get",["summoner","tagLine"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell2"],["dynamic-attr","src",["unknown",["summoner","spell2","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","spell spell1"],["dynamic-attr","src",["unknown",["summoner","spell1","iconPath"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","old-background"],["dynamic-attr","data-id",["concat",[["unknown",["summoner","champion","id"]]]]],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["oldBackground"]],")"]]],["flush-element"],["close-element"],["text","\\n    }\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = i.Lodash,
-          c = s.Object.extend({
-            selectedByMe: s.computed.alias("selectedBy.isSelf"),
-            selected: s.computed.bool("selectedBy"),
-            selectedBy: s.computed(
+          { Ember: o } = i,
+          s = i.Lodash,
+          c = o.Object.extend({
+            selectedByMe: o.computed.alias("selectedBy.isSelf"),
+            selected: o.computed.bool("selectedBy"),
+            selectedBy: o.computed(
               "root.summoners.@each.champion.id",
               "root.summoners.@each.isSelf",
               "id",
@@ -443,7 +443,7 @@
                 }
               },
             ),
-            disabledByPlatform: s.computed(
+            disabledByPlatform: o.computed(
               "active",
               "root.queue.gameMode",
               "disabledQueues.[]",
@@ -456,18 +456,18 @@
                 );
               },
             ),
-            banned: s.computed(
+            banned: o.computed(
               "id",
               "root.sessionActions.completedBanActions.@each.championId",
               function () {
                 const e = this.get("root.sessionActions.completedBanActions"),
-                  t = o.map(e, function (e) {
+                  t = s.map(e, function (e) {
                     return e.get("championId");
                   });
-                return o.includes(t, this.get("id"));
+                return s.includes(t, this.get("id"));
               },
             ),
-            picked: s.computed(
+            picked: o.computed(
               "selected",
               "selectedBy.pickAction.completed",
               function () {
@@ -477,7 +477,7 @@
                 );
               },
             ),
-            unselectable: s.computed(
+            unselectable: o.computed(
               "picked",
               "selectedByMe",
               "disabledByPlatform",
@@ -490,7 +490,7 @@
                 );
               },
             ),
-            canPlay: s.computed(
+            canPlay: o.computed(
               "root.pickableChampions.championIds.[]",
               function () {
                 return (
@@ -501,27 +501,27 @@
                 );
               },
             ),
-            lowerCaseName: s.computed("name", function () {
+            lowerCaseName: o.computed("name", function () {
               const e = this.get("name");
               if (e) return e.toLowerCase();
             }),
-            baseSkin: s.computed("skins.@each.isBaseSkin", function () {
-              return o.find(this.get("skins"), function (e) {
-                return s.get(e, "isBaseSkin");
+            baseSkin: o.computed("skins.@each.isBaseSkin", function () {
+              return s.find(this.get("skins"), function (e) {
+                return o.get(e, "isBaseSkin");
               });
             }),
-            searchMatchingTerms: s.computed.collect("lowerCaseName"),
+            searchMatchingTerms: o.computed.collect("lowerCaseName"),
           });
         e.exports = c;
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = s.Object.extend({
-            championSelectRoot: s.computed.or("root.root", "root"),
-            skinName: s.computed.alias("name"),
-            isSelected: s.computed(
+          { Ember: o } = i,
+          s = o.Object.extend({
+            championSelectRoot: o.computed.or("root.root", "root"),
+            skinName: o.computed.alias("name"),
+            isSelected: o.computed(
               "championSelectRoot.currentSummoner.selectedSkinId",
               "id",
               "chroma.isSelected",
@@ -533,7 +533,7 @@
                 );
               },
             ),
-            isViewed: s.computed(
+            isViewed: o.computed(
               "championSelectRoot.view.viewSkinId",
               function () {
                 return (
@@ -542,14 +542,14 @@
                 );
               },
             ),
-            isChroma: s.computed("chromas.[]", function () {
+            isChroma: o.computed("chromas.[]", function () {
               return (this.get("chromas") || []).length > 0;
             }),
-            chroma: s.computed(
+            chroma: o.computed(
               "championSelectRoot.currentSummoner.selectedSkinId",
               "chromas.@each.id",
               function () {
-                return s
+                return o
                   .A(this.get("chromas") || [])
                   .findBy(
                     "id",
@@ -559,25 +559,25 @@
                   );
               },
             ),
-            chromaIds: s.computed(
+            chromaIds: o.computed(
               "chromas.@each.id",
               "chromas.[]",
               function () {
-                return s.A(this.get("chromas") || []).mapBy("id");
+                return o.A(this.get("chromas") || []).mapBy("id");
               },
             ),
-            ownsChroma: s.computed(
+            ownsChroma: o.computed(
               "chromas.@each.id",
               "chromas.[]",
               "chromas.@each.ownership.owned",
               function () {
-                const e = s.A(this.get("chromas") || []);
+                const e = o.A(this.get("chromas") || []);
                 return e.mapBy("ownership.owned").reduce(function (e, t) {
                   return t && e;
                 }, e.length > 0);
               },
             ),
-            unlocked: s.computed(
+            unlocked: o.computed(
               "ownership.owned",
               "ownership.rental.rented",
               "ownership.loyaltyReward",
@@ -597,21 +597,21 @@
                 );
               },
             ),
-            canUse: s.computed("disabled", "unlocked", function () {
+            canUse: o.computed("disabled", "unlocked", function () {
               return !this.get("disabled") && this.get("unlocked");
             }),
-            isBaseSkin: s.computed("id", function () {
+            isBaseSkin: o.computed("id", function () {
               return this.get("id") % 1e3 == 0;
             }),
           });
-        e.exports = o;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = s.Object.extend({
-            available: s.computed(
+          { Ember: o } = i,
+          s = o.Object.extend({
+            available: o.computed(
               "gameModes.[]",
               "root.queue.gameMode",
               function () {
@@ -619,15 +619,15 @@
                 return this.get("gameModes").indexOf(e) > -1;
               },
             ),
-            locked: s.computed.bool("lockedReason"),
-            lockedReason: s.computed("canUse", "disabled", function () {
+            locked: o.computed.bool("lockedReason"),
+            lockedReason: o.computed("canUse", "disabled", function () {
               return this.get("canUse")
                 ? this.get("disabled")
                   ? "DISABLED"
                   : void 0
                 : "LEVEL";
             }),
-            canUse: s.computed(
+            canUse: o.computed(
               "summonerLevel",
               "root.localSummoner.summonerLevel",
               function () {
@@ -637,7 +637,7 @@
                 );
               },
             ),
-            disabled: s.computed("id", "root.disabledSpellIds", function () {
+            disabled: o.computed("id", "root.disabledSpellIds", function () {
               return (
                 -1 !==
                 (this.get("root.disabledSpellIds") || []).indexOf(
@@ -646,17 +646,17 @@
               );
             }),
           });
-        e.exports = o;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s, DataBinding: o, socket: c } = i,
-          a = s.Object.extend({
-            summonerIdObserver: s.observer("summonerId", function () {
+          { Ember: o, DataBinding: s, socket: c } = i,
+          a = o.Object.extend({
+            summonerIdObserver: o.observer("summonerId", function () {
               if (
                 (this._summonerDataBinding ||
-                  (this._summonerDataBinding = o("/lol-summoner/v1", c)),
+                  (this._summonerDataBinding = s("/lol-summoner/v1", c)),
                 this.get("summonerId"))
               ) {
                 const e = "/summoners/" + this.get("summonerId");
@@ -670,7 +670,7 @@
                 });
               }
             }),
-            name: s.computed("displayName", "summonerIndex", function () {
+            name: o.computed("displayName", "summonerIndex", function () {
               if (this.get("displayName")) return this.get("displayName");
               let e;
               return (
@@ -684,17 +684,17 @@
                 )
               );
             }),
-            champion: s.computed(
+            champion: o.computed(
               "root.inventory.@each.id",
               "championId",
               "pickAction.championId",
               function () {
                 const e =
                   this.get("championId") || this.get("pickAction.championId");
-                return (this.get("root.inventory") || s.A()).findBy("id", e);
+                return (this.get("root.inventory") || o.A()).findBy("id", e);
               },
             ),
-            isSelf: s.computed(
+            isSelf: o.computed(
               "root.session.localPlayerCellId",
               "cellId",
               function () {
@@ -704,10 +704,10 @@
                 );
               },
             ),
-            isObfuscated: s.computed("championId", function () {
+            isObfuscated: o.computed("championId", function () {
               return 0 === this.get("championId");
             }),
-            isOnPlayersTeam: s.computed(
+            isOnPlayersTeam: o.computed(
               "team",
               "root.currentSummoner.team",
               function () {
@@ -716,7 +716,7 @@
                 );
               },
             ),
-            isOnLeftSide: s.computed(
+            isOnLeftSide: o.computed(
               "root.isSpectating",
               "isOnPlayersTeam",
               "isOnBlueSide",
@@ -726,32 +726,32 @@
                   : this.get("isOnPlayersTeam");
               },
             ),
-            isOnBlueSide: s.computed("team", function () {
+            isOnBlueSide: o.computed("team", function () {
               return 1 === this.get("team");
             }),
-            isOnRedSide: s.computed("team", function () {
+            isOnRedSide: o.computed("team", function () {
               return 2 === this.get("team");
             }),
-            uncompletedAction: s.computed(
+            uncompletedAction: o.computed(
               "actions.@each.completed",
               function () {
                 return this.get("actions").findBy("completed", !1);
               },
             ),
-            activeAction: s.computed("actions.@each.isActive", function () {
+            activeAction: o.computed("actions.@each.isActive", function () {
               return this.get("actions").findBy("isActive", !0);
             }),
-            nextAction: s.computed(
+            nextAction: o.computed(
               "root.sessionActions.nextActions.@each.id",
               "actions.@each.isNext",
               function () {
                 return this.get("actions").findBy("isNext", !0);
               },
             ),
-            isExclusivelyPickIntenting: s.computed.readOnly(
+            isExclusivelyPickIntenting: o.computed.readOnly(
               "root.session.timer.inPlanningPhase",
             ),
-            isPickIntenting: s.computed(
+            isPickIntenting: o.computed(
               "isExclusivelyPickIntenting",
               "pickAction",
               "pickAction.completed",
@@ -767,30 +767,30 @@
                 );
               },
             ),
-            isBanningNow: s.computed.bool("activeAction.isBan"),
-            isBanningNext: s.computed.bool("nextAction.isBan"),
-            isPickingNow: s.computed.bool("activeAction.isPick"),
-            isPickingNext: s.computed.bool("nextAction.isPick"),
-            isActingNow: s.computed.bool("activeAction"),
-            isActingNext: s.computed.bool("nextAction"),
-            actions: s.computed(
+            isBanningNow: o.computed.bool("activeAction.isBan"),
+            isBanningNext: o.computed.bool("nextAction.isBan"),
+            isPickingNow: o.computed.bool("activeAction.isPick"),
+            isPickingNext: o.computed.bool("nextAction.isPick"),
+            isActingNow: o.computed.bool("activeAction"),
+            isActingNext: o.computed.bool("nextAction"),
+            actions: o.computed(
               "root.sessionActions.allActions.@each.actorCellId",
               "cellId",
               function () {
-                const e = this.get("root.sessionActions.allActions") || s.A();
-                return s.A(e.filterBy("actorCellId", this.get("cellId")));
+                const e = this.get("root.sessionActions.allActions") || o.A();
+                return o.A(e.filterBy("actorCellId", this.get("cellId")));
               },
             ),
-            hasUncompletedAction: s.computed("uncompletedAction", function () {
+            hasUncompletedAction: o.computed("uncompletedAction", function () {
               return !!this.get("uncompletedAction");
             }),
-            pickAction: s.computed("actions.@each.type", function () {
+            pickAction: o.computed("actions.@each.type", function () {
               return this.get("actions").findBy("type", "pick");
             }),
-            banActions: s.computed("actions.@each.type", function () {
-              return s.A(this.get("actions").filterBy("type", "ban"));
+            banActions: o.computed("actions.@each.type", function () {
+              return o.A(this.get("actions").filterBy("type", "ban"));
             }),
-            hasUncompletedBanAction: s.computed(
+            hasUncompletedBanAction: o.computed(
               "actions.@each.type",
               "actions.@each.completed",
               function () {
@@ -799,48 +799,48 @@
                 });
               },
             ),
-            allyIndex: s.computed("root.session.myTeam.[]", function () {
+            allyIndex: o.computed("root.session.myTeam.[]", function () {
               const e = this.get("root.session.myTeam").indexOf(this);
               if (e > -1) return e;
             }),
-            enemyIndex: s.computed("root.session.theirTeam.[]", function () {
+            enemyIndex: o.computed("root.session.theirTeam.[]", function () {
               const e = this.get("root.session.theirTeam").indexOf(this);
               if (e > -1) return e;
             }),
-            summonerIndex: s.computed("enemyIndex", "allyIndex", function () {
+            summonerIndex: o.computed("enemyIndex", "allyIndex", function () {
               return void 0 !== this.get("enemyIndex")
                 ? this.get("enemyIndex")
                 : void 0 !== this.get("allyIndex")
                   ? this.get("allyIndex")
                   : void 0;
             }),
-            spell1: s.computed("root.spells.@each.id", "spell1Id", function () {
-              return (this.get("root.spells") || s.A()).findBy(
+            spell1: o.computed("root.spells.@each.id", "spell1Id", function () {
+              return (this.get("root.spells") || o.A()).findBy(
                 "id",
                 this.get("spell1Id"),
               );
             }),
-            spell2: s.computed("root.spells.@each.id", "spell2Id", function () {
-              return (this.get("root.spells") || s.A()).findBy(
+            spell2: o.computed("root.spells.@each.id", "spell2Id", function () {
+              return (this.get("root.spells") || o.A()).findBy(
                 "id",
                 this.get("spell2Id"),
               );
             }),
-            selectedWardSkin: s.computed(
+            selectedWardSkin: o.computed(
               "root.wardSkins.@each.id",
               "wardSkinId",
               function () {
-                return (this.get("root.wardSkins") || s.A()).findBy(
+                return (this.get("root.wardSkins") || o.A()).findBy(
                   "id",
                   this.get("wardSkinId"),
                 );
               },
             ),
-            trade: s.computed(
+            trade: o.computed(
               "cellId",
               "root.session.trades.@each.cellId",
               function () {
-                return (this.get("root.session.trades") || s.A()).findBy(
+                return (this.get("root.session.trades") || o.A()).findBy(
                   "cellId",
                   this.get("cellId"),
                 );
@@ -852,12 +852,12 @@
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = s.Object.extend({
-            timeRemaining: s.computed("timeRemainingInMs", function () {
+          { Ember: o } = i,
+          s = o.Object.extend({
+            timeRemaining: o.computed("timeRemainingInMs", function () {
               return Math.round(this.get("timeRemainingInMs") / 1e3);
             }),
-            timeRemainingInMs: s.computed(
+            timeRemainingInMs: o.computed(
               "internalNowInEpochMs",
               "adjustedTimeLeftInPhase",
               function () {
@@ -878,7 +878,7 @@
                 ((this.timerRunning = !0),
                 this.get("timeRemainingInMs") > 0
                   ? (this.notifyPropertyChange("timeRemainingInMs"),
-                    s.run.later(
+                    o.run.later(
                       this,
                       function () {
                         (this.timerRunning = !1), this.updateTimer();
@@ -887,7 +887,7 @@
                     ))
                   : (this.timerRunning = !1));
             },
-            timeRemainingFormatted: s.computed("timeRemaining", function () {
+            timeRemainingFormatted: o.computed("timeRemaining", function () {
               return !this.get("timeRemaining") ||
                 this.get("timeRemaining") <= 0
                 ? ":00"
@@ -895,7 +895,7 @@
                   ? ":" + this.get("timeRemaining")
                   : ":0" + this.get("timeRemaining");
             }),
-            displayedPhase: s.computed(
+            displayedPhase: o.computed(
               "inBanPickPhase",
               "root.sessionActions.activeAction.type",
               "root.sessionActions.banActions.length",
@@ -916,40 +916,40 @@
                     : void 0;
               },
             ),
-            inPlanningPhase: s.computed.equal("phase", "PLANNING"),
-            notInPlanningPhase: s.computed.not("inPlanningPhase"),
-            inBanPickPhase: s.computed.equal("phase", "BAN_PICK"),
-            notInBanPickPhase: s.computed.not("inBanPickPhase"),
-            inFinalizationPhase: s.computed.equal("phase", "FINALIZATION"),
-            notInFinalizationPhase: s.computed.not("inFinalizationPhase"),
-            inGameStartingPhase: s.computed.equal("phase", "GAME_STARTING"),
-            notInGameStartingPhase: s.computed.not("inGameStartingPhase"),
+            inPlanningPhase: o.computed.equal("phase", "PLANNING"),
+            notInPlanningPhase: o.computed.not("inPlanningPhase"),
+            inBanPickPhase: o.computed.equal("phase", "BAN_PICK"),
+            notInBanPickPhase: o.computed.not("inBanPickPhase"),
+            inFinalizationPhase: o.computed.equal("phase", "FINALIZATION"),
+            notInFinalizationPhase: o.computed.not("inFinalizationPhase"),
+            inGameStartingPhase: o.computed.equal("phase", "GAME_STARTING"),
+            notInGameStartingPhase: o.computed.not("inGameStartingPhase"),
           });
-        e.exports = o;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = s.Object.extend({
-            champion: s.computed(
+          { Ember: o } = i,
+          s = o.Object.extend({
+            champion: o.computed(
               "root.inventory.@each.id",
               "championId",
               function () {
-                return (this.get("root.inventory") || s.A()).findBy(
+                return (this.get("root.inventory") || o.A()).findBy(
                   "id",
                   this.get("championId"),
                 );
               },
             ),
-            delayedChampionSetter: s.observer(
+            delayedChampionSetter: o.observer(
               "completed",
               "champion",
-              s.on("init", function () {
+              o.on("init", function () {
                 if (!this.get("completed") || !this.get("champion"))
                   return void this.set("delayedChampion", null);
                 const e = this.get("champion");
-                s.run.later(
+                o.run.later(
                   function () {
                     this.isDestroyed ||
                       this.isDestroying ||
@@ -959,23 +959,23 @@
                 );
               }),
             ),
-            actor: s.computed(
+            actor: o.computed(
               "actorCellId",
               "root.summoners.@each.cellId",
               function () {
-                return (this.get("root.summoners") || s.A()).findBy(
+                return (this.get("root.summoners") || o.A()).findBy(
                   "cellId",
                   this.get("actorCellId"),
                 );
               },
             ),
-            isBan: s.computed("type", function () {
+            isBan: o.computed("type", function () {
               return "ban" === this.get("type");
             }),
-            isPick: s.computed("type", function () {
+            isPick: o.computed("type", function () {
               return "pick" === this.get("type");
             }),
-            isActive: s.computed(
+            isActive: o.computed(
               "root.sessionActions.activeActions.@each.id",
               "id",
               function () {
@@ -985,7 +985,7 @@
                 );
               },
             ),
-            isCurrent: s.computed(
+            isCurrent: o.computed(
               "root.sessionActions.currentActions.@each.id",
               "id",
               function () {
@@ -995,7 +995,7 @@
                 );
               },
             ),
-            isNext: s.computed(
+            isNext: o.computed(
               "root.sessionActions.nextActions.@each.id",
               "id",
               function () {
@@ -1006,15 +1006,15 @@
               },
             ),
           });
-        e.exports = o;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
         const i = n(1),
-          { Ember: s } = i,
-          o = i.Lodash,
-          c = s.Object.extend({
-            allActions: s.computed("root.session.actions.[]", function () {
+          { Ember: o } = i,
+          s = i.Lodash,
+          c = o.Object.extend({
+            allActions: o.computed("root.session.actions.[]", function () {
               const e = [],
                 t = this.get("root.session.actions");
               return (
@@ -1024,10 +1024,10 @@
                       e.push(t);
                     });
                   }, this),
-                s.A(e)
+                o.A(e)
               );
             }),
-            currentActions: s.computed(
+            currentActions: o.computed(
               "allActions.@each.completed",
               "root.session.actions.[]",
               function () {
@@ -1035,26 +1035,26 @@
                 if (e)
                   for (let t = 0; t < e.length; t++) {
                     const n = e[t];
-                    if (n && n.length && !o.every(n.mapBy("completed")))
+                    if (n && n.length && !s.every(n.mapBy("completed")))
                       return n;
                   }
-                return s.A();
+                return o.A();
               },
             ),
-            nextActions: s.computed(
+            nextActions: o.computed(
               "root.session.actions.[]",
               "currentActions",
               function () {
-                if (!this.get("root.session.actions")) return s.A();
+                if (!this.get("root.session.actions")) return o.A();
                 const e = this.get("root.session.actions").indexOf(
                   this.get("currentActions"),
                 );
                 return -1 === e
-                  ? s.A()
-                  : this.get("root.session.actions")[e + 1] || s.A();
+                  ? o.A()
+                  : this.get("root.session.actions")[e + 1] || o.A();
               },
             ),
-            nextAction: s.computed(
+            nextAction: o.computed(
               "nextActions.[]",
               "nextActions.@each.actor.isSelf",
               function () {
@@ -1064,16 +1064,16 @@
                   : null;
               },
             ),
-            activeActions: s.computed(
+            activeActions: o.computed(
               "root.session.timer.inBanPickPhase",
               "currentActions.@each.completed",
               function () {
                 return this.get("root.session.timer.inBanPickPhase")
-                  ? s.A(this.get("currentActions").filterBy("completed", !1))
-                  : s.A();
+                  ? o.A(this.get("currentActions").filterBy("completed", !1))
+                  : o.A();
               },
             ),
-            activeAction: s.computed(
+            activeAction: o.computed(
               "activeActions.[]",
               "activeActions.@each.actor.isSelf",
               function () {
@@ -1083,26 +1083,26 @@
                   : null;
               },
             ),
-            banActions: s.computed(
+            banActions: o.computed(
               "allActions.id",
               "allActions.type",
               function () {
-                return s.A(this.get("allActions").filterBy("type", "ban"));
+                return o.A(this.get("allActions").filterBy("type", "ban"));
               },
             ),
-            completedBanActions: s.computed.filterBy(
+            completedBanActions: o.computed.filterBy(
               "banActions.@each.completed",
               "completed",
               !0,
             ),
-            pickActions: s.computed(
+            pickActions: o.computed(
               "allActions.id",
               "allActions.type",
               function () {
-                return s.A(this.get("allActions").filterBy("type", "pick"));
+                return o.A(this.get("allActions").filterBy("type", "pick"));
               },
             ),
-            numPickPhases: s.computed("allActions.@each.type", function () {
+            numPickPhases: o.computed("allActions.@each.type", function () {
               let e = 0,
                 t = null;
               return (
@@ -1113,30 +1113,30 @@
                 e
               );
             }),
-            myTeamBanActions: s.computed(
+            myTeamBanActions: o.computed(
               "banActions.id",
               "banActions.actor.isOnLeftSide",
               function () {
-                return s.A(
+                return o.A(
                   this.get("banActions").filterBy("actor.isOnLeftSide", !0),
                 );
               },
             ),
-            theirTeamBanActions: s.computed(
+            theirTeamBanActions: o.computed(
               "banActions.id",
               "banActions.actor.isOnLeftSide",
               function () {
-                return s.A(
+                return o.A(
                   this.get("banActions").filterBy("actor.isOnLeftSide", !1),
                 );
               },
             ),
-            hasBans: s.computed("allActions.@each.type", function () {
+            hasBans: o.computed("allActions.@each.type", function () {
               return !!this.get("allActions").find(function (e) {
                 return "ban" === e.get("type");
               });
             }),
-            someoneIsBanning: s.computed(
+            someoneIsBanning: o.computed(
               "activeActions.@each.type",
               function () {
                 return (
@@ -1147,7 +1147,7 @@
                 );
               },
             ),
-            currentBan: s.computed(
+            currentBan: o.computed(
               "currentActions.@each.type",
               "someoneIsBanning",
               function () {
@@ -1156,13 +1156,13 @@
                   : null;
               },
             ),
-            numBanActionsCompleted: s.computed(
+            numBanActionsCompleted: o.computed(
               "banActions.@each.completed",
               function () {
                 return this.get("banActions").filterBy("completed", !0).length;
               },
             ),
-            numPickActionsCompleted: s.computed(
+            numPickActionsCompleted: o.computed(
               "pickActions.@each.completed",
               function () {
                 return this.get("pickActions").filterBy("completed", !0).length;
@@ -1174,10 +1174,10 @@
     ],
     t = {};
   function n(i) {
-    var s = t[i];
-    if (void 0 !== s) return s.exports;
-    var o = (t[i] = { exports: {} });
-    return e[i](o, o.exports, n), o.exports;
+    var o = t[i];
+    if (void 0 !== o) return o.exports;
+    var s = (t[i] = { exports: {} });
+    return e[i](s, s.exports, n), s.exports;
   }
   (n.r = (e) => {
     "undefined" != typeof Symbol &&
@@ -1190,10 +1190,10 @@
       var e,
         t = (e = n(1)) && e.__esModule ? e : { default: e };
       const i = "rcp-fe-lol-esports-spectate",
-        s = document.currentScript.ownerDocument;
-      const o = window.getPluginAnnounceEventName(i);
-      s.addEventListener(
-        o,
+        o = document.currentScript.ownerDocument;
+      const s = window.getPluginAnnounceEventName(i);
+      o.addEventListener(
+        s,
         function (e) {
           (0, e.registrationHandler)(function (e) {
             return t.default

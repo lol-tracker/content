@@ -46,10 +46,10 @@
               n = this;
             return (
               Object.keys(e).forEach(function (a) {
-                const s = e[a],
-                  l = n._getValue(a, s);
-                l && l.then
-                  ? (l.then(function (e) {
+                const l = e[a],
+                  s = n._getValue(a, l);
+                s && s.then
+                  ? (s.then(function (e) {
                       e ||
                         console.warn(
                           "The promise for the key " +
@@ -59,8 +59,8 @@
                         ),
                         n._addValue(a, e);
                     }),
-                    t.push(l))
-                  : n._addValue(a, l);
+                    t.push(s))
+                  : n._addValue(a, s);
               }),
               Promise.all(t)
             );
@@ -88,17 +88,17 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a,
-          s = (a = n(1)) && a.__esModule ? a : { default: a },
-          l = n(3);
+          l = (a = n(1)) && a.__esModule ? a : { default: a },
+          s = n(3);
         function o(e, t) {
           return "number" != typeof e.itemId ||
             "string" != typeof e.inventoryType
-            ? (s.default.logger.error(
+            ? (l.default.logger.error(
                 "Purchase Anywhere Widget expects a number itemId and string inventoryType",
               ),
               !1)
             : "string" == typeof t ||
-                (s.default.logger.error(
+                (l.default.logger.error(
                   "Purchase Anywhere Widget expects a source to indicate who is the caller",
                 ),
                 !1);
@@ -106,22 +106,22 @@
         function i(e, t, n) {
           if (!e)
             return (
-              s.default.logger.error("Create Paw Template expects a offer id."),
+              l.default.logger.error("Create Paw Template expects a offer id."),
               !1
             );
           if (!n)
             return (
-              s.default.logger.error("Create Paw Template expects a source."),
+              l.default.logger.error("Create Paw Template expects a source."),
               !1
             );
           if (!t)
             return (
-              s.default.logger.error("Create Paw Template expects a template."),
+              l.default.logger.error("Create Paw Template expects a template."),
               !1
             );
           if (!t.templateType)
             return (
-              s.default.logger.error(
+              l.default.logger.error(
                 "Create Paw Template expects a template to contain a template type",
               ),
               !1
@@ -130,11 +130,11 @@
             for (let e = 0; e < t.components.length; e++)
               if (
                 t.components[e].componentType ===
-                  l.PAW.COMPONENT_TYPES.PURCHASE &&
-                t.components[e].currencyType === l.PAW.CURRENCY_TYPES.IP
+                  s.PAW.COMPONENT_TYPES.PURCHASE &&
+                t.components[e].currencyType === s.PAW.CURRENCY_TYPES.IP
               )
                 return (
-                  s.default.logger.error(
+                  l.default.logger.error(
                     "Create Paw Template does not support currency type IP, this is deprecated, use BE",
                   ),
                   !1
@@ -145,25 +145,25 @@
           constructor(e) {
             this.privateAPI = e;
           }
-          createPAWChoiceModal(e, t, n, a = null, s = null, l = null) {
+          createPAWChoiceModal(e, t, n, a = null, l = null, s = null) {
             if (
               (function (e, t) {
                 let n = !0;
                 const a = e.length;
-                for (let s = 0; s < a; ++s) n = n && o(e[s], t);
+                for (let l = 0; l < a; ++l) n = n && o(e[l], t);
                 return n;
               })(e, t)
             ) {
               const { privateAPI: n } = this;
-              if (n.createPAWChoiceModal(e, t, a, s))
-                return (n.onClosed = l), !0;
+              if (n.createPAWChoiceModal(e, t, a, l))
+                return (n.onClosed = s), !0;
             }
             return !1;
           }
-          createPAWModal(e, t, n, a = null, s = null, l = null) {
+          createPAWModal(e, t, n, a = null, l = null, s = null) {
             if (o(e, t)) {
               const { privateAPI: n } = this;
-              if (n.createPAWModal(e, t, a, s)) return (n.onClosed = l), !0;
+              if (n.createPAWModal(e, t, a, l)) return (n.onClosed = s), !0;
             }
             return !1;
           }
@@ -185,11 +185,11 @@
               !!(function (e) {
                 return e
                   ? !!e.templateType ||
-                      (s.default.logger.error(
+                      (l.default.logger.error(
                         "Populate Paw Template expects a template to contain a template type",
                       ),
                       !1)
-                  : (s.default.logger.error(
+                  : (l.default.logger.error(
                       "Populate Paw Template expects a template.",
                     ),
                     !1);
@@ -200,7 +200,7 @@
             return (function (e) {
               return (
                 !!e ||
-                (s.default.logger.error("Get Template Data expects offer id."),
+                (l.default.logger.error("Get Template Data expects offer id."),
                 !1)
               );
             })(e)
@@ -227,13 +227,13 @@
           Object.defineProperty(t, "QUEUES", {
             enumerable: !0,
             get: function () {
-              return s.default;
+              return l.default;
             },
           }),
           Object.defineProperty(t, "REWARD_TRACKER", {
             enumerable: !0,
             get: function () {
-              return l.default;
+              return s.default;
             },
           }),
           Object.defineProperty(t, "SETTINGS", {
@@ -255,8 +255,8 @@
             },
           });
         var a = p(n(4)),
-          s = p(n(15)),
-          l = p(n(16)),
+          l = p(n(15)),
+          s = p(n(16)),
           o = p(n(17)),
           i = p(n(18)),
           c = p(n(19)),
@@ -270,8 +270,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = d(n(5)),
-          s = d(n(6)),
-          l = d(n(7)),
+          l = d(n(6)),
+          s = d(n(7)),
           o = d(n(8)),
           i = d(n(9)),
           c = d(n(10)),
@@ -284,8 +284,8 @@
         }
         var h = {
           COMPONENT_TYPES: a.default,
-          CURRENCY_TYPES: s.default,
-          INVENTORY_TYPES: l.default,
+          CURRENCY_TYPES: l.default,
+          INVENTORY_TYPES: s.default,
           MEDIA_TYPES: o.default,
           MEDIA_LOAD_TYPES: i.default,
           MODAL_TYPES: c.default,
@@ -417,25 +417,25 @@
           (t.default = void 0);
         const n = "RANKED_SOLO_5x5",
           a = "RANKED_FLEX_SR",
-          s = "RANKED_FLEX_TT",
-          l = "CHERRY",
+          l = "RANKED_FLEX_TT",
+          s = "CHERRY",
           o = "RANKED_TFT",
           i = "RANKED_TFT_DOUBLE_UP",
           c = "RANKED_TFT_TURBO",
           r = "RANKED_TFT_PAIRS",
           p = [n, a],
-          m = [...p, s],
-          u = [l],
+          m = [...p, l],
+          u = [s],
           d = [o, i],
           h = [c, r],
-          g = [...d, ...h],
-          _ = [...m, ...d],
+          _ = [...d, ...h],
+          g = [...m, ...d],
           f = [...h, ...u];
         var w = {
           RANKED_SOLO_5x5_QUEUE_TYPE: n,
           RANKED_FLEX_SR_QUEUE_TYPE: a,
-          RANKED_FLEX_TT_QUEUE_TYPE: s,
-          RANKED_CHERRY_QUEUE_TYPE: l,
+          RANKED_FLEX_TT_QUEUE_TYPE: l,
+          RANKED_CHERRY_QUEUE_TYPE: s,
           RANKED_TFT_QUEUE_TYPE: o,
           RANKED_TFT_DOUBLE_UP_QUEUE_TYPE: i,
           RANKED_TFT_TURBO_QUEUE_TYPE: c,
@@ -444,10 +444,10 @@
           RANKED_SR_QUEUE_TYPES: p,
           RANKED_TFT_QUEUE_TYPES: d,
           RATED_TFT_QUEUE_TYPES: h,
-          RANKED_AND_RATED_TFT_QUEUE_TYPES: g,
-          ALL_RANKED_QUEUE_TYPES: _,
+          RANKED_AND_RATED_TFT_QUEUE_TYPES: _,
+          ALL_RANKED_QUEUE_TYPES: g,
           ALL_RATED_QUEUE_TYPES: f,
-          ALL_RANKED_AND_RATED_QUEUE_TYPES: [..._, ...f],
+          ALL_RANKED_AND_RATED_QUEUE_TYPES: [...g, ...f],
         };
         t.default = w;
       },
@@ -510,7 +510,7 @@
             DISABLED: "DISABLED",
           },
           a = { PRIVATE: "PRIVATE", PUBLIC: "PUBLIC" };
-        var s = {
+        var l = {
           ProfilePrivacyEnabledState: n,
           ProfilePrivacySetting: a,
           DEFAULT_PROFILE_PRIVACY: {
@@ -518,7 +518,7 @@
             setting: a.PUBLIC,
           },
         };
-        t.default = s;
+        t.default = l;
       },
       (e, t) => {
         "use strict";
@@ -536,14 +536,14 @@
         };
         t.TIME_UNITS = n;
         const a = 36e5,
-          s = 864e5,
-          l = 6048e5,
+          l = 864e5,
+          s = 6048e5,
           o = {
             MILLISECONDS_IN_A_SECOND: 1e3,
             MILLISECONDS_IN_A_MINUTE: 6e4,
             MILLISECONDS_IN_A_HOUR: a,
-            MILLISECONDS_IN_A_DAY: s,
-            MILLISECONDS_IN_A_WEEK: l,
+            MILLISECONDS_IN_A_DAY: l,
+            MILLISECONDS_IN_A_WEEK: s,
             MILLISECONDS_IN_A_YEAR: 314496e5,
           };
         t.TIME_CONVERSIONS = o;
@@ -555,8 +555,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        let s;
-        class l {
+        let l;
+        class s {
           constructor() {
             (this.receiveConfiguration = this.receiveConfiguration.bind(this)),
               (this.privateAPI = a.privateAPI),
@@ -577,7 +577,7 @@
         }
         var o = {
           init: function () {
-            return s || (s = new l());
+            return l || (l = new s());
           },
         };
         t.default = o;
@@ -587,16 +587,16 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a,
-          s = n(1),
-          l = (a = n(23)) && a.__esModule ? a : { default: a };
+          l = n(1),
+          s = (a = n(23)) && a.__esModule ? a : { default: a };
         let o;
         class i {
           constructor() {
             (this.handleGameFlowUpdate = this.handleGameFlowUpdate.bind(this)),
-              (this.privateAPI = s.privateAPI),
-              (this.gameFlowBinding = (0, s.dataBinding)(
+              (this.privateAPI = l.privateAPI),
+              (this.gameFlowBinding = (0, l.dataBinding)(
                 "/lol-gameflow",
-                (0, s.getProvider)().getSocket(),
+                (0, l.getProvider)().getSocket(),
               )),
               this.gameFlowBinding.observe(
                 "/v1/session",
@@ -608,7 +608,7 @@
             if (!e) return;
             const { phase: t } = e;
             t &&
-              ((t !== l.default.READY_CHECK && t !== l.default.GAME_START) ||
+              ((t !== s.default.READY_CHECK && t !== s.default.GAME_START) ||
                 this.privateAPI.removePAWModal());
           }
         }
@@ -642,8 +642,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = w(n(25)),
-          l = n(26),
+          l = w(n(25)),
+          s = n(26),
           o = n(27),
           i = w(n(28)),
           c = w(n(31)),
@@ -653,8 +653,8 @@
           u = w(n(43)),
           d = w(n(46)),
           h = w(n(49)),
-          g = w(n(52)),
-          _ = w(n(55)),
+          _ = w(n(52)),
+          g = w(n(55)),
           f = w(n(58));
         function w(e) {
           return e && e.__esModule ? e : { default: e };
@@ -696,11 +696,11 @@
               .overlay("/fe/lol-l10n/trans.json")
               .overlay("/fe/lol-paw/trans.json")
               .overlay("/fe/ember-libs/trans-loot-table.json");
-            return (0, s.default)(a.Ember, e);
+            return (0, l.default)(a.Ember, e);
           }
           showPAWModal(e, t, n) {
             return (
-              a.Telemetry.sendCustomData(l.TELEMETRY_EVENT_NAME, n),
+              a.Telemetry.sendCustomData(s.TELEMETRY_EVENT_NAME, n),
               (t = {
                 items: null,
                 itemId: null,
@@ -725,26 +725,26 @@
           createPAWChoiceModal(e, t, n = null, a = null) {
             if (!this.enabled || this.pawModal) return !1;
             t && (this.source = t);
-            const s = { source: t, onPurchased: a, items: e },
+            const l = { source: t, onPurchased: a, items: e },
               o = {
-                id: l.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW,
+                id: s.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW,
                 itemIds: e.itemIds,
                 inventoryType: e.inventoryType,
                 source: t,
               };
-            return this.showPAWModal(n, s, o);
+            return this.showPAWModal(n, l, o);
           }
           createPAWModal(e, t, n = null, a = null) {
             if (!this.enabled || this.pawModal) return !1;
             t && (this.source = t);
-            const s = Object.assign({ source: t, onPurchased: a }, e),
+            const l = Object.assign({ source: t, onPurchased: a }, e),
               o = {
-                id: l.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW,
+                id: s.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW,
                 itemIds: e.itemId,
                 inventoryType: e.inventoryType,
                 source: t,
               };
-            return this.showPAWModal(n, s, o);
+            return this.showPAWModal(n, l, o);
           }
           closePAWModal() {
             this.removePAWModal();
@@ -768,8 +768,8 @@
               ),
               (this.pawModal = null),
               (this.source = null),
-              a.Telemetry.sendCustomData(l.TELEMETRY_EVENT_NAME, {
-                id: l.TELEMETRY_EVENT_ID.CLOSE_PAW_WINDOW,
+              a.Telemetry.sendCustomData(s.TELEMETRY_EVENT_NAME, {
+                id: s.TELEMETRY_EVENT_ID.CLOSE_PAW_WINDOW,
               }));
           }
           createErrorModal(e) {
@@ -824,8 +824,8 @@
               PawTemplateScrollListComponent: u.default,
               PawTemplateTextComponent: d.default,
               PawTemplateTitleSubtitleComponent: h.default,
-              PawTemplateVerticalListComponent: g.default,
-              PawTemplateWindowComponent: _.default,
+              PawTemplateVerticalListComponent: _.default,
+              PawTemplateWindowComponent: g.default,
             }),
               a.emberApplicationFactory.setFactoryDefinition({
                 name: "PAWRPTopUpModalComponent",
@@ -840,17 +840,17 @@
           disable() {
             (this.enabled = !1), this.removePAWModal();
           }
-          createPawTemplateModal(e, t, n, a, s) {
+          createPawTemplateModal(e, t, n, a, l) {
             if (this.pawModal) return !1;
             if (!this.enabled) return !1;
             n && (this.source = n);
-            const o = { id: l.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW, source: n },
+            const o = { id: s.TELEMETRY_EVENT_ID.CREATE_PAW_WINDOW, source: n },
               i = {
                 pawTemplateData: {
                   offerId: e,
                   template: t,
                   source: n,
-                  async: s,
+                  async: l,
                   service: null,
                 },
               };
@@ -898,31 +898,31 @@
           return n;
         }
         function n(e, t, n) {
-          const { regions: a, region: s, locale: l } = e.metadata();
-          if ((n = n.get("metadata." + t)) && "region" === t && n.id !== s.id) {
+          const { regions: a, region: l, locale: s } = e.metadata();
+          if ((n = n.get("metadata." + t)) && "region" === t && n.id !== l.id) {
             const t = a[n.id],
-              s = t.defaultLocale
+              l = t.defaultLocale
                 ? t.defaultLocale.id
                 : t.availableLocales[0].id;
-            e.setLocale(s, n.id);
-          } else n && "locale" === t && n.id !== l.id && e.setLocale(n.id);
+            e.setLocale(l, n.id);
+          } else n && "locale" === t && n.id !== s.id && e.setLocale(n.id);
         }
-        e.exports = function (e, a, s) {
-          let l;
+        e.exports = function (e, a, l) {
+          let s;
           const o = { metadata: !0, moment: !0 };
           return (
             (a = a.observe(() => {
-              if (l) {
+              if (s) {
                 const e = t(a.metadata());
-                l.set("metadata", e),
-                  l.beginPropertyChanges(),
+                s.set("metadata", e),
+                  s.beginPropertyChanges(),
                   Object.keys(o).forEach((e) => {
-                    l.propertyWillChange(e), l.propertyDidChange(e);
+                    s.propertyWillChange(e), s.propertyDidChange(e);
                   }),
-                  l.endPropertyChanges();
+                  s.endPropertyChanges();
               }
             })),
-            (l = e.Service.extend({
+            (s = e.Service.extend({
               _tra: null,
               init() {
                 this.wrapTra(a);
@@ -950,21 +950,21 @@
                 t && this.wrapTra(t);
               },
             }).create()),
-            l.set("service", l),
-            l.addObserver("metadata.region", n.bind(null, a, "region")),
-            l.addObserver("metadata.locale", n.bind(null, a, "locale")),
-            s &&
+            s.set("service", s),
+            s.addObserver("metadata.region", n.bind(null, a, "region")),
+            s.addObserver("metadata.locale", n.bind(null, a, "locale")),
+            l &&
               (console.warning(
                 "deprecated: pass a traService as a property of your Ember application definition",
               ),
-              s.register("tra:main", l, { instantiate: !1 }),
-              s.inject("component", "tra", "tra:main"),
-              s.inject("controller", "tra", "tra:main"),
-              s.inject("view", "tra", "tra:main"),
-              s.inject("model", "tra", "tra:main"),
-              s.inject("route", "tra", "tra:main"),
-              s.inject("service", "tra", "tra:main")),
-            l
+              l.register("tra:main", s, { instantiate: !1 }),
+              l.inject("component", "tra", "tra:main"),
+              l.inject("controller", "tra", "tra:main"),
+              l.inject("view", "tra", "tra:main"),
+              l.inject("model", "tra", "tra:main"),
+              l.inject("route", "tra", "tra:main"),
+              l.inject("service", "tra", "tra:main")),
+            s
           );
         };
       },
@@ -1008,8 +1008,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(27),
-          l = c(n(29)),
+          l = n(27),
+          s = c(n(29)),
           o = n(3),
           i = c(n(30));
         function c(e) {
@@ -1057,11 +1057,11 @@
           init() {
             this._super(...arguments),
               (this._dataBinding = (0, a.dataBinding)(
-                s.PURCHASE_WIDGET_BINDING_URL,
+                l.PURCHASE_WIDGET_BINDING_URL,
                 (0, a.getProvider)().getSocket(),
               )),
               this._dataBinding.observe(
-                s.PURCHASE_OFFER_STATUSES_URL,
+                l.PURCHASE_OFFER_STATUSES_URL,
                 this,
                 (e) => {
                   this._updateOfferPurchaseProgress(e);
@@ -1098,7 +1098,7 @@
                     setTimeout(() => {
                       this.get("isWaitingToPresent") &&
                         this.set("genericError", !0);
-                    }, s.MAX_WAITING_TIME_IN_MS),
+                    }, l.MAX_WAITING_TIME_IN_MS),
                   ));
           },
           populateModal(e) {
@@ -1127,10 +1127,10 @@
             const e = { offerId: this.get("pawTemplateDataCache.offerId") };
             Promise.race([
               this._getTimeoutPromise(
-                s.MAX_WAITING_TIME_IN_MS,
+                l.MAX_WAITING_TIME_IN_MS,
                 "paw-template.validateOffer",
               ),
-              this._dataBinding.post(s.VALIDATE_OFFER_URL, e),
+              this._dataBinding.post(l.VALIDATE_OFFER_URL, e),
             ])
               .then((e) => {
                 this._handleValidationResponse(e);
@@ -1159,10 +1159,10 @@
               this.set("purchaseOptionSourceInProgress", e),
               Promise.race([
                 this._getTimeoutPromise(
-                  s.MAX_WAITING_TIME_IN_MS,
+                  l.MAX_WAITING_TIME_IN_MS,
                   "paw-template.purchaseOffer",
                 ),
-                this._dataBinding.post(s.PURCHASE_OFFER_URL, a),
+                this._dataBinding.post(l.PURCHASE_OFFER_URL, a),
               ])
                 .then((e) => {
                   e.legacy
@@ -1203,9 +1203,9 @@
             if (e.currencyImage) return this.getMediaPath(e.currencyImage);
             switch (e.currencyType) {
               case o.PAW.CURRENCY_TYPES.BE:
-                return s.IMAGE_PATH_BE;
+                return l.IMAGE_PATH_BE;
               case o.PAW.CURRENCY_TYPES.RP:
-                return s.IMAGE_PATH_RP;
+                return l.IMAGE_PATH_RP;
               case o.PAW.CURRENCY_TYPES.CUSTOM:
                 return e.currencyImage
                   ? this.getMediaPath(e.currencyImage)
@@ -1222,27 +1222,27 @@
           },
           getValidateErrorStringFromKey(e, t) {
             switch (t) {
-              case l.default.ITEM_OWNED:
+              case s.default.ITEM_OWNED:
                 return e.get("cat_paw_error_validation_item_owned");
-              case l.default.ITEM_UNAVAILABLE:
+              case s.default.ITEM_UNAVAILABLE:
                 return e.get("cat_paw_error_validation_item_not_active");
-              case l.default.MISSING_REQUIRED_ITEMS:
+              case s.default.MISSING_REQUIRED_ITEMS:
                 return e.get("cat_paw_error_validation_item_parent_not_owned");
-              case l.default.MISSING_REQUIRED_ITEMS_LOYALTY:
+              case s.default.MISSING_REQUIRED_ITEMS_LOYALTY:
                 return e.get(
                   "cat_paw_error_validation_item_loyalty_parent_not_owned",
                 );
-              case l.default.NOT_ENOUGH_CURRENCY:
+              case s.default.NOT_ENOUGH_CURRENCY:
                 return e.get(
                   "cat_paw_error_validation_item_not_enough_currency",
                 );
-              case l.default.GENERIC_ERROR:
+              case s.default.GENERIC_ERROR:
               default:
                 return e.get("cat_paw_error_generic");
             }
           },
           getErrorIcon: (e) =>
-            e === l.default.MISSING_REQUIRED_ITEMS_LOYALTY
+            e === s.default.MISSING_REQUIRED_ITEMS_LOYALTY
               ? "/fe/lol-static-assets/images/xbox-game-pass-loyalty-hint.svg"
               : "/fe/lol-static-assets/svg/alert-info-red.svg",
           _checkIfReadyToPresent() {
@@ -1316,17 +1316,17 @@
             ),
               e
                 ? e.validationErrors.length > 0 &&
-                  (e.validationErrors[0].errorKey === l.default.GENERIC_ERROR &&
+                  (e.validationErrors[0].errorKey === s.default.GENERIC_ERROR &&
                     this.set("genericError", !0),
                   e.validationErrors[0].errorKey,
-                  l.default.NOT_ENOUGH_CURRENCY,
+                  s.default.NOT_ENOUGH_CURRENCY,
                   this.set(
                     "offerValidationProgress.errorKey",
                     e.validationErrors[0].errorKey,
                   ))
                 : this.set(
                     "offerValidationProgress.errorKey",
-                    l.default.GENERIC_ERROR,
+                    s.default.GENERIC_ERROR,
                   ),
               this._checkIfReadyToPresent();
           },
@@ -1352,7 +1352,7 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        var s = (0, a.emberDataBinding)({
+        var l = (0, a.emberDataBinding)({
           Ember: a.Ember,
           websocket: (0, a.getProvider)().getSocket(),
           basePaths: {
@@ -1373,49 +1373,49 @@
             pawConfig: { api: "paw", path: "/v1/configuration" },
           },
         });
-        t.default = s;
+        t.default = l;
       },
       (e, t, n) => {
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(3);
-        const { computed: l } = a.Ember;
+          l = n(3);
+        const { computed: s } = a.Ember;
         var o = a.Ember.Component.extend({
           classNames: ["paw-template-large-two-column-landscape-template"],
           layout: n(32),
           style: n(33),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          componentData0: l.readOnly(
+          componentData0: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.components.0",
           ),
-          componentData1: l.readOnly(
+          componentData1: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.components.1",
           ),
-          componentData2: l.readOnly(
+          componentData2: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.components.2",
           ),
-          componentData3: l.readOnly(
+          componentData3: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.components.3",
           ),
-          componentData4: l.readOnly(
+          componentData4: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.components.4",
           ),
-          area0ComponentName: l.readOnly("pawTemplateService.componentNames.0"),
-          area1ComponentName: l.readOnly("pawTemplateService.componentNames.1"),
-          area2ComponentName: l.readOnly("pawTemplateService.componentNames.2"),
-          area3ComponentName: l.readOnly("pawTemplateService.componentNames.3"),
-          area4ComponentName: l.readOnly("pawTemplateService.componentNames.4"),
-          isWaitingToPresent: l.readOnly(
+          area0ComponentName: s.readOnly("pawTemplateService.componentNames.0"),
+          area1ComponentName: s.readOnly("pawTemplateService.componentNames.1"),
+          area2ComponentName: s.readOnly("pawTemplateService.componentNames.2"),
+          area3ComponentName: s.readOnly("pawTemplateService.componentNames.3"),
+          area4ComponentName: s.readOnly("pawTemplateService.componentNames.4"),
+          isWaitingToPresent: s.readOnly(
             "pawTemplateService.isWaitingToPresent",
           ),
-          genericError: l.readOnly("pawTemplateService.genericError"),
-          purchaseSuccess: l.equal(
+          genericError: s.readOnly("pawTemplateService.genericError"),
+          purchaseSuccess: s.equal(
             "pawTemplateService.offerPurchaseProgress.state",
-            s.PAW.OFFER_PURCHASE_STATES.SUCCESS,
+            l.PAW.OFFER_PURCHASE_STATES.SUCCESS,
           ),
-          successImagePath: l(
+          successImagePath: s(
             "pawTemplateService.pawTemplateDataCache.template.purchaseSuccessInfo.purchaseSuccessImage",
             function () {
               const e = this.get(
@@ -1424,13 +1424,13 @@
               return this.get("pawTemplateService").getMediaPath(e);
             },
           ),
-          successItemName: l.readOnly(
+          successItemName: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.purchaseSuccessInfo.purchaseSuccessItemName",
           ),
-          successItemDescription: l.readOnly(
+          successItemDescription: s.readOnly(
             "pawTemplateService.pawTemplateDataCache.template.purchaseSuccessInfo.purchaseSuccessItemDescription",
           ),
-          successDeepLinkConextPrefix: l(
+          successDeepLinkConextPrefix: s(
             "pawTemplateService.pawTemplateDataCache.template.purchaseSuccessInfo",
             function () {
               return this.get(
@@ -1438,7 +1438,7 @@
               ).split("{{icon}}")[0];
             },
           ),
-          successDeepLinkConextSuffix: l(
+          successDeepLinkConextSuffix: s(
             "pawTemplateService.pawTemplateDataCache.template.purchaseSuccessInfo",
             function () {
               return this.get(
@@ -1461,9 +1461,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "rlg1hPYn",
+          id: "tktiytnh",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["genericError"]]],null,5,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-column-0 paw-template-large-two-column-landscape-template-column"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-0 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area0ComponentName"]]],[["areaIndex","componentData"],[0,["get",["componentData0"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-1 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area1ComponentName"]]],[["areaIndex","componentData"],[1,["get",["componentData1"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-column-1 paw-template-large-two-column-landscape-template-column "],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-2 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area2ComponentName"]]],[["areaIndex","componentData"],[2,["get",["componentData2"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-3 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area3ComponentName"]]],[["areaIndex","componentData"],[3,["get",["componentData3"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-4 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area4ComponentName"]]],[["areaIndex","componentData"],[4,["get",["componentData4"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex paw-template-large-two-column-landscape-template-spinner"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isWaitingToPresent"]]],null,1,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex paw-template-large-two-column-landscape-template-success"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-image-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["successImagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-right-panel"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-clock-image-wrapper"],["flush-element"],["text","\\n        "],["open-element","object",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-clock-image"],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/circle-lines-gold.svg",null],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-lock-image"],["flush-element"],["text","\\n          "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/lock-open-gold.svg",null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-title"],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_unlocked_header"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-name"],["flush-element"],["append",["unknown",["successItemName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-description"],["flush-element"],["append",["unknown",["successItemDescription"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-action"],["flush-element"],["text","  \\n          "],["append",["unknown",["successDeepLinkConextPrefix"]],false],["text","\\n          "],["open-element","span",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-action-icon"],["flush-element"],["text","\\n            "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/backpack-light-gold.svg",null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["append",["unknown",["successDeepLinkConextSuffix"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-flex"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-close"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCloseButton"],null],null],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_confirmation"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCollectionsButton"],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-flex"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-image"],["flush-element"],["text","\\n              "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/backpack-gold.svg",null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-text"],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_deep_link_button"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseSuccess"]]],null,3,2]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-column"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-title"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-icon-panel"],["flush-element"],["text","\\n      "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/poro-sweat-exclamation.svg",null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message-header"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_header"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message-body"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail"]],false],["close-element"],["text","\\n    "],["close-element"],["text"," \\n    "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-close-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCloseButton"],null],null],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_close"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\large-two-column-landscape-template-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["genericError"]]],null,5,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-column-0 paw-template-large-two-column-landscape-template-column"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-0 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area0ComponentName"]]],[["areaIndex","componentData"],[0,["get",["componentData0"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-1 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area1ComponentName"]]],[["areaIndex","componentData"],[1,["get",["componentData1"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-column-1 paw-template-large-two-column-landscape-template-column "],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-2 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area2ComponentName"]]],[["areaIndex","componentData"],[2,["get",["componentData2"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-3 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area3ComponentName"]]],[["areaIndex","componentData"],[3,["get",["componentData3"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-area-4 paw-template-large-two-column-landscape-template-area"],["flush-element"],["text"," \\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-content"],["flush-element"],["text","\\n          "],["append",["helper",["component"],[["get",["area4ComponentName"]]],[["areaIndex","componentData"],[4,["get",["componentData4"]]]]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex paw-template-large-two-column-landscape-template-spinner"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isWaitingToPresent"]]],null,1,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-flex paw-template-large-two-column-landscape-template-success"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-image-wrapper"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["successImagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-right-panel"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-clock-image-wrapper"],["flush-element"],["text","\\n        "],["open-element","object",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-clock-image"],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/circle-lines-gold.svg",null],["flush-element"],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-lock-image"],["flush-element"],["text","\\n          "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/lock-open-gold.svg",null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-title"],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_unlocked_header"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-name"],["flush-element"],["append",["unknown",["successItemName"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-description"],["flush-element"],["append",["unknown",["successItemDescription"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-text paw-template-large-two-column-landscape-template-success-action"],["flush-element"],["text","  \\n          "],["append",["unknown",["successDeepLinkConextPrefix"]],false],["text","\\n          "],["open-element","span",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-action-icon"],["flush-element"],["text","\\n            "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/backpack-light-gold.svg",null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["append",["unknown",["successDeepLinkConextSuffix"]],false],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-flex"],["flush-element"],["text","\\n        "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-close"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCloseButton"],null],null],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_confirmation"]],false],["close-element"],["text","\\n        "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCollectionsButton"],null],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-flex"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-image"],["flush-element"],["text","\\n              "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/backpack-gold.svg",null],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-success-button-collections-text"],["flush-element"],["append",["unknown",["tra","cat_pawt_celebration_deep_link_button"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseSuccess"]]],null,3,2]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-column"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-title"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_title"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-icon-panel"],["flush-element"],["text","\\n      "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/poro-sweat-exclamation.svg",null],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message-header"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_header"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-message-body"],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail"]],false],["close-element"],["text","\\n    "],["close-element"],["text"," \\n    "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-large-two-column-landscape-template-error-close-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onCloseButton"],null],null],["flush-element"],["append",["unknown",["tra","cat_paw_error_purchase_internal_fail_close"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1476,8 +1476,8 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const { computed: s } = a.Ember;
-        var l = a.Ember.Component.extend({
+        const { computed: l } = a.Ember;
+        var s = a.Ember.Component.extend({
           classNames: ["paw-template-image-carousel"],
           layout: n(35),
           style: n(36),
@@ -1485,7 +1485,7 @@
           selectedDisplayIndex: 0,
           scrollPosition: 0,
           thumbnailWidth: 90,
-          thumbnailsToDisplay: s("componentData.images.[]", function () {
+          thumbnailsToDisplay: l("componentData.images.[]", function () {
             const e = [];
             for (let t = 0; t < this.get("componentData.images").length; t++)
               e.push({
@@ -1496,7 +1496,7 @@
               });
             return e;
           }),
-          thumbnails: s(
+          thumbnails: l(
             "selectedDisplayIndex",
             "thumbnailsToDisplay",
             function () {
@@ -1579,14 +1579,14 @@
               this.set("autoScrollInterval", null));
           },
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "W7cQBiz1",
+          id: "Gkd8AmxP",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-arrow-button",[]],["static-attr","class","paw-template-image-carousel-arrow-image paw-template-image-carousel-left-arrow"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onLeftArrowButton"],null],null],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-wrapper-outer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-wrapper-inner"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-scroll"],["dynamic-attr","style",["concat",["transform: translateX(",["unknown",["scrollPosition"]],"px)"]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["thumbnails"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-arrow-button",[]],["static-attr","class","paw-template-image-carousel-arrow-image"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onRightArrowButton"],null],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-template-image-carousel-thumbnail ",["helper",["if"],[["get",["thumbnail","selected"]],"paw-template-image-carousel-thumbnail-selected"],null]]]],["flush-element"],["text","\\n          "],["open-element","button",[]],["dynamic-attr","class",["concat",["paw-template-image-carousel-thumbnail-button ",["helper",["if"],[["get",["thumbnail","selected"]],"paw-template-image-carousel-thumbnail-button-selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onThumbnailButton",["get",["thumbnail"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-button-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["thumbnail","imagePath"]],")"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-border"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-border-inner"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["thumbnail","index"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\image-carousel-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-arrow-button",[]],["static-attr","class","paw-template-image-carousel-arrow-image paw-template-image-carousel-left-arrow"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onLeftArrowButton"],null],null],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-wrapper-outer"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-wrapper-inner"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-content-scroll"],["dynamic-attr","style",["concat",["transform: translateX(",["unknown",["scrollPosition"]],"px)"]]],["flush-element"],["text","\\n"],["block",["each"],[["get",["thumbnails"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","lol-uikit-arrow-button",[]],["static-attr","class","paw-template-image-carousel-arrow-image"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onRightArrowButton"],null],null],["flush-element"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-template-image-carousel-thumbnail ",["helper",["if"],[["get",["thumbnail","selected"]],"paw-template-image-carousel-thumbnail-selected"],null]]]],["flush-element"],["text","\\n          "],["open-element","button",[]],["dynamic-attr","class",["concat",["paw-template-image-carousel-thumbnail-button ",["helper",["if"],[["get",["thumbnail","selected"]],"paw-template-image-carousel-thumbnail-button-selected"],null]]]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onThumbnailButton",["get",["thumbnail"]]],null],null],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-button-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["thumbnail","imagePath"]],")"]]],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-border"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-image-carousel-thumbnail-border-inner"],["flush-element"],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["thumbnail","index"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1599,14 +1599,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(3);
-        const { computed: l } = a.Ember;
+          l = n(3);
+        const { computed: s } = a.Ember;
         var o = a.Ember.Component.extend({
           classNames: ["paw-template-media"],
           layout: n(38),
           style: n(39),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          captionTitle: l(
+          captionTitle: s(
             "componentData.caption.localizedTitle",
             "componentData.sourceConnectionData",
             function () {
@@ -1616,7 +1616,7 @@
               );
             },
           ),
-          captionText: l(
+          captionText: s(
             "componentData.caption.total",
             "componentData.sourceConnectionData",
             function () {
@@ -1628,7 +1628,7 @@
               });
             },
           ),
-          media: l(
+          media: s(
             "componentData.media",
             "componentData.sourceConnectionData",
             function () {
@@ -1636,9 +1636,9 @@
                 t = e || this.get("componentData.media");
               return {
                 isVideo:
-                  (e && e.type === s.PAW.MEDIA_TYPES.VIDEO) ||
+                  (e && e.type === l.PAW.MEDIA_TYPES.VIDEO) ||
                   this.get("componentData.media.type") ===
-                    s.PAW.MEDIA_TYPES.VIDEO,
+                    l.PAW.MEDIA_TYPES.VIDEO,
                 path: this.get("pawTemplateService").getMediaPath(t),
               };
             },
@@ -1649,9 +1649,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "5LEfKa6d",
+          id: "dfIdI8dS",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-media-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["media","isVideo"]]],null,1,0],["text","  "],["open-element","div",[]],["static-attr","class","paw-template-media-caption"],["flush-element"],["text"," \\n    "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-flex"],["flush-element"],["text"," \\n      "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-title"],["flush-element"],["append",["unknown",["captionTitle"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-subtitle-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-media-content-subtitle-icon"],["flush-element"],["text","\\n          "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["static-attr","data","/fe/lol-static-assets/svg/mask-group.svg"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-subtitle-text"],["flush-element"],["append",["unknown",["captionText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","    \\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-template-media-content"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["media","path"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","class","paw-template-media-video"],["dynamic-attr","src",["unknown",["media","path"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\media-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-media-content"],["flush-element"],["text","\\n"],["block",["if"],[["get",["media","isVideo"]]],null,1,0],["text","  "],["open-element","div",[]],["static-attr","class","paw-template-media-caption"],["flush-element"],["text"," \\n    "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-flex"],["flush-element"],["text"," \\n      "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-title"],["flush-element"],["append",["unknown",["captionTitle"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-subtitle-wrapper"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-media-content-subtitle-icon"],["flush-element"],["text","\\n          "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["static-attr","data","/fe/lol-static-assets/svg/mask-group.svg"],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-template-media-caption-subtitle-text"],["flush-element"],["append",["unknown",["captionText"]],false],["close-element"],["text","\\n      "],["close-element"],["text","\\n    "],["close-element"],["text","    \\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-template-media-content"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["media","path"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","video",[]],["static-attr","autoplay",""],["static-attr","loop",""],["static-attr","class","paw-template-media-video"],["dynamic-attr","src",["unknown",["media","path"]],null],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1664,14 +1664,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(3);
-        const { computed: l } = a.Ember;
+          l = n(3);
+        const { computed: s } = a.Ember;
         var o = a.Ember.Component.extend({
           classNames: ["paw-template-purchase"],
           layout: n(41),
           style: n(42),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          validateError: l(
+          validateError: s(
             "pawTemplateService.offerValidationProgress.errorKey",
             function () {
               const e = this.get(
@@ -1685,7 +1685,7 @@
                 : void 0;
             },
           ),
-          validationIcon: l(
+          validationIcon: s(
             "pawTemplateService.offerValidationProgress.errorKey",
             function () {
               const e = this.get(
@@ -1694,32 +1694,32 @@
               return this.get("pawTemplateService").getErrorIcon(e);
             },
           ),
-          purchaseNotStarted: l.equal(
+          purchaseNotStarted: s.equal(
             "pawTemplateService.offerPurchaseProgress.state",
-            s.PAW.OFFER_PURCHASE_STATES.NOT_STARTED,
+            l.PAW.OFFER_PURCHASE_STATES.NOT_STARTED,
           ),
-          purchaseInProgress: l.equal(
+          purchaseInProgress: s.equal(
             "pawTemplateService.offerPurchaseProgress.state",
-            s.PAW.OFFER_PURCHASE_STATES.IN_PROGRESS,
+            l.PAW.OFFER_PURCHASE_STATES.IN_PROGRESS,
           ),
-          purchaseSuccess: l.equal(
+          purchaseSuccess: s.equal(
             "pawTemplateService.offerPurchaseProgress.state",
-            s.PAW.OFFER_PURCHASE_STATES.SUCCESS,
+            l.PAW.OFFER_PURCHASE_STATES.SUCCESS,
           ),
-          purchaseError: l(
+          purchaseError: s(
             "pawTemplateService.offerPurchaseProgress.state",
             "pawTemplateService.offerPurchaseProgress.errorKey",
             function () {
               return (
                 this.get("pawTemplateService.offerPurchaseProgress.state") ===
-                  s.PAW.OFFER_PURCHASE_STATES.FAIL &&
+                  l.PAW.OFFER_PURCHASE_STATES.FAIL &&
                 this.get(
                   `tra.${this.get("pawTemplateService.offerPurchaseProgress.errorKey")}`,
                 )
               );
             },
           ),
-          purchaseOptions: l(
+          purchaseOptions: s(
             "componentData.purchaseOptions",
             "validateError",
             "purchaseError",
@@ -1750,7 +1750,7 @@
             },
           ),
           disclaimerAcknowledged: !1,
-          showNonRefundableDisclaimer: l(
+          showNonRefundableDisclaimer: s(
             "pawTemplateService.nonRefundableDisclaimerEnabled",
             "disclaimerAcknowledged",
             function () {
@@ -1760,10 +1760,10 @@
               );
             },
           ),
-          showError: l("validateError", "purchaseError", function () {
+          showError: s("validateError", "purchaseError", function () {
             return this.get("validateError") || this.get("purchaseError");
           }),
-          disclaimerTextPrefix: l(
+          disclaimerTextPrefix: s(
             "tra.cat_paw_purchase_non_refundable_disclaimer",
             function () {
               return this.get(
@@ -1771,7 +1771,7 @@
               ).split("{{confirmationLink}}")[0];
             },
           ),
-          disclaimerTextSuffix: l(
+          disclaimerTextSuffix: s(
             "tra.cat_paw_purchase_non_refundable_disclaimer",
             function () {
               return this.get(
@@ -1794,9 +1794,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "kjL10OGW",
+          id: "s8tNIjve",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseInProgress"]]],null,10,9]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-padding-left"],["flush-element"],["append",["unknown",["purchaseOption","currencyName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["purchaseOption","currencyImagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-purchase-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onPurchaseButton",["get",["purchaseOption"]]],null],null],["dynamic-attr","disabled",["unknown",["purchaseOption","disabled"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-flex-base"],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseOption","currencyImagePath"]]],null,1],["text","            "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-padding-left"],["flush-element"],["append",["unknown",["purchaseOption","price"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["purchaseOption","currencyName"]]],null,0],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["purchaseOption"]},{"statements":[["block",["each"],[["get",["purchaseOptions"]]],null,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-template-purchase-disclaimer-text"],["flush-element"],["text","\\n        "],["append",["unknown",["disclaimerTextPrefix"]],false],["text"," "],["open-element","a",[]],["static-attr","class","paw-template-purchase-disclaimer-link"],["dynamic-attr","href",["unknown",["tra","cat_paw_purchase_non_refundable_disclaimer_link"]],null],["static-attr","target","_blank"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cat_paw_purchase_disclaimer_link_text"]],false],["text"," \\n          "],["open-element","div",[]],["static-attr","class","paw-template-purchase-disclaimer-link-icon"],["flush-element"],["text","\\n            "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/external-link-blue.svg",null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text"," "],["append",["unknown",["disclaimerTextSuffix"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","paw-template-purchase-disclaimer-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onDisclaimerButton"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cat_paw_bundled_disclaimers_ok"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error"],["flush-element"],["append",["unknown",["purchaseError"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseError"]]],null,5]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error"],["flush-element"],["append",["unknown",["validateError"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-template-flex-base paw-template-purchase-upper-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error-icon"],["flush-element"],["text","\\n        "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data",["unknown",["validationIcon"]],null],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["validateError"]]],null,7,6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showError"]]],null,8],["text","  "],["open-element","div",[]],["static-attr","class","paw-template-flex-base paw-template-purchase-lower-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showNonRefundableDisclaimer"]]],null,4,3],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-flex-base"],["flush-element"],["text","\\n      "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\purchase-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseInProgress"]]],null,10,9]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-padding-left"],["flush-element"],["append",["unknown",["purchaseOption","currencyName"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["purchaseOption","currencyImagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","paw-template-purchase-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onPurchaseButton",["get",["purchaseOption"]]],null],null],["dynamic-attr","disabled",["unknown",["purchaseOption","disabled"]],null],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-flex-base"],["flush-element"],["text","\\n"],["block",["if"],[["get",["purchaseOption","currencyImagePath"]]],null,1],["text","            "],["open-element","div",[]],["static-attr","class","paw-template-purchase-button-currency-padding-left"],["flush-element"],["append",["unknown",["purchaseOption","price"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["purchaseOption","currencyName"]]],null,0],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["purchaseOption"]},{"statements":[["block",["each"],[["get",["purchaseOptions"]]],null,2]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-template-purchase-disclaimer-text"],["flush-element"],["text","\\n        "],["append",["unknown",["disclaimerTextPrefix"]],false],["text"," "],["open-element","a",[]],["static-attr","class","paw-template-purchase-disclaimer-link"],["dynamic-attr","href",["unknown",["tra","cat_paw_purchase_non_refundable_disclaimer_link"]],null],["static-attr","target","_blank"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","cat_paw_purchase_disclaimer_link_text"]],false],["text"," \\n          "],["open-element","div",[]],["static-attr","class","paw-template-purchase-disclaimer-link-icon"],["flush-element"],["text","\\n            "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data","/fe/lol-static-assets/svg/external-link-blue.svg",null],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text"," "],["append",["unknown",["disclaimerTextSuffix"]],false],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","lol-uikit-flat-button",[]],["static-attr","class","paw-template-purchase-disclaimer-button"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onDisclaimerButton"],null],null],["flush-element"],["text","\\n        "],["append",["unknown",["tra","cat_paw_bundled_disclaimers_ok"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error"],["flush-element"],["append",["unknown",["purchaseError"]],false],["close-element"],["text","\\n      "]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseError"]]],null,5]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error"],["flush-element"],["append",["unknown",["validateError"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-template-flex-base paw-template-purchase-upper-container"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-template-purchase-error-icon"],["flush-element"],["text","\\n        "],["open-element","object",[]],["static-attr","type","image/svg+xml"],["dynamic-attr","data",["unknown",["validationIcon"]],null],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["validateError"]]],null,7,6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["showError"]]],null,8],["text","  "],["open-element","div",[]],["static-attr","class","paw-template-flex-base paw-template-purchase-lower-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showNonRefundableDisclaimer"]]],null,4,3],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-flex-base"],["flush-element"],["text","\\n      "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1809,14 +1809,14 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(3);
-        const { computed: l } = a.Ember;
+          l = n(3);
+        const { computed: s } = a.Ember;
         var o = a.Ember.Component.extend({
           classNames: ["paw-template-scroll-list"],
           layout: n(44),
           style: n(45),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          scrollListSections: l("componentData.sections", function () {
+          scrollListSections: s("componentData.sections", function () {
             const e = [];
             for (
               let t = 0;
@@ -1832,7 +1832,7 @@
                 const a = this.get(
                     `componentData.sections.${t}.items.${e}.thumbnail`,
                   ),
-                  s = this.get(`componentData.sections.${t}.items.${e}.image`);
+                  l = this.get(`componentData.sections.${t}.items.${e}.image`);
                 n.push({
                   sectionIndex: t,
                   itemIndex: e,
@@ -1848,19 +1848,19 @@
                   imagePath: a
                     ? this.get("pawTemplateService").getMediaPath(a)
                     : null,
-                  imageData: s || a,
+                  imageData: l || a,
                 });
               }
               e.push({
                 isCompact:
                   this.get(`componentData.sections.${t}.displayType`) ===
-                  s.PAW.SCROLL_LIST_DISPLAY_TYPES.COMPACT,
+                  l.PAW.SCROLL_LIST_DISPLAY_TYPES.COMPACT,
                 isExpanded:
                   this.get(`componentData.sections.${t}.displayType`) ===
-                  s.PAW.SCROLL_LIST_DISPLAY_TYPES.EXPANDED,
+                  l.PAW.SCROLL_LIST_DISPLAY_TYPES.EXPANDED,
                 isDetailed:
                   this.get(`componentData.sections.${t}.displayType`) ===
-                  s.PAW.SCROLL_LIST_DISPLAY_TYPES.DETAILED,
+                  l.PAW.SCROLL_LIST_DISPLAY_TYPES.DETAILED,
                 localizedTitle: this.get(
                   `componentData.sections.${t}.localizedTitle`,
                 ),
@@ -1881,9 +1881,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "44rZFJOr",
+          id: "p6pATZPE",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","paw-template-scroll-list-scrollable"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["scrollListSections"]]],null,6],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-detailed"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-image-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title-subtitle-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title paw-template-scroll-list-item-detailed-title"],["flush-element"],["append",["unknown",["item","localizedTitle"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-subtitle"],["flush-element"],["append",["unknown",["item","localizedSubtitle"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-right-text"],["flush-element"],["append",["unknown",["item","localizedRightText"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isDetailed"]]],null,0]],"locals":[]},{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-compact"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isCompact"]]],null,2,1]],"locals":[]},{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-expanded"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-expanded-image-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-image paw-template-scroll-list-item-expanded-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title-subtitle-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title paw-template-scroll-list-item-expanded-title"],["flush-element"],["append",["unknown",["item","localizedTitle"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-expanded-subtitle"],["flush-element"],["append",["unknown",["item","localizedSubtitle"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isExpanded"]]],null,4,3]],"locals":["item"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-section-title"],["flush-element"],["append",["unknown",["section","localizedTitle"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["section","items"]]],null,5],["text","        "],["close-element"],["text","\\n"]],"locals":["section"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\scroll-list-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-scrollable",[]],["static-attr","class","paw-template-scroll-list-scrollable"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["scrollListSections"]]],null,6],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-detailed"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-image-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title-subtitle-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title paw-template-scroll-list-item-detailed-title"],["flush-element"],["append",["unknown",["item","localizedTitle"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-subtitle"],["flush-element"],["append",["unknown",["item","localizedSubtitle"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-detailed-right-text"],["flush-element"],["append",["unknown",["item","localizedRightText"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isDetailed"]]],null,0]],"locals":[]},{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-compact"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isCompact"]]],null,2,1]],"locals":[]},{"statements":[["text","              "],["open-element","button",[]],["static-attr","class","paw-template-scroll-list-item paw-template-scroll-list-item-expanded"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"onItemSelected",["get",["item"]]],null],null],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-expanded-image-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-image paw-template-scroll-list-item-expanded-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title-subtitle-container"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-title paw-template-scroll-list-item-expanded-title"],["flush-element"],["append",["unknown",["item","localizedTitle"]],false],["close-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-item-expanded-subtitle"],["flush-element"],["append",["unknown",["item","localizedSubtitle"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n              "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["section","isExpanded"]]],null,4,3]],"locals":["item"]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-section"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-template-scroll-list-section-title"],["flush-element"],["append",["unknown",["section","localizedTitle"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["section","items"]]],null,5],["text","        "],["close-element"],["text","\\n"]],"locals":["section"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1896,22 +1896,22 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const { computed: s } = a.Ember;
-        var l = a.Ember.Component.extend({
+        const { computed: l } = a.Ember;
+        var s = a.Ember.Component.extend({
           classNames: ["paw-template-text"],
           layout: n(47),
           style: n(48),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          text: s.readOnly("componentData.localizedText"),
+          text: l.readOnly("componentData.localizedText"),
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "+Pd5dNEg",
+          id: "HrTF8JFr",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\index.js\\" "],["text","\\n"],["append",["unknown",["text"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\text-component\\\\index.js\\" "],["text","\\n"],["append",["unknown",["text"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1924,23 +1924,23 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const { computed: s } = a.Ember;
-        var l = a.Ember.Component.extend({
+        const { computed: l } = a.Ember;
+        var s = a.Ember.Component.extend({
           classNames: ["paw-template-title-subtitle"],
           layout: n(50),
           style: n(51),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          title: s.readOnly("componentData.localizedTitle"),
-          subtitle: s.readOnly("componentData.localizedSubtitle"),
+          title: l.readOnly("componentData.localizedTitle"),
+          subtitle: l.readOnly("componentData.localizedSubtitle"),
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "9okUen6V",
+          id: "c2P2A8QB",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-title-subtitle-base paw-template-title-subtitle-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-title-subtitle-base paw-template-title-subtitle-subtitle"],["flush-element"],["append",["unknown",["subtitle"]],false],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\title-subtitle-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-title-subtitle-base paw-template-title-subtitle-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-template-title-subtitle-base paw-template-title-subtitle-subtitle"],["flush-element"],["append",["unknown",["subtitle"]],false],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -1953,16 +1953,16 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1);
-        const { computed: s } = a.Ember;
-        var l = a.Ember.Component.extend({
+        const { computed: l } = a.Ember;
+        var s = a.Ember.Component.extend({
           classNames: ["paw-template-vertical-list"],
           layout: n(53),
           style: n(54),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          items: s("componentData.items.[]", function () {
+          items: l("componentData.items.[]", function () {
             const e = [];
             for (let t = 0; t < this.get("componentData.items").length; t++) {
-              let n, a, s;
+              let n, a, l;
               this.get("componentData.items." + t + ".image") &&
                 (n = this.get("pawTemplateService").getMediaPath(
                   this.get("componentData.items." + t + ".image"),
@@ -1972,22 +1972,22 @@
                 this.get(
                   "componentData.items." + t + ".localizedDescription",
                 ) &&
-                  (s = this.get(
+                  (l = this.get(
                     "componentData.items." + t + ".localizedDescription",
                   )),
-                e.push({ imagePath: n, name: a, description: s });
+                e.push({ imagePath: n, name: a, description: l });
             }
             return e;
           }),
         });
-        t.default = l;
+        t.default = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "jUbJWIh0",
+          id: "4pXQq84F",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\index.js\\" "],["text","\\n"],["block",["each"],[["get",["items"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-description"],["flush-element"],["text","\\n          "],["append",["unknown",["item","description"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-name"],["flush-element"],["text","\\n          "],["append",["unknown",["item","name"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","imagePath"]]],null,2],["text","    \\n    "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-text-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","name"]]],null,1],["text","      \\n"],["block",["if"],[["get",["item","description"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\vertical-list-component\\\\index.js\\" "],["text","\\n"],["block",["each"],[["get",["items"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-description"],["flush-element"],["text","\\n          "],["append",["unknown",["item","description"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-name"],["flush-element"],["text","\\n          "],["append",["unknown",["item","name"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-image"],["dynamic-attr","style",["concat",["background-image:url(",["unknown",["item","imagePath"]],")"]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","imagePath"]]],null,2],["text","    \\n    "],["open-element","div",[]],["static-attr","class","paw-template-vertical-list-element-text-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","name"]]],null,1],["text","      \\n"],["block",["if"],[["get",["item","description"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2000,20 +2000,20 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = n(3);
-        const { computed: l } = a.Ember;
+          l = n(3);
+        const { computed: s } = a.Ember;
         var o = a.Ember.Component.extend({
           classNames: ["paw-template-window"],
           layout: n(56),
           style: n(57),
           pawTemplateService: a.Ember.inject.service("paw-template"),
-          isLargeTwoColumnLandscapeTemplate: l(
+          isLargeTwoColumnLandscapeTemplate: s(
             "pawTemplateService.pawTemplateDataCache.template.templateType",
             function () {
               return (
                 this.get(
                   "pawTemplateService.pawTemplateDataCache.template.templateType",
-                ) === s.PAW.TEMPLATE_TYPES.LARGE_TWO_COLUMN_LANDSCAPE
+                ) === l.PAW.TEMPLATE_TYPES.LARGE_TWO_COLUMN_LANDSCAPE
               );
             },
           ),
@@ -2023,9 +2023,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "N7hqU8hy",
+          id: "OFsYAoVp",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isLargeTwoColumnLandscapeTemplate"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["paw-template-large-two-column-landscape-template"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-template\\\\window-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isLargeTwoColumnLandscapeTemplate"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["unknown",["paw-template-large-two-column-landscape-template"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2056,7 +2056,7 @@
                 {
                   componentType: a.PAW.COMPONENT_TYPES.IMAGE_CAROUSEL,
                   images: o(e),
-                  localizedAssociatedTextData: s(e),
+                  localizedAssociatedTextData: l(e),
                 },
                 {
                   componentType: a.PAW.COMPONENT_TYPES.TITLE_SUBTITLE,
@@ -2092,18 +2092,18 @@
                   location: e.uncenteredSplashPath,
                 },
                 purchaseSuccessItemName: e.localizedName,
-                purchaseSuccessItemDescription: l(e, t),
+                purchaseSuccessItemDescription: s(e, t),
               },
             };
           });
         var a = n(3);
-        function s(e) {
+        function l(e) {
           const t = [];
           for (let n = 0; n < e.items.length; n++)
             t.push(e.items[n].localizedShortName);
           return t;
         }
-        function l(e, t) {
+        function s(e, t) {
           return t.formatString(
             "cat_pawt_celebration_unlocked_message_skin_line",
             { successItemName: e.localizedName },
@@ -2149,17 +2149,17 @@
         }
         function c(e, t) {
           const n = [];
-          for (let s = 0; s < e.items.length; s++)
+          for (let l = 0; l < e.items.length; l++)
             n.push({
-              localizedTitle: e.items[s].localizedLongName,
+              localizedTitle: e.items[l].localizedLongName,
               localizedSubtitle:
-                0 === s
+                0 === l
                   ? t.get("cat_paw_skin_line_purchase_summary_base")
                   : t.get("cat_paw_skin_line_purchase_summary_extras"),
               thumbnail: {
                 type: a.PAW.MEDIA_TYPES.IMAGE,
                 loadType: a.PAW.MEDIA_LOAD_TYPES.GAME_DATA,
-                location: e.items[s].thumbnailImagePath,
+                location: e.items[l].thumbnailImagePath,
               },
             });
           return n;
@@ -2180,8 +2180,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(3),
-          l = m(n(30)),
+          l = n(3),
+          s = m(n(30)),
           o = m(n(60)),
           i = m(n(61)),
           c = n(26),
@@ -2192,11 +2192,11 @@
         }
         const { Component: u, computed: d } = a.Ember,
           h = [i.default.Errors.NOT_ENOUGH_CURRENCY],
-          g = [
+          _ = [
             i.default.Errors.NOT_ENOUGH_CURRENCY,
             i.default.Errors.PARENT_NOT_OWNED,
           ],
-          _ = u.extend(l.default, {
+          g = u.extend(s.default, {
             isLoadingCatalogItemInfo: !0,
             layout: n(63),
             style: n(64),
@@ -2277,12 +2277,12 @@
             ),
             isBundledItem: d("itemPurchaseOption", function () {
               const e = this.get("itemPurchaseOption");
-              return e && e.inventoryType === s.PAW.INVENTORY_TYPES.BUNDLES;
+              return e && e.inventoryType === l.PAW.INVENTORY_TYPES.BUNDLES;
             }),
             contentRendererComponent: d("itemPurchaseOption", function () {
               const e = this.get("itemPurchaseOption");
               return e &&
-                e.inventoryType === s.PAW.INVENTORY_TYPES.BUNDLES &&
+                e.inventoryType === l.PAW.INVENTORY_TYPES.BUNDLES &&
                 e.subInventoryType === o.default.CHROMA_BUNDLE
                 ? "chroma-bundle-details"
                 : "item-details";
@@ -2444,9 +2444,9 @@
                 t = this.get("purchaseWidgetService.orderNotifications") || [];
               let n = "NOT_STARTED";
               for (let a = t.length - 1; a >= 0; a--) {
-                const s = t[a];
-                if (s.eventTypeId === e) {
-                  n = s.status;
+                const l = t[a];
+                if (l.eventTypeId === e) {
+                  n = l.status;
                   break;
                 }
               }
@@ -2467,12 +2467,12 @@
               const e = this.get("purchaseWidgetService"),
                 t = this.get("itemId"),
                 n = this.get("inventoryType"),
-                s = {
+                l = {
                   id: c.TELEMETRY_EVENT_ID.START_LOADING_ITEM,
                   itemId: t,
                   inventoryType: n,
                 };
-              a.Telemetry.sendCustomData(c.TELEMETRY_EVENT_NAME, s),
+              a.Telemetry.sendCustomData(c.TELEMETRY_EVENT_NAME, l),
                 Promise.race([
                   this._getTimeoutPromise(r.MAX_WAITING_TIME_IN_MS),
                   e.getItem(t, n),
@@ -2484,12 +2484,12 @@
               const e = this.get("purchaseWidgetService"),
                 t = this.get("items.itemIds"),
                 n = this.get("items.inventoryType"),
-                s = {
+                l = {
                   id: c.TELEMETRY_EVENT_ID.START_LOADING_ITEM,
                   itemIds: t,
                   inventoryType: n,
                 };
-              a.Telemetry.sendCustomData(c.TELEMETRY_EVENT_NAME, s),
+              a.Telemetry.sendCustomData(c.TELEMETRY_EVENT_NAME, l),
                 Promise.race([
                   this._getTimeoutPromise(r.MAX_WAITING_TIME_IN_MS),
                   e.getItems(t, n),
@@ -2596,7 +2596,7 @@
             },
             _findErrorMessage(e, t) {
               if (e && e.length > 0) {
-                const n = e.filter((e) => t === g.includes(e));
+                const n = e.filter((e) => t === _.includes(e));
                 if (n.length > 0) return this.get(`tra.${n[0].messageKey}`);
               }
               return null;
@@ -2625,7 +2625,7 @@
                 validationErrors: e,
               }),
           });
-        e.exports = _;
+        e.exports = g;
       },
       (e, t) => {
         "use strict";
@@ -2664,7 +2664,7 @@
             PAW_ITEM_PURCHASE_DISABLED: "validation.item.paw.purchase.disabled",
             CONNECTION_TIME_OUT: "validation.connection.failed",
           },
-          s = {
+          l = {
             ALREADY_OWNED: new n("validation.item.owned"),
             GENERIC_ERROR: new n("validation.generic"),
             NOT_ENOUGH_CURRENCY: new n("validation.item.not.enough.currency"),
@@ -2679,27 +2679,27 @@
             ),
             CONNECTION_TIME_OUT: new n("validation.generic"),
           },
-          l = new Map([
-            [a.ALREADY_OWNED, s.ALREADY_OWNED],
-            [a.BASE_SKIN_NOT_OWNED, s.BASE_SKIN_NOT_OWNED],
-            [a.PARENT_NOT_OWNED, s.PARENT_NOT_OWNED],
-            [a.UNKNOWN_ITEM, s.UNKNOWN_ITEM],
-            [a.UNPURCHASABLE_ITEM, s.UNPURCHASABLE_ITEM],
-            [a.NOT_ENOUGH_CURRENCY, s.NOT_ENOUGH_CURRENCY],
-            [a.ALREADY_OWNED, s.ALREADY_OWNED],
-            [a.MALFORMED, s.NOT_VALID],
-            [a.NO_PRICE, s.NOT_VALID],
-            [a.OVER_LIMIT, s.NOT_VALID],
-            [a.MISSING_REQUEST_FIELDS, s.NOT_VALID],
-            [a.NOT_VALID, s.NOT_VALID],
-            [a.PAW_ITEM_PURCHASE_DISABLED, s.PAW_ITEM_PURCHASE_DISABLED],
-            [a.CONNECTION_TIME_OUT, s.CONNECTION_TIME_OUT],
+          s = new Map([
+            [a.ALREADY_OWNED, l.ALREADY_OWNED],
+            [a.BASE_SKIN_NOT_OWNED, l.BASE_SKIN_NOT_OWNED],
+            [a.PARENT_NOT_OWNED, l.PARENT_NOT_OWNED],
+            [a.UNKNOWN_ITEM, l.UNKNOWN_ITEM],
+            [a.UNPURCHASABLE_ITEM, l.UNPURCHASABLE_ITEM],
+            [a.NOT_ENOUGH_CURRENCY, l.NOT_ENOUGH_CURRENCY],
+            [a.ALREADY_OWNED, l.ALREADY_OWNED],
+            [a.MALFORMED, l.NOT_VALID],
+            [a.NO_PRICE, l.NOT_VALID],
+            [a.OVER_LIMIT, l.NOT_VALID],
+            [a.MISSING_REQUEST_FIELDS, l.NOT_VALID],
+            [a.NOT_VALID, l.NOT_VALID],
+            [a.PAW_ITEM_PURCHASE_DISABLED, l.PAW_ITEM_PURCHASE_DISABLED],
+            [a.CONNECTION_TIME_OUT, l.CONNECTION_TIME_OUT],
           ]);
         var o = {
-          Errors: s,
+          Errors: l,
           fromErrorKey: function (e) {
-            let t = s.GENERIC_ERROR;
-            return l.has(e) && (t = l.get(e)), t;
+            let t = l.GENERIC_ERROR;
+            return s.has(e) && (t = s.get(e)), t;
           },
           ValidationErrorKeys: a,
         };
@@ -2728,9 +2728,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "2ldUhlDh",
+          id: "xc9N6115",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","dialog-frame"],["static-attr","dismissable","true"],["static-attr","dismissable-type","inside"],["static-attr","no-default-padding",""],["static-attr","dismissable-icon-background",""],["flush-element"],["text","\\n"],["block",["if"],[["get",["isPawTemplateModal"]]],null,8,7],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["append",["unknown",["celebration-video"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["helper",["top-banner"],null,[["sale","itemPurchaseOption","message"],[["get",["sale"]],["get",["itemPurchaseOption"]],["get",["topBannerErrorMessage"]]]]],false],["text","\\n              "],["append",["helper",["component"],[["get",["contentRendererComponent"]]],[["itemPurchaseOption","dependencies","bundledItems","purchaseSuccess"],[["get",["itemPurchaseOption"]],["get",["dependencies"]],["get",["bundledItems"]],["get",["purchaseSuccess"]]]]],false],["text","\\n              "],["append",["helper",["purchase-options"],null,[["wallet","itemPurchaseOption","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","errorMessage","purchase"],[["get",["wallet"]],["get",["itemPurchaseOption"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["bottomErrorMessage"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["helper",["bundle-root"],null,[["catalogItemPurchaseOption","itemPurchaseOption","wallet","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","errorMessage","validationErrors","purchase"],[["get",["catalogItemPurchaseOption"]],["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["bundleErrorMessage"]],["get",["validationErrors"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isBundledItem"]]],null,2,1]],"locals":[]},{"statements":[["text","            "],["append",["helper",["paw-choice"],null,[["choices","wallet","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","errorMessage","purchase"],[["get",["catalogItemPurchaseOption","choices"]],["get",["wallet"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["bottomErrorMessage"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-content ",["helper",["if"],[["get",["supportsMultipleItems"]],"no-padding"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["supportsMultipleItems"]]],null,4,3],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showCelebrationVideo"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-window ",["helper",["if"],[["get",["supportsMultipleItems"]],"paw-window-choice"],null]," ",["helper",["if"],[["get",["showBundlesSplashPawModal"]],"paw-window-bundles-splash"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLoadingCatalogItemInfo"]]],null,6,5],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["unknown",["paw-template-window"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-root-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-dialog-frame",[]],["static-attr","class","dialog-frame"],["static-attr","dismissable","true"],["static-attr","dismissable-type","inside"],["static-attr","no-default-padding",""],["static-attr","dismissable-icon-background",""],["flush-element"],["text","\\n"],["block",["if"],[["get",["isPawTemplateModal"]]],null,8,7],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["append",["unknown",["celebration-video"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["helper",["top-banner"],null,[["sale","itemPurchaseOption","message"],[["get",["sale"]],["get",["itemPurchaseOption"]],["get",["topBannerErrorMessage"]]]]],false],["text","\\n              "],["append",["helper",["component"],[["get",["contentRendererComponent"]]],[["itemPurchaseOption","dependencies","bundledItems","purchaseSuccess"],[["get",["itemPurchaseOption"]],["get",["dependencies"]],["get",["bundledItems"]],["get",["purchaseSuccess"]]]]],false],["text","\\n              "],["append",["helper",["purchase-options"],null,[["wallet","itemPurchaseOption","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","errorMessage","purchase"],[["get",["wallet"]],["get",["itemPurchaseOption"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["bottomErrorMessage"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["append",["helper",["bundle-root"],null,[["catalogItemPurchaseOption","itemPurchaseOption","wallet","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","errorMessage","validationErrors","purchase"],[["get",["catalogItemPurchaseOption"]],["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["bundleErrorMessage"]],["get",["validationErrors"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isBundledItem"]]],null,2,1]],"locals":[]},{"statements":[["text","            "],["append",["helper",["paw-choice"],null,[["choices","wallet","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","errorMessage","purchase"],[["get",["catalogItemPurchaseOption","choices"]],["get",["wallet"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["bottomErrorMessage"]],"purchase"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-content ",["helper",["if"],[["get",["supportsMultipleItems"]],"no-padding"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["supportsMultipleItems"]]],null,4,3],["text","        "],["close-element"],["text","\\n"],["block",["if"],[["get",["showCelebrationVideo"]]],null,0]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n          "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-window ",["helper",["if"],[["get",["supportsMultipleItems"]],"paw-window-choice"],null]," ",["helper",["if"],[["get",["showBundlesSplashPawModal"]],"paw-window-bundles-splash"],null]]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isLoadingCatalogItemInfo"]]],null,6,5],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["append",["unknown",["paw-template-window"]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2741,9 +2741,9 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(62);
-        const { Component: l, computed: o } = a.Ember,
-          i = l.extend({
+          l = n(62);
+        const { Component: s, computed: o } = a.Ember,
+          i = s.extend({
             classNames: ["paw-top-banner", "fade-in"],
             layout: n(66),
             style: n(67),
@@ -2767,7 +2767,7 @@
                       return t &&
                         t.icon &&
                         t.position &&
-                        (0, s.isNowWithinActivationDates)(
+                        (0, l.isNowWithinActivationDates)(
                           t.activeDate,
                           t.inactiveDate,
                         )
@@ -2786,9 +2786,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "j3hrWxTa",
+          id: "6icSCMDw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["message"]]],null,4],["block",["if"],[["get",["isOnSale"]]],null,3],["block",["if"],[["get",["extraDecoratorBadges"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["item-metadata-decorator-badge ",["unknown",["badge","className"]]]]],["dynamic-attr","style",["concat",["background-image: ",["unknown",["badge","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["badge"]},{"statements":[["block",["each"],[["get",["extraDecoratorBadges"]]],null,0]],"locals":[]},{"statements":[["block",["if"],[["get",["extraDecoratorBadges","length"]]],null,1]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","on-sale-banner"],["flush-element"],["text","\\n    -"],["append",["unknown",["saleValue"]],false],["text","%\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","error-message"],["flush-element"],["text","\\n    "],["append",["unknown",["message"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\top-banner-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["message"]]],null,4],["block",["if"],[["get",["isOnSale"]]],null,3],["block",["if"],[["get",["extraDecoratorBadges"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["item-metadata-decorator-badge ",["unknown",["badge","className"]]]]],["dynamic-attr","style",["concat",["background-image: ",["unknown",["badge","imageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["badge"]},{"statements":[["block",["each"],[["get",["extraDecoratorBadges"]]],null,0]],"locals":[]},{"statements":[["block",["if"],[["get",["extraDecoratorBadges","length"]]],null,1]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","on-sale-banner"],["flush-element"],["text","\\n    -"],["append",["unknown",["saleValue"]],false],["text","%\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","error-message"],["flush-element"],["text","\\n    "],["append",["unknown",["message"]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2799,9 +2799,9 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(3);
-        const { Component: l, computed: o } = a.Ember,
-          i = l.extend({
+          l = n(3);
+        const { Component: s, computed: o } = a.Ember,
+          i = s.extend({
             classNames: ["paw-content-details"],
             layout: n(69),
             style: n(70),
@@ -2813,7 +2813,7 @@
                 return (
                   this.get("itemPurchaseOption.assets.iconPath") &&
                   (this.get("itemPurchaseOption.inventoryType") !==
-                    s.PAW.INVENTORY_TYPES.CHAMPION_SKIN ||
+                    l.PAW.INVENTORY_TYPES.CHAMPION_SKIN ||
                     this.get("itemPurchaseOption.subInventoryType"))
                 );
               },
@@ -2840,9 +2840,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "uQ52p3b2",
+          id: "qFwEMa2M",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\index.js\\" "],["text","\\n"],["append",["helper",["item-splash"],null,[["itemPurchaseOption","showOverlayImage"],[["get",["itemPurchaseOption"]],["get",["showOverlayImage"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","item-inner-content"],["flush-element"],["text","\\n  "],["append",["helper",["overlay-image"],null,[["showOverlayImage","itemPurchaseOption"],[["get",["showOverlayImage"]],["get",["itemPurchaseOption"]]]]],false],["text","\\n  "],["append",["helper",["content-description"],null,[["itemPurchaseOption","purchaseSuccess"],[["get",["itemPurchaseOption"]],["get",["purchaseSuccess"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["dependencies"]]],null,1],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isItemDependencyLoyaltyUnlocked"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loyalty-hint"],["flush-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","loyalty-hint__text"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","loyalty-hint__logo"],["static-attr","src","/fe/lol-static-assets/images/xbox-game-pass-loyalty-hint.svg"],["static-attr","alt","Rewards Program Logo"],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["loyaltyHintText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["dependency-details"],null,[["dependencies"],[["get",["dependencies"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-details-component\\\\index.js\\" "],["text","\\n"],["append",["helper",["item-splash"],null,[["itemPurchaseOption","showOverlayImage"],[["get",["itemPurchaseOption"]],["get",["showOverlayImage"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","item-inner-content"],["flush-element"],["text","\\n  "],["append",["helper",["overlay-image"],null,[["showOverlayImage","itemPurchaseOption"],[["get",["showOverlayImage"]],["get",["itemPurchaseOption"]]]]],false],["text","\\n  "],["append",["helper",["content-description"],null,[["itemPurchaseOption","purchaseSuccess"],[["get",["itemPurchaseOption"]],["get",["purchaseSuccess"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["block",["if"],[["get",["dependencies"]]],null,1],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["isItemDependencyLoyaltyUnlocked"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","loyalty-hint"],["flush-element"],["text","\\n    "],["open-element","p",[]],["static-attr","class","loyalty-hint__text"],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","loyalty-hint__logo"],["static-attr","src","/fe/lol-static-assets/images/xbox-game-pass-loyalty-hint.svg"],["static-attr","alt","Rewards Program Logo"],["flush-element"],["close-element"],["text","\\n      "],["append",["unknown",["loyaltyHintText"]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["dependency-details"],null,[["dependencies"],[["get",["dependencies"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2853,13 +2853,13 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-purchase-options"],
             purchaseDisclaimerChecked: !1,
             layout: n(72),
             style: n(73),
-            purchaseEnabled: l(
+            purchaseEnabled: s(
               "alwaysShowPurchaseDisclaimer",
               "purchaseDisclaimerChecked",
               function () {
@@ -2883,9 +2883,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "PXmVgmuU",
+          id: "GMOHg1BL",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseSuccess"]]],null,6,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["disclaimer-checkbox"],null,[["toggleDisclaimerValue"],["toggleDisclaimerValue"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["purchase-warnings"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n"],["block",["if"],[["get",["alwaysShowPurchaseDisclaimer"]]],null,0],["text","  "],["append",["helper",["price-details"],null,[["purchaseOptions","itemPurchaseOption","wallet","purchaseEnabled","purchase","padding"],[["get",["purchaseOptions"]],["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseEnabled"]],"purchase",["get",["padding"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["errorMessage"]]],null,2,1]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["append",["helper",["item-unlocked"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-options-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseSuccess"]]],null,6,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["disclaimer-checkbox"],null,[["toggleDisclaimerValue"],["toggleDisclaimerValue"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["append",["helper",["purchase-warnings"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n"],["block",["if"],[["get",["alwaysShowPurchaseDisclaimer"]]],null,0],["text","  "],["append",["helper",["price-details"],null,[["purchaseOptions","itemPurchaseOption","wallet","purchaseEnabled","purchase","padding"],[["get",["purchaseOptions"]],["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseEnabled"]],"purchase",["get",["padding"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["errorMessage"]]],null,2,1]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,4,3]],"locals":[]},{"statements":[["text","  "],["append",["helper",["item-unlocked"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2896,12 +2896,12 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-warnings-wrapper"],
             layout: n(75),
             style: n(76),
-            warnings: l("itemPurchaseOption", function () {
+            warnings: s("itemPurchaseOption", function () {
               const e = this.get("itemPurchaseOption.tags") || [],
                 t = this.get("tra");
               return e
@@ -2919,9 +2919,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "rqJE1exC",
+          id: "CgOfRlQ1",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\index.js\\" "],["text","\\n"],["block",["each"],[["get",["warnings"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-warning"],["flush-element"],["append",["get",["warning"]],false],["close-element"],["text","\\n"]],"locals":["warning"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\purchase-warnings-component\\\\index.js\\" "],["text","\\n"],["block",["each"],[["get",["warnings"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-warning"],["flush-element"],["append",["get",["warning"]],false],["close-element"],["text","\\n"]],"locals":["warning"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2932,14 +2932,14 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-item-splash"],
             layout: n(78),
             style: n(79),
-            emblems: l.readOnly("itemPurchaseOption.assets.emblems"),
-            hasEmblem: l.bool("emblems.length"),
-            backgroundImageUrl: l(
+            emblems: s.readOnly("itemPurchaseOption.assets.emblems"),
+            hasEmblem: s.bool("emblems.length"),
+            backgroundImageUrl: s(
               "itemPurchaseOption.assets.splashPath",
               function () {
                 return (
@@ -2948,7 +2948,7 @@
                 );
               },
             ),
-            showEmblem: l("hasEmblem", "showOverlayImage", function () {
+            showEmblem: s("hasEmblem", "showOverlayImage", function () {
               return this.get("hasEmblem") && !this.get("showOverlayImage");
             }),
           });
@@ -2957,9 +2957,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "/Pnr8T8+",
+          id: "2XQLvqHb",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\index.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["background-image ",["helper",["if"],[["get",["showOverlayImage"]],"half-opacity"],null]]]],["dynamic-attr","src",["concat",[["unknown",["backgroundImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showEmblem"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","emblem-image"],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","emblem-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["emblems"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-splash-component\\\\index.js\\" "],["text","\\n"],["open-element","img",[]],["dynamic-attr","class",["concat",["background-image ",["helper",["if"],[["get",["showOverlayImage"]],"half-opacity"],null]]]],["dynamic-attr","src",["concat",[["unknown",["backgroundImageUrl"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showEmblem"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","img",[]],["static-attr","class","emblem-image"],["dynamic-attr","src",["concat",[["unknown",["emblem","emblemPath","large"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":["emblem"]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","emblem-container"],["flush-element"],["text","\\n"],["block",["each"],[["get",["emblems"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -2970,10 +2970,10 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = n(3),
+          l = n(1),
+          s = n(3),
           o = (a = n(60)) && a.__esModule ? a : { default: a };
-        const { Component: i, computed: c } = s.Ember,
+        const { Component: i, computed: c } = l.Ember,
           r = i.extend({
             classNames: ["paw-overlay-image-content"],
             layout: n(81),
@@ -2984,7 +2984,7 @@
               if (e) {
                 const { inventoryType: t, subInventoryType: n } = e;
                 return (
-                  t === l.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
+                  t === s.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
                   n === o.default.CHROMA
                 );
               }
@@ -3012,9 +3012,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "tfJFwWiV",
+          id: "0lQPnBdZ",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showOverlayImage"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","img",[]],["static-attr","src","/fe/lol-paw/images/icon-chroma.png"],["static-attr","class","chroma-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","overlay-image-wrapper"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["overlayBackgroundPath"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["overlay-image-border ",["unknown",["inventoryTypeSpecialStyle"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","paw-purchase-overlay-image"],["dynamic-attr","src",["concat",[["unknown",["overlayImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChromaIcon"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\overlay-image-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showOverlayImage"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","img",[]],["static-attr","src","/fe/lol-paw/images/icon-chroma.png"],["static-attr","class","chroma-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","overlay-image-wrapper"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["overlayBackgroundPath"]]]]],["flush-element"],["text","\\n    "],["open-element","div",[]],["dynamic-attr","class",["concat",["overlay-image-border ",["unknown",["inventoryTypeSpecialStyle"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","paw-purchase-overlay-image"],["dynamic-attr","src",["concat",[["unknown",["overlayImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChromaIcon"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3025,25 +3025,25 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember;
+        const { Component: l, computed: s } = a.Ember;
         function o(e, t, n) {
           return e.exists(t) ? t : n;
         }
-        const i = s.extend({
+        const i = l.extend({
           classNames: ["paw-content-description"],
           layout: n(84),
-          itemSubtitle: l("itemPurchaseOption", "tra.metadata", function () {
+          itemSubtitle: s("itemPurchaseOption", "tra.metadata", function () {
             const e = this.get("itemPurchaseOption.description");
             if (e) return e;
             const t = this.get("itemPurchaseOption");
             if (t && t.inventoryType) {
               let e = null;
               const n = this.get("tra"),
-                { inventoryType: a, subInventoryType: s } = t;
-              if (((e = o(n, `cat_paw_subtitle_${a.toLowerCase()}`, e)), s)) {
+                { inventoryType: a, subInventoryType: l } = t;
+              if (((e = o(n, `cat_paw_subtitle_${a.toLowerCase()}`, e)), l)) {
                 e = o(
                   n,
-                  `cat_paw_subtitle_${a.toLowerCase()}_${s.toLowerCase()}`,
+                  `cat_paw_subtitle_${a.toLowerCase()}_${l.toLowerCase()}`,
                   e,
                 );
               }
@@ -3051,7 +3051,7 @@
             }
             return "";
           }),
-          subtitle: l(
+          subtitle: s(
             "itemSubtitle",
             "purchaseSuccess",
             "tra.cat_paw_modal_item_unlocked_title",
@@ -3067,27 +3067,27 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "ZygnYgnp",
+          id: "fZ5UEl8o",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\content-description-component\\\\layout.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\content-description-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","padding","small"],["static-attr","class","item-description"],["flush-element"],["text","\\n  "],["open-element","h3",[]],["static-attr","class","title-text"],["flush-element"],["append",["unknown",["itemPurchaseOption","name"]],false],["close-element"],["text","\\n  "],["open-element","p",[]],["flush-element"],["append",["unknown",["subtitle"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\content-description-component\\\\layout.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\content-description-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","padding","small"],["static-attr","class","item-description"],["flush-element"],["text","\\n  "],["open-element","h3",[]],["static-attr","class","title-text"],["flush-element"],["append",["unknown",["itemPurchaseOption","name"]],false],["close-element"],["text","\\n  "],["open-element","p",[]],["flush-element"],["append",["unknown",["subtitle"]],false],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
+        const { Component: l, computed: s } = a.Ember,
           o = a.Ember.A,
-          i = s.extend({
+          i = l.extend({
             classNames: ["paw-dependency-details"],
             layout: n(86),
             style: n(87),
-            shouldShowContentBlock: l("dependencies", function () {
+            shouldShowContentBlock: s("dependencies", function () {
               return (
                 (this.get("dependencies") || []).findIndex((e) => !e.owned) > -1
               );
             }),
-            dependentItems: l(
+            dependentItems: s(
               "tra.cat_paw_dependency_includes",
               "dependencies",
               function () {
@@ -3120,9 +3120,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "iuMlAmDV",
+          id: "MdlXoo1/",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["shouldShowContentBlock"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon-container fade-in"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon-inner-border"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","tile-icon fade-in"],["dynamic-attr","src",["unknown",["dependentItem","tilePath"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","dependency-description fade-in"],["flush-element"],["append",["unknown",["dependentItem","description"]],false],["close-element"],["text","\\n"]],"locals":["dependentItem"]},{"statements":[["text","  "],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","dependency-content"],["static-attr","padding","none"],["flush-element"],["text","\\n"],["block",["each"],[["get",["dependentItems"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\dependency-details-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["shouldShowContentBlock"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","icon-container fade-in"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","icon-inner-border"],["flush-element"],["text","\\n          "],["open-element","img",[]],["static-attr","class","tile-icon fade-in"],["dynamic-attr","src",["unknown",["dependentItem","tilePath"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","dependency-description fade-in"],["flush-element"],["append",["unknown",["dependentItem","description"]],false],["close-element"],["text","\\n"]],"locals":["dependentItem"]},{"statements":[["text","  "],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","dependency-content"],["static-attr","padding","none"],["flush-element"],["text","\\n"],["block",["each"],[["get",["dependentItems"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3133,8 +3133,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s } = a.Ember,
-          l = s.extend({
+        const { Component: l } = a.Ember,
+          s = l.extend({
             classNames: ["paw-price-details"],
             layout: n(89),
             style: n(90),
@@ -3147,14 +3147,14 @@
               },
             },
           });
-        e.exports = l;
+        e.exports = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "tUeSPf+A",
+          id: "jF9Oky5c",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["dynamic-attr","padding",["concat",[["unknown",["paddingWithDefault"]]]]],["static-attr","class","paw-price-details"],["flush-element"],["text","\\n"],["block",["each"],[["get",["purchaseOptions"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["price-button"],null,[["itemPurchaseOption","wallet","purchaseOption","purchaseEnabled","purchase"],[["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseOption"]],["get",["purchaseEnabled"]],"purchase"]]],false],["text","\\n"]],"locals":["purchaseOption"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-details-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["dynamic-attr","padding",["concat",[["unknown",["paddingWithDefault"]]]]],["static-attr","class","paw-price-details"],["flush-element"],["text","\\n"],["block",["each"],[["get",["purchaseOptions"]]],null,0],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["price-button"],null,[["itemPurchaseOption","wallet","purchaseOption","purchaseEnabled","purchase"],[["get",["itemPurchaseOption"]],["get",["wallet"]],["get",["purchaseOption"]],["get",["purchaseEnabled"]],"purchase"]]],false],["text","\\n"]],"locals":["purchaseOption"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3165,12 +3165,12 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
+        const { Component: l, computed: s } = a.Ember,
           o = "/lol-client-config/v3/client-config/",
           i = o + "lol.client_settings.paw.enableRPTopUp",
           c = o + "lol.client_settings.payments.paymentsMode",
           r = a.dataBinding.bindTo((0, a.getProvider)().getSocket()),
-          p = s.extend({
+          p = l.extend({
             classNames: ["paw-price-button", "fade-in"],
             classNameBindings: [
               "hasSplashImage:paw-price-button--has-splash-image",
@@ -3219,7 +3219,7 @@
               });
             },
             isRPTopUpEnabled: !1,
-            aggregatedPriceDetails: l(
+            aggregatedPriceDetails: s(
               "purchaseOption.priceDetails",
               function () {
                 const e = this.get("purchaseOption.priceDetails"),
@@ -3239,7 +3239,7 @@
                 );
               },
             ),
-            newBalance: l(
+            newBalance: s(
               "tra.cat_paw_purchase_cant_afford_message",
               "aggregatedPriceDetails",
               "wallet",
@@ -3249,11 +3249,11 @@
                   n = [];
                 return (
                   e.forEach((e) => {
-                    const { currencyType: a, price: s } = e;
+                    const { currencyType: a, price: l } = e;
                     t.hasOwnProperty(a)
                       ? n.push({
                           currencyType: a,
-                          remaining: t[a] - s,
+                          remaining: t[a] - l,
                           currencyName: this.get(
                             `tra.cat_paw_modal_currency_${a.toLowerCase()}`,
                           ),
@@ -3268,7 +3268,7 @@
                         })
                       : n.push({
                           currencyType: a,
-                          remaining: -s,
+                          remaining: -l,
                           currencyName: this.get(
                             `tra.cat_paw_modal_currency_${a.toLowerCase()}`,
                           ),
@@ -3286,10 +3286,10 @@
                 );
               },
             ),
-            cantAffordBalance: l("newBalance", function () {
+            cantAffordBalance: s("newBalance", function () {
               return this.get("newBalance").find((e) => e.remaining < 0);
             }),
-            purchaseDisabled: l(
+            purchaseDisabled: s(
               "isRPTopUpEnabled",
               "cantAffordBalance",
               "purchaseEnabled",
@@ -3310,14 +3310,14 @@
               const e = -1 * this.get("cantAffordBalance").remaining,
                 t = this.get("itemPurchaseOption").name,
                 n = `${a.privateAPI.getSource()}-PAW`,
-                s = a.componentFactory.create("PAWRPTopUpModalComponent", {
+                l = a.componentFactory.create("PAWRPTopUpModalComponent", {
                   price: e,
                   itemName: t,
                 }),
-                l = a.modalManager.add({
+                s = a.modalManager.add({
                   type: "DialogConfirm",
                   data: {
-                    contents: s.domNode,
+                    contents: l.domNode,
                     acceptText: this.get("tra.cat_paw_rp_purchase_message"),
                     declineText: this.get("tra.cat_paw_rp_cancel_message"),
                     primaryButton: "accept",
@@ -3334,7 +3334,7 @@
                   },
                   owner: this.get("element"),
                 });
-              this.set("RPTopUpModalComponent", s), this.set("RPTopUpModal", l);
+              this.set("RPTopUpModalComponent", l), this.set("RPTopUpModal", s);
             },
             actions: {
               startPurchase: function () {
@@ -3356,9 +3356,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "/H0Zssbr",
+          id: "YcH1oG1T",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isRPTopUpEnabled"]]],null,8,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","p",[]],["static-attr","class","currency-remaining"],["flush-element"],["text","\\n          "],["append",["unknown",["balance","remaining"]],false],["text"," "],["append",["unknown",["balance","currencyName"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["balance"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","new-balance-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_new_balance"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["newBalance"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","cant-afford"],["flush-element"],["append",["unknown",["cantAffordBalance","cantAffordMessage"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceDetail","currencyType"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceDetail","price"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","multiple-currency-separator"],["flush-element"],["text","+"],["close-element"],["text","\\n"]],"locals":["priceDetail"]},{"statements":[["text","  "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","multi-currency-purchase-button"],["dynamic-attr","disabled",["helper",["if"],[["get",["purchaseDisabled"]],true],null],null],["modifier",["action"],[["get",[null]],"startPurchase"]],["flush-element"],["text","\\n"],["block",["each"],[["get",["aggregatedPriceDetails"]]],null,3],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["cantAffordBalance"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["static-attr","class","currency-remaining"],["flush-element"],["text","\\n          "],["append",["unknown",["balance","remaining"]],false],["text"," "],["append",["unknown",["balance","currencyName"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["balance"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","new-balance-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_new_balance"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["newBalance"]]],null,5],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceDetail","currencyType"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceDetail","price"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","multiple-currency-separator"],["flush-element"],["text","+"],["close-element"],["text","\\n"]],"locals":["priceDetail"]},{"statements":[["text","  "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","multi-currency-purchase-button"],["dynamic-attr","disabled",["helper",["if"],[["get",["purchaseDisabled"]],true],null],null],["modifier",["action"],[["get",[null]],"startPurchase"]],["flush-element"],["text","\\n"],["block",["each"],[["get",["aggregatedPriceDetails"]]],null,7],["text","  "],["close-element"],["text","\\n"],["block",["unless"],[["get",["cantAffordBalance"]]],null,6]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\price-button-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isRPTopUpEnabled"]]],null,8,4]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","p",[]],["static-attr","class","currency-remaining"],["flush-element"],["text","\\n          "],["append",["unknown",["balance","remaining"]],false],["text"," "],["append",["unknown",["balance","currencyName"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["balance"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","new-balance-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_new_balance"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["newBalance"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","cant-afford"],["flush-element"],["append",["unknown",["cantAffordBalance","cantAffordMessage"]],false],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceDetail","currencyType"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceDetail","price"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","multiple-currency-separator"],["flush-element"],["text","+"],["close-element"],["text","\\n"]],"locals":["priceDetail"]},{"statements":[["text","  "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","multi-currency-purchase-button"],["dynamic-attr","disabled",["helper",["if"],[["get",["purchaseDisabled"]],true],null],null],["modifier",["action"],[["get",[null]],"startPurchase"]],["flush-element"],["text","\\n"],["block",["each"],[["get",["aggregatedPriceDetails"]]],null,3],["text","  "],["close-element"],["text","\\n"],["block",["if"],[["get",["cantAffordBalance"]]],null,2,1]],"locals":[]},{"statements":[["text","        "],["open-element","p",[]],["static-attr","class","currency-remaining"],["flush-element"],["text","\\n          "],["append",["unknown",["balance","remaining"]],false],["text"," "],["append",["unknown",["balance","currencyName"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":["balance"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","balance-info"],["flush-element"],["text","\\n      "],["open-element","p",[]],["static-attr","class","new-balance-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_new_balance"]],false],["close-element"],["text","\\n"],["block",["each"],[["get",["newBalance"]]],null,5],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceDetail","currencyType"]]]]],["flush-element"],["close-element"],["text","\\n      "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceDetail","price"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","multiple-currency-separator"],["flush-element"],["text","+"],["close-element"],["text","\\n"]],"locals":["priceDetail"]},{"statements":[["text","  "],["open-element","lol-uikit-purchase-button",[]],["static-attr","class","multi-currency-purchase-button"],["dynamic-attr","disabled",["helper",["if"],[["get",["purchaseDisabled"]],true],null],null],["modifier",["action"],[["get",[null]],"startPurchase"]],["flush-element"],["text","\\n"],["block",["each"],[["get",["aggregatedPriceDetails"]]],null,7],["text","  "],["close-element"],["text","\\n"],["block",["unless"],[["get",["cantAffordBalance"]]],null,6]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3369,18 +3369,18 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { computed: s, Component: l } = a.Ember,
-          o = l.extend({
+        const { computed: l, Component: s } = a.Ember,
+          o = s.extend({
             layout: n(95),
             style: n(96),
-            tokenizedConfirmationText: s(
+            tokenizedConfirmationText: l(
               "tra.cat_paw_purchase_disclaimer",
               function () {
                 const e = this.get("tra.cat_paw_purchase_disclaimer");
                 return /(.*){{confirmationLink}}(.*)/.exec(e);
               },
             ),
-            confirmationTextPrefix: s(
+            confirmationTextPrefix: l(
               "tokenizedConfirmationText",
               "tra.cat_paw_purchase_disclaimer",
               function () {
@@ -3390,7 +3390,7 @@
                   : this.get("tra.cat_paw_purchase_disclaimer");
               },
             ),
-            confirmationTextPostfix: s(
+            confirmationTextPostfix: l(
               "tokenizedConfirmationText",
               "tra.cat_paw_purchase_disclaimer",
               function () {
@@ -3400,7 +3400,7 @@
                   : "";
               },
             ),
-            confirmationLinkText: s(
+            confirmationLinkText: l(
               "tokenizedConfirmationText",
               "tra.cat_paw_purchase_disclaimer",
               function () {
@@ -3431,9 +3431,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "EBQqFmsR",
+          id: "iQg8VlaZ",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-purchase-disclaimer"],["flush-element"],["text","\\n  "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","type","checkbox"],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-purchase-disclaimer-checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleDisclaimerCheckbox"],null],null],["flush-element"],["close-element"],["text","\\n  "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","pawPurchaseDisclaimer"],["static-attr","class","lol-settings-checkbox-label"],["flush-element"],["text","\\n    "],["append",["unknown",["confirmationTextPrefix"]],false],["text","\\n    "],["open-element","a",[]],["static-attr","target","_blank"],["dynamic-attr","class",["concat",["paw-purchase-confirmation-link ",["helper",["unless"],[["get",["confirmationLinkText"]],"hidden"],null]]]],["dynamic-attr","href",["concat",[["unknown",["tra","cat_paw_purchase_disclaimer_link"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["confirmationLinkText"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["append",["unknown",["confirmationTextPostfix"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\disclaimer-checkbox-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-purchase-disclaimer"],["flush-element"],["text","\\n  "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","type","checkbox"],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-purchase-disclaimer-checkbox"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"toggleDisclaimerCheckbox"],null],null],["flush-element"],["close-element"],["text","\\n  "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","pawPurchaseDisclaimer"],["static-attr","class","lol-settings-checkbox-label"],["flush-element"],["text","\\n    "],["append",["unknown",["confirmationTextPrefix"]],false],["text","\\n    "],["open-element","a",[]],["static-attr","target","_blank"],["dynamic-attr","class",["concat",["paw-purchase-confirmation-link ",["helper",["unless"],[["get",["confirmationLinkText"]],"hidden"],null]]]],["dynamic-attr","href",["concat",[["unknown",["tra","cat_paw_purchase_disclaimer_link"]]]]],["flush-element"],["text","\\n      "],["append",["unknown",["confirmationLinkText"]],false],["text","\\n    "],["close-element"],["text","\\n    "],["append",["unknown",["confirmationTextPostfix"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3444,12 +3444,12 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(27);
-        const { Component: l, computed: o } = a.Ember;
+          l = n(27);
+        const { Component: s, computed: o } = a.Ember;
         function i(e, t, n) {
           return e.exists(t) ? t : n;
         }
-        const c = l.extend({
+        const c = s.extend({
           classNames: ["paw-item-unlocked", "fade-in"],
           layout: n(98),
           style: n(99),
@@ -3462,14 +3462,14 @@
                 n = this.get("itemPurchaseOption"),
                 a = this.get("itemPurchaseOption.name");
               if (n && n.inventoryType) {
-                const { inventoryType: a, subInventoryType: s } = n;
+                const { inventoryType: a, subInventoryType: l } = n;
                 if (
                   ((e = i(t, `cat_paw_unlock_message_${a.toLowerCase()}`, e)),
-                  s)
+                  l)
                 ) {
                   e = i(
                     t,
-                    `cat_paw_unlock_message_${a.toLowerCase()}_${s.toLowerCase()}`,
+                    `cat_paw_unlock_message_${a.toLowerCase()}_${l.toLowerCase()}`,
                     e,
                   );
                 }
@@ -3482,7 +3482,7 @@
           actions: {
             closeModal: function () {
               this.element.dispatchEvent(
-                new Event(s.PAW_MODAL_CLOSE_EVENT_NAME, { bubbles: !0 }),
+                new Event(l.PAW_MODAL_CLOSE_EVENT_NAME, { bubbles: !0 }),
               );
             },
           },
@@ -3492,9 +3492,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "uTx3fk7V",
+          id: "jVbTjqPw",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\index.js\\" "],["text","\\n"],["open-element","p",[]],["static-attr","class","unlock-success-message"],["flush-element"],["append",["unknown",["unlockSuccessMessage"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","done-button-row"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"closeModal"],null],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cat_paw_modal_button_done"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\item-unlocked-component\\\\index.js\\" "],["text","\\n"],["open-element","p",[]],["static-attr","class","unlock-success-message"],["flush-element"],["append",["unknown",["unlockSuccessMessage"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","done-button-row"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-flat-button",[]],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"closeModal"],null],null],["flush-element"],["text","\\n    "],["append",["unknown",["tra","cat_paw_modal_button_done"]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3505,8 +3505,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s } = a.Ember,
-          l = s.extend({
+        const { Component: l } = a.Ember,
+          s = l.extend({
             tagName: "lol-uikit-video",
             classNames: ["paw-celebration-video"],
             attributeBindings: ["src", "type"],
@@ -3517,7 +3517,7 @@
               this.element.play();
             },
           });
-        e.exports = l;
+        e.exports = s;
       },
       (e, t, n) => {
         "use strict";
@@ -3526,10 +3526,10 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = (a = n(30)) && a.__esModule ? a : { default: a };
-        const { Component: o } = s.Ember,
-          i = o.extend(l.default, {
+          l = n(1),
+          s = (a = n(30)) && a.__esModule ? a : { default: a };
+        const { Component: o } = l.Ember,
+          i = o.extend(s.default, {
             layout: n(103),
             style: n(104),
             choices: null,
@@ -3541,10 +3541,10 @@
             itemUnlockedMessage: null,
             errorMessage: null,
             purchase: null,
-            isMultipleItems: s.Ember.computed("choices", function () {
+            isMultipleItems: l.Ember.computed("choices", function () {
               return this.get("choices").length > 1;
             }),
-            isSingleItem: s.Ember.computed.not("isMultipleItems"),
+            isSingleItem: l.Ember.computed.not("isMultipleItems"),
             actions: {
               triggerDetails(e) {
                 const t = this.element.querySelector(
@@ -3579,9 +3579,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "+QRfjtV8",
+          id: "y95+7hIH",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-window"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-content-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["errorMessage"]]],null,5,4],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-window-details option",["get",["index"]]," ",["helper",["if"],[["get",["isSingleItem"]],"active"],null]]]],["flush-element"],["text","\\n        "],["append",["helper",["item-choice-details"],null,[["item","contents","displayType","backgroundImage","purchaseOptions","fullPrice","wallet","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","isMultipleItems","errorMessage","purchase","goBack"],[["get",["choice","item"]],["get",["choice","contents"]],["get",["choice","displayType"]],["get",["choice","backgroundImage"]],["get",["choice","purchaseOptions"]],["get",["choice","fullPrice"]],["get",["wallet"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["isMultipleItems"]],["get",["errorMessage"]],"purchase",["helper",["action"],[["get",[null]],"goBack"],null]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["choice","index"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-choice-separator-background"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-choice-separator-background-insert"],["flush-element"],["close-element"],["text","\\n          "],["open-element","h3",[]],["static-attr","class","paw-choice-separator-text"],["flush-element"],["append",["unknown",["tra","cat_paw_choice_separator_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["index"]]],null,1],["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-window-option option",["get",["index"]]]]],["flush-element"],["text","\\n        "],["append",["helper",["item-choice"],null,[["index","title","itemId","subTitle","description","backgroundImage","discount","pricing","inventoryType","triggerDetails"],[["get",["index"]],["get",["choice","item","name"]],["get",["choice","item","itemId"]],["get",["choice","item","subTitle"]],["get",["choice","item","description"]],["get",["choice","backgroundImage"]],["get",["choice","discount"]],["get",["choice","item","prices"]],["get",["choice","item","inventoryType"]],["helper",["action"],[["get",[null]],"triggerDetails"],null]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["choice","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-window-page item-select"],["flush-element"],["text","\\n"],["block",["each"],[["get",["choices"]]],null,2],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isMultipleItems"]]],null,3],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-window-page item-details"],["flush-element"],["text","\\n"],["block",["each"],[["get",["choices"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","p",[]],["static-attr","class","paw-choice-error"],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-window"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-content-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["errorMessage"]]],null,5,4],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-window-details option",["get",["index"]]," ",["helper",["if"],[["get",["isSingleItem"]],"active"],null]]]],["flush-element"],["text","\\n        "],["append",["helper",["item-choice-details"],null,[["item","contents","displayType","backgroundImage","purchaseOptions","fullPrice","wallet","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","isMultipleItems","errorMessage","purchase","goBack"],[["get",["choice","item"]],["get",["choice","contents"]],["get",["choice","displayType"]],["get",["choice","backgroundImage"]],["get",["choice","purchaseOptions"]],["get",["choice","fullPrice"]],["get",["wallet"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["isMultipleItems"]],["get",["errorMessage"]],"purchase",["helper",["action"],[["get",[null]],"goBack"],null]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["choice","index"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-choice-separator-background"],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","paw-choice-separator-background-insert"],["flush-element"],["close-element"],["text","\\n          "],["open-element","h3",[]],["static-attr","class","paw-choice-separator-text"],["flush-element"],["append",["unknown",["tra","cat_paw_choice_separator_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["index"]]],null,1],["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-window-option option",["get",["index"]]]]],["flush-element"],["text","\\n        "],["append",["helper",["item-choice"],null,[["index","title","itemId","subTitle","description","backgroundImage","discount","pricing","inventoryType","triggerDetails"],[["get",["index"]],["get",["choice","item","name"]],["get",["choice","item","itemId"]],["get",["choice","item","subTitle"]],["get",["choice","item","description"]],["get",["choice","backgroundImage"]],["get",["choice","discount"]],["get",["choice","item","prices"]],["get",["choice","item","inventoryType"]],["helper",["action"],[["get",[null]],"triggerDetails"],null]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["choice","index"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-window-page item-select"],["flush-element"],["text","\\n"],["block",["each"],[["get",["choices"]]],null,2],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isMultipleItems"]]],null,3],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-window-page item-details"],["flush-element"],["text","\\n"],["block",["each"],[["get",["choices"]]],null,0],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","p",[]],["static-attr","class","paw-choice-error"],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3592,18 +3592,18 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = n(26),
+          l = n(1),
+          s = n(26),
           o = (a = n(106)) && a.__esModule ? a : { default: a },
           i = n(107);
-        const { Component: c, computed: r } = s.Ember,
+        const { Component: c, computed: r } = l.Ember,
           p =
             "linear-gradient(to top, black 0px, rgba(0,0,0, 0.8) 310px, transparent 80%)",
           m = c.extend({
             classNames: ["paw-content-choice"],
             layout: n(108),
             style: n(109),
-            purchaseWidgetService: s.Ember.inject.service("purchaseWidget"),
+            purchaseWidgetService: l.Ember.inject.service("purchaseWidget"),
             title: null,
             subTitle: null,
             description: null,
@@ -3649,7 +3649,7 @@
               const e = this.get("backgroundImage");
               return `linear-gradient(180deg, rgba(240, 230, 210, 0.1) 0%, transparent 100%), ${p}, url(${e})`;
             }),
-            safeChoiceOption: s.Ember.computed(
+            safeChoiceOption: l.Ember.computed(
               "index",
               "inventoryType",
               function () {
@@ -3676,13 +3676,13 @@
                 o = this.get("purchaseWidgetService.summoner.puuid");
               this.get("triggerDetails")(e);
               const i = {
-                id: l.TELEMETRY_EVENT_ID.CHOICE_OPTION_SELECT,
+                id: s.TELEMETRY_EVENT_ID.CHOICE_OPTION_SELECT,
                 itemId: t,
                 inventoryType: n,
                 choice: a,
                 puuid: o,
               };
-              s.Telemetry.sendCustomData(l.TELEMETRY_EVENT_NAME, i);
+              l.Telemetry.sendCustomData(s.TELEMETRY_EVENT_NAME, i);
             },
           });
         e.exports = m;
@@ -3721,9 +3721,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "1K0p5/rw",
+          id: "dgfGY6Gq",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-wrapper"],["dynamic-attr","style",["concat",["background-image:",["unknown",["backgroundImageHover"]],";"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSale"]]],null,4],["block",["if"],[["get",["isDiscount"]]],null,3],["text","  "],["open-element","div",[]],["static-attr","class","paw-choice-item-description"],["flush-element"],["text","\\n    "],["open-element","h3",[]],["static-attr","class","paw-choice-option-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n    "],["open-element","h5",[]],["static-attr","class","paw-choice-option-subtitle"],["flush-element"],["append",["unknown",["subTitleWithDefault"]],false],["close-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","paw-choice-option-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-divider"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-item-pricing"],["flush-element"],["text","\\n"],["block",["each"],[["get",["pricing"]]],null,2],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-item-pricing-option ",["unknown",["priceType","currency"]]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","cost"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-item-pricing-sale ",["unknown",["priceType","currency"]]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","regular-price"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","cost"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","strikethrough"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","sale-price"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","sale","cost"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","sale-discount"],["flush-element"],["text","("],["append",["unknown",["priceType","sale","discount"]],false],["text",")"],["close-element"],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["priceType","sale"]]],null,1,0]],"locals":["priceType"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-discount"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-discount-divider"],["flush-element"],["close-element"],["text","\\n      "],["open-element","h3",[]],["static-attr","class","paw-choice-discount-amount"],["flush-element"],["append",["unknown",["discountFormatted"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-discount-divider"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-choice-sale"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","sale-box"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-choice-sale-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_sale_flag_text"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","sale-box sale-blur"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-wrapper"],["dynamic-attr","style",["concat",["background-image:",["unknown",["backgroundImageHover"]],";"]]],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldRenderSale"]]],null,4],["block",["if"],[["get",["isDiscount"]]],null,3],["text","  "],["open-element","div",[]],["static-attr","class","paw-choice-item-description"],["flush-element"],["text","\\n    "],["open-element","h3",[]],["static-attr","class","paw-choice-option-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n    "],["open-element","h5",[]],["static-attr","class","paw-choice-option-subtitle"],["flush-element"],["append",["unknown",["subTitleWithDefault"]],false],["close-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","paw-choice-option-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-divider"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-choice-item-pricing"],["flush-element"],["text","\\n"],["block",["each"],[["get",["pricing"]]],null,2],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","          "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-item-pricing-option ",["unknown",["priceType","currency"]]]]],["flush-element"],["text","\\n              "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","cost"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-choice-item-pricing-sale ",["unknown",["priceType","currency"]]]]],["flush-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","regular-price"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","cost"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","strikethrough"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","div",[]],["static-attr","class","sale-price"],["flush-element"],["text","\\n            "],["open-element","h5",[]],["dynamic-attr","class",["concat",["currency-icon ",["unknown",["priceType","currency"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","price"],["flush-element"],["append",["unknown",["priceType","sale","cost"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","sale-discount"],["flush-element"],["text","("],["append",["unknown",["priceType","sale","discount"]],false],["text",")"],["close-element"],["text","\\n          "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["priceType","sale"]]],null,1,0]],"locals":["priceType"]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-choice-discount"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-discount-divider"],["flush-element"],["close-element"],["text","\\n      "],["open-element","h3",[]],["static-attr","class","paw-choice-discount-amount"],["flush-element"],["append",["unknown",["discountFormatted"]],false],["close-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-discount-divider"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-choice-sale"],["flush-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","sale-box"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-choice-sale-label"],["flush-element"],["append",["unknown",["tra","cat_paw_modal_sale_flag_text"]],false],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","sale-box sale-blur"],["flush-element"],["close-element"],["text","\\n            "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3734,9 +3734,9 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(107);
-        const { Component: l, computed: o } = a.Ember,
-          i = l.extend({
+          l = n(107);
+        const { Component: s, computed: o } = a.Ember,
+          i = s.extend({
             classNames: ["paw-content-choice-details"],
             layout: n(111),
             style: n(112),
@@ -3766,7 +3766,7 @@
             }),
             sales: o("item", function () {
               return (this.get("item").prices || []).reduce((e, t) => {
-                const n = (0, s.populateSales)(this.get("tra"), t);
+                const n = (0, l.populateSales)(this.get("tra"), t);
                 return n && e.push(n), e;
               }, []);
             }),
@@ -3883,9 +3883,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "gcl2xHEa",
+          id: "vzMBFfuE",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\index.js\\" "],["text","\\n\\n"],["block",["if"],[["get",["shouldShowBackButton"]]],null,13],["open-element","div",[]],["static-attr","class","paw-choice-item-details-visual"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["backgroundImage"]],")"]]],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-item-details-view"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","item-details-view-header"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["static-attr","class","item-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","item-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["displayDetails"]]],null,12,0],["text","  "],["append",["helper",["purchase-options"],null,[["wallet","itemPurchaseOption","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","errorMessage","purchase","padding"],[["get",["wallet"]],["get",["item"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["errorMessage"]],"purchase","small"]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["flush-element"],["text","\\n    "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","cat_paw_modal_item_unlocked_title"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["item-choice-detail-full"],null,[["title","iconUrl","subTitle","description","inventoryType"],[["get",["content","title"]],["get",["content","iconUrl"]],["get",["content","subTitle"]],["get",["content","description"]],["get",["inventoryType"]]]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["block",["each"],[["get",["contents"]]],null,1],["text","      "]],"locals":[]},{"statements":[["block",["if"],[["get",["isFullDisplay"]]],null,2]],"locals":[]},{"statements":[["text","            "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack"],["flush-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_adjusted_title"]],false],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["adjustedPrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","h6",[]],["static-attr","class","discount-calculation-pack"],["flush-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_modal_sale_flag_text"]],false],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["additionalSaleDiscount"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack sale-discounted"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_adjusted_title"]],false],["close-element"],["text","\\n                "],["open-element","span",[]],["static-attr","class","amount-currency sale-discounted"],["flush-element"],["append",["unknown",["totalSalePrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","h4",[]],["static-attr","class","discount-amount"],["flush-element"],["append",["unknown",["formattedDiscount"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","h4",[]],["static-attr","class","discount-amount"],["flush-element"],["append",["unknown",["formattedSaleDiscount"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","overflow-line"],["flush-element"],["append",["unknown",["overflowTextFirstLine"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","overflow-line decorator"],["flush-element"],["append",["unknown",["tra","cat_paw_choice_list_extra_items_decorator"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","p",[]],["static-attr","class","item-list-name"],["flush-element"],["append",["unknown",["content","title"]],false],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["text","            "],["open-element","p",[]],["static-attr","class","item-list-name"],["flush-element"],["append",["unknown",["content","title"]],false],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-item-list"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","item-list-column"],["flush-element"],["text","\\n"],["block",["each"],[["get",["firstColumnContents"]]],null,10],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","item-list-column"],["flush-element"],["text","\\n"],["block",["each"],[["get",["secondColumnContents"]]],null,9],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["isLimitedContents"]]],null,8],["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","item-discount-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowSales"]]],null,7,6],["text","        "],["open-element","div",[]],["static-attr","class","discount-breakdown"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack unadjusted"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_unadjusted_title"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","amount-currency unadjusted"],["flush-element"],["append",["unknown",["fullPrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","discount-calculation-pack"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_calculated_title"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["adjustedDiscountAmount"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowSales"]]],null,5,4],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","item-details-view-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","item-details-view-list"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isListDisplay"]]],null,11,3],["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","paw-choice-back-button"],["modifier",["action"],[["get",[null]],"goBackToMain"]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-details-component\\\\index.js\\" "],["text","\\n\\n"],["block",["if"],[["get",["shouldShowBackButton"]]],null,13],["open-element","div",[]],["static-attr","class","paw-choice-item-details-visual"],["dynamic-attr","style",["concat",["background-image: url(",["unknown",["backgroundImage"]],")"]]],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-choice-item-details-view"],["flush-element"],["text","\\n  "],["open-element","lol-uikit-content-block",[]],["static-attr","class","item-details-view-header"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["static-attr","class","item-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","item-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["block",["if"],[["get",["displayDetails"]]],null,12,0],["text","  "],["append",["helper",["purchase-options"],null,[["wallet","itemPurchaseOption","purchaseOptions","alwaysShowPurchaseDisclaimer","purchaseSuccess","isPurchasing","itemUnlockedMessage","errorMessage","purchase","padding"],[["get",["wallet"]],["get",["item"]],["get",["purchaseOptions"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["purchaseSuccess"]],["get",["isPurchasing"]],["get",["itemUnlockedMessage"]],["get",["errorMessage"]],"purchase","small"]]],false],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["open-element","lol-uikit-content-block",[]],["flush-element"],["text","\\n    "],["open-element","h5",[]],["flush-element"],["append",["unknown",["tra","cat_paw_modal_item_unlocked_title"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["append",["helper",["item-choice-detail-full"],null,[["title","iconUrl","subTitle","description","inventoryType"],[["get",["content","title"]],["get",["content","iconUrl"]],["get",["content","subTitle"]],["get",["content","description"]],["get",["inventoryType"]]]]],false],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["block",["each"],[["get",["contents"]]],null,1],["text","      "]],"locals":[]},{"statements":[["block",["if"],[["get",["isFullDisplay"]]],null,2]],"locals":[]},{"statements":[["text","            "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack"],["flush-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_adjusted_title"]],false],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["adjustedPrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","h6",[]],["static-attr","class","discount-calculation-pack"],["flush-element"],["text","\\n              "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_modal_sale_flag_text"]],false],["close-element"],["text","\\n              "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["additionalSaleDiscount"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n            "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack sale-discounted"],["flush-element"],["text","\\n                "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_adjusted_title"]],false],["close-element"],["text","\\n                "],["open-element","span",[]],["static-attr","class","amount-currency sale-discounted"],["flush-element"],["append",["unknown",["totalSalePrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","h4",[]],["static-attr","class","discount-amount"],["flush-element"],["append",["unknown",["formattedDiscount"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","h4",[]],["static-attr","class","discount-amount"],["flush-element"],["append",["unknown",["formattedSaleDiscount"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","overflow-line"],["flush-element"],["append",["unknown",["overflowTextFirstLine"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","overflow-line decorator"],["flush-element"],["append",["unknown",["tra","cat_paw_choice_list_extra_items_decorator"]],false],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","p",[]],["static-attr","class","item-list-name"],["flush-element"],["append",["unknown",["content","title"]],false],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["text","            "],["open-element","p",[]],["static-attr","class","item-list-name"],["flush-element"],["append",["unknown",["content","title"]],false],["close-element"],["text","\\n"]],"locals":["content"]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-item-list"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","item-list-column"],["flush-element"],["text","\\n"],["block",["each"],[["get",["firstColumnContents"]]],null,10],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","item-list-column"],["flush-element"],["text","\\n"],["block",["each"],[["get",["secondColumnContents"]]],null,9],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"],["block",["if"],[["get",["isLimitedContents"]]],null,8],["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n      "],["open-element","lol-uikit-content-block",[]],["static-attr","class","item-discount-section"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowSales"]]],null,7,6],["text","        "],["open-element","div",[]],["static-attr","class","discount-breakdown"],["flush-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","discount-breakdown-pack unadjusted"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_unadjusted_title"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","amount-currency unadjusted"],["flush-element"],["append",["unknown",["fullPrice"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n          "],["open-element","h6",[]],["static-attr","class","discount-calculation-pack"],["flush-element"],["text","\\n            "],["open-element","span",[]],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_calculated_title"]],false],["close-element"],["text","\\n            "],["open-element","span",[]],["static-attr","class","amount-currency"],["flush-element"],["append",["unknown",["adjustedDiscountAmount"]],false],["text"," "],["append",["unknown",["mainCurrency"]],false],["close-element"],["text","\\n          "],["close-element"],["text","\\n"],["block",["if"],[["get",["shouldShowSales"]]],null,5,4],["text","        "],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","item-details-view-scrollable"],["static-attr","overflow-masks","enabled"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","item-details-view-list"],["flush-element"],["text","\\n      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["isListDisplay"]]],null,11,3],["text","      "],["open-element","div",[]],["static-attr","class","paw-choice-separator"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["open-element","div",[]],["static-attr","class","paw-choice-back-button"],["modifier",["action"],[["get",[null]],"goBackToMain"]],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3896,9 +3896,9 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = n(3);
-        const { Component: l, computed: o } = a.Ember,
-          i = l.extend({
+          l = n(3);
+        const { Component: s, computed: o } = a.Ember,
+          i = s.extend({
             classNames: ["paw-content-choice-detail"],
             layout: n(114),
             style: n(115),
@@ -3913,7 +3913,7 @@
               function () {
                 const e = this.get("subTitle");
                 return this.get("inventoryType") ===
-                  s.PAW.INVENTORY_TYPES.STATSTONE
+                  l.PAW.INVENTORY_TYPES.STATSTONE
                   ? this.get("tra").get(`cat_paw_bundled_eternal_rarity_${e}`)
                   : (a.logger.warning(
                       "Bundle item type not yet supported, setting subtitle to null",
@@ -3927,9 +3927,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "VR9XEQZy",
+          id: "LgIDRTq3",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","item-details-component"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","item-details-icon"],["dynamic-attr","src",["concat",[["unknown",["iconUrl"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","item-details-info"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","item-details-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["subTitleForInventoryType"]]],null,0],["text","    "],["open-element","span",[]],["static-attr","class","item-details-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","span",[]],["static-attr","class","item-details-sub-title"],["flush-element"],["append",["unknown",["subTitleForInventoryType"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\paw-choice-ui\\\\item-choice-detail-full-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","item-details-component"],["flush-element"],["text","\\n  "],["open-element","img",[]],["static-attr","class","item-details-icon"],["dynamic-attr","src",["concat",[["unknown",["iconUrl"]]]]],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","item-details-info"],["flush-element"],["text","\\n    "],["open-element","span",[]],["static-attr","class","item-details-title"],["flush-element"],["append",["unknown",["title"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["subTitleForInventoryType"]]],null,0],["text","    "],["open-element","span",[]],["static-attr","class","item-details-description"],["flush-element"],["append",["unknown",["description"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["open-element","span",[]],["static-attr","class","item-details-sub-title"],["flush-element"],["append",["unknown",["subTitleForInventoryType"]],false],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -3940,13 +3940,13 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = n(3),
+          l = n(1),
+          s = n(3),
           o = (a = n(60)) && a.__esModule ? a : { default: a };
-        const { Component: i, computed: c } = s.Ember,
+        const { Component: i, computed: c } = l.Ember,
           r = [
             {
-              inventoryType: l.PAW.INVENTORY_TYPES.BUNDLES,
+              inventoryType: s.PAW.INVENTORY_TYPES.BUNDLES,
               subInventoryType: o.default.STATSTONES_BUNDLE,
             },
           ],
@@ -3982,17 +3982,17 @@
                         inventoryType: t,
                         itemId: n,
                         assets: a,
-                        hasVisibleLootOdds: s,
+                        hasVisibleLootOdds: l,
                         subInventoryType: o,
                         bundledItemPrice: i,
                       } = e,
-                      { CHAMPION_SKIN: c } = l.PAW.INVENTORY_TYPES,
+                      { CHAMPION_SKIN: c } = s.PAW.INVENTORY_TYPES,
                       { iconPath: r, tilePath: p } = a,
                       m = i.quantity,
                       u = e.owned,
                       d = this._getStatstoneRarity(e),
                       h = this._getItemSubtitle(e),
-                      g =
+                      _ =
                         m > 1
                           ? this.get("tra").formatString(
                               "cat_paw_bundle_item_quantity_and_name",
@@ -4013,14 +4013,14 @@
                       owned: u,
                       itemRarity: d,
                       itemSubtitle: h,
-                      hasVisibleLootOdds: s,
-                      name: g,
+                      hasVisibleLootOdds: l,
+                      name: _,
                       subInventoryType: o,
                     };
                   });
               },
             ),
-            displayBundleNonRefundableDisclaimer: s.Ember.computed(
+            displayBundleNonRefundableDisclaimer: l.Ember.computed(
               "catalogItemPurchaseOption.item.inventoryType",
               "catalogItemPurchaseOption.item.subInventoryType",
               "alwaysShowPurchaseDisclaimer",
@@ -4054,7 +4054,7 @@
             ),
             _getStatstoneRarity(e) {
               const { inventoryType: t, tags: n } = e,
-                { STATSTONE: a } = l.PAW.INVENTORY_TYPES;
+                { STATSTONE: a } = s.PAW.INVENTORY_TYPES;
               if (t === a) {
                 return n.includes("statstone_epic")
                   ? this.get("tra.cat_paw_bundled_eternal_rarity_epic")
@@ -4079,9 +4079,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "EBkie1my",
+          id: "ZJjWf/w+",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["catalogItemPurchaseOption","pawSplashImage"]]],null,2],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-bundle-root-info-container ",["unknown",["infoContainerWidthClass"]]]]],["flush-element"],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-title"],["flush-element"],["text","\\n        "],["append",["helper",["bundle-title"],null,[["title","subtitle"],[["get",["catalogItemPurchaseOption","item","name"]],["get",["catalogItemPurchaseOption","item","subtitle"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-shrinking-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["catalogItemPurchaseOption","item","description"]]],null,1],["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-items"],["flush-element"],["text","\\n            "],["append",["helper",["bundle-items"],null,[["catalogItemPurchaseOption","formattedBundledItems","displayBundleNonRefundableDisclaimer","alwaysShowPurchaseDisclaimer","showPrice"],[["get",["catalogItemPurchaseOption"]],["get",["formattedBundledItems"]],["get",["displayBundleNonRefundableDisclaimer"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["showPrice"]]]]],false],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n\\n\\n    \\n"],["block",["if"],[["get",["showPrice"]]],null,0],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-footer"],["flush-element"],["text","\\n        "],["append",["helper",["bundle-purchase"],null,[["catalogItemPurchaseOption","wallet","purchase","isPurchasing","purchaseSuccess","alwaysShowPurchaseDisclaimer","displayBundleNonRefundableDisclaimer","errorMessage","validationErrors"],[["get",["catalogItemPurchaseOption"]],["get",["wallet"]],"purchase",["get",["isPurchasing"]],["get",["purchaseSuccess"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["displayBundleNonRefundableDisclaimer"]],["get",["errorMessage"]],["get",["validationErrors"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-price"],["flush-element"],["text","\\n            "],["append",["helper",["bundle-price"],null,[["catalogItemPurchaseOption"],[["get",["catalogItemPurchaseOption"]]]]],false],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-root-description"],["flush-element"],["text","\\n                "],["append",["helper",["bundle-description"],null,[["description"],[["get",["catalogItemPurchaseOption","item","description"]]]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-image-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-image-and-tags"],["flush-element"],["text","\\n            "],["append",["helper",["top-banner"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n            "],["open-element","img",[]],["static-attr","class","paw-bundle-image"],["dynamic-attr","src",["unknown",["catalogItemPurchaseOption","pawSplashImage"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-vertical-line"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-root-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["catalogItemPurchaseOption","pawSplashImage"]]],null,2],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-bundle-root-info-container ",["unknown",["infoContainerWidthClass"]]]]],["flush-element"],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-title"],["flush-element"],["text","\\n        "],["append",["helper",["bundle-title"],null,[["title","subtitle"],[["get",["catalogItemPurchaseOption","item","name"]],["get",["catalogItemPurchaseOption","item","subtitle"]]]]],false],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-shrinking-wrapper"],["flush-element"],["text","\\n"],["block",["if"],[["get",["catalogItemPurchaseOption","item","description"]]],null,1],["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-items"],["flush-element"],["text","\\n            "],["append",["helper",["bundle-items"],null,[["catalogItemPurchaseOption","formattedBundledItems","displayBundleNonRefundableDisclaimer","alwaysShowPurchaseDisclaimer","showPrice"],[["get",["catalogItemPurchaseOption"]],["get",["formattedBundledItems"]],["get",["displayBundleNonRefundableDisclaimer"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["showPrice"]]]]],false],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n\\n\\n    \\n"],["block",["if"],[["get",["showPrice"]]],null,0],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-footer"],["flush-element"],["text","\\n        "],["append",["helper",["bundle-purchase"],null,[["catalogItemPurchaseOption","wallet","purchase","isPurchasing","purchaseSuccess","alwaysShowPurchaseDisclaimer","displayBundleNonRefundableDisclaimer","errorMessage","validationErrors"],[["get",["catalogItemPurchaseOption"]],["get",["wallet"]],"purchase",["get",["isPurchasing"]],["get",["purchaseSuccess"]],["get",["alwaysShowPurchaseDisclaimer"]],["get",["displayBundleNonRefundableDisclaimer"]],["get",["errorMessage"]],["get",["validationErrors"]]]]],false],["text","\\n    "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-price"],["flush-element"],["text","\\n            "],["append",["helper",["bundle-price"],null,[["catalogItemPurchaseOption"],[["get",["catalogItemPurchaseOption"]]]]],false],["text","\\n        "],["close-element"],["text","\\n\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-root-description"],["flush-element"],["text","\\n                "],["append",["helper",["bundle-description"],null,[["description"],[["get",["catalogItemPurchaseOption","item","description"]]]]],false],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-image-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-root-image-and-tags"],["flush-element"],["text","\\n            "],["append",["helper",["top-banner"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption"]]]]],false],["text","\\n            "],["open-element","img",[]],["static-attr","class","paw-bundle-image"],["dynamic-attr","src",["unknown",["catalogItemPurchaseOption","pawSplashImage"]],null],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n\\n    "],["open-element","div",[]],["static-attr","class","paw-bundle-root-vertical-line"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4092,8 +4092,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-bundle-title-component"],
             layout: n(120),
             style: n(121),
@@ -4103,9 +4103,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "wiA5gX7I",
+          id: "wGCCirWl",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-title-top"],["flush-element"],["append",["unknown",["title"]],false],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-title-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-title-top"],["flush-element"],["append",["unknown",["title"]],false],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4116,8 +4116,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-bundle-description-component"],
             layout: n(123),
             style: n(124),
@@ -4130,7 +4130,7 @@
               );
               e && this.set("isOverflowing", e.scrollHeight > e.clientHeight);
             },
-            descriptionIsShrunk: l(
+            descriptionIsShrunk: s(
               "isOverflowing",
               "seeMoreIsExpanded",
               function () {
@@ -4139,7 +4139,7 @@
                 );
               },
             ),
-            descriptionIsExpanded: l(
+            descriptionIsExpanded: s(
               "isOverflowing",
               "seeMoreIsExpanded",
               function () {
@@ -4159,9 +4159,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "1Z4dt1av",
+          id: "MHihJgBn",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-bundle-description-container ",["helper",["if"],[["get",["descriptionIsExpanded"]],"paw-bundle-description-container--expanded"],null]]]],["flush-element"],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-description-text"],["flush-element"],["text","\\n        "],["append",["unknown",["description"]],true],["text","\\n    "],["close-element"],["text","\\n\\n\\n"],["block",["if"],[["get",["descriptionIsExpanded"]]],null,2],["block",["if"],[["get",["isOverflowing"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-description-shadow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-description-expand-container"],["modifier",["action"],[["get",[null]],"toggleSeeMore"]],["flush-element"],["text","\\n"],["block",["if"],[["get",["descriptionIsShrunk"]]],null,0],["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-expand-text"],["flush-element"],["append",["unknown",["tra","cat_paw_bundle_see_more"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-down-carat"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-description-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["dynamic-attr","class",["concat",["paw-bundle-description-container ",["helper",["if"],[["get",["descriptionIsExpanded"]],"paw-bundle-description-container--expanded"],null]]]],["flush-element"],["text","\\n"],["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-description-text"],["flush-element"],["text","\\n        "],["append",["unknown",["description"]],true],["text","\\n    "],["close-element"],["text","\\n\\n\\n"],["block",["if"],[["get",["descriptionIsExpanded"]]],null,2],["block",["if"],[["get",["isOverflowing"]]],null,1],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-description-shadow"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","paw-bundle-description-expand-container"],["modifier",["action"],[["get",[null]],"toggleSeeMore"]],["flush-element"],["text","\\n"],["block",["if"],[["get",["descriptionIsShrunk"]]],null,0],["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-expand-text"],["flush-element"],["append",["unknown",["tra","cat_paw_bundle_see_more"]],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-down-carat"],["flush-element"],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","div",[]],["static-attr","class","paw-bundle-description-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4172,8 +4172,8 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s } = a.Ember,
-          l = s.extend({
+        const { Component: l } = a.Ember,
+          s = l.extend({
             classNames: ["paw-bundle-item-component"],
             layout: n(126),
             lootTableItemName: null,
@@ -4187,14 +4187,14 @@
               },
             },
           });
-        e.exports = l;
+        e.exports = s;
       },
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "OzZe8Mou",
+          id: "UjGJB+lH",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-item-header"],["flush-element"],["append",["unknown",["tra","cat_paw_bundle_purchase_summary"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-item-wrapper"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["formattedBundledItems"]]],null,4],["text","    "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["lootTableItemName"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["lootTableItemName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeLootTableModal"],null]]],0]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["tra","cat_paw_bundled_item_purchased"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","paw-bundle-item-loot-table-link"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openLootTableModal",["get",["item","itemId"]]],null],null],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","cat_paw_bundle_view_drop_rates"]],false],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-item-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-overlay"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-overlay-image"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["item","itemBackgroundPath"]]]]],["flush-element"],["text","\\n                        "],["open-element","img",[]],["dynamic-attr","src",["unknown",["item","imagePath"]],null],["flush-element"],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                "],["close-element"],["text","\\n\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-title"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","name"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-type"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","itemRarity"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-subtitle"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","itemSubtitle"]],false],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasVisibleLootOdds"]]],null,3],["text","                "],["close-element"],["text","\\n\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-purchased"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","owned"]]],null,2],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-items-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-item-header"],["flush-element"],["append",["unknown",["tra","cat_paw_bundle_purchase_summary"]],false],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-item-wrapper"],["flush-element"],["text","\\n    "],["open-element","lol-uikit-scrollable",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["formattedBundledItems"]]],null,4],["text","    "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["block",["if"],[["get",["lootTableItemName"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["loot-table-root"],null,[["name"],[["get",["lootTableItemName"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-modal"],null,[["show","type","dismissibleType","onClose"],["true","DialogDismiss","inside",["helper",["action"],[["get",[null]],"closeLootTableModal"],null]]],0]],"locals":[]},{"statements":[["text","                        "],["append",["unknown",["tra","cat_paw_bundled_item_purchased"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                        "],["open-element","div",[]],["static-attr","class","paw-bundle-item-loot-table-link"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"openLootTableModal",["get",["item","itemId"]]],null],null],["flush-element"],["text","\\n                            "],["append",["unknown",["tra","cat_paw_bundle_view_drop_rates"]],false],["text","\\n                        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","            "],["open-element","div",[]],["static-attr","class","paw-bundle-item-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-overlay"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-overlay-image"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["item","itemBackgroundPath"]]]]],["flush-element"],["text","\\n                        "],["open-element","img",[]],["dynamic-attr","src",["unknown",["item","imagePath"]],null],["flush-element"],["close-element"],["text","\\n                    "],["close-element"],["text","\\n                "],["close-element"],["text","\\n\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-content"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-title"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","name"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-type"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","itemRarity"]],false],["text","\\n                    "],["close-element"],["text","\\n                    "],["open-element","div",[]],["static-attr","class","paw-bundle-item-subtitle"],["flush-element"],["text","\\n                        "],["append",["unknown",["item","itemSubtitle"]],false],["text","\\n                    "],["close-element"],["text","\\n"],["block",["if"],[["get",["item","hasVisibleLootOdds"]]],null,3],["text","                "],["close-element"],["text","\\n\\n                "],["open-element","div",[]],["static-attr","class","paw-bundle-item-purchased"],["flush-element"],["text","\\n"],["block",["if"],[["get",["item","owned"]]],null,2],["text","                "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":["item"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4205,15 +4205,15 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-bundle-price-component"],
             layout: n(129),
             style: n(130),
-            adjustedTotalAmount: l.readOnly(
+            adjustedTotalAmount: s.readOnly(
               "catalogItemPurchaseOption.purchaseOptions.0.priceDetails.0.price.price",
             ),
-            unadjustedTotalAmount: l(
+            unadjustedTotalAmount: s(
               "catalogItemPurchaseOption.bundledItems",
               function () {
                 const e = this.get("catalogItemPurchaseOption.bundledItems");
@@ -4230,7 +4230,7 @@
                 );
               },
             ),
-            discountPercentage: l(
+            discountPercentage: s(
               "adjustedTotalAmount",
               "unadjustedTotalAmount",
               function () {
@@ -4239,7 +4239,7 @@
                 return Math.round(((t - e) / t) * 100);
               },
             ),
-            hasDiscount: l("discountPercentage", function () {
+            hasDiscount: s("discountPercentage", function () {
               return this.get("discountPercentage") > 0;
             }),
           });
@@ -4248,9 +4248,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "wmuAfDZ8",
+          id: "c4tJx+NM",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-price-total"],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_unadjusted_title"]],false],["close-element"],["text","\\n"],["open-element","img",[]],["static-attr","class","paw-bundle-price-currency-icon"],["static-attr","src","fe/lol-paw/images/rp-icon.svg"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-price-amount"],["flush-element"],["append",["unknown",["adjustedTotalAmount"]],false],["text"," "],["append",["unknown",["tra","cat_paw_modal_currency_rp"]],false],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-price-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-price-total"],["flush-element"],["append",["unknown",["tra","cat_paw_bundled_discount_unadjusted_title"]],false],["close-element"],["text","\\n"],["open-element","img",[]],["static-attr","class","paw-bundle-price-currency-icon"],["static-attr","src","fe/lol-paw/images/rp-icon.svg"],["flush-element"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","paw-bundle-price-amount"],["flush-element"],["append",["unknown",["adjustedTotalAmount"]],false],["text"," "],["append",["unknown",["tra","cat_paw_modal_currency_rp"]],false],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4261,14 +4261,14 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = (a = n(61)) && a.__esModule ? a : { default: a };
-        const { Component: o, computed: i } = s.Ember,
+          l = n(1),
+          s = (a = n(61)) && a.__esModule ? a : { default: a };
+        const { Component: o, computed: i } = l.Ember,
           c = o.extend({
             classNames: ["paw-bundle-purchase-component"],
             layout: n(132),
             style: n(133),
-            displayDisclaimers: s.Ember.computed.or(
+            displayDisclaimers: l.Ember.computed.or(
               "displayBundleNonRefundableDisclaimer",
               "alwaysShowPurchaseDisclaimer",
             ),
@@ -4279,24 +4279,24 @@
             termsOfServiceDisclaimer: i(function () {
               const e = this.get("tra"),
                 t = e.get("cat_paw_purchase_disclaimer_link");
-              return s.Ember.String.htmlSafe(
+              return l.Ember.String.htmlSafe(
                 e.formatString("cat_paw_bundle_tos_disclaimer", {
                   disclaimerLink: t,
                 }),
               );
             }),
-            purchaseRestricted: s.Ember.computed(
+            purchaseRestricted: l.Ember.computed(
               "validationErrors",
               function () {
                 const e = this.get("validationErrors");
                 if (e)
                   return !!e.find(
                     (e) =>
-                      e.id === l.default.ValidationErrorKeys.PARENT_NOT_OWNED,
+                      e.id === s.default.ValidationErrorKeys.PARENT_NOT_OWNED,
                   );
               },
             ),
-            purchaseEnabled: s.Ember.computed(
+            purchaseEnabled: l.Ember.computed(
               "displayDisclaimers",
               "disclaimersAccepted",
               function () {
@@ -4323,9 +4323,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "QL+edEGj",
+          id: "X8c46TfP",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseSuccess"]]],null,11,10]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["price-button"],null,[["itemPurchaseOption","wallet","purchaseOption","purchaseEnabled","purchase"],[["get",["catalogItemPurchaseOption","item"]],["get",["wallet"]],["get",["purchaseOption"]],["get",["purchaseEnabled"]],"purchase"]]],false],["text","\\n"]],"locals":["purchaseOption"]},{"statements":[["text","          "],["append",["unknown",["termsOfServiceDisclaimer"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cat_paw_bundled_disclaimer_bundle_non_refundable"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-bundle-purchase-disclaimer-checkbox"],["flush-element"],["text","\\n      "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","type","checkbox"],["static-attr","name","pawPurchaseDisclaimer"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"acceptDisclaimer"],null],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","pawPurchaseDisclaimer"],["static-attr","class","paw-bundle-purchase-disclaimer-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayBundleNonRefundableDisclaimer"]]],null,2],["block",["if"],[["get",["alwaysShowPurchaseDisclaimer"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["displayDisclaimers"]]],null,3],["block",["each"],[["get",["catalogItemPurchaseOption","purchaseOptions"]]],null,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-generic-error"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["errorMessage"]]],null,5,4]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-purchase-error"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-purchase"],["flush-element"],["text","\\n      "],["append",["helper",["price-details"],null,[["purchaseOptions","wallet","purchaseEnabled","purchase"],[["get",["catalogItemPurchaseOption","purchaseOptions"]],["get",["wallet"]],false,"purchase"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseRestricted"]]],null,7,6]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,9,8]],"locals":[]},{"statements":[["text","  "],["append",["helper",["item-unlocked"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption","catalogItemPurchaseOption","item"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\bundle\\\\bundle-purchase-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["purchaseSuccess"]]],null,11,10]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","    "],["append",["helper",["price-button"],null,[["itemPurchaseOption","wallet","purchaseOption","purchaseEnabled","purchase"],[["get",["catalogItemPurchaseOption","item"]],["get",["wallet"]],["get",["purchaseOption"]],["get",["purchaseEnabled"]],"purchase"]]],false],["text","\\n"]],"locals":["purchaseOption"]},{"statements":[["text","          "],["append",["unknown",["termsOfServiceDisclaimer"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["append",["unknown",["tra","cat_paw_bundled_disclaimer_bundle_non_refundable"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","lol-uikit-flat-checkbox",[]],["static-attr","name","pawPurchaseDisclaimer"],["static-attr","class","paw-bundle-purchase-disclaimer-checkbox"],["flush-element"],["text","\\n      "],["open-element","input",[]],["static-attr","slot","input"],["static-attr","type","checkbox"],["static-attr","name","pawPurchaseDisclaimer"],["dynamic-attr","onchange",["helper",["action"],[["get",[null]],"acceptDisclaimer"],null],null],["flush-element"],["close-element"],["text","\\n      "],["open-element","label",[]],["static-attr","slot","label"],["static-attr","for","pawPurchaseDisclaimer"],["static-attr","class","paw-bundle-purchase-disclaimer-text"],["flush-element"],["text","\\n"],["block",["if"],[["get",["displayBundleNonRefundableDisclaimer"]]],null,2],["block",["if"],[["get",["alwaysShowPurchaseDisclaimer"]]],null,1],["text","      "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["displayDisclaimers"]]],null,3],["block",["each"],[["get",["catalogItemPurchaseOption","purchaseOptions"]]],null,0]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-generic-error"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["errorMessage"]]],null,5,4]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-purchase-error"],["flush-element"],["text","\\n      "],["open-element","p",[]],["flush-element"],["append",["unknown",["errorMessage"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","paw-bundle-bottom-purchase"],["flush-element"],["text","\\n      "],["append",["helper",["price-details"],null,[["purchaseOptions","wallet","purchaseEnabled","purchase"],[["get",["catalogItemPurchaseOption","purchaseOptions"]],["get",["wallet"]],false,"purchase"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["purchaseRestricted"]]],null,7,6]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","spinner-wrapper"],["flush-element"],["text","\\n    "],["append",["helper",["uikit-spinner"],null,[["src"],["/fe/lol-paw/images/spinner.png"]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["isPurchasing"]]],null,9,8]],"locals":[]},{"statements":[["text","  "],["append",["helper",["item-unlocked"],null,[["itemPurchaseOption"],[["get",["itemPurchaseOption","catalogItemPurchaseOption","item"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4336,11 +4336,11 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = (a = n(68)) && a.__esModule ? a : { default: a },
+          l = n(1),
+          s = (a = n(68)) && a.__esModule ? a : { default: a },
           o = n(3);
-        const { computed: i } = s.Ember,
-          c = l.default.extend({
+        const { computed: i } = l.Ember,
+          c = s.default.extend({
             showOverlayImage: !0,
             layout: n(135),
             champion: i("bundledItems", function () {
@@ -4375,23 +4375,23 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "Wjuopmp4",
+          id: "mWj4x3bW",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-details-component\\\\layout.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-details-component\\\\index.js\\" "],["text","\\n"],["append",["helper",["item-splash"],null,[["itemPurchaseOption","showOverlayImage"],[["get",["skin"]],["get",["showOverlayImage"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","item-inner-content"],["flush-element"],["text","\\n  "],["append",["helper",["chroma-bundle-overlay-image"],null,[["showOverlayImage","bundledItems"],[["get",["showOverlayImage"]],["get",["bundledItems"]]]]],false],["text","\\n  "],["append",["helper",["content-description"],null,[["itemPurchaseOption","purchaseSuccess","itemSubtitle"],[["get",["itemPurchaseOption"]],["get",["purchaseSuccess"]],["get",["itemSubtitle"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["append",["helper",["chroma-bundle-content-items"],null,[["bundledItems"],[["get",["bundledItems"]]]]],false],["text","\\n"],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-details-component\\\\layout.hbs\\" style-path=\\"null\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-details-component\\\\index.js\\" "],["text","\\n"],["append",["helper",["item-splash"],null,[["itemPurchaseOption","showOverlayImage"],[["get",["skin"]],["get",["showOverlayImage"]]]]],false],["text","\\n"],["open-element","div",[]],["static-attr","class","item-inner-content"],["flush-element"],["text","\\n  "],["append",["helper",["chroma-bundle-overlay-image"],null,[["showOverlayImage","bundledItems"],[["get",["showOverlayImage"]],["get",["bundledItems"]]]]],false],["text","\\n  "],["append",["helper",["content-description"],null,[["itemPurchaseOption","purchaseSuccess","itemSubtitle"],[["get",["itemPurchaseOption"]],["get",["purchaseSuccess"]],["get",["itemSubtitle"]]]]],false],["text","\\n"],["close-element"],["text","\\n"],["append",["helper",["chroma-bundle-content-items"],null,[["bundledItems"],[["get",["bundledItems"]]]]],false],["text","\\n"],["open-element","hr",[]],["static-attr","class","content-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = i(n(80)),
-          l = n(3),
+          l = i(n(80)),
+          s = n(3),
           o = i(n(60));
         function i(e) {
           return e && e.__esModule ? e : { default: e };
         }
         const { computed: c } = a.Ember,
-          r = s.default.extend({
+          r = l.default.extend({
             classNames: [
               "paw-overlay-image-content",
               "paw-chroma-bundle-overlay-image-content",
@@ -4404,7 +4404,7 @@
               return this.get("bundledItems")
                 ? this.get("bundledItems").find(
                     (e) =>
-                      e.inventoryType === l.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
+                      e.inventoryType === s.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
                       !e.subInventoryType,
                   )
                 : null;
@@ -4414,7 +4414,7 @@
                 ? this.get("bundledItems").filter(
                     (e) =>
                       !e.owned &&
-                      e.inventoryType === l.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
+                      e.inventoryType === s.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
                       e.subInventoryType === o.default.CHROMA,
                   )
                 : [];
@@ -4441,9 +4441,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "7RpDBlP0",
+          id: "EXVS3nLn",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showOverlayImage"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["chroma-button"],null,[["chroma","showPreview","showingChroma"],[["get",["chroma"]],"showPreview",["get",["showingChroma"]]]]],false],["text","\\n"]],"locals":["chroma"]},{"statements":[["text","        "],["append",["helper",["chroma-button"],null,[["chroma","showPreview","showingChroma"],[["get",["skin"]],"showPreview",["get",["showingChroma"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","src","/fe/lol-paw/images/icon-chroma.png"],["static-attr","class","chroma-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","overlay-image-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","overlay-image-border"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["overlayBackgroundPath"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","paw-purchase-overlay-image"],["dynamic-attr","src",["concat",[["unknown",["overlayImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChromaIcon"]]],null,2],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","chroma-selection"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["skin","owned"]]],null,1],["block",["each"],[["get",["unownedChromas"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-bundle-overlay-image-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["showOverlayImage"]]],null,3]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["chroma-button"],null,[["chroma","showPreview","showingChroma"],[["get",["chroma"]],"showPreview",["get",["showingChroma"]]]]],false],["text","\\n"]],"locals":["chroma"]},{"statements":[["text","        "],["append",["helper",["chroma-button"],null,[["chroma","showPreview","showingChroma"],[["get",["skin"]],"showPreview",["get",["showingChroma"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","img",[]],["static-attr","src","/fe/lol-paw/images/icon-chroma.png"],["static-attr","class","chroma-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","overlay-image-wrapper"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","overlay-image-border"],["dynamic-attr","style",["concat",["background-image: ",["unknown",["overlayBackgroundPath"]]]]],["flush-element"],["text","\\n      "],["open-element","img",[]],["static-attr","class","paw-purchase-overlay-image"],["dynamic-attr","src",["concat",[["unknown",["overlayImagePath"]]]]],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["showChromaIcon"]]],null,2],["text","    "],["close-element"],["text","\\n\\n    "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","chroma-selection"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["skin","owned"]]],null,1],["block",["each"],[["get",["unownedChromas"]]],null,0],["text","    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4454,16 +4454,16 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-chroma-button"],
             classNameBindings: ["active"],
             layout: n(140),
             style: n(141),
-            active: l("showingChroma", "chroma", function () {
+            active: s("showingChroma", "chroma", function () {
               return this.get("showingChroma") === this.get("chroma");
             }),
-            color: l("chroma.assets.colors.[]", function () {
+            color: s("chroma.assets.colors.[]", function () {
               const e = this.get("chroma.assets.colors");
               if (e)
                 return 1 !== e.length && e[1]
@@ -4487,9 +4487,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "Dcos+FBg",
+          id: "huCII8VF",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","contents"],["dynamic-attr","style",["concat",["background:",["unknown",["color"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\chroma-bundle\\\\chroma-button-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","contents"],["dynamic-attr","style",["concat",["background:",["unknown",["color"]]]]],["flush-element"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4500,15 +4500,15 @@
       (e, t, n) => {
         "use strict";
         var a = n(1),
-          s = i(n(85)),
-          l = n(3),
+          l = i(n(85)),
+          s = n(3),
           o = i(n(60));
         function i(e) {
           return e && e.__esModule ? e : { default: e };
         }
         const { computed: c } = a.Ember,
           r = a.Ember.A,
-          p = s.default.extend({
+          p = l.default.extend({
             dependentItems: c.alias("containedItems"),
             shouldShowContentBlock: c.gt("containedItems.length", 0),
             containedItems: c("tra.metadata", "bundledItems", function () {
@@ -4522,7 +4522,7 @@
             }),
             _checkChampion(e, t) {
               const n = e.find(
-                (e) => e.inventoryType === l.PAW.INVENTORY_TYPES.CHAMPION,
+                (e) => e.inventoryType === s.PAW.INVENTORY_TYPES.CHAMPION,
               );
               n &&
                 !n.owned &&
@@ -4532,7 +4532,7 @@
                     "cat_paw_dependency_includes",
                     {
                       inventoryType: this.get(
-                        `tra.cat_paw_inventory_type_${l.PAW.INVENTORY_TYPES.CHAMPION.toLowerCase()}`,
+                        `tra.cat_paw_inventory_type_${s.PAW.INVENTORY_TYPES.CHAMPION.toLowerCase()}`,
                       ),
                     },
                   ),
@@ -4541,29 +4541,29 @@
             _checkSkinAndChromas(e, t) {
               const n = e.find(
                   (e) =>
-                    e.inventoryType === l.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
+                    e.inventoryType === s.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
                     !e.subInventoryType,
                 ),
                 a = e.filter(
                   (e) =>
-                    e.inventoryType === l.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
+                    e.inventoryType === s.PAW.INVENTORY_TYPES.CHAMPION_SKIN &&
                     e.subInventoryType === o.default.CHROMA &&
                     !e.owned,
                 ),
-                s = {};
-              if (n) s.tilePath = n.assets.tilePath;
+                l = {};
+              if (n) l.tilePath = n.assets.tilePath;
               else {
                 if (!(a.length > 0)) return;
-                s.tilePath = a[0].assets.tilePath;
+                l.tilePath = a[0].assets.tilePath;
               }
               const i =
                 n && !n.owned
                   ? "cat_paw_bundle_content_skin_and_chromas"
                   : "cat_paw_bundle_content_chromas";
-              (s.description = this.get("tra").formatString(i, {
+              (l.description = this.get("tra").formatString(i, {
                 itemCount: a.length,
               })),
-                t.pushObject(s);
+                t.pushObject(l);
             },
           });
         e.exports = p;
@@ -4571,23 +4571,23 @@
       (e, t, n) => {
         "use strict";
         var a,
-          s = n(1),
-          l = (a = n(61)) && a.__esModule ? a : { default: a },
+          l = n(1),
+          s = (a = n(61)) && a.__esModule ? a : { default: a },
           o = n(27),
           i = n(26);
-        const c = (0, s.emberDataBinding)({
-            Ember: s.Ember,
-            websocket: (0, s.getProvider)().getSocket(),
+        const c = (0, l.emberDataBinding)({
+            Ember: l.Ember,
+            websocket: (0, l.getProvider)().getSocket(),
             logPrefix: "service:purchasewidget",
             boundProperties: {
               orderNotifications: "/lol-purchase-widget/v1/order-notifications",
               summoner: "/lol-summoner/v1/current-summoner",
             },
           }),
-          r = s.Ember.Service.extend(c, {
+          r = l.Ember.Service.extend(c, {
             init() {
               this._super(...arguments),
-                (this._dataBinding = (0, s.dataBinding)("lol-purchase-widget"));
+                (this._dataBinding = (0, l.dataBinding)("lol-purchase-widget"));
             },
             getItem(e, t) {
               const n = `/v1/purchasable-item?inventoryType=${t}&itemId=${e}`;
@@ -4605,7 +4605,7 @@
               const t = Object.assign({}, e);
               if (t.validationErrors) {
                 const e = t.validationErrors.map(function (e) {
-                  return l.default.fromErrorKey(e.id);
+                  return s.default.fromErrorKey(e.id);
                 });
                 t.validationErrors = e;
               }
@@ -4632,7 +4632,7 @@
                     quantity: 1,
                   });
                 }),
-                s.Telemetry.sendCustomData(i.TELEMETRY_EVENT_NAME, {
+                l.Telemetry.sendCustomData(i.TELEMETRY_EVENT_NAME, {
                   id: i.TELEMETRY_EVENT_ID.START_PURCHASE,
                   purchaseDataItems: JSON.stringify(n),
                 }),
@@ -4648,12 +4648,12 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        const { Component: s, computed: l } = a.Ember,
-          o = s.extend({
+        const { Component: l, computed: s } = a.Ember,
+          o = l.extend({
             classNames: ["paw-rp-top-up-modal"],
             layout: n(145),
             style: n(146),
-            dialogMessage: l("price", "itemName", function () {
+            dialogMessage: s("price", "itemName", function () {
               return this.get("tra").formatString("cat_paw_rp_top_up_message", {
                 remainingPrice: this.get("price"),
                 itemName: this.get("itemName"),
@@ -4665,9 +4665,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "INDbVNxW",
+          id: "cw+SraG2",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\Releases_14_12\\\\LeagueClientContent_Release\\\\15688\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-medium"],["static-attr","class","rp-top-up-modal-container"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","cat_paw_rp_header_message"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","dialog-message-container"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["dialogMessage"]]],null],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","up-sell-text"],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cat_paw_rp_up_sell_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-paw\\\\src\\\\components\\\\ui\\\\paw-rp-top-up-modal-component\\\\index.js\\" "],["text","\\n"],["open-element","lol-uikit-content-block",[]],["static-attr","type","dialog-medium"],["static-attr","class","rp-top-up-modal-container"],["flush-element"],["text","\\n    "],["open-element","h4",[]],["flush-element"],["append",["unknown",["tra","cat_paw_rp_header_message"]],false],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","dialog-message-container"],["flush-element"],["text","\\n        "],["open-element","p",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["dialogMessage"]]],null],false],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","up-sell-text"],["flush-element"],["text","\\n            "],["open-element","p",[]],["flush-element"],["append",["unknown",["tra","cat_paw_rp_up_sell_text"]],false],["close-element"],["text","\\n        "],["close-element"],["text","\\n    "],["close-element"],["text","\\n"],["close-element"],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
           meta: {},
         });
       },
@@ -4678,10 +4678,10 @@
     ],
     t = {};
   function n(a) {
-    var s = t[a];
-    if (void 0 !== s) return s.exports;
-    var l = (t[a] = { exports: {} });
-    return e[a](l, l.exports, n), l.exports;
+    var l = t[a];
+    if (void 0 !== l) return l.exports;
+    var s = (t[a] = { exports: {} });
+    return e[a](s, s.exports, n), s.exports;
   }
   (n.r = (e) => {
     "undefined" != typeof Symbol &&
@@ -4694,10 +4694,10 @@
       var e,
         t = (e = n(1)) && e.__esModule ? e : { default: e };
       const a = "rcp-fe-lol-paw",
-        s = document.currentScript.ownerDocument;
-      const l = window.getPluginAnnounceEventName(a);
-      s.addEventListener(
-        l,
+        l = document.currentScript.ownerDocument;
+      const s = window.getPluginAnnounceEventName(a);
+      l.addEventListener(
+        s,
         function (e) {
           (0, e.registrationHandler)((e) =>
             t.default
@@ -4728,10 +4728,10 @@
               .then(() => {
                 const e = n(2).default,
                   a = n(21).default,
-                  s = n(22).default,
-                  l = new (0, n(24).default)(),
-                  o = new e(l);
-                return t.default.add({ privateAPI: l }), a.init(), s.init(), o;
+                  l = n(22).default,
+                  s = new (0, n(24).default)(),
+                  o = new e(s);
+                return t.default.add({ privateAPI: s }), a.init(), l.init(), o;
               }),
           );
         },
