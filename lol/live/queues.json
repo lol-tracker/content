@@ -249,7 +249,7 @@
     "minimumParticipantListSize": 1,
     "name": "Normal",
     "numPlayersPerTeam": 5,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": true,
       "isIpEnabled": true,
@@ -1218,7 +1218,7 @@
     "minimumParticipantListSize": 1,
     "name": "Ranked Flex",
     "numPlayersPerTeam": 5,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": true,
       "isIpEnabled": true,
@@ -3135,7 +3135,7 @@
       8
     ],
     "areFreeChampionsAllowed": true,
-    "assetMutator": "",
+    "assetMutator": "TFT_Event_5YR",
     "category": "PvP",
     "championsRequiredToPlay": 22,
     "description": "Pengu's Party",

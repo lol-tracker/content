@@ -595,7 +595,8 @@
                 const t = this.events.find(({ eventId: t }) => t === e),
                   n = t?.eventInfo?.eventType;
                 this.setProperties({ activeEventId: e, activeEventType: n }),
-                  this.observeEventSpecificData();
+                  this.observeEventSpecificData(),
+                  this.getPassBundles();
               }
             },
             observeEventSpecificData() {
