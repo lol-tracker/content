@@ -25317,7 +25317,9 @@
               const e = this.get("currentLevelAchievedTime"),
                 t = this.get("locale");
               if (!e) return "";
-              const n = new Date(e).toLocaleDateString(t);
+              const n = new Date(e).toLocaleDateString(t, {
+                numberingSystem: "latn",
+              });
               return this.get("tra").formatString(
                 "challenge_tooltip_acquired_on",
                 { date: n },
@@ -30067,8 +30069,10 @@
               "currentPoints",
               "locale",
               function () {
-                const e = this.get("locale");
-                return (this.get("currentPoints") || 0).toLocaleString(e);
+                const e = Intl.NumberFormat(this.get("locale")?.toLowerCase(), {
+                  numberingSystem: "latn",
+                });
+                return e?.format(this.get("currentPoints")) || 0;
               },
             ),
             localizedChallengeLevel: a.Ember.computed(

@@ -1626,17 +1626,17 @@
         function l(t) {
           const [e, a, n = "en-US"] = t,
             { mastery: s } = e;
-          return a && a.formatString && s
-            ? a.formatString(
-                "MATCH_HISTORY_SUMMARY_RECENT_MASTERY_TOOLTIP_POINTS",
-                {
-                  current: s.championPoints.toLocaleString(n),
-                  next: (
-                    s.championPoints + s.championPointsUntilNextLevel
-                  ).toLocaleString(n),
-                },
-              )
-            : "";
+          if (!a || !a.formatString || !s) return "";
+          const l = Intl.NumberFormat(n.toLowerCase(), {
+            numberingSystem: "latn",
+          });
+          return a.formatString(
+            "MATCH_HISTORY_SUMMARY_RECENT_MASTERY_TOOLTIP_POINTS",
+            {
+              current: l.format(s.championPoints),
+              next: l.format(s.championPoints + s.championPointsUntilNextLevel),
+            },
+          );
         }
         function i(t) {
           const [e] = t;

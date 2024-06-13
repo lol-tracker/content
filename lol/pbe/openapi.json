@@ -22384,6 +22384,15 @@
           "gameMode": {
             "type": "string"
           },
+          "gameSelectCategory": {
+            "type": "string"
+          },
+          "gameSelectModeGroup": {
+            "type": "string"
+          },
+          "gameSelectPriority": {
+            "type": "integer"
+          },
           "gameTypeConfig": {
             "$ref": "#/components/schemas/LolGameQueuesQueueGameTypeConfig"
           },
@@ -22677,6 +22686,15 @@
           },
           "detailedDescription": {
             "type": "string"
+          },
+          "gameSelectCategory": {
+            "type": "string"
+          },
+          "gameSelectModeGroup": {
+            "type": "string"
+          },
+          "gameSelectPriority": {
+            "type": "integer"
           },
           "id": {
             "format": "int32",
@@ -24209,6 +24227,12 @@
           "gameId": {
             "format": "int64",
             "type": "integer"
+          },
+          "gameMutators": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
           },
           "gameType": {
             "type": "string"
@@ -94046,7 +94070,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -94084,7 +94108,7 @@
     },
     "/swagger/v2/swagger.json": {
       "get": {
-        "operationId": "Http2ApiDocsV2",
+        "operationId": "HttpApiDocsV2",
         "parameters": [],
         "responses": {
           "200": {

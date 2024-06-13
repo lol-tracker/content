@@ -225,12 +225,8 @@
           showGameSelectPreselected(e) {
             this._setSelectedAndShowGameSelect(e);
           }
-          getAvailableQueueIds(e, t, n) {
-            return this._queues.getAvailableQueuesForCategoryAndGameType(
-              e,
-              t,
-              n,
-            );
+          getAvailableQueueIds(e, t) {
+            return this._queues.getAvailableQueuesForCategoryAndGameType(e, t);
           }
           hide() {
             this._showingState.get("isInViewport") &&
@@ -1212,53 +1208,49 @@
                 l = this.get("platformJson");
               if (!l || !l.length) return;
               let c = !1;
-              if (
-                (l.forEach((i) => {
-                  const l = i.id,
-                    { category: m } = i,
-                    { mapId: u } = i,
-                    { gameMode: d } = i,
-                    { assetMutator: p } = i,
-                    { isVisible: h } = i,
-                    g = this.getGameType(u, d);
-                  (t[m] = t[m] ? t[m] : {}),
-                    t[m][g] ||
-                      (t[m][g] = {
+              l.forEach((i) => {
+                const l = i.id,
+                  m = i.gameSelectCategory || s.CATEGORY_NAMES.PVP,
+                  { mapId: u } = i,
+                  d = i.gameSelectModeGroup || s.MODE_GROUP_NAMES.RGM,
+                  { gameMode: p } = i,
+                  { assetMutator: h } = i,
+                  { isVisible: g } = i;
+                (t[m] = t[m] ? t[m] : {}),
+                  t[m][d] ||
+                    (t[m][d] = {
+                      mapId: u,
+                      gameMode: p,
+                      gameSelectModeGroup: d,
+                      assetMutator: h,
+                      queues: [],
+                    }),
+                  t[m][d].queues.push(l);
+                const b = r ? g : -1 !== a.indexOf(l),
+                  f = i.queueAvailability === s.QUEUE_AVAILABILITY.enabled;
+                if (b && f) {
+                  const e = this.getMapModeInfo(u, p);
+                  !c && e && e.isRGM && (c = !0),
+                    (n[m] = n[m] ? n[m] : {}),
+                    n[m][d] ||
+                      (n[m][d] = {
                         mapId: u,
-                        gameMode: d,
-                        assetMutator: p,
+                        gameMode: p,
+                        gameSelectModeGroup: d,
+                        assetMutator: h,
                         queues: [],
                       }),
-                    t[m][g].queues.push(l);
-                  const b = r ? h : -1 !== a.indexOf(l),
-                    f = i.queueAvailability === s.QUEUE_AVAILABILITY.enabled;
-                  if (b && f) {
-                    const e = this.getMapModeInfo(u, d);
-                    !c && e && e.isRGM && (c = !0),
-                      (n[m] = n[m] ? n[m] : {}),
-                      n[m][g] ||
-                        (n[m][g] = {
-                          mapId: u,
-                          gameMode: d,
-                          assetMutator: p,
-                          queues: [],
-                        }),
-                      n[m][g].queues.push(l),
-                      o.push(l);
-                  }
-                  (i.available = f), (e[l] = i);
-                }),
+                    n[m][d].queues.push(l),
+                    o.push(l);
+                }
+                (i.available = f), (e[l] = i);
+              }),
                 this.get("disabledRgmButtonEnabled") &&
                   !c &&
-                  n[s.CATEGORY_NAMES.PVP])
-              ) {
-                const e = this.getGameType(
-                  s.DISABLED_RGM_GAME_TYPE.mapId,
-                  s.DISABLED_RGM_GAME_TYPE.gameMode,
-                );
-                n[s.CATEGORY_NAMES.PVP][e] = s.DISABLED_RGM_GAME_TYPE;
-              }
-              this.set("queuesById", e),
+                  n[s.CATEGORY_NAMES.PVP] &&
+                  (n[s.CATEGORY_NAMES.PVP][s.MODE_GROUP_NAMES.RGM] =
+                    s.DISABLED_RGM_GAME_TYPE),
+                this.set("queuesById", e),
                 this.set("queuesByCategory", t),
                 this.set("availableQueues", n),
                 this.set("availableQueueIds", i.Ember.A(o));
@@ -1298,55 +1290,32 @@
             return s.TUTORIAL_GAME_TYPES;
           },
           getAllAvailableGameTypesForCategory: function (e) {
-            if ("Training" === e) return this.getTutorialQueues();
-            const t = this.get("availableQueues"),
-              n = [];
-            let i = {};
-            t[e] && (i = t[e]);
-            for (const e in i) n.push(i[e]);
+            if (e === s.CATEGORY_NAMES.TRAINING)
+              return this.getTutorialQueues();
+            const t = this.get("availableQueues")[e] || {},
+              n = Object.values(t);
             return this._sortGameTypes(n), n;
           },
           _sortGameTypes: function (e) {
-            e.sort((e, t) => {
-              let n = this._compareGameMode(e, t, "CLASSIC");
-              return (
-                0 === n && (n = this._compareGameMode(e, t, "ARAM")),
-                0 === n && (n = this._compareGameMode(e, t, "TFT")),
-                n
-              );
-            });
-          },
-          _compareGameMode: function (e, t, n) {
-            if (e.gameMode === n) {
-              if (t.gameMode !== n) return -1;
-            } else if (t.gameMode === n) return 1;
-            return 0;
-          },
-          getFlatQueuesByCategory: function (e) {
-            const t = this.getQueuesByCategory(e) || [],
-              n = Object.keys(t).map((e) => t[e].queues);
-            return [].concat(...n);
-          },
-          getAllQueuesForCategoryAndGameType: function (e, t, n) {
-            let i = [];
-            const s = this.get("queuesByCategory"),
-              o = this.getGameType(t, n);
-            return (
-              s[e] && s[e][o] && (i = s[e][o].queues),
-              this._sortQueuesPlaceDefaultsFirst(i),
-              i
+            const t = Object.values(s.MODE_GROUP_NAMES);
+            e.sort(
+              (e, n) =>
+                t.indexOf(e.gameSelectModeGroup) -
+                t.indexOf(n.gameSelectModeGroup),
             );
           },
-          getAvailableQueuesForCategoryAndGameType: function (e, t, n) {
-            let i = [];
-            if ("Training" === e && this.get("tutorialFlowEnabled"))
+          getAvailableQueuesForCategoryAndGameType: function (e, t) {
+            let n = [];
+            if (
+              e === s.CATEGORY_NAMES.TRAINING &&
+              this.get("tutorialFlowEnabled")
+            )
               return s.TUTORIAL_QUEUE_IDS;
-            const o = this.get("availableQueues"),
-              a = this.getGameType(t, n);
+            const i = this.get("availableQueues");
             return (
-              o[e] && o[e][a] && o[e][a].queues && (i = o[e][a].queues),
-              this._sortQueuesPlaceDefaultsFirst(i),
-              i
+              i[e] && i[e][t] && i[e][t].queues && (n = i[e][t].queues),
+              this._sortQueuesPlaceDefaultsFirst(n),
+              n
             );
           },
           _sortQueuesPlaceDefaultsFirst: function (e) {
@@ -1373,7 +1342,7 @@
           getDefaultQueueForCategory: function (e) {
             const t = this.get("availableQueues");
             if (t[e]) {
-              const n = i.lodash.keys(t[e])[0];
+              const n = Object.keys(t[e])[0];
               return t[e][n].queues[0];
             }
             return null;
@@ -1414,6 +1383,7 @@
             t.ONE_PAGE_TUTORIAL_GAME_MODES =
             t.NPE_FIRST_TOUCH_QUEUE_SELECT_ID =
             t.MULTI_TEAM_GAME_MODES =
+            t.MODE_GROUP_NAMES =
             t.MISSING_TOKEN_ERRORS =
             t.MIN_NORM_GAMES_RANKED_RESTRICTION =
             t.LOL_NEW_PLAYER_RESTRICTION =
@@ -1422,6 +1392,7 @@
             t.DISABLED_RGM_GAME_TYPE =
             t.DEFAULT_TFT_QUEUE_ID =
             t.DEFAULT_QUEUE_ID =
+            t.CHERRY_MAP_ID =
             t.CATEGORY_NAMES =
             t.CATEGORIES_DISPLAY_ORDER =
               void 0);
@@ -1442,27 +1413,47 @@
           RANKED_FLEX_SR: "RANKED_FLEX_SR",
           RANKED_SOLO_5x5: "RANKED_SOLO_5x5",
         };
-        const n = { PVP: "PvP", VERSUSAI: "VersusAi", TRAINING: "Training" };
+        const n = {
+          PVP: "kPvP",
+          VERSUSAI: "kVersusAI",
+          TRAINING: "kTraining",
+          CREATE_CUSTOM: "CreateCustom",
+          JOIN_CUSTOM: "JoinCustom",
+        };
         t.CATEGORY_NAMES = n;
         const i = {
-          primary: [n.PVP, n.VERSUSAI, n.TRAINING],
-          secondary: ["CreateCustom", "JoinCustom"],
+          SR: "kSummonersRift",
+          ARAM: "kARAM",
+          RGM: "kAlternativeLeagueGameModes",
+          TFT: "kTeamfightTactics",
         };
-        t.CATEGORIES_DISPLAY_ORDER = i;
-        t.TUTORIAL_GAME_TYPES = [
+        t.MODE_GROUP_NAMES = i;
+        const s = {
+          primary: [n.PVP, n.VERSUSAI, n.TRAINING],
+          secondary: [n.CREATE_CUSTOM, n.JOIN_CUSTOM],
+        };
+        t.CATEGORIES_DISPLAY_ORDER = s;
+        const o = { PRACTICE_TOOL: "PRACTICETOOL", TUTORIAL: "TUTORIAL_FLOW" };
+        t.TRAINING_TYPES = o;
+        const a = [
           {
             mapId: 11,
-            gameMode: "TUTORIAL_FLOW",
+            gameMode: o.TUTORIAL,
+            gameSelectModeGroup: o.TUTORIAL,
+            gameSelectCategory: n.TRAINING,
             requiresCustomGameSubCategory: !1,
             queues: [],
           },
           {
             mapId: 11,
-            gameMode: "PRACTICETOOL",
+            gameMode: o.PRACTICE_TOOL,
+            gameSelectModeGroup: o.PRACTICE_TOOL,
+            gameSelectCategory: n.TRAINING,
             requiresCustomGameSubCategory: !0,
             queues: [],
           },
         ];
+        t.TUTORIAL_GAME_TYPES = a;
         t.TUTORIAL_TYPE_MAPS = {
           BASIC_TUTORIAL: 12,
           BATTLE_TRAINING: 11,
@@ -1470,16 +1461,20 @@
           PRACTICETOOL: 11,
           CLASSIC: 11,
         };
-        t.DISABLED_RGM_GAME_TYPE = {
+        const r = {
           mapId: 11,
           gameMode: "LCURGMDISABLED",
+          gameSelectCategory: n.PVP,
+          gameSelectModeGroup: i.RGM,
           requiresCustomGameSubCategory: !1,
           queues: [],
         };
+        t.DISABLED_RGM_GAME_TYPE = r;
         t.DEFAULT_QUEUE_ID = 31;
         t.DEFAULT_TFT_QUEUE_ID = 1090;
         t.INVALID_QUEUE_ID = -1;
-        t.GAME_MODES = { TFT: "TFT", CLASSIC: "CLASSIC" };
+        t.CHERRY_MAP_ID = 30;
+        t.GAME_MODES = { TFT: "TFT", CLASSIC: "CLASSIC", CHERRY: "CHERRY" };
         t.TFT_CUSTOM_QUEUE_IDS = { 100: 3e3, 101: 3010 };
         t.ONE_PAGE_TUTORIAL_GAME_MODES = ["TFT", "CHERRY", "STRAWBERRY"];
         t.ONE_PAGE_TUTORIAL_LONG_CARD_LAYOUT_GAME_MODES = [
@@ -1490,10 +1485,6 @@
         t.NPE_FIRST_TOUCH_QUEUE_SELECT_ID = {
           TFT: "teamfight",
           SR: "summonersrift",
-        };
-        t.TRAINING_TYPES = {
-          PRACTICE_TOOL: "PRACTICETOOL",
-          TUTORIAL: "TUTORIAL_FLOW",
         };
         t.MISSING_TOKEN_ERRORS = [
           "BanInfoNotAvailable",
@@ -1523,8 +1514,8 @@
         t.TFT_NPE_QUEUE_ID = 2200;
         t.TFT_TUTORIAL_QUEUE_ID = 1110;
         t.TFT_DOUBLE_UP_QUEUE_ID = 1160;
-        const s = [1090, 2200, 1110];
-        t.TFT_AVAILABLE_NPE_QUEUE_IDS = s;
+        const l = [1090, 2200, 1110];
+        t.TFT_AVAILABLE_NPE_QUEUE_IDS = l;
       },
       (e, t, n) => {
         "use strict";
@@ -1922,11 +1913,19 @@
               const n = this.get("queues");
               if (n) {
                 const e = n.getQueueById(t);
-                e && e.category && this.set("category", e.category),
+                e &&
+                  this.set(
+                    "category",
+                    e.gameSelectCategory || s.CATEGORY_NAMES.PVP,
+                  ),
                   e &&
                     e.mapId &&
                     (this.set("mapId", e.mapId),
                     this.set("gameMode", e.gameMode),
+                    this.set(
+                      "gameSelectModeGroup",
+                      e.gameSelectModeGroup || s.MODE_GROUP_NAMES.RGM,
+                    ),
                     this.set("assetMutator", e.assetMutator));
               }
               return t;
@@ -3395,8 +3394,8 @@
             H = n(76),
             z = n(78),
             V = n(81),
-            W = n(82),
-            Y = n(83).default,
+            Y = n(82),
+            W = n(83).default,
             K = n(84),
             $ = n(85),
             X = n(86).default;
@@ -3535,8 +3534,8 @@
             InvitesService: H,
             EternalsService: O,
             TftCosmeticsService: V,
-            TftEventsService: W,
-            TftNpeService: Y,
+            TftEventsService: Y,
+            TftNpeService: W,
             SocialLeaderboardService: K,
             ChallengesService: $,
             RiotclientService: w,
@@ -12501,7 +12500,7 @@
                 function () {
                   const e = this.get("selected.category");
                   if (e) {
-                    if ("Training" === e) {
+                    if (e === c.CATEGORY_NAMES.TRAINING) {
                       return (
                         this.get("eligibilityService").getIneligibleQueues(
                           c.TUTORIAL_QUEUE_IDS,
@@ -12883,9 +12882,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "lUDeXs66",
+          id: "bqYy/tmp",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\index.js\\" "],["text","\\n"],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n"],["block",["each"],[["get",["gameTypes"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["game-type-card"],null,[["showingState","mapId","gameMode","assetMutator","requiresCustomGameSubCategory","queues","animationLock","selectedCategory","selectedMapId","selectedGameMode","selectedQueueId","selectedTrainingGameMode","selectQueue"],[["get",["showingState"]],["get",["gameType","mapId"]],["get",["gameType","gameMode"]],["get",["gameType","assetMutator"]],["get",["gameType","requiresCustomGameSubCategory"]],["get",["queues"]],["get",["selected","animationLock"]],["get",["selected","category"]],["get",["selected","mapId"]],["get",["selected","gameMode"]],["get",["selected","queueId"]],["get",["selected","trainingGameMode"]],"selectQueue"]]],false],["text","\\n"]],"locals":["gameType"]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\index.js\\" "],["text","\\n"],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n"],["block",["each"],[["get",["gameTypes"]]],null,0]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","  "],["append",["helper",["game-type-card"],null,[["showingState","mapId","gameMode","gameSelectModeGroup","assetMutator","requiresCustomGameSubCategory","queues","animationLock","selectedCategory","selectedMapId","selectedGameMode","selectedGameModeGroup","selectedAssetMutator","selectedQueueId","selectedTrainingGameMode","selectQueue"],[["get",["showingState"]],["get",["gameType","mapId"]],["get",["gameType","gameMode"]],["get",["gameType","gameSelectModeGroup"]],["get",["gameType","assetMutator"]],["get",["gameType","requiresCustomGameSubCategory"]],["get",["queues"]],["get",["selected","animationLock"]],["get",["selected","category"]],["get",["selected","mapId"]],["get",["selected","gameMode"]],["get",["selected","gameSelectModeGroup"]],["get",["selected","assetMutator"]],["get",["selected","queueId"]],["get",["selected","trainingGameMode"]],"selectQueue"]]],false],["text","\\n"]],"locals":["gameType"]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -12928,12 +12927,10 @@
           selectedTrainingGameMode: !1,
           animationLock: !1,
           isCurrentlySelected: i.Ember.computed(
-            "mapId",
-            "gameMode",
             "selectedMapId",
             "isTraining",
-            "selectedGameMode",
-            "selectedCategory",
+            "gameSelectModeGroup",
+            "selectedGameModeGroup",
             "selectedTrainingGameMode",
             function () {
               if (this.get("isTraining")) {
@@ -12948,63 +12945,30 @@
                 );
               }
               return (
-                this.get("mapId") === this.get("selectedMapId") &&
-                this.get("gameMode") === this.get("selectedGameMode")
+                this.get("gameSelectModeGroup") ===
+                this.get("selectedGameModeGroup")
               );
             },
           ),
           gameTypeQueues: i.Ember.computed(
             "mapId",
-            "gameMode",
+            "gameSelectModeGroup",
             "selectedCategory",
             "queues.availableQueues",
-            "queues.availableQueueIds",
             "eligiblityService.isSolo",
             "eligibilityService.shouldShowNPEQueue",
             function () {
               const e = this.get("queues"),
                 t = this.get("selectedCategory"),
-                n = this.get("mapId"),
-                s = this.get("gameMode");
-              let o = i.Ember.A(
-                e.getAvailableQueuesForCategoryAndGameType(t, n, s),
+                n = this.get("gameSelectModeGroup");
+              let s = i.Ember.A(
+                e.getAvailableQueuesForCategoryAndGameType(t, n),
               );
               return (
                 this.get("eligibilityService.shouldShowNPEQueue") ||
-                  (o = o.without(a.TFT_NPE_QUEUE_ID)),
-                o
+                  (s = s.without(a.TFT_NPE_QUEUE_ID)),
+                s
               );
-            },
-          ),
-          mapTeamSizeGreedy: i.Ember.computed(
-            "mapId",
-            "gameMode",
-            "selectedCategory",
-            function () {
-              const e = this.get("queues"),
-                t = this.get("selectedCategory"),
-                n = this.get("mapId"),
-                i = this.get("gameMode"),
-                s = e.getAvailableQueuesForCategoryAndGameType(t, n, i);
-              let o = 0;
-              return (
-                s.forEach((t) => {
-                  const n = e.getQueueById(t);
-                  n.numPlayersPerTeam &&
-                    n.numPlayersPerTeam > o &&
-                    (o = n.numPlayersPerTeam);
-                }),
-                o
-              );
-            },
-          ),
-          mapTeamSize: i.Ember.computed(
-            "mapId",
-            "selectedCategory",
-            "defaultQueue.numPlayersPerTeam",
-            function () {
-              let e = this.get("defaultQueue.numPlayersPerTeam");
-              return e || (e = this.get("mapTeamSizeGreedy")), e;
             },
           ),
           queueEligibilities: i.Ember.computed(
@@ -13092,15 +13056,22 @@
             "eligibilityService.isSolo",
             "gameTypeQueues.[]",
             "eligibilityService.eligibilities.@each.summoners",
-            "customGameSubCategoryMinLevelEligible",
             "isTraining",
+            "gameSelectModeGroup",
+            "customGameSubCategoryMinLevelEligible",
             function () {
               if (this.get("eligibilityService.isSolo")) {
                 const e = this.get("gameTypeQueues");
                 if (this.get("isTraining")) {
-                  if (this.get("gameMode") === a.TRAINING_TYPES.PRACTICE_TOOL)
+                  if (
+                    this.get("gameSelectModeGroup") ===
+                    a.TRAINING_TYPES.PRACTICE_TOOL
+                  )
                     return !this.get("customGameSubCategoryMinLevelEligible");
-                  if (this.get("gameMode") === a.TRAINING_TYPES.TUTORIAL)
+                  if (
+                    this.get("gameSelectModeGroup") ===
+                    a.TRAINING_TYPES.TUTORIAL
+                  )
                     return this.get(
                       "eligibilityService",
                     ).isTutorialRestricted();
@@ -13256,69 +13227,105 @@
             offset: { x: 0, y: 0 },
             caretPosition: "auto",
           },
-          gameTypeName: i.Ember.computed(
-            "selectedCategory",
+          queueDataToDisplay: i.Ember.computed(
             "mapId",
             "gameMode",
             "assetMutator",
+            "selectedMapId",
+            "selectedGameMode",
+            "gameSelectModeGroup",
+            "selectedGameModeGroup",
+            function () {
+              let e = this.get("mapId"),
+                t = this.get("gameMode"),
+                n = this.get("assetMutator");
+              return (
+                this.get("gameSelectModeGroup") ===
+                  this.get("selectedGameModeGroup") &&
+                  ((e = this.get("selectedMapId")),
+                  (t = this.get("selectedGameMode")),
+                  (n = this.get("selectedAssetMutator"))),
+                { mapId: e, gameMode: t, assetMutator: n }
+              );
+            },
+          ),
+          gameTypeName: i.Ember.computed(
+            "selectedCategory",
+            "queueDataToDisplay.mapId",
+            "queueDataToDisplay.gameMode",
+            "queueDataToDisplay.assetMutator",
+            "isRGM",
             "tra.ready",
             "tra.game_select_game_type_name_11_CLASSIC",
             function () {
+              if (this.get("isRGM"))
+                return this.get(
+                  "tra.game_select_category_description_kpvp_alternative_league_game_modes",
+                );
               const e = this.get("selectedCategory"),
-                t = this.get("mapId");
-              let n = this.get("gameMode");
-              const i = this.get("assetMutator");
+                {
+                  mapId: t,
+                  gameMode: n,
+                  assetMutator: i,
+                } = this.get("queueDataToDisplay");
               let s;
               if (e === a.CATEGORY_NAMES.PVP) {
                 const e = this.get("assets").getMap(t, n, i);
                 e && e.gameModeName && (s = e.gameModeName);
               }
               if (!s) {
-                n = n.toLowerCase();
-                const e = `game_select_game_type_name_${t}_${n}`;
+                const e = `game_select_game_type_name_${t}_${n.toLowerCase()}`;
                 s = this.get(`tra.${e}`);
               }
               return s;
             },
           ),
           shouldShowGameTypeDescription: i.Ember.computed(
-            "gameMode",
             "gameTypeQueues.[]",
             function () {
-              const e = this.get("gameMode"),
-                t = this.get("gameTypeQueues.length");
-              return !("TFT" === e && t > 5);
+              return this.get("gameTypeQueues.length") <= 20;
             },
           ),
           gameTypeDescription: i.Ember.computed(
             "selectedCategory",
             "selectedQueueId",
-            "mapId",
+            "queueDataToDisplay.mapId",
+            "queueDataToDisplay.gameMode",
+            "queueDataToDisplay.assetMutator",
             "tra.ready",
-            "gameMode",
-            "assetMutator",
-            "tra.game_select_category_description_pvp_11_classic",
+            "tra.game_select_category_description_kpvp_11_classic",
             function () {
-              let e = this.get("selectedCategory");
-              const t = this.get("selectedQueueId"),
-                n = this.get("mapId");
-              let i = this.get("gameMode");
-              const s = this.get("assetMutator");
+              const e = this.get("selectedCategory"),
+                t = this.get("selectedQueueId"),
+                {
+                  mapId: n,
+                  gameMode: i,
+                  assetMutator: s,
+                } = this.get("queueDataToDisplay");
               let o;
               if (e === a.CATEGORY_NAMES.PVP) {
                 const e = this.get("assets").getMap(n, i, s);
                 e && e.gameModeDescription && (o = e.gameModeDescription);
               }
-              if (((i = i.toLowerCase()), (e = e.toLowerCase()), !o)) {
+              const r = (i || "").toLowerCase(),
+                l = (e || "").toLowerCase();
+              if (!o) {
                 if (this.get("isDisabledFeaturedGameMode")) return "";
-                const t = `game_select_category_description_${e}_${n}_${i}`;
-                o = this.get(`tra.${t}`);
+                const e = `game_select_category_description_${l}_${n}_${r}`;
+                o = this.get(`tra.${e}`);
               }
-              const r = `game_select_category_description_${e}_${n}_${i}_${t}`;
-              return this.get("tra").exists(r) && (o = this.get(`tra.${r}`)), o;
+              const c = `game_select_category_description_${e}_${n}_${i}_${t}`;
+              return this.get("tra").exists(c) && (o = this.get(`tra.${c}`)), o;
             },
           ),
-          isTraining: i.Ember.computed.equal("selectedCategory", "Training"),
+          isTraining: i.Ember.computed.equal(
+            "selectedCategory",
+            a.CATEGORY_NAMES.TRAINING,
+          ),
+          isRGM: i.Ember.computed.equal(
+            "gameSelectModeGroup",
+            a.MODE_GROUP_NAMES.RGM,
+          ),
           isDisabledFeaturedGameMode: i.Ember.computed(
             "mapId",
             "gameMode",
@@ -13329,20 +13336,32 @@
               );
             },
           ),
+          mapTeamSize: i.Ember.computed(
+            "defaultQueue.numPlayersPerTeam",
+            "selectedQueue.numPlayersPerTeam",
+            "gameSelectModeGroup",
+            "selectedGameSelectModeGroup",
+            function () {
+              return this.get("gameSelectModeGroup") ===
+                this.get("selectedGameSelectModeGroup")
+                ? this.get("selectedQueue.numPlayersPerTeam")
+                : this.get("defaultQueue.numPlayersPerTeam");
+            },
+          ),
           mapVersus: i.Ember.computed(
-            "gameMode",
+            "queueDataToDisplay.gameMode",
             "isTraining",
             "isDisabledFeaturedGameMode",
             "mapTeamSize",
             "tra.ready",
             "tra.game_select_team_size",
             function () {
-              const e = this.get("gameMode");
-              if ("TFT" === e)
+              const e = this.get("queueDataToDisplay.gameMode");
+              if (e === a.GAME_MODES.TFT)
                 return this.get(
                   "tra.game_select_team_size_free_for_all_acronym",
                 );
-              if ("CHERRY" === e)
+              if (e === a.GAME_MODES.CHERRY)
                 return this.get("tra.game_select_team_size_multiteam");
               const t = this.get("mapTeamSize");
               return this.get("isTraining") ||
@@ -13358,14 +13377,28 @@
             function () {
               const e = this.get("gameTypeQueues"),
                 t = this.get("isTraining");
-              if (!e || e.length < 1 || t) return;
-              return e[0];
+              if (!(!e || e.length < 1 || t)) return e[0];
             },
           ),
-          defaultQueue: i.Ember.computed("defaultQueueId", function () {
-            const e = this.get("defaultQueueId");
+          getQueueById(e) {
             return this.get("queues").getQueueById(e);
-          }),
+          },
+          defaultQueue: i.Ember.computed(
+            "defaultQueueId",
+            "queues",
+            function () {
+              const e = this.get("defaultQueueId");
+              return this.getQueueById(e);
+            },
+          ),
+          selectedQueue: i.Ember.computed(
+            "selectedQueueId",
+            "queues",
+            function () {
+              const e = this.get("selectedQueueId");
+              return this.getQueueById(e);
+            },
+          ),
           shouldDisplayQueueSelect: i.Ember.computed(
             "isDisabled",
             "isTraining",
@@ -13455,7 +13488,7 @@
                 n = this.get("isCurrentlySelected"),
                 i = this.get("eligibilityService.isTFTNPEEnabled"),
                 s = this.get("eligibilityService.isNewTFTPlayer");
-              return !!e && !("TFT" !== t || !n) && !(!i || s);
+              return !!e && !(t !== a.GAME_MODES.TFT || !n) && !(!i || s);
             },
           ),
           seedTFTNPEQueueUnlock: i.Ember.observer(
@@ -13516,9 +13549,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "P9xx11dy",
+          id: "H7SlWY7+",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-upper-half"],["modifier",["action"],[["get",[null]],"selectGameType"]],["flush-element"],["text","\\n  "],["append",["helper",["game-type-icon"],null,[["mapId","currentlySelected","gameTypeName","mapSubtitle","isTraining","isDisabledFeaturedGameMode","gameMode","assetMutator"],[["get",["mapId"]],["get",["isCurrentlySelected"]],["get",["gameTypeName"]],["get",["mapVersus"]],["get",["isTraining"]],["get",["isDisabledFeaturedGameMode"]],["get",["gameMode"]],["get",["assetMutator"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowEligibilityWarning"]]],null,9],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-lower-half"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGameTypeDescription"]]],null,6],["block",["if"],[["get",["shouldDisplayGameServerRegionOptions"]]],null,5],["text","\\n"],["block",["if"],[["get",["shouldDisplayQueueSelect"]]],null,1],["close-element"],["text","\\n"],["append",["unknown",["computeDisabledReasons"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["game-type-category-select"],null,[["queues","queueId","selectedQueueId","selectCategory"],[["get",["queues"]],["get",["queueId"]],["get",["selectedQueueId"]],"selectCategory"]]],false],["text","\\n"]],"locals":["queueId"]},{"statements":[["text","  "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","parties-game-type-card-categories"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameTypeQueues"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["static-attr","selected",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["option","isSelected"]]],null,3,2]],"locals":["option"]},{"statements":[["text","    "],["open-element","label",[]],["static-attr","for","custom-game-region"],["flush-element"],["append",["unknown",["tra","custom_game_setup_region_label"]],false],["close-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","id","custom-game-region"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameServerRegionOptions"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","parties-game-type-card-intro"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["gameTypeDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","li",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["reason"]]],null],false],["close-element"],["text","\\n"]],"locals":["reason"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","game-type-category-disabled"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","ul",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disabledReasons"]]],null,7],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-eligibility-error"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],8],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-upper-half"],["modifier",["action"],[["get",[null]],"selectGameType"]],["flush-element"],["text","\\n  "],["append",["helper",["game-type-icon"],null,[["mapId","currentlySelected","gameTypeName","mapSubtitle","isTraining","isDisabledFeaturedGameMode","gameMode","assetMutator","gameSelectModeGroup","isRGM"],[["get",["queueDataToDisplay","mapId"]],["get",["isCurrentlySelected"]],["get",["gameTypeName"]],["get",["mapVersus"]],["get",["isTraining"]],["get",["isDisabledFeaturedGameMode"]],["get",["queueDataToDisplay","gameMode"]],["get",["queueDataToDisplay","assetMutator"]],["get",["gameSelectModeGroup"]],["get",["isRGM"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowEligibilityWarning"]]],null,9],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-lower-half"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGameTypeDescription"]]],null,6],["block",["if"],[["get",["shouldDisplayGameServerRegionOptions"]]],null,5],["text","\\n"],["block",["if"],[["get",["shouldDisplayQueueSelect"]]],null,1],["close-element"],["text","\\n"],["append",["unknown",["computeDisabledReasons"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["game-type-category-select"],null,[["queues","queueId","selectedQueueId","selectCategory"],[["get",["queues"]],["get",["queueId"]],["get",["selectedQueueId"]],"selectCategory"]]],false],["text","\\n"]],"locals":["queueId"]},{"statements":[["text","  "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","parties-game-type-card-categories"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameTypeQueues"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["static-attr","selected",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["option","isSelected"]]],null,3,2]],"locals":["option"]},{"statements":[["text","    "],["open-element","label",[]],["static-attr","for","custom-game-region"],["flush-element"],["append",["unknown",["tra","custom_game_setup_region_label"]],false],["close-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","id","custom-game-region"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameServerRegionOptions"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","parties-game-type-card-intro"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["gameTypeDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","li",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["reason"]]],null],false],["close-element"],["text","\\n"]],"locals":["reason"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","game-type-category-disabled"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","ul",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disabledReasons"]]],null,7],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-eligibility-error"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],8],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -13527,23 +13560,29 @@
         var i,
           s = n(1),
           o = n(51),
-          a = (i = n(22)) && i.__esModule ? i : { default: i };
+          a = (i = n(22)) && i.__esModule ? i : { default: i },
+          r = n(9);
         n(170);
-        const r = "hidden",
-          l = "clicked",
-          c = "active";
+        const l = "hidden",
+          c = "clicked",
+          m = "active";
         e.exports = s.Ember.Component.extend({
           classNames: ["parties-game-type-icon"],
           classNameBindings: ["mapIdClassName"],
           layout: n(171),
           assets: s.Ember.inject.service("assets"),
           partySettingsService: s.Ember.inject.service("party-settings"),
-          animationsEnabled: s.Ember.computed.alias(
+          isTFT: s.Ember.computed.equal("gameMode", r.GAME_MODES.TFT),
+          animationsEnabled: s.Ember.computed(
             "partySettingsService.animationsEnabled",
+            "isTFT",
+            function () {
+              const e = this.get("partySettingsService.animationsEnabled"),
+                t = this.get("isTFT");
+              return e && !t;
+            },
           ),
-          animationsDisabled: s.Ember.computed.not(
-            "partySettingsService.animationsEnabled",
-          ),
+          animationsDisabled: s.Ember.computed.not("animationsEnabled"),
           mapId: null,
           gameMode: null,
           assetMutator: null,
@@ -13569,12 +13608,12 @@
                   !0 === this._initialLoad
                     ? ((t = !0), (this._initialLoad = !1))
                     : (t = !this.get("animationsDisabled")),
-                  (n = e && t ? c : e ? l : r),
+                  (n = e && t ? m : e ? c : l),
                   this.sendVideoEvent(n),
                   n
                 );
               }
-              return this.sendVideoEvent(r), r;
+              return this.sendVideoEvent(l), l;
             },
           ),
           sendVideoEvent: function (e) {
@@ -13607,6 +13646,8 @@
             "isTraining",
             "mapId",
             "assets.availableMaps",
+            "isTFT",
+            "isRGM",
             function () {
               return this._getAssetUrl("game-select-icon-default");
             },
@@ -13615,6 +13656,8 @@
             "isTraining",
             "mapId",
             "assets.availableMaps",
+            "isTFT",
+            "isRGM",
             function () {
               return this._getAssetUrl("game-select-icon-hover");
             },
@@ -13623,6 +13666,8 @@
             "isTraining",
             "mapId",
             "assets.availableMaps",
+            "isTFT",
+            "isRGM",
             function () {
               return this._getAssetUrl("game-select-icon-disabled");
             },
@@ -13631,6 +13676,8 @@
             "isTraining",
             "mapId",
             "assets.availableMaps",
+            "isTFT",
+            "isRGM",
             function () {
               return this._getAssetUrl("icon-victory");
             },
@@ -13646,7 +13693,7 @@
           backgroundFillerImageClass: s.Ember.computed(
             "videoState",
             function () {
-              return this.get("videoState") === l
+              return this.get("videoState") === c
                 ? "icon-bg-filler-fade-in"
                 : "icon-bg-filler-show";
             },
@@ -13659,9 +13706,15 @@
                 : "";
             },
           ),
-          mapSubtitleText: s.Ember.computed("mapSubtitle", function () {
-            return this.get("mapSubtitle") ? this.get("mapSubtitle") : "";
-          }),
+          mapSubtitleText: s.Ember.computed(
+            "mapSubtitle",
+            "isRGM",
+            function () {
+              return this.get("isRGM") || !this.get("mapSubtitle")
+                ? ""
+                : this.get("mapSubtitle");
+            },
+          ),
           haveVideoUrls: s.Ember.computed(
             "activeVideoUrl",
             "introVideoUrl",
@@ -13676,18 +13729,20 @@
               ? this.element.querySelector("#game-type-icon-state-machine")
               : null;
           },
+          getTFTStaticAssetUrl: (e) => `/fe/lol-parties/tft-${e}.svg`,
           _getAssetUrl: function (e) {
-            return this.get("isTraining")
-              ? this._getTrainingAssetUrl(e)
-              : this._getMapAssetUrl(e);
+            return this.get("isTFT")
+              ? this.getTFTStaticAssetUrl(e)
+              : this.get("isTraining")
+                ? this._getTrainingAssetUrl(e)
+                : this._getMapAssetUrl(e);
           },
           _getMapAssetUrl: function (e) {
-            const t = this.get("assets").getMap(
-              this.get("mapId"),
-              this.get("gameMode"),
-              this.get("assetMutator"),
-            );
-            return `/${t && t.assets ? t.assets[e] : ""}`;
+            const t = this.get("isRGM"),
+              n = t ? r.CHERRY_MAP_ID : this.get("mapId"),
+              i = t ? r.GAME_MODES.CHERRY : this.get("gameMode"),
+              s = this.get("assets").getMap(n, i, this.get("assetMutator"));
+            return `/${s && s.assets ? s.assets[e] : ""}`;
           },
           videoURLObserver: s.Ember.computed("haveVideoUrls", function () {
             this.get("haveVideoUrls") && this.sendVideoEvent();
@@ -13996,7 +14051,7 @@
               this.set("selected.isJoiningCustomGame", !1),
               this.set("selected.isTrainingGame", !1),
               this.set("selected.queueId", null),
-              "CreateCustom" === e)
+              e === a.CATEGORY_NAMES.CREATE_CUSTOM)
             ) {
               this.get("customGamesService").resetSelectedSubcategory(),
                 this.set("selected.isCreatingCustomGame", !0),
@@ -14005,9 +14060,9 @@
                 "customGamesService.selectedSubcategory.mapId",
               );
               this.set("selected.mapId", e);
-            } else if ("JoinCustom" === e)
+            } else if (e === a.CATEGORY_NAMES.JOIN_CUSTOM)
               this.set("selected.isJoiningCustomGame", !0);
-            else if ("Training" === e) {
+            else if (e === a.CATEGORY_NAMES.TRAINING) {
               this.set("selected.isTrainingGame", !0);
               const e = this.get("queues").getTutorialQueues();
               e &&
@@ -14028,14 +14083,12 @@
             for (const i of n) {
               const n = t.getAvailableQueuesForCategoryAndGameType(
                   e,
-                  i.mapId,
-                  i.gameMode,
+                  i.gameSelectModeGroup,
                 ),
-                s = this.get("eligibilityService").getQueueEligibilities(n);
-              for (let e = 0; e < n.length; e++) {
-                const t = s[e];
-                if (t && t.eligible) return n[e];
-              }
+                s = this.get("eligibilityService")
+                  .getQueueEligibilities(n)
+                  .find((e) => e.eligible);
+              if (s) return s.queueId;
             }
             return !1;
           },
@@ -14065,7 +14118,8 @@
         "use strict";
         var i,
           s = n(1),
-          o = (i = n(10)) && i.__esModule ? i : { default: i };
+          o = (i = n(10)) && i.__esModule ? i : { default: i },
+          a = n(9);
         e.exports = s.Ember.Component.extend({
           tagName: "lol-uikit-navigation-item",
           classNames: ["parties-game-navs-item"],
@@ -14088,10 +14142,16 @@
           ),
           isCreateCustom: s.Ember.computed.equal(
             "category.name",
-            "CreateCustom",
+            a.CATEGORY_NAMES.CREATE_CUSTOM,
           ),
-          isJoinCustom: s.Ember.computed.equal("category.name", "JoinCustom"),
-          isTraining: s.Ember.computed.equal("category.name", "Training"),
+          isJoinCustom: s.Ember.computed.equal(
+            "category.name",
+            a.CATEGORY_NAMES.JOIN_CUSTOM,
+          ),
+          isTraining: s.Ember.computed.equal(
+            "category.name",
+            a.CATEGORY_NAMES.TRAINING,
+          ),
           disabled: s.Ember.computed(
             "category.hasQueues",
             "isCreateCustom",
@@ -14110,7 +14170,7 @@
           name: s.Ember.computed(
             "category.name",
             "tra.ready",
-            "tra.parties_game_category_pvp",
+            "tra.parties_game_category_kpvp",
             function () {
               const e = this.get("category.name");
               return e
@@ -25417,9 +25477,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "5aHWWd9Z",
+          id: "HzE5dsV3",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["inParty"]]],null,1]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["strawberry-party-hub"],null,[["showInviteModal"],["showInviteModal"]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","   "],["open-element","div",[]],["static-attr","class","strawberry-lobby-root-main-content"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,0],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","footer-container"],["flush-element"],["text","\\n    "],["append",["helper",["v2-footer"],null,[["showingState","inParty","selected"],[["get",["showingState"]],["get",["inParty"]],["get",["selected"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\strawberry-lobby-root-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["inParty"]]],null,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["append",["helper",["strawberry-party-hub"],null,[["showInviteModal"],["showInviteModal"]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["lower-section"],null,[["currentPlayer"],[["get",["lobbiesService","currentPlayer"]]]],0]],"locals":[]},{"statements":[["text","   "],["open-element","div",[]],["static-attr","class","strawberry-lobby-root-main-content"],["flush-element"],["text","\\n"],["block",["if"],[["helper",["riot-future"],null,null]],null,1],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","footer-container"],["flush-element"],["text","\\n    "],["append",["helper",["v2-footer"],null,[["showingState","inParty","selected"],[["get",["showingState"]],["get",["inParty"]],["get",["selected"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },

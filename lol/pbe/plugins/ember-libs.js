@@ -74627,7 +74627,7 @@
                           "parties-purchase-loading",
                         ),
                           this._displayErrorMessageInPurchaseDialog(
-                            "tft_upgrade_purchase_dialog_body_content_upgrade_failed_error",
+                            "tft_upgrade_purchase_dialog_body_content_upgrade_timed_out",
                           );
                       }, 1e4)),
                       this._playSound(s.SFX_STAR_SHARDS_PURCHASE);

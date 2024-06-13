@@ -6914,12 +6914,7 @@
               a.SharedPlayerBehaviorApps.showVerbalAbuseRemedyModal();
           },
           _claimGrant(e) {
-            const t = {
-              grantId: e.info.id,
-              rewardGroupId: e.info.rewardGroupId,
-              selections: e.rewardGroup.rewards.map((e) => e.id),
-            };
-            return this.get("strawberryService").claimGrant(e.info.id, t);
+            return this.get("strawberryService").claimGrant(e);
           },
           grantsToDisplay: null,
           rewardGrantsObserver: a.Ember.on(

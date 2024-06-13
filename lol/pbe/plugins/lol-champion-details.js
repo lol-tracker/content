@@ -10154,6 +10154,11 @@
                 "-",
               );
             }),
+            formatter: o.Ember.computed("locale", function () {
+              return Intl.NumberFormat(this.get("locale")?.toLowerCase(), {
+                numberingSystem: "latn",
+              });
+            }),
             milestoneLevel: o.Ember.computed.alias(
               "masteryData.championSeasonMilestone",
             ),
@@ -10231,18 +10236,16 @@
               "currentPoints",
               "locale",
               function () {
-                const e = this.get("currentPoints") || 0,
-                  t = this.get("locale");
-                return e.toLocaleString(t);
+                const e = this.get("currentPoints") || 0;
+                return this.get("formatter")?.format(e);
               },
             ),
             nextThresholdDisplayText: o.Ember.computed(
               "nextThreshold",
               "locale",
               function () {
-                const e = this.get("nextThreshold") || 0,
-                  t = this.get("locale");
-                return e.toLocaleString(t);
+                const e = this.get("nextThreshold") || 0;
+                return this.get("formatter")?.format(e);
               },
             ),
             marksRequired: o.Ember.computed(

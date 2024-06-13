@@ -14,6 +14,9 @@
     "description": "AR Ultra Rapid Fire",
     "detailedDescription": "",
     "gameMode": "URF",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -78,6 +81,9 @@
     "description": "ARURF 1v1",
     "detailedDescription": "",
     "gameMode": "URF",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -143,6 +149,9 @@
     "description": "Double Up (Workshop)",
     "detailedDescription": "Teamfight Tactics (Double Up Workshop)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -211,6 +220,9 @@
     "description": "Draft Pick",
     "detailedDescription": "Normal (Draft Pick)",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 30,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -282,6 +294,9 @@
     "description": "Fortune's Favor",
     "detailedDescription": "Teamfight Tactics (Fortune's Favor)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -350,6 +365,9 @@
     "description": "Blind Pick",
     "detailedDescription": "",
     "gameMode": "NEXUSBLITZ",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -421,6 +439,9 @@
     "description": "Normal",
     "detailedDescription": "Teamfight Tactics (Normal)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -492,6 +513,9 @@
     "description": "Soul Brawl",
     "detailedDescription": "Teamfight Tactics (Soul Brawl)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -571,6 +595,9 @@
     "description": "Arena",
     "detailedDescription": "Arena",
     "gameMode": "CHERRY",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -636,6 +663,9 @@
     "description": "Ranked Solo/Duo",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 20,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -707,6 +737,9 @@
     "description": "Choncc's Treasure",
     "detailedDescription": "Teamfight Tactics (Choncc's Treasure)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -786,6 +819,9 @@
     "description": "Arena",
     "detailedDescription": "Arena",
     "gameMode": "CHERRY",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -854,6 +890,9 @@
     "description": "Blind Pick",
     "detailedDescription": "Normal (Blind Pick)",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -922,6 +961,9 @@
     "description": "Ranked Flex",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 10,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -1013,6 +1055,9 @@
     "description": "TFT Custom",
     "detailedDescription": "TFT Custom",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1084,6 +1129,9 @@
     "description": "Choncc's Treasure",
     "detailedDescription": "Teamfight Tactics (Choncc's Treasure)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1148,6 +1196,9 @@
     "description": "Clash",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -1212,6 +1263,9 @@
     "description": "Clash",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -1280,6 +1334,9 @@
     "description": "Intro",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1351,6 +1408,9 @@
     "description": "Normal",
     "detailedDescription": "Teamfight Tactics (Normal)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 60,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1442,6 +1502,9 @@
     "description": "TFT Hyper Roll Custom",
     "detailedDescription": "TFT Hyper Roll Custom",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1510,6 +1573,9 @@
     "description": "ARAM",
     "detailedDescription": "",
     "gameMode": "ARAM",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kARAM",
+    "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -1574,6 +1640,9 @@
     "description": "1v0",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1639,6 +1708,9 @@
     "description": "2v0",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1707,6 +1779,9 @@
     "description": "Beginner",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 30,
     "gameTypeConfig": {
       "advancedLearningQuests": true,
       "allowTrades": false,
@@ -1773,6 +1848,9 @@
     "description": "Ranked",
     "detailedDescription": "Teamfight Tactics (Ranked)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 50,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1837,6 +1915,9 @@
     "description": "1v0 (Ranked)",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 30,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1902,6 +1983,9 @@
     "description": "2v0 (Ranked)",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 20,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -1966,6 +2050,9 @@
     "description": "Clash",
     "detailedDescription": "",
     "gameMode": "ARAM",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kARAM",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -2030,6 +2117,9 @@
     "description": "Tutorial Part 1",
     "detailedDescription": "",
     "gameMode": "TUTORIAL_MODULE_1",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2094,6 +2184,9 @@
     "description": "",
     "detailedDescription": "",
     "gameMode": "ARAM",
+    "gameSelectCategory": "",
+    "gameSelectModeGroup": "",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -2162,6 +2255,9 @@
     "description": "Intermediate",
     "detailedDescription": "",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 20,
     "gameTypeConfig": {
       "advancedLearningQuests": true,
       "allowTrades": false,
@@ -2226,6 +2322,9 @@
     "description": "Tutorial",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2290,6 +2389,9 @@
     "description": "Simulation",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2354,6 +2456,9 @@
     "description": "Tutorial Part 2",
     "detailedDescription": "",
     "gameMode": "TUTORIAL_MODULE_2",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2422,6 +2527,9 @@
     "description": "ARAM 5v5 Bots",
     "detailedDescription": "ARAM 5v5 Bots",
     "gameMode": "ARAM",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kARAM",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -2486,6 +2594,9 @@
     "description": "Tutorial Part 3",
     "detailedDescription": "",
     "gameMode": "TUTORIAL_MODULE_3",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2554,6 +2665,9 @@
     "description": "New: Intro",
     "detailedDescription": "New: Intro",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 70,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2625,6 +2739,9 @@
     "description": "Pengu's Party",
     "detailedDescription": "PENGU'S PARTY",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2693,6 +2810,9 @@
     "description": "Quickplay",
     "detailedDescription": "Normal (Quickplay)",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": true,
@@ -2764,6 +2884,9 @@
     "description": "Hyper Roll",
     "detailedDescription": "Teamfight Tactics (Hyper Roll)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2828,6 +2951,9 @@
     "description": "1v0 (Hyper Roll)",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2896,6 +3022,9 @@
     "description": "Ultra Rapid Fire",
     "detailedDescription": "",
     "gameMode": "URF",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -2961,6 +3090,9 @@
     "description": "2v0 (Hyper Roll)",
     "detailedDescription": "",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3029,6 +3161,9 @@
     "description": "New: Beginner",
     "detailedDescription": "New: Beginner",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 60,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3100,6 +3235,9 @@
     "description": "Set 3.5 Revival: Galaxies",
     "detailedDescription": "Teamfight Tactics (Set 3.5 Revival: Galaxies)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3168,6 +3306,9 @@
     "description": "Ultimate Spellbook",
     "detailedDescription": "",
     "gameMode": "ULTBOOK",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3236,6 +3377,9 @@
     "description": "New: Intermediate",
     "detailedDescription": "New: Intermediate",
     "gameMode": "CLASSIC",
+    "gameSelectCategory": "kVersusAI",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectPriority": 50,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3304,6 +3448,9 @@
     "description": "One For All",
     "detailedDescription": "",
     "gameMode": "ONEFORALL",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
@@ -3369,6 +3516,9 @@
     "description": "Double Up (Workshop)",
     "detailedDescription": "Teamfight Tactics (Double Up Workshop)",
     "gameMode": "TFT",
+    "gameSelectCategory": "kPvP",
+    "gameSelectModeGroup": "kTeamfightTactics",
+    "gameSelectPriority": 0,
     "gameTypeConfig": {
       "advancedLearningQuests": false,
       "allowTrades": false,
