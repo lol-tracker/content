@@ -586,17 +586,17 @@
               (a.getRewardTrackerEmberComponents = () => n(441).default),
               (a.getMultiPurchaseSliderEmberComponents = () => n(460).default);
             const b = new (0, n(465).default)();
-            (a.getApi_SharedChallengesConstants = () => n(576).default),
-              (a.getApi_SharedChallengesComponents = () => n(577).default),
+            (a.getApi_SharedChallengesConstants = () => n(579).default),
+              (a.getApi_SharedChallengesComponents = () => n(580).default),
               (a.getApi_SharedChallengesApps = () => b);
-            const A = new (0, n(584).default)();
+            const A = new (0, n(587).default)();
             a.getApi_SharedReportModalApps = () => A;
-            const E = new (0, n(593).default)();
+            const E = new (0, n(596).default)();
             a.getApi_SharedPlayerBehaviorApps = () => E;
-            const y = (0, n(596).default)();
+            const y = (0, n(599).default)();
             (a.getApi_Payments = () => y),
-              (a.getApi_SharedChampionMasteryComponents = () => n(606).default),
-              (a.getApi_SharedChampionMasteryConstants = () => n(627).default);
+              (a.getApi_SharedChampionMasteryComponents = () => n(609).default),
+              (a.getApi_SharedChampionMasteryConstants = () => n(630).default);
           },
           privateApi: s,
           publicApi: a,
@@ -16009,7 +16009,7 @@
           s = n(7)(a);
         s.push([
           e.id,
-          '.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-family: var(--font-display);\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  -webkit-user-select: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  text-transform: uppercase;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ko-kr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ja-jp),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(tr-tr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(el-gr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(th-th),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(zh-tw) {\n  text-transform: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #f0e6d2;\n  font-size: 24px;\n  font-weight: 700;\n  line-height: 28px;\n  letter-spacing: 0.05em;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.lol-eternals-mastery-vignette {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 1280px;\n  height: 510px;\n  justify-content: center;\n}\n.lol-eternals-mastery-vignette .disabled {\n  display: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper {\n  display: flex;\n  width: 420px;\n  justify-content: flex-start;\n  position: absolute;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  left: 430px;\n  top: 176px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .mastery-icon {\n  width: 211px;\n  height: 190px;\n  background-image: url("/fe/lol-shared-components/images/eternals-mastery-emblem.png");\n  background-size: cover;\n  margin-bottom: 28px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #c8aa6e;\n  width: 640px;\n}\n.lol-eternals-mastery-vignette .champ-splash {\n  position: absolute;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\n.lol-eternals-mastery-vignette .champ-splash:after {\n  position: absolute;\n  content: "";\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.8;\n  background-color: #010a13;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks {\n  position: absolute;\n  top: -118px;\n  left: 384px;\n  width: 512px;\n  height: 464px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks.static {\n  background-size: contain;\n  width: 158px;\n  height: 142px;\n  top: 56px;\n  left: 562px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks video {\n  width: 512px;\n}\n',
+          '.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-family: var(--font-display);\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  -webkit-user-select: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  text-transform: uppercase;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ko-kr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ja-jp),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(tr-tr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(el-gr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(th-th),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(zh-tw) {\n  text-transform: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #f0e6d2;\n  font-size: 24px;\n  font-weight: 700;\n  line-height: 28px;\n  letter-spacing: 0.05em;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.lol-eternals-mastery-vignette {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 1280px;\n  height: 510px;\n  justify-content: center;\n}\n.lol-eternals-mastery-vignette .disabled {\n  display: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper {\n  display: flex;\n  width: 360px;\n  justify-content: flex-start;\n  position: absolute;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  left: 460px;\n  top: 156px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .mastery-icon {\n  width: 286px;\n  height: 286px;\n  background: url("/fe/lol-shared-components/images/mastery-crest-lvl-10.svg");\n  background-size: 286px 286px;\n  background-repeat: no-repeat;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #c8aa6e;\n  width: 640px;\n}\n.lol-eternals-mastery-vignette .champ-splash {\n  position: absolute;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\n.lol-eternals-mastery-vignette .champ-splash:after {\n  position: absolute;\n  content: "";\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.8;\n  background-color: #010a13;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks {\n  position: absolute;\n  top: -118px;\n  left: 384px;\n  width: 512px;\n  height: 464px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks.static {\n  background-size: contain;\n  width: 158px;\n  height: 142px;\n  top: 56px;\n  left: 562px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks video {\n  width: 512px;\n}\n',
           "",
           {
             version: 3,
@@ -16018,9 +16018,9 @@
             ],
             names: [],
             mappings:
-              "AAAA;EACE,gCAAgC;AAClC;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,oBAAoB;EACpB,uCAAuC;EACvC,mCAAmC;AACrC;AACA;EACE,yBAAyB;AAC3B;AACA;;;;;;EAME,oBAAoB;AACtB;AACA;EACE,cAAc;EACd,eAAe;EACf,gBAAgB;EAChB,iBAAiB;EACjB,sBAAsB;AACxB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,sBAAsB;EACtB,aAAa;EACb,aAAa;EACb,uBAAuB;AACzB;AACA;EACE,aAAa;AACf;AACA;EACE,aAAa;EACb,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,sBAAsB;EACtB,mBAAmB;EACnB,kBAAkB;EAClB,WAAW;EACX,UAAU;AACZ;AACA;EACE,YAAY;EACZ,aAAa;EACb,qFAAqF;EACrF,sBAAsB;EACtB,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,YAAY;AACd;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,WAAW;EACX,YAAY;EACZ,sBAAsB;AACxB;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,YAAY;EACZ,yBAAyB;AAC3B;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,WAAW;EACX,YAAY;EACZ,aAAa;AACf;AACA;EACE,wBAAwB;EACxB,YAAY;EACZ,aAAa;EACb,SAAS;EACT,WAAW;AACb;AACA;EACE,YAAY;AACd",
+              "AAAA;EACE,gCAAgC;AAClC;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,oBAAoB;EACpB,uCAAuC;EACvC,mCAAmC;AACrC;AACA;EACE,yBAAyB;AAC3B;AACA;;;;;;EAME,oBAAoB;AACtB;AACA;EACE,cAAc;EACd,eAAe;EACf,gBAAgB;EAChB,iBAAiB;EACjB,sBAAsB;AACxB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,sBAAsB;EACtB,aAAa;EACb,aAAa;EACb,uBAAuB;AACzB;AACA;EACE,aAAa;AACf;AACA;EACE,aAAa;EACb,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;EAClB,sBAAsB;EACtB,mBAAmB;EACnB,kBAAkB;EAClB,WAAW;EACX,UAAU;AACZ;AACA;EACE,YAAY;EACZ,aAAa;EACb,4EAA4E;EAC5E,4BAA4B;EAC5B,4BAA4B;AAC9B;AACA;EACE,cAAc;EACd,YAAY;AACd;AACA;EACE,kBAAkB;EAClB,MAAM;EACN,WAAW;EACX,YAAY;EACZ,sBAAsB;AACxB;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EACZ,YAAY;EACZ,yBAAyB;AAC3B;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,WAAW;EACX,YAAY;EACZ,aAAa;AACf;AACA;EACE,wBAAwB;EACxB,YAAY;EACZ,aAAa;EACb,SAAS;EACT,WAAW;AACb;AACA;EACE,YAAY;AACd",
             sourcesContent: [
-              '.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-family: var(--font-display);\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  -webkit-user-select: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  text-transform: uppercase;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ko-kr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ja-jp),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(tr-tr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(el-gr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(th-th),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(zh-tw) {\n  text-transform: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #f0e6d2;\n  font-size: 24px;\n  font-weight: 700;\n  line-height: 28px;\n  letter-spacing: 0.05em;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.lol-eternals-mastery-vignette {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 1280px;\n  height: 510px;\n  justify-content: center;\n}\n.lol-eternals-mastery-vignette .disabled {\n  display: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper {\n  display: flex;\n  width: 420px;\n  justify-content: flex-start;\n  position: absolute;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  left: 430px;\n  top: 176px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .mastery-icon {\n  width: 211px;\n  height: 190px;\n  background-image: url("/fe/lol-shared-components/images/eternals-mastery-emblem.png");\n  background-size: cover;\n  margin-bottom: 28px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #c8aa6e;\n  width: 640px;\n}\n.lol-eternals-mastery-vignette .champ-splash {\n  position: absolute;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\n.lol-eternals-mastery-vignette .champ-splash:after {\n  position: absolute;\n  content: "";\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.8;\n  background-color: #010a13;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks {\n  position: absolute;\n  top: -118px;\n  left: 384px;\n  width: 512px;\n  height: 464px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks.static {\n  background-size: contain;\n  width: 158px;\n  height: 142px;\n  top: 56px;\n  left: 562px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks video {\n  width: 512px;\n}\n',
+              '.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-family: var(--font-display);\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  -webkit-user-select: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  font-kerning: normal;\n  -webkit-font-feature-settings: "kern" 1;\n  -webkit-font-smoothing: antialiased;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  text-transform: uppercase;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ko-kr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ja-jp),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(tr-tr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(el-gr),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(th-th),\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(zh-tw) {\n  text-transform: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #f0e6d2;\n  font-size: 24px;\n  font-weight: 700;\n  line-height: 28px;\n  letter-spacing: 0.05em;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text:lang(ar-ae) {\n  letter-spacing: 0;\n}\n.lol-eternals-mastery-vignette {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 1280px;\n  height: 510px;\n  justify-content: center;\n}\n.lol-eternals-mastery-vignette .disabled {\n  display: none;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper {\n  display: flex;\n  width: 360px;\n  justify-content: flex-start;\n  position: absolute;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  left: 460px;\n  top: 156px;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .mastery-icon {\n  width: 286px;\n  height: 286px;\n  background: url("/fe/lol-shared-components/images/mastery-crest-lvl-10.svg");\n  background-size: 286px 286px;\n  background-repeat: no-repeat;\n}\n.lol-eternals-mastery-vignette .mastery-wrapper .flair-added-text {\n  color: #c8aa6e;\n  width: 640px;\n}\n.lol-eternals-mastery-vignette .champ-splash {\n  position: absolute;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\n.lol-eternals-mastery-vignette .champ-splash:after {\n  position: absolute;\n  content: "";\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0.8;\n  background-color: #010a13;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks {\n  position: absolute;\n  top: -118px;\n  left: 384px;\n  width: 512px;\n  height: 464px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks.static {\n  background-size: contain;\n  width: 158px;\n  height: 142px;\n  top: 56px;\n  left: 562px;\n}\n.lol-eternals-mastery-vignette .mastery-set-ticks video {\n  width: 512px;\n}\n',
             ],
             sourceRoot: "",
           },
@@ -24061,8 +24061,9 @@
                 CollectionGridCapstoneComponent: n(561),
                 CollectionGridRowCapstoneComponent: n(564),
                 CollectionGridRowGroupComponent: n(567),
-                CollectionGridRowCapstoneTokenComponent: n(570),
-                CollectionIntroModalComponent: n(573),
+                CollectionGridRowGroupNoCapstoneComponent: n(570),
+                CollectionGridRowCapstoneTokenComponent: n(573),
+                CollectionIntroModalComponent: n(576),
                 ChallengeCardHeaderComponent: l.default,
                 ChallengeCardComponent: o.default,
                 ChallengeItemFooterComponent: c.default,
@@ -27441,7 +27442,7 @@
                   (i.isRetired = s(i));
             });
           }),
-          (t.calculateRetiredStatus = s),
+          (t.calculateIsRetired = s),
           (t.getChallengeIcon = function (e) {
             if (!e || !e.currentLevel) return "";
             const t = e.currentLevel,
@@ -30231,7 +30232,7 @@
           },
           _calculateCapstoneGroupTitle(e, t) {
             const n = e.category === i.CHALLENGE_CATEGORIES.LEGACY,
-              a = (0, o.calculateRetiredStatus)(e),
+              a = (0, o.calculateIsRetired)(e),
               s = n
                 ? this.get("tra.challenge_group_title_legacy")
                 : this.get("tra.challenge_group_title_none"),
@@ -30243,7 +30244,7 @@
               : r;
           },
           _calculateCapstoneGroupSubtext(e, t) {
-            const n = (0, o.calculateRetiredStatus)(e),
+            const n = (0, o.calculateIsRetired)(e),
               a =
                 e.retireTimestamp - i.CHALLENGES_RETIRE_DISPLAY_THRESHOLD_MS <
                 Date.now();
@@ -30290,9 +30291,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "EjgTVtdB",
+          id: "Ui7OPiV8",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-shared-components\\\\src\\\\lib\\\\challenges\\\\addon\\\\templates\\\\components\\\\collection\\\\collection-grid-standard.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["hasChallenges"]]],null,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["challenge-item"],null,[["challengeData","apexLadderUpdateTime","animationsEnabled"],[["get",["entry"]],["get",["summary","apexLadderUpdateTime"]],["get",["animationsEnabled"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","class","challenge-group-description-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","challenge-group-description-tooltip-wrapper"],["flush-element"],["text","\\n                    "],["open-element","h5",[]],["static-attr","class","challenge-group-description-tooltip-title"],["flush-element"],["append",["unknown",["entry","description","tooltipTitle"]],false],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","challenge-group-description-tooltip-text"],["flush-element"],["append",["unknown",["entry","description","tooltipText"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","challenge-group-description"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenge-group-description-icon ",["unknown",["entry","description","icon"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","challenge-group-description-text"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1],["text","              "],["append",["unknown",["entry","description","text"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","challenge-group-title-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title"],["flush-element"],["append",["unknown",["entry","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["entry","description"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isTitle"]]],null,3,0]],"locals":["entry","index"]},{"statements":[["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable challenges-scroll-container",["get",["sortedChallenges"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],4]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-shared-components\\\\src\\\\lib\\\\challenges\\\\addon\\\\templates\\\\components\\\\collection\\\\collection-grid-layout-standard.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["hasChallenges"]]],null,5]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["challenge-item"],null,[["challengeData","apexLadderUpdateTime","animationsEnabled"],[["get",["entry"]],["get",["summary","apexLadderUpdateTime"]],["get",["animationsEnabled"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","                "],["open-element","lol-uikit-content-block",[]],["static-attr","class","challenge-group-description-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","challenge-group-description-tooltip-wrapper"],["flush-element"],["text","\\n                    "],["open-element","h5",[]],["static-attr","class","challenge-group-description-tooltip-title"],["flush-element"],["append",["unknown",["entry","description","tooltipTitle"]],false],["close-element"],["text","\\n                    "],["open-element","p",[]],["static-attr","class","challenge-group-description-tooltip-text"],["flush-element"],["append",["unknown",["entry","description","tooltipText"]],false],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","challenge-group-description"],["flush-element"],["text","\\n            "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenge-group-description-icon ",["unknown",["entry","description","icon"]]]]],["flush-element"],["close-element"],["text","\\n            "],["open-element","div",[]],["static-attr","class","challenge-group-description-text"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1],["text","              "],["append",["unknown",["entry","description","text"]],false],["text","\\n            "],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","challenge-group-title-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title"],["flush-element"],["append",["unknown",["entry","name"]],false],["close-element"],["text","\\n"],["block",["if"],[["get",["entry","description"]]],null,2],["text","      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isTitle"]]],null,3,0]],"locals":["entry","index"]},{"statements":[["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable challenges-scroll-container",["get",["sortedChallenges"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],4]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -30302,6 +30303,7 @@
         n(562);
         var s = n(525),
           i = n(508);
+        const r = 777;
         e.exports = a.Ember.Component.extend({
           layout: n(563),
           classNames: ["challenges-collection-grid-capstone-component"],
@@ -30313,14 +30315,31 @@
           sortedChallenges: a.Ember.computed("challenges", function () {
             const e = Object.values(this.get("challenges") || {});
             (0, s.sortChallenges)(e, this.get("selectedSortOption"));
-            const t = [];
+            const t = [],
+              n = new Set();
+            e.forEach((e) => {
+              e.childrenIds &&
+                e.childrenIds.length &&
+                ((0, i.hasCapstoneChildren)(e)
+                  ? (e.isCapstoneView = !0)
+                  : e.childrenIds.forEach((e) => {
+                      n.add(e);
+                    }),
+                t.push(e));
+            });
+            const a = [];
             return (
               e.forEach((e) => {
-                e.childrenIds &&
-                  e.childrenIds.length &&
-                  ((0, i.hasCapstoneChildren)(e) && (e.isCapstoneView = !0),
-                  t.push(e));
+                !e.isRetired ||
+                  n.has(e.id) ||
+                  (e.childrenIds && e.childrenIds.length) ||
+                  a.push(e.id);
               }),
+              a.length > 0 &&
+                t.push({
+                  isOrphanedRetiredChallenges: !0,
+                  orphanedRetiredChallenges: a,
+                }),
               this._insertTitleEntries(t),
               this._calculateHeights(t),
               t
@@ -30340,16 +30359,26 @@
             let t = 0;
             e.forEach((e) => {
               e.isTitle
-                ? (e.itemSize = { width: 777, height: 40 })
+                ? (e.itemSize = { width: r, height: 40 })
                 : e.isCapstoneView
-                  ? (e.itemSize = { width: 777, height: 176 })
-                  : (e.itemSize = {
-                      width: 777,
-                      height: this._calculateGroupHeight(e),
-                    }),
+                  ? (e.itemSize = { width: r, height: 176 })
+                  : e.isOrphanedRetiredChallenges
+                    ? (e.itemSize = {
+                        width: r,
+                        height: this._calculateOrphanedRetiredGroupHeight(e),
+                      })
+                    : (e.itemSize = {
+                        width: r,
+                        height: this._calculateGroupHeight(e),
+                      }),
                 (e.scrollPos = t),
                 (t += e.itemSize.height);
             });
+          },
+          _calculateOrphanedRetiredGroupHeight(e) {
+            let t = 20;
+            const n = e.orphanedRetiredChallenges || [];
+            return (t += 223 * Math.ceil(n.length / 4)), t;
           },
           _calculateGroupHeight(e) {
             let t = 174;
@@ -30386,6 +30415,22 @@
                 ),
                 icon: "medal",
               });
+            const a = e.findIndex(
+              (e) =>
+                !e.isTitle && (e.isRetired || e.isOrphanedRetiredChallenges),
+            );
+            a >= 0 &&
+              e.splice(a, 0, {
+                isTitle: !0,
+                title: this.get("tra.challenge_group_title_retired_groups"),
+                name: this.get(
+                  "tra.challenge_group_title_retired_groups_tooltip_name",
+                ),
+                description: this.get(
+                  "tra.challenge_group_title_retired_groups_tooltip_description",
+                ),
+                icon: "lock",
+              });
           },
           _navigateToElement(e) {
             a.Ember.run.scheduleOnce("afterRender", this, () => {
@@ -30415,9 +30460,9 @@
       (e, t, n) => {
         const a = n(1).Ember;
         e.exports = a.HTMLBars.template({
-          id: "9xq7lH/L",
+          id: "uBGNWjMn",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-shared-components\\\\src\\\\lib\\\\challenges\\\\addon\\\\templates\\\\components\\\\collection\\\\collection-grid-capstone.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["hasChallenges"]]],null,6]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["collection-grid-row-group"],null,[["challenges","challenge","summary","puuid","animationsEnabled"],[["get",["challenges"]],["get",["entry"]],["get",["summary"]],["get",["puuid"]],["get",["animationsEnabled"]]]]],false],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["append",["helper",["collection-grid-row-capstone"],null,[["challenges","challenge","summary","puuid","animationsEnabled","onTokenClick"],[["get",["challenges"]],["get",["entry"]],["get",["summary"]],["get",["puuid"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"onTokenClick"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isCapstoneView"]]],null,1,0]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","capstone-row-title-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-name"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","challenges-icon-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenges-icon ",["unknown",["entry","icon"]]]]],["flush-element"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["flush-element"],["append",["unknown",["entry","name"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-description"],["flush-element"],["append",["unknown",["entry","description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","challenge-group-title-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title-icon-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenges-icon ",["unknown",["entry","icon"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title"],["flush-element"],["text","\\n          "],["append",["unknown",["entry","title"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],3],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title-horizontal-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isTitle"]]],null,4,2]],"locals":["entry","index"]},{"statements":[["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable challenges-scroll-container",["get",["sortedChallenges"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],5]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-shared-components\\\\src\\\\lib\\\\challenges\\\\addon\\\\templates\\\\components\\\\collection\\\\collection-grid-layout-capstone.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["hasChallenges"]]],null,8]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["collection-grid-row-group"],null,[["challenges","challenge","summary","puuid","animationsEnabled"],[["get",["challenges"]],["get",["entry"]],["get",["summary"]],["get",["puuid"]],["get",["animationsEnabled"]]]]],false],["text","\\n    "]],"locals":[]},{"statements":[["text","      "],["append",["helper",["collection-grid-row-group-no-capstone"],null,[["challenges","challengesIdList","summary","puuid","animationsEnabled"],[["get",["challenges"]],["get",["entry","orphanedRetiredChallenges"]],["get",["summary"]],["get",["puuid"]],["get",["animationsEnabled"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isOrphanedRetiredChallenges"]]],null,1,0]],"locals":[]},{"statements":[["text","      "],["append",["helper",["collection-grid-row-capstone"],null,[["challenges","challenge","summary","puuid","animationsEnabled","onTokenClick"],[["get",["challenges"]],["get",["entry"]],["get",["summary"]],["get",["puuid"]],["get",["animationsEnabled"]],["helper",["action"],[["get",[null]],"onTokenClick"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isCapstoneView"]]],null,3,2]],"locals":[]},{"statements":[["text","            "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["static-attr","class","capstone-row-title-tooltip"],["flush-element"],["text","\\n              "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-container"],["flush-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-name"],["flush-element"],["text","\\n                  "],["open-element","div",[]],["static-attr","class","challenges-icon-container"],["flush-element"],["text","\\n                    "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenges-icon ",["unknown",["entry","icon"]]]]],["flush-element"],["close-element"],["text","\\n                  "],["close-element"],["text","\\n                  "],["open-element","div",[]],["flush-element"],["append",["unknown",["entry","name"]],false],["close-element"],["text","\\n                "],["close-element"],["text","\\n                "],["open-element","div",[]],["static-attr","class","capstone-row-title-tooltip-description"],["flush-element"],["append",["unknown",["entry","description"]],false],["close-element"],["text","\\n              "],["close-element"],["text","\\n            "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","challenge-group-title-container"],["flush-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title-icon-container"],["flush-element"],["text","\\n          "],["open-element","div",[]],["dynamic-attr","class",["concat",["challenges-icon ",["unknown",["entry","icon"]]]]],["flush-element"],["close-element"],["text","\\n        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title"],["flush-element"],["text","\\n          "],["append",["unknown",["entry","title"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["bottom","system"]],5],["text","        "],["close-element"],["text","\\n        "],["open-element","div",[]],["static-attr","class","challenge-group-title-horizontal-line"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["entry","isTitle"]]],null,6,4]],"locals":["entry","index"]},{"statements":[["block",["ember-collection"],null,[["class","items","cell-layout"],["item-grid-scrollable challenges-scroll-container",["get",["sortedChallenges"]],["helper",["mixed-grid-layout"],[["get",["itemSizes"]]],null]]],7]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -30627,10 +30672,53 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(571);
+        n(571),
+          (e.exports = a.Ember.Component.extend({
+            layout: n(572),
+            classNames: [
+              "challenges-collection-grid-row-group-no-capstone-component",
+            ],
+            challenges: {},
+            challengesIdList: [],
+            summary: {},
+            puuid: null,
+            challengesList: a.Ember.computed(
+              "challengesIdList.[]",
+              "challenges",
+              function () {
+                const e = this.get("challenges"),
+                  t = [];
+                return (
+                  (this.get("challengesIdList") || []).forEach((n) => {
+                    const a = e[n];
+                    a && t.push({ challenge: a });
+                  }),
+                  t
+                );
+              },
+            ),
+          }));
+      },
+      (e, t, n) => {
+        "use strict";
+        n.r(t);
+      },
+      (e, t, n) => {
+        const a = n(1).Ember;
+        e.exports = a.HTMLBars.template({
+          id: "4Zp/RziE",
+          block:
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-shared-components\\\\src\\\\lib\\\\challenges\\\\addon\\\\templates\\\\components\\\\collection\\\\collection-grid-row-group-no-capstone.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","collection-grid-row-wrapper"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","collection-grid-row-group-background"],["flush-element"],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","collection-grid-individual-challenges"],["flush-element"],["text","\\n"],["block",["each"],[["get",["challengesList"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","div",[]],["static-attr","class","collection-grid-group-card"],["flush-element"],["text","\\n        "],["append",["helper",["challenge-item"],null,[["challengeData","apexLadderUpdateTime","animationsEnabled"],[["get",["entry","challenge"]],["get",["summary","apexLadderUpdateTime"]],["get",["animationsEnabled"]]]]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":["entry"]}],"hasPartials":false}',
+          meta: {},
+        });
+      },
+      (e, t, n) => {
+        "use strict";
+        var a = n(1);
+        n(574);
         var s = n(508);
         e.exports = a.Ember.Component.extend({
-          layout: n(572),
+          layout: n(575),
           classNames: [
             "challenges-collection-grid-row-capstone-token-component",
           ],
@@ -30723,12 +30811,12 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(574);
+        n(577);
         const s = "/v2/account/LCUPreferences/lol-challenges",
           i = "/v1/namespaces/Challenges/FeatureIntroEnabled",
           r = "introCollectionModalShown";
         e.exports = a.Ember.Component.extend({
-          layout: n(575),
+          layout: n(578),
           classNames: ["challenges-collection-intro-modal-component"],
           showIntroModal: !1,
           introEnabledState: !1,
@@ -30834,8 +30922,8 @@
           c = E(n(487)),
           d = E(n(493)),
           u = E(n(490)),
-          m = E(n(578)),
-          p = E(n(581)),
+          m = E(n(581)),
+          p = E(n(584)),
           h = E(n(496)),
           g = E(n(497)),
           f = E(n(500)),
@@ -30872,8 +30960,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          i = (a = n(579)) && a.__esModule ? a : { default: a };
-        n(580);
+          i = (a = n(582)) && a.__esModule ? a : { default: a };
+        n(583);
         var r = s.Ember.Component.extend({
           layout: i.default,
           classNames: ["eternals-item-tooltip-component"],
@@ -30928,8 +31016,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          i = (a = n(582)) && a.__esModule ? a : { default: a };
-        n(583);
+          i = (a = n(585)) && a.__esModule ? a : { default: a };
+        n(586);
         var r = s.Ember.Component.extend({
           layout: i.default,
           classNames: ["eternals-item-component"],
@@ -31063,7 +31151,7 @@
           (t.default = void 0);
         t.default = class {
           constructor() {
-            this._privateApi = n(585).default;
+            this._privateApi = n(588).default;
           }
           showReportModal(e, t, n, a) {
             this._privateApi.showReportModal(e, t, n, a);
@@ -31076,9 +31164,9 @@
           (t.default = void 0);
         var a = n(1),
           s = o(n(400)),
-          i = o(n(586)),
-          r = o(n(589)),
-          l = o(n(592));
+          i = o(n(589)),
+          r = o(n(592)),
+          l = o(n(595));
         function o(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -31155,8 +31243,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          i = (a = n(587)) && a.__esModule ? a : { default: a };
-        n(588);
+          i = (a = n(590)) && a.__esModule ? a : { default: a };
+        n(591);
         var r = s.Ember.Component.extend({
           layout: i.default,
           classNames: ["report-header"],
@@ -31185,8 +31273,8 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          i = (a = n(590)) && a.__esModule ? a : { default: a };
-        n(591);
+          i = (a = n(593)) && a.__esModule ? a : { default: a };
+        n(594);
         var r = s.Ember.Component.extend({
           layout: i.default,
           classNames: ["report-category"],
@@ -31292,7 +31380,7 @@
           (t.default = void 0);
         t.default = class {
           constructor() {
-            this._privateApi = n(594).default;
+            this._privateApi = n(597).default;
           }
           showVerbalAbuseRemedyModal() {
             this._privateApi.showVerbalAbuseRemedyModal();
@@ -31305,7 +31393,7 @@
           (t.default = void 0);
         var a,
           s = n(1),
-          i = (a = n(595)) && a.__esModule ? a : { default: a };
+          i = (a = n(598)) && a.__esModule ? a : { default: a };
         const r = "VerbalAbuseRemedyModal";
         var l = new (class {
           constructor() {
@@ -31456,10 +31544,10 @@
             return new s.default(t, e);
           });
         var a = n(1);
-        n(597);
-        var s = l(n(598)),
-          i = l(n(599)),
-          r = l(n(605));
+        n(600);
+        var s = l(n(601)),
+          i = l(n(602)),
+          r = l(n(608));
         function l(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -31505,11 +31593,11 @@
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
         var a = n(1),
-          s = c(n(600)),
-          i = c(n(601)),
-          r = c(n(602)),
-          l = n(603),
-          o = c(n(604));
+          s = c(n(603)),
+          i = c(n(604)),
+          r = c(n(605)),
+          l = n(606),
+          o = c(n(607));
         function c(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -32166,11 +32254,11 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = o(n(607)),
-          s = o(n(622)),
-          i = o(n(625)),
-          r = o(n(629)),
-          l = o(n(632));
+        var a = o(n(610)),
+          s = o(n(625)),
+          i = o(n(628)),
+          r = o(n(632)),
+          l = o(n(635));
         function o(e) {
           return e && e.__esModule ? e : { default: e };
         }
@@ -32186,11 +32274,11 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(608);
-        var s = n(609);
+        n(611);
+        var s = n(612);
         e.exports = a.Ember.Component.extend({
           classNames: ["mastery-grade-display"],
-          layout: n(621),
+          layout: n(624),
           milestoneProgressMap: {},
           gradeDisplaySize: s.GRADE_BOX_SIZE.LARGE,
           isGradeListCentered: !1,
@@ -32331,19 +32419,19 @@
         };
         t.MASTERY_REWARD_TYPES = c;
         const d = {
-          [c.HEXTECH_CHEST]: n(610),
-          [c.MARK]: n(611),
-          [c.AURORA]: n(612),
-          [c.MASTERY_LEVEL]: n(613),
-          [c.TITLE]: n(614),
+          [c.HEXTECH_CHEST]: n(613),
+          [c.MARK]: n(614),
+          [c.AURORA]: n(615),
+          [c.MASTERY_LEVEL]: n(616),
+          [c.TITLE]: n(617),
         };
         t.REWARD_TO_ASSET_PATH = d;
         const u = {
-          [c.HEXTECH_CHEST]: n(615),
-          [c.MARK]: n(616),
-          [c.AURORA]: n(612),
-          [c.MASTERY_LEVEL]: n(613),
-          [c.TITLE]: n(614),
+          [c.HEXTECH_CHEST]: n(618),
+          [c.MARK]: n(619),
+          [c.AURORA]: n(615),
+          [c.MASTERY_LEVEL]: n(616),
+          [c.TITLE]: n(617),
         };
         t.TOOLTIP_REWARD_TO_ASSET_PATH = u;
         const m = 3,
@@ -32400,7 +32488,7 @@
             9: 2,
             10: 3,
           },
-          b = { 0: n(617), 1: n(618), 2: n(619), 3: n(620) };
+          b = { 0: n(620), 1: n(621), 2: n(622), 3: n(623) };
       },
       (e, t, n) => {
         "use strict";
@@ -32458,11 +32546,11 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(623);
-        var s = n(609);
+        n(626);
+        var s = n(612);
         e.exports = a.Ember.Component.extend({
           classNames: ["mastery-tooltip-component"],
-          layout: n(624),
+          layout: n(627),
           championMasteryUpdateNotification: {},
           customRewards: [],
           hideTitle: !1,
@@ -32492,6 +32580,11 @@
               "_",
               "-",
             );
+          }),
+          formatter: a.Ember.computed("locale", function () {
+            return Intl.NumberFormat(this.get("locale")?.toLowerCase(), {
+              numberingSystem: "latn",
+            });
           }),
           masteryLevelTxt: a.Ember.computed(
             "championMasteryUpdateNotification",
@@ -32529,18 +32622,16 @@
             "currentLevelPoints",
             "locale",
             function () {
-              const e = this.get("currentLevelPoints") || 0,
-                t = this.get("locale");
-              return e.toLocaleString(t);
+              const e = this.get("currentLevelPoints") || 0;
+              return this.get("formatter")?.format(e);
             },
           ),
           nextThresholdDisplay: a.Ember.computed(
             "nextLevelPoints",
             "locale",
             function () {
-              const e = this.get("nextLevelPoints") || 0,
-                t = this.get("locale");
-              return e.toLocaleString(t);
+              const e = this.get("nextLevelPoints") || 0;
+              return this.get("formatter")?.format(e);
             },
           ),
           progressBarCssWidth: a.Ember.computed(
@@ -32636,13 +32727,13 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(626);
+        n(629);
         var s,
-          i = n(609),
-          r = (s = n(627)) && s.__esModule ? s : { default: s };
+          i = n(612),
+          r = (s = n(630)) && s.__esModule ? s : { default: s };
         e.exports = a.Ember.Component.extend({
           classNames: ["milestone-tooltip-component"],
-          layout: n(628),
+          layout: n(631),
           masteryRewardData: {},
           milestoneProgressMap: {},
           seasonMilestone: 0,
@@ -32825,7 +32916,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.default = void 0);
-        var a = n(609),
+        var a = n(612),
           s = {
             NUMBER_TO_ROMAN_NUMERAL: a.NUMBER_TO_ROMAN_NUMERAL,
             MINIMUM_MASTERY_LEVEL: a.MINIMUM_MASTERY_LEVEL,
@@ -32856,11 +32947,11 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(630);
-        var s = n(609);
+        n(633);
+        var s = n(612);
         e.exports = a.Ember.Component.extend({
           classNames: ["mastery-crest-component"],
-          layout: n(631),
+          layout: n(634),
           masteryLevel: 0,
           isAuroraEnabled: !1,
           isLevelPlateEnabled: !1,
@@ -32925,15 +33016,15 @@
       (e, t, n) => {
         "use strict";
         var a = n(1);
-        n(633);
+        n(636);
         var s,
-          i = n(609),
-          r = (s = n(634)) && s.__esModule ? s : { default: s };
+          i = n(612),
+          r = (s = n(637)) && s.__esModule ? s : { default: s };
         const l = "/fe/lol-static-assets/videos/champion-mastery",
           o = { 2: 2, 3: 2, 4: 2, 5: 2, 6: 2.5, 7: 3, 8: 3.5, 9: 4, 10: 4.5 };
         e.exports = a.Ember.Component.extend({
           classNames: ["lcm-celebration-vignette-component"],
-          layout: n(635),
+          layout: n(638),
           animationsEnabled: !0,
           animationStarted: !1,
           audioObject: null,

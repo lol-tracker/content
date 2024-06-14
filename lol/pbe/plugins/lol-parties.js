@@ -1212,7 +1212,9 @@
                 const l = i.id,
                   m = i.gameSelectCategory || s.CATEGORY_NAMES.PVP,
                   { mapId: u } = i,
-                  d = i.gameSelectModeGroup || s.MODE_GROUP_NAMES.RGM,
+                  d =
+                    i.gameSelectModeGroup ||
+                    s.MODE_GROUP_NAMES.AlternativeLeagueModes,
                   { gameMode: p } = i,
                   { assetMutator: h } = i,
                   { isVisible: g } = i;
@@ -1228,28 +1230,31 @@
                   t[m][d].queues.push(l);
                 const b = r ? g : -1 !== a.indexOf(l),
                   f = i.queueAvailability === s.QUEUE_AVAILABILITY.enabled;
-                if (b && f) {
-                  const e = this.getMapModeInfo(u, p);
-                  !c && e && e.isRGM && (c = !0),
-                    (n[m] = n[m] ? n[m] : {}),
-                    n[m][d] ||
-                      (n[m][d] = {
-                        mapId: u,
-                        gameMode: p,
-                        gameSelectModeGroup: d,
-                        assetMutator: h,
-                        queues: [],
-                      }),
-                    n[m][d].queues.push(l),
-                    o.push(l);
-                }
-                (i.available = f), (e[l] = i);
+                b &&
+                  f &&
+                  (c ||
+                    d !== s.MODE_GROUP_NAMES.AlternativeLeagueModes ||
+                    (c = !0),
+                  (n[m] = n[m] ? n[m] : {}),
+                  n[m][d] ||
+                    (n[m][d] = {
+                      mapId: u,
+                      gameMode: p,
+                      gameSelectModeGroup: d,
+                      assetMutator: h,
+                      queues: [],
+                    }),
+                  n[m][d].queues.push(l),
+                  o.push(l)),
+                  (i.available = f),
+                  (e[l] = i);
               }),
                 this.get("disabledRgmButtonEnabled") &&
                   !c &&
                   n[s.CATEGORY_NAMES.PVP] &&
-                  (n[s.CATEGORY_NAMES.PVP][s.MODE_GROUP_NAMES.RGM] =
-                    s.DISABLED_RGM_GAME_TYPE),
+                  (n[s.CATEGORY_NAMES.PVP][
+                    s.MODE_GROUP_NAMES.AlternativeLeagueModes
+                  ] = s.DISABLED_RGM_GAME_TYPE),
                 this.set("queuesById", e),
                 this.set("queuesByCategory", t),
                 this.set("availableQueues", n),
@@ -1424,7 +1429,7 @@
         const i = {
           SR: "kSummonersRift",
           ARAM: "kARAM",
-          RGM: "kAlternativeLeagueGameModes",
+          AlternativeLeagueModes: "kAlternativeLeagueGameModes",
           TFT: "kTeamfightTactics",
         };
         t.MODE_GROUP_NAMES = i;
@@ -1465,7 +1470,7 @@
           mapId: 11,
           gameMode: "LCURGMDISABLED",
           gameSelectCategory: n.PVP,
-          gameSelectModeGroup: i.RGM,
+          gameSelectModeGroup: i.AlternativeLeagueModes,
           requiresCustomGameSubCategory: !1,
           queues: [],
         };
@@ -1924,7 +1929,8 @@
                     this.set("gameMode", e.gameMode),
                     this.set(
                       "gameSelectModeGroup",
-                      e.gameSelectModeGroup || s.MODE_GROUP_NAMES.RGM,
+                      e.gameSelectModeGroup ||
+                        s.MODE_GROUP_NAMES.AlternativeLeagueModes,
                     ),
                     this.set("assetMutator", e.assetMutator));
               }
@@ -3394,8 +3400,8 @@
             H = n(76),
             z = n(78),
             V = n(81),
-            Y = n(82),
-            W = n(83).default,
+            W = n(82),
+            Y = n(83).default,
             K = n(84),
             $ = n(85),
             X = n(86).default;
@@ -3534,8 +3540,8 @@
             InvitesService: H,
             EternalsService: O,
             TftCosmeticsService: V,
-            TftEventsService: Y,
-            TftNpeService: W,
+            TftEventsService: W,
+            TftNpeService: Y,
             SocialLeaderboardService: K,
             ChallengesService: $,
             RiotclientService: w,
@@ -13249,19 +13255,66 @@
               );
             },
           ),
+          isTFT: i.Ember.computed.equal(
+            "gameSelectModeGroup",
+            a.MODE_GROUP_NAMES.TFT,
+          ),
+          getGameDataModeNameFromQueue(e) {
+            const { mapId: t, gameMode: n, assetMutator: i } = e;
+            return this.getGameDataModeName(t, n, i);
+          },
+          getGameDataModeName(e, t, n) {
+            const i = this.get("assets").getMap(e, t, n);
+            return i && i.gameModeName ? i.gameModeName : "";
+          },
+          uniqueGameModeQueues: i.Ember.computed(
+            "queues",
+            "gameTypeQueues",
+            function () {
+              return this.get("gameTypeQueues")
+                .map((e) => this.getQueueById(e))
+                .reduce(
+                  (e, t) => (
+                    e.find((e) => e.gameMode === t.gameMode) || e.push(t), e
+                  ),
+                  [],
+                );
+            },
+          ),
+          alternativeModesGameTypeName: i.Ember.computed(
+            "uniqueGameModeQueues.[]",
+            function () {
+              const e = this.get("uniqueGameModeQueues") || [];
+              if (1 === e.length) {
+                const t = this.getGameDataModeNameFromQueue(e[0]);
+                if (t) return t;
+              } else if (2 === e.length) {
+                const t = this.getGameDataModeNameFromQueue(e[0]),
+                  n = this.getGameDataModeNameFromQueue(e[1]);
+                if (t && n)
+                  return this.get("tra").formatString(
+                    "game_select_category_description_kpvp_alternative_league_game_modes_2",
+                    { gameMode1: t, gameMode2: n },
+                  );
+              }
+              return this.get(
+                "tra.game_select_category_description_kpvp_alternative_league_game_modes",
+              );
+            },
+          ),
           gameTypeName: i.Ember.computed(
             "selectedCategory",
             "queueDataToDisplay.mapId",
             "queueDataToDisplay.gameMode",
             "queueDataToDisplay.assetMutator",
-            "isRGM",
+            "gameTypeQueues",
+            "isAlternativeLeagueMode",
+            "alternativeModesGameTypeName",
             "tra.ready",
             "tra.game_select_game_type_name_11_CLASSIC",
             function () {
-              if (this.get("isRGM"))
-                return this.get(
-                  "tra.game_select_category_description_kpvp_alternative_league_game_modes",
-                );
+              if (this.get("isAlternativeLeagueMode"))
+                return this.get("alternativeModesGameTypeName");
               const e = this.get("selectedCategory"),
                 {
                   mapId: t,
@@ -13269,11 +13322,11 @@
                   assetMutator: i,
                 } = this.get("queueDataToDisplay");
               let s;
-              if (e === a.CATEGORY_NAMES.PVP) {
-                const e = this.get("assets").getMap(t, n, i);
-                e && e.gameModeName && (s = e.gameModeName);
-              }
-              if (!s) {
+              if (
+                (e === a.CATEGORY_NAMES.PVP &&
+                  (s = this.getGameDataModeName(t, n, i)),
+                !s)
+              ) {
                 const e = `game_select_game_type_name_${t}_${n.toLowerCase()}`;
                 s = this.get(`tra.${e}`);
               }
@@ -13283,7 +13336,7 @@
           shouldShowGameTypeDescription: i.Ember.computed(
             "gameTypeQueues.[]",
             function () {
-              return this.get("gameTypeQueues.length") <= 20;
+              return this.get("gameTypeQueues.length") <= 5;
             },
           ),
           gameTypeDescription: i.Ember.computed(
@@ -13322,9 +13375,9 @@
             "selectedCategory",
             a.CATEGORY_NAMES.TRAINING,
           ),
-          isRGM: i.Ember.computed.equal(
+          isAlternativeLeagueMode: i.Ember.computed.equal(
             "gameSelectModeGroup",
-            a.MODE_GROUP_NAMES.RGM,
+            a.MODE_GROUP_NAMES.AlternativeLeagueModes,
           ),
           isDisabledFeaturedGameMode: i.Ember.computed(
             "mapId",
@@ -13549,9 +13602,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "H7SlWY7+",
+          id: "W9ppJXhy",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-upper-half"],["modifier",["action"],[["get",[null]],"selectGameType"]],["flush-element"],["text","\\n  "],["append",["helper",["game-type-icon"],null,[["mapId","currentlySelected","gameTypeName","mapSubtitle","isTraining","isDisabledFeaturedGameMode","gameMode","assetMutator","gameSelectModeGroup","isRGM"],[["get",["queueDataToDisplay","mapId"]],["get",["isCurrentlySelected"]],["get",["gameTypeName"]],["get",["mapVersus"]],["get",["isTraining"]],["get",["isDisabledFeaturedGameMode"]],["get",["queueDataToDisplay","gameMode"]],["get",["queueDataToDisplay","assetMutator"]],["get",["gameSelectModeGroup"]],["get",["isRGM"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowEligibilityWarning"]]],null,9],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-lower-half"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGameTypeDescription"]]],null,6],["block",["if"],[["get",["shouldDisplayGameServerRegionOptions"]]],null,5],["text","\\n"],["block",["if"],[["get",["shouldDisplayQueueSelect"]]],null,1],["close-element"],["text","\\n"],["append",["unknown",["computeDisabledReasons"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["game-type-category-select"],null,[["queues","queueId","selectedQueueId","selectCategory"],[["get",["queues"]],["get",["queueId"]],["get",["selectedQueueId"]],"selectCategory"]]],false],["text","\\n"]],"locals":["queueId"]},{"statements":[["text","  "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","parties-game-type-card-categories"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameTypeQueues"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["static-attr","selected",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["option","isSelected"]]],null,3,2]],"locals":["option"]},{"statements":[["text","    "],["open-element","label",[]],["static-attr","for","custom-game-region"],["flush-element"],["append",["unknown",["tra","custom_game_setup_region_label"]],false],["close-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","id","custom-game-region"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameServerRegionOptions"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","parties-game-type-card-intro"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["gameTypeDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","li",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["reason"]]],null],false],["close-element"],["text","\\n"]],"locals":["reason"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","game-type-category-disabled"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","ul",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disabledReasons"]]],null,7],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-eligibility-error"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],8],["text","    "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\game-select\\\\game-type-select-component\\\\game-type-card\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-upper-half"],["modifier",["action"],[["get",[null]],"selectGameType"]],["flush-element"],["text","\\n"],["block",["if"],[["get",["isTFT"]]],null,10],["text","  "],["append",["helper",["game-type-icon"],null,[["mapId","currentlySelected","gameTypeName","mapSubtitle","isTraining","isDisabledFeaturedGameMode","gameMode","assetMutator","gameSelectModeGroup","isAlternativeLeagueMode"],[["get",["queueDataToDisplay","mapId"]],["get",["isCurrentlySelected"]],["get",["gameTypeName"]],["get",["mapVersus"]],["get",["isTraining"]],["get",["isDisabledFeaturedGameMode"]],["get",["queueDataToDisplay","gameMode"]],["get",["queueDataToDisplay","assetMutator"]],["get",["gameSelectModeGroup"]],["get",["isAlternativeLeagueMode"]]]]],false],["text","\\n"],["block",["if"],[["get",["shouldShowEligibilityWarning"]]],null,9],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","parties-game-type-lower-half"],["flush-element"],["text","\\n"],["block",["if"],[["get",["shouldShowGameTypeDescription"]]],null,6],["block",["if"],[["get",["shouldDisplayGameServerRegionOptions"]]],null,5],["text","\\n"],["block",["if"],[["get",["shouldDisplayQueueSelect"]]],null,1],["close-element"],["text","\\n"],["append",["unknown",["computeDisabledReasons"]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["game-type-category-select"],null,[["queues","queueId","selectedQueueId","selectCategory"],[["get",["queues"]],["get",["queueId"]],["get",["selectedQueueId"]],"selectCategory"]]],false],["text","\\n"]],"locals":["queueId"]},{"statements":[["text","  "],["open-element","hr",[]],["flush-element"],["close-element"],["text","\\n  "],["open-element","lol-uikit-scrollable",[]],["static-attr","class","parties-game-type-card-categories"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameTypeQueues"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","lol-uikit-dropdown-option",[]],["static-attr","slot","lol-uikit-dropdown-option"],["static-attr","selected",""],["dynamic-attr","onclick",["helper",["action"],[["get",[null]],"gameServerRegionChange",["get",["option","value"]]],null],null],["flush-element"],["text","\\n            "],["append",["unknown",["option","value"]],false],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["option","isSelected"]]],null,3,2]],"locals":["option"]},{"statements":[["text","    "],["open-element","label",[]],["static-attr","for","custom-game-region"],["flush-element"],["append",["unknown",["tra","custom_game_setup_region_label"]],false],["close-element"],["text","\\n    "],["open-element","lol-uikit-framed-dropdown",[]],["static-attr","id","custom-game-region"],["flush-element"],["text","\\n"],["block",["each"],[["get",["gameServerRegionOptions"]]],null,4],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","parties-game-type-card-intro"],["flush-element"],["text","\\n    "],["open-element","p",[]],["flush-element"],["append",["unknown",["gameTypeDescription"]],false],["close-element"],["text","\\n  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","              "],["open-element","li",[]],["flush-element"],["append",["helper",["sanitize"],[["get",["reason"]]],null],false],["close-element"],["text","\\n"]],"locals":["reason"]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","game-type-category-disabled"],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","ul",[]],["flush-element"],["text","\\n"],["block",["each"],[["get",["disabledReasons"]]],null,7],["text","          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-eligibility-error"],["flush-element"],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],8],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","vertical-separator"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -13647,7 +13700,7 @@
             "mapId",
             "assets.availableMaps",
             "isTFT",
-            "isRGM",
+            "isAlternativeLeagueMode",
             function () {
               return this._getAssetUrl("game-select-icon-default");
             },
@@ -13657,7 +13710,7 @@
             "mapId",
             "assets.availableMaps",
             "isTFT",
-            "isRGM",
+            "isAlternativeLeagueMode",
             function () {
               return this._getAssetUrl("game-select-icon-hover");
             },
@@ -13667,7 +13720,7 @@
             "mapId",
             "assets.availableMaps",
             "isTFT",
-            "isRGM",
+            "isAlternativeLeagueMode",
             function () {
               return this._getAssetUrl("game-select-icon-disabled");
             },
@@ -13677,7 +13730,7 @@
             "mapId",
             "assets.availableMaps",
             "isTFT",
-            "isRGM",
+            "isAlternativeLeagueMode",
             function () {
               return this._getAssetUrl("icon-victory");
             },
@@ -13708,9 +13761,10 @@
           ),
           mapSubtitleText: s.Ember.computed(
             "mapSubtitle",
-            "isRGM",
+            "isAlternativeLeagueMode",
             function () {
-              return this.get("isRGM") || !this.get("mapSubtitle")
+              return this.get("isAlternativeLeagueMode") ||
+                !this.get("mapSubtitle")
                 ? ""
                 : this.get("mapSubtitle");
             },
@@ -13738,7 +13792,7 @@
                 : this._getMapAssetUrl(e);
           },
           _getMapAssetUrl: function (e) {
-            const t = this.get("isRGM"),
+            const t = this.get("isAlternativeLeagueMode"),
               n = t ? r.CHERRY_MAP_ID : this.get("mapId"),
               i = t ? r.GAME_MODES.CHERRY : this.get("gameMode"),
               s = this.get("assets").getMap(n, i, this.get("assetMutator"));
@@ -18979,25 +19033,26 @@
         var i = n(1);
         n(265);
         var s = n(56),
-          o = n(100),
-          a = c(n(124)),
-          r = c(n(77)),
-          l = c(n(88));
-        function c(e) {
+          o = n(12),
+          a = n(100),
+          r = m(n(124)),
+          l = m(n(77)),
+          c = m(n(88));
+        function m(e) {
           return e && e.__esModule ? e : { default: e };
         }
-        const m = (0, i.emberDataBinding)({
+        const u = (0, i.emberDataBinding)({
             Ember: i.Ember,
             websocket: (0, i.getProvider)().getSocket(),
             boundProperties: {
               uxSettings: "/lol-settings/v2/local/lol-user-experience",
             },
           }),
-          u = i.Ember.Object.extend(i.Ember.PromiseProxyMixin),
-          d = "QUEUE_DODGER",
-          p = "LEAVER_BUSTED",
-          h = "LEAVER_BUSTER_QUEUE_LOCKOUT";
-        e.exports = i.Ember.Component.extend(r.default, l.default, m, {
+          d = i.Ember.Object.extend(i.Ember.PromiseProxyMixin),
+          p = "QUEUE_DODGER",
+          h = "LEAVER_BUSTED",
+          g = "LEAVER_BUSTER_QUEUE_LOCKOUT";
+        e.exports = i.Ember.Component.extend(l.default, c.default, u, {
           layout: n(266),
           classNames: ["v2-footer-component"],
           init(...e) {
@@ -19010,7 +19065,7 @@
               const e = this.get("searchError.penalizedSummonerId");
               return (
                 e &&
-                u.create({
+                d.create({
                   promise: this._playerNames.getDisplayNameBySummonerId(e),
                 })
               );
@@ -19020,10 +19075,10 @@
             "penalizedSummonerNameProxy.content.playerNameFull",
           ),
           buttonSounds: {
-            closeHover: o.SFX_URLS.SFX_LOBBY_QUIT_HOVER,
-            closeClick: o.SFX_URLS.SFX_LOBBY_QUIT_CLICK,
-            confirmHover: o.SFX_URLS.SFX_FIND_MATCH_HOVER,
-            confirmClick: o.SFX_URLS.SFX_FIND_MATCH_CLICK,
+            closeHover: a.SFX_URLS.SFX_LOBBY_QUIT_HOVER,
+            closeClick: a.SFX_URLS.SFX_LOBBY_QUIT_CLICK,
+            confirmHover: a.SFX_URLS.SFX_FIND_MATCH_HOVER,
+            confirmClick: a.SFX_URLS.SFX_FIND_MATCH_CLICK,
           },
           lobbiesService: i.Ember.inject.service("lobbies"),
           gameflowService: i.Ember.inject.service("gameflow"),
@@ -19032,6 +19087,7 @@
           queueEligibilityService: i.Ember.inject.service("queue-eligibility"),
           matchmakingService: i.Ember.inject.service("matchmaking"),
           partySettingsService: i.Ember.inject.service("party-settings"),
+          strawberryService: i.Ember.inject.service("strawberry"),
           animationLock: i.Ember.computed.alias("selected.animationLock"),
           hasRankedDivisionRestriction: i.Ember.computed.alias(
             "queueEligibilityService.hasRankedDivisionRestriction",
@@ -19216,11 +19272,11 @@
           ),
           searchErrorLeaverBusterQueueDelay: i.Ember.computed.equal(
             "searchErrorType",
-            p,
+            h,
           ),
           searchErrorLeaverBusterQueueLockout: i.Ember.computed.equal(
             "searchErrorType",
-            h,
+            g,
           ),
           queueErrorMessage: i.Ember.computed(
             "searchErrorType",
@@ -19235,7 +19291,7 @@
                 n = this.get("matchmakingService.currentSummoner.summonerId"),
                 i = this.get("penalizedSummonerDisplayName");
               switch (e) {
-                case d:
+                case p:
                   return t === n
                     ? this.get(
                         "tra.parties_queue_error_queue_dodge_myself_body",
@@ -19244,7 +19300,7 @@
                         "parties_queue_error_queue_dodge_other_body",
                         { player: i },
                       );
-                case h:
+                case g:
                   return t === n
                     ? this.get(
                         "tra.parties_queue_error_leaver_buster_lockout_restriction_tooltip_myself_body",
@@ -19302,6 +19358,17 @@
             "isLeader",
             "cannotStartMatchmaking",
           ),
+          strawberryConfirmButtonDisabled: i.Ember.computed(
+            "selected.queue.gameMode",
+            "strawberryService.isQueueButtonDisabled",
+            function () {
+              return (
+                this.get("selected.queue.gameMode") ===
+                  o.STRAWBERRY_GAME_MODE &&
+                this.get("strawberryService.isQueueButtonDisabled")
+              );
+            },
+          ),
           confirmButtonDisabled: i.Ember.computed.or(
             "animationLock",
             "patcherDisconnected",
@@ -19314,6 +19381,7 @@
             "showingPartyAndPenaltyTime",
             "showingPartyButCannotStartMatchmaking",
             "hasQueueAvailabilityWarning",
+            "strawberryConfirmButtonDisabled",
           ),
           confirmButtonEnabled: i.Ember.computed.not("confirmButtonDisabled"),
           confirmButtonText: i.Ember.computed(
@@ -19464,7 +19532,7 @@
                     this.set("confirmButtonThrottled", !1);
                   },
                   (e) => {
-                    a.default.sendTelemetryEvent("feature_error", {
+                    r.default.sendTelemetryEvent("feature_error", {
                       id: "PARTIES_START_MATCHMAKING_ATTEMPT_FAILED",
                       severity: "blocker",
                       message:
@@ -19545,9 +19613,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "7CKOJNx1",
+          id: "8S/9tZmn",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","chat-container"],["flush-element"],["text","\\n    "],["open-element","lol-social-chat-room",[]],["static-attr","type","lobby"],["static-attr","disabled-when-connecting",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","close-button-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","close-button"],["flush-element"],["text","\\n      "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","onClickSound","onHoverSound"],[["helper",["action"],[["get",[null]],"closeButton"],null],"/fe/lol-parties/button-x.png","/fe/lol-parties/button-x-over.png","/fe/lol-parties/button-x-down.png",["get",["buttonSounds","closeClick"]],["get",["buttonSounds","closeHover"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["animationsEnabled"]]],null,4,3],["text","    "],["open-element","div",[]],["static-attr","class","left-wing"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","right-wing"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["confirmButtonShowTooltip"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","role-selectors-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showPositionSelector"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","invite-info-panel-container"],["flush-element"],["text","\\n    "],["append",["helper",["v2-invite-info-panel"],null,[["currentPlayerCanInvite"],[["get",["currentPlayerCanInvite"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["v2-footer-notifications"],null,[["readyWarning","readyWarningTooltip","positionError"],[["get",["readyWarning"]],["get",["readyWarningTooltip"]],["get",["positionError"]]]]],false],["text","\\n\\n"],["append",["helper",["matchmaking-errors"],null,[["_isTransitioningState"],[["get",["_isTransitioningState"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["v2-position-selector"],null,[["primaryPosition","secondaryPosition","shouldHideSecondaryPosition","isInQueue","currentPartyIsFull","openOverlay"],[["get",["primaryPosition"]],["get",["secondaryPosition"]],["get",["shouldHideSecondaryPosition"]],["get",["isInQueue"]],["get",["currentPartyIsFull"]],["helper",["action"],[["get",[null]],"openOverlay"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["text","\\n            "],["append",["unknown",["confirmButtonTooltipText"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1]],"locals":[]},{"statements":[["text","      "],["append",["helper",["animated-find-match-button"],null,[["confirmButton","baseImgPath","overImgPath","downImgPath","disabledImgPath","buttonText","onClickSound","onHoverSound","disabledStyle","clickedStyle","isEnabled"],["confirmButton","/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png","/fe/lol-parties/button-find-match-disabled.png",["get",["confirmButtonText"]],["get",["buttonSounds","confirmClick"]],["get",["buttonSounds","confirmHover"]],"color: grey","color: #005A82",["get",["confirmButtonEnabled"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","disabledImgPath","upText","overText","downText","disabledText","onClickSound","onHoverSound","disabledStyle","isEnabled"],[["helper",["action"],[["get",[null]],"confirmButton"],null],"/fe/lol-parties/button-find-match.png","/fe/lol-parties/button-find-match-over.png","/fe/lol-parties/button-find-match-down.png","/fe/lol-parties/button-find-match-disabled.png",["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["buttonSounds","confirmClick"]],["get",["buttonSounds","confirmHover"]],"color: grey",["get",["confirmButtonEnabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-component\\\\index.js\\" "],["text","\\n"],["open-element","div",[]],["static-attr","class","left-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","chat-container"],["flush-element"],["text","\\n    "],["open-element","lol-social-chat-room",[]],["static-attr","type","lobby"],["static-attr","disabled-when-connecting",""],["flush-element"],["close-element"],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","center-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","close-button-container"],["flush-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","close-button"],["flush-element"],["text","\\n      "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","onClickSound","onHoverSound"],[["helper",["action"],[["get",[null]],"closeButton"],null],"/fe/lol-parties/button-x.png","/fe/lol-parties/button-x-over.png","/fe/lol-parties/button-x-down.png",["get",["buttonSounds","closeClick"]],["get",["buttonSounds","closeHover"]]]]],false],["text","\\n    "],["close-element"],["text","\\n  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","find-match-button-container"],["flush-element"],["text","\\n"],["block",["unless"],[["get",["animationsEnabled"]]],null,4,3],["text","    "],["open-element","div",[]],["static-attr","class","left-wing"],["flush-element"],["close-element"],["text","\\n    "],["open-element","div",[]],["static-attr","class","right-wing"],["flush-element"],["close-element"],["text","\\n"],["block",["if"],[["get",["confirmButtonShowTooltip"]]],null,2],["text","  "],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","role-selectors-container"],["flush-element"],["text","\\n"],["block",["if"],[["get",["showPositionSelector"]]],null,0],["text","  "],["close-element"],["text","\\n"],["close-element"],["text","\\n"],["open-element","div",[]],["static-attr","class","right-container"],["flush-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","invite-info-panel-container"],["flush-element"],["text","\\n    "],["append",["helper",["v2-invite-info-panel"],null,[["currentPlayerCanInvite"],[["get",["currentPlayerCanInvite"]]]]],false],["text","\\n  "],["close-element"],["text","\\n"],["close-element"],["text","\\n\\n"],["append",["helper",["v2-footer-notifications"],null,[["readyWarning","readyWarningTooltip","positionError","selected"],[["get",["readyWarning"]],["get",["readyWarningTooltip"]],["get",["positionError"]],["get",["selected"]]]]],false],["text","\\n\\n"],["append",["helper",["matchmaking-errors"],null,[["_isTransitioningState"],[["get",["_isTransitioningState"]]]]],false],["text","\\n"]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["append",["helper",["v2-position-selector"],null,[["primaryPosition","secondaryPosition","shouldHideSecondaryPosition","isInQueue","currentPartyIsFull","openOverlay"],[["get",["primaryPosition"]],["get",["secondaryPosition"]],["get",["shouldHideSecondaryPosition"]],["get",["isInQueue"]],["get",["currentPartyIsFull"]],["helper",["action"],[["get",[null]],"openOverlay"],null]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","type","tooltip-system"],["flush-element"],["text","\\n          "],["open-element","p",[]],["flush-element"],["text","\\n            "],["append",["unknown",["confirmButtonTooltipText"]],false],["text","\\n          "],["close-element"],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["uikit-tooltip"],null,[["tooltipPosition","type"],["top","system"]],1]],"locals":[]},{"statements":[["text","      "],["append",["helper",["animated-find-match-button"],null,[["confirmButton","baseImgPath","overImgPath","downImgPath","disabledImgPath","buttonText","onClickSound","onHoverSound","disabledStyle","clickedStyle","isEnabled"],["confirmButton","/fe/lol-static-assets/images/buttons/find_match_default.png","/fe/lol-static-assets/images/buttons/find_match_hover.png","/fe/lol-static-assets/images/buttons/find_match_active.png","/fe/lol-parties/button-find-match-disabled.png",["get",["confirmButtonText"]],["get",["buttonSounds","confirmClick"]],["get",["buttonSounds","confirmHover"]],"color: grey","color: #005A82",["get",["confirmButtonEnabled"]]]]],false],["text","\\n"]],"locals":[]},{"statements":[["text","      "],["append",["helper",["generic-button"],null,[["onClick","baseImgPath","overImgPath","downImgPath","disabledImgPath","upText","overText","downText","disabledText","onClickSound","onHoverSound","disabledStyle","isEnabled"],[["helper",["action"],[["get",[null]],"confirmButton"],null],"/fe/lol-parties/button-find-match.png","/fe/lol-parties/button-find-match-over.png","/fe/lol-parties/button-find-match-down.png","/fe/lol-parties/button-find-match-disabled.png",["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["confirmButtonText"]],["get",["buttonSounds","confirmClick"]],["get",["buttonSounds","confirmHover"]],"color: grey",["get",["confirmButtonEnabled"]]]]],false],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },
@@ -19575,6 +19643,7 @@
           lobbiesService: i.Ember.inject.service("lobbies"),
           matchmakingService: i.Ember.inject.service("matchmaking"),
           eligibilityService: i.Ember.inject.service("queue-eligibility"),
+          strawberryService: i.Ember.inject.service("strawberry"),
           eligibilitiesEntity: s.default,
           queuesEntity: o.default,
           restrictions: i.Ember.computed.alias(
@@ -20045,6 +20114,28 @@
               c.assign(e, t, {}, this.get("tooltipConfig")), c.show(e);
             } else c.unassign(e);
           },
+          strawberryIsQueueButtonDisabled: i.Ember.computed(
+            "strawberryService.isQueueButtonDisabled",
+            "selected.queue.gameMode",
+            function () {
+              return (
+                this.get("selected.queue.gameMode") ===
+                  a.STRAWBERRY_GAME_MODE &&
+                this.get("strawberryService.isQueueButtonDisabled")
+              );
+            },
+          ),
+          strawberryShowPingWarning: i.Ember.computed(
+            "strawberryService.showPingWarning",
+            "selected.queue.gameMode",
+            function () {
+              return (
+                this.get("selected.queue.gameMode") ===
+                  a.STRAWBERRY_GAME_MODE &&
+                this.get("strawberryService.showPingWarning")
+              );
+            },
+          ),
         });
       },
       (e, t, n) => {
@@ -20054,9 +20145,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "hVhdJNrt",
+          id: "biPoaI1W",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isQuickPlayModal"]]],null,19,17]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["warningTooltipText"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","svg",[]],["static-attr","class","parties-autofill-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n            "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","parties-autofill-protection-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowAutoFillProtection"]]],null,2,1],["text","        "],["append",["unknown",["positionWarning"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n"],["block",["if"],[["get",["positionWarning"]]],null,3],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowAutoFillStatus"]]],null,4]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["mmrStandardDeviationWarningTooltip"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-mmr-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["mmrStandardDeviationWarning"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasMmrStandardDeviationWarning"]]],null,7,5]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-footer-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["positionError"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["positionError"]]],null,9,8]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["readyWarningTooltip"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning parties-ready-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-ready-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["readyWarning"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],11],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["readyWarning"]]],null,12,10]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-restrictions-warning-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["helper",["sanitize"],[["get",["restrictionsText"]]],null],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasLobbyRestrictions"]]],null,14,13]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-queue-warning-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","parties_roster_invite_disabled_eligibility_disabled"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasQueueAvailabilityWarning"]]],null,16,15]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-restrictions-quick-play ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon parties-notification-warning-icon-tooltip"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["QPModalRestrictions"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["QPModalRestrictions"]]],null,18]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\layout.hbs\\" style-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\style.styl\\" js-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-parties\\\\src\\\\components\\\\parties-v2\\\\footer-notifications-component\\\\index.js\\" "],["text","\\n"],["block",["if"],[["get",["isQuickPlayModal"]]],null,25,23]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","strawberry_ping_warning"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon parties-notification-warning-icon-tooltip"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","strawberry_ping_warning"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],0],["text","    "],["close-element"],["text","\\n  "]],"locals":[]},{"statements":[["block",["if"],[["get",["strawberryShowPingWarning"]]],null,1]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["tra","strawberry_queue_button_disabled"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon parties-notification-warning-icon-tooltip"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","strawberry_queue_button_disabled"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],3],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["strawberryIsQueueButtonDisabled"]]],null,4,2]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["warningTooltipText"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","svg",[]],["static-attr","class","parties-autofill-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n            "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n          "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","          "],["open-element","div",[]],["static-attr","class","parties-autofill-protection-icon"],["flush-element"],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowAutoFillProtection"]]],null,8,7],["text","        "],["append",["unknown",["positionWarning"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n"],["block",["if"],[["get",["positionWarning"]]],null,9],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],6],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["shouldShowAutoFillStatus"]]],null,10,5]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["mmrStandardDeviationWarningTooltip"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-mmr-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["mmrStandardDeviationWarning"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],12],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasMmrStandardDeviationWarning"]]],null,13,11]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-footer-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["positionError"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["positionError"]]],null,15,14]],"locals":[]},{"statements":[["text","        "],["open-element","lol-uikit-content-block",[]],["static-attr","class","parties-footer-tooltip"],["static-attr","type","tooltip-large"],["flush-element"],["text","\\n          "],["append",["unknown",["readyWarningTooltip"]],false],["text","\\n        "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["static-attr","class","parties-footer-warning parties-ready-warning"],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-ready-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["readyWarning"]],false],["text","\\n"],["block",["uikit-tooltip"],null,[["tooltipConfig"],[["get",["tooltipConfig"]]]],17],["text","    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["readyWarning"]]],null,18,16]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-restrictions-warning-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["helper",["sanitize"],[["get",["restrictionsText"]]],null],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasLobbyRestrictions"]]],null,20,19]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-queue-warning-error ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["tra","parties_roster_invite_disabled_eligibility_disabled"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["hasQueueAvailabilityWarning"]]],null,22,21]],"locals":[]},{"statements":[["text","    "],["open-element","div",[]],["dynamic-attr","class",["concat",["parties-restrictions-quick-play ",["unknown",["restrictionClass"]]]]],["flush-element"],["text","\\n      "],["open-element","svg",[]],["static-attr","class","parties-notification-warning-icon parties-notification-warning-icon-tooltip"],["static-attr","width","21"],["static-attr","height","20"],["static-attr","viewBox","0 0 21 20"],["static-attr","fill","none"],["static-attr","xmlns","http://www.w3.org/2000/svg","http://www.w3.org/2000/xmlns/"],["flush-element"],["text","\\n        "],["open-element","path",[]],["static-attr","fill-rule","evenodd"],["static-attr","clip-rule","evenodd"],["static-attr","d","M11.3889 3L18.5 15.25L17.6111 17H3.38889L2.5 15.25L9.61111 3H11.3889ZM9.61111 11.75L8.72222 7.375L10.5 6.5L12.2778 7.375L11.3889 11.75H9.61111ZM12.2778 14.375L10.5 16.125L8.72222 14.375L10.5 12.625L12.2778 14.375Z"],["flush-element"],["close-element"],["text","\\n      "],["close-element"],["text","\\n      "],["append",["unknown",["QPModalRestrictions"]],false],["text","\\n    "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["QPModalRestrictions"]]],null,24]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },

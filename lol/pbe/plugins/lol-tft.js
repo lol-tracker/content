@@ -347,26 +347,25 @@
               this.registerWithViewPort(e);
           }
           show(e) {
-            return this._screenRoot.bump().then(
-              function () {
-                return this._getLandingPage().then(
-                  function (t) {
-                    return this._getEmberComponentFactoryInstance().then((n) =>
-                      n.emberAppInstancePromise.then(
-                        (n) => {
-                          this.transitionToPage(n, e, t);
-                        },
-                        (e) =>
-                          s.logger.warning(
-                            "Failed to fetch Ember app instance.",
-                            e,
-                          ),
-                      ),
-                    );
-                  }.bind(this),
-                );
-              }.bind(this),
-            );
+            const t = [
+              this._getLandingPage(),
+              this._getEmberComponentFactoryInstance(),
+              this._screenRoot.bump(),
+            ];
+            return Promise.all(t).then((t) => {
+              const n = t[0],
+                a = t[1];
+              return (
+                a.emberAppInstancePromise.then(
+                  (t) => {
+                    this.transitionToPage(t, e, n);
+                  },
+                  (e) =>
+                    s.logger.warning("Failed to fetch Ember app instance.", e),
+                ),
+                a
+              );
+            });
           }
           setupTftApp() {
             (0, s.dataBinding)("/lol-gameflow", s.socket).observe(
@@ -377,7 +376,7 @@
             ),
               this._setupVideoCache();
           }
-          showTroves(e = 1) {
+          showTroves(e = 2) {
             this.show().then((t) => {
               t.renderPromise.then((t) => {
                 const n = t.__container__.lookup("service:tft-troves");
@@ -7002,8 +7001,9 @@
             "sortedStandardRewards",
             function () {
               const e = m(this.get("highlightRewards")),
-                t = this.get("sortedStandardRewards");
-              return c(m([e[0], t[0]])[0].rarity);
+                t = this.get("sortedStandardRewards"),
+                n = m([e[0], t[0]])[0];
+              return n && n.rarity ? c(n.rarity) : c(0);
             },
           ),
           trovesPromoAssets: r.alias("trovesService.trovesPromoAssets"),

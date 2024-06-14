@@ -891,7 +891,7 @@
     "detailedDescription": "Normal (Blind Pick)",
     "gameMode": "CLASSIC",
     "gameSelectCategory": "kPvP",
-    "gameSelectModeGroup": "kAlternativeLeagueGameModes",
+    "gameSelectModeGroup": "kSummonersRift",
     "gameSelectPriority": 40,
     "gameTypeConfig": {
       "advancedLearningQuests": false,

@@ -63962,7 +63962,7 @@
           { Ember: c, l10n: p } = r,
           h = "component-factory-application",
           f = "ember-application-factory",
-          d = n(189).default;
+          d = n(190).default;
         function m() {}
         (m.prototype.createEmberAppDefinition = function (t, e, n, r) {
           e = e || {};
@@ -64197,12 +64197,12 @@
         const { Ember: r } = n(1),
           i = n(21),
           o = n(33),
-          { UIKIT_COMPONENTS: s, UIKIT_TEMPLATES: a } = n(118),
-          { LOOT_TABLE_OBJECTS: u, LOOT_TABLE_TEMPLATES: l } = n(139),
+          { UIKIT_COMPONENTS: s, UIKIT_TEMPLATES: a } = n(119),
+          { LOOT_TABLE_OBJECTS: u, LOOT_TABLE_TEMPLATES: l } = n(140),
           { LOADOUTS_MODAL_COMPONENTS: c, LOADOUTS_MODAL_TEMPLATES: p } =
-            n(149),
-          { SVG_LOADER_COMPONENTS: h, SVG_LOADER_TEMPLATES: f } = n(155),
-          { ICON_RARITY_COMPONENTS: d, ICON_RARITY_TEMPLATES: m } = n(158),
+            n(150),
+          { SVG_LOADER_COMPONENTS: h, SVG_LOADER_TEMPLATES: f } = n(156),
+          { ICON_RARITY_COMPONENTS: d, ICON_RARITY_TEMPLATES: m } = n(159),
           g = "Component";
         function y(t) {
           if (!t) return;
@@ -64318,7 +64318,7 @@
                 PATCHER_COMPONENTS: i,
                 PATCHER_SERVICES: g,
                 PATCHER_TEMPLATES: y,
-              } = n(163);
+              } = n(164);
             return (
               Object.assign(r, s),
               Object.assign(r.TEMPLATES, a),
@@ -64346,12 +64346,14 @@
         const r = n(34),
           i = n(115),
           o = n(116),
-          s = n(117);
+          s = n(117),
+          a = n(118);
         t.exports = {
           SanitizeHelper: r,
           UikitToastCelebrationHelper: i,
           ErrorHelper: o,
           RiotFutureHelper: s,
+          EqHelper: a,
         };
       },
       (t, e, n) => {
@@ -72806,27 +72808,36 @@
       },
       (t, e, n) => {
         "use strict";
+        const { Ember: r } = n(1);
+        t.exports = r.Helper.extend({
+          compute: function (t, e) {
+            return t[0] === t[1];
+          },
+        });
+      },
+      (t, e, n) => {
+        "use strict";
         const r = {
-            UikitSpinnerComponent: n(119),
-            UikitTooltipComponent: n(120),
-            UikitModalComponent: n(121),
-            UikitFramedIconComponent: n(122),
-            UikitBackgroundSwitcherComponent: n(123),
-            UikitErrorPageComponent: n(124).default,
-            UikitLottieComponent: n(125),
-            UikitVignetteComponent: n(128),
-            BlankTemplateComponent: n(129),
+            UikitSpinnerComponent: n(120),
+            UikitTooltipComponent: n(121),
+            UikitModalComponent: n(122),
+            UikitFramedIconComponent: n(123),
+            UikitBackgroundSwitcherComponent: n(124),
+            UikitErrorPageComponent: n(125).default,
+            UikitLottieComponent: n(126),
+            UikitVignetteComponent: n(129),
+            BlankTemplateComponent: n(130),
           },
           i = {
-            "components/uikit-spinner": n(130),
-            "components/uikit-tooltip": n(131),
-            "components/uikit-modal": n(132),
-            "components/uikit-framed-icon": n(133),
-            "components/uikit-background-switcher": n(134),
-            "components/uikit-error-page": n(135),
-            "components/uikit-lottie": n(136),
-            "components/uikit-vignette": n(137),
-            "components/blank-template": n(138),
+            "components/uikit-spinner": n(131),
+            "components/uikit-tooltip": n(132),
+            "components/uikit-modal": n(133),
+            "components/uikit-framed-icon": n(134),
+            "components/uikit-background-switcher": n(135),
+            "components/uikit-error-page": n(136),
+            "components/uikit-lottie": n(137),
+            "components/uikit-vignette": n(138),
+            "components/blank-template": n(139),
           };
         t.exports = { UIKIT_COMPONENTS: r, UIKIT_TEMPLATES: i };
       },
@@ -73271,8 +73282,8 @@
       (t, e, n) => {
         "use strict";
         const { Audio: r, Ember: i, Lottie: o, logger: s } = n(1),
-          { getJSON: a } = n(126),
-          { normalizeAEName: u } = n(127);
+          { getJSON: a } = n(127),
+          { normalizeAEName: u } = n(128);
         let l = null,
           c = null;
         t.exports = i.Component.extend({
@@ -73702,15 +73713,15 @@
       (t, e, n) => {
         "use strict";
         const r = {
-            LootTableRootComponent: n(140),
-            LootTableListComponent: n(143),
-            LootTableItemComponent: n(144),
-            LootTableService: n(145),
+            LootTableRootComponent: n(141),
+            LootTableListComponent: n(144),
+            LootTableItemComponent: n(145),
+            LootTableService: n(146),
           },
           i = {
-            "components/loot-table-root": n(146),
-            "components/loot-table-list": n(147),
-            "components/loot-table-item": n(148),
+            "components/loot-table-root": n(147),
+            "components/loot-table-list": n(148),
+            "components/loot-table-item": n(149),
           };
         t.exports = { LOOT_TABLE_OBJECTS: r, LOOT_TABLE_TEMPLATES: i };
       },
@@ -73718,8 +73729,8 @@
         "use strict";
         var r,
           i = n(1),
-          o = (r = n(141)) && r.__esModule ? r : { default: r },
-          s = n(142);
+          o = (r = n(142)) && r.__esModule ? r : { default: r },
+          s = n(143);
         const { RunMixin: a } = i.EmberAddons.EmberLifeline,
           u = i.Ember.Component.extend(a, {
             classNames: ["loot-odds-root-component"],
@@ -74071,7 +74082,7 @@
       (t, e, n) => {
         "use strict";
         var r = n(1),
-          i = n(142);
+          i = n(143);
         const o = r.Ember.Component.extend({
           classNames: ["loot-table-item-component"],
           classNameBindings: [
@@ -74249,8 +74260,8 @@
       },
       (t, e, n) => {
         "use strict";
-        const r = { LoadoutsModalRootComponent: n(150) },
-          i = { "components/loadouts-modal-root": n(154) };
+        const r = { LoadoutsModalRootComponent: n(151) },
+          i = { "components/loadouts-modal-root": n(155) };
         t.exports = {
           LOADOUTS_MODAL_COMPONENTS: r,
           LOADOUTS_MODAL_TEMPLATES: i,
@@ -74662,7 +74673,7 @@
                 "lol-uikit-flat-button.button-accept",
               ),
               r = document.createElement("style"),
-              i = n(151);
+              i = n(152);
             (r.textContent = i),
               e.shadowRoot.insertBefore(r, e.shadowRoot.firstChild),
               (this._purchaseDialogButtonWrapper = e.shadowRoot.querySelector(
@@ -74805,8 +74816,8 @@
         });
       },
       (t, e, n) => {
-        var r = n(152),
-          i = n(153)(r);
+        var r = n(153),
+          i = n(154)(r);
         i.push([
           t.id,
           '.lol-uikit-flat-button.parties-purchase-loading .lol-uikit-flat-button-content-wrapper {\n  opacity: 0;\n  visibility: hidden;\n}\n.lol-uikit-flat-button.parties-purchase-loading .lol-parties-purchase-dialog-button-spinner {\n  opacity: 1;\n  visibility: visible;\n}\n.lol-uikit-flat-button-content-wrapper {\n  position: relative;\n  padding-left: 18px;\n  line-height: 22px;\n  transition: opacity 0.3s ease, visibility 0.3s ease;\n}\n.lol-parties-purchase-dialog-button-currency-icon {\n  position: absolute;\n  top: 2px;\n  left: -2px;\n  width: 18px;\n  height: 18px;\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n}\n.lol-parties-purchase-dialog-button-currency-icon.icon-star-shards {\n  background-image: url("/fe/lol-static-assets/images/icon-star-shards-36.png");\n}\n.lol-parties-purchase-dialog-button-spinner {\n  background-image: url("/fe/lol-static-assets/images/spinner.png");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 24px;\n  height: 24px;\n  margin: -12px 0 0 -12px;\n  animation: loader-spin 4000ms infinite linear;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.3s ease, visibility 0.3s ease;\n}\n@-moz-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@-o-keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n@keyframes loader-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n',
@@ -74894,8 +74905,8 @@
       },
       (t, e, n) => {
         "use strict";
-        const r = { SvgLoaderComponent: n(156) },
-          i = { "components/svg-loader": n(157) };
+        const r = { SvgLoaderComponent: n(157) },
+          i = { "components/svg-loader": n(158) };
         t.exports = { SVG_LOADER_COMPONENTS: r, SVG_LOADER_TEMPLATES: i };
       },
       (t, e, n) => {
@@ -74964,12 +74975,12 @@
       (t, e, n) => {
         "use strict";
         const r = {
-            IconRarityComponent: n(159).default,
-            CollectionsTooltipComponent: n(160).default,
+            IconRarityComponent: n(160).default,
+            CollectionsTooltipComponent: n(161).default,
           },
           i = {
-            "components/icon-rarity": n(161),
-            "components/collections-tooltip": n(162),
+            "components/icon-rarity": n(162),
+            "components/collections-tooltip": n(163),
           };
         t.exports = { ICON_RARITY_COMPONENTS: r, ICON_RARITY_TEMPLATES: i };
       },
@@ -75084,29 +75095,29 @@
       (t, e, n) => {
         "use strict";
         const r = {
-            PatcherAndPlayButtonComponent: n(164),
-            PatcherBarComponent: n(166),
-            PatcherVideoStateComponent: n(168),
-            PatcherProgressTooltipComponent: n(169),
-            PatcherBasicButtonComponent: n(170),
-            PatcherPlayButtonComponent: n(171),
-            GamePatcherBarComponent: n(172),
-            LeagueClientLogoComponent: n(173),
-            ProgressBarComponent: n(174),
-            PatchingProgressBarComponent: n(175),
+            PatcherAndPlayButtonComponent: n(165),
+            PatcherBarComponent: n(167),
+            PatcherVideoStateComponent: n(169),
+            PatcherProgressTooltipComponent: n(170),
+            PatcherBasicButtonComponent: n(171),
+            PatcherPlayButtonComponent: n(172),
+            GamePatcherBarComponent: n(173),
+            LeagueClientLogoComponent: n(174),
+            ProgressBarComponent: n(175),
+            PatchingProgressBarComponent: n(176),
           },
-          i = { PatcherService: n(176), PlayButtonService: n(177) },
+          i = { PatcherService: n(177), PlayButtonService: n(178) },
           o = {
-            "components/patcher-and-play-button": n(179),
-            "components/patcher-bar": n(180),
-            "components/patcher-video-state": n(181),
-            "components/patcher-progress-tooltip": n(182),
-            "components/patcher-basic-button": n(183),
-            "components/patcher-play-button": n(184),
-            "components/game-patcher-bar": n(185),
-            "components/league-client-logo": n(186),
-            "components/progress-bar": n(187),
-            "components/patching-progress-bar": n(188),
+            "components/patcher-and-play-button": n(180),
+            "components/patcher-bar": n(181),
+            "components/patcher-video-state": n(182),
+            "components/patcher-progress-tooltip": n(183),
+            "components/patcher-basic-button": n(184),
+            "components/patcher-play-button": n(185),
+            "components/game-patcher-bar": n(186),
+            "components/league-client-logo": n(187),
+            "components/progress-bar": n(188),
+            "components/patching-progress-bar": n(189),
           };
         t.exports = {
           PATCHER_COMPONENTS: r,
@@ -75121,7 +75132,7 @@
             PATCHER_STATE_PATCHING: o,
             PATCHER_STATE_REPAIRING: s,
             PATCHER_STATE_CORRUPTED: a,
-          } = n(165);
+          } = n(166);
         t.exports = r.Component.extend({
           tagName: "",
           patcher: r.inject.service("patcher"),
@@ -75172,13 +75183,13 @@
             Telemetry: a,
             logger: u,
           } = n(1),
-          l = n(167),
+          l = n(168),
           {
             PATCHER_STATE_PATCHING: c,
             PATCHER_STATE_UNDETERMINED: p,
             NOT_PATCHING: h,
             PATCHING: f,
-          } = n(165),
+          } = n(166),
           { RunMixin: d } = o.EmberLifeline,
           m = { info: 1, warn: 2, error: 3 },
           g = "/fe/lol-static-assets/videos",
@@ -76181,7 +76192,7 @@
       (t, e, n) => {
         "use strict";
         const { Ember: r } = n(1),
-          i = n(166),
+          i = n(167),
           o = "/fe/lol-static-assets/videos",
           s = {
             progressBarMainLoop: `${o}/long-progress-bar-main-loop.webm`,
@@ -76228,7 +76239,7 @@
             PATCHER_STATE_PATCHING: d,
             PATCHER_STATE_REPAIRING: m,
             PATCHER_STATE_UNDETERMINED: g,
-          } = n(165),
+          } = n(166),
           { RunMixin: y } = i.EmberLifeline,
           v = "lol_game_client_sln",
           b = { league_client_sln: 33 };
@@ -76644,7 +76655,7 @@
             emberDataBinding: s,
             PatcherEvents: a,
           } = n(1),
-          u = n(178),
+          u = n(179),
           l = ["Lobby", "Matchmaking", "ReadyCheck", "ChampSelect"],
           c = s({
             Ember: i,

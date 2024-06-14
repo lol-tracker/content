@@ -6955,7 +6955,7 @@
           },
           generateRewardValueString(e, t) {
             const { value: n, type: s } = e;
-            return `${s === o.MASTERY_SET_REWARD_TYPES.MASTERWORK_CHEST ? "x" : "+"}${n.toLocaleString(t)}`;
+            return `${s === o.MASTERY_SET_REWARD_TYPES.MASTERWORK_CHEST ? "x" : "+"}${Intl.NumberFormat(t.toLowerCase(), { numberingSystem: "latn" }).format(n)}`;
           },
           actions: {
             startScrolling(e) {
