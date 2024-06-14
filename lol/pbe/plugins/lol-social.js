@@ -11939,6 +11939,8 @@
                         return e.t("game_mode_nexus_blitz");
                       if ("CHERRY" === t.gameMode)
                         return e.t("game_mode_cherry");
+                      if ("STRAWBERRY" === t.gameMode)
+                        return e.t("game_mode_strawberry");
                       if ("TFT" === t.gameMode)
                         return t.assetMutator.length > 0
                           ? t.description +

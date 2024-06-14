@@ -406,6 +406,18 @@
                     );
               });
           }
+          markSetAnnouncementAsSeen() {
+            this._getEmberComponentFactoryInstance()
+              .then((e) => e.emberAppInstancePromise)
+              .then((e) => {
+                const t = e.__container__.lookup("controller:application");
+                t
+                  ? t.markSetAnnouncementAsSeen()
+                  : s.logger.warning(
+                      "Failed to fetch Application Controller from TFT Ember app.",
+                    );
+              });
+          }
           setEventsData(e, t) {
             return this._getEmberComponentFactoryInstance()
               .then((e) => e.emberAppInstancePromise)
@@ -10603,20 +10615,25 @@
             "currentDefaultTFTSet",
             "setAnnouncementSeen",
             function () {
-              if (this.get("isHidden")) return !1;
               if (!0 === this.get("setAnnouncementSeen")) return !1;
-              const e = this.get("currentDefaultTFTSet");
-              if (null === e || "TFTSet9_2" === e) return !1;
-              const t = this.get("lastTFTSetSeen");
-              return null !== t && t !== e;
+              const e = this.get("lastTFTSetSeen"),
+                t = this.get("currentDefaultTFTSet");
+              return (
+                null !== e &&
+                null !== t &&
+                ("" === e ? !this.get("isHidden") : e !== t)
+              );
             },
           ),
           useSet12Layout: s.Ember.computed("currentDefaultTFTSet", function () {
             return "TFTSet12" === this.get("currentDefaultTFTSet");
           }),
+          markSetAnnouncementAsSeen: function () {
+            this.get("tftService").recordSetAnnouncementSeen();
+          },
           actions: {
             confirm: function () {
-              this.get("tftService").recordSetAnnouncementSeen();
+              this.markSetAnnouncementAsSeen();
             },
           },
         });
@@ -10947,7 +10964,8 @@
           m = "lastTFTBPSeen",
           u = "tft_star_fragments",
           d = "lcu-assets-tft-home-store-promos",
-          p = {
+          p = "temp_set_seen",
+          h = {
             GENERIC_ASSETS: "/lol-game-data/assets/v1/generic-assets.json",
             MAP_DATA: "/lol-maps/v2/maps",
             TFT_SETS_DATA_PATH: "/lol-game-data/assets/v1/tftsets.json",
@@ -10974,8 +10992,8 @@
             TFT_EVENT_MISSIONS: "/lol-event-mission/v1/event-mission",
             TFT_EVENT_TENCENT_CONFIGS: "/lol-tft/v1/tft/tencentEventhubConfigs",
           },
-          h = a.dataBinding.bindTo(a.socket);
-        var f = a.Ember.Service.extend({
+          f = a.dataBinding.bindTo(a.socket);
+        var g = a.Ember.Service.extend({
           isHidden: !1,
           audioManager: null,
           lastTftGameQueueId: null,
@@ -11033,31 +11051,31 @@
           },
           willDestroy() {
             this._super(...arguments),
-              h.removeObserver(p.GENERIC_ASSETS, this),
-              h.removeObserver(p.MAP_DATA, this),
-              h.removeObserver(p.TFT_SETS_DATA_PATH, this),
-              h.removeObserver(p.RP, this),
-              h.removeObserver(p.SETTINGS_READY, this),
-              h.removeObserver(p.STAR_SHARDS, this),
-              h.removeObserver(p.STAR_SHARDS_TOGGLES, this),
-              h.removeObserver(p.TFT_BATTLE_PASS_PAGE, this),
-              h.removeObserver(p.TFT_HOME, this),
-              h.removeObserver(p.TFT_BACKGROUNDS, this),
-              h.removeObserver(p.TFT_NEWS, this),
-              h.removeObserver(p.TFT_PASS_IS_ENABLED, this),
-              h.removeObserver(p.TFT_PASS_BATTLE_PASS, this),
-              h.removeObserver(p.TFT_PASS_WELCOME_DATA_PATH, this),
-              h.removeObserver(p.TFT_PASS_EVENT_PASS, this),
-              h.removeObserver(p.TFT_PASS_DAILY_LOGIN_PASS, this),
-              h.removeObserver(p.TFT_PLAYER_PREFERENCES, this),
-              h.removeObserver(p.TFT_TEST_PAGE, this),
-              h.removeObserver(p.TFT_EVENT_MISSIONS, this);
+              f.removeObserver(h.GENERIC_ASSETS, this),
+              f.removeObserver(h.MAP_DATA, this),
+              f.removeObserver(h.TFT_SETS_DATA_PATH, this),
+              f.removeObserver(h.RP, this),
+              f.removeObserver(h.SETTINGS_READY, this),
+              f.removeObserver(h.STAR_SHARDS, this),
+              f.removeObserver(h.STAR_SHARDS_TOGGLES, this),
+              f.removeObserver(h.TFT_BATTLE_PASS_PAGE, this),
+              f.removeObserver(h.TFT_HOME, this),
+              f.removeObserver(h.TFT_BACKGROUNDS, this),
+              f.removeObserver(h.TFT_NEWS, this),
+              f.removeObserver(h.TFT_PASS_IS_ENABLED, this),
+              f.removeObserver(h.TFT_PASS_BATTLE_PASS, this),
+              f.removeObserver(h.TFT_PASS_WELCOME_DATA_PATH, this),
+              f.removeObserver(h.TFT_PASS_EVENT_PASS, this),
+              f.removeObserver(h.TFT_PASS_DAILY_LOGIN_PASS, this),
+              f.removeObserver(h.TFT_PLAYER_PREFERENCES, this),
+              f.removeObserver(h.TFT_TEST_PAGE, this),
+              f.removeObserver(h.TFT_EVENT_MISSIONS, this);
           },
           _initObservers() {
-            h.addObserver(p.STAR_SHARDS_TOGGLES, this, (e) => {
+            f.addObserver(h.STAR_SHARDS_TOGGLES, this, (e) => {
               e && this.set("starShardsEnabled", e.EnableStarShardsUpgradeFlow);
             }),
-              h.addObserver(p.TFT_PLAYER_PREFERENCES, this, (e) => {
+              f.addObserver(h.TFT_PLAYER_PREFERENCES, this, (e) => {
                 e &&
                   e.data &&
                   (this.set("lastTftSetCoreNameSeen", e.data[c] || ""),
@@ -11066,10 +11084,10 @@
                   this._checkSetAnnouncmentSeen(),
                   this._checkBPAnnouncementSeen());
               }),
-              h.addObserver(p.TFT_BACKGROUNDS, this, (e) => {
+              f.addObserver(h.TFT_BACKGROUNDS, this, (e) => {
                 e && this.set("backgrounds", e);
               }),
-              h.addObserver(p.TFT_HOME, this, (e) => {
+              f.addObserver(h.TFT_HOME, this, (e) => {
                 e &&
                   (this.set("battlePassOfferIds", e.battlePassOfferIds),
                   this.set(
@@ -11086,15 +11104,15 @@
                   this.set("storePromoOfferIds", e.storePromoOfferIds),
                   this.set("tacticianPromoOfferIds", e.tacticianPromoOfferIds));
               }),
-              h.addObserver(p.RP, this, (e) => {
+              f.addObserver(h.RP, this, (e) => {
                 if (!e) return;
                 const t = e.RP;
                 isNaN(t) ? this.set("rpAmount", 0) : this.set("rpAmount", t);
               }),
-              h.addObserver(p.TFT_EVENTS, this, (e) => {
+              f.addObserver(h.TFT_EVENTS, this, (e) => {
                 e &&
                   (this.set("eventsData", e.subNavTabs),
-                  h.addObserver(p.TFT_EVENT_MISSIONS, this, (e) => {
+                  f.addObserver(h.TFT_EVENT_MISSIONS, this, (e) => {
                     if (e) {
                       this.set("tftEventMissions", e);
                       try {
@@ -11119,20 +11137,20 @@
                     }
                   }));
               }),
-              h.addObserver(
-                p.TFT_PROMO_BUTTONS,
+              f.addObserver(
+                h.TFT_PROMO_BUTTONS,
                 this,
                 this._handleUpdatePromoButtonsConfig,
               ),
-              h.addObserver(p.TFT_TEST_PAGE, this, (e) => {
+              f.addObserver(h.TFT_TEST_PAGE, this, (e) => {
                 e && this.set("testPageEnabled", e.enabled);
               }),
-              h.addObserver(p.TFT_NEWS, this, (e) => {
+              f.addObserver(h.TFT_NEWS, this, (e) => {
                 e &&
                   (this.set("newsEnabled", e.enabled),
                   this.set("newsUrl", e.url));
               }),
-              h.addObserver(p.GENERIC_ASSETS, this, (e) => {
+              f.addObserver(h.GENERIC_ASSETS, this, (e) => {
                 e &&
                   (this.set("storePromoAssets", e[d]),
                   this.set(
@@ -11149,7 +11167,7 @@
                     e["lcu-assets-tft-team-planner-button"],
                   ));
               }),
-              h.addObserver(p.MAP_DATA, this, (e) => {
+              f.addObserver(h.MAP_DATA, this, (e) => {
                 if (e)
                   for (const t of e)
                     if (
@@ -11159,7 +11177,7 @@
                     )
                       return void this.set("mapData", t);
               }),
-              h.addObserver(p.TFT_SETS_DATA_PATH, this, (e) => {
+              f.addObserver(h.TFT_SETS_DATA_PATH, this, (e) => {
                 e &&
                   (this.set(
                     "currentDefaultTFTSet",
@@ -11167,7 +11185,7 @@
                   ),
                   this._checkSetAnnouncmentSeen());
               }),
-              h.addObserver(p.STAR_SHARDS, this, (e) => {
+              f.addObserver(h.STAR_SHARDS, this, (e) => {
                 if (!e) return;
                 let t = e[u];
                 this.set("starShardsAmount", t),
@@ -11181,23 +11199,23 @@
                           this.get("tra").numeral(t).format("0a"),
                         ));
               }),
-              h.addObserver(p.TFT_BATTLE_PASS_PAGE, this, (e) => {
+              f.addObserver(h.TFT_BATTLE_PASS_PAGE, this, (e) => {
                 e && this.set("isBattlePassXPBoosted", e.battlePassXPBoosted);
               }),
-              h.addObserver(p.TFT_PASS_IS_ENABLED, this, (e) => {
+              f.addObserver(h.TFT_PASS_IS_ENABLED, this, (e) => {
                 this.set("isBattlePassEnabled", Boolean(e));
               }),
-              h.addObserver(p.TFT_PASS_BATTLE_PASS, this, (e) => {
+              f.addObserver(h.TFT_PASS_BATTLE_PASS, this, (e) => {
                 e &&
                   (this.set("battlePassV2", e),
                   this.set("currentTFTBP", e.info.passId),
                   this._checkBPAnnouncementSeen(),
                   this._handlePassV2Change(e, "showBpNavPip"));
               }),
-              h.addObserver(p.TFT_PASS_WELCOME_DATA_PATH, this, (e) => {
+              f.addObserver(h.TFT_PASS_WELCOME_DATA_PATH, this, (e) => {
                 e && this.set("bpAnnouncementData", e);
               }),
-              h.addObserver(p.TFT_PASS_EVENT_PASS, this, (e) => {
+              f.addObserver(h.TFT_PASS_EVENT_PASS, this, (e) => {
                 if (e) {
                   this.set("tftPassEventPass", e);
                   try {
@@ -11222,32 +11240,33 @@
                   }
                 }
               }),
-              h.addObserver(p.TFT_PASS_DAILY_LOGIN_PASS, this, (e) => {
+              f.addObserver(h.TFT_PASS_DAILY_LOGIN_PASS, this, (e) => {
                 e && this.set("tftPassDailyLoginPass", e);
               }),
-              h.addObserver(p.TFT_EVENT_TENCENT_CONFIGS, this, (e) => {
+              f.addObserver(h.TFT_EVENT_TENCENT_CONFIGS, this, (e) => {
                 e &&
                   this.set("eventHubTencentConfigs", e.tencentEventhubConfigs);
               });
           },
           getStorePromoAssets: () =>
-            a.db.get(p.GENERIC_ASSETS).then((e) => (e ? e[d] : null)),
+            a.db.get(h.GENERIC_ASSETS).then((e) => (e ? e[d] : null)),
           _handleUpdatePromoButtonsConfig(e) {
             e && this.set("promoButtonsData", e.promoButtons);
           },
           _checkSetAnnouncmentSeen() {
             const e = this.get("lastTftSetCoreNameSeen"),
               t = this.get("currentDefaultTFTSet");
-            null !== e &&
-              null !== t &&
-              (e === t
-                ? this.set("setAnnouncementSeenLocal", !0)
-                : "" === e && this.set("setAnnouncementSeenLocal", !1));
+            e === p && this.recordSetAnnouncementSeen(),
+              null !== e &&
+                null !== t &&
+                (e === t
+                  ? this.set("setAnnouncementSeenLocal", !0)
+                  : "" === e && this.set("setAnnouncementSeenLocal", !1));
           },
           recordSetAnnouncementSeen() {
             this.set("setAnnouncementSeenLocal", !0);
             const e = {};
-            (e[c] = this.currentDefaultTFTSet),
+            (e[c] = this.currentDefaultTFTSet || p),
               (0, a.dataBinding)("/lol-settings", a.socket).patch(
                 "/v2/account/LCUPreferences/lol-tft",
                 { data: e, schemaVersion: 1 },
@@ -11310,7 +11329,7 @@
           },
           markMissionsAsViewed(e, t) {
             const n = { missionIds: e, serieIds: t };
-            h.put("/lol-missions/v1/player", n).catch(() => null);
+            f.put("/lol-missions/v1/player", n).catch(() => null);
           },
           _handlePassV2Change(e, t) {
             const { milestones: n, bonuses: s } = e;
@@ -11383,7 +11402,7 @@
               this.notifyPropertyChange("promoButtonsData"));
           },
         });
-        t.default = f;
+        t.default = g;
       },
       (e, t, n) => {
         "use strict";
@@ -11871,17 +11890,19 @@
               if (e) {
                 if (this.get("trovesV2Enabled") && e) {
                   let t = !0;
-                  e.rewards?.standard?.forEach((n) => {
-                    a.TYPE_CURRENCIES.includes(n.itemId)
-                      ? (0, o.trackCurrencyGained)(
-                          "roll_reward",
-                          n.itemId,
-                          n.quantity,
-                          t,
-                        )
-                      : (0, o.trackRollRewardTroves)(e.orderId, n.itemId, t),
-                      (t = !1);
-                  });
+                  e.rewards?.standard
+                    ?.concat(e.rewards?.highlight || [])
+                    .forEach((n) => {
+                      a.TYPE_CURRENCIES.includes(n.itemId)
+                        ? (0, o.trackCurrencyGained)(
+                            "roll_reward",
+                            n.itemId,
+                            n.quantity,
+                            t,
+                          )
+                        : (0, o.trackRollRewardTroves)(e.orderId, n.itemId, t),
+                        (t = !1);
+                    });
                 }
                 this.set("ceremonyData", e),
                   this.set("isWaitingForCeremonyData", !1);
@@ -13229,6 +13250,9 @@
           }
           showTroves(e = 1) {
             return this._api.showTroves(e);
+          }
+          markSetAnnouncementAsSeen() {
+            return this._api.markSetAnnouncementAsSeen();
           }
           showEventPass() {
             return this._api.showEventPass();

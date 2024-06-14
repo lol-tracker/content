@@ -1670,7 +1670,7 @@
               : this._dataBinding
                   .get(`/lol-ranked/v1/eligibleTiers/queueType/${e}`)
                   .then(
-                    (t) => ((this._tiersByQueueType[e] = t), t),
+                    (t) => (t ? ((this._tiersByQueueType[e] = t), t) : i.TIERS),
                     () => i.TIERS,
                   );
           }
@@ -32381,7 +32381,7 @@
           }),
           (t.hasExceededRewardLimit = h),
           (t.stripGradePostFix = a);
-        const s = { 0: "I", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V" };
+        const s = { 0: "0", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V" };
         t.NUMBER_TO_ROMAN_NUMERAL = s;
         t.MINIMUM_MASTERY_LEVEL = 1;
         t.MINIMUM_MASTERY_MILESTONE_LEVEL = 0;

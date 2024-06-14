@@ -46371,22 +46371,32 @@
                           return n.release().then(() => {
                             if (e !== a.SHOW_NAME_CHANGE)
                               return (0, r.getIsNPEFlowEnabled)().then((e) => {
-                                e && !t.shouldSkipTutorial
-                                  ? (0, o.getProvider)()
-                                      .getOptional(
-                                        "rcp-fe-lol-new-player-experience",
-                                      )
+                                t.shouldSkipTutorial
+                                  ? o.Router.navigateTo("rcp-fe-lol-tft")
+                                  : ((0, o.getProvider)()
+                                      .getOptional("rcp-fe-lol-tft")
                                       .then(
-                                        (e) => e.show(),
+                                        (e) => e.markSetAnnouncementAsSeen(),
                                         (e) =>
                                           o.logger.error(
                                             "Provider getOptional failure",
                                             e,
                                           ),
-                                      )
-                                  : t.shouldSkipTutorial
-                                    ? o.Router.navigateTo("rcp-fe-lol-tft")
-                                    : o.Navigation.showHome();
+                                      ),
+                                    e
+                                      ? (0, o.getProvider)()
+                                          .getOptional(
+                                            "rcp-fe-lol-new-player-experience",
+                                          )
+                                          .then(
+                                            (e) => e.show(),
+                                            (e) =>
+                                              o.logger.error(
+                                                "Provider getOptional failure",
+                                                e,
+                                              ),
+                                          )
+                                      : o.Navigation.showHome());
                               });
                             o.Navigation.showHome();
                           });

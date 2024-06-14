@@ -5914,16 +5914,12 @@
           ),
           seasonalMilestoneString: s.Ember.computed(
             "champion.championSeasonMilestone",
-            "champion.championSeasonPoints",
             "tra",
             function () {
-              const e = this.get("champion.championSeasonMilestone"),
-                t = this.get("champion.championSeasonPoints");
+              const e = this.get("champion.championSeasonMilestone");
               if (
                 e ===
-                  s.SharedChampionMasteryConstants
-                    .MINIMUM_MASTERY_MILESTONE_LEVEL &&
-                0 === t
+                s.SharedChampionMasteryConstants.MINIMUM_MASTERY_MILESTONE_LEVEL
               )
                 return this.get(
                   "tra.collections_champion_grid_mastery_tooltip_milestone_no_progress",
