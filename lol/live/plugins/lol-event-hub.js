@@ -202,13 +202,13 @@
               EventShopMainViewComponent: C.default,
               EventShopOfferCardComponent: P.default,
               EventShopProgressionComponent: w.default,
-              EventShopRewardTrackWrapperComponent: S.default,
-              EventShopTokenBalanceAmountComponent: R.default,
+              EventShopRewardTrackWrapperComponent: R.default,
+              EventShopTokenBalanceAmountComponent: S.default,
               EventShopTokenShopComponent: L.default,
               EventShopXpComponent: O.default,
               HolClaimButtonComponent: A.default,
-              HolLevelIconFlamesComponent: D.default,
-              HolNarrativeComponent: I.default,
+              HolLevelIconFlamesComponent: I.default,
+              HolNarrativeComponent: D.default,
               HolPromotionBannerComponent: M.default,
               HolRewardDetailsComponent: N.default,
               HolXpComponent: B.default,
@@ -218,8 +218,8 @@
               ApplicationController: H.default,
               IndexController: U.default,
               EventShopController: V.default,
-              HallOfLegendsController: j.default,
-              EqHelper: F.default,
+              HallOfLegendsController: F.default,
+              EqHelper: j.default,
               InventoryTypeNameHelper: Y.default,
               SafeImagePathHelper: K.default,
               TEMPLATES: {
@@ -280,21 +280,21 @@
           C = _e(n(27)),
           P = _e(n(28)),
           w = _e(n(49)),
-          S = _e(n(50)),
-          R = _e(n(69)),
+          R = _e(n(50)),
+          S = _e(n(69)),
           L = _e(n(70)),
           O = _e(n(71)),
           A = _e(n(72)),
-          D = _e(n(73)),
-          I = _e(n(74)),
+          I = _e(n(73)),
+          D = _e(n(74)),
           M = _e(n(75)),
           N = _e(n(76)),
           B = _e(n(77)),
           H = _e(n(78)),
           U = _e(n(80)),
           V = _e(n(81)),
-          j = _e(n(82)),
-          F = _e(n(83)),
+          F = _e(n(82)),
+          j = _e(n(83)),
           Y = _e(n(84)),
           K = _e(n(85)),
           G = _e(n(86)),
@@ -358,6 +358,7 @@
             t.EVENT_HUB_TYPES =
             t.EVENT_HUB_API =
             t.EVENT_BASE_OBSERVERS =
+            t.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG =
             t.CLAIM_ALL_REWARDS_PATH =
               void 0);
         const n = "/lol-event-hub/v1";
@@ -370,6 +371,8 @@
         t.PURCHASE_OFFER_PATH = "/purchase-offer";
         const s = "/reward-track/claim-all";
         t.CLAIM_ALL_REWARDS_PATH = s;
+        t.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG =
+          "/lol-client-config/v3/client-config/lol.client_settings.event_hub.shouldPromotionBannerRedirectToStore";
         t.REWARDS_API = "/lol-rewards/v1";
         t.REPLAY_FULLSCREEN_CELEBRATION_PATH = "/reward/replay";
         t.REWARD_CELEBRATION_TYPE_FULLSCREEN = "FULLSCREEN";
@@ -4014,8 +4017,10 @@
           (t.default = void 0);
         var a = n(1),
           s = n(5);
-        var l = a.Ember.Component.extend({
+        const l = a.dataBinding.bindTo(a.socket);
+        var o = a.Ember.Component.extend({
           classNames: ["hol-promotion-banner"],
+          shouldRedirectToStore: !1,
           selectedReward: null,
           eventHubService: a.Ember.inject.service("event-hub"),
           marketingPreferencesService: a.Ember.inject.service(
@@ -4034,21 +4039,54 @@
               return 10 !== Number.parseInt(t?.item?.threshold);
             },
           ),
+          init() {
+            this._super(...arguments),
+              l.observe(
+                s.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG,
+                this,
+                function (e) {
+                  this.set("shouldRedirectToStore", !!e);
+                },
+              );
+          },
+          willDestroyElement() {
+            this._super(...arguments),
+              l.unobserve(s.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG, this);
+          },
           actions: {
             bannerClick() {
               a.Telemetry.sendCustomData(s.TELEMETRY.TABLE, {
                 eventName: s.TELEMETRY.HOL_PROMOTION_BANNER_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
               }),
-                this.get(
-                  "marketingPreferencesService",
-                ).setFromEventShopForHolPartition(),
-                a.Navigation.showSubnavTab("hall-of-legends-embed-2024"),
-                a.Navigation.showHome();
+                this.get("shouldRedirectToStore")
+                  ? this.get("eventHubService")
+                      .getPassBundles()
+                      .then((e) => {
+                        if (e?.length) {
+                          const t = e.map((e) => ({
+                            itemId: e?.details?.itemId,
+                            inventoryType: e?.details?.inventoryType,
+                          }));
+                          a.Router.navigateTo("rcp-fe-lol-store", {
+                            page: "hextech",
+                            items: t,
+                          });
+                        } else a.Router.navigateTo("rcp-fe-lol-store");
+                      })
+                      .catch((e) => {
+                        a.logger.error("Failure loading pass options", e),
+                          a.Router.navigateTo("rcp-fe-lol-store");
+                      })
+                  : (this.get(
+                      "marketingPreferencesService",
+                    ).setFromEventShopForHolPartition(),
+                    a.Navigation.showSubnavTab("hall-of-legends-embed-2024"),
+                    a.Navigation.showHome());
             },
           },
         });
-        t.default = l;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";
