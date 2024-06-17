@@ -75110,17 +75110,17 @@
             classNames: ["spine-player"],
             animation: "",
             shouldLoop: !1,
-            skelUrl: "",
-            atlasUrl: "",
+            skeleton: "",
+            atlas: "",
             onComplete: null,
             width: 0,
             height: 0,
-            showLoading: !1,
+            onLoad: null,
             spinePlayer: null,
             isValidAnimation: r.Ember.computed.and(
               "animation",
-              "skelUrl",
-              "atlasUrl",
+              "skeleton",
+              "atlas",
               "width",
               "height",
             ),
@@ -75132,45 +75132,45 @@
               const t = this.get("animation"),
                 e = this.get("height"),
                 n = this.get("width");
-              if (this.get("isValidAnimation")) {
-                this.get("spinePlayer") &&
-                  this.get("spinePlayer").animationState.clearListeners();
-                const o = {
-                    x: -n / 2,
-                    y: -e / 2,
-                    width: n,
-                    height: e,
-                    padLeft: "0px",
-                    padRight: "0px",
-                    padTop: "0px",
-                    padBottom: "0px",
-                  },
-                  s = (e) => {
+              if (!this.get("isValidAnimation")) return;
+              this.get("spinePlayer") &&
+                this.get("spinePlayer").animationState.clearListeners();
+              const o = {
+                x: -n / 2,
+                y: -e / 2,
+                width: n,
+                height: e,
+                padLeft: "0px",
+                padRight: "0px",
+                padTop: "0px",
+                padBottom: "0px",
+              };
+              this.set(
+                "spinePlayer",
+                new i.SpinePlayer(this.element, {
+                  skeleton: this.get("skeleton"),
+                  atlas: this.get("atlas"),
+                  animation: t,
+                  premultipliedAlpha: !1,
+                  showControls: !1,
+                  showLoading: this.get("showLoading"),
+                  alpha: !0,
+                  viewport: o,
+                  loading: this.get("loading"),
+                  update: this.get("update"),
+                  success: (e) => {
                     e.animationState.addListener({
                       complete: () => this.get("onComplete")?.(),
                     }),
+                      this.get("onLoad")?.(),
                       e.setAnimation(t, this.get("shouldLoop")),
                       e.play();
                   },
-                  a = (t, e) => {
+                  error: (t, e) => {
                     r.logger.error(`Spine animation failed: ${e}`);
-                  };
-                this.set(
-                  "spinePlayer",
-                  new i.SpinePlayer(this.element, {
-                    skelUrl: this.get("skelUrl"),
-                    atlasUrl: this.get("atlasUrl"),
-                    animation: t,
-                    premultipliedAlpha: !1,
-                    showControls: !1,
-                    showLoading: this.get("showLoading"),
-                    alpha: !0,
-                    viewport: o,
-                    success: s,
-                    error: a,
-                  }),
-                );
-              }
+                  },
+                }),
+              );
             },
           });
         e.default = o;

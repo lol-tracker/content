@@ -205,8 +205,8 @@
               EventShopRewardTrackWrapperComponent: S.default,
               EventShopTokenBalanceAmountComponent: R.default,
               EventShopTokenShopComponent: L.default,
-              EventShopXpComponent: A.default,
-              HolClaimButtonComponent: I.default,
+              EventShopXpComponent: I.default,
+              HolClaimButtonComponent: A.default,
               HolLevelIconFlamesComponent: O.default,
               HolNarrativeComponent: M.default,
               HolPromotionBannerComponent: N.default,
@@ -218,8 +218,8 @@
               ApplicationController: H.default,
               IndexController: U.default,
               EventShopController: V.default,
-              HallOfLegendsController: j.default,
-              EqHelper: F.default,
+              HallOfLegendsController: F.default,
+              EqHelper: j.default,
               InventoryTypeNameHelper: Y.default,
               SafeImagePathHelper: K.default,
               TEMPLATES: {
@@ -283,8 +283,8 @@
           S = _e(n(50)),
           R = _e(n(69)),
           L = _e(n(70)),
-          A = _e(n(71)),
-          I = _e(n(72)),
+          I = _e(n(71)),
+          A = _e(n(72)),
           O = _e(n(73)),
           M = _e(n(74)),
           N = _e(n(75)),
@@ -293,8 +293,8 @@
           H = _e(n(78)),
           U = _e(n(80)),
           V = _e(n(81)),
-          j = _e(n(82)),
-          F = _e(n(83)),
+          F = _e(n(82)),
+          j = _e(n(83)),
           Y = _e(n(84)),
           K = _e(n(85)),
           G = _e(n(86)),
@@ -358,6 +358,7 @@
             t.EVENT_HUB_TYPES =
             t.EVENT_HUB_API =
             t.EVENT_BASE_OBSERVERS =
+            t.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG =
             t.CLAIM_ALL_REWARDS_PATH =
               void 0);
         const n = "/lol-event-hub/v1";
@@ -370,6 +371,8 @@
         t.PURCHASE_OFFER_PATH = "/purchase-offer";
         const l = "/reward-track/claim-all";
         t.CLAIM_ALL_REWARDS_PATH = l;
+        t.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG =
+          "/lol-client-config/v3/client-config/lol.client_settings.event_hub.shouldPromotionBannerRedirectToStore";
         t.REWARDS_API = "/lol-rewards/v1";
         t.REPLAY_FULLSCREEN_CELEBRATION_PATH = "/reward/replay";
         t.REWARD_CELEBRATION_TYPE_FULLSCREEN = "FULLSCREEN";
@@ -1031,11 +1034,15 @@
               e.toLowerCase().replace("_", "-"),
             getEndTimerTooltipText(e, t) {
               const n = new Date(e),
-                l = n.toLocaleDateString(t, { dateStyle: "medium" }),
+                l = n.toLocaleDateString(t, {
+                  dateStyle: "medium",
+                  numberingSystem: "latn",
+                }),
                 s = n.toLocaleTimeString(t, {
                   timeZoneName: "short",
                   hour: "numeric",
                   minute: "numeric",
+                  numberingSystem: "latn",
                 });
               return a.tra.formatString(
                 "event_shop_page_header_time_tooltip_date_string",
@@ -4014,8 +4021,10 @@
           (t.default = void 0);
         var a = n(1),
           l = n(5);
-        var s = a.Ember.Component.extend({
+        const s = a.dataBinding.bindTo(a.socket);
+        var o = a.Ember.Component.extend({
           classNames: ["hol-promotion-banner"],
+          shouldRedirectToStore: !1,
           selectedReward: null,
           eventHubService: a.Ember.inject.service("event-hub"),
           marketingPreferencesService: a.Ember.inject.service(
@@ -4034,21 +4043,41 @@
               return 10 !== Number.parseInt(t?.item?.threshold);
             },
           ),
+          init() {
+            this._super(...arguments),
+              s.observe(
+                l.CLIENT_CONFIG_HOL_PROMOTION_BANNER_CONFIG,
+                this,
+                function (e) {
+                  this.set("shouldRedirectToStore", !!e);
+                },
+              );
+          },
           actions: {
             bannerClick() {
               a.Telemetry.sendCustomData(l.TELEMETRY.TABLE, {
                 eventName: l.TELEMETRY.HOL_PROMOTION_BANNER_CLICK_EVENT,
                 eventId: this.get("eventHubService.info.eventId"),
               }),
-                this.get(
-                  "marketingPreferencesService",
-                ).setFromEventShopForHolPartition(),
-                a.Navigation.showSubnavTab("hall-of-legends-embed-2024"),
-                a.Navigation.showHome();
+                this.get("shouldRedirectToStore")
+                  ? a.Router.navigateTo("rcp-fe-lol-store", {
+                      page: "hextech",
+                      items: [
+                        { itemId: 99901461, inventoryType: "BUNDLES" },
+                        { itemId: 99901462, inventoryType: "BUNDLES" },
+                        { itemId: 99901460, inventoryType: "BUNDLES" },
+                        { itemId: 99901470, inventoryType: "BUNDLES" },
+                      ],
+                    })
+                  : (this.get(
+                      "marketingPreferencesService",
+                    ).setFromEventShopForHolPartition(),
+                    a.Navigation.showSubnavTab("hall-of-legends-embed-2024"),
+                    a.Navigation.showHome());
             },
           },
         });
-        t.default = s;
+        t.default = o;
       },
       (e, t, n) => {
         "use strict";

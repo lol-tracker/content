@@ -38685,6 +38685,14 @@
           classNames: ["ready-check-status-text"],
           readyCheck: i.Ember.inject.service("ready-check"),
           gameflow: i.Ember.inject.service("gameflow"),
+          readyCheckMatchFoundString: i.Ember.computed(
+            "isStrawberry",
+            function () {
+              return this.get("isStrawberry")
+                ? this.get("tra.ready_check_match_found_STRAWBERRY")
+                : this.get("tra.ready_check_match_found");
+            },
+          ),
           queueTypeString: i.Ember.computed(
             "gameflow.map.isRGM",
             "gameflow.queueType",
@@ -38714,8 +38722,13 @@
             },
           ),
           isCherry: i.Ember.computed.alias("gameflow.isCherry"),
+          isStrawberry: i.Ember.computed.alias("gameflow.isStrawberry"),
           isTFT: i.Ember.computed.alias("gameflow.isTFT"),
-          isNotTeamVsTeam: i.Ember.computed.or("isCherry", "isTFT"),
+          isNotTeamVsTeam: i.Ember.computed.or(
+            "isCherry",
+            "isStrawberry",
+            "isTFT",
+          ),
         });
       },
       (e, t, n) => {
@@ -40811,6 +40824,7 @@
             "queue.numPlayersPerTeam",
           ),
           isCherry: i.Ember.computed.equal("queue.gameMode", "CHERRY"),
+          isStrawberry: i.Ember.computed.equal("queue.gameMode", "STRAWBERRY"),
           isTFT: i.Ember.computed.equal("queue.gameMode", "TFT"),
         });
       },
@@ -42498,9 +42512,9 @@
       (e, t, n) => {
         const i = n(1).Ember;
         e.exports = i.HTMLBars.template({
-          id: "yya9+rqq",
+          id: "iSQKi/Me",
           block:
-            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\ready-check-status-text.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["readyCheck","hasPlayerResponded"]]],null,6,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","span",[]],["static-attr","class","ready-check-bullet"],["flush-element"],["text","•"],["close-element"],["text","\\n      "],["append",["unknown",["versusString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","ready-check-status-title"],["flush-element"],["append",["unknown",["tra","ready_check_match_found"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ready-check-status-details"],["flush-element"],["text","\\n    "],["append",["unknown",["gameflow","map","name"]],false],["text"," "],["open-element","span",[]],["static-attr","class","ready-check-bullet"],["flush-element"],["text","•"],["close-element"],["text","\\n    "],["append",["unknown",["queueTypeString"]],false],["text","\\n"],["block",["unless"],[["get",["isNotTeamVsTeam"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["readyCheck","isStateMachineStateInProgress"]]],null,1]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","ready_check_response_message_declined"]],false],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["readyCheck","isStateMachineStateDeclined"]]],null,3]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","ready_check_response_message_accepted"]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","ready-check-status-details"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","ready_check_waiting_players"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","ready-check-status-title"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyCheck","isStateMachineStateAccepted"]]],null,5,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
+            '{"statements":[["comment","#ember-component template-path=\\"T:\\\\cid\\\\p4\\\\__MAIN__\\\\LeagueClientContent_Beta\\\\15692\\\\DevRoot\\\\Client\\\\fe\\\\rcp-fe-lol-navigation\\\\src\\\\app\\\\templates\\\\components\\\\ready-check-status-text.hbs\\" style-path=\\"null\\" js-path=\\"null\\" "],["text","\\n"],["block",["if"],[["get",["readyCheck","hasPlayerResponded"]]],null,6,2]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      "],["open-element","span",[]],["static-attr","class","ready-check-bullet"],["flush-element"],["text","•"],["close-element"],["text","\\n      "],["append",["unknown",["versusString"]],false],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","ready-check-status-title"],["flush-element"],["append",["unknown",["readyCheckMatchFoundString"]],false],["close-element"],["text","\\n  "],["open-element","div",[]],["static-attr","class","ready-check-status-details"],["flush-element"],["text","\\n    "],["append",["unknown",["gameflow","map","name"]],false],["text"," "],["open-element","span",[]],["static-attr","class","ready-check-bullet"],["flush-element"],["text","•"],["close-element"],["text","\\n    "],["append",["unknown",["queueTypeString"]],false],["text","\\n"],["block",["unless"],[["get",["isNotTeamVsTeam"]]],null,0],["text","  "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["block",["if"],[["get",["readyCheck","isStateMachineStateInProgress"]]],null,1]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","ready_check_response_message_declined"]],false],["text","\\n    "]],"locals":[]},{"statements":[["block",["if"],[["get",["readyCheck","isStateMachineStateDeclined"]]],null,3]],"locals":[]},{"statements":[["text","      "],["append",["unknown",["tra","ready_check_response_message_accepted"]],false],["text","\\n      "],["open-element","div",[]],["static-attr","class","ready-check-status-details"],["flush-element"],["text","\\n        "],["append",["unknown",["tra","ready_check_waiting_players"]],false],["text","\\n      "],["close-element"],["text","\\n"]],"locals":[]},{"statements":[["text","  "],["open-element","div",[]],["static-attr","class","ready-check-status-title"],["flush-element"],["text","\\n"],["block",["if"],[["get",["readyCheck","isStateMachineStateAccepted"]]],null,5,4],["text","  "],["close-element"],["text","\\n"]],"locals":[]}],"hasPartials":false}',
           meta: {},
         });
       },

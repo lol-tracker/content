@@ -353,6 +353,12 @@
       "affinity": null,
       "as": [],
       "lazy": false,
+      "name": "rcp-be-entitlements"
+    },
+    {
+      "affinity": null,
+      "as": [],
+      "lazy": false,
       "name": "rcp-be-lol-loadouts"
     },
     {
@@ -429,12 +435,6 @@
       "as": [],
       "lazy": false,
       "name": "rcp-fe-lol-champion-details"
-    },
-    {
-      "affinity": null,
-      "as": [],
-      "lazy": false,
-      "name": "rcp-be-entitlements"
     },
     {
       "affinity": null,
