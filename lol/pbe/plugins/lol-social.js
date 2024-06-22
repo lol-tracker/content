@@ -21635,7 +21635,7 @@
         "use strict";
         Object.defineProperty(t, "__esModule", { value: !0 }),
           (t.processAddFriendError = function (e) {
-            const t = e.data.error;
+            const t = e.data?.error;
             let n;
             switch (e.status) {
               case 400:
@@ -21674,14 +21674,14 @@
               case 500:
                 const { message: o } = e.data;
                 n =
-                  o.indexOf("max_roster_size_sender") >= 0 ||
-                  t.indexOf("max_roster_size_sender") >= 0
+                  o?.indexOf("max_roster_size_sender") >= 0 ||
+                  t?.indexOf("max_roster_size_sender") >= 0
                     ? "roster_invite_system_message_self_roster_full"
-                    : o.indexOf("max_outgoing_invites") >= 0 ||
-                        t.indexOf("max_outgoing_invites") >= 0
+                    : o?.indexOf("max_outgoing_invites") >= 0 ||
+                        t?.indexOf("max_outgoing_invites") >= 0
                       ? "roster_invite_system_message_outgoing_invites_full"
-                      : o.indexOf("roster_blocked_uic") >= 0 ||
-                          t.indexOf("roster_blocked_uic") >= 0
+                      : o?.indexOf("roster_blocked_uic") >= 0 ||
+                          t?.indexOf("roster_blocked_uic") >= 0
                         ? "roster_invite_system_message_uic_blocked"
                         : "roster_invite_system_message_server_error";
                 break;
@@ -21904,7 +21904,7 @@
               );
               return (
                 o.logger.error(
-                  `Failed to add friend. Status: ${a.status}. Reason: ${a.data?.error}. Message: ${s}`,
+                  `Failed to add friend. Status: ${a.status}. Reason: ${a.data?.error || a.data}. Message: ${s}`,
                 ),
                 o.data.analytics.error("addFriend", a.status.toString(), s, {
                   eventNameOverride: "friend_finder",
