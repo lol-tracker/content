@@ -18869,6 +18869,9 @@
           "format": "int32",
           "type": "integer"
         },
+        "navBarIcon": {
+          "type": "string"
+        },
         "timeOfLastUnclaimedReward": {
           "format": "int64",
           "type": "integer"
@@ -22390,6 +22393,15 @@
         "gameMode": {
           "type": "string"
         },
+        "gameSelectCategory": {
+          "type": "string"
+        },
+        "gameSelectModeGroup": {
+          "type": "string"
+        },
+        "gameSelectPriority": {
+          "type": "integer"
+        },
         "gameTypeConfig": {
           "$ref": "#/definitions/LolGameQueuesQueueGameTypeConfig"
         },
@@ -22683,6 +22695,19 @@
         },
         "detailedDescription": {
           "type": "string"
+        },
+        "gameSelectCategory": {
+          "type": "string"
+        },
+        "gameSelectModeGroup": {
+          "type": "string"
+        },
+        "gameSelectPriority": {
+          "type": "integer"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
         },
         "name": {
           "type": "string"
@@ -24211,6 +24236,12 @@
         "gameId": {
           "format": "int64",
           "type": "integer"
+        },
+        "gameMutators": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "gameType": {
           "type": "string"
@@ -27150,6 +27181,29 @@
         "MmrStandardDeviationTooLarge"
       ],
       "type": "string"
+    },
+    "LolLobbyEntitlementsTokenResource": {
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "entitlements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "LolLobbyFriendAvailabilityAnalytics": {
       "properties": {
@@ -34396,6 +34450,9 @@
         "properties": {
           "additionalProperties": true,
           "type": "object"
+        },
+        "tftSetOverride": {
+          "type": "string"
         },
         "tutorialCards": {
           "items": {
@@ -45137,6 +45194,9 @@
             "$ref": "#/definitions/LolRegaliaGameDataRegalia"
           },
           "type": "array"
+        },
+        "purchaseDate": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -60789,7 +60849,7 @@
     },
     "/async/v1/status/{asyncToken}": {
       "delete": {
-        "operationId": "Http2AsyncDelete",
+        "operationId": "HttpAsyncDelete",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to remove",
@@ -60823,7 +60883,7 @@
         ]
       },
       "get": {
-        "operationId": "HttpAsyncStatus",
+        "operationId": "Http2AsyncStatus",
         "parameters": [
           {
             "description": "ID of the asynchronous operation to check",
@@ -89683,6 +89743,28 @@
         ]
       }
     },
+    "/services-api/riot-message-service/v1/data": {
+      "post": {
+        "operationId": "PostServicesApiRiotMessageServiceV1Data",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "message",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": [
+          "Plugins",
+          "Plugin services-api"
+        ]
+      }
+    },
     "/swagger/v1/api-docs": {
       "get": {
         "operationId": "HttpApiDocsV1",
@@ -89704,7 +89786,7 @@
     },
     "/swagger/v1/api-docs/{api}": {
       "get": {
-        "operationId": "Http2ApiDeclarationV1",
+        "operationId": "HttpApiDeclarationV1",
         "parameters": [
           {
             "description": "API to get a declaration for",
@@ -89757,7 +89839,7 @@
     },
     "/swagger/v3/openapi.json": {
       "get": {
-        "operationId": "HttpApiDocsV3",
+        "operationId": "Http2ApiDocsV3",
         "parameters": [],
         "responses": {
           "200": {
