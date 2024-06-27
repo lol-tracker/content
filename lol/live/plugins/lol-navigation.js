@@ -42264,9 +42264,8 @@
             "-70": [s],
             "-1": [s, a],
           },
-          p = [185],
-          h = ["faq", "ps"];
-        var m = i.Ember.Service.extend({
+          p = ["faq", "ps"];
+        var h = i.Ember.Service.extend({
           tra: i.tra,
           enabled: null,
           playerKickedVanguard: !1,
@@ -42320,8 +42319,7 @@
               e &&
               e.state &&
               "ERROR" === e.state &&
-              (p.includes(e.vanguardStatus) ||
-                this._showNotification(e.vanguardStatus));
+              this._showNotification(e.vanguardStatus);
           },
           _shutdownClient: function () {
             window.riotInvoke &&
@@ -42337,7 +42335,7 @@
             if (t) return i.tra.get(t);
             const n = d[e];
             if (!n) return i.tra.get(c);
-            const o = [...n, ...h];
+            const o = [...n, ...p];
             let r = i.tra.get(c);
             r += i.tra.get("vanguard_error_description_persist");
             for (let e = 0; e < o.length; e++) {
@@ -42386,7 +42384,7 @@
               });
           },
         });
-        t.default = m;
+        t.default = h;
       },
       (e, t, n) => {
         "use strict";

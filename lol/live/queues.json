@@ -261,7 +261,7 @@
     "minimumParticipantListSize": 1,
     "name": "Normal",
     "numPlayersPerTeam": 5,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": true,
       "isIpEnabled": true,
@@ -1276,7 +1276,7 @@
     "minimumParticipantListSize": 1,
     "name": "Ranked Flex",
     "numPlayersPerTeam": 5,
-    "queueAvailability": "PlatformDisabled",
+    "queueAvailability": "Available",
     "queueRewards": {
       "isChampionPointsEnabled": true,
       "isIpEnabled": true,
